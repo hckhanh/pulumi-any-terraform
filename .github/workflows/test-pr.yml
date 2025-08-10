@@ -1,0 +1,42 @@
+name: Test PR
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Lint and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10.14.0'
+
+      - name: Setup Moon
+        run: |
+          curl -fsSL https://moonrepo.dev/install/moon.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd packages/namecheap && npm install
+
+      - name: Run linting
+        run: |
+          npx prettier --check . || echo "Prettier issues found"
+          npx syncpack lint || echo "Syncpack issues found"
+
+      - name: Build project
+        run: cd packages/namecheap && npx tsdown

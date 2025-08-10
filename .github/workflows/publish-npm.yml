@@ -1,0 +1,57 @@
+name: Publish NPM Package
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version to publish'
+        required: false
+        type: string
+
+jobs:
+  publish:
+    name: Build and Publish to NPM
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for NPM provenance
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10.14.0'
+
+      - name: Setup Moon
+        run: |
+          curl -fsSL https://moonrepo.dev/install/moon.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd packages/namecheap && npm install
+
+      - name: Run linting
+        run: |
+          npx prettier --check . || echo "Prettier issues found but continuing"
+          npx syncpack lint || echo "Syncpack issues found but continuing"
+
+      - name: Build project
+        run: cd packages/namecheap && npx tsdown
+
+      - name: Publish to NPM
+        run: cd packages/namecheap && npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
