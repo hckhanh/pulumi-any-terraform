@@ -35,5 +35,6 @@ tasks:
       - '@group(package)'
     deps:
       - 'audit'
+      - 'build'
     env:
       NPM_CONFIG_PROVENANCE: 'true'
