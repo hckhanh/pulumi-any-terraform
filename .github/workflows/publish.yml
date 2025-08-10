@@ -8,9 +8,12 @@ on:
 jobs:
   test:
     name: NPM Packages
+    if: ${{ github.actor != 'renovate[bot]' }}
+
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
