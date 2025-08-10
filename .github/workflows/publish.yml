@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,9 +22,14 @@ jobs:
         uses: moonrepo/setup-toolchain@v0
         with:
           auto-install: true
-      - name: Publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-          moon :publish
+      - name: Install dependencies
+        run: pnpm install
+      - name: Create PR or Publish
+        uses: changesets/action@v1
+        with:
+          publish: 'moon :build && pnpm changeset publish'
+          commitMode: 'github-api'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

@@ -2,10 +2,7 @@ $schema: './cache/schemas/tasks.json'
 
 fileGroups:
   sources:
-    - 'package.json'
-    - '**/*.{ts,js,mjs,cjs}'
-  package:
-    - 'README.md'
+    - '**/*.{ts,js,mjs,cjs,json}'
 
 tasks:
   lint:
@@ -21,22 +18,13 @@ tasks:
     options:
       runInCI: false
       runDepsInParallel: false
+  audit:
+    command: 'npm audit signature --no-package-lock'
+    inputs:
+      - '@group(sources)'
   build:
     command: 'pnpm tsdown'
     inputs:
       - '@group(sources)'
     outputs:
       - 'bin/**/*'
-  audit:
-    command: 'npm audit signature --no-package-lock'
-    inputs:
-      - '@group(sources)'
-  publish:
-    command: 'pnpm publish --provenance --access public'
-    inputs:
-      - '@group(sources)'
-      - '@group(package)'
-      - '$NPM_TOKEN'
-    deps:
-      - 'audit'
-      - 'build'
