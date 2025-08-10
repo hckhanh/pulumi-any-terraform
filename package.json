@@ -7,6 +7,7 @@
     "email": "hi@khanh.id",
     "url": "https://www.khanh.id"
   },
+  "private": true,
   "devDependencies": {
     "prettier": "3.6.2",
     "syncpack": "14.0.0-alpha.19"

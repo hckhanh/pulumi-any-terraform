@@ -21,16 +21,16 @@ tasks:
     options:
       runInCI: false
       runDepsInParallel: false
+  audit:
+    command: 'npm audit signature --no-package-lock'
+    inputs:
+      - '@group(sources)'
   build:
     command: 'pnpm tsdown'
     inputs:
       - '@group(sources)'
     outputs:
       - 'bin/**/*'
-  audit:
-    command: 'npm audit signature --no-package-lock'
-    inputs:
-      - '@group(sources)'
   publish:
     command: 'pnpm publish --provenance --access public'
     inputs:
