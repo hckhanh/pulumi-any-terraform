@@ -14,10 +14,6 @@ tasks:
     deps:
       - target: 'root:syncpack.format'
         args: '--source $projectSource/package.json'
-  format:
-    deps:
-      - target: 'root:syncpack.format'
-        args: '--source $projectSource/package.json'
   build:
     command: 'tsdown'
     inputs:
