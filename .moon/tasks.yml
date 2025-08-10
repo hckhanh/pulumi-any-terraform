@@ -25,7 +25,7 @@ tasks:
     outputs:
       - 'bin/**/*'
   audit:
-    command: 'npm audit signature'
+    command: 'npm audit signature --no-package-lock'
     inputs:
       - '@group(sources)'
   publish:
