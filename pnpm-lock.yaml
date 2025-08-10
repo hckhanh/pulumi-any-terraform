@@ -31,8 +31,8 @@ importers:
         specifier: 7.0.0-dev.20250802.1
         version: 7.0.0-dev.20250802.1
       tsdown:
-        specifier: 0.13.2
-        version: 0.13.2(@typescript/native-preview@7.0.0-dev.20250802.1)(typescript@5.9.2)
+        specifier: 0.13.3
+        version: 0.13.3(@typescript/native-preview@7.0.0-dev.20250802.1)(typescript@5.9.2)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -1512,8 +1512,8 @@ packages:
     resolution: {integrity: sha512-gcANaAnd2QDZFmHFEOF4k7uc1J/6a6z3DJMd/QwEyxLoKGiptJRwid582r7QIsFlFMIZ3SnxfS52S4hm2DHkuQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  tsdown@0.13.2:
-    resolution: {integrity: sha512-sXZKvkqxxKMBL6I/AzXJnC+/9i6bLO8an+Jg4JSJDkEc99e3Y5bACQMTQyE1IXJE+7F6IRZ1P8AJQu31eQqv8A==}
+  tsdown@0.13.3:
+    resolution: {integrity: sha512-3ujweLJB70DdWXX3v7xnzrFhzW1F/6/99XhGeKzh1UCmZ+ttFmF7Czha7VaunA5Dq/u+z4aNz3n4GH748uivYg==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -3118,7 +3118,7 @@ snapshots:
 
   treeverse@3.0.0: {}
 
-  tsdown@0.13.2(@typescript/native-preview@7.0.0-dev.20250802.1)(typescript@5.9.2):
+  tsdown@0.13.3(@typescript/native-preview@7.0.0-dev.20250802.1)(typescript@5.9.2):
     dependencies:
       ansis: 4.1.0
       cac: 6.7.14
