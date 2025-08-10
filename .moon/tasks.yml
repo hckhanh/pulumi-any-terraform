@@ -4,6 +4,8 @@ fileGroups:
   sources:
     - 'package.json'
     - '**/*.{ts,js,mjs,cjs}'
+  package:
+    - 'README.md'
 
 tasks:
   lint:
@@ -20,3 +22,14 @@ tasks:
       - '@group(sources)'
     outputs:
       - 'bin/**/*'
+  audit:
+    command: 'npm audit signature'
+    inputs:
+      - '@group(sources)'
+  publish:
+    command: 'pnpm publish'
+    inputs:
+      - '@group(sources)'
+      - '@group(package)'
+    env:
+      NPM_CONFIG_PROVENANCE: 'true'

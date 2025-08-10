@@ -1,13 +1,13 @@
-name: Test
+name: Publish
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   test:
-    name: Lint and Build
+    name: NPM Packages
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -20,5 +20,7 @@ jobs:
         uses: moonrepo/setup-toolchain@v0
         with:
           auto-install: true
-      - name: Check Lint, Audit and Build
-        run: moon ci :lint :audit :build
+      - name: Build
+        run: moon ci :build
+      - name: Publish
+        run: moon ci :publish

@@ -4,6 +4,7 @@
   "version": "2.2.0",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": "https://github.com/hckhanh/pulumi-any-terraform.git",
+  "private": false,
   "main": "./bin/index.mjs",
   "module": "./bin/index.mjs",
   "types": "./bin/index.d.mts",
