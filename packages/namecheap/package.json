@@ -3,7 +3,11 @@
   "description": "A Pulumi provider dynamically bridged from namecheap.",
   "version": "2.2.0",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
-  "repository": "https://github.com/hckhanh/pulumi-any-terraform.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/namecheap"
+  },
   "private": false,
   "main": "./bin/index.mjs",
   "module": "./bin/index.mjs",

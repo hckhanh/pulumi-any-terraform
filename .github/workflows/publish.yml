@@ -21,6 +21,8 @@ jobs:
         with:
           auto-install: true
       - name: Publish
-        run: moon :publish
+        run: |
+          pnpm config set registry "https://registry.npmjs.org/"
+          moon :publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
