@@ -17,13 +17,13 @@ importers:
 
   packages/namecheap:
     dependencies:
-      '@pulumi/pulumi':
-        specifier: 3.188.0
-        version: 3.188.0(typescript@5.9.2)
       async-mutex:
         specifier: 0.5.0
         version: 0.5.0
     devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.188.0
+        version: 3.188.0(typescript@5.9.2)
       '@types/node':
         specifier: 22.17.1
         version: 22.17.1
