@@ -22,7 +22,7 @@ jobs:
           auto-install: true
       - name: Publish
         run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
           moon :publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
