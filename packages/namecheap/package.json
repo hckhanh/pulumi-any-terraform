@@ -22,7 +22,7 @@
   "devDependencies": {
     "@pulumi/pulumi": "3.188.0",
     "@types/node": "22.17.1",
-    "@typescript/native-preview": "7.0.0-dev.20250802.1",
+    "@typescript/native-preview": "7.0.0-dev.20250807.1",
     "tsdown": "0.13.3",
     "typescript": "5.9.2"
   },
