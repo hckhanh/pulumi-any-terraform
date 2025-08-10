@@ -220,7 +220,7 @@ const awsAuth = new infisical.IdentityAwsAuth('aws-auth-config', {
 ### Project Access Control
 
 ```typescript
-import * as infisical import "pulumi-infisical";
+import * as infisical from "pulumi-infisical";
 
 // Create custom project role
 const projectRole = new infisical.ProjectRole("api-role", {
