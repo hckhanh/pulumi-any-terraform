@@ -36,5 +36,3 @@ tasks:
       runInCI: false
   changeset:
     command: 'pnpm changeset status --since=origin/main'
-    options:
-      cache: false
