@@ -29,7 +29,7 @@ tasks:
     inputs:
       - '@group(sources)'
   publish:
-    command: 'pnpm publish'
+    command: 'pnpm publish --provenance --access public'
     inputs:
       - '@group(sources)'
       - '@group(package)'
@@ -37,5 +37,3 @@ tasks:
     deps:
       - 'audit'
       - 'build'
-    env:
-      NPM_CONFIG_PROVENANCE: 'true'
