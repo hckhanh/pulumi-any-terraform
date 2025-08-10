@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  npm-packages:
     name: NPM Packages
     if: ${{ github.actor != 'renovate[bot]' }}
 
