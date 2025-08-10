@@ -12,15 +12,6 @@ This project automatically bridges Terraform providers to Pulumi, providing:
 - **Dynamic Updates**: Automatically stay in sync with upstream Terraform providers
 - **Native Pulumi Experience**: Full integration with Pulumi's state management and deployment engine
 
-## Available Packages
-
-### Namecheap Provider
-
-- **Package**: `pulumi-namecheap`
-- **Description**: Manage Namecheap domain records and DNS configuration
-- **Version**: 2.2.0
-- **Documentation**: [packages/namecheap/README.md](./packages/namecheap/README.md)
-
 ## Installation
 
 Each package can be installed independently:
