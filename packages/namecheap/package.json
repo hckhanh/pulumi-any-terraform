@@ -8,19 +8,6 @@
     "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
     "directory": "packages/namecheap"
   },
-  "keywords": [
-    "pulumi",
-    "namecheap",
-    "dns",
-    "domain",
-    "records",
-    "terraform",
-    "provider",
-    "infrastructure",
-    "domain-management",
-    "dns-records",
-    "email-service"
-  ],
   "private": false,
   "main": "./bin/index.mjs",
   "module": "./bin/index.mjs",
@@ -45,6 +32,19 @@
   "files": [
     "bin",
     "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "namecheap",
+    "dns",
+    "domain",
+    "records",
+    "terraform",
+    "provider",
+    "infrastructure",
+    "domain-management",
+    "dns-records",
+    "email-service"
   ],
   "pulumi": {
     "resource": true,
