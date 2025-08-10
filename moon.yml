@@ -4,6 +4,13 @@ toolchain:
   node:
     version: '22.18.0'
 
+workspace:
+  inheritedTasks:
+    exclude:
+      - 'build'
+      - 'audit'
+      - 'publish'
+
 fileGroups:
   syncpack:
     - '**/package.json'
@@ -11,7 +18,7 @@ fileGroups:
 
 tasks:
   syncpack:
-    command: 'syncpack'
+    command: 'pnpm syncpack'
     inputs:
       - '@group(syncpack)'
   syncpack.lint:
@@ -20,3 +27,5 @@ tasks:
   syncpack.format:
     extends: 'syncpack'
     args: 'format'
+    options:
+      runInCI: false

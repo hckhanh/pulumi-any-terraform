@@ -21,4 +21,4 @@ jobs:
         with:
           auto-install: true
       - name: Check
-        run: moon check
+        run: moon ci :lint :audit :build

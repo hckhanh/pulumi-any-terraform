@@ -16,6 +16,8 @@ tasks:
     deps:
       - target: 'root:syncpack.format'
         args: '--source $projectSource/package.json'
+    options:
+      runInCI: false
   build:
     command: 'pnpm tsdown'
     inputs:
