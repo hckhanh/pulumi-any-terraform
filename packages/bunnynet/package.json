@@ -1,0 +1,61 @@
+{
+  "name": "pulumi-bunnynet",
+  "description": "A Pulumi provider for managing Bunny.net CDN and edge computing resources, dynamically bridged from the Terraform Bunnynet provider with support for pull zones, storage, DNS, compute containers, and video streaming.",
+  "version": "0.6.2",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/bunnynet"
+  },
+  "private": false,
+  "main": "./bin/index.mjs",
+  "module": "./bin/index.mjs",
+  "types": "./bin/index.d.mts",
+  "exports": {
+    ".": "./bin/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.188.0",
+    "@types/node": "22.17.1",
+    "@typescript/native-preview": "7.0.0-dev.20250807.1",
+    "tsdown": "0.13.3",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.188.0"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "bunnynet",
+    "bunny.net",
+    "cdn",
+    "edge-computing",
+    "storage",
+    "dns",
+    "video-streaming",
+    "compute-containers",
+    "pull-zones",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.8.0",
+    "parameterization": {
+      "name": "bunnynet",
+      "version": "0.6.2",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuNi4yIn19"
+    }
+  }
+}
