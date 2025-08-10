@@ -32,7 +32,7 @@ tasks:
     inputs:
       - '@group(sources)'
   publish:
-    command: 'pnpm publish --provenance --access public'
+    command: 'pnpm changeset publish'
     inputs:
       - '@group(sources)'
       - '@group(package)'
