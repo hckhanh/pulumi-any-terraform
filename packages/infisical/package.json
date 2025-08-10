@@ -1,0 +1,46 @@
+{
+  "name": "pulumi-infisical",
+  "description": "A Pulumi provider dynamically bridged from infisical.",
+  "version": "0.15.3",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/namecheap"
+  },
+  "private": false,
+  "main": "./bin/index.mjs",
+  "module": "./bin/index.mjs",
+  "types": "./bin/index.d.mts",
+  "exports": {
+    ".": "./bin/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.188.0",
+    "@types/node": "22.17.1",
+    "@typescript/native-preview": "7.0.0-dev.20250807.1",
+    "tsdown": "0.13.3",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.188.0"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.8.0",
+    "parameterization": {
+      "name": "infisical",
+      "version": "0.15.3",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS4zIn19"
+    }
+  }
+}

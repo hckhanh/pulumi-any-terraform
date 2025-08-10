@@ -15,6 +15,50 @@ importers:
         specifier: 14.0.0-alpha.19
         version: 14.0.0-alpha.19
 
+  packages/bunnynet:
+    dependencies:
+      async-mutex:
+        specifier: 0.5.0
+        version: 0.5.0
+    devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.188.0
+        version: 3.188.0(typescript@5.9.2)
+      '@types/node':
+        specifier: 22.17.1
+        version: 22.17.1
+      '@typescript/native-preview':
+        specifier: 7.0.0-dev.20250807.1
+        version: 7.0.0-dev.20250807.1
+      tsdown:
+        specifier: 0.13.3
+        version: 0.13.3(@typescript/native-preview@7.0.0-dev.20250807.1)(typescript@5.9.2)
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  packages/infisical:
+    dependencies:
+      async-mutex:
+        specifier: 0.5.0
+        version: 0.5.0
+    devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.188.0
+        version: 3.188.0(typescript@5.9.2)
+      '@types/node':
+        specifier: 22.17.1
+        version: 22.17.1
+      '@typescript/native-preview':
+        specifier: 7.0.0-dev.20250807.1
+        version: 7.0.0-dev.20250807.1
+      tsdown:
+        specifier: 0.13.3
+        version: 0.13.3(@typescript/native-preview@7.0.0-dev.20250807.1)(typescript@5.9.2)
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
   packages/namecheap:
     dependencies:
       async-mutex:
