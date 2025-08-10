@@ -1,0 +1,12 @@
+{
+  "name": "pulumi-any-terraform",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": ["pulumi", "terraform", "provider", "infrastructure", "migrate"],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "22.18.0"
+  }
+}
