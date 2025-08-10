@@ -1,0 +1,6 @@
+$schema: './cache/schemas/toolchain.json'
+
+node:
+  packageManager: 'pnpm'
+  syncPackageManagerField: true
+  dependencyVersionFormat: 'workspace'

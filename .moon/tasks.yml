@@ -1,0 +1,26 @@
+$schema: './cache/schemas/tasks.json'
+
+fileGroups:
+  sources:
+    - 'package.json'
+    - '**/*.{ts,js,mjs,cjs}'
+
+tasks:
+  lint:
+    deps:
+      - target: 'root:syncpack.lint'
+        args: '--source $projectSource/package.json'
+  fix:
+    deps:
+      - target: 'root:syncpack.format'
+        args: '--source $projectSource/package.json'
+  format:
+    deps:
+      - target: 'root:syncpack.format'
+        args: '--source $projectSource/package.json'
+  build:
+    command: 'tsdown'
+    inputs:
+      - '@group(sources)'
+    outputs:
+      - 'bin/**/*'

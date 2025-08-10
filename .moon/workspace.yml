@@ -1,0 +1,10 @@
+$schema: './cache/schemas/workspace.json'
+
+projects:
+  globs:
+    - 'packages/*'
+  sources:
+    root: '.'
+
+vcs:
+  defaultBranch: 'main'

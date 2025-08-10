@@ -1,1 +1,3 @@
 **/package.json
+**/*.ts
+!**/tsdown.config.ts
