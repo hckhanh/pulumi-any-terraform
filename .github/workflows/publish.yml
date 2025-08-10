@@ -27,7 +27,7 @@ jobs:
       - name: Create PR or Publish
         uses: changesets/action@v1
         with:
-          publish: 'moon :build && pnpm changeset publish'
+          publish: 'pnpm run publish'
           commitMode: 'github-api'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
