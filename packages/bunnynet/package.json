@@ -1,6 +1,6 @@
 {
   "name": "pulumi-bunnynet",
-  "description": "A Pulumi provider dynamically bridged from bunnynet.",
+  "description": "A Pulumi provider for managing Bunny.net CDN and edge computing resources, dynamically bridged from the Terraform Bunnynet provider with support for pull zones, storage, DNS, compute containers, and video streaming.",
   "version": "0.6.2",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
@@ -32,6 +32,21 @@
   "files": [
     "bin",
     "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "bunnynet",
+    "bunny.net",
+    "cdn",
+    "edge-computing",
+    "storage",
+    "dns",
+    "video-streaming",
+    "compute-containers",
+    "pull-zones",
+    "terraform",
+    "provider",
+    "infrastructure"
   ],
   "pulumi": {
     "resource": true,
