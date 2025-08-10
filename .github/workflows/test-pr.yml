@@ -29,9 +29,7 @@ jobs:
           echo "$HOME/.moon/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: |
-          npm install
-          cd packages/namecheap && npm install
+        run: pnpm install
 
       - name: Run linting
         run: |
