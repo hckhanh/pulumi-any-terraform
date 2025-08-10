@@ -1,0 +1,22 @@
+$schema: './.moon/cache/schemas/project.json'
+
+toolchain:
+  node:
+    version: '22.18.0'
+
+fileGroups:
+  syncpack:
+    - '**/package.json'
+    - '.syncpackrc.json'
+
+tasks:
+  syncpack:
+    command: 'syncpack'
+    inputs:
+      - '@group(syncpack)'
+  syncpack.lint:
+    extends: 'syncpack'
+    args: 'lint'
+  syncpack.format:
+    extends: 'syncpack'
+    args: 'format'

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:js-app",
+    ":automergePr",
+    ":automergeMinor",
+    ":automergeTypes",
+    "npm:unpublishSafe",
+    "group:definitelyTyped",
+    "schedule:nonOfficeHours",
+    ":separateMultipleMajorReleases",
+    "schedule:automergeNonOfficeHours",
+    ":automergeRequireAllStatusChecks"
+  ],
+  "postUpdateOptions": ["pnpmDedupe"],
+  "timezone": "Asia/Ho_Chi_Minh",
+  "packageRules": []
+}

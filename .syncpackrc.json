@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/syncpack/schema.json",
+  "sortFirst": [
+    "name",
+    "description",
+    "version",
+    "productName",
+    "author",
+    "homepage",
+    "private",
+    "sideEffects",
+    "type",
+    "main",
+    "module",
+    "types",
+    "exports",
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "trustedDependencies",
+    "workspaces",
+    "packageManager"
+  ],
+  "sortExports": ["import", "types"],
+  "sortAz": [
+    "exports",
+    "scripts",
+    "workspaces",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "trustedDependencies"
+  ],
+  "semverGroups": [
+    {
+      "label": "All dependencies must be pinned",
+      "range": "",
+      "dependencies": ["**"],
+      "packages": ["**"]
+    }
+  ]
+}

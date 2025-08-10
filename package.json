@@ -1,12 +1,26 @@
 {
   "name": "pulumi-any-terraform",
-  "version": "1.0.0",
   "description": "",
-  "keywords": ["pulumi", "terraform", "provider", "infrastructure", "migrate"],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.13.1",
+  "version": "1.0.0",
+  "author": {
+    "name": "Khánh Hoàng",
+    "email": "hi@khanh.id",
+    "url": "https://www.khanh.id"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2",
+    "syncpack": "14.0.0-alpha.19"
+  },
   "engines": {
-    "node": "22.18.0"
-  }
+    "node": "22.18.0",
+    "pnpm": "10.14.0"
+  },
+  "keywords": [
+    "pulumi",
+    "terraform",
+    "provider",
+    "infrastructure",
+    "migrate"
+  ],
+  "license": "MIT"
 }

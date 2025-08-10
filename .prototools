@@ -1,0 +1,6 @@
+moon = "1.39.4"
+
+[settings]
+auto-install = true
+auto-clean = true
+telemetry = false
