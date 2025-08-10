@@ -16,8 +16,11 @@ tasks:
     deps:
       - target: 'root:syncpack.format'
         args: '--source $projectSource/package.json'
+      - target: 'root:syncpack.fix'
+        args: '--source $projectSource/package.json'
     options:
       runInCI: false
+      runDepsInParallel: false
   build:
     command: 'pnpm tsdown'
     inputs:
