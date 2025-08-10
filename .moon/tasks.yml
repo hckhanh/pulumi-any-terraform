@@ -17,7 +17,7 @@ tasks:
       - target: 'root:syncpack.format'
         args: '--source $projectSource/package.json'
   build:
-    command: 'tsdown'
+    command: 'pnpm tsdown'
     inputs:
       - '@group(sources)'
     outputs:
@@ -32,7 +32,6 @@ tasks:
       - '@group(sources)'
       - '@group(package)'
     deps:
-      - 'lint'
       - 'audit'
     env:
       NPM_CONFIG_PROVENANCE: 'true'

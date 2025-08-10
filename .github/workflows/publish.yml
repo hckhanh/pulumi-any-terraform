@@ -21,6 +21,6 @@ jobs:
         with:
           auto-install: true
       - name: Build
-        run: moon ci :build
+        run: moon ci :lint :build
       - name: Publish
         run: moon ci :publish
