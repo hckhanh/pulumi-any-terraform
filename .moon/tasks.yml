@@ -33,7 +33,7 @@ tasks:
     inputs:
       - '@group(sources)'
       - '@group(package)'
-      - '$NODE_AUTH_TOKEN'
+      - '$NPM_TOKEN'
     deps:
       - 'audit'
       - 'build'
