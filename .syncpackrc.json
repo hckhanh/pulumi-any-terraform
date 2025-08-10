@@ -40,13 +40,6 @@
       "dependencyTypes": ["!peer"],
       "dependencies": ["**"],
       "packages": ["**"]
-    },
-    {
-      "label": "Allow peer deps to be equal or higher than current versions",
-      "range": ">=",
-      "dependencyTypes": ["peer"],
-      "dependencies": ["**"],
-      "packages": ["**"]
     }
   ]
 }
