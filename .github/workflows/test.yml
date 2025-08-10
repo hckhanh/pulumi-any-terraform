@@ -21,4 +21,4 @@ jobs:
         with:
           auto-install: true
       - name: Check
-        run: moon :lint :audit :build
+        run: moon :lint :audit :build :changeset
