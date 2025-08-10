@@ -4,8 +4,6 @@ fileGroups:
   sources:
     - 'package.json'
     - '**/*.{ts,js,mjs,cjs}'
-  package:
-    - 'README.md'
 
 tasks:
   lint:
@@ -31,12 +29,3 @@ tasks:
     command: 'npm audit signature --no-package-lock'
     inputs:
       - '@group(sources)'
-  publish:
-    command: 'pnpm changeset publish'
-    inputs:
-      - '@group(sources)'
-      - '@group(package)'
-      - '$NPM_TOKEN'
-    deps:
-      - 'audit'
-      - 'build'

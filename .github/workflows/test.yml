@@ -20,5 +20,7 @@ jobs:
         uses: moonrepo/setup-toolchain@v0
         with:
           auto-install: true
-      - name: Check
+      - name: Lints check
         run: moon :lint :audit :build :changeset
+      - name: Changeset check
+        run: pnpm changeset status --since=origin/main
