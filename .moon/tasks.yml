@@ -31,5 +31,8 @@ tasks:
     inputs:
       - '@group(sources)'
       - '@group(package)'
+    deps:
+      - 'lint'
+      - 'audit'
     env:
       NPM_CONFIG_PROVENANCE: 'true'
