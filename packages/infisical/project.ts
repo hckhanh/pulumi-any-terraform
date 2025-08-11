@@ -33,14 +33,30 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * The audit log retention in days
+     */
+    public readonly auditLogRetentionDays!: pulumi.Output<number>;
+    /**
      * The description of the project
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Whether the project has delete protection, defaults to false
+     */
+    public readonly hasDeleteProtection!: pulumi.Output<boolean>;
+    /**
+     * The ID of the KMS secret manager key to use for the project
+     */
+    public readonly kmsSecretManagerKeyId!: pulumi.Output<string>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * The name of the project
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Whether to create default environments for the project (dev, staging, prod), defaults to true
+     */
+    public readonly shouldCreateDefaultEnvs!: pulumi.Output<boolean | undefined>;
     /**
      * The slug of the project
      */
@@ -63,9 +79,13 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            resourceInputs["auditLogRetentionDays"] = state ? state.auditLogRetentionDays : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["hasDeleteProtection"] = state ? state.hasDeleteProtection : undefined;
+            resourceInputs["kmsSecretManagerKeyId"] = state ? state.kmsSecretManagerKeyId : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["shouldCreateDefaultEnvs"] = state ? state.shouldCreateDefaultEnvs : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["templateName"] = state ? state.templateName : undefined;
         } else {
@@ -73,8 +93,12 @@ export class Project extends pulumi.CustomResource {
             if ((!args || args.slug === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
+            resourceInputs["auditLogRetentionDays"] = args ? args.auditLogRetentionDays : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["hasDeleteProtection"] = args ? args.hasDeleteProtection : undefined;
+            resourceInputs["kmsSecretManagerKeyId"] = args ? args.kmsSecretManagerKeyId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["shouldCreateDefaultEnvs"] = args ? args.shouldCreateDefaultEnvs : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
             resourceInputs["lastUpdated"] = undefined /*out*/;
@@ -89,14 +113,30 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
+     * The audit log retention in days
+     */
+    auditLogRetentionDays?: pulumi.Input<number>;
+    /**
      * The description of the project
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the project has delete protection, defaults to false
+     */
+    hasDeleteProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS secret manager key to use for the project
+     */
+    kmsSecretManagerKeyId?: pulumi.Input<string>;
     lastUpdated?: pulumi.Input<string>;
     /**
      * The name of the project
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether to create default environments for the project (dev, staging, prod), defaults to true
+     */
+    shouldCreateDefaultEnvs?: pulumi.Input<boolean>;
     /**
      * The slug of the project
      */
@@ -112,13 +152,29 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
+     * The audit log retention in days
+     */
+    auditLogRetentionDays?: pulumi.Input<number>;
+    /**
      * The description of the project
      */
     description?: pulumi.Input<string>;
     /**
+     * Whether the project has delete protection, defaults to false
+     */
+    hasDeleteProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS secret manager key to use for the project
+     */
+    kmsSecretManagerKeyId?: pulumi.Input<string>;
+    /**
      * The name of the project
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether to create default environments for the project (dev, staging, prod), defaults to true
+     */
+    shouldCreateDefaultEnvs?: pulumi.Input<boolean>;
     /**
      * The slug of the project
      */

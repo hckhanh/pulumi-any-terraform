@@ -35,6 +35,10 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to allow the approvers to approve their own changes
+     */
+    public readonly allowSelfApproval!: pulumi.Output<boolean>;
+    /**
      * The required approvers
      */
     public readonly approvers!: pulumi.Output<outputs.SecretApprovalPolicyApprover[]>;
@@ -43,9 +47,13 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
      */
     public readonly enforcementLevel!: pulumi.Output<string>;
     /**
-     * The environment to apply the secret approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
      */
-    public readonly environmentSlug!: pulumi.Output<string>;
+    public readonly environmentSlug!: pulumi.Output<string | undefined>;
+    /**
+     * The environments to apply the secret approval policy to
+     */
+    public readonly environmentSlugs!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the secret approval policy
      */
@@ -76,9 +84,11 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretApprovalPolicyState | undefined;
+            resourceInputs["allowSelfApproval"] = state ? state.allowSelfApproval : undefined;
             resourceInputs["approvers"] = state ? state.approvers : undefined;
             resourceInputs["enforcementLevel"] = state ? state.enforcementLevel : undefined;
             resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
+            resourceInputs["environmentSlugs"] = state ? state.environmentSlugs : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["requiredApprovals"] = state ? state.requiredApprovals : undefined;
@@ -87,9 +97,6 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             const args = argsOrState as SecretApprovalPolicyArgs | undefined;
             if ((!args || args.approvers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'approvers'");
-            }
-            if ((!args || args.environmentSlug === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentSlug'");
             }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
@@ -100,9 +107,11 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             if ((!args || args.secretPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
+            resourceInputs["allowSelfApproval"] = args ? args.allowSelfApproval : undefined;
             resourceInputs["approvers"] = args ? args.approvers : undefined;
             resourceInputs["enforcementLevel"] = args ? args.enforcementLevel : undefined;
             resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
+            resourceInputs["environmentSlugs"] = args ? args.environmentSlugs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["requiredApprovals"] = args ? args.requiredApprovals : undefined;
@@ -118,6 +127,10 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
  */
 export interface SecretApprovalPolicyState {
     /**
+     * Whether to allow the approvers to approve their own changes
+     */
+    allowSelfApproval?: pulumi.Input<boolean>;
+    /**
      * The required approvers
      */
     approvers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[]>;
@@ -126,9 +139,13 @@ export interface SecretApprovalPolicyState {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * The environment to apply the secret approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
+    /**
+     * The environments to apply the secret approval policy to
+     */
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the secret approval policy
      */
@@ -152,6 +169,10 @@ export interface SecretApprovalPolicyState {
  */
 export interface SecretApprovalPolicyArgs {
     /**
+     * Whether to allow the approvers to approve their own changes
+     */
+    allowSelfApproval?: pulumi.Input<boolean>;
+    /**
      * The required approvers
      */
     approvers: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[]>;
@@ -160,9 +181,13 @@ export interface SecretApprovalPolicyArgs {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * The environment to apply the secret approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
      */
-    environmentSlug: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string>;
+    /**
+     * The environments to apply the secret approval policy to
+     */
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the secret approval policy
      */

@@ -10,10 +10,55 @@ export type AccessApprovalPolicy = import("./accessApprovalPolicy").AccessApprov
 export const AccessApprovalPolicy: typeof import("./accessApprovalPolicy").AccessApprovalPolicy = null as any;
 utilities.lazyLoad(exports, ["AccessApprovalPolicy"], () => require("./accessApprovalPolicy"));
 
+export { AppConnection1passwordArgs, AppConnection1passwordState } from "./appConnection1password";
+export type AppConnection1password = import("./appConnection1password").AppConnection1password;
+export const AppConnection1password: typeof import("./appConnection1password").AppConnection1password = null as any;
+utilities.lazyLoad(exports, ["AppConnection1password"], () => require("./appConnection1password"));
+
+export { AppConnectionAwsArgs, AppConnectionAwsState } from "./appConnectionAws";
+export type AppConnectionAws = import("./appConnectionAws").AppConnectionAws;
+export const AppConnectionAws: typeof import("./appConnectionAws").AppConnectionAws = null as any;
+utilities.lazyLoad(exports, ["AppConnectionAws"], () => require("./appConnectionAws"));
+
+export { AppConnectionAzureClientSecretsArgs, AppConnectionAzureClientSecretsState } from "./appConnectionAzureClientSecrets";
+export type AppConnectionAzureClientSecrets = import("./appConnectionAzureClientSecrets").AppConnectionAzureClientSecrets;
+export const AppConnectionAzureClientSecrets: typeof import("./appConnectionAzureClientSecrets").AppConnectionAzureClientSecrets = null as any;
+utilities.lazyLoad(exports, ["AppConnectionAzureClientSecrets"], () => require("./appConnectionAzureClientSecrets"));
+
 export { AppConnectionGcpArgs, AppConnectionGcpState } from "./appConnectionGcp";
 export type AppConnectionGcp = import("./appConnectionGcp").AppConnectionGcp;
 export const AppConnectionGcp: typeof import("./appConnectionGcp").AppConnectionGcp = null as any;
 utilities.lazyLoad(exports, ["AppConnectionGcp"], () => require("./appConnectionGcp"));
+
+export { AppConnectionMssqlArgs, AppConnectionMssqlState } from "./appConnectionMssql";
+export type AppConnectionMssql = import("./appConnectionMssql").AppConnectionMssql;
+export const AppConnectionMssql: typeof import("./appConnectionMssql").AppConnectionMssql = null as any;
+utilities.lazyLoad(exports, ["AppConnectionMssql"], () => require("./appConnectionMssql"));
+
+export { AppConnectionMysqlArgs, AppConnectionMysqlState } from "./appConnectionMysql";
+export type AppConnectionMysql = import("./appConnectionMysql").AppConnectionMysql;
+export const AppConnectionMysql: typeof import("./appConnectionMysql").AppConnectionMysql = null as any;
+utilities.lazyLoad(exports, ["AppConnectionMysql"], () => require("./appConnectionMysql"));
+
+export { AppConnectionRenderArgs, AppConnectionRenderState } from "./appConnectionRender";
+export type AppConnectionRender = import("./appConnectionRender").AppConnectionRender;
+export const AppConnectionRender: typeof import("./appConnectionRender").AppConnectionRender = null as any;
+utilities.lazyLoad(exports, ["AppConnectionRender"], () => require("./appConnectionRender"));
+
+export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
+export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
+export const DynamicSecretAwsIam: typeof import("./dynamicSecretAwsIam").DynamicSecretAwsIam = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretAwsIam"], () => require("./dynamicSecretAwsIam"));
+
+export { DynamicSecretKubernetesArgs, DynamicSecretKubernetesState } from "./dynamicSecretKubernetes";
+export type DynamicSecretKubernetes = import("./dynamicSecretKubernetes").DynamicSecretKubernetes;
+export const DynamicSecretKubernetes: typeof import("./dynamicSecretKubernetes").DynamicSecretKubernetes = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretKubernetes"], () => require("./dynamicSecretKubernetes"));
+
+export { DynamicSecretSqlDatabaseArgs, DynamicSecretSqlDatabaseState } from "./dynamicSecretSqlDatabase";
+export type DynamicSecretSqlDatabase = import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase;
+export const DynamicSecretSqlDatabase: typeof import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretSqlDatabase"], () => require("./dynamicSecretSqlDatabase"));
 
 export { GetGroupsResult } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
@@ -39,6 +84,11 @@ export { GetSecretsArgs, GetSecretsResult, GetSecretsOutputArgs } from "./getSec
 export const getSecrets: typeof import("./getSecrets").getSecrets = null as any;
 export const getSecretsOutput: typeof import("./getSecrets").getSecretsOutput = null as any;
 utilities.lazyLoad(exports, ["getSecrets","getSecretsOutput"], () => require("./getSecrets"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
 export { IdentityArgs, IdentityState } from "./identity";
 export type Identity = import("./identity").Identity;
@@ -135,6 +185,11 @@ export type ProjectRole = import("./projectRole").ProjectRole;
 export const ProjectRole: typeof import("./projectRole").ProjectRole = null as any;
 utilities.lazyLoad(exports, ["ProjectRole"], () => require("./projectRole"));
 
+export { ProjectTemplateArgs, ProjectTemplateState } from "./projectTemplate";
+export type ProjectTemplate = import("./projectTemplate").ProjectTemplate;
+export const ProjectTemplate: typeof import("./projectTemplate").ProjectTemplate = null as any;
+utilities.lazyLoad(exports, ["ProjectTemplate"], () => require("./projectTemplate"));
+
 export { ProjectUserArgs, ProjectUserState } from "./projectUser";
 export type ProjectUser = import("./projectUser").ProjectUser;
 export const ProjectUser: typeof import("./projectUser").ProjectUser = null as any;
@@ -165,6 +220,31 @@ export type SecretImport = import("./secretImport").SecretImport;
 export const SecretImport: typeof import("./secretImport").SecretImport = null as any;
 utilities.lazyLoad(exports, ["SecretImport"], () => require("./secretImport"));
 
+export { SecretRotationAwsIamUserSecretArgs, SecretRotationAwsIamUserSecretState } from "./secretRotationAwsIamUserSecret";
+export type SecretRotationAwsIamUserSecret = import("./secretRotationAwsIamUserSecret").SecretRotationAwsIamUserSecret;
+export const SecretRotationAwsIamUserSecret: typeof import("./secretRotationAwsIamUserSecret").SecretRotationAwsIamUserSecret = null as any;
+utilities.lazyLoad(exports, ["SecretRotationAwsIamUserSecret"], () => require("./secretRotationAwsIamUserSecret"));
+
+export { SecretRotationAzureClientSecretArgs, SecretRotationAzureClientSecretState } from "./secretRotationAzureClientSecret";
+export type SecretRotationAzureClientSecret = import("./secretRotationAzureClientSecret").SecretRotationAzureClientSecret;
+export const SecretRotationAzureClientSecret: typeof import("./secretRotationAzureClientSecret").SecretRotationAzureClientSecret = null as any;
+utilities.lazyLoad(exports, ["SecretRotationAzureClientSecret"], () => require("./secretRotationAzureClientSecret"));
+
+export { SecretRotationMssqlCredentialsArgs, SecretRotationMssqlCredentialsState } from "./secretRotationMssqlCredentials";
+export type SecretRotationMssqlCredentials = import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials;
+export const SecretRotationMssqlCredentials: typeof import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials = null as any;
+utilities.lazyLoad(exports, ["SecretRotationMssqlCredentials"], () => require("./secretRotationMssqlCredentials"));
+
+export { SecretRotationMysqlCredentialsArgs, SecretRotationMysqlCredentialsState } from "./secretRotationMysqlCredentials";
+export type SecretRotationMysqlCredentials = import("./secretRotationMysqlCredentials").SecretRotationMysqlCredentials;
+export const SecretRotationMysqlCredentials: typeof import("./secretRotationMysqlCredentials").SecretRotationMysqlCredentials = null as any;
+utilities.lazyLoad(exports, ["SecretRotationMysqlCredentials"], () => require("./secretRotationMysqlCredentials"));
+
+export { SecretSync1passwordArgs, SecretSync1passwordState } from "./secretSync1password";
+export type SecretSync1password = import("./secretSync1password").SecretSync1password;
+export const SecretSync1password: typeof import("./secretSync1password").SecretSync1password = null as any;
+utilities.lazyLoad(exports, ["SecretSync1password"], () => require("./secretSync1password"));
+
 export { SecretSyncAwsParameterStoreArgs, SecretSyncAwsParameterStoreState } from "./secretSyncAwsParameterStore";
 export type SecretSyncAwsParameterStore = import("./secretSyncAwsParameterStore").SecretSyncAwsParameterStore;
 export const SecretSyncAwsParameterStore: typeof import("./secretSyncAwsParameterStore").SecretSyncAwsParameterStore = null as any;
@@ -180,6 +260,11 @@ export type SecretSyncAzureAppConfiguration = import("./secretSyncAzureAppConfig
 export const SecretSyncAzureAppConfiguration: typeof import("./secretSyncAzureAppConfiguration").SecretSyncAzureAppConfiguration = null as any;
 utilities.lazyLoad(exports, ["SecretSyncAzureAppConfiguration"], () => require("./secretSyncAzureAppConfiguration"));
 
+export { SecretSyncAzureDevopsArgs, SecretSyncAzureDevopsState } from "./secretSyncAzureDevops";
+export type SecretSyncAzureDevops = import("./secretSyncAzureDevops").SecretSyncAzureDevops;
+export const SecretSyncAzureDevops: typeof import("./secretSyncAzureDevops").SecretSyncAzureDevops = null as any;
+utilities.lazyLoad(exports, ["SecretSyncAzureDevops"], () => require("./secretSyncAzureDevops"));
+
 export { SecretSyncAzureKeyVaultArgs, SecretSyncAzureKeyVaultState } from "./secretSyncAzureKeyVault";
 export type SecretSyncAzureKeyVault = import("./secretSyncAzureKeyVault").SecretSyncAzureKeyVault;
 export const SecretSyncAzureKeyVault: typeof import("./secretSyncAzureKeyVault").SecretSyncAzureKeyVault = null as any;
@@ -189,6 +274,16 @@ export { SecretSyncGcpSecretManagerArgs, SecretSyncGcpSecretManagerState } from 
 export type SecretSyncGcpSecretManager = import("./secretSyncGcpSecretManager").SecretSyncGcpSecretManager;
 export const SecretSyncGcpSecretManager: typeof import("./secretSyncGcpSecretManager").SecretSyncGcpSecretManager = null as any;
 utilities.lazyLoad(exports, ["SecretSyncGcpSecretManager"], () => require("./secretSyncGcpSecretManager"));
+
+export { SecretSyncGithubArgs, SecretSyncGithubState } from "./secretSyncGithub";
+export type SecretSyncGithub = import("./secretSyncGithub").SecretSyncGithub;
+export const SecretSyncGithub: typeof import("./secretSyncGithub").SecretSyncGithub = null as any;
+utilities.lazyLoad(exports, ["SecretSyncGithub"], () => require("./secretSyncGithub"));
+
+export { SecretSyncRenderArgs, SecretSyncRenderState } from "./secretSyncRender";
+export type SecretSyncRender = import("./secretSyncRender").SecretSyncRender;
+export const SecretSyncRender: typeof import("./secretSyncRender").SecretSyncRender = null as any;
+utilities.lazyLoad(exports, ["SecretSyncRender"], () => require("./secretSyncRender"));
 
 export { SecretTagArgs, SecretTagState } from "./secretTag";
 export type SecretTag = import("./secretTag").SecretTag;
@@ -211,8 +306,28 @@ const _module = {
         switch (type) {
             case "infisical:index/accessApprovalPolicy:AccessApprovalPolicy":
                 return new AccessApprovalPolicy(name, <any>undefined, { urn })
+            case "infisical:index/appConnection1password:AppConnection1password":
+                return new AppConnection1password(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionAws:AppConnectionAws":
+                return new AppConnectionAws(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionAzureClientSecrets:AppConnectionAzureClientSecrets":
+                return new AppConnectionAzureClientSecrets(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
                 return new AppConnectionGcp(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionMssql:AppConnectionMssql":
+                return new AppConnectionMssql(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionMysql:AppConnectionMysql":
+                return new AppConnectionMysql(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionRender:AppConnectionRender":
+                return new AppConnectionRender(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
+                return new DynamicSecretAwsIam(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
+                return new DynamicSecretKubernetes(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretSqlDatabase:DynamicSecretSqlDatabase":
+                return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
+            case "infisical:index/group:Group":
+                return new Group(name, <any>undefined, { urn })
             case "infisical:index/identity:Identity":
                 return new Identity(name, <any>undefined, { urn })
             case "infisical:index/identityAwsAuth:IdentityAwsAuth":
@@ -251,6 +366,8 @@ const _module = {
                 return new ProjectIdentitySpecificPrivilege(name, <any>undefined, { urn })
             case "infisical:index/projectRole:ProjectRole":
                 return new ProjectRole(name, <any>undefined, { urn })
+            case "infisical:index/projectTemplate:ProjectTemplate":
+                return new ProjectTemplate(name, <any>undefined, { urn })
             case "infisical:index/projectUser:ProjectUser":
                 return new ProjectUser(name, <any>undefined, { urn })
             case "infisical:index/secret:Secret":
@@ -261,16 +378,32 @@ const _module = {
                 return new SecretFolder(name, <any>undefined, { urn })
             case "infisical:index/secretImport:SecretImport":
                 return new SecretImport(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationAwsIamUserSecret:SecretRotationAwsIamUserSecret":
+                return new SecretRotationAwsIamUserSecret(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationAzureClientSecret:SecretRotationAzureClientSecret":
+                return new SecretRotationAzureClientSecret(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationMssqlCredentials:SecretRotationMssqlCredentials":
+                return new SecretRotationMssqlCredentials(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationMysqlCredentials:SecretRotationMysqlCredentials":
+                return new SecretRotationMysqlCredentials(name, <any>undefined, { urn })
+            case "infisical:index/secretSync1password:SecretSync1password":
+                return new SecretSync1password(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAwsParameterStore:SecretSyncAwsParameterStore":
                 return new SecretSyncAwsParameterStore(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAwsSecretsManager:SecretSyncAwsSecretsManager":
                 return new SecretSyncAwsSecretsManager(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAzureAppConfiguration:SecretSyncAzureAppConfiguration":
                 return new SecretSyncAzureAppConfiguration(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncAzureDevops:SecretSyncAzureDevops":
+                return new SecretSyncAzureDevops(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAzureKeyVault:SecretSyncAzureKeyVault":
                 return new SecretSyncAzureKeyVault(name, <any>undefined, { urn })
             case "infisical:index/secretSyncGcpSecretManager:SecretSyncGcpSecretManager":
                 return new SecretSyncGcpSecretManager(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncGithub:SecretSyncGithub":
+                return new SecretSyncGithub(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncRender:SecretSyncRender":
+                return new SecretSyncRender(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
                 return new SecretTag(name, <any>undefined, { urn })
             default:
@@ -279,7 +412,17 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("infisical", "index/accessApprovalPolicy", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnection1password", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAws", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClientSecrets", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAwsAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAzureAuth", _module)
@@ -299,16 +442,25 @@ pulumi.runtime.registerResourceModule("infisical", "index/projectGroup", _module
 pulumi.runtime.registerResourceModule("infisical", "index/projectIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectIdentitySpecificPrivilege", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectRole", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/projectTemplate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectUser", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretApprovalPolicy", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretFolder", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretImport", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUserSecret", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSync1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsParameterStore", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsSecretsManager", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureAppConfiguration", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureDevops", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureKeyVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGcpSecretManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGithub", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
 pulumi.runtime.registerResourcePackage("infisical", {
     version: utilities.getVersion(),
