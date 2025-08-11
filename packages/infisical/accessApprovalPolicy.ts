@@ -43,9 +43,13 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
      */
     public readonly enforcementLevel!: pulumi.Output<string>;
     /**
-     * The environment to apply the access approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
      */
-    public readonly environmentSlug!: pulumi.Output<string>;
+    public readonly environmentSlug!: pulumi.Output<string | undefined>;
+    /**
+     * The environments to apply the access approval policy to
+     */
+    public readonly environmentSlugs!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the access approval policy
      */
@@ -79,6 +83,7 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
             resourceInputs["approvers"] = state ? state.approvers : undefined;
             resourceInputs["enforcementLevel"] = state ? state.enforcementLevel : undefined;
             resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
+            resourceInputs["environmentSlugs"] = state ? state.environmentSlugs : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["requiredApprovals"] = state ? state.requiredApprovals : undefined;
@@ -87,9 +92,6 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
             const args = argsOrState as AccessApprovalPolicyArgs | undefined;
             if ((!args || args.approvers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'approvers'");
-            }
-            if ((!args || args.environmentSlug === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentSlug'");
             }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
@@ -103,6 +105,7 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
             resourceInputs["approvers"] = args ? args.approvers : undefined;
             resourceInputs["enforcementLevel"] = args ? args.enforcementLevel : undefined;
             resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
+            resourceInputs["environmentSlugs"] = args ? args.environmentSlugs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["requiredApprovals"] = args ? args.requiredApprovals : undefined;
@@ -126,9 +129,13 @@ export interface AccessApprovalPolicyState {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * The environment to apply the access approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
+    /**
+     * The environments to apply the access approval policy to
+     */
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the access approval policy
      */
@@ -160,9 +167,13 @@ export interface AccessApprovalPolicyArgs {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * The environment to apply the access approval policy to
+     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
      */
-    environmentSlug: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string>;
+    /**
+     * The environments to apply the access approval policy to
+     */
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the access approval policy
      */

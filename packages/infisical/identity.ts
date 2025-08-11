@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Identity extends pulumi.CustomResource {
@@ -37,6 +39,14 @@ export class Identity extends pulumi.CustomResource {
      */
     public /*out*/ readonly authModes!: pulumi.Output<string[]>;
     /**
+     * Whether the identity has delete protection, defaults to false
+     */
+    public readonly hasDeleteProtection!: pulumi.Output<boolean>;
+    /**
+     * The metadata associated with this identity
+     */
+    public readonly metadatas!: pulumi.Output<outputs.IdentityMetadata[] | undefined>;
+    /**
      * The name for the identity
      */
     public readonly name!: pulumi.Output<string>;
@@ -64,6 +74,8 @@ export class Identity extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IdentityState | undefined;
             resourceInputs["authModes"] = state ? state.authModes : undefined;
+            resourceInputs["hasDeleteProtection"] = state ? state.hasDeleteProtection : undefined;
+            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
@@ -75,6 +87,8 @@ export class Identity extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
+            resourceInputs["hasDeleteProtection"] = args ? args.hasDeleteProtection : undefined;
+            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
@@ -94,6 +108,14 @@ export interface IdentityState {
      */
     authModes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether the identity has delete protection, defaults to false
+     */
+    hasDeleteProtection?: pulumi.Input<boolean>;
+    /**
+     * The metadata associated with this identity
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[]>;
+    /**
      * The name for the identity
      */
     name?: pulumi.Input<string>;
@@ -112,6 +134,14 @@ export interface IdentityState {
  * The set of arguments for constructing a Identity resource.
  */
 export interface IdentityArgs {
+    /**
+     * Whether the identity has delete protection, defaults to false
+     */
+    hasDeleteProtection?: pulumi.Input<boolean>;
+    /**
+     * The metadata associated with this identity
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[]>;
     /**
      * The name for the identity
      */

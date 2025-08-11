@@ -20,11 +20,380 @@ export interface AccessApprovalPolicyApprover {
     username?: string;
 }
 
+export interface AppConnection1passwordCredentials {
+    /**
+     * The API token to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/1password
+     */
+    apiToken: string;
+    /**
+     * The URL of the 1Password Connect instance to connect to. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/1password
+     */
+    instanceUrl: string;
+}
+
+export interface AppConnectionAwsCredentials {
+    /**
+     * The AWS Access Key ID used to authenticate requests to AWS services. Required for access-key access method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/aws#access-key
+     */
+    accessKeyId?: string;
+    /**
+     * The Amazon Resource Name (ARN) of the IAM role to assume for performing operations. Infisical will assume this role using AWS Security Token Service (STS). Required for assume-role access method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/aws#assume-role-recommended
+     */
+    roleArn?: string;
+    /**
+     * The AWS Secret Access Key associated with the Access Key ID to authenticate requests to AWS services. Required for access-key access method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/aws#access-key
+     */
+    secretAccessKey?: string;
+}
+
+export interface AppConnectionAzureClientSecretsCredentials {
+    /**
+     * The Azure application (client) ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    clientId: string;
+    /**
+     * The Azure client secret. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    clientSecret: string;
+    /**
+     * The Azure Active Directory (AAD) tenant ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    tenantId: string;
+}
+
 export interface AppConnectionGcpCredentials {
     /**
      * The service account email to connect with GCP. The service account ID (the part of the email before '@') must be suffixed with the first two sections of your organization ID e.g. service-account-df92581a-0fe9@my-project.iam.gserviceaccount.com. For more details, refer to the documentation here https://infisical.com/docs/integrations/app-connections/gcp#configure-service-account-for-infisical
      */
     serviceAccountEmail?: string;
+}
+
+export interface AppConnectionMssqlCredentials {
+    /**
+     * The name of the database to connect to.
+     */
+    database: string;
+    /**
+     * The hostname of the database server.
+     */
+    host: string;
+    /**
+     * The password to connect to the database with.
+     */
+    password: string;
+    /**
+     * The port number of the database.
+     */
+    port: number;
+    /**
+     * The SSL certificate to use for connection.
+     */
+    sslCertificate?: string;
+    /**
+     * Whether or not to use SSL when connecting to the database.
+     */
+    sslEnabled: boolean;
+    /**
+     * Whether or not to reject unauthorized SSL certificates.
+     */
+    sslRejectUnauthorized: boolean;
+    /**
+     * The username to connect to the database with.
+     */
+    username: string;
+}
+
+export interface AppConnectionMysqlCredentials {
+    /**
+     * The name of the database to connect to.
+     */
+    database: string;
+    /**
+     * The hostname of the database server.
+     */
+    host: string;
+    /**
+     * The password to connect to the database with.
+     */
+    password: string;
+    /**
+     * The port number of the database.
+     */
+    port: number;
+    /**
+     * The SSL certificate to use for connection.
+     */
+    sslCertificate?: string;
+    /**
+     * Whether or not to use SSL when connecting to the database.
+     */
+    sslEnabled: boolean;
+    /**
+     * Whether or not to reject unauthorized SSL certificates.
+     */
+    sslRejectUnauthorized: boolean;
+    /**
+     * The username to connect to the database with.
+     */
+    username: string;
+}
+
+export interface AppConnectionRenderCredentials {
+    /**
+     * The API key to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/render
+     */
+    apiKey: string;
+}
+
+export interface DynamicSecretAwsIamConfiguration {
+    /**
+     * Configuration for the 'access_key' authentication method.
+     */
+    accessKeyConfig?: outputs.DynamicSecretAwsIamConfigurationAccessKeyConfig;
+    /**
+     * Configuration for the 'assume_role' authentication method.
+     */
+    assumeRoleConfig?: outputs.DynamicSecretAwsIamConfigurationAssumeRoleConfig;
+    /**
+     * IAM AWS Path to scope created IAM User resource access.
+     */
+    awsPath?: string;
+    /**
+     * The authentication method to use. Must be 'access_key' or 'assume_role'.
+     */
+    method: string;
+    /**
+     * The IAM Policy ARN of the AWS Permissions Boundary to attach to IAM users created in the role.
+     */
+    permissionBoundaryPolicyArn?: string;
+    /**
+     * The AWS IAM managed policies that should be attached to the created users. Multiple values can be provided by separating them with commas
+     */
+    policyArns?: string;
+    /**
+     * The AWS IAM inline policy that should be attached to the created users. Multiple values can be provided by separating them with commas
+     */
+    policyDocument?: string;
+    /**
+     * The AWS data center region.
+     */
+    region: string;
+    /**
+     * The AWS IAM groups that should be assigned to the created users. Multiple values can be provided by separating them with commas
+     */
+    userGroups?: string;
+}
+
+export interface DynamicSecretAwsIamConfigurationAccessKeyConfig {
+    /**
+     * The managing AWS IAM User Access Key
+     */
+    accessKey: string;
+    /**
+     * The managing AWS IAM User Secret Key
+     */
+    secretAccessKey: string;
+}
+
+export interface DynamicSecretAwsIamConfigurationAssumeRoleConfig {
+    /**
+     * The ARN of the AWS Role to assume.
+     */
+    roleArn: string;
+}
+
+export interface DynamicSecretAwsIamMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
+export interface DynamicSecretKubernetesConfiguration {
+    /**
+     * Configuration for the 'api' authentication method.
+     */
+    apiConfig?: outputs.DynamicSecretKubernetesConfigurationApiConfig;
+    /**
+     * Optional list of audiences to include in the generated token.
+     */
+    audiences?: string[];
+    /**
+     * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
+     */
+    authMethod: string;
+    /**
+     * Choose between 'static' (predefined service account) or 'dynamic' (temporary service accounts with role assignments).
+     */
+    credentialType: string;
+    /**
+     * Configuration for the 'dynamic' credential type.
+     */
+    dynamicConfig?: outputs.DynamicSecretKubernetesConfigurationDynamicConfig;
+    /**
+     * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
+     */
+    gatewayId?: string;
+    /**
+     * Configuration for the 'static' credential type.
+     */
+    staticConfig?: outputs.DynamicSecretKubernetesConfigurationStaticConfig;
+}
+
+export interface DynamicSecretKubernetesConfigurationApiConfig {
+    /**
+     * Custom CA certificate for the Kubernetes API server. Leave blank to use the system/public CA.
+     */
+    ca?: string;
+    /**
+     * Service account token with permissions to create service accounts and manage RBAC.
+     */
+    clusterToken: string;
+    /**
+     * Kubernetes API server URL (e.g., https://kubernetes.default.svc).
+     */
+    clusterUrl: string;
+    /**
+     * Whether to enable SSL verification for the Kubernetes API server connection.
+     */
+    enableSsl?: boolean;
+}
+
+export interface DynamicSecretKubernetesConfigurationDynamicConfig {
+    /**
+     * Kubernetes namespace(s) where the service accounts will be created. You can specify multiple namespaces as a comma-separated list (e.g., “default,kube-system”). During lease creation, you can specify which namespace to use from this allowed list.
+     */
+    allowedNamespaces: string;
+    /**
+     * Name of the role to assign to the temporary service account.
+     */
+    role: string;
+    /**
+     * Type of role to assign ('cluster-role' or 'role').
+     */
+    roleType: string;
+}
+
+export interface DynamicSecretKubernetesConfigurationStaticConfig {
+    /**
+     * Kubernetes namespace where the service account exists.
+     */
+    namespace: string;
+    /**
+     * Name of the service account to generate tokens for.
+     */
+    serviceAccountName: string;
+}
+
+export interface DynamicSecretKubernetesMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
+export interface DynamicSecretSqlDatabaseConfiguration {
+    /**
+     * The CA certificate to use to connect to the database.
+     */
+    ca?: string;
+    /**
+     * The database client to use. Currently supported values are postgres, mysql2, oracledb, mssql, sap-ase, and vertica.
+     */
+    client: string;
+    /**
+     * The creation statement to use to create the dynamic secret lease.
+     */
+    creationStatement: string;
+    /**
+     * The name of the database to use.
+     */
+    database: string;
+    /**
+     * The Gateway ID to use to connect to the database.
+     */
+    gatewayId?: string;
+    /**
+     * The host of the database server.
+     */
+    host: string;
+    /**
+     * The password to use to connect to the database.
+     */
+    password: string;
+    /**
+     * The password requirements to use to create the dynamic secret lease.
+     */
+    passwordRequirements?: outputs.DynamicSecretSqlDatabaseConfigurationPasswordRequirements;
+    /**
+     * The port of the database server.
+     */
+    port: number;
+    /**
+     * The renew statement to use to renew the dynamic secret lease.
+     */
+    renewStatement?: string;
+    /**
+     * The revocation statement to use to revoke the dynamic secret lease.
+     */
+    revocationStatement: string;
+    /**
+     * The username to use to connect to the database.
+     */
+    username: string;
+}
+
+export interface DynamicSecretSqlDatabaseConfigurationPasswordRequirements {
+    /**
+     * The symbols allowed in the password.
+     */
+    allowedSymbols?: string;
+    /**
+     * The length of the password to use to create the dynamic secret lease.
+     */
+    length: number;
+    /**
+     * The required characters to use to create the dynamic secret lease.
+     */
+    required: outputs.DynamicSecretSqlDatabaseConfigurationPasswordRequirementsRequired;
+}
+
+export interface DynamicSecretSqlDatabaseConfigurationPasswordRequirementsRequired {
+    /**
+     * The number of digits required in the password.
+     */
+    digits: number;
+    /**
+     * The number of lowercase characters required in the password.
+     */
+    lowercase: number;
+    /**
+     * The number of symbols required in the password.
+     */
+    symbols: number;
+    /**
+     * The number of uppercase characters required in the password.
+     */
+    uppercase: number;
+}
+
+export interface DynamicSecretSqlDatabaseMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
 }
 
 export interface GetGroupsGroup {
@@ -105,6 +474,17 @@ export interface IdentityGcpAuthAccessTokenTrustedIp {
 
 export interface IdentityKubernetesAuthAccessTokenTrustedIp {
     ipAddress: string;
+}
+
+export interface IdentityMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
 }
 
 export interface IdentityOidcAuthAccessTokenTrustedIp {
@@ -337,6 +717,55 @@ export interface ProjectRolePermissionsV2 {
     subject: string;
 }
 
+export interface ProjectTemplateEnvironment {
+    /**
+     * The name of the environment
+     */
+    name: string;
+    /**
+     * The position of the environment
+     */
+    position: number;
+    /**
+     * The slug of the environment
+     */
+    slug: string;
+}
+
+export interface ProjectTemplateRole {
+    /**
+     * The name of the role
+     */
+    name: string;
+    /**
+     * The permissions assigned to the role. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-roles-permissions for its usage.
+     */
+    permissions: outputs.ProjectTemplateRolePermission[];
+    /**
+     * The slug of the role
+     */
+    slug: string;
+}
+
+export interface ProjectTemplateRolePermission {
+    /**
+     * Describe what actions an entity can take.
+     */
+    actions: string[];
+    /**
+     * When specified, only matching conditions will be allowed to access given resource. Refer to the documentation in https://infisical.com/docs/internals/permissions#conditions for the complete list of supported properties and operators.
+     */
+    conditions?: string;
+    /**
+     * Whether rule forbids. Set this to true if permission forbids.
+     */
+    inverted: boolean;
+    /**
+     * Describe the entity the permission pertains to.
+     */
+    subject: string;
+}
+
 export interface ProjectUserRole {
     /**
      * The id of the custom role slug
@@ -406,6 +835,138 @@ export interface SecretApprovalPolicyApprover {
     username?: string;
 }
 
+export interface SecretRotationAwsIamUserSecretParameters {
+    /**
+     * The AWS region the client is present in.
+     */
+    region: string;
+    /**
+     * The name of the client to rotate credentials for.
+     */
+    userName: string;
+}
+
+export interface SecretRotationAwsIamUserSecretRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationAwsIamUserSecretSecretsMapping {
+    /**
+     * The name of the secret that the access key ID will be mapped to.
+     */
+    accessKeyId: string;
+    /**
+     * The name of the secret that the rotated secret access key will be mapped to.
+     */
+    secretAccessKey: string;
+}
+
+export interface SecretRotationAzureClientSecretParameters {
+    /**
+     * The client ID of the Azure Application to rotate the client secret for.
+     */
+    clientId: string;
+    /**
+     * The ID of the Azure Application to rotate the client secret for.
+     */
+    objectId: string;
+}
+
+export interface SecretRotationAzureClientSecretRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationAzureClientSecretSecretsMapping {
+    /**
+     * The name of the secret that the client ID will be mapped to.
+     */
+    clientId: string;
+    /**
+     * The name of the secret that the rotated client secret will be mapped to.
+     */
+    clientSecret: string;
+}
+
+export interface SecretRotationMssqlCredentialsParameters {
+    /**
+     * The username of the first login to rotate passwords for. This user must already exists in your database.
+     */
+    username1: string;
+    /**
+     * The username of the second login to rotate passwords for. This user must already exists in your database.
+     */
+    username2: string;
+}
+
+export interface SecretRotationMssqlCredentialsRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationMssqlCredentialsSecretsMapping {
+    /**
+     * The name of the secret that the generated password will be mapped to.
+     */
+    password: string;
+    /**
+     * The name of the secret that the active username will be mapped to.
+     */
+    username: string;
+}
+
+export interface SecretRotationMysqlCredentialsParameters {
+    /**
+     * The username of the first login to rotate passwords for. This user must already exists in your database.
+     */
+    username1: string;
+    /**
+     * The username of the second login to rotate passwords for. This user must already exists in your database.
+     */
+    username2: string;
+}
+
+export interface SecretRotationMysqlCredentialsRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationMysqlCredentialsSecretsMapping {
+    /**
+     * The name of the secret that the generated password will be mapped to.
+     */
+    password: string;
+    /**
+     * The name of the secret that the active username will be mapped to.
+     */
+    username: string;
+}
+
 export interface SecretSecretReminder {
     /**
      * Note for the secret rotation reminder
@@ -415,6 +976,32 @@ export interface SecretSecretReminder {
      * Frequency of secret rotation reminder in days
      */
     repeatDays: number;
+}
+
+export interface SecretSync1passwordDestinationConfig {
+    /**
+     * The label of the 1Password item field which will hold your secret value. For example, if you were to sync Infisical secret 'foo: bar', the 1Password item equivalent would have an item title of 'foo', and a field on that item 'value: bar'. The field label 'value' is what gets changed by this option
+     */
+    valueLabel?: string;
+    /**
+     * The ID of the 1Password vault to sync secrets to
+     */
+    vaultId: string;
+}
+
+export interface SecretSync1passwordSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from 1Password. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the 1Password destination.
+     */
+    keySchema?: string;
 }
 
 export interface SecretSyncAwsParameterStoreDestinationConfig {
@@ -434,9 +1021,17 @@ export interface SecretSyncAwsParameterStoreSyncOptions {
      */
     awsKmsKeyId?: string;
     /**
+     * When set to true, Infisical will not remove secrets from AWS Parameter Store. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
      * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
      */
     initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the AWS Parameter Store destination.
+     */
+    keySchema?: string;
     /**
      * Whether to sync the secret metadata as tags
      */
@@ -479,9 +1074,17 @@ export interface SecretSyncAwsSecretsManagerSyncOptions {
      */
     awsKmsKeyId?: string;
     /**
+     * When set to true, Infisical will not remove secrets from AWS Secrets Manager. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
      * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
      */
     initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the AWS Secrets Manager destination.
+     */
+    keySchema?: string;
     /**
      * Whether to sync the secret metadata as tags. This is only supported for the 'one-to-one' mapping behavior.
      */
@@ -516,9 +1119,35 @@ export interface SecretSyncAzureAppConfigurationDestinationConfig {
 
 export interface SecretSyncAzureAppConfigurationSyncOptions {
     /**
+     * When set to true, Infisical will not remove secrets from Azure App Configuration. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
      * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
      */
     initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Azure App Configuration destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncAzureDevopsDestinationConfig {
+    /**
+     * The ID of the Azure DevOps project to sync secrets to.
+     */
+    devopsProjectId: string;
+}
+
+export interface SecretSyncAzureDevopsSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Azure DevOps. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * The format to use for structuring secret keys in the Azure DevOps destination.
+     */
+    keySchema?: string;
 }
 
 export interface SecretSyncAzureKeyVaultDestinationConfig {
@@ -530,9 +1159,17 @@ export interface SecretSyncAzureKeyVaultDestinationConfig {
 
 export interface SecretSyncAzureKeyVaultSyncOptions {
     /**
+     * When set to true, Infisical will not remove secrets from Azure Key Vault. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
      * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
      */
     initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Azure Key Vault destination.
+     */
+    keySchema?: string;
 }
 
 export interface SecretSyncGcpSecretManagerDestinationConfig {
@@ -548,13 +1185,101 @@ export interface SecretSyncGcpSecretManagerDestinationConfig {
 
 export interface SecretSyncGcpSecretManagerSyncOptions {
     /**
+     * When set to true, Infisical will not remove secrets from GCP Secret Manager. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
      * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
      */
     initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the GCP Secret Manager destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncGithubDestinationConfig {
+    /**
+     * The environment to sync the secrets to, required if scope is `repository-environment`
+     */
+    repositoryEnvironment?: string;
+    /**
+     * The repository to sync the secrets to, required if scope is `repository` or `repository-environment`. This is only the name of the repository, without the repository owner included. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `go-sdk` here.
+     */
+    repositoryName?: string;
+    /**
+     * The owner of the Github repository, required if scope is `repository`, `repository-environment`, or `organization`. This is the organization name, or the username for personal repositories. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `Infisical` here.
+     */
+    repositoryOwner?: string;
+    /**
+     * The scope to sync the secrets to, repository|organization
+     */
+    scope: string;
+    /**
+     * The repository ids to sync the secrets to, required if scope is `organization` and the visibility field is set to `selected`
+     */
+    selectedRepositoryIds?: number[];
+    /**
+     * The visibility of the Github repository, required if scope is `organization`. Accepted values are: `all`|`private`|`selected`
+     */
+    visibility?: string;
+}
+
+export interface SecretSyncGithubSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Github. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Github destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncRenderDestinationConfig {
+    /**
+     * The Render scope that secrets should be synced to. Supported options: service
+     */
+    scope: string;
+    /**
+     * The ID of the Render service to sync secrets to.
+     */
+    serviceId: string;
+    /**
+     * The Render resource type to sync secrets to. Supported options: env, file
+     */
+    type: string;
+}
+
+export interface SecretSyncRenderSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Render. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Render destination.
+     */
+    keySchema?: string;
 }
 
 export namespace config {
     export interface Auth {
+        /**
+         * The configuration values for AWS IAM Auth
+         */
+        awsIam?: outputs.config.AuthAwsIam;
+        /**
+         * The configuration values for Kubernetes Auth
+         */
+        kubernetes?: outputs.config.AuthKubernetes;
         /**
          * The configuration values for OIDC Auth
          */
@@ -569,9 +1294,31 @@ export namespace config {
         universal?: outputs.config.AuthUniversal;
     }
 
+    export interface AuthAwsIam {
+        /**
+         * Machine identity ID. This attribute can also be set using the `INFISICAL_MACHINE_IDENTITY_ID` environment variable
+         */
+        identityId?: string;
+    }
+
+    export interface AuthKubernetes {
+        /**
+         * Machine identity ID. This attribute can also be set using the `INFISICAL_MACHINE_IDENTITY_ID` environment variable
+         */
+        identityId?: string;
+        /**
+         * The service account token. This attribute can also be set using the `INFISICAL_KUBERNETES_SERVICE_ACCOUNT_TOKEN` environment variable
+         */
+        serviceAccountToken?: string;
+        /**
+         * The path to the service account token. This attribute can also be set using the `INFISICAL_KUBERNETES_SERVICE_ACCOUNT_TOKEN_PATH` environment variable. Default is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
+         */
+        serviceAccountTokenPath?: string;
+    }
+
     export interface AuthOidc {
         /**
-         * Machine identity ID. Used to fetch/modify secrets for a given project. This attribute can also be set using the `INFISICAL_MACHINE_IDENTITY_ID` environment variable
+         * Machine identity ID. This attribute can also be set using the `INFISICAL_MACHINE_IDENTITY_ID` environment variable
          */
         identityId?: string;
         /**
@@ -582,11 +1329,11 @@ export namespace config {
 
     export interface AuthUniversal {
         /**
-         * Machine identity client ID. Used to fetch/modify secrets for a given project. This attribute can also be set using the `INFISICAL_UNIVERSAL_AUTH_CLIENT_ID` environment variable
+         * Machine identity client ID. This attribute can also be set using the `INFISICAL_UNIVERSAL_AUTH_CLIENT_ID` environment variable
          */
         clientId?: string;
         /**
-         * Machine identity client secret. Used to fetch/modify secrets for a given project. This attribute can also be set using the `INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET` environment variable
+         * Machine identity client secret. This attribute can also be set using the `INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET` environment variable
          */
         clientSecret?: string;
     }
