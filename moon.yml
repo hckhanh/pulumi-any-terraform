@@ -1,9 +1,5 @@
 $schema: './.moon/cache/schemas/project.json'
 
-toolchain:
-  node:
-    version: '22.18.0'
-
 workspace:
   inheritedTasks:
     exclude:
