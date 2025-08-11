@@ -35,11 +35,13 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
     }
 
     /**
-     * Options: `BlockRequest`, `BypassPermaCache`, `DisableOptimizer`, `DisableTokenAuthentication`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginStorage`,
-     * `OriginUrl`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`,
-     * `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`,
-     * `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
+     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
+     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
+     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
+     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
+     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
+     * `SetResponseHeader`, `SetStatusCode`
      */
     public readonly action!: pulumi.Output<string | undefined>;
     public readonly actionParameter1!: pulumi.Output<string | undefined>;
@@ -61,6 +63,10 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
     public readonly matchType!: pulumi.Output<string>;
+    /**
+     * The priority of the edge rule. The lower number is executed first.
+     */
+    public readonly priority!: pulumi.Output<number>;
     public readonly pullzone!: pulumi.Output<number>;
     public readonly triggers!: pulumi.Output<outputs.PullzoneEdgeruleTrigger[]>;
 
@@ -85,6 +91,7 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["matchType"] = state ? state.matchType : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["pullzone"] = state ? state.pullzone : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
         } else {
@@ -106,6 +113,7 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["matchType"] = args ? args.matchType : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["pullzone"] = args ? args.pullzone : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
         }
@@ -119,11 +127,13 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
  */
 export interface PullzoneEdgeruleState {
     /**
-     * Options: `BlockRequest`, `BypassPermaCache`, `DisableOptimizer`, `DisableTokenAuthentication`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginStorage`,
-     * `OriginUrl`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`,
-     * `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`,
-     * `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
+     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
+     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
+     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
+     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
+     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
+     * `SetResponseHeader`, `SetStatusCode`
      */
     action?: pulumi.Input<string>;
     actionParameter1?: pulumi.Input<string>;
@@ -145,6 +155,10 @@ export interface PullzoneEdgeruleState {
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
     matchType?: pulumi.Input<string>;
+    /**
+     * The priority of the edge rule. The lower number is executed first.
+     */
+    priority?: pulumi.Input<number>;
     pullzone?: pulumi.Input<number>;
     triggers?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleTrigger>[]>;
 }
@@ -154,11 +168,13 @@ export interface PullzoneEdgeruleState {
  */
 export interface PullzoneEdgeruleArgs {
     /**
-     * Options: `BlockRequest`, `BypassPermaCache`, `DisableOptimizer`, `DisableTokenAuthentication`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginStorage`,
-     * `OriginUrl`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`,
-     * `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`,
-     * `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
+     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
+     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
+     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
+     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
+     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
+     * `SetResponseHeader`, `SetStatusCode`
      */
     action?: pulumi.Input<string>;
     actionParameter1?: pulumi.Input<string>;
@@ -180,6 +196,10 @@ export interface PullzoneEdgeruleArgs {
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
     matchType?: pulumi.Input<string>;
+    /**
+     * The priority of the edge rule. The lower number is executed first.
+     */
+    priority?: pulumi.Input<number>;
     pullzone: pulumi.Input<number>;
     triggers: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleTrigger>[]>;
 }

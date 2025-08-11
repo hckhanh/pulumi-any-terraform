@@ -316,6 +316,12 @@ export interface GetComputeContainerAppContainerEndpointCdnStickySession {
     headers: string[];
 }
 
+export interface GetPullzoneAccessListsData {
+    id: number;
+    name: string;
+    type: string;
+}
+
 export interface PullzoneEdgeruleAction {
     parameter1: string;
     parameter2: string;
@@ -370,6 +376,41 @@ export interface PullzoneOrigin {
     verifySsl: boolean;
 }
 
+export interface PullzoneRatelimitRuleCondition {
+    /**
+     * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
+     */
+    operator: string;
+    /**
+     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
+     */
+    transformations?: string[];
+    value: string;
+    /**
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     */
+    variable: string;
+    variableValue?: string;
+}
+
+export interface PullzoneRatelimitRuleLimit {
+    /**
+     * The interval, in seconds, to consider for to trigger the rate limit rule.
+     */
+    interval: number;
+    /**
+     * The number of request within the interval to trigger the rate limit rule.
+     */
+    requests: number;
+}
+
+export interface PullzoneRatelimitRuleResponse {
+    /**
+     * The interval, in seconds, that the rate limit will apply.
+     */
+    interval: number;
+}
+
 export interface PullzoneRouting {
     /**
      * The list of blocked countries with the two-letter Alpha2 ISO codes. Traffic connecting from a blocked country will be rejected on the DNS level.
@@ -391,6 +432,146 @@ export interface PullzoneRouting {
      * Options: `AF`, `ASIA`, `EU`, `SA`, `US`
      */
     zones: string[];
+}
+
+export interface PullzoneShieldAccessList {
+    /**
+     * Options: `Allow`, `Block`, `Challenge`, `Log`
+     */
+    action: string;
+    /**
+     * The ID of the Access List.
+     */
+    id: number;
+}
+
+export interface PullzoneShieldBotDetection {
+    /**
+     * Combines advanced entropy analysis and cross-session consistency.
+     */
+    complexFingerprinting: boolean;
+    /**
+     * Controls how assertively unusual fingerprints are treated as bots.
+     */
+    fingerprintAggression: number;
+    /**
+     * Adjusts how precisely browsers are checked for signs of automation.
+     */
+    fingerprintSensitivity: number;
+    /**
+     * Monitors IP behaviour, reputation, and rate patterns.
+     */
+    ipSensitivity: number;
+    /**
+     * Indicates the mode the Bot Detection engine is running. Options: `Challenge`, `Log`
+     */
+    mode: string;
+    /**
+     * Analyzes request headers, query structure, and protocol anomalies.
+     */
+    requestIntegrity: number;
+}
+
+export interface PullzoneShieldDdos {
+    /**
+     * The window of time a visitor can access your website after passing a challenge. Once the timeout expires, they'll face a new challenge.
+     */
+    challengeWindow: number;
+    /**
+     * Options: `Asleep`, `Extreme`, `High`, `Low`, `Medium`
+     */
+    level: string;
+    /**
+     * Indicates the mode the engine is running. Options: `Block`, `Log`
+     */
+    mode: string;
+}
+
+export interface PullzoneShieldWaf {
+    /**
+     * Indicates allowed HTTP methods.
+     */
+    allowedHttpMethods: string[];
+    /**
+     * Indicates allowed HTTP versions.
+     */
+    allowedHttpVersions: string[];
+    /**
+     * Indicates allowed values for request Content-Type.
+     */
+    allowedRequestContentTypes: string[];
+    /**
+     * Determines which severity level of rules will block requests.
+     */
+    blockingSensitivity: number;
+    /**
+     * Determines the action to take when the request body length exceeds your plan limit. Options: `Block`, `Ignore`, `Log`
+     */
+    bodyLimitRequest: string;
+    /**
+     * Determines the action to take when the response body length exceeds your plan limit. Options: `Block`, `Ignore`, `Log`
+     */
+    bodyLimitResponse: string;
+    /**
+     * Determines which severity level of rules will trigger a detection log.
+     */
+    detectionSensitivity: number;
+    /**
+     * Indicates whether the WAF (Web Application Firewall) is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Determines which severity level of rules will trigger the rules and their action.
+     */
+    executionSensitivity: number;
+    /**
+     * When enabled, detected WAF audit logs will contain the full list of request headers sent during the request.
+     */
+    logHeaders: boolean;
+    /**
+     * The list of headers excluded from the logs. They will still be used for processing WAF rules.
+     */
+    logHeadersExcludeds: string[];
+    /**
+     * Indicates the mode the engine is running. Options: `Block`, `Log`
+     */
+    mode: string;
+    /**
+     * Real-time Threat Intelligence delivers zero-day protection by instantly detecting and blocking emerging threats.
+     */
+    realtimeThreatIntelligence: boolean;
+    /**
+     * List of disabled WAF rules.
+     */
+    rulesDisableds: string[];
+    /**
+     * List of WAF rules that will not be blocked, but will be logged when triggered.
+     */
+    rulesLogonlies: string[];
+}
+
+export interface PullzoneWafRuleCondition {
+    /**
+     * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
+     */
+    operator: string;
+    /**
+     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
+     */
+    transformations?: string[];
+    value: string;
+    /**
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     */
+    variable: string;
+    variableValue?: string;
+}
+
+export interface PullzoneWafRuleResponse {
+    /**
+     * The action to take if the WAF rule is triggered. Options: `Block`, `Challenge`, `Log`
+     */
+    action: string;
 }
 
 export interface StreamVideoChapter {
