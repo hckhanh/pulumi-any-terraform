@@ -49,6 +49,7 @@
     "infrastructure",
     "devops"
   ],
+  "license": "MIT",
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
