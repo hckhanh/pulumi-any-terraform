@@ -1,7 +1,7 @@
 {
   "name": "pulumi-namecheap",
   "description": "A Pulumi provider for managing Namecheap domain records and DNS configuration, dynamically bridged from the Terraform Namecheap provider with support for A, AAAA, CNAME, MX, TXT records and email services.",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",
@@ -53,7 +53,7 @@
     "version": "0.8.0",
     "parameterization": {
       "name": "namecheap",
-      "version": "2.2.1",
+      "version": "2.2.0",
       "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi4yLjAifX0="
     }
   }
