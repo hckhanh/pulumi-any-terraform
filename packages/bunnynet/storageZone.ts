@@ -63,7 +63,7 @@ export class StorageZone extends pulumi.CustomResource {
     /**
      * A set of regions for data replication.
      */
-    public readonly replicationRegions!: pulumi.Output<string[] | undefined>;
+    public readonly replicationRegions!: pulumi.Output<string[]>;
     /**
      * Indicates whether to rewrite 404 errors to 200 status.
      */

@@ -65,6 +65,11 @@ export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
 
+export { GetPullzoneAccessListsArgs, GetPullzoneAccessListsResult, GetPullzoneAccessListsOutputArgs } from "./getPullzoneAccessLists";
+export const getPullzoneAccessLists: typeof import("./getPullzoneAccessLists").getPullzoneAccessLists = null as any;
+export const getPullzoneAccessListsOutput: typeof import("./getPullzoneAccessLists").getPullzoneAccessListsOutput = null as any;
+utilities.lazyLoad(exports, ["getPullzoneAccessLists","getPullzoneAccessListsOutput"], () => require("./getPullzoneAccessLists"));
+
 export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
 export const getRegion: typeof import("./getRegion").getRegion = null as any;
 export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
@@ -85,6 +90,11 @@ export type Pullzone = import("./pullzone").Pullzone;
 export const Pullzone: typeof import("./pullzone").Pullzone = null as any;
 utilities.lazyLoad(exports, ["Pullzone"], () => require("./pullzone"));
 
+export { PullzoneAccessListArgs, PullzoneAccessListState } from "./pullzoneAccessList";
+export type PullzoneAccessList = import("./pullzoneAccessList").PullzoneAccessList;
+export const PullzoneAccessList: typeof import("./pullzoneAccessList").PullzoneAccessList = null as any;
+utilities.lazyLoad(exports, ["PullzoneAccessList"], () => require("./pullzoneAccessList"));
+
 export { PullzoneEdgeruleArgs, PullzoneEdgeruleState } from "./pullzoneEdgerule";
 export type PullzoneEdgerule = import("./pullzoneEdgerule").PullzoneEdgerule;
 export const PullzoneEdgerule: typeof import("./pullzoneEdgerule").PullzoneEdgerule = null as any;
@@ -99,6 +109,21 @@ export { PullzoneOptimizerClassArgs, PullzoneOptimizerClassState } from "./pullz
 export type PullzoneOptimizerClass = import("./pullzoneOptimizerClass").PullzoneOptimizerClass;
 export const PullzoneOptimizerClass: typeof import("./pullzoneOptimizerClass").PullzoneOptimizerClass = null as any;
 utilities.lazyLoad(exports, ["PullzoneOptimizerClass"], () => require("./pullzoneOptimizerClass"));
+
+export { PullzoneRatelimitRuleArgs, PullzoneRatelimitRuleState } from "./pullzoneRatelimitRule";
+export type PullzoneRatelimitRule = import("./pullzoneRatelimitRule").PullzoneRatelimitRule;
+export const PullzoneRatelimitRule: typeof import("./pullzoneRatelimitRule").PullzoneRatelimitRule = null as any;
+utilities.lazyLoad(exports, ["PullzoneRatelimitRule"], () => require("./pullzoneRatelimitRule"));
+
+export { PullzoneShieldArgs, PullzoneShieldState } from "./pullzoneShield";
+export type PullzoneShield = import("./pullzoneShield").PullzoneShield;
+export const PullzoneShield: typeof import("./pullzoneShield").PullzoneShield = null as any;
+utilities.lazyLoad(exports, ["PullzoneShield"], () => require("./pullzoneShield"));
+
+export { PullzoneWafRuleArgs, PullzoneWafRuleState } from "./pullzoneWafRule";
+export type PullzoneWafRule = import("./pullzoneWafRule").PullzoneWafRule;
+export const PullzoneWafRule: typeof import("./pullzoneWafRule").PullzoneWafRule = null as any;
+utilities.lazyLoad(exports, ["PullzoneWafRule"], () => require("./pullzoneWafRule"));
 
 export { StorageFileArgs, StorageFileState } from "./storageFile";
 export type StorageFile = import("./storageFile").StorageFile;
@@ -155,12 +180,20 @@ const _module = {
                 return new DnsZone(name, <any>undefined, { urn })
             case "bunnynet:index/pullzone:Pullzone":
                 return new Pullzone(name, <any>undefined, { urn })
+            case "bunnynet:index/pullzoneAccessList:PullzoneAccessList":
+                return new PullzoneAccessList(name, <any>undefined, { urn })
             case "bunnynet:index/pullzoneEdgerule:PullzoneEdgerule":
                 return new PullzoneEdgerule(name, <any>undefined, { urn })
             case "bunnynet:index/pullzoneHostname:PullzoneHostname":
                 return new PullzoneHostname(name, <any>undefined, { urn })
             case "bunnynet:index/pullzoneOptimizerClass:PullzoneOptimizerClass":
                 return new PullzoneOptimizerClass(name, <any>undefined, { urn })
+            case "bunnynet:index/pullzoneRatelimitRule:PullzoneRatelimitRule":
+                return new PullzoneRatelimitRule(name, <any>undefined, { urn })
+            case "bunnynet:index/pullzoneShield:PullzoneShield":
+                return new PullzoneShield(name, <any>undefined, { urn })
+            case "bunnynet:index/pullzoneWafRule:PullzoneWafRule":
+                return new PullzoneWafRule(name, <any>undefined, { urn })
             case "bunnynet:index/storageFile:StorageFile":
                 return new StorageFile(name, <any>undefined, { urn })
             case "bunnynet:index/storageZone:StorageZone":
@@ -184,9 +217,13 @@ pulumi.runtime.registerResourceModule("bunnynet", "index/computeScriptVariable",
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsZone", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzone", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneAccessList", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneEdgerule", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneHostname", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneOptimizerClass", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneRatelimitRule", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneShield", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneWafRule", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/storageFile", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/storageZone", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/streamCollection", _module)
