@@ -4,3 +4,8 @@
 spec = "latest"
 version = "1.39.4"
 checksum = "sha256:0d85b750d5cef4a5d143d9562610ee2031847130aa7bcabf9d10bc6997205974"
+
+[[tools.node]]
+spec = "22.18.0"
+version = "22.18.0"
+checksum = "sha256:6616f388e127c858989fc7fa92879cdb20d2a5d446adbfdca6ee4feb385bfa8a"
