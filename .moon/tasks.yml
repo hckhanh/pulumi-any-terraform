@@ -40,3 +40,5 @@ tasks:
     deps:
       - 'audit'
       - 'build'
+    options:
+      allowFailure: true
