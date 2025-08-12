@@ -43,8 +43,8 @@ importers:
         specifier: 7.0.0-dev.20250810.1
         version: 7.0.0-dev.20250810.1
       tsdown:
-        specifier: 0.14.0
-        version: 0.14.0(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
+        specifier: 0.14.1
+        version: 0.14.1(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -65,8 +65,8 @@ importers:
         specifier: 7.0.0-dev.20250810.1
         version: 7.0.0-dev.20250810.1
       tsdown:
-        specifier: 0.14.0
-        version: 0.14.0(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
+        specifier: 0.14.1
+        version: 0.14.1(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -87,8 +87,8 @@ importers:
         specifier: 7.0.0-dev.20250810.1
         version: 7.0.0-dev.20250810.1
       tsdown:
-        specifier: 0.14.0
-        version: 0.14.0(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
+        specifier: 0.14.1
+        version: 0.14.1(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -2133,8 +2133,8 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  tsdown@0.14.0:
-    resolution: {integrity: sha512-3zBEDUC1XPnVE5rwfsm1y8REh58CJsDT319hkRwBgIpN9eMClE30dqF4HkK8zPKoczNNqFrQ2cKGrjE50WprIw==}
+  tsdown@0.14.1:
+    resolution: {integrity: sha512-/nBuFDKZeYln9hAxwWG5Cm55/823sNIVI693iVi0xRFHzf9OVUq4b/lx9PH1TErFr/IQ0kd2hutFbJIPM0XQWA==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -4564,7 +4564,7 @@ snapshots:
     dependencies:
       typescript: 5.9.2
 
-  tsdown@0.14.0(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2):
+  tsdown@0.14.1(@typescript/native-preview@7.0.0-dev.20250810.1)(typescript@5.9.2):
     dependencies:
       ansis: 4.1.0
       cac: 6.7.14
