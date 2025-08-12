@@ -6,19 +6,15 @@ workspace:
       - 'build'
       - 'audit'
       - 'publish'
+      - 'eslint'
+      - 'eslint.fix'
 
 fileGroups:
   syncpack:
     - '**/package.json'
     - '.syncpackrc.json'
-  eslint:
-    - '*.{ts,md}'
 
 tasks:
-  eslint:
-    script: 'pnpm eslint "./*.{ts,md}"'
-    inputs:
-      - '@group(eslint)'
   syncpack:
     command: 'pnpm syncpack'
     inputs:
