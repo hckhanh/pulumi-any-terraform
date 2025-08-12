@@ -11,7 +11,7 @@ fileGroups:
 
 tasks:
   eslint:
-    script: 'pnpm eslint .'
+    command: 'pnpm eslint .'
     inputs:
       - '@group(eslint)'
   eslint.fix:
