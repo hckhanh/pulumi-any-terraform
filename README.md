@@ -131,7 +131,7 @@ To add a new Terraform provider to this collection:
 
 ### Repository Structure
 
-```
+```shell
 ├── packages/                 # Individual provider packages
 │   └── namecheap/           # Namecheap provider package
 │       ├── README.md        # Provider-specific documentation

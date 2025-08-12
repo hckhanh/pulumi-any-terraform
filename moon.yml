@@ -23,10 +23,9 @@ tasks:
   syncpack.format:
     extends: 'syncpack'
     args: 'format'
-    options:
-      runInCI: false
+  syncpack.format.check:
+    extends: 'syncpack.format'
+    args: '--check'
   syncpack.fix:
     extends: 'syncpack'
     args: 'fix'
-    options:
-      runInCI: false

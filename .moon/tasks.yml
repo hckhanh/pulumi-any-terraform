@@ -4,6 +4,8 @@ fileGroups:
   sources:
     - 'package.json'
     - '**/*.{ts,js,mjs,cjs}'
+  build:
+    - 'bin/**/*'
   package:
     - 'README.md'
 
@@ -12,21 +14,22 @@ tasks:
     deps:
       - target: 'root:syncpack.lint'
         args: '--source $projectSource/package.json'
+      - target: 'root:syncpack.format.check'
+        args: '--source $projectSource/package.json'
   fix:
     deps:
-      - target: 'root:syncpack.format'
-        args: '--source $projectSource/package.json'
       - target: 'root:syncpack.fix'
         args: '--source $projectSource/package.json'
+      - target: 'root:syncpack.format'
+        args: '--source $projectSource/package.json'
     options:
-      runInCI: false
       runDepsInParallel: false
   audit:
     command: 'npm audit signature --no-package-lock'
     inputs:
       - '@group(sources)'
   build:
-    command: 'pnpm tsdown'
+    command: 'node ./scripts/postinstall.js'
     inputs:
       - '@group(sources)'
     outputs:
@@ -37,6 +40,8 @@ tasks:
       - '@group(sources)'
       - '@group(package)'
       - '$NPM_TOKEN'
+    outputs:
+      - '@group(build)'
     deps:
       - 'audit'
       - 'build'
