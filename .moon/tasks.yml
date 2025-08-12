@@ -6,20 +6,32 @@ fileGroups:
     - '**/*.{ts,js,mjs,cjs}'
   package:
     - 'README.md'
+  eslint:
+    - '**/*.{ts,md}'
 
 tasks:
+  eslint:
+    script: 'pnpm eslint .'
+    inputs:
+      - '@group(eslint)'
+  eslint.fix:
+    extends: 'eslint'
+    args: '--fix'
   lint:
     deps:
+      - target: 'eslint'
       - target: 'root:syncpack.lint'
+        args: '--source $projectSource/package.json'
+      - target: 'root:syncpack.format.check'
         args: '--source $projectSource/package.json'
   fix:
     deps:
+      - target: 'eslint.fix'
       - target: 'root:syncpack.format'
         args: '--source $projectSource/package.json'
       - target: 'root:syncpack.fix'
         args: '--source $projectSource/package.json'
     options:
-      runInCI: false
       runDepsInParallel: false
   audit:
     command: 'npm audit signature --no-package-lock'

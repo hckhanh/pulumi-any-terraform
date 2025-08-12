@@ -9,8 +9,12 @@
   },
   "private": true,
   "devDependencies": {
+    "@eslint/markdown": "7.1.0",
+    "@typescript-eslint/parser": "8.39.1",
+    "eslint": "9.33.0",
     "prettier": "3.6.2",
-    "syncpack": "14.0.0-alpha.19"
+    "syncpack": "14.0.0-alpha.19",
+    "typescript-eslint": "8.39.1"
   },
   "engines": {
     "node": "22.18.0",

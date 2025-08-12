@@ -11,8 +11,14 @@ fileGroups:
   syncpack:
     - '**/package.json'
     - '.syncpackrc.json'
+  eslint:
+    - '*.{ts,md}'
 
 tasks:
+  eslint:
+    script: 'pnpm eslint "./*.{ts,md}"'
+    inputs:
+      - '@group(eslint)'
   syncpack:
     command: 'pnpm syncpack'
     inputs:
@@ -23,10 +29,9 @@ tasks:
   syncpack.format:
     extends: 'syncpack'
     args: 'format'
-    options:
-      runInCI: false
+  syncpack.format.check:
+    extends: 'syncpack.format'
+    args: '--check'
   syncpack.fix:
     extends: 'syncpack'
     args: 'fix'
-    options:
-      runInCI: false
