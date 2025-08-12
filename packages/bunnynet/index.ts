@@ -5,147 +5,147 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { ComputeContainerAppArgs, ComputeContainerAppState } from "./computeContainerApp";
+export type { ComputeContainerAppArgs, ComputeContainerAppState } from "./computeContainerApp";
 export type ComputeContainerApp = import("./computeContainerApp").ComputeContainerApp;
 export const ComputeContainerApp: typeof import("./computeContainerApp").ComputeContainerApp = null as any;
 utilities.lazyLoad(exports, ["ComputeContainerApp"], () => require("./computeContainerApp"));
 
-export { ComputeContainerImageregistryArgs, ComputeContainerImageregistryState } from "./computeContainerImageregistry";
+export type { ComputeContainerImageregistryArgs, ComputeContainerImageregistryState } from "./computeContainerImageregistry";
 export type ComputeContainerImageregistry = import("./computeContainerImageregistry").ComputeContainerImageregistry;
 export const ComputeContainerImageregistry: typeof import("./computeContainerImageregistry").ComputeContainerImageregistry = null as any;
 utilities.lazyLoad(exports, ["ComputeContainerImageregistry"], () => require("./computeContainerImageregistry"));
 
-export { ComputeScriptArgs, ComputeScriptState } from "./computeScript";
+export type { ComputeScriptArgs, ComputeScriptState } from "./computeScript";
 export type ComputeScript = import("./computeScript").ComputeScript;
 export const ComputeScript: typeof import("./computeScript").ComputeScript = null as any;
 utilities.lazyLoad(exports, ["ComputeScript"], () => require("./computeScript"));
 
-export { ComputeScriptSecretArgs, ComputeScriptSecretState } from "./computeScriptSecret";
+export type { ComputeScriptSecretArgs, ComputeScriptSecretState } from "./computeScriptSecret";
 export type ComputeScriptSecret = import("./computeScriptSecret").ComputeScriptSecret;
 export const ComputeScriptSecret: typeof import("./computeScriptSecret").ComputeScriptSecret = null as any;
 utilities.lazyLoad(exports, ["ComputeScriptSecret"], () => require("./computeScriptSecret"));
 
-export { ComputeScriptVariableArgs, ComputeScriptVariableState } from "./computeScriptVariable";
+export type { ComputeScriptVariableArgs, ComputeScriptVariableState } from "./computeScriptVariable";
 export type ComputeScriptVariable = import("./computeScriptVariable").ComputeScriptVariable;
 export const ComputeScriptVariable: typeof import("./computeScriptVariable").ComputeScriptVariable = null as any;
 utilities.lazyLoad(exports, ["ComputeScriptVariable"], () => require("./computeScriptVariable"));
 
-export { DnsRecordArgs, DnsRecordState } from "./dnsRecord";
+export type { DnsRecordArgs, DnsRecordState } from "./dnsRecord";
 export type DnsRecord = import("./dnsRecord").DnsRecord;
 export const DnsRecord: typeof import("./dnsRecord").DnsRecord = null as any;
 utilities.lazyLoad(exports, ["DnsRecord"], () => require("./dnsRecord"));
 
-export { DnsZoneArgs, DnsZoneState } from "./dnsZone";
+export type { DnsZoneArgs, DnsZoneState } from "./dnsZone";
 export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
 utilities.lazyLoad(exports, ["DnsZone"], () => require("./dnsZone"));
 
-export { GetComputeContainerAppContainerArgs, GetComputeContainerAppContainerResult, GetComputeContainerAppContainerOutputArgs } from "./getComputeContainerAppContainer";
+export type { GetComputeContainerAppContainerArgs, GetComputeContainerAppContainerResult, GetComputeContainerAppContainerOutputArgs } from "./getComputeContainerAppContainer";
 export const getComputeContainerAppContainer: typeof import("./getComputeContainerAppContainer").getComputeContainerAppContainer = null as any;
 export const getComputeContainerAppContainerOutput: typeof import("./getComputeContainerAppContainer").getComputeContainerAppContainerOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeContainerAppContainer","getComputeContainerAppContainerOutput"], () => require("./getComputeContainerAppContainer"));
 
-export { GetComputeContainerAppContainerEndpointArgs, GetComputeContainerAppContainerEndpointResult, GetComputeContainerAppContainerEndpointOutputArgs } from "./getComputeContainerAppContainerEndpoint";
+export type { GetComputeContainerAppContainerEndpointArgs, GetComputeContainerAppContainerEndpointResult, GetComputeContainerAppContainerEndpointOutputArgs } from "./getComputeContainerAppContainerEndpoint";
 export const getComputeContainerAppContainerEndpoint: typeof import("./getComputeContainerAppContainerEndpoint").getComputeContainerAppContainerEndpoint = null as any;
 export const getComputeContainerAppContainerEndpointOutput: typeof import("./getComputeContainerAppContainerEndpoint").getComputeContainerAppContainerEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeContainerAppContainerEndpoint","getComputeContainerAppContainerEndpointOutput"], () => require("./getComputeContainerAppContainerEndpoint"));
 
-export { GetComputeContainerImageregistryArgs, GetComputeContainerImageregistryResult, GetComputeContainerImageregistryOutputArgs } from "./getComputeContainerImageregistry";
+export type { GetComputeContainerImageregistryArgs, GetComputeContainerImageregistryResult, GetComputeContainerImageregistryOutputArgs } from "./getComputeContainerImageregistry";
 export const getComputeContainerImageregistry: typeof import("./getComputeContainerImageregistry").getComputeContainerImageregistry = null as any;
 export const getComputeContainerImageregistryOutput: typeof import("./getComputeContainerImageregistry").getComputeContainerImageregistryOutput = null as any;
 utilities.lazyLoad(exports, ["getComputeContainerImageregistry","getComputeContainerImageregistryOutput"], () => require("./getComputeContainerImageregistry"));
 
-export { GetDnsRecordArgs, GetDnsRecordResult, GetDnsRecordOutputArgs } from "./getDnsRecord";
+export type { GetDnsRecordArgs, GetDnsRecordResult, GetDnsRecordOutputArgs } from "./getDnsRecord";
 export const getDnsRecord: typeof import("./getDnsRecord").getDnsRecord = null as any;
 export const getDnsRecordOutput: typeof import("./getDnsRecord").getDnsRecordOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsRecord","getDnsRecordOutput"], () => require("./getDnsRecord"));
 
-export { GetDnsZoneArgs, GetDnsZoneResult, GetDnsZoneOutputArgs } from "./getDnsZone";
+export type { GetDnsZoneArgs, GetDnsZoneResult, GetDnsZoneOutputArgs } from "./getDnsZone";
 export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
 
-export { GetPullzoneAccessListsArgs, GetPullzoneAccessListsResult, GetPullzoneAccessListsOutputArgs } from "./getPullzoneAccessLists";
+export type { GetPullzoneAccessListsArgs, GetPullzoneAccessListsResult, GetPullzoneAccessListsOutputArgs } from "./getPullzoneAccessLists";
 export const getPullzoneAccessLists: typeof import("./getPullzoneAccessLists").getPullzoneAccessLists = null as any;
 export const getPullzoneAccessListsOutput: typeof import("./getPullzoneAccessLists").getPullzoneAccessListsOutput = null as any;
 utilities.lazyLoad(exports, ["getPullzoneAccessLists","getPullzoneAccessListsOutput"], () => require("./getPullzoneAccessLists"));
 
-export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
+export type { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
 export const getRegion: typeof import("./getRegion").getRegion = null as any;
 export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegion","getRegionOutput"], () => require("./getRegion"));
 
-export { GetVideoLanguageArgs, GetVideoLanguageResult, GetVideoLanguageOutputArgs } from "./getVideoLanguage";
+export type { GetVideoLanguageArgs, GetVideoLanguageResult, GetVideoLanguageOutputArgs } from "./getVideoLanguage";
 export const getVideoLanguage: typeof import("./getVideoLanguage").getVideoLanguage = null as any;
 export const getVideoLanguageOutput: typeof import("./getVideoLanguage").getVideoLanguageOutput = null as any;
 utilities.lazyLoad(exports, ["getVideoLanguage","getVideoLanguageOutput"], () => require("./getVideoLanguage"));
 
-export { ProviderArgs } from "./provider";
+export type { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { PullzoneArgs, PullzoneState } from "./pullzone";
+export type { PullzoneArgs, PullzoneState } from "./pullzone";
 export type Pullzone = import("./pullzone").Pullzone;
 export const Pullzone: typeof import("./pullzone").Pullzone = null as any;
 utilities.lazyLoad(exports, ["Pullzone"], () => require("./pullzone"));
 
-export { PullzoneAccessListArgs, PullzoneAccessListState } from "./pullzoneAccessList";
+export type { PullzoneAccessListArgs, PullzoneAccessListState } from "./pullzoneAccessList";
 export type PullzoneAccessList = import("./pullzoneAccessList").PullzoneAccessList;
 export const PullzoneAccessList: typeof import("./pullzoneAccessList").PullzoneAccessList = null as any;
 utilities.lazyLoad(exports, ["PullzoneAccessList"], () => require("./pullzoneAccessList"));
 
-export { PullzoneEdgeruleArgs, PullzoneEdgeruleState } from "./pullzoneEdgerule";
+export type { PullzoneEdgeruleArgs, PullzoneEdgeruleState } from "./pullzoneEdgerule";
 export type PullzoneEdgerule = import("./pullzoneEdgerule").PullzoneEdgerule;
 export const PullzoneEdgerule: typeof import("./pullzoneEdgerule").PullzoneEdgerule = null as any;
 utilities.lazyLoad(exports, ["PullzoneEdgerule"], () => require("./pullzoneEdgerule"));
 
-export { PullzoneHostnameArgs, PullzoneHostnameState } from "./pullzoneHostname";
+export type { PullzoneHostnameArgs, PullzoneHostnameState } from "./pullzoneHostname";
 export type PullzoneHostname = import("./pullzoneHostname").PullzoneHostname;
 export const PullzoneHostname: typeof import("./pullzoneHostname").PullzoneHostname = null as any;
 utilities.lazyLoad(exports, ["PullzoneHostname"], () => require("./pullzoneHostname"));
 
-export { PullzoneOptimizerClassArgs, PullzoneOptimizerClassState } from "./pullzoneOptimizerClass";
+export type { PullzoneOptimizerClassArgs, PullzoneOptimizerClassState } from "./pullzoneOptimizerClass";
 export type PullzoneOptimizerClass = import("./pullzoneOptimizerClass").PullzoneOptimizerClass;
 export const PullzoneOptimizerClass: typeof import("./pullzoneOptimizerClass").PullzoneOptimizerClass = null as any;
 utilities.lazyLoad(exports, ["PullzoneOptimizerClass"], () => require("./pullzoneOptimizerClass"));
 
-export { PullzoneRatelimitRuleArgs, PullzoneRatelimitRuleState } from "./pullzoneRatelimitRule";
+export type { PullzoneRatelimitRuleArgs, PullzoneRatelimitRuleState } from "./pullzoneRatelimitRule";
 export type PullzoneRatelimitRule = import("./pullzoneRatelimitRule").PullzoneRatelimitRule;
 export const PullzoneRatelimitRule: typeof import("./pullzoneRatelimitRule").PullzoneRatelimitRule = null as any;
 utilities.lazyLoad(exports, ["PullzoneRatelimitRule"], () => require("./pullzoneRatelimitRule"));
 
-export { PullzoneShieldArgs, PullzoneShieldState } from "./pullzoneShield";
+export type { PullzoneShieldArgs, PullzoneShieldState } from "./pullzoneShield";
 export type PullzoneShield = import("./pullzoneShield").PullzoneShield;
 export const PullzoneShield: typeof import("./pullzoneShield").PullzoneShield = null as any;
 utilities.lazyLoad(exports, ["PullzoneShield"], () => require("./pullzoneShield"));
 
-export { PullzoneWafRuleArgs, PullzoneWafRuleState } from "./pullzoneWafRule";
+export type { PullzoneWafRuleArgs, PullzoneWafRuleState } from "./pullzoneWafRule";
 export type PullzoneWafRule = import("./pullzoneWafRule").PullzoneWafRule;
 export const PullzoneWafRule: typeof import("./pullzoneWafRule").PullzoneWafRule = null as any;
 utilities.lazyLoad(exports, ["PullzoneWafRule"], () => require("./pullzoneWafRule"));
 
-export { StorageFileArgs, StorageFileState } from "./storageFile";
+export type { StorageFileArgs, StorageFileState } from "./storageFile";
 export type StorageFile = import("./storageFile").StorageFile;
 export const StorageFile: typeof import("./storageFile").StorageFile = null as any;
 utilities.lazyLoad(exports, ["StorageFile"], () => require("./storageFile"));
 
-export { StorageZoneArgs, StorageZoneState } from "./storageZone";
+export type { StorageZoneArgs, StorageZoneState } from "./storageZone";
 export type StorageZone = import("./storageZone").StorageZone;
 export const StorageZone: typeof import("./storageZone").StorageZone = null as any;
 utilities.lazyLoad(exports, ["StorageZone"], () => require("./storageZone"));
 
-export { StreamCollectionArgs, StreamCollectionState } from "./streamCollection";
+export type { StreamCollectionArgs, StreamCollectionState } from "./streamCollection";
 export type StreamCollection = import("./streamCollection").StreamCollection;
 export const StreamCollection: typeof import("./streamCollection").StreamCollection = null as any;
 utilities.lazyLoad(exports, ["StreamCollection"], () => require("./streamCollection"));
 
-export { StreamLibraryArgs, StreamLibraryState } from "./streamLibrary";
+export type { StreamLibraryArgs, StreamLibraryState } from "./streamLibrary";
 export type StreamLibrary = import("./streamLibrary").StreamLibrary;
 export const StreamLibrary: typeof import("./streamLibrary").StreamLibrary = null as any;
 utilities.lazyLoad(exports, ["StreamLibrary"], () => require("./streamLibrary"));
 
-export { StreamVideoArgs, StreamVideoState } from "./streamVideo";
+export type { StreamVideoArgs, StreamVideoState } from "./streamVideo";
 export type StreamVideo = import("./streamVideo").StreamVideo;
 export const StreamVideo: typeof import("./streamVideo").StreamVideo = null as any;
 utilities.lazyLoad(exports, ["StreamVideo"], () => require("./streamVideo"));
