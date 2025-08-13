@@ -138,6 +138,41 @@ export interface AppConnectionMysqlCredentials {
     username: string;
 }
 
+export interface AppConnectionPostgresCredentials {
+    /**
+     * The name of the database to connect to.
+     */
+    database: string;
+    /**
+     * The hostname of the database server.
+     */
+    host: string;
+    /**
+     * The password to connect to the database with.
+     */
+    password: string;
+    /**
+     * The port number of the database.
+     */
+    port: number;
+    /**
+     * The SSL certificate to use for connection.
+     */
+    sslCertificate?: string;
+    /**
+     * Whether or not to use SSL when connecting to the database.
+     */
+    sslEnabled: boolean;
+    /**
+     * Whether or not to reject unauthorized SSL certificates.
+     */
+    sslRejectUnauthorized: boolean;
+    /**
+     * The username to connect to the database with.
+     */
+    username: string;
+}
+
 export interface AppConnectionRenderCredentials {
     /**
      * The API key to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/render
@@ -957,6 +992,39 @@ export interface SecretRotationMysqlCredentialsRotateAtUtc {
 }
 
 export interface SecretRotationMysqlCredentialsSecretsMapping {
+    /**
+     * The name of the secret that the generated password will be mapped to.
+     */
+    password: string;
+    /**
+     * The name of the secret that the active username will be mapped to.
+     */
+    username: string;
+}
+
+export interface SecretRotationPostgresCredentialsParameters {
+    /**
+     * The username of the first login to rotate passwords for. This user must already exists in your database.
+     */
+    username1: string;
+    /**
+     * The username of the second login to rotate passwords for. This user must already exists in your database.
+     */
+    username2: string;
+}
+
+export interface SecretRotationPostgresCredentialsRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationPostgresCredentialsSecretsMapping {
     /**
      * The name of the secret that the generated password will be mapped to.
      */

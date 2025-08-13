@@ -40,6 +40,11 @@ export type AppConnectionMysql = import("./appConnectionMysql").AppConnectionMys
 export const AppConnectionMysql: typeof import("./appConnectionMysql").AppConnectionMysql = null as any;
 utilities.lazyLoad(exports, ["AppConnectionMysql"], () => require("./appConnectionMysql"));
 
+export { AppConnectionPostgresArgs, AppConnectionPostgresState } from "./appConnectionPostgres";
+export type AppConnectionPostgres = import("./appConnectionPostgres").AppConnectionPostgres;
+export const AppConnectionPostgres: typeof import("./appConnectionPostgres").AppConnectionPostgres = null as any;
+utilities.lazyLoad(exports, ["AppConnectionPostgres"], () => require("./appConnectionPostgres"));
+
 export { AppConnectionRenderArgs, AppConnectionRenderState } from "./appConnectionRender";
 export type AppConnectionRender = import("./appConnectionRender").AppConnectionRender;
 export const AppConnectionRender: typeof import("./appConnectionRender").AppConnectionRender = null as any;
@@ -240,6 +245,11 @@ export type SecretRotationMysqlCredentials = import("./secretRotationMysqlCreden
 export const SecretRotationMysqlCredentials: typeof import("./secretRotationMysqlCredentials").SecretRotationMysqlCredentials = null as any;
 utilities.lazyLoad(exports, ["SecretRotationMysqlCredentials"], () => require("./secretRotationMysqlCredentials"));
 
+export { SecretRotationPostgresCredentialsArgs, SecretRotationPostgresCredentialsState } from "./secretRotationPostgresCredentials";
+export type SecretRotationPostgresCredentials = import("./secretRotationPostgresCredentials").SecretRotationPostgresCredentials;
+export const SecretRotationPostgresCredentials: typeof import("./secretRotationPostgresCredentials").SecretRotationPostgresCredentials = null as any;
+utilities.lazyLoad(exports, ["SecretRotationPostgresCredentials"], () => require("./secretRotationPostgresCredentials"));
+
 export { SecretSync1passwordArgs, SecretSync1passwordState } from "./secretSync1password";
 export type SecretSync1password = import("./secretSync1password").SecretSync1password;
 export const SecretSync1password: typeof import("./secretSync1password").SecretSync1password = null as any;
@@ -318,6 +328,8 @@ const _module = {
                 return new AppConnectionMssql(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMysql:AppConnectionMysql":
                 return new AppConnectionMysql(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionPostgres:AppConnectionPostgres":
+                return new AppConnectionPostgres(name, <any>undefined, { urn })
             case "infisical:index/appConnectionRender:AppConnectionRender":
                 return new AppConnectionRender(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
@@ -386,6 +398,8 @@ const _module = {
                 return new SecretRotationMssqlCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMysqlCredentials:SecretRotationMysqlCredentials":
                 return new SecretRotationMysqlCredentials(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationPostgresCredentials:SecretRotationPostgresCredentials":
+                return new SecretRotationPostgresCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretSync1password:SecretSync1password":
                 return new SecretSync1password(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAwsParameterStore:SecretSyncAwsParameterStore":
@@ -418,6 +432,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClie
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
@@ -452,6 +467,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUs
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationPostgresCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSync1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsParameterStore", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsSecretsManager", _module)

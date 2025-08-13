@@ -1,12 +1,12 @@
 {
-  "name": "pulumi-infisical",
-  "description": "A Pulumi provider for managing Infisical secrets management platform, dynamically bridged from the Terraform Infisical provider with support for projects, secrets, identity management, integrations, and access controls.",
-  "version": "0.15.32",
+  "name": "pulumi-time",
+  "description": "A Pulumi provider for managing time-based resources and operations, dynamically bridged from the Terraform Time provider with support for delays, offsets, rotations, and time-based scheduling.",
+  "version": "0.13.1",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
-    "directory": "packages/infisical"
+    "directory": "packages/time"
   },
   "private": false,
   "main": "./bin/index.js",
@@ -33,19 +33,17 @@
   ],
   "keywords": [
     "pulumi",
-    "infisical",
-    "secrets-management",
-    "security",
-    "identity",
-    "projects",
-    "integrations",
-    "access-control",
-    "authentication",
-    "secrets",
+    "time",
+    "scheduling",
+    "delays",
+    "offset",
+    "rotation",
+    "time-based",
     "terraform",
     "provider",
     "infrastructure",
-    "devops"
+    "automation",
+    "timing"
   ],
   "license": "MIT",
   "pulumi": {
@@ -53,9 +51,9 @@
     "name": "terraform-provider",
     "version": "0.8.0",
     "parameterization": {
-      "name": "infisical",
-      "version": "0.15.29",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS4yOSJ9fQ=="
+      "name": "time",
+      "version": "0.13.1",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hhc2hpY29ycC90aW1lIiwidmVyc2lvbiI6IjAuMTMuMSJ9fQ=="
     }
   }
 }
