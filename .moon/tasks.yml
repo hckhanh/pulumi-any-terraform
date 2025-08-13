@@ -33,15 +33,13 @@ tasks:
     inputs:
       - '@group(sources)'
     outputs:
-      - 'bin/**/*'
+      - '@group(build)'
   publish:
     command: 'pnpm publish --provenance --access public'
     inputs:
       - '@group(sources)'
       - '@group(package)'
       - '$NPM_TOKEN'
-    outputs:
-      - '@group(build)'
     deps:
       - 'audit'
       - 'build'

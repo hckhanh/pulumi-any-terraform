@@ -9,7 +9,7 @@ workspace:
 
 fileGroups:
   syncpack:
-    - '**/package.json'
+    - 'package.json'
     - '.syncpackrc.json'
 
 tasks:
@@ -23,9 +23,13 @@ tasks:
   syncpack.format:
     extends: 'syncpack'
     args: 'format'
+    outputs:
+      - 'package.json'
   syncpack.format.check:
     extends: 'syncpack.format'
     args: '--check'
   syncpack.fix:
     extends: 'syncpack'
     args: 'fix'
+    outputs:
+      - 'package.json'
