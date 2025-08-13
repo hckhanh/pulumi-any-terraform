@@ -49,6 +49,10 @@ export class SecretFolder extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The full path of the folder, including its name.
+     */
+    public /*out*/ readonly path!: pulumi.Output<string>;
+    /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
     public readonly projectId!: pulumi.Output<string>;
@@ -70,6 +74,7 @@ export class SecretFolder extends pulumi.CustomResource {
             resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
             resourceInputs["folderPath"] = state ? state.folderPath : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as SecretFolderArgs | undefined;
@@ -87,6 +92,7 @@ export class SecretFolder extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["environmentId"] = undefined /*out*/;
+            resourceInputs["path"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretFolder.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -113,6 +119,10 @@ export interface SecretFolderState {
      * The name for the folder
      */
     name?: pulumi.Input<string>;
+    /**
+     * The full path of the folder, including its name.
+     */
+    path?: pulumi.Input<string>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
