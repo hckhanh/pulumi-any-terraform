@@ -1,0 +1,60 @@
+{
+  "name": "pulumi-better-uptime",
+  "description": "A Pulumi provider for managing Better Uptime monitoring, alerting, and incident management resources, dynamically bridged from the Terraform Better Uptime provider with support for monitors, heartbeats, integrations, status pages, and policies.",
+  "version": "0.20.3",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/better-uptime"
+  },
+  "private": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.189.0",
+    "@types/node": "24.2.1",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.189.0"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "better-uptime",
+    "uptime-monitoring",
+    "incident-management",
+    "alerting",
+    "monitoring",
+    "status-pages",
+    "heartbeats",
+    "integrations",
+    "observability",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.8.0",
+    "parameterization": {
+      "name": "better-uptime",
+      "version": "0.20.3",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIwLjMifX0="
+    }
+  }
+}
