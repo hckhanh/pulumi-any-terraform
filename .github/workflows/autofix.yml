@@ -1,0 +1,28 @@
+name: autofix.ci
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  fix:
+    name: Fix
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Setup toolchains
+        uses: moonrepo/setup-toolchain@v0
+        with:
+          auto-install: true
+      - name: Fix
+        run: moon :fix
+      - name: Update package lock file
+        run: pnpm install --no-frozen-lockfile
+      - name: Submit autofix
+        uses: autofix-ci/action@v1
