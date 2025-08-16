@@ -1,21 +1,56 @@
 {
-  "name": "@pulumi/logtail",
+  "name": "pulumi-logtail",
+  "description": "A Pulumi provider for managing Logtail log management and analytics resources, dynamically bridged from the Terraform Logtail provider with support for sources, metrics, and log aggregation.",
   "version": "0.6.3",
-  "description": "A Pulumi provider dynamically bridged from logtail.",
-  "repository": "https://github.com/betterstackhq/terraform-provider-logtail",
-  "main": "bin/index.js",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/logtail"
+  },
+  "private": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "build": "tsc",
     "postinstall": "node ./scripts/postinstall.js"
   },
   "dependencies": {
-    "@pulumi/pulumi": "3.142.0",
     "async-mutex": "0.5.0"
   },
   "devDependencies": {
-    "@types/node": "18",
-    "typescript": "4.3.5"
+    "@pulumi/pulumi": "3.189.0",
+    "@types/node": "24.2.1",
+    "typescript": "5.9.2"
   },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.189.0"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "logtail",
+    "log-management",
+    "log-analytics",
+    "logging",
+    "observability",
+    "monitoring",
+    "metrics",
+    "sources",
+    "log-aggregation",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",

@@ -17,19 +17,19 @@ importers:
 
   packages/better-uptime:
     dependencies:
-      '@pulumi/pulumi':
-        specifier: 3.142.0
-        version: 3.142.0(typescript@4.3.5)
       async-mutex:
         specifier: 0.5.0
         version: 0.5.0
     devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.189.0
+        version: 3.189.0(typescript@5.9.2)
       '@types/node':
-        specifier: '18'
-        version: 18.19.123
+        specifier: 24.2.1
+        version: 24.2.1
       typescript:
-        specifier: 4.3.5
-        version: 4.3.5
+        specifier: 5.9.2
+        version: 5.9.2
 
   packages/bunnynet:
     dependencies:
@@ -65,19 +65,19 @@ importers:
 
   packages/logtail:
     dependencies:
-      '@pulumi/pulumi':
-        specifier: 3.142.0
-        version: 3.142.0(typescript@4.3.5)
       async-mutex:
         specifier: 0.5.0
         version: 0.5.0
     devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.189.0
+        version: 3.189.0(typescript@5.9.2)
       '@types/node':
-        specifier: '18'
-        version: 18.19.123
+        specifier: 24.2.1
+        version: 24.2.1
       typescript:
-        specifier: 4.3.5
-        version: 4.3.5
+        specifier: 5.9.2
+        version: 5.9.2
 
   packages/namecheap:
     dependencies:
@@ -350,10 +350,6 @@ packages:
     resolution: {integrity: sha512-y7efHHwghQfk28G2z3tlZ67pLG0XdfYbcVG26r7YIXALRsrVQcTq4/tdenSmdOrEsNahIYA/eh8aEVROWGFUDg==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  '@opentelemetry/api-logs@0.52.1':
-    resolution: {integrity: sha512-qnSqB2DQ9TPP96dl8cDubDvrUyWc0/sK81xHTK8eSUspzDM3bsewX903qclQFvVhgStjRWdC5bLb3kQqMkfV5A==}
-    engines: {node: '>=14'}
-
   '@opentelemetry/api-logs@0.55.0':
     resolution: {integrity: sha512-3cpa+qI45VHYcA5c0bHM6VHo9gicv3p5mlLHNG3rLyjQU8b7e0st1rWtrUn3JbZ3DwwCfhKop4eQ9UuYlC6Pkg==}
     engines: {node: '>=14'}
@@ -380,20 +376,8 @@ packages:
     peerDependencies:
       '@opentelemetry/api': ^1.0.0
 
-  '@opentelemetry/instrumentation-grpc@0.52.1':
-    resolution: {integrity: sha512-EdSDiDSAO+XRXk/ZN128qQpBo1I51+Uay/LUPcPQhSRGf7fBPIEUBeOLQiItguGsug5MGOYjql2w/1wCQF3fdQ==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@opentelemetry/api': ^1.3.0
-
   '@opentelemetry/instrumentation-grpc@0.55.0':
     resolution: {integrity: sha512-n2ZH4pRwOy0Vhag/3eKqiyDBwcpUnGgJI9iiIRX7vivE0FMncaLazWphNFezRRaM/LuKwq1TD8pVUvieP68mow==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@opentelemetry/api': ^1.3.0
-
-  '@opentelemetry/instrumentation@0.52.1':
-    resolution: {integrity: sha512-uXJbYU/5/MBHjMp1FqrILLRuiJCs3Ofk0MeRDk8g1S1gD47U8X3JnSwcMO1rtRo1x1a7zKaQHaoYu49p/4eSKw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
@@ -433,10 +417,6 @@ packages:
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0 <1.10.0'
-
-  '@opentelemetry/semantic-conventions@1.25.1':
-    resolution: {integrity: sha512-ZDjMJJQRlyk8A1KZFCc+bCbsyrn1wTwdNt56F7twdfUfnHUZUq77/WfONCj8p72NZOyP7pNTdUWSTYC3GTbuuQ==}
-    engines: {node: '>=14'}
 
   '@opentelemetry/semantic-conventions@1.27.0':
     resolution: {integrity: sha512-sAay1RrB+ONOem0OZanAR1ZI/k7yDpnOQSQmTMuGImUQb2y8EbSaCJ94FQluM74xoU03vlb2d2U90hZluL6nQg==}
@@ -480,18 +460,6 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@pulumi/pulumi@3.142.0':
-    resolution: {integrity: sha512-2RP4EDIDj4A980u/KThEUe5h5b0LcSaOqw9cA8Cxi3SiP+GC91zecJNbko4GOSR8kxsNd8EY327pVxt7fjTKhA==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      ts-node: '>= 7.0.1 < 12'
-      typescript: '>= 3.8.3 < 6'
-    peerDependenciesMeta:
-      ts-node:
-        optional: true
-      typescript:
-        optional: true
-
   '@pulumi/pulumi@3.189.0':
     resolution: {integrity: sha512-QVhCypSdsf/k2n4UT2htN5RWr6jHJWHLvdDipCirAqDEPg+svrdUMY74ZATXA/KpGNJjy31w46nm1IcljkKpig==}
     engines: {node: '>=20'}
@@ -503,9 +471,6 @@ packages:
         optional: true
       typescript:
         optional: true
-
-  '@pulumi/query@0.3.0':
-    resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==}
 
   '@sigstore/bundle@2.3.2':
     resolution: {integrity: sha512-wueKWDk70QixNLB363yHc2D2ItTgYiMTdPwK8D9dKQMR3ZQ0c35IxP5xnwQ8cNLoCgCRcHf14kE+CLIvNX1zmA==}
@@ -558,9 +523,6 @@ packages:
 
   '@types/keyv@3.1.4':
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
-
-  '@types/node@18.19.123':
-    resolution: {integrity: sha512-K7DIaHnh0mzVxreCR9qwgNxp3MH9dltPNIEddW9MYUlcKAzm+3grKNSTe2vCJHI1FaLpvpL5JGJrz1UZDKYvDg==}
 
   '@types/node@24.2.1':
     resolution: {integrity: sha512-DRh5K+ka5eJic8CjH7td8QpYEV6Zo10gfRkjHCO3weqZHWDtAaSTFtl4+VMqOJ4N5jcuhZ9/l+yy8rVgw7BQeQ==}
@@ -1361,18 +1323,10 @@ packages:
     resolution: {integrity: sha512-GwIJau9XaA8nLVbUXsN3IlFi7WmQ48gBUrl3FTkkL/XLu/POhBzfmX9hd33FNMX1qAsfl6ozO1iMmW9NC8YniA==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  typescript@4.3.5:
-    resolution: {integrity: sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-
   typescript@5.9.2:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
   undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
@@ -1683,10 +1637,6 @@ snapshots:
       - bluebird
       - supports-color
 
-  '@opentelemetry/api-logs@0.52.1':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-
   '@opentelemetry/api-logs@0.55.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -1710,31 +1660,11 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.28.0
 
-  '@opentelemetry/instrumentation-grpc@0.52.1(@opentelemetry/api@1.9.0)':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-      '@opentelemetry/instrumentation': 0.52.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/semantic-conventions': 1.25.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@opentelemetry/instrumentation-grpc@0.55.0(@opentelemetry/api@1.9.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/instrumentation': 0.55.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.27.0
-    transitivePeerDependencies:
-      - supports-color
-
-  '@opentelemetry/instrumentation@0.52.1(@opentelemetry/api@1.9.0)':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-      '@opentelemetry/api-logs': 0.52.1
-      '@types/shimmer': 1.2.0
-      import-in-the-middle: 1.14.2
-      require-in-the-middle: 7.5.2
-      semver: 7.7.2
-      shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
 
@@ -1783,8 +1713,6 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
       semver: 7.7.2
 
-  '@opentelemetry/semantic-conventions@1.25.1': {}
-
   '@opentelemetry/semantic-conventions@1.27.0': {}
 
   '@opentelemetry/semantic-conventions@1.28.0': {}
@@ -1814,44 +1742,6 @@ snapshots:
   '@protobufjs/pool@1.1.0': {}
 
   '@protobufjs/utf8@1.1.0': {}
-
-  '@pulumi/pulumi@3.142.0(typescript@4.3.5)':
-    dependencies:
-      '@grpc/grpc-js': 1.13.4
-      '@logdna/tail-file': 2.2.0
-      '@npmcli/arborist': 7.5.4
-      '@opentelemetry/api': 1.9.0
-      '@opentelemetry/exporter-zipkin': 1.30.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/instrumentation': 0.52.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/instrumentation-grpc': 0.52.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/resources': 1.30.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/sdk-trace-node': 1.30.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/semantic-conventions': 1.28.0
-      '@pulumi/query': 0.3.0
-      '@types/google-protobuf': 3.15.12
-      '@types/semver': 7.7.0
-      '@types/tmp': 0.2.6
-      execa: 5.1.1
-      fdir: 6.4.6(picomatch@3.0.1)
-      google-protobuf: 3.21.4
-      got: 11.8.6
-      ini: 2.0.0
-      js-yaml: 3.14.1
-      minimist: 1.2.8
-      normalize-package-data: 6.0.2
-      picomatch: 3.0.1
-      pkg-dir: 7.0.0
-      require-from-string: 2.0.2
-      semver: 7.7.2
-      source-map-support: 0.5.21
-      tmp: 0.2.5
-      upath: 1.2.0
-    optionalDependencies:
-      typescript: 4.3.5
-    transitivePeerDependencies:
-      - bluebird
-      - supports-color
 
   '@pulumi/pulumi@3.189.0(typescript@5.9.2)':
     dependencies:
@@ -1888,8 +1778,6 @@ snapshots:
     transitivePeerDependencies:
       - bluebird
       - supports-color
-
-  '@pulumi/query@0.3.0': {}
 
   '@sigstore/bundle@2.3.2':
     dependencies:
@@ -1940,7 +1828,7 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 18.19.123
+      '@types/node': 24.2.1
       '@types/responselike': 1.0.3
 
   '@types/google-protobuf@3.15.12': {}
@@ -1949,11 +1837,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 18.19.123
-
-  '@types/node@18.19.123':
-    dependencies:
-      undici-types: 5.26.5
+      '@types/node': 24.2.1
 
   '@types/node@24.2.1':
     dependencies:
@@ -1961,7 +1845,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 18.19.123
+      '@types/node': 24.2.1
 
   '@types/semver@7.7.0': {}
 
@@ -2587,7 +2471,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.19.123
+      '@types/node': 24.2.1
       long: 5.3.2
 
   pump@3.0.3:
@@ -2787,11 +2671,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  typescript@4.3.5: {}
-
   typescript@5.9.2: {}
-
-  undici-types@5.26.5: {}
 
   undici-types@7.10.0: {}
 
