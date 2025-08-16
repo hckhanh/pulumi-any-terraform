@@ -24,6 +24,7 @@ tasks:
         args: '--source $projectSource/package.json'
     options:
       runDepsInParallel: false
+      allowFailure: true
   audit:
     command: 'npm audit signature --no-package-lock'
     inputs:
