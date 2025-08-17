@@ -25,6 +25,21 @@ export type AppConnectionAzureClientSecrets = import("./appConnectionAzureClient
 export const AppConnectionAzureClientSecrets: typeof import("./appConnectionAzureClientSecrets").AppConnectionAzureClientSecrets = null as any;
 utilities.lazyLoad(exports, ["AppConnectionAzureClientSecrets"], () => require("./appConnectionAzureClientSecrets"));
 
+export { AppConnectionBitbucketArgs, AppConnectionBitbucketState } from "./appConnectionBitbucket";
+export type AppConnectionBitbucket = import("./appConnectionBitbucket").AppConnectionBitbucket;
+export const AppConnectionBitbucket: typeof import("./appConnectionBitbucket").AppConnectionBitbucket = null as any;
+utilities.lazyLoad(exports, ["AppConnectionBitbucket"], () => require("./appConnectionBitbucket"));
+
+export { AppConnectionDatabricksArgs, AppConnectionDatabricksState } from "./appConnectionDatabricks";
+export type AppConnectionDatabricks = import("./appConnectionDatabricks").AppConnectionDatabricks;
+export const AppConnectionDatabricks: typeof import("./appConnectionDatabricks").AppConnectionDatabricks = null as any;
+utilities.lazyLoad(exports, ["AppConnectionDatabricks"], () => require("./appConnectionDatabricks"));
+
+export { AppConnectionFlyioArgs, AppConnectionFlyioState } from "./appConnectionFlyio";
+export type AppConnectionFlyio = import("./appConnectionFlyio").AppConnectionFlyio;
+export const AppConnectionFlyio: typeof import("./appConnectionFlyio").AppConnectionFlyio = null as any;
+utilities.lazyLoad(exports, ["AppConnectionFlyio"], () => require("./appConnectionFlyio"));
+
 export { AppConnectionGcpArgs, AppConnectionGcpState } from "./appConnectionGcp";
 export type AppConnectionGcp = import("./appConnectionGcp").AppConnectionGcp;
 export const AppConnectionGcp: typeof import("./appConnectionGcp").AppConnectionGcp = null as any;
@@ -40,6 +55,11 @@ export type AppConnectionMysql = import("./appConnectionMysql").AppConnectionMys
 export const AppConnectionMysql: typeof import("./appConnectionMysql").AppConnectionMysql = null as any;
 utilities.lazyLoad(exports, ["AppConnectionMysql"], () => require("./appConnectionMysql"));
 
+export { AppConnectionOracledbArgs, AppConnectionOracledbState } from "./appConnectionOracledb";
+export type AppConnectionOracledb = import("./appConnectionOracledb").AppConnectionOracledb;
+export const AppConnectionOracledb: typeof import("./appConnectionOracledb").AppConnectionOracledb = null as any;
+utilities.lazyLoad(exports, ["AppConnectionOracledb"], () => require("./appConnectionOracledb"));
+
 export { AppConnectionPostgresArgs, AppConnectionPostgresState } from "./appConnectionPostgres";
 export type AppConnectionPostgres = import("./appConnectionPostgres").AppConnectionPostgres;
 export const AppConnectionPostgres: typeof import("./appConnectionPostgres").AppConnectionPostgres = null as any;
@@ -49,6 +69,11 @@ export { AppConnectionRenderArgs, AppConnectionRenderState } from "./appConnecti
 export type AppConnectionRender = import("./appConnectionRender").AppConnectionRender;
 export const AppConnectionRender: typeof import("./appConnectionRender").AppConnectionRender = null as any;
 utilities.lazyLoad(exports, ["AppConnectionRender"], () => require("./appConnectionRender"));
+
+export { AppConnectionSupabaseArgs, AppConnectionSupabaseState } from "./appConnectionSupabase";
+export type AppConnectionSupabase = import("./appConnectionSupabase").AppConnectionSupabase;
+export const AppConnectionSupabase: typeof import("./appConnectionSupabase").AppConnectionSupabase = null as any;
+utilities.lazyLoad(exports, ["AppConnectionSupabase"], () => require("./appConnectionSupabase"));
 
 export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
 export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
@@ -69,6 +94,11 @@ export { GetGroupsResult } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetIdentityDetailsResult } from "./getIdentityDetails";
+export const getIdentityDetails: typeof import("./getIdentityDetails").getIdentityDetails = null as any;
+export const getIdentityDetailsOutput: typeof import("./getIdentityDetails").getIdentityDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityDetails","getIdentityDetailsOutput"], () => require("./getIdentityDetails"));
 
 export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
 export const getProjects: typeof import("./getProjects").getProjects = null as any;
@@ -245,6 +275,11 @@ export type SecretRotationMysqlCredentials = import("./secretRotationMysqlCreden
 export const SecretRotationMysqlCredentials: typeof import("./secretRotationMysqlCredentials").SecretRotationMysqlCredentials = null as any;
 utilities.lazyLoad(exports, ["SecretRotationMysqlCredentials"], () => require("./secretRotationMysqlCredentials"));
 
+export { SecretRotationOracledbCredentialsArgs, SecretRotationOracledbCredentialsState } from "./secretRotationOracledbCredentials";
+export type SecretRotationOracledbCredentials = import("./secretRotationOracledbCredentials").SecretRotationOracledbCredentials;
+export const SecretRotationOracledbCredentials: typeof import("./secretRotationOracledbCredentials").SecretRotationOracledbCredentials = null as any;
+utilities.lazyLoad(exports, ["SecretRotationOracledbCredentials"], () => require("./secretRotationOracledbCredentials"));
+
 export { SecretRotationPostgresCredentialsArgs, SecretRotationPostgresCredentialsState } from "./secretRotationPostgresCredentials";
 export type SecretRotationPostgresCredentials = import("./secretRotationPostgresCredentials").SecretRotationPostgresCredentials;
 export const SecretRotationPostgresCredentials: typeof import("./secretRotationPostgresCredentials").SecretRotationPostgresCredentials = null as any;
@@ -280,6 +315,21 @@ export type SecretSyncAzureKeyVault = import("./secretSyncAzureKeyVault").Secret
 export const SecretSyncAzureKeyVault: typeof import("./secretSyncAzureKeyVault").SecretSyncAzureKeyVault = null as any;
 utilities.lazyLoad(exports, ["SecretSyncAzureKeyVault"], () => require("./secretSyncAzureKeyVault"));
 
+export { SecretSyncBitbucketArgs, SecretSyncBitbucketState } from "./secretSyncBitbucket";
+export type SecretSyncBitbucket = import("./secretSyncBitbucket").SecretSyncBitbucket;
+export const SecretSyncBitbucket: typeof import("./secretSyncBitbucket").SecretSyncBitbucket = null as any;
+utilities.lazyLoad(exports, ["SecretSyncBitbucket"], () => require("./secretSyncBitbucket"));
+
+export { SecretSyncDatabricksArgs, SecretSyncDatabricksState } from "./secretSyncDatabricks";
+export type SecretSyncDatabricks = import("./secretSyncDatabricks").SecretSyncDatabricks;
+export const SecretSyncDatabricks: typeof import("./secretSyncDatabricks").SecretSyncDatabricks = null as any;
+utilities.lazyLoad(exports, ["SecretSyncDatabricks"], () => require("./secretSyncDatabricks"));
+
+export { SecretSyncFlyioArgs, SecretSyncFlyioState } from "./secretSyncFlyio";
+export type SecretSyncFlyio = import("./secretSyncFlyio").SecretSyncFlyio;
+export const SecretSyncFlyio: typeof import("./secretSyncFlyio").SecretSyncFlyio = null as any;
+utilities.lazyLoad(exports, ["SecretSyncFlyio"], () => require("./secretSyncFlyio"));
+
 export { SecretSyncGcpSecretManagerArgs, SecretSyncGcpSecretManagerState } from "./secretSyncGcpSecretManager";
 export type SecretSyncGcpSecretManager = import("./secretSyncGcpSecretManager").SecretSyncGcpSecretManager;
 export const SecretSyncGcpSecretManager: typeof import("./secretSyncGcpSecretManager").SecretSyncGcpSecretManager = null as any;
@@ -294,6 +344,11 @@ export { SecretSyncRenderArgs, SecretSyncRenderState } from "./secretSyncRender"
 export type SecretSyncRender = import("./secretSyncRender").SecretSyncRender;
 export const SecretSyncRender: typeof import("./secretSyncRender").SecretSyncRender = null as any;
 utilities.lazyLoad(exports, ["SecretSyncRender"], () => require("./secretSyncRender"));
+
+export { SecretSyncSupabaseArgs, SecretSyncSupabaseState } from "./secretSyncSupabase";
+export type SecretSyncSupabase = import("./secretSyncSupabase").SecretSyncSupabase;
+export const SecretSyncSupabase: typeof import("./secretSyncSupabase").SecretSyncSupabase = null as any;
+utilities.lazyLoad(exports, ["SecretSyncSupabase"], () => require("./secretSyncSupabase"));
 
 export { SecretTagArgs, SecretTagState } from "./secretTag";
 export type SecretTag = import("./secretTag").SecretTag;
@@ -322,16 +377,26 @@ const _module = {
                 return new AppConnectionAws(name, <any>undefined, { urn })
             case "infisical:index/appConnectionAzureClientSecrets:AppConnectionAzureClientSecrets":
                 return new AppConnectionAzureClientSecrets(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionBitbucket:AppConnectionBitbucket":
+                return new AppConnectionBitbucket(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionDatabricks:AppConnectionDatabricks":
+                return new AppConnectionDatabricks(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionFlyio:AppConnectionFlyio":
+                return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
                 return new AppConnectionGcp(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMssql:AppConnectionMssql":
                 return new AppConnectionMssql(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMysql:AppConnectionMysql":
                 return new AppConnectionMysql(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionOracledb:AppConnectionOracledb":
+                return new AppConnectionOracledb(name, <any>undefined, { urn })
             case "infisical:index/appConnectionPostgres:AppConnectionPostgres":
                 return new AppConnectionPostgres(name, <any>undefined, { urn })
             case "infisical:index/appConnectionRender:AppConnectionRender":
                 return new AppConnectionRender(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionSupabase:AppConnectionSupabase":
+                return new AppConnectionSupabase(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
@@ -398,6 +463,8 @@ const _module = {
                 return new SecretRotationMssqlCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMysqlCredentials:SecretRotationMysqlCredentials":
                 return new SecretRotationMysqlCredentials(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationOracledbCredentials:SecretRotationOracledbCredentials":
+                return new SecretRotationOracledbCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretRotationPostgresCredentials:SecretRotationPostgresCredentials":
                 return new SecretRotationPostgresCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretSync1password:SecretSync1password":
@@ -412,12 +479,20 @@ const _module = {
                 return new SecretSyncAzureDevops(name, <any>undefined, { urn })
             case "infisical:index/secretSyncAzureKeyVault:SecretSyncAzureKeyVault":
                 return new SecretSyncAzureKeyVault(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncBitbucket:SecretSyncBitbucket":
+                return new SecretSyncBitbucket(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncDatabricks:SecretSyncDatabricks":
+                return new SecretSyncDatabricks(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncFlyio:SecretSyncFlyio":
+                return new SecretSyncFlyio(name, <any>undefined, { urn })
             case "infisical:index/secretSyncGcpSecretManager:SecretSyncGcpSecretManager":
                 return new SecretSyncGcpSecretManager(name, <any>undefined, { urn })
             case "infisical:index/secretSyncGithub:SecretSyncGithub":
                 return new SecretSyncGithub(name, <any>undefined, { urn })
             case "infisical:index/secretSyncRender:SecretSyncRender":
                 return new SecretSyncRender(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncSupabase:SecretSyncSupabase":
+                return new SecretSyncSupabase(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
                 return new SecretTag(name, <any>undefined, { urn })
             default:
@@ -429,11 +504,16 @@ pulumi.runtime.registerResourceModule("infisical", "index/accessApprovalPolicy",
 pulumi.runtime.registerResourceModule("infisical", "index/appConnection1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAws", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClientSecrets", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionBitbucket", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
@@ -467,6 +547,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUs
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationOracledbCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationPostgresCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSync1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsParameterStore", _module)
@@ -474,9 +555,13 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAwsSecretsMa
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureAppConfiguration", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureDevops", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureKeyVault", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncBitbucket", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncDatabricks", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGcpSecretManager", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGithub", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
 pulumi.runtime.registerResourcePackage("infisical", {
     version: utilities.getVersion(),
