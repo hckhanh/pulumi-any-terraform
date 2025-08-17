@@ -22,8 +22,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -38,8 +38,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -54,8 +54,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -70,8 +70,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -86,8 +86,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -102,8 +102,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.189.0
-        version: 3.189.0(typescript@5.9.2)
+        specifier: 3.190.0
+        version: 3.190.0(typescript@5.9.2)
       '@types/node':
         specifier: 24.2.1
         version: 24.2.1
@@ -460,8 +460,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@pulumi/pulumi@3.189.0':
-    resolution: {integrity: sha512-QVhCypSdsf/k2n4UT2htN5RWr6jHJWHLvdDipCirAqDEPg+svrdUMY74ZATXA/KpGNJjy31w46nm1IcljkKpig==}
+  '@pulumi/pulumi@3.190.0':
+    resolution: {integrity: sha512-dYMqL3TxZQaMS3yWXub8/XnT7fbq2FpJlaP/qItn62Ycs009wWNpp2mg9QF5+BW1Hd2DiVmdwXZCA+29pss3pg==}
     engines: {node: '>=20'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -1743,7 +1743,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/pulumi@3.189.0(typescript@5.9.2)':
+  '@pulumi/pulumi@3.190.0(typescript@5.9.2)':
     dependencies:
       '@grpc/grpc-js': 1.13.4
       '@logdna/tail-file': 2.2.0
