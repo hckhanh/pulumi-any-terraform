@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .moon/cache
-          key: ${{ runner.os }}-moon-${{ hashFiles('.moon/cache/CACHEDIR.TAG') }}
+          key: ${{ runner.os }}-moon-${{ hashFiles('.moon/workspace.yml', 'moon.yml', '**/moon.yml', 'pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-moon-
       - name: Publish
