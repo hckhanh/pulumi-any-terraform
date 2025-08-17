@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    if: ${{ github.actor != 'renovate[bot]' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
