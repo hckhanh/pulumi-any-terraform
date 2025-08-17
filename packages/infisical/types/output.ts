@@ -61,6 +61,39 @@ export interface AppConnectionAzureClientSecretsCredentials {
     tenantId: string;
 }
 
+export interface AppConnectionBitbucketCredentials {
+    /**
+     * The Bitbucket API token for authentication.
+     */
+    apiToken: string;
+    /**
+     * The email address associated with the Bitbucket API token.
+     */
+    email: string;
+}
+
+export interface AppConnectionDatabricksCredentials {
+    /**
+     * The client ID of the Databricks service principal.
+     */
+    clientId: string;
+    /**
+     * The client secret of the Databricks service principal.
+     */
+    clientSecret: string;
+    /**
+     * The workspace URL of the Databricks instance.
+     */
+    workspaceUrl: string;
+}
+
+export interface AppConnectionFlyioCredentials {
+    /**
+     * The Fly.io access token for authentication.
+     */
+    accessToken: string;
+}
+
 export interface AppConnectionGcpCredentials {
     /**
      * The service account email to connect with GCP. The service account ID (the part of the email before '@') must be suffixed with the first two sections of your organization ID e.g. service-account-df92581a-0fe9@my-project.iam.gserviceaccount.com. For more details, refer to the documentation here https://infisical.com/docs/integrations/app-connections/gcp#configure-service-account-for-infisical
@@ -138,6 +171,41 @@ export interface AppConnectionMysqlCredentials {
     username: string;
 }
 
+export interface AppConnectionOracledbCredentials {
+    /**
+     * The name of the database to connect to.
+     */
+    database: string;
+    /**
+     * The hostname of the database server.
+     */
+    host: string;
+    /**
+     * The password to connect to the database with.
+     */
+    password: string;
+    /**
+     * The port number of the database.
+     */
+    port: number;
+    /**
+     * The SSL certificate to use for connection.
+     */
+    sslCertificate?: string;
+    /**
+     * Whether or not to use SSL when connecting to the database.
+     */
+    sslEnabled: boolean;
+    /**
+     * Whether or not to reject unauthorized SSL certificates.
+     */
+    sslRejectUnauthorized: boolean;
+    /**
+     * The username to connect to the database with.
+     */
+    username: string;
+}
+
 export interface AppConnectionPostgresCredentials {
     /**
      * The name of the database to connect to.
@@ -178,6 +246,17 @@ export interface AppConnectionRenderCredentials {
      * The API key to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/render
      */
     apiKey: string;
+}
+
+export interface AppConnectionSupabaseCredentials {
+    /**
+     * The Supabase access key for authentication.
+     */
+    accessKey: string;
+    /**
+     * The Supabase instance URL (e.g., https://your-domain.com).
+     */
+    instanceUrl?: string;
 }
 
 export interface DynamicSecretAwsIamConfiguration {
@@ -452,6 +531,21 @@ export interface GetGroupsGroup {
      * The role ID of the group in the organization
      */
     roleId: string;
+}
+
+export interface GetIdentityDetailsOrganization {
+    /**
+     * The ID of the organization
+     */
+    id: string;
+    /**
+     * The name of the organization
+     */
+    name: string;
+    /**
+     * The slug of the organization
+     */
+    slug: string;
 }
 
 export interface GetProjectsEnvironments {
@@ -1002,6 +1096,39 @@ export interface SecretRotationMysqlCredentialsSecretsMapping {
     username: string;
 }
 
+export interface SecretRotationOracledbCredentialsParameters {
+    /**
+     * The username of the first login to rotate passwords for. This user must already exists in your database.
+     */
+    username1: string;
+    /**
+     * The username of the second login to rotate passwords for. This user must already exists in your database.
+     */
+    username2: string;
+}
+
+export interface SecretRotationOracledbCredentialsRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationOracledbCredentialsSecretsMapping {
+    /**
+     * The name of the secret that the generated password will be mapped to.
+     */
+    password: string;
+    /**
+     * The name of the secret that the active username will be mapped to.
+     */
+    username: string;
+}
+
 export interface SecretRotationPostgresCredentialsParameters {
     /**
      * The username of the first login to rotate passwords for. This user must already exists in your database.
@@ -1240,6 +1367,80 @@ export interface SecretSyncAzureKeyVaultSyncOptions {
     keySchema?: string;
 }
 
+export interface SecretSyncBitbucketDestinationConfig {
+    /**
+     * The Bitbucket deployment environment ID (optional).
+     */
+    environmentId?: string;
+    /**
+     * The Bitbucket repository slug to sync secrets to.
+     */
+    repositorySlug: string;
+    /**
+     * The Bitbucket workspace slug.
+     */
+    workspaceSlug: string;
+}
+
+export interface SecretSyncBitbucketSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Bitbucket. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Bitbucket destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncDatabricksDestinationConfig {
+    /**
+     * The Databricks secret scope to sync secrets to.
+     */
+    scope: string;
+}
+
+export interface SecretSyncDatabricksSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Databricks. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Databricks destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncFlyioDestinationConfig {
+    /**
+     * The Fly.io app ID to sync secrets to.
+     */
+    appId: string;
+}
+
+export interface SecretSyncFlyioSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Fly.io. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Fly.io destination.
+     */
+    keySchema?: string;
+}
+
 export interface SecretSyncGcpSecretManagerDestinationConfig {
     /**
      * The ID of the GCP project to sync with
@@ -1334,6 +1535,32 @@ export interface SecretSyncRenderSyncOptions {
     initialSyncBehavior: string;
     /**
      * The format to use for structuring secret keys in the Render destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncSupabaseDestinationConfig {
+    /**
+     * The Supabase project ID to sync secrets to.
+     */
+    projectId: string;
+    /**
+     * The Supabase project name (optional).
+     */
+    projectName?: string;
+}
+
+export interface SecretSyncSupabaseSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Supabase. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Supabase destination.
      */
     keySchema?: string;
 }
