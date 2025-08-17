@@ -25,7 +25,7 @@
     "typescript": "5.9.2"
   },
   "peerDependencies": {
-    "@pulumi/pulumi": ">=3.189.0"
+    "@pulumi/pulumi": "3.190.0"
   },
   "files": [
     "bin",
