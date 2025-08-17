@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  fix:
-    name: Fix
+  apply:
+    name: Apply automated fixes
     runs-on: ubuntu-latest
     permissions:
       contents: read
