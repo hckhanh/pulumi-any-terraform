@@ -14,5 +14,6 @@
   ],
   "postUpdateOptions": ["pnpmDedupe"],
   "timezone": "Asia/Ho_Chi_Minh",
+  "gitIgnoredAuthors": ["autofix-ci[bot]"],
   "packageRules": []
 }
