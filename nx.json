@@ -24,6 +24,18 @@
       }
     }
   ],
+  "release": {
+    "projects": ["packages/**/*"],
+    "projectsRelationship": "independent",
+    "version": {
+      "conventionalCommits": true
+    },
+    "changelog": {
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
+    }
+  },
   "tui": {
     "enabled": false
   },
