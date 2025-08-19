@@ -72,6 +72,17 @@ export interface AppConnectionBitbucketCredentials {
     email: string;
 }
 
+export interface AppConnectionCloudflareCredentials {
+    /**
+     * The Cloudflare Account ID. This can be found in the sidebar of your Cloudflare dashboard.
+     */
+    accountId: string;
+    /**
+     * The Cloudflare API token with the necessary permissions to manage Workers scripts. The token should have Zone:Zone:Read, Zone:Zone Settings:Read, and Zone:Zone:Edit permissions.
+     */
+    apiToken: string;
+}
+
 export interface AppConnectionDatabricksCredentials {
     /**
      * The client ID of the Databricks service principal.
@@ -1393,6 +1404,54 @@ export interface SecretSyncBitbucketSyncOptions {
     initialSyncBehavior: string;
     /**
      * The format to use for structuring secret keys in the Bitbucket destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncCloudflarePagesDestinationConfig {
+    /**
+     * The Cloudflare Pages environment (production, preview) where the secrets will be synced
+     */
+    environment: string;
+    /**
+     * The Cloudflare Pages project name where the secrets will be synced
+     */
+    projectName: string;
+}
+
+export interface SecretSyncCloudflarePagesSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Cloudflare Pages. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Cloudflare Pages destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncCloudflareWorkersDestinationConfig {
+    /**
+     * The Cloudflare Workers script ID where the secrets will be synced
+     */
+    scriptId: string;
+}
+
+export interface SecretSyncCloudflareWorkersSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Cloudflare Workers. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the Cloudflare Workers destination.
      */
     keySchema?: string;
 }

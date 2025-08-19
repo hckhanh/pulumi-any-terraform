@@ -1,7 +1,7 @@
 {
   "name": "pulumi-infisical",
   "description": "A Pulumi provider for managing Infisical secrets management platform, dynamically bridged from the Terraform Infisical provider with support for projects, secrets, identity management, integrations, and access controls.",
-  "version": "0.15.35",
+  "version": "0.15.36",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",
@@ -54,8 +54,8 @@
     "version": "0.8.0",
     "parameterization": {
       "name": "infisical",
-      "version": "0.15.30",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS4zMCJ9fQ=="
+      "version": "0.15.31",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS4zMSJ9fQ=="
     }
   }
 }

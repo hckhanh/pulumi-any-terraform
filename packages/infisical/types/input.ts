@@ -72,6 +72,17 @@ export interface AppConnectionBitbucketCredentials {
     email: pulumi.Input<string>;
 }
 
+export interface AppConnectionCloudflareCredentials {
+    /**
+     * The Cloudflare Account ID. This can be found in the sidebar of your Cloudflare dashboard.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * The Cloudflare API token with the necessary permissions to manage Workers scripts. The token should have Zone:Zone:Read, Zone:Zone Settings:Read, and Zone:Zone:Edit permissions.
+     */
+    apiToken: pulumi.Input<string>;
+}
+
 export interface AppConnectionDatabricksCredentials {
     /**
      * The client ID of the Databricks service principal.
@@ -1381,6 +1392,54 @@ export interface SecretSyncBitbucketSyncOptions {
     initialSyncBehavior: pulumi.Input<string>;
     /**
      * The format to use for structuring secret keys in the Bitbucket destination.
+     */
+    keySchema?: pulumi.Input<string>;
+}
+
+export interface SecretSyncCloudflarePagesDestinationConfig {
+    /**
+     * The Cloudflare Pages environment (production, preview) where the secrets will be synced
+     */
+    environment: pulumi.Input<string>;
+    /**
+     * The Cloudflare Pages project name where the secrets will be synced
+     */
+    projectName: pulumi.Input<string>;
+}
+
+export interface SecretSyncCloudflarePagesSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Cloudflare Pages. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion?: pulumi.Input<boolean>;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
+     */
+    initialSyncBehavior: pulumi.Input<string>;
+    /**
+     * The format to use for structuring secret keys in the Cloudflare Pages destination.
+     */
+    keySchema?: pulumi.Input<string>;
+}
+
+export interface SecretSyncCloudflareWorkersDestinationConfig {
+    /**
+     * The Cloudflare Workers script ID where the secrets will be synced
+     */
+    scriptId: pulumi.Input<string>;
+}
+
+export interface SecretSyncCloudflareWorkersSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Cloudflare Workers. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion?: pulumi.Input<boolean>;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination, import-prioritize-source, import-prioritize-destination
+     */
+    initialSyncBehavior: pulumi.Input<string>;
+    /**
+     * The format to use for structuring secret keys in the Cloudflare Workers destination.
      */
     keySchema?: pulumi.Input<string>;
 }

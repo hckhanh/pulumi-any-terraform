@@ -30,6 +30,11 @@ export type AppConnectionBitbucket = import("./appConnectionBitbucket").AppConne
 export const AppConnectionBitbucket: typeof import("./appConnectionBitbucket").AppConnectionBitbucket = null as any;
 utilities.lazyLoad(exports, ["AppConnectionBitbucket"], () => require("./appConnectionBitbucket"));
 
+export { AppConnectionCloudflareArgs, AppConnectionCloudflareState } from "./appConnectionCloudflare";
+export type AppConnectionCloudflare = import("./appConnectionCloudflare").AppConnectionCloudflare;
+export const AppConnectionCloudflare: typeof import("./appConnectionCloudflare").AppConnectionCloudflare = null as any;
+utilities.lazyLoad(exports, ["AppConnectionCloudflare"], () => require("./appConnectionCloudflare"));
+
 export { AppConnectionDatabricksArgs, AppConnectionDatabricksState } from "./appConnectionDatabricks";
 export type AppConnectionDatabricks = import("./appConnectionDatabricks").AppConnectionDatabricks;
 export const AppConnectionDatabricks: typeof import("./appConnectionDatabricks").AppConnectionDatabricks = null as any;
@@ -320,6 +325,16 @@ export type SecretSyncBitbucket = import("./secretSyncBitbucket").SecretSyncBitb
 export const SecretSyncBitbucket: typeof import("./secretSyncBitbucket").SecretSyncBitbucket = null as any;
 utilities.lazyLoad(exports, ["SecretSyncBitbucket"], () => require("./secretSyncBitbucket"));
 
+export { SecretSyncCloudflarePagesArgs, SecretSyncCloudflarePagesState } from "./secretSyncCloudflarePages";
+export type SecretSyncCloudflarePages = import("./secretSyncCloudflarePages").SecretSyncCloudflarePages;
+export const SecretSyncCloudflarePages: typeof import("./secretSyncCloudflarePages").SecretSyncCloudflarePages = null as any;
+utilities.lazyLoad(exports, ["SecretSyncCloudflarePages"], () => require("./secretSyncCloudflarePages"));
+
+export { SecretSyncCloudflareWorkersArgs, SecretSyncCloudflareWorkersState } from "./secretSyncCloudflareWorkers";
+export type SecretSyncCloudflareWorkers = import("./secretSyncCloudflareWorkers").SecretSyncCloudflareWorkers;
+export const SecretSyncCloudflareWorkers: typeof import("./secretSyncCloudflareWorkers").SecretSyncCloudflareWorkers = null as any;
+utilities.lazyLoad(exports, ["SecretSyncCloudflareWorkers"], () => require("./secretSyncCloudflareWorkers"));
+
 export { SecretSyncDatabricksArgs, SecretSyncDatabricksState } from "./secretSyncDatabricks";
 export type SecretSyncDatabricks = import("./secretSyncDatabricks").SecretSyncDatabricks;
 export const SecretSyncDatabricks: typeof import("./secretSyncDatabricks").SecretSyncDatabricks = null as any;
@@ -379,6 +394,8 @@ const _module = {
                 return new AppConnectionAzureClientSecrets(name, <any>undefined, { urn })
             case "infisical:index/appConnectionBitbucket:AppConnectionBitbucket":
                 return new AppConnectionBitbucket(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionCloudflare:AppConnectionCloudflare":
+                return new AppConnectionCloudflare(name, <any>undefined, { urn })
             case "infisical:index/appConnectionDatabricks:AppConnectionDatabricks":
                 return new AppConnectionDatabricks(name, <any>undefined, { urn })
             case "infisical:index/appConnectionFlyio:AppConnectionFlyio":
@@ -481,6 +498,10 @@ const _module = {
                 return new SecretSyncAzureKeyVault(name, <any>undefined, { urn })
             case "infisical:index/secretSyncBitbucket:SecretSyncBitbucket":
                 return new SecretSyncBitbucket(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncCloudflarePages:SecretSyncCloudflarePages":
+                return new SecretSyncCloudflarePages(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncCloudflareWorkers:SecretSyncCloudflareWorkers":
+                return new SecretSyncCloudflareWorkers(name, <any>undefined, { urn })
             case "infisical:index/secretSyncDatabricks:SecretSyncDatabricks":
                 return new SecretSyncDatabricks(name, <any>undefined, { urn })
             case "infisical:index/secretSyncFlyio:SecretSyncFlyio":
@@ -505,6 +526,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnection1password
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAws", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClientSecrets", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionBitbucket", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflare", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
@@ -556,6 +578,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureAppConf
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureDevops", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncAzureKeyVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncBitbucket", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncCloudflarePages", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncCloudflareWorkers", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGcpSecretManager", _module)
