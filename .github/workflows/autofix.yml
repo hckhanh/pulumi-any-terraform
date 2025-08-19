@@ -31,6 +31,8 @@ jobs:
         run: pnpm install
       - name: Print environment info
         run: pnpm nx report
+      - name: Set SHAs
+        uses: nrwl/nx-set-shas@v4
       - name: Fix
         run: pnpm nx affected -t fix
       - name: Update package lock file

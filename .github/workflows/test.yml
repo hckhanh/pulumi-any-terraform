@@ -27,5 +27,7 @@ jobs:
         run: pnpm install
       - name: Print environment info
         run: pnpm nx report
+      - name: Set SHAs
+        uses: nrwl/nx-set-shas@v4
       - name: Check
         run: pnpm nx affected --targets=lint,audit,build
