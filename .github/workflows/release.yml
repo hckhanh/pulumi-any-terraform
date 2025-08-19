@@ -31,4 +31,4 @@ jobs:
       - name: Print environment info
         run: pnpm nx report
       - name: Create release tags
-        run: pnpm nx release
+        run: pnpm nx release --skip-publish
