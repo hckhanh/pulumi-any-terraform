@@ -1,0 +1,59 @@
+{
+  "name": "pulumi-teamcity",
+  "description": "A Pulumi provider for managing TeamCity CI/CD platform, dynamically bridged from the Terraform TeamCity provider with support for projects, build configurations, VCS roots, users, and team management.",
+  "version": "0.0.83",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/teamcity"
+  },
+  "private": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.190.0",
+    "@types/node": "24.2.1",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "teamcity",
+    "ci-cd",
+    "continuous-integration",
+    "continuous-deployment",
+    "build-management",
+    "jetbrains",
+    "devops",
+    "automation",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.8.0",
+    "parameterization": {
+      "name": "teamcity",
+      "version": "0.0.83",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuODMifX0="
+    }
+  }
+}
