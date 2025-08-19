@@ -1,9 +1,10 @@
 name: Publish
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - '*@*.*.*'
 
 jobs:
   npm-packages:
@@ -12,20 +13,28 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       id-token: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Setup toolchains
-        uses: moonrepo/setup-toolchain@v0
+          filter: tree:0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          auto-install: true
-      - name: Publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-          moon :publish
+          node-version-file: 'package.json'
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: pnpm install
+      - name: Print environment info
+        run: pnpm nx report
+      - name: Publish packages
+        run: pnpm nx release publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
