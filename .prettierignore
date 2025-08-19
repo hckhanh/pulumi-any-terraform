@@ -1,2 +1,5 @@
 **/package.json
 **/*.ts
+
+/.nx/cache
+/.nx/workspace-data

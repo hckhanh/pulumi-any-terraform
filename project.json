@@ -1,0 +1,40 @@
+{
+  "$schema": "./node_modules/nx/schemas/project-schema.json",
+  "name": "root",
+  "projectType": "library",
+  "namedInputs": {
+    "syncpack": [
+      "{projectRoot}/**/package.json",
+      "{workspaceRoot}/.syncpackrc.json"
+    ]
+  },
+  "targets": {
+    "syncpack.lint": {
+      "cache": true,
+      "inputs": ["syncpack"]
+    },
+    "syncpack.format": {
+      "cache": true,
+      "inputs": ["syncpack"],
+      "outputs": ["{projectRoot}/**/package.json"]
+    },
+    "syncpack.format.check": {
+      "cache": true,
+      "inputs": ["syncpack"]
+    },
+    "syncpack.fix": {
+      "cache": true,
+      "inputs": ["syncpack"],
+      "outputs": ["{projectRoot}/**/package.json"]
+    },
+    "fix": {
+      "cache": true,
+      "dependsOn": ["syncpack.fix", "syncpack.format"],
+      "parallelism": false
+    },
+    "format": {
+      "cache": true,
+      "dependsOn": ["syncpack.lint", "syncpack.format.check"]
+    }
+  }
+}

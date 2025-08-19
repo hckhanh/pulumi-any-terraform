@@ -8,7 +8,19 @@
     "url": "https://www.khanh.id"
   },
   "private": true,
+  "scripts": {
+    "syncpack.fix": "syncpack fix",
+    "syncpack.format": "syncpack format",
+    "syncpack.format.check": "pnpm syncpack.format --check",
+    "syncpack.lint": "syncpack lint"
+  },
+  "dependencies": {},
   "devDependencies": {
+    "@nx/js": "21.4.0",
+    "@swc-node/register": "1.11.1",
+    "@swc/core": "1.13.3",
+    "@swc/helpers": "0.5.17",
+    "nx": "21.4.0",
     "prettier": "3.6.2",
     "syncpack": "14.0.0-alpha.19"
   },
