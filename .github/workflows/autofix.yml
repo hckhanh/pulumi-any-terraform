@@ -31,7 +31,7 @@ jobs:
       - name: Print environment info
         run: pnpm nx report
       - name: Fix
-        run: nx affected -t fix
+        run: pnpm nx affected -t fix
       - name: Update package lock file
         run: pnpm install --no-frozen-lockfile
       - name: Submit autofix
