@@ -28,7 +28,8 @@
     "projects": ["packages/**/*"],
     "projectsRelationship": "independent",
     "version": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "preVersionCommand": "pnpm nx run-many -t build"
     },
     "changelog": {
       "projectChangelogs": {
