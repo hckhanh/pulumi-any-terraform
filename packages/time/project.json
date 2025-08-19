@@ -11,6 +11,13 @@
       "options": {
         "cwd": "packages/time"
       }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/time"
+      }
     }
   }
 }

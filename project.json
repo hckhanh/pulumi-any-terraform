@@ -4,7 +4,7 @@
   "projectType": "library",
   "namedInputs": {
     "syncpack": [
-      "{projectRoot}/**/package.json",
+      "{projectRoot}/package.json",
       "{workspaceRoot}/.syncpackrc.json"
     ]
   },
@@ -16,7 +16,7 @@
     "syncpack.format": {
       "cache": true,
       "inputs": ["syncpack"],
-      "outputs": ["{projectRoot}/**/package.json"]
+      "outputs": ["{projectRoot}/package.json"]
     },
     "syncpack.format.check": {
       "cache": true,
@@ -25,7 +25,7 @@
     "syncpack.fix": {
       "cache": true,
       "inputs": ["syncpack"],
-      "outputs": ["{projectRoot}/**/package.json"]
+      "outputs": ["{projectRoot}/package.json"]
     },
     "fix": {
       "cache": true,

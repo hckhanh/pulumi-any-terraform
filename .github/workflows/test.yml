@@ -10,13 +10,21 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Setup toolchains
-        uses: moonrepo/setup-toolchain@v0
+          filter: tree:0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          auto-install: true
+          node-version-file: 'package.json'
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: pnpm install
+      - name: Print environment info
+        run: pnpm nx report
       - name: Check
-        run: moon :lint :audit :build
+        run: nx affected --targets=lint,audit,build

@@ -9,12 +9,10 @@ jobs:
   create-release-tags:
     name: Create Release Tags
     if: ${{ github.actor != 'renovate[bot]' }}
-
     runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v5
