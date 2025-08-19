@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "teamcity",
+  "projectType": "library",
+  "sourceRoot": "packages/teamcity/src",
+  "targets": {
+    "build": {
+      "command": "node ./scripts/postinstall.js",
+      "inputs": ["sources"],
+      "outputs": ["{projectRoot}/bin"],
+      "options": {
+        "cwd": "packages/teamcity"
+      }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/teamcity"
+      }
+    }
+  }
+}
