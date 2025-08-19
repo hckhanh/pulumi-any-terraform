@@ -27,4 +27,4 @@ jobs:
       - name: Print environment info
         run: pnpm nx report
       - name: Check
-        run: nx affected --targets=lint,audit,build
+        run: pnpm nx affected --targets=lint,audit,build
