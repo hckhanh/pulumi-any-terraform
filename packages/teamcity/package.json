@@ -1,0 +1,29 @@
+{
+  "name": "@pulumi/teamcity",
+  "description": "A Pulumi provider dynamically bridged from teamcity.",
+  "version": "0.0.83",
+  "repository": "https://github.com/jetbrains/terraform-provider-teamcity",
+  "main": "bin/index.js",
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "node ./scripts/postinstall.js"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.142.0",
+    "async-mutex": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "typescript": "^4.3.5"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.8.0",
+    "parameterization": {
+      "name": "teamcity",
+      "version": "0.0.83",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuODMifX0="
+    }
+  }
+}
