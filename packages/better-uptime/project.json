@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "better-uptime",
+  "projectType": "library",
+  "sourceRoot": "packages/better-uptime/src",
+  "targets": {
+    "build": {
+      "command": "node ./scripts/postinstall.js",
+      "inputs": ["sources"],
+      "outputs": ["{projectRoot}/bin"],
+      "options": {
+        "cwd": "packages/better-uptime"
+      }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/better-uptime"
+      }
+    }
+  }
+}

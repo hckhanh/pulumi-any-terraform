@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "logtail",
+  "projectType": "library",
+  "sourceRoot": "packages/logtail/src",
+  "targets": {
+    "build": {
+      "command": "node ./scripts/postinstall.js",
+      "inputs": ["sources"],
+      "outputs": ["{projectRoot}/bin"],
+      "options": {
+        "cwd": "packages/logtail"
+      }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/logtail"
+      }
+    }
+  }
+}

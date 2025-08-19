@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "namecheap",
+  "projectType": "library",
+  "sourceRoot": "packages/namecheap/src",
+  "targets": {
+    "build": {
+      "command": "node ./scripts/postinstall.js",
+      "inputs": ["sources"],
+      "outputs": ["{projectRoot}/bin"],
+      "options": {
+        "cwd": "packages/namecheap"
+      }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/namecheap"
+      }
+    }
+  }
+}

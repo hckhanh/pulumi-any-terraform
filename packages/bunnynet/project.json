@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "bunnynet",
+  "projectType": "library",
+  "sourceRoot": "packages/bunnynet/src",
+  "targets": {
+    "build": {
+      "command": "node ./scripts/postinstall.js",
+      "inputs": ["sources"],
+      "outputs": ["{projectRoot}/bin"],
+      "options": {
+        "cwd": "packages/bunnynet"
+      }
+    },
+    "audit": {
+      "command": "npm audit signature --no-package-lock",
+      "inputs": ["{projectRoot}/package.json"],
+      "options": {
+        "cwd": "packages/bunnynet"
+      }
+    }
+  }
+}
