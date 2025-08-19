@@ -46,6 +46,9 @@
     "timing"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
