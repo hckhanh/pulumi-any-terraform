@@ -6,8 +6,8 @@ on:
       - 'main'
 
 jobs:
-  npm-packages:
-    name: NPM Packages
+  create-release-tags:
+    name: Create Release Tags
     if: ${{ github.actor != 'renovate[bot]' }}
 
     runs-on: ubuntu-latest
@@ -32,5 +32,5 @@ jobs:
         run: pnpm install
       - name: Print environment info
         run: pnpm nx report
-      - name: Publish packages
+      - name: Create release tags
         run: pnpm nx release
