@@ -36,7 +36,7 @@ jobs:
       - name: Fix
         run: pnpm nx affected -t fix
       - name: Run Nx Self-Healing CI
-        run: pnpm npx nx fix-ci
+        run: pnpm nx fix-ci
         if: always()
       - name: Update package lock file
         run: pnpm install --no-frozen-lockfile

@@ -32,5 +32,5 @@ jobs:
       - name: Check
         run: pnpm nx affected --targets=lint,audit,build
       - name: Run Nx Self-Healing CI
-        run: pnpm npx nx fix-ci
+        run: pnpm nx fix-ci
         if: always()
