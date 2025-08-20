@@ -2,15 +2,6 @@
 node_modules
 package-lock.json
 
-# moon
-.moon/cache
-.moon/docker
-
-# Tanstack
-.tanstack
-.nitro
-.output
-
 # output
 bin
 out
