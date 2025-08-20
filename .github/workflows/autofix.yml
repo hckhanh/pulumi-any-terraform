@@ -35,6 +35,9 @@ jobs:
         uses: nrwl/nx-set-shas@v4
       - name: Fix
         run: pnpm nx affected -t fix
+      - name: Run Nx Self-Healing CI
+        run: pnpm npx nx fix-ci
+        if: always()
       - name: Update package lock file
         run: pnpm install --no-frozen-lockfile
       - name: Submit autofix

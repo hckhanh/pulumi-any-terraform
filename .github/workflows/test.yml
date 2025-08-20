@@ -31,3 +31,6 @@ jobs:
         uses: nrwl/nx-set-shas@v4
       - name: Check
         run: pnpm nx affected --targets=lint,audit,build
+      - name: Run Nx Self-Healing CI
+        run: pnpm npx nx fix-ci
+        if: always()
