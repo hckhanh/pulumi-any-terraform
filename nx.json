@@ -1,6 +1,5 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "nxCloudId": "68a52db5f8990856bf6a011c",
   "targetDefaults": {
     "build": {
       "cache": true
@@ -37,6 +36,12 @@
         "createRelease": "github"
       }
     }
+  },
+  "s3": {
+    "region": "auto",
+    "bucket": "nx-caches",
+    "forcePathStyle": true,
+    "localMode": "no-cache"
   },
   "tui": {
     "enabled": false

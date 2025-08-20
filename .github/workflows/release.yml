@@ -6,7 +6,10 @@ on:
       - 'main'
 
 env:
-  NX_CLOUD_ENCRYPTION_KEY: ${{ secrets.NX_CLOUD_ENCRYPTION_KEY }}
+  NX_KEY: ${{ secrets.NX_KEY }}
+  AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   create-release-tags:
