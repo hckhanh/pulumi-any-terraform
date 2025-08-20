@@ -6,6 +6,9 @@ on:
     tags:
       - '*@*.*.*'
 
+env:
+  NX_CLOUD_ENCRYPTION_KEY: ${{ secrets.NX_CLOUD_ENCRYPTION_KEY }}
+
 jobs:
   npm-packages:
     name: NPM Packages

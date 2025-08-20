@@ -5,6 +5,9 @@ on:
     branches:
       - 'main'
 
+env:
+  NX_CLOUD_ENCRYPTION_KEY: ${{ secrets.NX_CLOUD_ENCRYPTION_KEY }}
+
 jobs:
   create-release-tags:
     name: Create Release Tags

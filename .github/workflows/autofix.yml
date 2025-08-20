@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  NX_CLOUD_ENCRYPTION_KEY: ${{ secrets.NX_CLOUD_ENCRYPTION_KEY }}
+
 jobs:
   apply:
     name: Apply automated fixes

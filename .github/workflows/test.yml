@@ -6,6 +6,9 @@ on:
       - 'main'
   pull_request:
 
+env:
+  NX_CLOUD_ENCRYPTION_KEY: ${{ secrets.NX_CLOUD_ENCRYPTION_KEY }}
+
 jobs:
   test:
     name: Lint and Build
