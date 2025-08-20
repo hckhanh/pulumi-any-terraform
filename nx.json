@@ -1,10 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "build": {
-      "cache": true
-    }
-  },
+  "targetDefaults": { "build": { "cache": true } },
   "namedInputs": {
     "sources": ["{projectRoot}/package.json", "{projectRoot}/**/*.ts"]
   },
@@ -12,9 +8,7 @@
     {
       "plugin": "@nx/js/typescript",
       "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        },
+        "typecheck": { "targetName": "typecheck" },
         "build": {
           "targetName": "build",
           "configName": "tsconfig.lib.json",
@@ -31,16 +25,9 @@
       "conventionalCommits": true,
       "preVersionCommand": "pnpm nx run-many -t build"
     },
-    "changelog": {
-      "projectChangelogs": {
-        "createRelease": "github"
-      }
-    }
+    "changelog": { "projectChangelogs": { "createRelease": "github" } }
   },
-  "tui": {
-    "enabled": false
-  },
-  "sync": {
-    "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]
-  }
+  "tui": { "enabled": false },
+  "sync": { "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"] },
+  "nxCloudId": "68a511cdb51b57372b7d08c5"
 }
