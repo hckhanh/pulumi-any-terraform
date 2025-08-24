@@ -10,7 +10,7 @@
   },
   "targets": {
     "syncpack:fix": {
-      "command": "bun syncpack fix",
+      "command": "pnpm syncpack fix",
       "inputs": ["syncpack:workspace"],
       "cache": true,
       "options": {
@@ -18,7 +18,7 @@
       }
     },
     "syncpack:format": {
-      "command": "bun syncpack format",
+      "command": "pnpm syncpack format",
       "inputs": ["syncpack"],
       "cache": true,
       "dependsOn": ["syncpack:fix"],
@@ -27,7 +27,7 @@
       }
     },
     "syncpack:format:check": {
-      "command": "bun syncpack format --check",
+      "command": "pnpm syncpack format --check",
       "inputs": ["syncpack"],
       "cache": true,
       "options": {
@@ -35,7 +35,7 @@
       }
     },
     "syncpack:lint": {
-      "command": "bun syncpack lint",
+      "command": "pnpm syncpack lint",
       "inputs": ["syncpack:workspace"],
       "cache": true,
       "options": {
