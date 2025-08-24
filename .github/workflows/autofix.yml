@@ -35,7 +35,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Print environment info
+      - name: Show Nx report
         run: pnpm nx report
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
