@@ -42,6 +42,6 @@ jobs:
       - name: Fix
         run: pnpm nx affected -t fix
       - name: Update package lock file
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --fix-lockfile --no-frozen-lockfile
       - name: Submit autofix
         uses: autofix-ci/action@v1
