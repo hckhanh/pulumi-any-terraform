@@ -2,6 +2,8 @@ name: autofix.ci
 
 on:
   pull_request:
+    branches-ignore:
+      - renovate/**
   push:
     branches:
       - main
@@ -15,7 +17,6 @@ env:
 jobs:
   apply:
     name: Apply automated fixes
-    if: ${{ github.actor != 'renovate[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
