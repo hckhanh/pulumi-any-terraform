@@ -35,7 +35,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Print environment info
+      - name: Show Nx report
         run: pnpm nx report
       - name: Create release tags
         run: pnpm nx release --skip-publish

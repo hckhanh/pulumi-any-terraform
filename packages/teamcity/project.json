@@ -18,6 +18,42 @@
       "options": {
         "cwd": "packages/teamcity"
       }
+    },
+    "syncpack:fix": {
+      "command": "pnpm syncpack fix",
+      "inputs": ["syncpack:workspace"],
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
+    },
+    "syncpack:format": {
+      "command": "pnpm syncpack format",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "dependsOn": ["syncpack:fix"],
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
+    },
+    "syncpack:format:check": {
+      "command": "pnpm syncpack format --check",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
+    },
+    "syncpack:lint": {
+      "command": "pnpm syncpack lint",
+      "inputs": ["syncpack:workspace"],
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
+    },
+    "fix": {
+      "dependsOn": ["syncpack:format"]
     }
   }
 }
