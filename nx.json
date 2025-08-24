@@ -6,7 +6,17 @@
     }
   },
   "namedInputs": {
-    "sources": ["{projectRoot}/package.json", "{projectRoot}/**/*.ts"]
+    "sources": ["{projectRoot}/package.json", "{projectRoot}/**/*.ts"],
+    "syncpack": [
+      "{projectRoot}/package.json",
+      "{workspaceRoot}/.syncpackrc.json",
+      { "externalDependencies": ["syncpack"] }
+    ],
+    "syncpack:workspace": [
+      "{workspaceRoot}/**/package.json",
+      "{workspaceRoot}/.syncpackrc.json",
+      { "externalDependencies": ["syncpack"] }
+    ]
   },
   "plugins": [
     {

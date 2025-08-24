@@ -9,32 +9,41 @@
     ]
   },
   "targets": {
-    "syncpack.lint": {
+    "syncpack:fix": {
+      "command": "bun syncpack fix",
+      "inputs": ["syncpack:workspace"],
       "cache": true,
-      "inputs": ["syncpack"]
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
     },
-    "syncpack.format": {
-      "cache": true,
+    "syncpack:format": {
+      "command": "bun syncpack format",
       "inputs": ["syncpack"],
-      "outputs": ["{projectRoot}/package.json"]
-    },
-    "syncpack.format.check": {
       "cache": true,
-      "inputs": ["syncpack"]
+      "dependsOn": ["syncpack:fix"],
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
     },
-    "syncpack.fix": {
-      "cache": true,
+    "syncpack:format:check": {
+      "command": "bun syncpack format --check",
       "inputs": ["syncpack"],
-      "outputs": ["{projectRoot}/package.json"]
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
+    },
+    "syncpack:lint": {
+      "command": "bun syncpack lint",
+      "inputs": ["syncpack:workspace"],
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      }
     },
     "fix": {
-      "cache": true,
-      "dependsOn": ["syncpack.fix", "syncpack.format"],
-      "parallelism": false
-    },
-    "format": {
-      "cache": true,
-      "dependsOn": ["syncpack.lint", "syncpack.format.check"]
+      "dependsOn": ["syncpack:format"]
     }
   }
 }
