@@ -37,8 +37,8 @@
   "release": {
     "projects": ["packages/**/*"],
     "projectsRelationship": "independent",
+    "versionPlans": true,
     "version": {
-      "conventionalCommits": true,
       "preVersionCommand": "pnpm nx run-many -t build"
     },
     "changelog": {

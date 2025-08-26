@@ -35,40 +35,40 @@ export class StorageFile extends pulumi.CustomResource {
     /**
      * The SHA-256 hash of the stored file.
      */
-    public /*out*/ readonly checksum!: pulumi.Output<string>;
+    declare public /*out*/ readonly checksum: pulumi.Output<string>;
     /**
      * The to be stored in the file. Use <code>source</code> to upload files from the local disk.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Specifies the content type of the file.
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * The date and time when the file was created.
      */
-    public /*out*/ readonly dateCreated!: pulumi.Output<string>;
+    declare public /*out*/ readonly dateCreated: pulumi.Output<string>;
     /**
      * The date and time when the file was last modified.
      */
-    public /*out*/ readonly dateModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly dateModified: pulumi.Output<string>;
     /**
      * The path of the file within the storage zone.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The size of the file in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the
      * content directly.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * The ID of the storage zone where the file is stored.
      */
-    public readonly zone!: pulumi.Output<number>;
+    declare public readonly zone: pulumi.Output<number>;
 
     /**
      * Create a StorageFile resource with the given unique name, arguments, and options.
@@ -83,28 +83,28 @@ export class StorageFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageFileState | undefined;
-            resourceInputs["checksum"] = state ? state.checksum : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["dateCreated"] = state ? state.dateCreated : undefined;
-            resourceInputs["dateModified"] = state ? state.dateModified : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["checksum"] = state?.checksum;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["dateCreated"] = state?.dateCreated;
+            resourceInputs["dateModified"] = state?.dateModified;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as StorageFileArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["checksum"] = undefined /*out*/;
             resourceInputs["dateCreated"] = undefined /*out*/;
             resourceInputs["dateModified"] = undefined /*out*/;

@@ -36,38 +36,38 @@ export class PullzoneHostname extends pulumi.CustomResource {
      * The certificate for the hostname, in PEM format. ***Important***: the Bunny API will not return the certificate data, so
      * you'll have to make sure you're importing the correct certificate.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * The certificate private key for the hostname, in PEM format. ***Important***: the Bunny API will not return the
      * certificate key, so you'll have to make sure you're importing the correct certificate key.
      */
-    public readonly certificateKey!: pulumi.Output<string>;
+    declare public readonly certificateKey: pulumi.Output<string>;
     /**
      * Indicates whether SSL should be enforced for the hostname.
      */
-    public readonly forceSsl!: pulumi.Output<boolean>;
+    declare public readonly forceSsl: pulumi.Output<boolean>;
     /**
      * Indicates whether the hostname is internal (in the CDN domain) or provided by the user.
      */
-    public /*out*/ readonly isInternal!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isInternal: pulumi.Output<boolean>;
     /**
      * The hostname value for the domain name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the linked pull zone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The unique ID of the hostname.
      */
-    public /*out*/ readonly pullzoneHostnameId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneHostnameId: pulumi.Output<number>;
     /**
      * Indicates whether the hostname should support HTTPS. If a custom certificate is not provided via the
      * <code>certificate</code> attribute, a Domain-validated TLS certificate will be automatically obtained and managed by
      * Bunny. ***Important***: it is not possible to tell managed and custom certificates apart for imported resources.
      */
-    public readonly tlsEnabled!: pulumi.Output<boolean>;
+    declare public readonly tlsEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a PullzoneHostname resource with the given unique name, arguments, and options.
@@ -82,25 +82,25 @@ export class PullzoneHostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneHostnameState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["certificateKey"] = state ? state.certificateKey : undefined;
-            resourceInputs["forceSsl"] = state ? state.forceSsl : undefined;
-            resourceInputs["isInternal"] = state ? state.isInternal : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["pullzoneHostnameId"] = state ? state.pullzoneHostnameId : undefined;
-            resourceInputs["tlsEnabled"] = state ? state.tlsEnabled : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["certificateKey"] = state?.certificateKey;
+            resourceInputs["forceSsl"] = state?.forceSsl;
+            resourceInputs["isInternal"] = state?.isInternal;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["pullzoneHostnameId"] = state?.pullzoneHostnameId;
+            resourceInputs["tlsEnabled"] = state?.tlsEnabled;
         } else {
             const args = argsOrState as PullzoneHostnameArgs | undefined;
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["certificateKey"] = args ? args.certificateKey : undefined;
-            resourceInputs["forceSsl"] = args ? args.forceSsl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["tlsEnabled"] = args ? args.tlsEnabled : undefined;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["certificateKey"] = args?.certificateKey;
+            resourceInputs["forceSsl"] = args?.forceSsl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["tlsEnabled"] = args?.tlsEnabled;
             resourceInputs["isInternal"] = undefined /*out*/;
             resourceInputs["pullzoneHostnameId"] = undefined /*out*/;
         }

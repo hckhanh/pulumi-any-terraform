@@ -35,189 +35,189 @@ export class StreamLibrary extends pulumi.CustomResource {
     /**
      * The API key for accessing the stream library.
      */
-    public /*out*/ readonly apiKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiKey: pulumi.Output<string>;
     /**
      * The bitrate used for encoding 1080p videos, in kilobits per second.
      */
-    public readonly bitrate1080p!: pulumi.Output<number>;
+    declare public readonly bitrate1080p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 1440p videos, in kilobits per second.
      */
-    public readonly bitrate1440p!: pulumi.Output<number>;
+    declare public readonly bitrate1440p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 2160p videos, in kilobits per second.
      */
-    public readonly bitrate2160p!: pulumi.Output<number>;
+    declare public readonly bitrate2160p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 240p videos, in kilobits per second.
      */
-    public readonly bitrate240p!: pulumi.Output<number>;
+    declare public readonly bitrate240p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 360p videos, in kilobits per second.
      */
-    public readonly bitrate360p!: pulumi.Output<number>;
+    declare public readonly bitrate360p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 480p videos, in kilobits per second.
      */
-    public readonly bitrate480p!: pulumi.Output<number>;
+    declare public readonly bitrate480p: pulumi.Output<number>;
     /**
      * The bitrate used for encoding 720p videos, in kilobits per second.
      */
-    public readonly bitrate720p!: pulumi.Output<number>;
+    declare public readonly bitrate720p: pulumi.Output<number>;
     /**
      * Indicates whether CDN token authentication is required.
      */
-    public readonly cdnTokenAuthenticationRequired!: pulumi.Output<boolean>;
+    declare public readonly cdnTokenAuthenticationRequired: pulumi.Output<boolean>;
     /**
      * Indicates whether content tagging is enabled.
      */
-    public readonly contentTaggingEnabled!: pulumi.Output<boolean>;
+    declare public readonly contentTaggingEnabled: pulumi.Output<boolean>;
     /**
      * Determines direct play URLs are enabled.
      */
-    public readonly directPlayEnabled!: pulumi.Output<boolean>;
+    declare public readonly directPlayEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the requests without a referrer are blocked.
      */
-    public readonly directUrlFileAccessBlocked!: pulumi.Output<boolean>;
+    declare public readonly directUrlFileAccessBlocked: pulumi.Output<boolean>;
     /**
      * Indicates whether the MediaCage basic DRM is enabled
      */
-    public readonly drmMediacageBasicEnabled!: pulumi.Output<boolean>;
+    declare public readonly drmMediacageBasicEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the Early-Play feature is enabled.
      */
-    public readonly earlyPlayEnabled!: pulumi.Output<boolean>;
+    declare public readonly earlyPlayEnabled: pulumi.Output<boolean>;
     /**
      * Options: `Free`, `Premium`
      */
-    public readonly encodingTier!: pulumi.Output<string>;
+    declare public readonly encodingTier: pulumi.Output<string>;
     /**
      * Indicates whether Just-In-Time Encoding is enabled
      */
-    public readonly jitEncoding!: pulumi.Output<boolean>;
+    declare public readonly jitEncoding: pulumi.Output<boolean>;
     /**
      * Indicates whether the MP4 fallback feature is enabled.
      */
-    public readonly mp4FallbackEnabled!: pulumi.Output<boolean>;
+    declare public readonly mp4FallbackEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether multiple output audio track support is enabled.
      */
-    public readonly multiAudioTrackSupportEnabled!: pulumi.Output<boolean>;
+    declare public readonly multiAudioTrackSupportEnabled: pulumi.Output<boolean>;
     /**
      * The name of the stream library.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates whether to keep original files after encoding.
      */
-    public readonly originalFilesKeep!: pulumi.Output<boolean>;
+    declare public readonly originalFilesKeep: pulumi.Output<boolean>;
     /**
      * Options: `av1`, `hevc`, `vp9`, `x264`
      */
-    public readonly outputCodecs!: pulumi.Output<string[]>;
+    declare public readonly outputCodecs: pulumi.Output<string[]>;
     /**
      * The background color of the captions in the video player.
      */
-    public readonly playerCaptionsBackgroundColor!: pulumi.Output<string>;
+    declare public readonly playerCaptionsBackgroundColor: pulumi.Output<string>;
     /**
      * The font color of the captions in the video player.
      */
-    public readonly playerCaptionsFontColor!: pulumi.Output<string>;
+    declare public readonly playerCaptionsFontColor: pulumi.Output<string>;
     /**
      * The font size of the captions in the video player.
      */
-    public readonly playerCaptionsFontSize!: pulumi.Output<number>;
+    declare public readonly playerCaptionsFontSize: pulumi.Output<number>;
     /**
      * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`,
      * `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
      */
-    public readonly playerControls!: pulumi.Output<string[]>;
+    declare public readonly playerControls: pulumi.Output<string[]>;
     /**
      * Custom HTML to be included in the head of the video player.
      */
-    public readonly playerCustomHead!: pulumi.Output<string>;
+    declare public readonly playerCustomHead: pulumi.Output<string>;
     /**
      * Options: `arial`, `inter`, `lato`, `oswald`, `raleway`, `roboto`, `rubik`, `ubuntu`
      */
-    public readonly playerFontFamily!: pulumi.Output<string>;
+    declare public readonly playerFontFamily: pulumi.Output<string>;
     /**
      * Specifies the language for the video player interface.
      */
-    public readonly playerLanguage!: pulumi.Output<string>;
+    declare public readonly playerLanguage: pulumi.Output<string>;
     /**
      * Customizes the appearance of the video player.
      */
-    public readonly playerPrimaryColor!: pulumi.Output<string>;
+    declare public readonly playerPrimaryColor: pulumi.Output<string>;
     /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */
-    public readonly playerWatchtimeHeatmapEnabled!: pulumi.Output<boolean>;
+    declare public readonly playerWatchtimeHeatmapEnabled: pulumi.Output<boolean>;
     /**
      * The ID of the linked pullzone.
      */
-    public /*out*/ readonly pullzone!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzone: pulumi.Output<number>;
     /**
      * The list of allowed referrer domains allowed to access videos in this library.
      */
-    public readonly referersAlloweds!: pulumi.Output<string[]>;
+    declare public readonly referersAlloweds: pulumi.Output<string[]>;
     /**
      * The list of blocked referrer domains blocked from accessing videos in this library.
      */
-    public readonly referersBlockeds!: pulumi.Output<string[]>;
+    declare public readonly referersBlockeds: pulumi.Output<string[]>;
     /**
      * A list of resolutions available for the videos.
      */
-    public readonly resolutions!: pulumi.Output<string[]>;
+    declare public readonly resolutions: pulumi.Output<string[]>;
     /**
      * The ID of the linked storage zone.
      */
-    public /*out*/ readonly storageZone!: pulumi.Output<number>;
-    public /*out*/ readonly streamLibraryId!: pulumi.Output<number>;
+    declare public /*out*/ readonly storageZone: pulumi.Output<number>;
+    declare public /*out*/ readonly streamLibraryId: pulumi.Output<number>;
     /**
      * Indicates whether the automatic audio transcribing is currently enabled for this zone.
      */
-    public readonly transcribingEnabled!: pulumi.Output<boolean>;
+    declare public readonly transcribingEnabled: pulumi.Output<boolean>;
     /**
      * The list of languages that the captions will be automatically transcribed to.
      */
-    public readonly transcribingLanguages!: pulumi.Output<string[]>;
+    declare public readonly transcribingLanguages: pulumi.Output<string[]>;
     /**
      * Indicates whether automatic transcribing description generation is currently enabled.
      */
-    public readonly transcribingSmartDescriptionEnabled!: pulumi.Output<boolean>;
+    declare public readonly transcribingSmartDescriptionEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether automatic transcribing title generation is currently enabled.
      */
-    public readonly transcribingSmartTitleEnabled!: pulumi.Output<boolean>;
+    declare public readonly transcribingSmartTitleEnabled: pulumi.Output<boolean>;
     /**
      * The URL of the VAST tag for ad integration.
      */
-    public readonly vastTagUrl!: pulumi.Output<string>;
+    declare public readonly vastTagUrl: pulumi.Output<string>;
     /**
      * Indicates whether the player token authentication is enabled
      */
-    public readonly viewTokenAuthenticationRequired!: pulumi.Output<boolean>;
+    declare public readonly viewTokenAuthenticationRequired: pulumi.Output<boolean>;
     /**
      * The height of the watermark (in %).
      */
-    public readonly watermarkHeight!: pulumi.Output<number>;
+    declare public readonly watermarkHeight: pulumi.Output<number>;
     /**
      * The left offset of the watermark position (in %).
      */
-    public readonly watermarkPositionLeft!: pulumi.Output<number>;
+    declare public readonly watermarkPositionLeft: pulumi.Output<number>;
     /**
      * The top offset of the watermark position (in %).
      */
-    public readonly watermarkPositionTop!: pulumi.Output<number>;
+    declare public readonly watermarkPositionTop: pulumi.Output<number>;
     /**
      * The width of the watermark (in %).
      */
-    public readonly watermarkWidth!: pulumi.Output<number>;
+    declare public readonly watermarkWidth: pulumi.Output<number>;
     /**
      * The URL for webhook notifications.
      */
-    public readonly webhookUrl!: pulumi.Output<string>;
+    declare public readonly webhookUrl: pulumi.Output<string>;
 
     /**
      * Create a StreamLibrary resource with the given unique name, arguments, and options.
@@ -232,98 +232,98 @@ export class StreamLibrary extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamLibraryState | undefined;
-            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
-            resourceInputs["bitrate1080p"] = state ? state.bitrate1080p : undefined;
-            resourceInputs["bitrate1440p"] = state ? state.bitrate1440p : undefined;
-            resourceInputs["bitrate2160p"] = state ? state.bitrate2160p : undefined;
-            resourceInputs["bitrate240p"] = state ? state.bitrate240p : undefined;
-            resourceInputs["bitrate360p"] = state ? state.bitrate360p : undefined;
-            resourceInputs["bitrate480p"] = state ? state.bitrate480p : undefined;
-            resourceInputs["bitrate720p"] = state ? state.bitrate720p : undefined;
-            resourceInputs["cdnTokenAuthenticationRequired"] = state ? state.cdnTokenAuthenticationRequired : undefined;
-            resourceInputs["contentTaggingEnabled"] = state ? state.contentTaggingEnabled : undefined;
-            resourceInputs["directPlayEnabled"] = state ? state.directPlayEnabled : undefined;
-            resourceInputs["directUrlFileAccessBlocked"] = state ? state.directUrlFileAccessBlocked : undefined;
-            resourceInputs["drmMediacageBasicEnabled"] = state ? state.drmMediacageBasicEnabled : undefined;
-            resourceInputs["earlyPlayEnabled"] = state ? state.earlyPlayEnabled : undefined;
-            resourceInputs["encodingTier"] = state ? state.encodingTier : undefined;
-            resourceInputs["jitEncoding"] = state ? state.jitEncoding : undefined;
-            resourceInputs["mp4FallbackEnabled"] = state ? state.mp4FallbackEnabled : undefined;
-            resourceInputs["multiAudioTrackSupportEnabled"] = state ? state.multiAudioTrackSupportEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["originalFilesKeep"] = state ? state.originalFilesKeep : undefined;
-            resourceInputs["outputCodecs"] = state ? state.outputCodecs : undefined;
-            resourceInputs["playerCaptionsBackgroundColor"] = state ? state.playerCaptionsBackgroundColor : undefined;
-            resourceInputs["playerCaptionsFontColor"] = state ? state.playerCaptionsFontColor : undefined;
-            resourceInputs["playerCaptionsFontSize"] = state ? state.playerCaptionsFontSize : undefined;
-            resourceInputs["playerControls"] = state ? state.playerControls : undefined;
-            resourceInputs["playerCustomHead"] = state ? state.playerCustomHead : undefined;
-            resourceInputs["playerFontFamily"] = state ? state.playerFontFamily : undefined;
-            resourceInputs["playerLanguage"] = state ? state.playerLanguage : undefined;
-            resourceInputs["playerPrimaryColor"] = state ? state.playerPrimaryColor : undefined;
-            resourceInputs["playerWatchtimeHeatmapEnabled"] = state ? state.playerWatchtimeHeatmapEnabled : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["referersAlloweds"] = state ? state.referersAlloweds : undefined;
-            resourceInputs["referersBlockeds"] = state ? state.referersBlockeds : undefined;
-            resourceInputs["resolutions"] = state ? state.resolutions : undefined;
-            resourceInputs["storageZone"] = state ? state.storageZone : undefined;
-            resourceInputs["streamLibraryId"] = state ? state.streamLibraryId : undefined;
-            resourceInputs["transcribingEnabled"] = state ? state.transcribingEnabled : undefined;
-            resourceInputs["transcribingLanguages"] = state ? state.transcribingLanguages : undefined;
-            resourceInputs["transcribingSmartDescriptionEnabled"] = state ? state.transcribingSmartDescriptionEnabled : undefined;
-            resourceInputs["transcribingSmartTitleEnabled"] = state ? state.transcribingSmartTitleEnabled : undefined;
-            resourceInputs["vastTagUrl"] = state ? state.vastTagUrl : undefined;
-            resourceInputs["viewTokenAuthenticationRequired"] = state ? state.viewTokenAuthenticationRequired : undefined;
-            resourceInputs["watermarkHeight"] = state ? state.watermarkHeight : undefined;
-            resourceInputs["watermarkPositionLeft"] = state ? state.watermarkPositionLeft : undefined;
-            resourceInputs["watermarkPositionTop"] = state ? state.watermarkPositionTop : undefined;
-            resourceInputs["watermarkWidth"] = state ? state.watermarkWidth : undefined;
-            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
+            resourceInputs["bitrate1080p"] = state?.bitrate1080p;
+            resourceInputs["bitrate1440p"] = state?.bitrate1440p;
+            resourceInputs["bitrate2160p"] = state?.bitrate2160p;
+            resourceInputs["bitrate240p"] = state?.bitrate240p;
+            resourceInputs["bitrate360p"] = state?.bitrate360p;
+            resourceInputs["bitrate480p"] = state?.bitrate480p;
+            resourceInputs["bitrate720p"] = state?.bitrate720p;
+            resourceInputs["cdnTokenAuthenticationRequired"] = state?.cdnTokenAuthenticationRequired;
+            resourceInputs["contentTaggingEnabled"] = state?.contentTaggingEnabled;
+            resourceInputs["directPlayEnabled"] = state?.directPlayEnabled;
+            resourceInputs["directUrlFileAccessBlocked"] = state?.directUrlFileAccessBlocked;
+            resourceInputs["drmMediacageBasicEnabled"] = state?.drmMediacageBasicEnabled;
+            resourceInputs["earlyPlayEnabled"] = state?.earlyPlayEnabled;
+            resourceInputs["encodingTier"] = state?.encodingTier;
+            resourceInputs["jitEncoding"] = state?.jitEncoding;
+            resourceInputs["mp4FallbackEnabled"] = state?.mp4FallbackEnabled;
+            resourceInputs["multiAudioTrackSupportEnabled"] = state?.multiAudioTrackSupportEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["originalFilesKeep"] = state?.originalFilesKeep;
+            resourceInputs["outputCodecs"] = state?.outputCodecs;
+            resourceInputs["playerCaptionsBackgroundColor"] = state?.playerCaptionsBackgroundColor;
+            resourceInputs["playerCaptionsFontColor"] = state?.playerCaptionsFontColor;
+            resourceInputs["playerCaptionsFontSize"] = state?.playerCaptionsFontSize;
+            resourceInputs["playerControls"] = state?.playerControls;
+            resourceInputs["playerCustomHead"] = state?.playerCustomHead;
+            resourceInputs["playerFontFamily"] = state?.playerFontFamily;
+            resourceInputs["playerLanguage"] = state?.playerLanguage;
+            resourceInputs["playerPrimaryColor"] = state?.playerPrimaryColor;
+            resourceInputs["playerWatchtimeHeatmapEnabled"] = state?.playerWatchtimeHeatmapEnabled;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["referersAlloweds"] = state?.referersAlloweds;
+            resourceInputs["referersBlockeds"] = state?.referersBlockeds;
+            resourceInputs["resolutions"] = state?.resolutions;
+            resourceInputs["storageZone"] = state?.storageZone;
+            resourceInputs["streamLibraryId"] = state?.streamLibraryId;
+            resourceInputs["transcribingEnabled"] = state?.transcribingEnabled;
+            resourceInputs["transcribingLanguages"] = state?.transcribingLanguages;
+            resourceInputs["transcribingSmartDescriptionEnabled"] = state?.transcribingSmartDescriptionEnabled;
+            resourceInputs["transcribingSmartTitleEnabled"] = state?.transcribingSmartTitleEnabled;
+            resourceInputs["vastTagUrl"] = state?.vastTagUrl;
+            resourceInputs["viewTokenAuthenticationRequired"] = state?.viewTokenAuthenticationRequired;
+            resourceInputs["watermarkHeight"] = state?.watermarkHeight;
+            resourceInputs["watermarkPositionLeft"] = state?.watermarkPositionLeft;
+            resourceInputs["watermarkPositionTop"] = state?.watermarkPositionTop;
+            resourceInputs["watermarkWidth"] = state?.watermarkWidth;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
         } else {
             const args = argsOrState as StreamLibraryArgs | undefined;
-            resourceInputs["bitrate1080p"] = args ? args.bitrate1080p : undefined;
-            resourceInputs["bitrate1440p"] = args ? args.bitrate1440p : undefined;
-            resourceInputs["bitrate2160p"] = args ? args.bitrate2160p : undefined;
-            resourceInputs["bitrate240p"] = args ? args.bitrate240p : undefined;
-            resourceInputs["bitrate360p"] = args ? args.bitrate360p : undefined;
-            resourceInputs["bitrate480p"] = args ? args.bitrate480p : undefined;
-            resourceInputs["bitrate720p"] = args ? args.bitrate720p : undefined;
-            resourceInputs["cdnTokenAuthenticationRequired"] = args ? args.cdnTokenAuthenticationRequired : undefined;
-            resourceInputs["contentTaggingEnabled"] = args ? args.contentTaggingEnabled : undefined;
-            resourceInputs["directPlayEnabled"] = args ? args.directPlayEnabled : undefined;
-            resourceInputs["directUrlFileAccessBlocked"] = args ? args.directUrlFileAccessBlocked : undefined;
-            resourceInputs["drmMediacageBasicEnabled"] = args ? args.drmMediacageBasicEnabled : undefined;
-            resourceInputs["earlyPlayEnabled"] = args ? args.earlyPlayEnabled : undefined;
-            resourceInputs["encodingTier"] = args ? args.encodingTier : undefined;
-            resourceInputs["jitEncoding"] = args ? args.jitEncoding : undefined;
-            resourceInputs["mp4FallbackEnabled"] = args ? args.mp4FallbackEnabled : undefined;
-            resourceInputs["multiAudioTrackSupportEnabled"] = args ? args.multiAudioTrackSupportEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["originalFilesKeep"] = args ? args.originalFilesKeep : undefined;
-            resourceInputs["outputCodecs"] = args ? args.outputCodecs : undefined;
-            resourceInputs["playerCaptionsBackgroundColor"] = args ? args.playerCaptionsBackgroundColor : undefined;
-            resourceInputs["playerCaptionsFontColor"] = args ? args.playerCaptionsFontColor : undefined;
-            resourceInputs["playerCaptionsFontSize"] = args ? args.playerCaptionsFontSize : undefined;
-            resourceInputs["playerControls"] = args ? args.playerControls : undefined;
-            resourceInputs["playerCustomHead"] = args ? args.playerCustomHead : undefined;
-            resourceInputs["playerFontFamily"] = args ? args.playerFontFamily : undefined;
-            resourceInputs["playerLanguage"] = args ? args.playerLanguage : undefined;
-            resourceInputs["playerPrimaryColor"] = args ? args.playerPrimaryColor : undefined;
-            resourceInputs["playerWatchtimeHeatmapEnabled"] = args ? args.playerWatchtimeHeatmapEnabled : undefined;
-            resourceInputs["referersAlloweds"] = args ? args.referersAlloweds : undefined;
-            resourceInputs["referersBlockeds"] = args ? args.referersBlockeds : undefined;
-            resourceInputs["resolutions"] = args ? args.resolutions : undefined;
-            resourceInputs["transcribingEnabled"] = args ? args.transcribingEnabled : undefined;
-            resourceInputs["transcribingLanguages"] = args ? args.transcribingLanguages : undefined;
-            resourceInputs["transcribingSmartDescriptionEnabled"] = args ? args.transcribingSmartDescriptionEnabled : undefined;
-            resourceInputs["transcribingSmartTitleEnabled"] = args ? args.transcribingSmartTitleEnabled : undefined;
-            resourceInputs["vastTagUrl"] = args ? args.vastTagUrl : undefined;
-            resourceInputs["viewTokenAuthenticationRequired"] = args ? args.viewTokenAuthenticationRequired : undefined;
-            resourceInputs["watermarkHeight"] = args ? args.watermarkHeight : undefined;
-            resourceInputs["watermarkPositionLeft"] = args ? args.watermarkPositionLeft : undefined;
-            resourceInputs["watermarkPositionTop"] = args ? args.watermarkPositionTop : undefined;
-            resourceInputs["watermarkWidth"] = args ? args.watermarkWidth : undefined;
-            resourceInputs["webhookUrl"] = args ? args.webhookUrl : undefined;
+            resourceInputs["bitrate1080p"] = args?.bitrate1080p;
+            resourceInputs["bitrate1440p"] = args?.bitrate1440p;
+            resourceInputs["bitrate2160p"] = args?.bitrate2160p;
+            resourceInputs["bitrate240p"] = args?.bitrate240p;
+            resourceInputs["bitrate360p"] = args?.bitrate360p;
+            resourceInputs["bitrate480p"] = args?.bitrate480p;
+            resourceInputs["bitrate720p"] = args?.bitrate720p;
+            resourceInputs["cdnTokenAuthenticationRequired"] = args?.cdnTokenAuthenticationRequired;
+            resourceInputs["contentTaggingEnabled"] = args?.contentTaggingEnabled;
+            resourceInputs["directPlayEnabled"] = args?.directPlayEnabled;
+            resourceInputs["directUrlFileAccessBlocked"] = args?.directUrlFileAccessBlocked;
+            resourceInputs["drmMediacageBasicEnabled"] = args?.drmMediacageBasicEnabled;
+            resourceInputs["earlyPlayEnabled"] = args?.earlyPlayEnabled;
+            resourceInputs["encodingTier"] = args?.encodingTier;
+            resourceInputs["jitEncoding"] = args?.jitEncoding;
+            resourceInputs["mp4FallbackEnabled"] = args?.mp4FallbackEnabled;
+            resourceInputs["multiAudioTrackSupportEnabled"] = args?.multiAudioTrackSupportEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["originalFilesKeep"] = args?.originalFilesKeep;
+            resourceInputs["outputCodecs"] = args?.outputCodecs;
+            resourceInputs["playerCaptionsBackgroundColor"] = args?.playerCaptionsBackgroundColor;
+            resourceInputs["playerCaptionsFontColor"] = args?.playerCaptionsFontColor;
+            resourceInputs["playerCaptionsFontSize"] = args?.playerCaptionsFontSize;
+            resourceInputs["playerControls"] = args?.playerControls;
+            resourceInputs["playerCustomHead"] = args?.playerCustomHead;
+            resourceInputs["playerFontFamily"] = args?.playerFontFamily;
+            resourceInputs["playerLanguage"] = args?.playerLanguage;
+            resourceInputs["playerPrimaryColor"] = args?.playerPrimaryColor;
+            resourceInputs["playerWatchtimeHeatmapEnabled"] = args?.playerWatchtimeHeatmapEnabled;
+            resourceInputs["referersAlloweds"] = args?.referersAlloweds;
+            resourceInputs["referersBlockeds"] = args?.referersBlockeds;
+            resourceInputs["resolutions"] = args?.resolutions;
+            resourceInputs["transcribingEnabled"] = args?.transcribingEnabled;
+            resourceInputs["transcribingLanguages"] = args?.transcribingLanguages;
+            resourceInputs["transcribingSmartDescriptionEnabled"] = args?.transcribingSmartDescriptionEnabled;
+            resourceInputs["transcribingSmartTitleEnabled"] = args?.transcribingSmartTitleEnabled;
+            resourceInputs["vastTagUrl"] = args?.vastTagUrl;
+            resourceInputs["viewTokenAuthenticationRequired"] = args?.viewTokenAuthenticationRequired;
+            resourceInputs["watermarkHeight"] = args?.watermarkHeight;
+            resourceInputs["watermarkPositionLeft"] = args?.watermarkPositionLeft;
+            resourceInputs["watermarkPositionTop"] = args?.watermarkPositionTop;
+            resourceInputs["watermarkWidth"] = args?.watermarkWidth;
+            resourceInputs["webhookUrl"] = args?.webhookUrl;
             resourceInputs["apiKey"] = undefined /*out*/;
             resourceInputs["pullzone"] = undefined /*out*/;
             resourceInputs["storageZone"] = undefined /*out*/;

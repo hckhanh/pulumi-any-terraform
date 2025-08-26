@@ -35,19 +35,19 @@ export class ComputeContainerImageregistry extends pulumi.CustomResource {
     /**
      * The unique identifier for the image registry.
      */
-    public /*out*/ readonly computeContainerImageregistryId!: pulumi.Output<number>;
+    declare public /*out*/ readonly computeContainerImageregistryId: pulumi.Output<number>;
     /**
      * Options: `DockerHub`, `GitHub`
      */
-    public readonly registry!: pulumi.Output<string>;
+    declare public readonly registry: pulumi.Output<string>;
     /**
      * The token used to authenticate to the registry. If you are importing a resource, declare the token as an empty string.
      */
-    public readonly token!: pulumi.Output<string>;
+    declare public readonly token: pulumi.Output<string>;
     /**
      * The username used to authenticate to the registry.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a ComputeContainerImageregistry resource with the given unique name, arguments, and options.
@@ -62,24 +62,24 @@ export class ComputeContainerImageregistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeContainerImageregistryState | undefined;
-            resourceInputs["computeContainerImageregistryId"] = state ? state.computeContainerImageregistryId : undefined;
-            resourceInputs["registry"] = state ? state.registry : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["computeContainerImageregistryId"] = state?.computeContainerImageregistryId;
+            resourceInputs["registry"] = state?.registry;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ComputeContainerImageregistryArgs | undefined;
-            if ((!args || args.registry === undefined) && !opts.urn) {
+            if (args?.registry === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registry'");
             }
-            if ((!args || args.token === undefined) && !opts.urn) {
+            if (args?.token === undefined && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["registry"] = args ? args.registry : undefined;
+            resourceInputs["registry"] = args?.registry;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username;
             resourceInputs["computeContainerImageregistryId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

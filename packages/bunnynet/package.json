@@ -56,8 +56,8 @@
     "version": "0.8.0",
     "parameterization": {
       "name": "bunnynet",
-      "version": "0.8.0",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuOC4wIn19"
+      "version": "0.8.1",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuOC4xIn19"
     }
   }
 }

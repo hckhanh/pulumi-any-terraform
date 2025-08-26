@@ -35,31 +35,31 @@ export class PullzoneAccessList extends pulumi.CustomResource {
     /**
      * Options: `Allow`, `Block`, `Challenge`, `Log`
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Indicated whether the Access List is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The Access List entries.
      */
-    public readonly entries!: pulumi.Output<string[]>;
+    declare public readonly entries: pulumi.Output<string[]>;
     /**
      * The Access List name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the linked pullzone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The ID of the Access List.
      */
-    public /*out*/ readonly pullzoneAccessListId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneAccessListId: pulumi.Output<number>;
     /**
      * Options: `ASN`, `CIDR`, `Country`, `IP`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a PullzoneAccessList resource with the given unique name, arguments, and options.
@@ -74,33 +74,33 @@ export class PullzoneAccessList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneAccessListState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["entries"] = state ? state.entries : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["pullzoneAccessListId"] = state ? state.pullzoneAccessListId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["entries"] = state?.entries;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["pullzoneAccessListId"] = state?.pullzoneAccessListId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PullzoneAccessListArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.entries === undefined) && !opts.urn) {
+            if (args?.entries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entries'");
             }
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["entries"] = args ? args.entries : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["entries"] = args?.entries;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["type"] = args?.type;
             resourceInputs["pullzoneAccessListId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

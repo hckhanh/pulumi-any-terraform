@@ -37,352 +37,352 @@ export class Pullzone extends pulumi.CustomResource {
     /**
      * Indicates whether the Canonical header is added to the responses.
      */
-    public readonly addCanonicalHeader!: pulumi.Output<boolean>;
+    declare public readonly addCanonicalHeader: pulumi.Output<boolean>;
     /**
      * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer:
      * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    public readonly allowReferers!: pulumi.Output<string[]>;
+    declare public readonly allowReferers: pulumi.Output<string[]>;
     /**
      * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected.
      * If empty, all the IPs will be allowed
      */
-    public readonly blockIps!: pulumi.Output<string[]>;
+    declare public readonly blockIps: pulumi.Output<string[]>;
     /**
      * Indicates whether requests without a referer should be blocked.
      */
-    public readonly blockNoReferer!: pulumi.Output<boolean>;
+    declare public readonly blockNoReferer: pulumi.Output<boolean>;
     /**
      * Indicates whether to block POST requests.
      */
-    public readonly blockPostRequests!: pulumi.Output<boolean>;
+    declare public readonly blockPostRequests: pulumi.Output<boolean>;
     /**
      * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer:
      * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    public readonly blockReferers!: pulumi.Output<string[]>;
+    declare public readonly blockReferers: pulumi.Output<string[]>;
     /**
      * This property indicates whether to block the root path.
      */
-    public readonly blockRootPath!: pulumi.Output<boolean>;
+    declare public readonly blockRootPath: pulumi.Output<boolean>;
     /**
      * Indicates whether the cache slice (Optimize for video) feature is enabled for the Pull Zone
      */
-    public readonly cacheChunked!: pulumi.Output<boolean>;
+    declare public readonly cacheChunked: pulumi.Output<boolean>;
     /**
      * Indicates whether smart caching is enabled.
      */
-    public readonly cacheEnabled!: pulumi.Output<boolean>;
+    declare public readonly cacheEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether bunny.net should be caching error responses.
      */
-    public readonly cacheErrors!: pulumi.Output<boolean>;
+    declare public readonly cacheErrors: pulumi.Output<boolean>;
     /**
      * The override cache time, in seconds.
      */
-    public readonly cacheExpirationTime!: pulumi.Output<number>;
+    declare public readonly cacheExpirationTime: pulumi.Output<number>;
     /**
      * The override cache time for the end client, in seconds.
      */
-    public readonly cacheExpirationTimeBrowser!: pulumi.Output<number>;
+    declare public readonly cacheExpirationTimeBrowser: pulumi.Output<number>;
     /**
      * Options: `offline`, `updating`
      */
-    public readonly cacheStales!: pulumi.Output<string[]>;
+    declare public readonly cacheStales: pulumi.Output<string[]>;
     /**
      * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `webp`
      */
-    public readonly cacheVaries!: pulumi.Output<string[]>;
+    declare public readonly cacheVaries: pulumi.Output<string[]>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not
      * be used.
      */
-    public readonly cacheVaryCookies!: pulumi.Output<string[]>;
+    declare public readonly cacheVaryCookies: pulumi.Output<string[]>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be
      * used to construct the key
      */
-    public readonly cacheVaryQuerystrings!: pulumi.Output<string[]>;
+    declare public readonly cacheVaryQuerystrings: pulumi.Output<string[]>;
     /**
      * The CNAME domain of the pull zone for setting up custom hostnames
      */
-    public /*out*/ readonly cdnDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly cdnDomain: pulumi.Output<string>;
     /**
      * Indicates whether CORS (Cross-Origin Resource Sharing) is enabled.
      */
-    public readonly corsEnabled!: pulumi.Output<boolean>;
+    declare public readonly corsEnabled: pulumi.Output<boolean>;
     /**
      * A list of file extensions for which CORS is enabled.
      */
-    public readonly corsExtensions!: pulumi.Output<string[]>;
+    declare public readonly corsExtensions: pulumi.Output<string[]>;
     /**
      * If true, the built-in let's encrypt is disabled and requests are passed to the origin.
      */
-    public readonly disableLetsencrypt!: pulumi.Output<boolean>;
+    declare public readonly disableLetsencrypt: pulumi.Output<boolean>;
     /**
      * Contains the custom error page code that will be returned.
      */
-    public readonly errorpageCustomContent!: pulumi.Output<string>;
+    declare public readonly errorpageCustomContent: pulumi.Output<string>;
     /**
      * Indicates whether custom error page code should be enabled.
      */
-    public readonly errorpageCustomEnabled!: pulumi.Output<boolean>;
+    declare public readonly errorpageCustomEnabled: pulumi.Output<boolean>;
     /**
      * The statuspage code that will be used to build the status widget.
      */
-    public readonly errorpageStatuspageCode!: pulumi.Output<string>;
+    declare public readonly errorpageStatuspageCode: pulumi.Output<string>;
     /**
      * Indicates whether the statuspage widget should be displayed on the error pages.
      */
-    public readonly errorpageStatuspageEnabled!: pulumi.Output<boolean>;
+    declare public readonly errorpageStatuspageEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the error pages should be white-labelled or not
      */
-    public readonly errorpageWhitelabel!: pulumi.Output<boolean>;
+    declare public readonly errorpageWhitelabel: pulumi.Output<boolean>;
     /**
      * The amount of data after the rate limit will be activated.
      */
-    public readonly limitAfter!: pulumi.Output<number>;
+    declare public readonly limitAfter: pulumi.Output<number>;
     /**
      * The maximum bandwidth limit in bytes.
      */
-    public readonly limitBandwidth!: pulumi.Output<number>;
+    declare public readonly limitBandwidth: pulumi.Output<number>;
     /**
      * Excessive requests are delayed until their number exceeds the maximum burst size.
      */
-    public readonly limitBurst!: pulumi.Output<number>;
+    declare public readonly limitBurst: pulumi.Output<number>;
     /**
      * The number of connections limited per IP.
      */
-    public readonly limitConnections!: pulumi.Output<number>;
+    declare public readonly limitConnections: pulumi.Output<number>;
     /**
      * The maximum download speed, in kb/s. Use 0 for unlimited.
      */
-    public readonly limitDownloadSpeed!: pulumi.Output<number>;
+    declare public readonly limitDownloadSpeed: pulumi.Output<number>;
     /**
      * The maximum amount of requests per IP per second.
      */
-    public readonly limitRequests!: pulumi.Output<number>;
+    declare public readonly limitRequests: pulumi.Output<number>;
     /**
      * Indicates whether logs are anonymized.
      */
-    public readonly logAnonymized!: pulumi.Output<boolean>;
+    declare public readonly logAnonymized: pulumi.Output<boolean>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    public readonly logAnonymizedStyle!: pulumi.Output<string>;
+    declare public readonly logAnonymizedStyle: pulumi.Output<string>;
     /**
      * Indicates whether logging is enabled.
      */
-    public readonly logEnabled!: pulumi.Output<boolean>;
+    declare public readonly logEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether log forwarding is enabled.
      */
-    public readonly logForwardEnabled!: pulumi.Output<boolean>;
+    declare public readonly logForwardEnabled: pulumi.Output<boolean>;
     /**
      * Options: `JSON`, `Plain`
      */
-    public readonly logForwardFormat!: pulumi.Output<string>;
+    declare public readonly logForwardFormat: pulumi.Output<string>;
     /**
      * The port number for log forwarding.
      */
-    public readonly logForwardPort!: pulumi.Output<number>;
+    declare public readonly logForwardPort: pulumi.Output<number>;
     /**
      * Options: `DataDog`, `TCP`, `TCPEncrypted`, `UDP`
      */
-    public readonly logForwardProtocol!: pulumi.Output<string>;
+    declare public readonly logForwardProtocol: pulumi.Output<string>;
     /**
      * The server address for log forwarding.
      */
-    public readonly logForwardServer!: pulumi.Output<string>;
+    declare public readonly logForwardServer: pulumi.Output<string>;
     /**
      * The token used for log forwarding authentication.
      */
-    public readonly logForwardToken!: pulumi.Output<string>;
+    declare public readonly logForwardToken: pulumi.Output<string>;
     /**
      * Indicates whether log storage is enabled.
      */
-    public readonly logStorageEnabled!: pulumi.Output<boolean>;
+    declare public readonly logStorageEnabled: pulumi.Output<boolean>;
     /**
      * The storage zone ID for log storage.
      */
-    public readonly logStorageZone!: pulumi.Output<number>;
+    declare public readonly logStorageZone: pulumi.Output<number>;
     /**
      * The name of the pull zone.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates whether the optimizer class list should be enforced.
      */
-    public readonly optimizerClassesForce!: pulumi.Output<boolean>;
+    declare public readonly optimizerClassesForce: pulumi.Output<boolean>;
     /**
      * Indicates whether the image manipulation should be enabled.
      */
-    public readonly optimizerDynamicImageApi!: pulumi.Output<boolean>;
+    declare public readonly optimizerDynamicImageApi: pulumi.Output<boolean>;
     /**
      * Indicates whether Bunny Optimizer should be enabled.
      */
-    public readonly optimizerEnabled!: pulumi.Output<boolean>;
+    declare public readonly optimizerEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the CSS minifcation should be enabled.
      */
-    public readonly optimizerMinifyCss!: pulumi.Output<boolean>;
+    declare public readonly optimizerMinifyCss: pulumi.Output<boolean>;
     /**
      * Indicates whether the JavaScript minifcation should be enabled.
      */
-    public readonly optimizerMinifyJs!: pulumi.Output<boolean>;
+    declare public readonly optimizerMinifyJs: pulumi.Output<boolean>;
     /**
      * Indicates whether the automatic image optimization should be enabled.
      */
-    public readonly optimizerSmartimage!: pulumi.Output<boolean>;
+    declare public readonly optimizerSmartimage: pulumi.Output<boolean>;
     /**
      * The maximum automatic image size for desktop clients.
      */
-    public readonly optimizerSmartimageDesktopMaxwidth!: pulumi.Output<number>;
+    declare public readonly optimizerSmartimageDesktopMaxwidth: pulumi.Output<number>;
     /**
      * The image quality for desktop clients.
      */
-    public readonly optimizerSmartimageDesktopQuality!: pulumi.Output<number>;
+    declare public readonly optimizerSmartimageDesktopQuality: pulumi.Output<number>;
     /**
      * The maximum automatic image size for mobile clients.
      */
-    public readonly optimizerSmartimageMobileMaxwidth!: pulumi.Output<number>;
+    declare public readonly optimizerSmartimageMobileMaxwidth: pulumi.Output<number>;
     /**
      * Determines the image quality for mobile clients
      */
-    public readonly optimizerSmartimageMobileQuality!: pulumi.Output<number>;
+    declare public readonly optimizerSmartimageMobileQuality: pulumi.Output<number>;
     /**
      * Indicates whether image watermarking should be enabled.
      */
-    public readonly optimizerWatermark!: pulumi.Output<boolean>;
+    declare public readonly optimizerWatermark: pulumi.Output<boolean>;
     /**
      * The offset of the watermark image.
      */
-    public readonly optimizerWatermarkBorderoffset!: pulumi.Output<number>;
+    declare public readonly optimizerWatermarkBorderoffset: pulumi.Output<number>;
     /**
      * The minimum image size to which the watermark will be added.
      */
-    public readonly optimizerWatermarkMinsize!: pulumi.Output<number>;
+    declare public readonly optimizerWatermarkMinsize: pulumi.Output<number>;
     /**
      * Options: `BottomLeft`, `BottomRight`, `Center`, `CenterStretch`, `TopLeft`, `TopRight`
      */
-    public readonly optimizerWatermarkPosition!: pulumi.Output<string>;
+    declare public readonly optimizerWatermarkPosition: pulumi.Output<string>;
     /**
      * The URL of the watermark image.
      */
-    public readonly optimizerWatermarkUrl!: pulumi.Output<string>;
+    declare public readonly optimizerWatermarkUrl: pulumi.Output<string>;
     /**
      * Indicates whether the WebP optimization should be enabled.
      */
-    public readonly optimizerWebp!: pulumi.Output<boolean>;
-    public readonly origin!: pulumi.Output<outputs.PullzoneOrigin | undefined>;
+    declare public readonly optimizerWebp: pulumi.Output<boolean>;
+    declare public readonly origin: pulumi.Output<outputs.PullzoneOrigin | undefined>;
     /**
      * Indicates whether there is a concurrency limit for Origin Shield.
      */
-    public readonly originshieldConcurrencyLimit!: pulumi.Output<boolean>;
+    declare public readonly originshieldConcurrencyLimit: pulumi.Output<boolean>;
     /**
      * The number of concurrent requests for Origin Shield.
      */
-    public readonly originshieldConcurrencyRequests!: pulumi.Output<number>;
+    declare public readonly originshieldConcurrencyRequests: pulumi.Output<number>;
     /**
      * Indicates whether Origin Shield is enabled.
      */
-    public readonly originshieldEnabled!: pulumi.Output<boolean>;
+    declare public readonly originshieldEnabled: pulumi.Output<boolean>;
     /**
      * The number of queued requests for Origin Shield.
      */
-    public readonly originshieldQueueRequests!: pulumi.Output<number>;
+    declare public readonly originshieldQueueRequests: pulumi.Output<number>;
     /**
      * The maximum wait time for queued requests in Origin Shield, in seconds.
      */
-    public readonly originshieldQueueWait!: pulumi.Output<number>;
+    declare public readonly originshieldQueueWait: pulumi.Output<number>;
     /**
      * Options: `FR`, `IL`
      */
-    public readonly originshieldZone!: pulumi.Output<string>;
+    declare public readonly originshieldZone: pulumi.Output<string>;
     /**
      * The storage zone ID for Perma-Cache.
      */
-    public readonly permacacheStoragezone!: pulumi.Output<number>;
+    declare public readonly permacacheStoragezone: pulumi.Output<number>;
     /**
      * The unique ID of the pull zone.
      */
-    public /*out*/ readonly pullzoneId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneId: pulumi.Output<number>;
     /**
      * Indicates whether request coalescing is enabled.
      */
-    public readonly requestCoalescingEnabled!: pulumi.Output<boolean>;
+    declare public readonly requestCoalescingEnabled: pulumi.Output<boolean>;
     /**
      * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined
      * requests to the origin.
      */
-    public readonly requestCoalescingTimeout!: pulumi.Output<number>;
-    public readonly routing!: pulumi.Output<outputs.PullzoneRouting | undefined>;
+    declare public readonly requestCoalescingTimeout: pulumi.Output<number>;
+    declare public readonly routing: pulumi.Output<outputs.PullzoneRouting | undefined>;
     /**
      * Indicates whether requests to origin will be signed with AWS Signature Version 4.
      */
-    public readonly s3AuthEnabled!: pulumi.Output<boolean>;
+    declare public readonly s3AuthEnabled: pulumi.Output<boolean>;
     /**
      * The access key used to authenticate the requests.
      */
-    public readonly s3AuthKey!: pulumi.Output<string>;
+    declare public readonly s3AuthKey: pulumi.Output<string>;
     /**
      * The region name of the bucket used to authenticate the requests.
      */
-    public readonly s3AuthRegion!: pulumi.Output<string>;
+    declare public readonly s3AuthRegion: pulumi.Output<string>;
     /**
      * The secret key used to authenticate the requests.
      */
-    public readonly s3AuthSecret!: pulumi.Output<string>;
+    declare public readonly s3AuthSecret: pulumi.Output<string>;
     /**
      * The amount of seconds to wait when connecting to the origin. Otherwise the request will fail or retry.
      */
-    public readonly safehopConnectionTimeout!: pulumi.Output<number>;
-    public readonly safehopEnabled!: pulumi.Output<boolean>;
+    declare public readonly safehopConnectionTimeout: pulumi.Output<number>;
+    declare public readonly safehopEnabled: pulumi.Output<boolean>;
     /**
      * The amount of seconds to wait when waiting for the origin reply. Otherwise the request will fail or retry.
      */
-    public readonly safehopResponseTimeout!: pulumi.Output<number>;
+    declare public readonly safehopResponseTimeout: pulumi.Output<number>;
     /**
      * The number of retries to the origin server.
      */
-    public readonly safehopRetryCount!: pulumi.Output<number>;
+    declare public readonly safehopRetryCount: pulumi.Output<number>;
     /**
      * The amount of time that the CDN should wait before retrying an origin request.
      */
-    public readonly safehopRetryDelay!: pulumi.Output<number>;
+    declare public readonly safehopRetryDelay: pulumi.Output<number>;
     /**
      * Options: `5xxResponse`, `connectionTimeout`, `responseTimeout`
      */
-    public readonly safehopRetryReasons!: pulumi.Output<string[]>;
+    declare public readonly safehopRetryReasons: pulumi.Output<string[]>;
     /**
      * If enabled, the query parameters will be automatically sorted into a consistent order before checking the cache.
      */
-    public readonly sortQuerystring!: pulumi.Output<boolean>;
+    declare public readonly sortQuerystring: pulumi.Output<boolean>;
     /**
      * If enabled, bunny.net will strip all the Set-Cookie headers from the HTTP responses.
      */
-    public readonly stripCookies!: pulumi.Output<boolean>;
+    declare public readonly stripCookies: pulumi.Output<boolean>;
     /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */
-    public readonly tlsSupports!: pulumi.Output<string[]>;
+    declare public readonly tlsSupports: pulumi.Output<string[]>;
     /**
      * Indicates whether requests without a valid token and expiry timestamp will be rejected.
      */
-    public readonly tokenAuthEnabled!: pulumi.Output<boolean>;
+    declare public readonly tokenAuthEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the secure hash generated by the server will also include an IP address.
      */
-    public readonly tokenAuthIpValidation!: pulumi.Output<boolean>;
+    declare public readonly tokenAuthIpValidation: pulumi.Output<boolean>;
     /**
      * The auth key used for secure URL token authentication.
      */
-    public /*out*/ readonly tokenAuthKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenAuthKey: pulumi.Output<string>;
     /**
      * Indicates whether cache update is performed in the background.
      */
-    public readonly useBackgroundUpdate!: pulumi.Output<boolean>;
+    declare public readonly useBackgroundUpdate: pulumi.Output<boolean>;
 
     /**
      * Create a Pullzone resource with the given unique name, arguments, and options.
@@ -397,181 +397,181 @@ export class Pullzone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneState | undefined;
-            resourceInputs["addCanonicalHeader"] = state ? state.addCanonicalHeader : undefined;
-            resourceInputs["allowReferers"] = state ? state.allowReferers : undefined;
-            resourceInputs["blockIps"] = state ? state.blockIps : undefined;
-            resourceInputs["blockNoReferer"] = state ? state.blockNoReferer : undefined;
-            resourceInputs["blockPostRequests"] = state ? state.blockPostRequests : undefined;
-            resourceInputs["blockReferers"] = state ? state.blockReferers : undefined;
-            resourceInputs["blockRootPath"] = state ? state.blockRootPath : undefined;
-            resourceInputs["cacheChunked"] = state ? state.cacheChunked : undefined;
-            resourceInputs["cacheEnabled"] = state ? state.cacheEnabled : undefined;
-            resourceInputs["cacheErrors"] = state ? state.cacheErrors : undefined;
-            resourceInputs["cacheExpirationTime"] = state ? state.cacheExpirationTime : undefined;
-            resourceInputs["cacheExpirationTimeBrowser"] = state ? state.cacheExpirationTimeBrowser : undefined;
-            resourceInputs["cacheStales"] = state ? state.cacheStales : undefined;
-            resourceInputs["cacheVaries"] = state ? state.cacheVaries : undefined;
-            resourceInputs["cacheVaryCookies"] = state ? state.cacheVaryCookies : undefined;
-            resourceInputs["cacheVaryQuerystrings"] = state ? state.cacheVaryQuerystrings : undefined;
-            resourceInputs["cdnDomain"] = state ? state.cdnDomain : undefined;
-            resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
-            resourceInputs["corsExtensions"] = state ? state.corsExtensions : undefined;
-            resourceInputs["disableLetsencrypt"] = state ? state.disableLetsencrypt : undefined;
-            resourceInputs["errorpageCustomContent"] = state ? state.errorpageCustomContent : undefined;
-            resourceInputs["errorpageCustomEnabled"] = state ? state.errorpageCustomEnabled : undefined;
-            resourceInputs["errorpageStatuspageCode"] = state ? state.errorpageStatuspageCode : undefined;
-            resourceInputs["errorpageStatuspageEnabled"] = state ? state.errorpageStatuspageEnabled : undefined;
-            resourceInputs["errorpageWhitelabel"] = state ? state.errorpageWhitelabel : undefined;
-            resourceInputs["limitAfter"] = state ? state.limitAfter : undefined;
-            resourceInputs["limitBandwidth"] = state ? state.limitBandwidth : undefined;
-            resourceInputs["limitBurst"] = state ? state.limitBurst : undefined;
-            resourceInputs["limitConnections"] = state ? state.limitConnections : undefined;
-            resourceInputs["limitDownloadSpeed"] = state ? state.limitDownloadSpeed : undefined;
-            resourceInputs["limitRequests"] = state ? state.limitRequests : undefined;
-            resourceInputs["logAnonymized"] = state ? state.logAnonymized : undefined;
-            resourceInputs["logAnonymizedStyle"] = state ? state.logAnonymizedStyle : undefined;
-            resourceInputs["logEnabled"] = state ? state.logEnabled : undefined;
-            resourceInputs["logForwardEnabled"] = state ? state.logForwardEnabled : undefined;
-            resourceInputs["logForwardFormat"] = state ? state.logForwardFormat : undefined;
-            resourceInputs["logForwardPort"] = state ? state.logForwardPort : undefined;
-            resourceInputs["logForwardProtocol"] = state ? state.logForwardProtocol : undefined;
-            resourceInputs["logForwardServer"] = state ? state.logForwardServer : undefined;
-            resourceInputs["logForwardToken"] = state ? state.logForwardToken : undefined;
-            resourceInputs["logStorageEnabled"] = state ? state.logStorageEnabled : undefined;
-            resourceInputs["logStorageZone"] = state ? state.logStorageZone : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["optimizerClassesForce"] = state ? state.optimizerClassesForce : undefined;
-            resourceInputs["optimizerDynamicImageApi"] = state ? state.optimizerDynamicImageApi : undefined;
-            resourceInputs["optimizerEnabled"] = state ? state.optimizerEnabled : undefined;
-            resourceInputs["optimizerMinifyCss"] = state ? state.optimizerMinifyCss : undefined;
-            resourceInputs["optimizerMinifyJs"] = state ? state.optimizerMinifyJs : undefined;
-            resourceInputs["optimizerSmartimage"] = state ? state.optimizerSmartimage : undefined;
-            resourceInputs["optimizerSmartimageDesktopMaxwidth"] = state ? state.optimizerSmartimageDesktopMaxwidth : undefined;
-            resourceInputs["optimizerSmartimageDesktopQuality"] = state ? state.optimizerSmartimageDesktopQuality : undefined;
-            resourceInputs["optimizerSmartimageMobileMaxwidth"] = state ? state.optimizerSmartimageMobileMaxwidth : undefined;
-            resourceInputs["optimizerSmartimageMobileQuality"] = state ? state.optimizerSmartimageMobileQuality : undefined;
-            resourceInputs["optimizerWatermark"] = state ? state.optimizerWatermark : undefined;
-            resourceInputs["optimizerWatermarkBorderoffset"] = state ? state.optimizerWatermarkBorderoffset : undefined;
-            resourceInputs["optimizerWatermarkMinsize"] = state ? state.optimizerWatermarkMinsize : undefined;
-            resourceInputs["optimizerWatermarkPosition"] = state ? state.optimizerWatermarkPosition : undefined;
-            resourceInputs["optimizerWatermarkUrl"] = state ? state.optimizerWatermarkUrl : undefined;
-            resourceInputs["optimizerWebp"] = state ? state.optimizerWebp : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["originshieldConcurrencyLimit"] = state ? state.originshieldConcurrencyLimit : undefined;
-            resourceInputs["originshieldConcurrencyRequests"] = state ? state.originshieldConcurrencyRequests : undefined;
-            resourceInputs["originshieldEnabled"] = state ? state.originshieldEnabled : undefined;
-            resourceInputs["originshieldQueueRequests"] = state ? state.originshieldQueueRequests : undefined;
-            resourceInputs["originshieldQueueWait"] = state ? state.originshieldQueueWait : undefined;
-            resourceInputs["originshieldZone"] = state ? state.originshieldZone : undefined;
-            resourceInputs["permacacheStoragezone"] = state ? state.permacacheStoragezone : undefined;
-            resourceInputs["pullzoneId"] = state ? state.pullzoneId : undefined;
-            resourceInputs["requestCoalescingEnabled"] = state ? state.requestCoalescingEnabled : undefined;
-            resourceInputs["requestCoalescingTimeout"] = state ? state.requestCoalescingTimeout : undefined;
-            resourceInputs["routing"] = state ? state.routing : undefined;
-            resourceInputs["s3AuthEnabled"] = state ? state.s3AuthEnabled : undefined;
-            resourceInputs["s3AuthKey"] = state ? state.s3AuthKey : undefined;
-            resourceInputs["s3AuthRegion"] = state ? state.s3AuthRegion : undefined;
-            resourceInputs["s3AuthSecret"] = state ? state.s3AuthSecret : undefined;
-            resourceInputs["safehopConnectionTimeout"] = state ? state.safehopConnectionTimeout : undefined;
-            resourceInputs["safehopEnabled"] = state ? state.safehopEnabled : undefined;
-            resourceInputs["safehopResponseTimeout"] = state ? state.safehopResponseTimeout : undefined;
-            resourceInputs["safehopRetryCount"] = state ? state.safehopRetryCount : undefined;
-            resourceInputs["safehopRetryDelay"] = state ? state.safehopRetryDelay : undefined;
-            resourceInputs["safehopRetryReasons"] = state ? state.safehopRetryReasons : undefined;
-            resourceInputs["sortQuerystring"] = state ? state.sortQuerystring : undefined;
-            resourceInputs["stripCookies"] = state ? state.stripCookies : undefined;
-            resourceInputs["tlsSupports"] = state ? state.tlsSupports : undefined;
-            resourceInputs["tokenAuthEnabled"] = state ? state.tokenAuthEnabled : undefined;
-            resourceInputs["tokenAuthIpValidation"] = state ? state.tokenAuthIpValidation : undefined;
-            resourceInputs["tokenAuthKey"] = state ? state.tokenAuthKey : undefined;
-            resourceInputs["useBackgroundUpdate"] = state ? state.useBackgroundUpdate : undefined;
+            resourceInputs["addCanonicalHeader"] = state?.addCanonicalHeader;
+            resourceInputs["allowReferers"] = state?.allowReferers;
+            resourceInputs["blockIps"] = state?.blockIps;
+            resourceInputs["blockNoReferer"] = state?.blockNoReferer;
+            resourceInputs["blockPostRequests"] = state?.blockPostRequests;
+            resourceInputs["blockReferers"] = state?.blockReferers;
+            resourceInputs["blockRootPath"] = state?.blockRootPath;
+            resourceInputs["cacheChunked"] = state?.cacheChunked;
+            resourceInputs["cacheEnabled"] = state?.cacheEnabled;
+            resourceInputs["cacheErrors"] = state?.cacheErrors;
+            resourceInputs["cacheExpirationTime"] = state?.cacheExpirationTime;
+            resourceInputs["cacheExpirationTimeBrowser"] = state?.cacheExpirationTimeBrowser;
+            resourceInputs["cacheStales"] = state?.cacheStales;
+            resourceInputs["cacheVaries"] = state?.cacheVaries;
+            resourceInputs["cacheVaryCookies"] = state?.cacheVaryCookies;
+            resourceInputs["cacheVaryQuerystrings"] = state?.cacheVaryQuerystrings;
+            resourceInputs["cdnDomain"] = state?.cdnDomain;
+            resourceInputs["corsEnabled"] = state?.corsEnabled;
+            resourceInputs["corsExtensions"] = state?.corsExtensions;
+            resourceInputs["disableLetsencrypt"] = state?.disableLetsencrypt;
+            resourceInputs["errorpageCustomContent"] = state?.errorpageCustomContent;
+            resourceInputs["errorpageCustomEnabled"] = state?.errorpageCustomEnabled;
+            resourceInputs["errorpageStatuspageCode"] = state?.errorpageStatuspageCode;
+            resourceInputs["errorpageStatuspageEnabled"] = state?.errorpageStatuspageEnabled;
+            resourceInputs["errorpageWhitelabel"] = state?.errorpageWhitelabel;
+            resourceInputs["limitAfter"] = state?.limitAfter;
+            resourceInputs["limitBandwidth"] = state?.limitBandwidth;
+            resourceInputs["limitBurst"] = state?.limitBurst;
+            resourceInputs["limitConnections"] = state?.limitConnections;
+            resourceInputs["limitDownloadSpeed"] = state?.limitDownloadSpeed;
+            resourceInputs["limitRequests"] = state?.limitRequests;
+            resourceInputs["logAnonymized"] = state?.logAnonymized;
+            resourceInputs["logAnonymizedStyle"] = state?.logAnonymizedStyle;
+            resourceInputs["logEnabled"] = state?.logEnabled;
+            resourceInputs["logForwardEnabled"] = state?.logForwardEnabled;
+            resourceInputs["logForwardFormat"] = state?.logForwardFormat;
+            resourceInputs["logForwardPort"] = state?.logForwardPort;
+            resourceInputs["logForwardProtocol"] = state?.logForwardProtocol;
+            resourceInputs["logForwardServer"] = state?.logForwardServer;
+            resourceInputs["logForwardToken"] = state?.logForwardToken;
+            resourceInputs["logStorageEnabled"] = state?.logStorageEnabled;
+            resourceInputs["logStorageZone"] = state?.logStorageZone;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["optimizerClassesForce"] = state?.optimizerClassesForce;
+            resourceInputs["optimizerDynamicImageApi"] = state?.optimizerDynamicImageApi;
+            resourceInputs["optimizerEnabled"] = state?.optimizerEnabled;
+            resourceInputs["optimizerMinifyCss"] = state?.optimizerMinifyCss;
+            resourceInputs["optimizerMinifyJs"] = state?.optimizerMinifyJs;
+            resourceInputs["optimizerSmartimage"] = state?.optimizerSmartimage;
+            resourceInputs["optimizerSmartimageDesktopMaxwidth"] = state?.optimizerSmartimageDesktopMaxwidth;
+            resourceInputs["optimizerSmartimageDesktopQuality"] = state?.optimizerSmartimageDesktopQuality;
+            resourceInputs["optimizerSmartimageMobileMaxwidth"] = state?.optimizerSmartimageMobileMaxwidth;
+            resourceInputs["optimizerSmartimageMobileQuality"] = state?.optimizerSmartimageMobileQuality;
+            resourceInputs["optimizerWatermark"] = state?.optimizerWatermark;
+            resourceInputs["optimizerWatermarkBorderoffset"] = state?.optimizerWatermarkBorderoffset;
+            resourceInputs["optimizerWatermarkMinsize"] = state?.optimizerWatermarkMinsize;
+            resourceInputs["optimizerWatermarkPosition"] = state?.optimizerWatermarkPosition;
+            resourceInputs["optimizerWatermarkUrl"] = state?.optimizerWatermarkUrl;
+            resourceInputs["optimizerWebp"] = state?.optimizerWebp;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["originshieldConcurrencyLimit"] = state?.originshieldConcurrencyLimit;
+            resourceInputs["originshieldConcurrencyRequests"] = state?.originshieldConcurrencyRequests;
+            resourceInputs["originshieldEnabled"] = state?.originshieldEnabled;
+            resourceInputs["originshieldQueueRequests"] = state?.originshieldQueueRequests;
+            resourceInputs["originshieldQueueWait"] = state?.originshieldQueueWait;
+            resourceInputs["originshieldZone"] = state?.originshieldZone;
+            resourceInputs["permacacheStoragezone"] = state?.permacacheStoragezone;
+            resourceInputs["pullzoneId"] = state?.pullzoneId;
+            resourceInputs["requestCoalescingEnabled"] = state?.requestCoalescingEnabled;
+            resourceInputs["requestCoalescingTimeout"] = state?.requestCoalescingTimeout;
+            resourceInputs["routing"] = state?.routing;
+            resourceInputs["s3AuthEnabled"] = state?.s3AuthEnabled;
+            resourceInputs["s3AuthKey"] = state?.s3AuthKey;
+            resourceInputs["s3AuthRegion"] = state?.s3AuthRegion;
+            resourceInputs["s3AuthSecret"] = state?.s3AuthSecret;
+            resourceInputs["safehopConnectionTimeout"] = state?.safehopConnectionTimeout;
+            resourceInputs["safehopEnabled"] = state?.safehopEnabled;
+            resourceInputs["safehopResponseTimeout"] = state?.safehopResponseTimeout;
+            resourceInputs["safehopRetryCount"] = state?.safehopRetryCount;
+            resourceInputs["safehopRetryDelay"] = state?.safehopRetryDelay;
+            resourceInputs["safehopRetryReasons"] = state?.safehopRetryReasons;
+            resourceInputs["sortQuerystring"] = state?.sortQuerystring;
+            resourceInputs["stripCookies"] = state?.stripCookies;
+            resourceInputs["tlsSupports"] = state?.tlsSupports;
+            resourceInputs["tokenAuthEnabled"] = state?.tokenAuthEnabled;
+            resourceInputs["tokenAuthIpValidation"] = state?.tokenAuthIpValidation;
+            resourceInputs["tokenAuthKey"] = state?.tokenAuthKey;
+            resourceInputs["useBackgroundUpdate"] = state?.useBackgroundUpdate;
         } else {
             const args = argsOrState as PullzoneArgs | undefined;
-            resourceInputs["addCanonicalHeader"] = args ? args.addCanonicalHeader : undefined;
-            resourceInputs["allowReferers"] = args ? args.allowReferers : undefined;
-            resourceInputs["blockIps"] = args ? args.blockIps : undefined;
-            resourceInputs["blockNoReferer"] = args ? args.blockNoReferer : undefined;
-            resourceInputs["blockPostRequests"] = args ? args.blockPostRequests : undefined;
-            resourceInputs["blockReferers"] = args ? args.blockReferers : undefined;
-            resourceInputs["blockRootPath"] = args ? args.blockRootPath : undefined;
-            resourceInputs["cacheChunked"] = args ? args.cacheChunked : undefined;
-            resourceInputs["cacheEnabled"] = args ? args.cacheEnabled : undefined;
-            resourceInputs["cacheErrors"] = args ? args.cacheErrors : undefined;
-            resourceInputs["cacheExpirationTime"] = args ? args.cacheExpirationTime : undefined;
-            resourceInputs["cacheExpirationTimeBrowser"] = args ? args.cacheExpirationTimeBrowser : undefined;
-            resourceInputs["cacheStales"] = args ? args.cacheStales : undefined;
-            resourceInputs["cacheVaries"] = args ? args.cacheVaries : undefined;
-            resourceInputs["cacheVaryCookies"] = args ? args.cacheVaryCookies : undefined;
-            resourceInputs["cacheVaryQuerystrings"] = args ? args.cacheVaryQuerystrings : undefined;
-            resourceInputs["corsEnabled"] = args ? args.corsEnabled : undefined;
-            resourceInputs["corsExtensions"] = args ? args.corsExtensions : undefined;
-            resourceInputs["disableLetsencrypt"] = args ? args.disableLetsencrypt : undefined;
-            resourceInputs["errorpageCustomContent"] = args ? args.errorpageCustomContent : undefined;
-            resourceInputs["errorpageCustomEnabled"] = args ? args.errorpageCustomEnabled : undefined;
-            resourceInputs["errorpageStatuspageCode"] = args ? args.errorpageStatuspageCode : undefined;
-            resourceInputs["errorpageStatuspageEnabled"] = args ? args.errorpageStatuspageEnabled : undefined;
-            resourceInputs["errorpageWhitelabel"] = args ? args.errorpageWhitelabel : undefined;
-            resourceInputs["limitAfter"] = args ? args.limitAfter : undefined;
-            resourceInputs["limitBandwidth"] = args ? args.limitBandwidth : undefined;
-            resourceInputs["limitBurst"] = args ? args.limitBurst : undefined;
-            resourceInputs["limitConnections"] = args ? args.limitConnections : undefined;
-            resourceInputs["limitDownloadSpeed"] = args ? args.limitDownloadSpeed : undefined;
-            resourceInputs["limitRequests"] = args ? args.limitRequests : undefined;
-            resourceInputs["logAnonymized"] = args ? args.logAnonymized : undefined;
-            resourceInputs["logAnonymizedStyle"] = args ? args.logAnonymizedStyle : undefined;
-            resourceInputs["logEnabled"] = args ? args.logEnabled : undefined;
-            resourceInputs["logForwardEnabled"] = args ? args.logForwardEnabled : undefined;
-            resourceInputs["logForwardFormat"] = args ? args.logForwardFormat : undefined;
-            resourceInputs["logForwardPort"] = args ? args.logForwardPort : undefined;
-            resourceInputs["logForwardProtocol"] = args ? args.logForwardProtocol : undefined;
-            resourceInputs["logForwardServer"] = args ? args.logForwardServer : undefined;
-            resourceInputs["logForwardToken"] = args ? args.logForwardToken : undefined;
-            resourceInputs["logStorageEnabled"] = args ? args.logStorageEnabled : undefined;
-            resourceInputs["logStorageZone"] = args ? args.logStorageZone : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["optimizerClassesForce"] = args ? args.optimizerClassesForce : undefined;
-            resourceInputs["optimizerDynamicImageApi"] = args ? args.optimizerDynamicImageApi : undefined;
-            resourceInputs["optimizerEnabled"] = args ? args.optimizerEnabled : undefined;
-            resourceInputs["optimizerMinifyCss"] = args ? args.optimizerMinifyCss : undefined;
-            resourceInputs["optimizerMinifyJs"] = args ? args.optimizerMinifyJs : undefined;
-            resourceInputs["optimizerSmartimage"] = args ? args.optimizerSmartimage : undefined;
-            resourceInputs["optimizerSmartimageDesktopMaxwidth"] = args ? args.optimizerSmartimageDesktopMaxwidth : undefined;
-            resourceInputs["optimizerSmartimageDesktopQuality"] = args ? args.optimizerSmartimageDesktopQuality : undefined;
-            resourceInputs["optimizerSmartimageMobileMaxwidth"] = args ? args.optimizerSmartimageMobileMaxwidth : undefined;
-            resourceInputs["optimizerSmartimageMobileQuality"] = args ? args.optimizerSmartimageMobileQuality : undefined;
-            resourceInputs["optimizerWatermark"] = args ? args.optimizerWatermark : undefined;
-            resourceInputs["optimizerWatermarkBorderoffset"] = args ? args.optimizerWatermarkBorderoffset : undefined;
-            resourceInputs["optimizerWatermarkMinsize"] = args ? args.optimizerWatermarkMinsize : undefined;
-            resourceInputs["optimizerWatermarkPosition"] = args ? args.optimizerWatermarkPosition : undefined;
-            resourceInputs["optimizerWatermarkUrl"] = args ? args.optimizerWatermarkUrl : undefined;
-            resourceInputs["optimizerWebp"] = args ? args.optimizerWebp : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["originshieldConcurrencyLimit"] = args ? args.originshieldConcurrencyLimit : undefined;
-            resourceInputs["originshieldConcurrencyRequests"] = args ? args.originshieldConcurrencyRequests : undefined;
-            resourceInputs["originshieldEnabled"] = args ? args.originshieldEnabled : undefined;
-            resourceInputs["originshieldQueueRequests"] = args ? args.originshieldQueueRequests : undefined;
-            resourceInputs["originshieldQueueWait"] = args ? args.originshieldQueueWait : undefined;
-            resourceInputs["originshieldZone"] = args ? args.originshieldZone : undefined;
-            resourceInputs["permacacheStoragezone"] = args ? args.permacacheStoragezone : undefined;
-            resourceInputs["requestCoalescingEnabled"] = args ? args.requestCoalescingEnabled : undefined;
-            resourceInputs["requestCoalescingTimeout"] = args ? args.requestCoalescingTimeout : undefined;
-            resourceInputs["routing"] = args ? args.routing : undefined;
-            resourceInputs["s3AuthEnabled"] = args ? args.s3AuthEnabled : undefined;
-            resourceInputs["s3AuthKey"] = args ? args.s3AuthKey : undefined;
-            resourceInputs["s3AuthRegion"] = args ? args.s3AuthRegion : undefined;
-            resourceInputs["s3AuthSecret"] = args ? args.s3AuthSecret : undefined;
-            resourceInputs["safehopConnectionTimeout"] = args ? args.safehopConnectionTimeout : undefined;
-            resourceInputs["safehopEnabled"] = args ? args.safehopEnabled : undefined;
-            resourceInputs["safehopResponseTimeout"] = args ? args.safehopResponseTimeout : undefined;
-            resourceInputs["safehopRetryCount"] = args ? args.safehopRetryCount : undefined;
-            resourceInputs["safehopRetryDelay"] = args ? args.safehopRetryDelay : undefined;
-            resourceInputs["safehopRetryReasons"] = args ? args.safehopRetryReasons : undefined;
-            resourceInputs["sortQuerystring"] = args ? args.sortQuerystring : undefined;
-            resourceInputs["stripCookies"] = args ? args.stripCookies : undefined;
-            resourceInputs["tlsSupports"] = args ? args.tlsSupports : undefined;
-            resourceInputs["tokenAuthEnabled"] = args ? args.tokenAuthEnabled : undefined;
-            resourceInputs["tokenAuthIpValidation"] = args ? args.tokenAuthIpValidation : undefined;
-            resourceInputs["useBackgroundUpdate"] = args ? args.useBackgroundUpdate : undefined;
+            resourceInputs["addCanonicalHeader"] = args?.addCanonicalHeader;
+            resourceInputs["allowReferers"] = args?.allowReferers;
+            resourceInputs["blockIps"] = args?.blockIps;
+            resourceInputs["blockNoReferer"] = args?.blockNoReferer;
+            resourceInputs["blockPostRequests"] = args?.blockPostRequests;
+            resourceInputs["blockReferers"] = args?.blockReferers;
+            resourceInputs["blockRootPath"] = args?.blockRootPath;
+            resourceInputs["cacheChunked"] = args?.cacheChunked;
+            resourceInputs["cacheEnabled"] = args?.cacheEnabled;
+            resourceInputs["cacheErrors"] = args?.cacheErrors;
+            resourceInputs["cacheExpirationTime"] = args?.cacheExpirationTime;
+            resourceInputs["cacheExpirationTimeBrowser"] = args?.cacheExpirationTimeBrowser;
+            resourceInputs["cacheStales"] = args?.cacheStales;
+            resourceInputs["cacheVaries"] = args?.cacheVaries;
+            resourceInputs["cacheVaryCookies"] = args?.cacheVaryCookies;
+            resourceInputs["cacheVaryQuerystrings"] = args?.cacheVaryQuerystrings;
+            resourceInputs["corsEnabled"] = args?.corsEnabled;
+            resourceInputs["corsExtensions"] = args?.corsExtensions;
+            resourceInputs["disableLetsencrypt"] = args?.disableLetsencrypt;
+            resourceInputs["errorpageCustomContent"] = args?.errorpageCustomContent;
+            resourceInputs["errorpageCustomEnabled"] = args?.errorpageCustomEnabled;
+            resourceInputs["errorpageStatuspageCode"] = args?.errorpageStatuspageCode;
+            resourceInputs["errorpageStatuspageEnabled"] = args?.errorpageStatuspageEnabled;
+            resourceInputs["errorpageWhitelabel"] = args?.errorpageWhitelabel;
+            resourceInputs["limitAfter"] = args?.limitAfter;
+            resourceInputs["limitBandwidth"] = args?.limitBandwidth;
+            resourceInputs["limitBurst"] = args?.limitBurst;
+            resourceInputs["limitConnections"] = args?.limitConnections;
+            resourceInputs["limitDownloadSpeed"] = args?.limitDownloadSpeed;
+            resourceInputs["limitRequests"] = args?.limitRequests;
+            resourceInputs["logAnonymized"] = args?.logAnonymized;
+            resourceInputs["logAnonymizedStyle"] = args?.logAnonymizedStyle;
+            resourceInputs["logEnabled"] = args?.logEnabled;
+            resourceInputs["logForwardEnabled"] = args?.logForwardEnabled;
+            resourceInputs["logForwardFormat"] = args?.logForwardFormat;
+            resourceInputs["logForwardPort"] = args?.logForwardPort;
+            resourceInputs["logForwardProtocol"] = args?.logForwardProtocol;
+            resourceInputs["logForwardServer"] = args?.logForwardServer;
+            resourceInputs["logForwardToken"] = args?.logForwardToken;
+            resourceInputs["logStorageEnabled"] = args?.logStorageEnabled;
+            resourceInputs["logStorageZone"] = args?.logStorageZone;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["optimizerClassesForce"] = args?.optimizerClassesForce;
+            resourceInputs["optimizerDynamicImageApi"] = args?.optimizerDynamicImageApi;
+            resourceInputs["optimizerEnabled"] = args?.optimizerEnabled;
+            resourceInputs["optimizerMinifyCss"] = args?.optimizerMinifyCss;
+            resourceInputs["optimizerMinifyJs"] = args?.optimizerMinifyJs;
+            resourceInputs["optimizerSmartimage"] = args?.optimizerSmartimage;
+            resourceInputs["optimizerSmartimageDesktopMaxwidth"] = args?.optimizerSmartimageDesktopMaxwidth;
+            resourceInputs["optimizerSmartimageDesktopQuality"] = args?.optimizerSmartimageDesktopQuality;
+            resourceInputs["optimizerSmartimageMobileMaxwidth"] = args?.optimizerSmartimageMobileMaxwidth;
+            resourceInputs["optimizerSmartimageMobileQuality"] = args?.optimizerSmartimageMobileQuality;
+            resourceInputs["optimizerWatermark"] = args?.optimizerWatermark;
+            resourceInputs["optimizerWatermarkBorderoffset"] = args?.optimizerWatermarkBorderoffset;
+            resourceInputs["optimizerWatermarkMinsize"] = args?.optimizerWatermarkMinsize;
+            resourceInputs["optimizerWatermarkPosition"] = args?.optimizerWatermarkPosition;
+            resourceInputs["optimizerWatermarkUrl"] = args?.optimizerWatermarkUrl;
+            resourceInputs["optimizerWebp"] = args?.optimizerWebp;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["originshieldConcurrencyLimit"] = args?.originshieldConcurrencyLimit;
+            resourceInputs["originshieldConcurrencyRequests"] = args?.originshieldConcurrencyRequests;
+            resourceInputs["originshieldEnabled"] = args?.originshieldEnabled;
+            resourceInputs["originshieldQueueRequests"] = args?.originshieldQueueRequests;
+            resourceInputs["originshieldQueueWait"] = args?.originshieldQueueWait;
+            resourceInputs["originshieldZone"] = args?.originshieldZone;
+            resourceInputs["permacacheStoragezone"] = args?.permacacheStoragezone;
+            resourceInputs["requestCoalescingEnabled"] = args?.requestCoalescingEnabled;
+            resourceInputs["requestCoalescingTimeout"] = args?.requestCoalescingTimeout;
+            resourceInputs["routing"] = args?.routing;
+            resourceInputs["s3AuthEnabled"] = args?.s3AuthEnabled;
+            resourceInputs["s3AuthKey"] = args?.s3AuthKey;
+            resourceInputs["s3AuthRegion"] = args?.s3AuthRegion;
+            resourceInputs["s3AuthSecret"] = args?.s3AuthSecret;
+            resourceInputs["safehopConnectionTimeout"] = args?.safehopConnectionTimeout;
+            resourceInputs["safehopEnabled"] = args?.safehopEnabled;
+            resourceInputs["safehopResponseTimeout"] = args?.safehopResponseTimeout;
+            resourceInputs["safehopRetryCount"] = args?.safehopRetryCount;
+            resourceInputs["safehopRetryDelay"] = args?.safehopRetryDelay;
+            resourceInputs["safehopRetryReasons"] = args?.safehopRetryReasons;
+            resourceInputs["sortQuerystring"] = args?.sortQuerystring;
+            resourceInputs["stripCookies"] = args?.stripCookies;
+            resourceInputs["tlsSupports"] = args?.tlsSupports;
+            resourceInputs["tokenAuthEnabled"] = args?.tokenAuthEnabled;
+            resourceInputs["tokenAuthIpValidation"] = args?.tokenAuthIpValidation;
+            resourceInputs["useBackgroundUpdate"] = args?.useBackgroundUpdate;
             resourceInputs["cdnDomain"] = undefined /*out*/;
             resourceInputs["pullzoneId"] = undefined /*out*/;
             resourceInputs["tokenAuthKey"] = undefined /*out*/;
