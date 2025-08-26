@@ -38,6 +38,8 @@ jobs:
         run: pnpm install
       - name: Show Nx report
         run: pnpm nx report
+      - name: Build packages
+        run: pnpm  nx run-many -t build
       - name: Publish packages
         run: pnpm nx release publish
         env:
