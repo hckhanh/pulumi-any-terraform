@@ -37,27 +37,27 @@ export class StreamVideo extends pulumi.CustomResource {
     /**
      * The list of chapters available in the video.
      */
-    public readonly chapters!: pulumi.Output<outputs.StreamVideoChapter[] | undefined>;
+    declare public readonly chapters: pulumi.Output<outputs.StreamVideoChapter[] | undefined>;
     /**
      * The ID of the collection to which the video belongs.
      */
-    public readonly collection!: pulumi.Output<string>;
+    declare public readonly collection: pulumi.Output<string>;
     /**
      * The description of the video.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the stream library to which the video belongs.
      */
-    public readonly library!: pulumi.Output<number>;
+    declare public readonly library: pulumi.Output<number>;
     /**
      * The list of moments available in the video.
      */
-    public readonly moments!: pulumi.Output<outputs.StreamVideoMoment[] | undefined>;
+    declare public readonly moments: pulumi.Output<outputs.StreamVideoMoment[] | undefined>;
     /**
      * The title of the video.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a StreamVideo resource with the given unique name, arguments, and options.
@@ -72,26 +72,26 @@ export class StreamVideo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamVideoState | undefined;
-            resourceInputs["chapters"] = state ? state.chapters : undefined;
-            resourceInputs["collection"] = state ? state.collection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["library"] = state ? state.library : undefined;
-            resourceInputs["moments"] = state ? state.moments : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["chapters"] = state?.chapters;
+            resourceInputs["collection"] = state?.collection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["library"] = state?.library;
+            resourceInputs["moments"] = state?.moments;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as StreamVideoArgs | undefined;
-            if ((!args || args.library === undefined) && !opts.urn) {
+            if (args?.library === undefined && !opts.urn) {
                 throw new Error("Missing required property 'library'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["chapters"] = args ? args.chapters : undefined;
-            resourceInputs["collection"] = args ? args.collection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["library"] = args ? args.library : undefined;
-            resourceInputs["moments"] = args ? args.moments : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["chapters"] = args?.chapters;
+            resourceInputs["collection"] = args?.collection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["library"] = args?.library;
+            resourceInputs["moments"] = args?.moments;
+            resourceInputs["title"] = args?.title;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StreamVideo.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

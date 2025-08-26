@@ -35,47 +35,47 @@ export class StorageZone extends pulumi.CustomResource {
     /**
      * The file path for a custom 404 error page.
      */
-    public readonly custom404FilePath!: pulumi.Output<string | undefined>;
+    declare public readonly custom404FilePath: pulumi.Output<string | undefined>;
     /**
      * The date when the zone was last modified.
      */
-    public /*out*/ readonly dateModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly dateModified: pulumi.Output<string>;
     /**
      * The hostname for accessing the storage zone.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * The name of the storage zone.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password for accessing the storage zone.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * The read-only password for accessing the storage zone.
      */
-    public /*out*/ readonly passwordReadonly!: pulumi.Output<string>;
+    declare public /*out*/ readonly passwordReadonly: pulumi.Output<string>;
     /**
      * The region where the storage zone is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A set of regions for data replication.
      */
-    public readonly replicationRegions!: pulumi.Output<string[]>;
+    declare public readonly replicationRegions: pulumi.Output<string[]>;
     /**
      * Indicates whether to rewrite 404 errors to 200 status.
      */
-    public readonly rewrite404To200!: pulumi.Output<boolean>;
+    declare public readonly rewrite404To200: pulumi.Output<boolean>;
     /**
      * The ID of the storage zone.
      */
-    public /*out*/ readonly storageZoneId!: pulumi.Output<number>;
+    declare public /*out*/ readonly storageZoneId: pulumi.Output<number>;
     /**
      * Options: `Edge`, `Standard`
      */
-    public readonly zoneTier!: pulumi.Output<string>;
+    declare public readonly zoneTier: pulumi.Output<string>;
 
     /**
      * Create a StorageZone resource with the given unique name, arguments, and options.
@@ -90,31 +90,31 @@ export class StorageZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageZoneState | undefined;
-            resourceInputs["custom404FilePath"] = state ? state.custom404FilePath : undefined;
-            resourceInputs["dateModified"] = state ? state.dateModified : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordReadonly"] = state ? state.passwordReadonly : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicationRegions"] = state ? state.replicationRegions : undefined;
-            resourceInputs["rewrite404To200"] = state ? state.rewrite404To200 : undefined;
-            resourceInputs["storageZoneId"] = state ? state.storageZoneId : undefined;
-            resourceInputs["zoneTier"] = state ? state.zoneTier : undefined;
+            resourceInputs["custom404FilePath"] = state?.custom404FilePath;
+            resourceInputs["dateModified"] = state?.dateModified;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordReadonly"] = state?.passwordReadonly;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicationRegions"] = state?.replicationRegions;
+            resourceInputs["rewrite404To200"] = state?.rewrite404To200;
+            resourceInputs["storageZoneId"] = state?.storageZoneId;
+            resourceInputs["zoneTier"] = state?.zoneTier;
         } else {
             const args = argsOrState as StorageZoneArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.zoneTier === undefined) && !opts.urn) {
+            if (args?.zoneTier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneTier'");
             }
-            resourceInputs["custom404FilePath"] = args ? args.custom404FilePath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicationRegions"] = args ? args.replicationRegions : undefined;
-            resourceInputs["rewrite404To200"] = args ? args.rewrite404To200 : undefined;
-            resourceInputs["zoneTier"] = args ? args.zoneTier : undefined;
+            resourceInputs["custom404FilePath"] = args?.custom404FilePath;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicationRegions"] = args?.replicationRegions;
+            resourceInputs["rewrite404To200"] = args?.rewrite404To200;
+            resourceInputs["zoneTier"] = args?.zoneTier;
             resourceInputs["dateModified"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;

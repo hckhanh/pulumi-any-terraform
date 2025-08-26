@@ -37,27 +37,27 @@ export class PullzoneWafRule extends pulumi.CustomResource {
     /**
      * The condition to trigger the WAF rule.
      */
-    public readonly condition!: pulumi.Output<outputs.PullzoneWafRuleCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.PullzoneWafRuleCondition | undefined>;
     /**
      * The WAF rule description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The WAF rule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the linked pullzone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The ID of the WAF rule.
      */
-    public /*out*/ readonly pullzoneWafRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneWafRuleId: pulumi.Output<number>;
     /**
      * The response once the WAF rule is triggered.
      */
-    public readonly response!: pulumi.Output<outputs.PullzoneWafRuleResponse | undefined>;
+    declare public readonly response: pulumi.Output<outputs.PullzoneWafRuleResponse | undefined>;
 
     /**
      * Create a PullzoneWafRule resource with the given unique name, arguments, and options.
@@ -72,22 +72,22 @@ export class PullzoneWafRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneWafRuleState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["pullzoneWafRuleId"] = state ? state.pullzoneWafRuleId : undefined;
-            resourceInputs["response"] = state ? state.response : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["pullzoneWafRuleId"] = state?.pullzoneWafRuleId;
+            resourceInputs["response"] = state?.response;
         } else {
             const args = argsOrState as PullzoneWafRuleArgs | undefined;
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["response"] = args ? args.response : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["response"] = args?.response;
             resourceInputs["pullzoneWafRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -43,32 +43,32 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
      * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
      * `SetResponseHeader`, `SetStatusCode`
      */
-    public readonly action!: pulumi.Output<string | undefined>;
-    public readonly actionParameter1!: pulumi.Output<string | undefined>;
-    public readonly actionParameter2!: pulumi.Output<string | undefined>;
-    public readonly actionParameter3!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
+    declare public readonly actionParameter1: pulumi.Output<string | undefined>;
+    declare public readonly actionParameter2: pulumi.Output<string | undefined>;
+    declare public readonly actionParameter3: pulumi.Output<string | undefined>;
     /**
      * List of actions for the edge rule.
      */
-    public readonly actions!: pulumi.Output<outputs.PullzoneEdgeruleAction[]>;
+    declare public readonly actions: pulumi.Output<outputs.PullzoneEdgeruleAction[]>;
     /**
      * The description of the edge rule.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Indicates whether the edge rule is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
-    public readonly matchType!: pulumi.Output<string>;
+    declare public readonly matchType: pulumi.Output<string>;
     /**
      * The priority of the edge rule. The lower number is executed first.
      */
-    public readonly priority!: pulumi.Output<number>;
-    public readonly pullzone!: pulumi.Output<number>;
-    public readonly triggers!: pulumi.Output<outputs.PullzoneEdgeruleTrigger[]>;
+    declare public readonly priority: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
+    declare public readonly triggers: pulumi.Output<outputs.PullzoneEdgeruleTrigger[]>;
 
     /**
      * Create a PullzoneEdgerule resource with the given unique name, arguments, and options.
@@ -83,39 +83,39 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneEdgeruleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["actionParameter1"] = state ? state.actionParameter1 : undefined;
-            resourceInputs["actionParameter2"] = state ? state.actionParameter2 : undefined;
-            resourceInputs["actionParameter3"] = state ? state.actionParameter3 : undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["matchType"] = state ? state.matchType : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["actionParameter1"] = state?.actionParameter1;
+            resourceInputs["actionParameter2"] = state?.actionParameter2;
+            resourceInputs["actionParameter3"] = state?.actionParameter3;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["matchType"] = state?.matchType;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["triggers"] = state?.triggers;
         } else {
             const args = argsOrState as PullzoneEdgeruleArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            if ((!args || args.triggers === undefined) && !opts.urn) {
+            if (args?.triggers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggers'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["actionParameter1"] = args ? args.actionParameter1 : undefined;
-            resourceInputs["actionParameter2"] = args ? args.actionParameter2 : undefined;
-            resourceInputs["actionParameter3"] = args ? args.actionParameter3 : undefined;
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["matchType"] = args ? args.matchType : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["actionParameter1"] = args?.actionParameter1;
+            resourceInputs["actionParameter2"] = args?.actionParameter2;
+            resourceInputs["actionParameter3"] = args?.actionParameter3;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["matchType"] = args?.matchType;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["triggers"] = args?.triggers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PullzoneEdgerule.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

@@ -35,27 +35,27 @@ export class ComputeScript extends pulumi.CustomResource {
     /**
      * The ID of the script.
      */
-    public /*out*/ readonly computeScriptId!: pulumi.Output<number>;
+    declare public /*out*/ readonly computeScriptId: pulumi.Output<number>;
     /**
      * The code of the script.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The deployment key for the script.
      */
-    public /*out*/ readonly deploymentKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentKey: pulumi.Output<string>;
     /**
      * The name of the script.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The current release identifier for the script.
      */
-    public /*out*/ readonly release!: pulumi.Output<string>;
+    declare public /*out*/ readonly release: pulumi.Output<string>;
     /**
      * Options: `middleware`, `standalone`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ComputeScript resource with the given unique name, arguments, and options.
@@ -70,23 +70,23 @@ export class ComputeScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeScriptState | undefined;
-            resourceInputs["computeScriptId"] = state ? state.computeScriptId : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["deploymentKey"] = state ? state.deploymentKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["release"] = state ? state.release : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["computeScriptId"] = state?.computeScriptId;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["deploymentKey"] = state?.deploymentKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["release"] = state?.release;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ComputeScriptArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["computeScriptId"] = undefined /*out*/;
             resourceInputs["deploymentKey"] = undefined /*out*/;
             resourceInputs["release"] = undefined /*out*/;

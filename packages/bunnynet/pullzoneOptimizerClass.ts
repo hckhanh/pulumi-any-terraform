@@ -35,75 +35,75 @@ export class PullzoneOptimizerClass extends pulumi.CustomResource {
     /**
      * The aspect ratio for image optimization.
      */
-    public readonly aspectRatio!: pulumi.Output<string | undefined>;
+    declare public readonly aspectRatio: pulumi.Output<string | undefined>;
     /**
      * Indicates whether automatic optimization for images is enabled.
      */
-    public readonly autoOptimize!: pulumi.Output<string | undefined>;
+    declare public readonly autoOptimize: pulumi.Output<string | undefined>;
     /**
      * The level of blur to apply to images.
      */
-    public readonly blur!: pulumi.Output<number | undefined>;
+    declare public readonly blur: pulumi.Output<number | undefined>;
     /**
      * The brightness adjustment for images.
      */
-    public readonly brightness!: pulumi.Output<number | undefined>;
+    declare public readonly brightness: pulumi.Output<number | undefined>;
     /**
      * The contrast adjustment for images.
      */
-    public readonly contrast!: pulumi.Output<number | undefined>;
+    declare public readonly contrast: pulumi.Output<number | undefined>;
     /**
      * The cropping settings for images.
      */
-    public readonly crop!: pulumi.Output<string | undefined>;
+    declare public readonly crop: pulumi.Output<string | undefined>;
     /**
      * The gravity setting for cropping.
      */
-    public readonly cropGravity!: pulumi.Output<string | undefined>;
+    declare public readonly cropGravity: pulumi.Output<string | undefined>;
     /**
      * Indicates whether to flip images horizontally.
      */
-    public readonly flip!: pulumi.Output<boolean | undefined>;
+    declare public readonly flip: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether to flip images vertically.
      */
-    public readonly flop!: pulumi.Output<boolean | undefined>;
+    declare public readonly flop: pulumi.Output<boolean | undefined>;
     /**
      * The height to which images should be resized.
      */
-    public readonly height!: pulumi.Output<number | undefined>;
+    declare public readonly height: pulumi.Output<number | undefined>;
     /**
      * The hue adjustment for images.
      */
-    public readonly hue!: pulumi.Output<number | undefined>;
+    declare public readonly hue: pulumi.Output<number | undefined>;
     /**
      * The name of the optimizer class.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the linked pull zone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The quality setting for image optimization.
      */
-    public readonly quality!: pulumi.Output<number | undefined>;
+    declare public readonly quality: pulumi.Output<number | undefined>;
     /**
      * The saturation adjustment for images.
      */
-    public readonly saturation!: pulumi.Output<number | undefined>;
+    declare public readonly saturation: pulumi.Output<number | undefined>;
     /**
      * The level of sepia tone to apply to images.
      */
-    public readonly sepia!: pulumi.Output<number | undefined>;
+    declare public readonly sepia: pulumi.Output<number | undefined>;
     /**
      * Indicates whether to sharpen images.
      */
-    public readonly sharpen!: pulumi.Output<boolean | undefined>;
+    declare public readonly sharpen: pulumi.Output<boolean | undefined>;
     /**
      * The width to which images should be resized.
      */
-    public readonly width!: pulumi.Output<number | undefined>;
+    declare public readonly width: pulumi.Output<number | undefined>;
 
     /**
      * Create a PullzoneOptimizerClass resource with the given unique name, arguments, and options.
@@ -118,47 +118,47 @@ export class PullzoneOptimizerClass extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneOptimizerClassState | undefined;
-            resourceInputs["aspectRatio"] = state ? state.aspectRatio : undefined;
-            resourceInputs["autoOptimize"] = state ? state.autoOptimize : undefined;
-            resourceInputs["blur"] = state ? state.blur : undefined;
-            resourceInputs["brightness"] = state ? state.brightness : undefined;
-            resourceInputs["contrast"] = state ? state.contrast : undefined;
-            resourceInputs["crop"] = state ? state.crop : undefined;
-            resourceInputs["cropGravity"] = state ? state.cropGravity : undefined;
-            resourceInputs["flip"] = state ? state.flip : undefined;
-            resourceInputs["flop"] = state ? state.flop : undefined;
-            resourceInputs["height"] = state ? state.height : undefined;
-            resourceInputs["hue"] = state ? state.hue : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["quality"] = state ? state.quality : undefined;
-            resourceInputs["saturation"] = state ? state.saturation : undefined;
-            resourceInputs["sepia"] = state ? state.sepia : undefined;
-            resourceInputs["sharpen"] = state ? state.sharpen : undefined;
-            resourceInputs["width"] = state ? state.width : undefined;
+            resourceInputs["aspectRatio"] = state?.aspectRatio;
+            resourceInputs["autoOptimize"] = state?.autoOptimize;
+            resourceInputs["blur"] = state?.blur;
+            resourceInputs["brightness"] = state?.brightness;
+            resourceInputs["contrast"] = state?.contrast;
+            resourceInputs["crop"] = state?.crop;
+            resourceInputs["cropGravity"] = state?.cropGravity;
+            resourceInputs["flip"] = state?.flip;
+            resourceInputs["flop"] = state?.flop;
+            resourceInputs["height"] = state?.height;
+            resourceInputs["hue"] = state?.hue;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["quality"] = state?.quality;
+            resourceInputs["saturation"] = state?.saturation;
+            resourceInputs["sepia"] = state?.sepia;
+            resourceInputs["sharpen"] = state?.sharpen;
+            resourceInputs["width"] = state?.width;
         } else {
             const args = argsOrState as PullzoneOptimizerClassArgs | undefined;
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["aspectRatio"] = args ? args.aspectRatio : undefined;
-            resourceInputs["autoOptimize"] = args ? args.autoOptimize : undefined;
-            resourceInputs["blur"] = args ? args.blur : undefined;
-            resourceInputs["brightness"] = args ? args.brightness : undefined;
-            resourceInputs["contrast"] = args ? args.contrast : undefined;
-            resourceInputs["crop"] = args ? args.crop : undefined;
-            resourceInputs["cropGravity"] = args ? args.cropGravity : undefined;
-            resourceInputs["flip"] = args ? args.flip : undefined;
-            resourceInputs["flop"] = args ? args.flop : undefined;
-            resourceInputs["height"] = args ? args.height : undefined;
-            resourceInputs["hue"] = args ? args.hue : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["quality"] = args ? args.quality : undefined;
-            resourceInputs["saturation"] = args ? args.saturation : undefined;
-            resourceInputs["sepia"] = args ? args.sepia : undefined;
-            resourceInputs["sharpen"] = args ? args.sharpen : undefined;
-            resourceInputs["width"] = args ? args.width : undefined;
+            resourceInputs["aspectRatio"] = args?.aspectRatio;
+            resourceInputs["autoOptimize"] = args?.autoOptimize;
+            resourceInputs["blur"] = args?.blur;
+            resourceInputs["brightness"] = args?.brightness;
+            resourceInputs["contrast"] = args?.contrast;
+            resourceInputs["crop"] = args?.crop;
+            resourceInputs["cropGravity"] = args?.cropGravity;
+            resourceInputs["flip"] = args?.flip;
+            resourceInputs["flop"] = args?.flop;
+            resourceInputs["height"] = args?.height;
+            resourceInputs["hue"] = args?.hue;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["quality"] = args?.quality;
+            resourceInputs["saturation"] = args?.saturation;
+            resourceInputs["sepia"] = args?.sepia;
+            resourceInputs["sharpen"] = args?.sharpen;
+            resourceInputs["width"] = args?.width;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PullzoneOptimizerClass.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

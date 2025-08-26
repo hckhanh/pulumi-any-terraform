@@ -35,11 +35,11 @@ export class StreamCollection extends pulumi.CustomResource {
     /**
      * The ID of the stream library to which the collection belongs.
      */
-    public readonly library!: pulumi.Output<number>;
+    declare public readonly library: pulumi.Output<number>;
     /**
      * The name of the stream collection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a StreamCollection resource with the given unique name, arguments, and options.
@@ -54,15 +54,15 @@ export class StreamCollection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamCollectionState | undefined;
-            resourceInputs["library"] = state ? state.library : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["library"] = state?.library;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as StreamCollectionArgs | undefined;
-            if ((!args || args.library === undefined) && !opts.urn) {
+            if (args?.library === undefined && !opts.urn) {
                 throw new Error("Missing required property 'library'");
             }
-            resourceInputs["library"] = args ? args.library : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["library"] = args?.library;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StreamCollection.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

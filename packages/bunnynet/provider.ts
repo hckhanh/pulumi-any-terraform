@@ -28,19 +28,19 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * API key. Can also be set using the `BUNNYNET_API_KEY` environment variable.
      */
-    public readonly apiKey!: pulumi.Output<string | undefined>;
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
     /**
      * Optional. The API URL. Defaults to `https://api.bunny.net`.
      */
-    public readonly apiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly apiUrl: pulumi.Output<string | undefined>;
     /**
      * Optional. The Container API URL. Defaults to `https://api-mc.opsbunny.net`.
      */
-    public readonly containerApiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly containerApiUrl: pulumi.Output<string | undefined>;
     /**
      * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
      */
-    public readonly streamApiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly streamApiUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -53,10 +53,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["containerApiUrl"] = args ? args.containerApiUrl : undefined;
-            resourceInputs["streamApiUrl"] = args ? args.streamApiUrl : undefined;
+            resourceInputs["apiKey"] = args?.apiKey;
+            resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["containerApiUrl"] = args?.containerApiUrl;
+            resourceInputs["streamApiUrl"] = args?.streamApiUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

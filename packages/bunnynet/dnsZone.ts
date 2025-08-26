@@ -35,39 +35,39 @@ export class DnsZone extends pulumi.CustomResource {
     /**
      * The unique identifier for the DNS zone.
      */
-    public /*out*/ readonly dnsZoneId!: pulumi.Output<number>;
+    declare public /*out*/ readonly dnsZoneId: pulumi.Output<number>;
     /**
      * The domain name for the DNS zone.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Indicates whether DNS logs are anonymized.
      */
-    public readonly logAnonymized!: pulumi.Output<boolean>;
+    declare public readonly logAnonymized: pulumi.Output<boolean>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    public readonly logAnonymizedStyle!: pulumi.Output<string>;
+    declare public readonly logAnonymizedStyle: pulumi.Output<string>;
     /**
      * Indicates whether permanent logging for DNS queries is enabled.
      */
-    public readonly logEnabled!: pulumi.Output<boolean>;
+    declare public readonly logEnabled: pulumi.Output<boolean>;
     /**
      * The primary nameserver for the DNS zone.
      */
-    public readonly nameserver1!: pulumi.Output<string>;
+    declare public readonly nameserver1: pulumi.Output<string>;
     /**
      * The secondary nameserver for the DNS zone.
      */
-    public readonly nameserver2!: pulumi.Output<string>;
+    declare public readonly nameserver2: pulumi.Output<string>;
     /**
      * Indicates whether custom nameservers are used.
      */
-    public readonly nameserverCustom!: pulumi.Output<boolean>;
+    declare public readonly nameserverCustom: pulumi.Output<boolean>;
     /**
      * The email address used in the Start of Authority (SOA) record for the DNS zone.
      */
-    public readonly soaEmail!: pulumi.Output<string>;
+    declare public readonly soaEmail: pulumi.Output<string>;
 
     /**
      * Create a DnsZone resource with the given unique name, arguments, and options.
@@ -82,28 +82,28 @@ export class DnsZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
-            resourceInputs["dnsZoneId"] = state ? state.dnsZoneId : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["logAnonymized"] = state ? state.logAnonymized : undefined;
-            resourceInputs["logAnonymizedStyle"] = state ? state.logAnonymizedStyle : undefined;
-            resourceInputs["logEnabled"] = state ? state.logEnabled : undefined;
-            resourceInputs["nameserver1"] = state ? state.nameserver1 : undefined;
-            resourceInputs["nameserver2"] = state ? state.nameserver2 : undefined;
-            resourceInputs["nameserverCustom"] = state ? state.nameserverCustom : undefined;
-            resourceInputs["soaEmail"] = state ? state.soaEmail : undefined;
+            resourceInputs["dnsZoneId"] = state?.dnsZoneId;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["logAnonymized"] = state?.logAnonymized;
+            resourceInputs["logAnonymizedStyle"] = state?.logAnonymizedStyle;
+            resourceInputs["logEnabled"] = state?.logEnabled;
+            resourceInputs["nameserver1"] = state?.nameserver1;
+            resourceInputs["nameserver2"] = state?.nameserver2;
+            resourceInputs["nameserverCustom"] = state?.nameserverCustom;
+            resourceInputs["soaEmail"] = state?.soaEmail;
         } else {
             const args = argsOrState as DnsZoneArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["logAnonymized"] = args ? args.logAnonymized : undefined;
-            resourceInputs["logAnonymizedStyle"] = args ? args.logAnonymizedStyle : undefined;
-            resourceInputs["logEnabled"] = args ? args.logEnabled : undefined;
-            resourceInputs["nameserver1"] = args ? args.nameserver1 : undefined;
-            resourceInputs["nameserver2"] = args ? args.nameserver2 : undefined;
-            resourceInputs["nameserverCustom"] = args ? args.nameserverCustom : undefined;
-            resourceInputs["soaEmail"] = args ? args.soaEmail : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["logAnonymized"] = args?.logAnonymized;
+            resourceInputs["logAnonymizedStyle"] = args?.logAnonymizedStyle;
+            resourceInputs["logEnabled"] = args?.logEnabled;
+            resourceInputs["nameserver1"] = args?.nameserver1;
+            resourceInputs["nameserver2"] = args?.nameserver2;
+            resourceInputs["nameserverCustom"] = args?.nameserverCustom;
+            resourceInputs["soaEmail"] = args?.soaEmail;
             resourceInputs["dnsZoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -35,23 +35,23 @@ export class ComputeScriptVariable extends pulumi.CustomResource {
     /**
      * The ID of the environment variable.
      */
-    public /*out*/ readonly computeScriptVariableId!: pulumi.Output<number>;
+    declare public /*out*/ readonly computeScriptVariableId: pulumi.Output<number>;
     /**
      * The default value of the environment variable.
      */
-    public readonly defaultValue!: pulumi.Output<string>;
+    declare public readonly defaultValue: pulumi.Output<string>;
     /**
      * The name of the environment variable.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates whether the environment variable is required.
      */
-    public readonly required!: pulumi.Output<boolean>;
+    declare public readonly required: pulumi.Output<boolean>;
     /**
      * The ID of the associated compute script.
      */
-    public readonly script!: pulumi.Output<number>;
+    declare public readonly script: pulumi.Output<number>;
 
     /**
      * Create a ComputeScriptVariable resource with the given unique name, arguments, and options.
@@ -66,26 +66,26 @@ export class ComputeScriptVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeScriptVariableState | undefined;
-            resourceInputs["computeScriptVariableId"] = state ? state.computeScriptVariableId : undefined;
-            resourceInputs["defaultValue"] = state ? state.defaultValue : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["required"] = state ? state.required : undefined;
-            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["computeScriptVariableId"] = state?.computeScriptVariableId;
+            resourceInputs["defaultValue"] = state?.defaultValue;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["required"] = state?.required;
+            resourceInputs["script"] = state?.script;
         } else {
             const args = argsOrState as ComputeScriptVariableArgs | undefined;
-            if ((!args || args.defaultValue === undefined) && !opts.urn) {
+            if (args?.defaultValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultValue'");
             }
-            if ((!args || args.required === undefined) && !opts.urn) {
+            if (args?.required === undefined && !opts.urn) {
                 throw new Error("Missing required property 'required'");
             }
-            if ((!args || args.script === undefined) && !opts.urn) {
+            if (args?.script === undefined && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            resourceInputs["defaultValue"] = args ? args.defaultValue : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["required"] = args ? args.required : undefined;
-            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["defaultValue"] = args?.defaultValue;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["required"] = args?.required;
+            resourceInputs["script"] = args?.script;
             resourceInputs["computeScriptVariableId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

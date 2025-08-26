@@ -34,35 +34,35 @@ export class PullzoneShield extends pulumi.CustomResource {
         return obj['__pulumiType'] === PullzoneShield.__pulumiType;
     }
 
-    public readonly accessLists!: pulumi.Output<outputs.PullzoneShieldAccessList[] | undefined>;
+    declare public readonly accessLists: pulumi.Output<outputs.PullzoneShieldAccessList[] | undefined>;
     /**
      * Configures Bot Detection settings.
      */
-    public readonly botDetection!: pulumi.Output<outputs.PullzoneShieldBotDetection | undefined>;
+    declare public readonly botDetection: pulumi.Output<outputs.PullzoneShieldBotDetection | undefined>;
     /**
      * Configures DDoS settings.
      */
-    public readonly ddos!: pulumi.Output<outputs.PullzoneShieldDdos | undefined>;
+    declare public readonly ddos: pulumi.Output<outputs.PullzoneShieldDdos | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The ID of the Bunny Shield.
      */
-    public /*out*/ readonly pullzoneShieldId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneShieldId: pulumi.Output<number>;
     /**
      * Options: `Advanced`, `Basic`, `Business`, `Enterprise`
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
     /**
      * Configures WAF settings.
      */
-    public readonly waf!: pulumi.Output<outputs.PullzoneShieldWaf | undefined>;
+    declare public readonly waf: pulumi.Output<outputs.PullzoneShieldWaf | undefined>;
     /**
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
-    public readonly whitelabel!: pulumi.Output<boolean>;
+    declare public readonly whitelabel: pulumi.Output<boolean>;
 
     /**
      * Create a PullzoneShield resource with the given unique name, arguments, and options.
@@ -77,26 +77,26 @@ export class PullzoneShield extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneShieldState | undefined;
-            resourceInputs["accessLists"] = state ? state.accessLists : undefined;
-            resourceInputs["botDetection"] = state ? state.botDetection : undefined;
-            resourceInputs["ddos"] = state ? state.ddos : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["pullzoneShieldId"] = state ? state.pullzoneShieldId : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["waf"] = state ? state.waf : undefined;
-            resourceInputs["whitelabel"] = state ? state.whitelabel : undefined;
+            resourceInputs["accessLists"] = state?.accessLists;
+            resourceInputs["botDetection"] = state?.botDetection;
+            resourceInputs["ddos"] = state?.ddos;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["pullzoneShieldId"] = state?.pullzoneShieldId;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["waf"] = state?.waf;
+            resourceInputs["whitelabel"] = state?.whitelabel;
         } else {
             const args = argsOrState as PullzoneShieldArgs | undefined;
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["accessLists"] = args ? args.accessLists : undefined;
-            resourceInputs["botDetection"] = args ? args.botDetection : undefined;
-            resourceInputs["ddos"] = args ? args.ddos : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
-            resourceInputs["waf"] = args ? args.waf : undefined;
-            resourceInputs["whitelabel"] = args ? args.whitelabel : undefined;
+            resourceInputs["accessLists"] = args?.accessLists;
+            resourceInputs["botDetection"] = args?.botDetection;
+            resourceInputs["ddos"] = args?.ddos;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["tier"] = args?.tier;
+            resourceInputs["waf"] = args?.waf;
+            resourceInputs["whitelabel"] = args?.whitelabel;
             resourceInputs["pullzoneShieldId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

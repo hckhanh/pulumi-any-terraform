@@ -37,31 +37,31 @@ export class ComputeContainerApp extends pulumi.CustomResource {
     /**
      * The maximum number of instances that will be provisioned per active region.
      */
-    public readonly autoscalingMax!: pulumi.Output<number>;
+    declare public readonly autoscalingMax: pulumi.Output<number>;
     /**
      * The minimum number of instances that will be provisioned per active region.
      */
-    public readonly autoscalingMin!: pulumi.Output<number>;
+    declare public readonly autoscalingMin: pulumi.Output<number>;
     /**
      * Defines a container for the application.
      */
-    public readonly containers!: pulumi.Output<outputs.ComputeContainerAppContainer[] | undefined>;
+    declare public readonly containers: pulumi.Output<outputs.ComputeContainerAppContainer[] | undefined>;
     /**
      * The name of the application.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The regions that will be dynamically provisionable based on the user latency.
      */
-    public readonly regionsAlloweds!: pulumi.Output<string[]>;
+    declare public readonly regionsAlloweds: pulumi.Output<string[]>;
     /**
      * The maximum amount of regions to be deployed at any given time.
      */
-    public readonly regionsMaxAllowed!: pulumi.Output<number | undefined>;
+    declare public readonly regionsMaxAllowed: pulumi.Output<number | undefined>;
     /**
      * The regions that will be statically provisioned and will always be running and available to users.
      */
-    public readonly regionsRequireds!: pulumi.Output<string[]>;
+    declare public readonly regionsRequireds: pulumi.Output<string[]>;
 
     /**
      * Create a ComputeContainerApp resource with the given unique name, arguments, and options.
@@ -76,28 +76,28 @@ export class ComputeContainerApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeContainerAppState | undefined;
-            resourceInputs["autoscalingMax"] = state ? state.autoscalingMax : undefined;
-            resourceInputs["autoscalingMin"] = state ? state.autoscalingMin : undefined;
-            resourceInputs["containers"] = state ? state.containers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionsAlloweds"] = state ? state.regionsAlloweds : undefined;
-            resourceInputs["regionsMaxAllowed"] = state ? state.regionsMaxAllowed : undefined;
-            resourceInputs["regionsRequireds"] = state ? state.regionsRequireds : undefined;
+            resourceInputs["autoscalingMax"] = state?.autoscalingMax;
+            resourceInputs["autoscalingMin"] = state?.autoscalingMin;
+            resourceInputs["containers"] = state?.containers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionsAlloweds"] = state?.regionsAlloweds;
+            resourceInputs["regionsMaxAllowed"] = state?.regionsMaxAllowed;
+            resourceInputs["regionsRequireds"] = state?.regionsRequireds;
         } else {
             const args = argsOrState as ComputeContainerAppArgs | undefined;
-            if ((!args || args.regionsAlloweds === undefined) && !opts.urn) {
+            if (args?.regionsAlloweds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionsAlloweds'");
             }
-            if ((!args || args.regionsRequireds === undefined) && !opts.urn) {
+            if (args?.regionsRequireds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionsRequireds'");
             }
-            resourceInputs["autoscalingMax"] = args ? args.autoscalingMax : undefined;
-            resourceInputs["autoscalingMin"] = args ? args.autoscalingMin : undefined;
-            resourceInputs["containers"] = args ? args.containers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["regionsAlloweds"] = args ? args.regionsAlloweds : undefined;
-            resourceInputs["regionsMaxAllowed"] = args ? args.regionsMaxAllowed : undefined;
-            resourceInputs["regionsRequireds"] = args ? args.regionsRequireds : undefined;
+            resourceInputs["autoscalingMax"] = args?.autoscalingMax;
+            resourceInputs["autoscalingMin"] = args?.autoscalingMin;
+            resourceInputs["containers"] = args?.containers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["regionsAlloweds"] = args?.regionsAlloweds;
+            resourceInputs["regionsMaxAllowed"] = args?.regionsMaxAllowed;
+            resourceInputs["regionsRequireds"] = args?.regionsRequireds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeContainerApp.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

@@ -35,88 +35,88 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * Indicates whether the DNS record should utilize bunny.net’s acceleration services.
      */
-    public readonly accelerated!: pulumi.Output<boolean>;
+    declare public readonly accelerated: pulumi.Output<boolean>;
     /**
      * The ID of the accelerated pull zone.
      */
-    public /*out*/ readonly acceleratedPullzone!: pulumi.Output<number>;
+    declare public /*out*/ readonly acceleratedPullzone: pulumi.Output<number>;
     /**
      * This property allows users to add descriptive notes for documentation and management purposes.
      */
-    public readonly comment!: pulumi.Output<string>;
+    declare public readonly comment: pulumi.Output<string>;
     /**
      * The unique identifier for the DNS record.
      */
-    public /*out*/ readonly dnsRecordId!: pulumi.Output<number>;
+    declare public /*out*/ readonly dnsRecordId: pulumi.Output<number>;
     /**
      * Indicates whether the DNS record is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Flags for advanced DNS settings.
      */
-    public readonly flags!: pulumi.Output<number>;
+    declare public readonly flags: pulumi.Output<number>;
     /**
      * The latitude for geolocation-based routing.
      */
-    public readonly geolocationLat!: pulumi.Output<number>;
+    declare public readonly geolocationLat: pulumi.Output<number>;
     /**
      * The longitude for geolocation-based routing.
      */
-    public readonly geolocationLong!: pulumi.Output<number>;
+    declare public readonly geolocationLong: pulumi.Output<number>;
     /**
      * The latency zone for latency-based routing.
      */
-    public readonly latencyZone!: pulumi.Output<string>;
+    declare public readonly latencyZone: pulumi.Output<string>;
     /**
      * The name of the linked resource.
      */
-    public readonly linkName!: pulumi.Output<string>;
+    declare public readonly linkName: pulumi.Output<string>;
     /**
      * Options: `Http`, `Monitor`, `None`, `Ping`
      */
-    public readonly monitorType!: pulumi.Output<string>;
+    declare public readonly monitorType: pulumi.Output<string>;
     /**
      * The name of the DNS record. Use <code>name = ""</code> for apex domain records.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port number for services that require a specific port.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The priority of the DNS record.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Options: `Geolocation`, `Latency`, `None`
      */
-    public readonly smartRoutingType!: pulumi.Output<string>;
+    declare public readonly smartRoutingType: pulumi.Output<string>;
     /**
      * A tag for the DNS record.
      */
-    public readonly tag!: pulumi.Output<string>;
+    declare public readonly tag: pulumi.Output<string>;
     /**
      * The time-to-live value for the DNS record.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `Script`, `TXT`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of the DNS record.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified
      * weight.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
     /**
      * ID of the related DNS zone.
      */
-    public readonly zone!: pulumi.Output<number>;
+    declare public readonly zone: pulumi.Output<number>;
 
     /**
      * Create a DnsRecord resource with the given unique name, arguments, and options.
@@ -131,57 +131,57 @@ export class DnsRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordState | undefined;
-            resourceInputs["accelerated"] = state ? state.accelerated : undefined;
-            resourceInputs["acceleratedPullzone"] = state ? state.acceleratedPullzone : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["dnsRecordId"] = state ? state.dnsRecordId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["flags"] = state ? state.flags : undefined;
-            resourceInputs["geolocationLat"] = state ? state.geolocationLat : undefined;
-            resourceInputs["geolocationLong"] = state ? state.geolocationLong : undefined;
-            resourceInputs["latencyZone"] = state ? state.latencyZone : undefined;
-            resourceInputs["linkName"] = state ? state.linkName : undefined;
-            resourceInputs["monitorType"] = state ? state.monitorType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["smartRoutingType"] = state ? state.smartRoutingType : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["accelerated"] = state?.accelerated;
+            resourceInputs["acceleratedPullzone"] = state?.acceleratedPullzone;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["dnsRecordId"] = state?.dnsRecordId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["flags"] = state?.flags;
+            resourceInputs["geolocationLat"] = state?.geolocationLat;
+            resourceInputs["geolocationLong"] = state?.geolocationLong;
+            resourceInputs["latencyZone"] = state?.latencyZone;
+            resourceInputs["linkName"] = state?.linkName;
+            resourceInputs["monitorType"] = state?.monitorType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["smartRoutingType"] = state?.smartRoutingType;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["weight"] = state?.weight;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DnsRecordArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["accelerated"] = args ? args.accelerated : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["flags"] = args ? args.flags : undefined;
-            resourceInputs["geolocationLat"] = args ? args.geolocationLat : undefined;
-            resourceInputs["geolocationLong"] = args ? args.geolocationLong : undefined;
-            resourceInputs["latencyZone"] = args ? args.latencyZone : undefined;
-            resourceInputs["linkName"] = args ? args.linkName : undefined;
-            resourceInputs["monitorType"] = args ? args.monitorType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["smartRoutingType"] = args ? args.smartRoutingType : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["accelerated"] = args?.accelerated;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["flags"] = args?.flags;
+            resourceInputs["geolocationLat"] = args?.geolocationLat;
+            resourceInputs["geolocationLong"] = args?.geolocationLong;
+            resourceInputs["latencyZone"] = args?.latencyZone;
+            resourceInputs["linkName"] = args?.linkName;
+            resourceInputs["monitorType"] = args?.monitorType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["smartRoutingType"] = args?.smartRoutingType;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["weight"] = args?.weight;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["acceleratedPullzone"] = undefined /*out*/;
             resourceInputs["dnsRecordId"] = undefined /*out*/;
         }

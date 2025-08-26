@@ -37,28 +37,28 @@ export class PullzoneRatelimitRule extends pulumi.CustomResource {
     /**
      * The condition to trigger the rate limit rule.
      */
-    public readonly condition!: pulumi.Output<outputs.PullzoneRatelimitRuleCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.PullzoneRatelimitRuleCondition | undefined>;
     /**
      * The rate limit rule description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly limit!: pulumi.Output<outputs.PullzoneRatelimitRuleLimit | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly limit: pulumi.Output<outputs.PullzoneRatelimitRuleLimit | undefined>;
     /**
      * The rate limit rule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the linked pullzone.
      */
-    public readonly pullzone!: pulumi.Output<number>;
+    declare public readonly pullzone: pulumi.Output<number>;
     /**
      * The ID of the rate limit rule.
      */
-    public /*out*/ readonly pullzoneRatelimitRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly pullzoneRatelimitRuleId: pulumi.Output<number>;
     /**
      * The response once the rate limit rule is triggered.
      */
-    public readonly response!: pulumi.Output<outputs.PullzoneRatelimitRuleResponse | undefined>;
+    declare public readonly response: pulumi.Output<outputs.PullzoneRatelimitRuleResponse | undefined>;
 
     /**
      * Create a PullzoneRatelimitRule resource with the given unique name, arguments, and options.
@@ -73,24 +73,24 @@ export class PullzoneRatelimitRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneRatelimitRuleState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["limit"] = state ? state.limit : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pullzone"] = state ? state.pullzone : undefined;
-            resourceInputs["pullzoneRatelimitRuleId"] = state ? state.pullzoneRatelimitRuleId : undefined;
-            resourceInputs["response"] = state ? state.response : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["limit"] = state?.limit;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pullzone"] = state?.pullzone;
+            resourceInputs["pullzoneRatelimitRuleId"] = state?.pullzoneRatelimitRuleId;
+            resourceInputs["response"] = state?.response;
         } else {
             const args = argsOrState as PullzoneRatelimitRuleArgs | undefined;
-            if ((!args || args.pullzone === undefined) && !opts.urn) {
+            if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["limit"] = args ? args.limit : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pullzone"] = args ? args.pullzone : undefined;
-            resourceInputs["response"] = args ? args.response : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["limit"] = args?.limit;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pullzone"] = args?.pullzone;
+            resourceInputs["response"] = args?.response;
             resourceInputs["pullzoneRatelimitRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
