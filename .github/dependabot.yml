@@ -1,0 +1,46 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/better-uptime
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/bunnynet
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/infisical
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/logtail
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/namecheap
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/teamcity
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/time
+    schedule:
+      interval: daily
