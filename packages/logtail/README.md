@@ -259,12 +259,12 @@ Set your API token using one of these methods:
 
 #### Environment Variable (Recommended)
 ```bash
-export LOGTAIL_API_TOKEN="lt_abcd1234efgh5678ijkl9012mnop3456"
+export LOGTAIL_API_TOKEN="logtail-api-token"
 ```
 
 #### Pulumi Configuration
 ```bash
-pulumi config set logtail:apiToken "lt_abcd1234efgh5678ijkl9012mnop3456" --secret
+pulumi config set logtail:apiToken "logtail-api-token" --secret
 ```
 
 #### Provider Configuration in Code
@@ -272,7 +272,7 @@ pulumi config set logtail:apiToken "lt_abcd1234efgh5678ijkl9012mnop3456" --secre
 import * as logtail from 'pulumi-logtail'
 
 const provider = new logtail.Provider('logtail', {
-  apiToken: 'lt_abcd1234efgh5678ijkl9012mnop3456',
+  apiToken: 'logtail-api-token',
 })
 
 // Use the provider with resources
