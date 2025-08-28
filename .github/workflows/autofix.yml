@@ -22,14 +22,14 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0
           filter: tree:0
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: 'package.json'
           registry-url: https://registry.npmjs.org/
@@ -39,10 +39,10 @@ jobs:
       - name: Show Nx report
         run: pnpm nx report
       - name: Set SHAs
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4
       - name: Fix
         run: pnpm nx affected -t fix
       - name: Update package lock file
         run: pnpm install --fix-lockfile --no-frozen-lockfile
       - name: Submit autofix
-        uses: autofix-ci/action@v1
+        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1
