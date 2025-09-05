@@ -1,5 +1,13 @@
+# pnpm
+pnpm-lock.yaml
 **/package.json
-**/*.ts
 
+# TypeScript
+**/*.ts
+**/*.js
+**/tsconfig.json
+
+# Nx
 /.nx/cache
 /.nx/workspace-data
+**/CHANGELOG.md
