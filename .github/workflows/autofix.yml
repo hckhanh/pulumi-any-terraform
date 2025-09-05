@@ -8,12 +8,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   apply:
     name: Apply automated fixes
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v5
