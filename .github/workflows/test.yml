@@ -17,7 +17,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 0
           filter: tree:0
@@ -28,7 +28,7 @@ jobs:
       - name: Show Nx report
         run: pnpm nx report
       - name: Set SHAs
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Check
         run: pnpm nx affected --targets=lint,audit,build
         env:
