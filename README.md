@@ -40,12 +40,14 @@ pnpm add pulumi-namecheap
 ### Development Setup
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/hckhanh/pulumi-any-terraform.git
    cd pulumi-any-terraform
    ```
 
 2. **Install dependencies**:
+
    ```bash
    pnpm install
    ```
@@ -62,6 +64,7 @@ pnpm add pulumi-namecheap
 To add a new Terraform provider to this collection:
 
 1. Create a new package directory under `packages/`:
+
    ```bash
    mkdir packages/your-provider
    cd packages/your-provider
@@ -83,6 +86,7 @@ To add a new Terraform provider to this collection:
    - This base64-encoded value contains the provider configuration
 
 2. **Update package version**:
+
    ```bash
    cd packages/your-provider
    # Update version in package.json
@@ -96,16 +100,19 @@ To add a new Terraform provider to this collection:
 #### Quality Assurance
 
 1. **Check dependency synchronization**:
+
    ```bash
    pnpm run syncpack:check
    ```
 
 2. **Fix dependency issues** (if any):
+
    ```bash
    pnpm run syncpack:fix
    ```
 
 3. **Format code**:
+
    ```bash
    pnpm run prettier:write
    ```
@@ -186,6 +193,7 @@ MIT - see individual package licenses for specific details.
 ## Author
 
 **Khánh Hoàng**
+
 - Email: hi@khanh.id
 - Website: https://www.khanh.id
 - GitHub: [@hckhanh](https://github.com/hckhanh)

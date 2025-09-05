@@ -90,7 +90,7 @@ import * as betteruptime from 'pulumi-better-uptime'
 const backupHeartbeat = new betteruptime.Heartbeat('backup-job', {
   name: 'Daily Backup Job',
   period: 86400, // 24 hours in seconds
-  grace: 3600,   // 1 hour grace period
+  grace: 3600, // 1 hour grace period
   emailReports: 'never',
 })
 
@@ -114,11 +114,14 @@ const slackIntegration = new betteruptime.EmailIntegration('slack-alerts', {
 })
 
 // PagerDuty integration for escalation
-const pagerdutyIntegration = new betteruptime.PagerdutyIntegration('pagerduty-escalation', {
-  name: 'PagerDuty Escalation',
-  integrationKey: 'your-pagerduty-integration-key',
-  policyId: policy.id,
-})
+const pagerdutyIntegration = new betteruptime.PagerdutyIntegration(
+  'pagerduty-escalation',
+  {
+    name: 'PagerDuty Escalation',
+    integrationKey: 'your-pagerduty-integration-key',
+    policyId: policy.id,
+  },
+)
 ```
 
 ### Incident Management
@@ -252,16 +255,19 @@ For detailed API documentation, type definitions, and examples, please refer to 
 Set your API token using one of these methods:
 
 #### Environment Variable (Recommended)
+
 ```bash
 export BETTER_UPTIME_API_TOKEN="bt-abcd1234efgh5678ijkl9012mnop3456"
 ```
 
 #### Pulumi Configuration
+
 ```bash
 pulumi config set betteruptime:apiToken "bt-abcd1234efgh5678ijkl9012mnop3456" --secret
 ```
 
 #### Provider Configuration in Code
+
 ```typescript
 import * as betteruptime from 'pulumi-better-uptime'
 
@@ -270,9 +276,13 @@ const provider = new betteruptime.Provider('better-uptime', {
 })
 
 // Use the provider with resources
-const monitor = new betteruptime.Monitor('my-monitor', {
-  // ... configuration
-}, { provider })
+const monitor = new betteruptime.Monitor(
+  'my-monitor',
+  {
+    // ... configuration
+  },
+  { provider },
+)
 ```
 
 ## Examples

@@ -59,7 +59,7 @@ import * as teamcity from 'pulumi-teamcity'
 const provider = new teamcity.Provider('teamcity-provider', {
   url: 'https://teamcity.example.com',
   username: 'admin',
-  password: 'your-password-or-token'
+  password: 'your-password-or-token',
 })
 ```
 
@@ -90,7 +90,7 @@ import * as teamcity from 'pulumi-teamcity'
 const project = new teamcity.Project('my-project', {
   name: 'My Application',
   projectId: 'MyApp',
-  description: 'Main application project'
+  description: 'Main application project',
 })
 
 // Create a VCS root
@@ -103,25 +103,29 @@ const vcsRoot = new teamcity.Vcsroot('my-vcs', {
     url: 'https://github.com/example/my-app.git',
     authMethod: 'PASSWORD',
     username: 'git-user',
-    password: 'git-token'
-  }
+    password: 'git-token',
+  },
 })
 
 // Create a build configuration
 const buildConfig = new teamcity.BuildConfiguration('my-build', {
   name: 'Build and Test',
   projectId: project.projectId,
-  vcsRoots: [{
-    id: vcsRoot.id,
-    checkoutRules: '+:. => source'
-  }],
-  steps: [{
-    type: 'simpleRunner',
-    name: 'Build',
-    properties: {
-      script: 'npm install && npm run build'
-    }
-  }]
+  vcsRoots: [
+    {
+      id: vcsRoot.id,
+      checkoutRules: '+:. => source',
+    },
+  ],
+  steps: [
+    {
+      type: 'simpleRunner',
+      name: 'Build',
+      properties: {
+        script: 'npm install && npm run build',
+      },
+    },
+  ],
 })
 ```
 
@@ -135,26 +139,26 @@ const developer = new teamcity.User('developer', {
   username: 'john.doe',
   name: 'John Doe',
   email: 'john.doe@example.com',
-  password: 'secure-password'
+  password: 'secure-password',
 })
 
 // Create a group
 const developersGroup = new teamcity.Group('developers', {
   name: 'Developers',
-  description: 'Development team members'
+  description: 'Development team members',
 })
 
 // Add user to group
 const groupMember = new teamcity.GroupMember('dev-member', {
   groupKey: developersGroup.key,
-  username: developer.username
+  username: developer.username,
 })
 
 // Assign role to user for a project
 const projectRole = new teamcity.Role('project-developer', {
   roleId: 'PROJECT_DEVELOPER',
   scope: 'p:MyApp',
-  username: developer.username
+  username: developer.username,
 })
 ```
 
@@ -166,7 +170,7 @@ import * as teamcity from 'pulumi-teamcity'
 // Create an agent pool
 const pool = new teamcity.Pool('build-pool', {
   name: 'Build Agents',
-  maxAgents: 5
+  maxAgents: 5,
 })
 ```
 
@@ -175,7 +179,7 @@ const pool = new teamcity.Pool('build-pool', {
 This provider supports all TeamCity resource types including:
 
 - **Projects**: `teamcity.Project`
-- **Build Configurations**: `teamcity.BuildConfiguration` 
+- **Build Configurations**: `teamcity.BuildConfiguration`
 - **VCS Roots**: `teamcity.Vcsroot`
 - **Users**: `teamcity.User`
 - **Groups**: `teamcity.Group`
@@ -190,7 +194,7 @@ For a complete list of available resources and their properties, refer to the [T
 The provider also supports data sources for querying existing TeamCity resources:
 
 - `teamcity.getBuildConfiguration`: Get build configuration details
-- `teamcity.getPool`: Get agent pool information  
+- `teamcity.getPool`: Get agent pool information
 - `teamcity.getServer`: Get server information
 - `teamcity.getSshKey`: Get SSH key details
 

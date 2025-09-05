@@ -17,16 +17,19 @@ This package provides a Pulumi provider that enables you to manage your Namechea
 ## Installation
 
 ### npm
+
 ```bash
 npm install pulumi-namecheap
 ```
 
 ### yarn
+
 ```bash
 yarn add pulumi-namecheap
 ```
 
 ### pnpm
+
 ```bash
 pnpm add pulumi-namecheap
 ```
@@ -51,6 +54,7 @@ Before using the provider, you need to configure authentication with your Namech
 You can configure the provider in several ways:
 
 #### 1. Using Pulumi Config
+
 ```bash
 pulumi config set namecheap:apiKey your-api-key
 pulumi config set namecheap:apiUser your-api-user
@@ -60,6 +64,7 @@ pulumi config set namecheap:useSandbox false  # optional
 ```
 
 #### 2. Using Environment Variables
+
 ```bash
 export NAMECHEAP_API_KEY="your-api-key"
 export NAMECHEAP_API_USER="your-api-user"
@@ -69,16 +74,17 @@ export NAMECHEAP_USE_SANDBOX="false"  # optional
 ```
 
 #### 3. Provider Constructor
-```typescript
-import * as namecheap from "pulumi-namecheap";
 
-const provider = new namecheap.Provider("namecheap-provider", {
-    apiKey: "your-api-key",
-    apiUser: "your-api-user",
-    userName: "your-username",
-    clientIp: "your-client-ip",
-    useSandbox: false,  // optional
-});
+```typescript
+import * as namecheap from 'pulumi-namecheap'
+
+const provider = new namecheap.Provider('namecheap-provider', {
+  apiKey: 'your-api-key',
+  apiUser: 'your-api-user',
+  userName: 'your-username',
+  clientIp: 'your-client-ip',
+  useSandbox: false, // optional
+})
 ```
 
 ## Usage
@@ -86,121 +92,125 @@ const provider = new namecheap.Provider("namecheap-provider", {
 ### Basic Domain Records Management
 
 ```typescript
-import * as namecheap from "pulumi-namecheap";
+import * as namecheap from 'pulumi-namecheap'
 
 // Create DNS records for your domain
-const records = new namecheap.DomainRecords("my-domain-records", {
-    domain: "example.com",
-    mode: "OVERWRITE",  // MERGE (default) or OVERWRITE
-    records: [
-        {
-            hostname: "@",
-            type: "A",
-            address: "192.168.1.100",
-            ttl: 300,
-        },
-        {
-            hostname: "www",
-            type: "CNAME",
-            address: "example.com",
-            ttl: 300,
-        },
-        {
-            hostname: "@",
-            type: "MX",
-            address: "mail.example.com",
-            mxPref: 10,
-            ttl: 300,
-        },
-        {
-            hostname: "@",
-            type: "TXT",
-            address: "v=spf1 include:_spf.google.com ~all",
-            ttl: 300,
-        },
-    ],
-});
+const records = new namecheap.DomainRecords('my-domain-records', {
+  domain: 'example.com',
+  mode: 'OVERWRITE', // MERGE (default) or OVERWRITE
+  records: [
+    {
+      hostname: '@',
+      type: 'A',
+      address: '192.168.1.100',
+      ttl: 300,
+    },
+    {
+      hostname: 'www',
+      type: 'CNAME',
+      address: 'example.com',
+      ttl: 300,
+    },
+    {
+      hostname: '@',
+      type: 'MX',
+      address: 'mail.example.com',
+      mxPref: 10,
+      ttl: 300,
+    },
+    {
+      hostname: '@',
+      type: 'TXT',
+      address: 'v=spf1 include:_spf.google.com ~all',
+      ttl: 300,
+    },
+  ],
+})
 ```
 
 ### Advanced Configuration with Email Setup
 
 ```typescript
-import * as namecheap from "pulumi-namecheap";
+import * as namecheap from 'pulumi-namecheap'
 
-const domainRecords = new namecheap.DomainRecords("example-domain", {
-    domain: "example.com",
-    emailType: "GMAIL",  // Configure Gmail for email
-    mode: "MERGE",
-    records: [
-        // A record for root domain
-        {
-            hostname: "@",
-            type: "A",
-            address: "203.0.113.1",
-            ttl: 1800,
-        },
-        // CNAME for www subdomain
-        {
-            hostname: "www",
-            type: "CNAME", 
-            address: "example.com",
-            ttl: 1800,
-        },
-        // Multiple MX records for redundancy
-        {
-            hostname: "@",
-            type: "MX",
-            address: "aspmx.l.google.com",
-            mxPref: 1,
-            ttl: 3600,
-        },
-        {
-            hostname: "@",
-            type: "MX",
-            address: "alt1.aspmx.l.google.com",
-            mxPref: 5,
-            ttl: 3600,
-        },
-        // TXT record for domain verification
-        {
-            hostname: "@",
-            type: "TXT",
-            address: "google-site-verification=your-verification-string",
-            ttl: 3600,
-        },
-    ],
-});
+const domainRecords = new namecheap.DomainRecords('example-domain', {
+  domain: 'example.com',
+  emailType: 'GMAIL', // Configure Gmail for email
+  mode: 'MERGE',
+  records: [
+    // A record for root domain
+    {
+      hostname: '@',
+      type: 'A',
+      address: '203.0.113.1',
+      ttl: 1800,
+    },
+    // CNAME for www subdomain
+    {
+      hostname: 'www',
+      type: 'CNAME',
+      address: 'example.com',
+      ttl: 1800,
+    },
+    // Multiple MX records for redundancy
+    {
+      hostname: '@',
+      type: 'MX',
+      address: 'aspmx.l.google.com',
+      mxPref: 1,
+      ttl: 3600,
+    },
+    {
+      hostname: '@',
+      type: 'MX',
+      address: 'alt1.aspmx.l.google.com',
+      mxPref: 5,
+      ttl: 3600,
+    },
+    // TXT record for domain verification
+    {
+      hostname: '@',
+      type: 'TXT',
+      address: 'google-site-verification=your-verification-string',
+      ttl: 3600,
+    },
+  ],
+})
 
 // Export the domain records ID
-export const domainRecordsId = domainRecords.domainRecordsId;
+export const domainRecordsId = domainRecords.domainRecordsId
 ```
 
 ### Using Custom Provider Instance
 
 ```typescript
-import * as namecheap from "pulumi-namecheap";
+import * as namecheap from 'pulumi-namecheap'
 
 // Create a custom provider for sandbox testing
-const sandboxProvider = new namecheap.Provider("sandbox-provider", {
-    apiKey: "your-sandbox-api-key",
-    apiUser: "your-api-user", 
-    userName: "your-username",
-    clientIp: "your-client-ip",
-    useSandbox: true,
-});
+const sandboxProvider = new namecheap.Provider('sandbox-provider', {
+  apiKey: 'your-sandbox-api-key',
+  apiUser: 'your-api-user',
+  userName: 'your-username',
+  clientIp: 'your-client-ip',
+  useSandbox: true,
+})
 
 // Use the custom provider
-const testRecords = new namecheap.DomainRecords("test-records", {
-    domain: "test-domain.com",
+const testRecords = new namecheap.DomainRecords(
+  'test-records',
+  {
+    domain: 'test-domain.com',
     records: [
-        {
-            hostname: "test",
-            type: "A", 
-            address: "192.168.1.1",
-            ttl: 300,
-        },
+      {
+        hostname: 'test',
+        type: 'A',
+        address: '192.168.1.1',
+        ttl: 300,
+      },
     ],
-}, { provider: sandboxProvider });
+  },
+  { provider: sandboxProvider },
+)
 ```
 
 ## Resources
@@ -237,7 +247,7 @@ For detailed API documentation, see the generated documentation in your IDE or v
 
 1. **Log in to Namecheap**: Go to your Namecheap account dashboard
 2. **Enable API Access**: Navigate to Profile → Tools → Namecheap API Access
-3. **Generate API Key**: Create a new API key for your application  
+3. **Generate API Key**: Create a new API key for your application
 4. **Whitelist IP**: Add your client IP address to the whitelist
 5. **Note Your Details**: Save your API key, username, and API user name
 
@@ -249,14 +259,14 @@ Namecheap provides a sandbox environment for testing. Set `useSandbox: true` in 
 
 You can find more examples in the [examples directory](./examples) or check out these common use cases:
 
-- [Basic A/CNAME Records](./examples/basic-records)  
+- [Basic A/CNAME Records](./examples/basic-records)
 - [Email Configuration](./examples/email-setup)
 - [Multi-domain Management](./examples/multiple-domains)
 - [Sandbox Testing](./examples/sandbox-testing)
 
 ## Support
 
-This provider is a derived work of the [Terraform Provider](https://github.com/namecheap/terraform-provider-namecheap) distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). 
+This provider is a derived work of the [Terraform Provider](https://github.com/namecheap/terraform-provider-namecheap) distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/).
 
 If you encounter a bug or missing feature, please consult the source [`terraform-provider-namecheap` repo](https://github.com/namecheap/terraform-provider-namecheap/issues).
 

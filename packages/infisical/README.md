@@ -220,55 +220,55 @@ const awsAuth = new infisical.IdentityAwsAuth('aws-auth-config', {
 ### Project Access Control
 
 ```typescript
-import * as infisical from "pulumi-infisical";
+import * as infisical from 'pulumi-infisical'
 
 // Create custom project role
-const projectRole = new infisical.ProjectRole("api-role", {
-    projectId: project.id,
-    name: "API Access Role",
-    description: "Role for API service access",
-    slug: "api-access",
-    permissions: [
-        {
-            action: "read",
-            subject: "secrets",
-            conditions: {
-                environment: "dev",
-                secretPath: "/api/*",
-            },
-        },
-        {
-            action: "create",
-            subject: "secrets",
-            conditions: {
-                environment: "dev",
-                secretPath: "/api/*",
-            },
-        },
-    ],
-});
+const projectRole = new infisical.ProjectRole('api-role', {
+  projectId: project.id,
+  name: 'API Access Role',
+  description: 'Role for API service access',
+  slug: 'api-access',
+  permissions: [
+    {
+      action: 'read',
+      subject: 'secrets',
+      conditions: {
+        environment: 'dev',
+        secretPath: '/api/*',
+      },
+    },
+    {
+      action: 'create',
+      subject: 'secrets',
+      conditions: {
+        environment: 'dev',
+        secretPath: '/api/*',
+      },
+    },
+  ],
+})
 
 // Assign identity to project
-const projectIdentity = new infisical.ProjectIdentity("app-project-identity", {
-    identityId: appIdentity.id,
-    projectId: project.id,
-    roles: [
-        {
-            roleSlug: projectRole.slug,
-        },
-    ],
-});
+const projectIdentity = new infisical.ProjectIdentity('app-project-identity', {
+  identityId: appIdentity.id,
+  projectId: project.id,
+  roles: [
+    {
+      roleSlug: projectRole.slug,
+    },
+  ],
+})
 
 // Create user in project (if managing users)
-const projectUser = new infisical.ProjectUser("developer", {
-    projectId: project.id,
-    username: "developer@company.com",
-    roles: [
-        {
-            roleSlug: "admin",
-        },
-    ],
-});
+const projectUser = new infisical.ProjectUser('developer', {
+  projectId: project.id,
+  username: 'developer@company.com',
+  roles: [
+    {
+      roleSlug: 'admin',
+    },
+  ],
+})
 ```
 
 ### Cloud Provider Integrations

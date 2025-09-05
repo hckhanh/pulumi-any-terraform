@@ -204,16 +204,16 @@ const healthMetrics = [
     aggregation: 'count',
     alertThreshold: 100,
   }),
-  
+
   new logtail.Metric('5xx-errors', {
-    name: '5XX HTTP Errors', 
+    name: '5XX HTTP Errors',
     description: 'Count of 5XX HTTP status codes',
     sourceId: appSource.id,
     query: 'http.status_code >= 500',
     aggregation: 'count',
     alertThreshold: 10,
   }),
-  
+
   new logtail.Metric('slow-queries', {
     name: 'Slow Database Queries',
     description: 'Count of slow database queries',
@@ -258,16 +258,19 @@ For detailed API documentation, type definitions, and examples, please refer to 
 Set your API token using one of these methods:
 
 #### Environment Variable (Recommended)
+
 ```bash
 export LOGTAIL_API_TOKEN="logtail-api-token"
 ```
 
 #### Pulumi Configuration
+
 ```bash
 pulumi config set logtail:apiToken "logtail-api-token" --secret
 ```
 
 #### Provider Configuration in Code
+
 ```typescript
 import * as logtail from 'pulumi-logtail'
 
@@ -276,9 +279,13 @@ const provider = new logtail.Provider('logtail', {
 })
 
 // Use the provider with resources
-const source = new logtail.Source('my-source', {
-  // ... configuration
-}, { provider })
+const source = new logtail.Source(
+  'my-source',
+  {
+    // ... configuration
+  },
+  { provider },
+)
 ```
 
 ## Platform Support
@@ -286,6 +293,7 @@ const source = new logtail.Source('my-source', {
 Logtail supports log collection from various platforms and services:
 
 ### Application Platforms
+
 - **JavaScript/Node.js**: Browser and server-side JavaScript applications
 - **Python**: Python applications and scripts
 - **Ruby**: Ruby applications and Rails
@@ -295,6 +303,7 @@ Logtail supports log collection from various platforms and services:
 - **.NET**: .NET Core and Framework applications
 
 ### Infrastructure Platforms
+
 - **Docker**: Container logs from Docker environments
 - **Kubernetes**: Pod and container logs from Kubernetes clusters
 - **AWS CloudWatch**: Logs from AWS services and Lambda functions
@@ -306,6 +315,7 @@ Logtail supports log collection from various platforms and services:
 - **Apache**: Apache web server logs
 
 ### Cloud Services
+
 - **AWS**: CloudWatch Logs, ELB, CloudFront, and other AWS services
 - **Google Cloud**: Cloud Logging and other GCP services
 - **Azure**: Azure Monitor and other Azure services
