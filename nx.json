@@ -50,9 +50,6 @@
     "forcePathStyle": true,
     "localMode": "no-cache"
   },
-  "tui": {
-    "enabled": false
-  },
   "sync": {
     "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]
   }
