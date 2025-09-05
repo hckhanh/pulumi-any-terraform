@@ -24,10 +24,6 @@
     "prettier": "3.6.2",
     "syncpack": "14.0.0-alpha.19"
   },
-  "packageManager": "pnpm@10.15.0",
-  "engines": {
-    "node": "22.19.0"
-  },
   "keywords": [
     "pulumi",
     "terraform",
