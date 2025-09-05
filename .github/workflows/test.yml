@@ -6,12 +6,6 @@ on:
       - 'main'
   pull_request:
 
-env:
-  NX_KEY: ${{ secrets.NX_KEY }}
-  AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
 jobs:
   test:
     name: Lint and Build
@@ -34,3 +28,8 @@ jobs:
         uses: nrwl/nx-set-shas@v4
       - name: Check
         run: pnpm nx affected --targets=lint,audit,build
+        env:
+          NX_KEY: ${{ secrets.NX_KEY }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
