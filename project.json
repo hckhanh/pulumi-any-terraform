@@ -42,8 +42,11 @@
         "source": "{projectRoot}/package.json"
       }
     },
+    "prettier:write": {
+      "command": "pnpm prettier --write ."
+    },
     "fix": {
-      "dependsOn": ["syncpack:format"]
+      "dependsOn": ["syncpack:format", "prettier:write"]
     }
   }
 }
