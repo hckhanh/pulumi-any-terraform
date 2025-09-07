@@ -43,8 +43,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -59,8 +59,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -75,8 +75,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -91,8 +91,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -107,8 +107,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -123,8 +123,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -139,8 +139,8 @@ importers:
         specifier: 3.191.0
         version: 3.191.0(typescript@5.9.2)
       '@types/node':
-        specifier: 24.3.0
-        version: 24.3.0
+        specifier: 24.3.1
+        version: 24.3.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -1860,8 +1860,8 @@ packages:
   '@types/keyv@3.1.4':
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
 
-  '@types/node@24.3.0':
-    resolution: {integrity: sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==}
+  '@types/node@24.3.1':
+    resolution: {integrity: sha512-3vXmQDXy+woz+gnrTvuvNrPzekOi+Ds0ReMxw0LzBiK3a+1k0kQn9f2NWk+lgD4rJehFUmYy2gMhJ2ZI+7YP9g==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -5762,7 +5762,7 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 24.3.0
+      '@types/node': 24.3.1
       '@types/responselike': 1.0.3
 
   '@types/google-protobuf@3.15.12': {}
@@ -5771,9 +5771,9 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 24.3.0
+      '@types/node': 24.3.1
 
-  '@types/node@24.3.0':
+  '@types/node@24.3.1':
     dependencies:
       undici-types: 7.10.0
 
@@ -5781,7 +5781,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 24.3.0
+      '@types/node': 24.3.1
 
   '@types/semver@7.7.0': {}
 
@@ -6934,7 +6934,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 24.3.0
+      '@types/node': 24.3.1
       long: 5.3.2
 
   proxy-from-env@1.1.0: {}
