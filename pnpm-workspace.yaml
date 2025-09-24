@@ -7,3 +7,5 @@ onlyBuiltDependencies:
   - nx
   - oxc-resolver
   - protobufjs
+
+minimumReleaseAge: 259200
