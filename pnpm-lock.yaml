@@ -30,8 +30,8 @@ importers:
         specifier: 3.6.2
         version: 3.6.2
       syncpack:
-        specifier: 14.0.0-alpha.19
-        version: 14.0.0-alpha.19
+        specifier: 14.0.0-alpha.21
+        version: 14.0.0-alpha.21
 
   packages/better-uptime:
     dependencies:
@@ -3153,38 +3153,38 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  syncpack-darwin-arm64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-Xw4Q86Cf/55hE4xYxYZCEr98CqPpCF1IXPvr8EI+grAb44cE3BeQsi7SnmQNMGQ9Nibu2kr7D1fxGpQWdR+odg==}
+  syncpack-darwin-arm64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-LSGHGJQKPsfKhITj7NyjrytG0bx8rjZd444Z9V3ga5sYk9bC0nKkEwMx66JWUTyvffvc3QPZhQfm8JlF4ytSMw==}
     cpu: [arm64]
     os: [darwin]
 
-  syncpack-darwin-x64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-e+10rBn13KEfWYNY7/GUTnfv7XrvmRhTMbl+4m922/O2fx2v515mbHx5ku1KvN3Gz5Up3y459bslS9+aIx0kCA==}
+  syncpack-darwin-x64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-ml65sJKTvInVOCd6jNEN/yJfvY2fz+SaC/hhhg8IjlU2OaBfEIBwmIi0LfaXu+UZYFV+OqeEXJ5DSU0DKv8LFw==}
     cpu: [x64]
     os: [darwin]
 
-  syncpack-linux-arm64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-X8XeQ06uQ8ZyuK1hSXaHBneBUGSfe0/eA9ZCoARQr6TD6fF3CT45nDSVtV9y3qrmL3S2u4Rc0/wW6J5VbpIi/Q==}
+  syncpack-linux-arm64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-2WV4pIVYIakLeX/LU00n9MW38N79vbnXQLnH0CjYfVBN1ia1/ZMC+a3e0lI0tCB6h1MEJHajZo9uHvUC7XfqOQ==}
     cpu: [arm64]
     os: [linux]
 
-  syncpack-linux-x64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-eRaJcflvzZhawn67/0QZPS6VtOu2b8sl5DlpdmumgZ7yb1r77Q0Lxf5xHV3juYxnnL8xsZ8svXTvZMSpypsQkg==}
+  syncpack-linux-x64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-2N1GPM7Y5B9kN4w/P0B5FxzkOo0gtjYBV8DFw7Jq+lA7T8im4DNdBUdDBaH8GjP+IUrVo5BmYGFZEdHTCjE4Rw==}
     cpu: [x64]
     os: [linux]
 
-  syncpack-windows-arm64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-JRpr1xg4xJCdeitLjohtIN1d6njxE0/r/X2KVHUAAzUVSvl0y3OIk8j5QS9/qN8toOLwjO209zdRx03GNA+SGw==}
+  syncpack-windows-arm64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-ETfB8QBbcgHuX7/yNkjSUwP/fQvlZV789uGREe2I65X61GlToTo3w+nCXbZh99DyKqyMi5Sikk02CjUp4PG1cg==}
     cpu: [arm64]
     os: [win32]
 
-  syncpack-windows-x64@14.0.0-alpha.19:
-    resolution: {integrity: sha512-kxCMO0VJQU8M/5CfWD1v566QISzbQmMBkuQN/zrfDxQJa/Q0jkz+VeqJuUVL9m4bmPBik9FlpatCNPmHEV5hMA==}
+  syncpack-windows-x64@14.0.0-alpha.21:
+    resolution: {integrity: sha512-iyO9vc/kjToXHqzTcC5ladtamOCQCwS3kZ1N8k8RWX06eJK0qdCs6cBrrMJe001FbXJGwkm75+rGMgkS5aqhmg==}
     cpu: [x64]
     os: [win32]
 
-  syncpack@14.0.0-alpha.19:
-    resolution: {integrity: sha512-gFOMbycrzlGpYgnVwiKzW9p8y9cUPTDrfiofMFPt70/yVOwCBuEYZM/wfdkXVhZd7HwQQT0+MEYHiO+HqyaH2w==}
+  syncpack@14.0.0-alpha.21:
+    resolution: {integrity: sha512-YnxgWOVoaAkZcRRD5AtmmyJZhkCHu9Aa3jVc7IVywr+ieLbo2q2YvrogCujrvF9vBSG4hPcUvfTYmXQJIbBKJQ==}
     engines: {node: '>=14.17.0'}
     hasBin: true
 
@@ -3225,8 +3225,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  tsx@4.20.4:
-    resolution: {integrity: sha512-yyxBKfORQ7LuRt/BQKBXrpcq59ZvSW0XxwfjAt3w2/8PmdxaFzijtMhTawprSHhpzeM5BgU2hXHG3lklIERZXg==}
+  tsx@4.20.5:
+    resolution: {integrity: sha512-+wKjMNU9w/EaQayHXb7WA7ZaHY6hN8WgfvHNQ3t1PnU91/7O8TcTnIhCDYTZwnt8JsO9IBqZ30Ln1r7pPF52Aw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7152,34 +7152,34 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  syncpack-darwin-arm64@14.0.0-alpha.19:
+  syncpack-darwin-arm64@14.0.0-alpha.21:
     optional: true
 
-  syncpack-darwin-x64@14.0.0-alpha.19:
+  syncpack-darwin-x64@14.0.0-alpha.21:
     optional: true
 
-  syncpack-linux-arm64@14.0.0-alpha.19:
+  syncpack-linux-arm64@14.0.0-alpha.21:
     optional: true
 
-  syncpack-linux-x64@14.0.0-alpha.19:
+  syncpack-linux-x64@14.0.0-alpha.21:
     optional: true
 
-  syncpack-windows-arm64@14.0.0-alpha.19:
+  syncpack-windows-arm64@14.0.0-alpha.21:
     optional: true
 
-  syncpack-windows-x64@14.0.0-alpha.19:
+  syncpack-windows-x64@14.0.0-alpha.21:
     optional: true
 
-  syncpack@14.0.0-alpha.19:
+  syncpack@14.0.0-alpha.21:
     dependencies:
-      tsx: 4.20.4
+      tsx: 4.20.5
     optionalDependencies:
-      syncpack-darwin-arm64: 14.0.0-alpha.19
-      syncpack-darwin-x64: 14.0.0-alpha.19
-      syncpack-linux-arm64: 14.0.0-alpha.19
-      syncpack-linux-x64: 14.0.0-alpha.19
-      syncpack-windows-arm64: 14.0.0-alpha.19
-      syncpack-windows-x64: 14.0.0-alpha.19
+      syncpack-darwin-arm64: 14.0.0-alpha.21
+      syncpack-darwin-x64: 14.0.0-alpha.21
+      syncpack-linux-arm64: 14.0.0-alpha.21
+      syncpack-linux-x64: 14.0.0-alpha.21
+      syncpack-windows-arm64: 14.0.0-alpha.21
+      syncpack-windows-x64: 14.0.0-alpha.21
 
   tar-stream@2.2.0:
     dependencies:
@@ -7227,7 +7227,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsx@4.20.4:
+  tsx@4.20.5:
     dependencies:
       esbuild: 0.25.9
       get-tsconfig: 4.10.1
