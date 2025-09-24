@@ -21,7 +21,7 @@
     "@swc/helpers": "0.5.17",
     "nx": "21.4.1",
     "prettier": "3.6.2",
-    "syncpack": "14.0.0-alpha.19"
+    "syncpack": "14.0.0-alpha.21"
   },
   "keywords": [
     "pulumi",
