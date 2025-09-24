@@ -1,7 +1,6 @@
 {
   "name": "pulumi-any-terraform",
-  "description": "",
-  "version": "1.0.0",
+  "description": "A collection of dynamically bridged Pulumi providers that enable you to use any Terraform provider within the Pulumi ecosystem. This repository provides seamless integration between Terraform providers and Pulumi, allowing you to leverage the extensive Terraform provider ecosystem while enjoying Pulumi's modern infrastructure-as-code experience.",
   "author": {
     "name": "Khánh Hoàng",
     "email": "hi@khanh.id",
