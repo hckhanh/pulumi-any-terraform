@@ -33,18 +33,19 @@
     "peerDependencies",
     "trustedDependencies"
   ],
+  "versionGroups": [
+    {
+      "dependencies": ["**"],
+      "dependencyTypes": ["peer"],
+      "packages": ["**"],
+      "isIgnored": true
+    }
+  ],
   "semverGroups": [
     {
       "label": "All non-peer dependencies must be pinned",
       "range": "",
       "dependencyTypes": ["!peer"],
-      "dependencies": ["**"],
-      "packages": ["**"]
-    },
-    {
-      "label": "Allow peer deps to be equal or higher than current versions",
-      "range": ">=",
-      "dependencyTypes": ["peer"],
       "dependencies": ["**"],
       "packages": ["**"]
     }
