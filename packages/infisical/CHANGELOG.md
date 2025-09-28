@@ -1,3 +1,13 @@
+## 0.15.40 (2025-09-28)
+
+### 🩹 Fixes
+
+- Add bun installation example and bump npm version in mise.toml ([162c743](https://github.com/hckhanh/pulumi-any-terraform/commit/162c743))
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.15.39 (2025-09-28)
 
 ### 🩹 Fixes
