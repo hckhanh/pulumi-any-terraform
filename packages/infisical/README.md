@@ -36,6 +36,12 @@ yarn add pulumi-infisical
 pnpm add pulumi-infisical
 ```
 
+### bun
+
+```bash
+bun add pulumi-infisical
+```
+
 ## Configuration
 
 Before using the provider, you need to configure authentication with your Infisical API credentials.
