@@ -35,14 +35,13 @@ export class CatalogRecord extends pulumi.CustomResource {
     }
 
     /**
-     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple
-     * values.
+     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple values.
      */
-    public readonly attributes!: pulumi.Output<outputs.CatalogRecordAttribute[]>;
+    declare public readonly attributes: pulumi.Output<outputs.CatalogRecordAttribute[]>;
     /**
      * The ID of the Catalog relation this record belongs to.
      */
-    public readonly relationId!: pulumi.Output<string>;
+    declare public readonly relationId: pulumi.Output<string>;
 
     /**
      * Create a CatalogRecord resource with the given unique name, arguments, and options.
@@ -57,18 +56,18 @@ export class CatalogRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogRecordState | undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["relationId"] = state ? state.relationId : undefined;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["relationId"] = state?.relationId;
         } else {
             const args = argsOrState as CatalogRecordArgs | undefined;
-            if ((!args || args.attributes === undefined) && !opts.urn) {
+            if (args?.attributes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attributes'");
             }
-            if ((!args || args.relationId === undefined) && !opts.urn) {
+            if (args?.relationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'relationId'");
             }
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["relationId"] = args ? args.relationId : undefined;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["relationId"] = args?.relationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogRecord.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -80,8 +79,7 @@ export class CatalogRecord extends pulumi.CustomResource {
  */
 export interface CatalogRecordState {
     /**
-     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple
-     * values.
+     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple values.
      */
     attributes?: pulumi.Input<pulumi.Input<inputs.CatalogRecordAttribute>[]>;
     /**
@@ -95,8 +93,7 @@ export interface CatalogRecordState {
  */
 export interface CatalogRecordArgs {
     /**
-     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple
-     * values.
+     * List of attribute values for the Catalog record. You can have multiple blocks with same `attribute_id` for multiple values.
      */
     attributes: pulumi.Input<pulumi.Input<inputs.CatalogRecordAttribute>[]>;
     /**

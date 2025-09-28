@@ -37,42 +37,39 @@ export class Metadata extends pulumi.CustomResource {
     /**
      * The time when this metadata was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The key of this Metadata.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * An array of typed metadata values of this Metadata.
      */
-    public readonly metadataValues!: pulumi.Output<outputs.MetadataMetadataValue[] | undefined>;
+    declare public readonly metadataValues: pulumi.Output<outputs.MetadataMetadataValue[] | undefined>;
     /**
      * The ID of the owner of this Metadata.
      */
-    public readonly ownerId!: pulumi.Output<string>;
+    declare public readonly ownerId: pulumi.Output<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`,
-     * `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
      */
-    public readonly ownerType!: pulumi.Output<string>;
+    declare public readonly ownerType: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name
-     * doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
      *
      * @deprecated Deprecated
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The time when this metadata was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types
-     * instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types instead.
      *
      * @deprecated Deprecated
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a Metadata resource with the given unique name, arguments, and options.
@@ -87,31 +84,31 @@ export class Metadata extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetadataState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["metadataValues"] = state ? state.metadataValues : undefined;
-            resourceInputs["ownerId"] = state ? state.ownerId : undefined;
-            resourceInputs["ownerType"] = state ? state.ownerType : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["metadataValues"] = state?.metadataValues;
+            resourceInputs["ownerId"] = state?.ownerId;
+            resourceInputs["ownerType"] = state?.ownerType;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as MetadataArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.ownerId === undefined) && !opts.urn) {
+            if (args?.ownerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ownerId'");
             }
-            if ((!args || args.ownerType === undefined) && !opts.urn) {
+            if (args?.ownerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ownerType'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["metadataValues"] = args ? args.metadataValues : undefined;
-            resourceInputs["ownerId"] = args ? args.ownerId : undefined;
-            resourceInputs["ownerType"] = args ? args.ownerType : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["metadataValues"] = args?.metadataValues;
+            resourceInputs["ownerId"] = args?.ownerId;
+            resourceInputs["ownerType"] = args?.ownerType;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["value"] = args?.value;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -141,13 +138,11 @@ export interface MetadataState {
      */
     ownerId?: pulumi.Input<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`,
-     * `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
      */
     ownerType?: pulumi.Input<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name
-     * doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
      *
      * @deprecated Deprecated
      */
@@ -157,8 +152,7 @@ export interface MetadataState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types
-     * instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types instead.
      *
      * @deprecated Deprecated
      */
@@ -182,20 +176,17 @@ export interface MetadataArgs {
      */
     ownerId: pulumi.Input<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`,
-     * `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
      */
     ownerType: pulumi.Input<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name
-     * doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
      *
      * @deprecated Deprecated
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types
-     * instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block metadata_value to define values with types instead.
      *
      * @deprecated Deprecated
      */

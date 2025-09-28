@@ -26,11 +26,9 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See
-     * https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain
-     * the API token for your team.
+     * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team.
      */
-    public readonly apiToken!: pulumi.Output<string>;
+    declare public readonly apiToken: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -43,21 +41,31 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.apiToken === undefined) && !opts.urn) {
+            if (args?.apiToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiToken'");
             }
-            resourceInputs["apiRateBurst"] = pulumi.output(args ? args.apiRateBurst : undefined).apply(JSON.stringify);
-            resourceInputs["apiRateLimit"] = pulumi.output(args ? args.apiRateLimit : undefined).apply(JSON.stringify);
-            resourceInputs["apiRetryMax"] = pulumi.output(args ? args.apiRetryMax : undefined).apply(JSON.stringify);
-            resourceInputs["apiRetryWaitMax"] = pulumi.output(args ? args.apiRetryWaitMax : undefined).apply(JSON.stringify);
-            resourceInputs["apiRetryWaitMin"] = pulumi.output(args ? args.apiRetryWaitMin : undefined).apply(JSON.stringify);
-            resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["apiRateBurst"] = pulumi.output(args?.apiRateBurst).apply(JSON.stringify);
+            resourceInputs["apiRateLimit"] = pulumi.output(args?.apiRateLimit).apply(JSON.stringify);
+            resourceInputs["apiRetryMax"] = pulumi.output(args?.apiRetryMax).apply(JSON.stringify);
+            resourceInputs["apiRetryWaitMax"] = pulumi.output(args?.apiRetryWaitMax).apply(JSON.stringify);
+            resourceInputs["apiRetryWaitMin"] = pulumi.output(args?.apiRetryWaitMin).apply(JSON.stringify);
+            resourceInputs["apiTimeout"] = pulumi.output(args?.apiTimeout).apply(JSON.stringify);
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiToken"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+    }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:better-uptime/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
     }
 }
 
@@ -66,8 +74,7 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit,
-     * minimum 10).
+     * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit, minimum 10).
      */
     apiRateBurst?: pulumi.Input<number>;
     /**
@@ -91,9 +98,17 @@ export interface ProviderArgs {
      */
     apiTimeout?: pulumi.Input<number>;
     /**
-     * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See
-     * https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain
-     * the API token for your team.
+     * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team.
      */
     apiToken: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

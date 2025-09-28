@@ -35,212 +35,220 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Basic HTTP authentication password to include with the request.
      */
-    public readonly authPassword!: pulumi.Output<string>;
+    declare public readonly authPassword: pulumi.Output<string>;
     /**
      * Basic HTTP authentication username to include with the request.
      */
-    public readonly authUsername!: pulumi.Output<string>;
+    declare public readonly authUsername: pulumi.Output<string>;
     /**
      * Whether to call when a new incident is created.
      */
-    public readonly call!: pulumi.Output<boolean>;
+    declare public readonly call: pulumi.Output<boolean>;
     /**
      * How often should we check your website? In seconds.
      */
-    public readonly checkFrequency!: pulumi.Output<number>;
+    declare public readonly checkFrequency: pulumi.Output<number>;
     /**
      * How long should we wait after observing a failure before we start a new incident? In seconds.
      */
-    public readonly confirmationPeriod!: pulumi.Output<number>;
+    declare public readonly confirmationPeriod: pulumi.Output<number>;
     /**
      * The time when this monitor was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    public readonly criticalAlert!: pulumi.Output<boolean>;
+    declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
-     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to
-     * -1 to disable domain expiration check.
+     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable domain expiration check.
      */
-    public readonly domainExpiration!: pulumi.Output<number>;
+    declare public readonly domainExpiration: pulumi.Output<number>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    public readonly email!: pulumi.Output<boolean>;
+    declare public readonly email: pulumi.Output<boolean>;
     /**
-     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd"
-     * }`.
+     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd" }`.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly environmentVariables: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from
-     * the server is not in the list of expected status codes.
+     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
-    public readonly expectedStatusCodes!: pulumi.Output<number[]>;
+    declare public readonly expectedStatusCodes: pulumi.Output<number[]>;
     /**
-     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When
-     * set to null, an e-mail is sent to the entire team.
+     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When set to null, an e-mail is sent to the entire team.
      */
-    public readonly expirationPolicyId!: pulumi.Output<number | undefined>;
+    declare public readonly expirationPolicyId: pulumi.Output<number | undefined>;
     /**
      * Set to true for the monitor to follow redirects.
      */
-    public readonly followRedirects!: pulumi.Output<boolean>;
+    declare public readonly followRedirects: pulumi.Output<boolean>;
     /**
      * HTTP Method used to make a request. Valid options: GET, HEAD, POST, PUT, PATCH
      */
-    public readonly httpMethod!: pulumi.Output<string>;
+    declare public readonly httpMethod: pulumi.Output<string>;
     /**
-     * Valid values: `ipv4` Use IPv4 only, `ipv6` Use IPv6 only.
+     * Valid values:
+     *
+     *     `ipv4` Use IPv4 only,
+     *
+     *     `ipv6` Use IPv6 only.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * When the website was last checked.
      */
-    public /*out*/ readonly lastCheckedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastCheckedAt: pulumi.Output<string>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    public readonly maintenanceDays!: pulumi.Output<string[]>;
+    declare public readonly maintenanceDays: pulumi.Output<string[]>;
     /**
      * Start of the maintenance window each day. We won't check your website during this window. Example: "01:00:00"
      */
-    public readonly maintenanceFrom!: pulumi.Output<string>;
+    declare public readonly maintenanceFrom: pulumi.Output<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    public readonly maintenanceTimezone!: pulumi.Output<string>;
+    declare public readonly maintenanceTimezone: pulumi.Output<string>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    public readonly maintenanceTo!: pulumi.Output<string>;
+    declare public readonly maintenanceTo: pulumi.Output<string>;
     /**
      * Set this attribute if you want to add this monitor to a monitor group.
      */
-    public readonly monitorGroupId!: pulumi.Output<number>;
+    declare public readonly monitorGroupId: pulumi.Output<number>;
     /**
-     * Valid values: `status` We will check your website for 2XX HTTP status code. `expected_status_code` We will check if your
-     * website returned one of the values in expected_status_codes. `keyword` We will check if your website contains the
-     * required_keyword. `keyword_absence` We will check if your website doesn't contain the required_keyword. `ping` We will
-     * ping your host specified in the url parameter. `tcp` We will test a TCP port at your host specified in the url parameter
-     * (port is required). `udp` We will test a UDP port at your host specified in the url parameter (port and required_keyword
-     * are required). `smtp` We will check for a SMTP server at the host specified in the url parameter (port is required, and
-     * can be one of 25, 465, 587, or a combination of those ports separated by comma). `pop` We will check for a POP3 server
-     * at the host specified in the url parameter (port is required, and can be 110, 995, or both). `imap` We will check for an
-     * IMAP server at the host specified in the url parameter (port is required, and can be 143, 993, or both). `dns` We will
-     * check for a DNS server at the host specified in the url parameter (request_body is required, and should contain the
-     * domain to query the DNS server with). `playwright` We will run the scenario defined by playwright_script, identified in
-     * the UI by scenario_name
+     * Valid values:
+     *
+     *     `status` We will check your website for 2XX HTTP status code.
+     *
+     * 	`expected_status_code` We will check if your website returned one of the values in expected_status_codes.
+     *
+     *     `keyword` We will check if your website contains the required_keyword.
+     *
+     *     `keyword_absence` We will check if your website doesn't contain the required_keyword.
+     *
+     *     `ping` We will ping your host specified in the url parameter.
+     *
+     *     `tcp` We will test a TCP port at your host specified in the url parameter
+     * (port is required).
+     *
+     *     `udp` We will test a UDP port at your host specified in the url parameter
+     * (port and required_keyword are required).
+     *
+     *     `smtp` We will check for a SMTP server at the host specified in the url parameter
+     * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
+     *
+     *     `pop` We will check for a POP3 server at the host specified in the url parameter
+     * (port is required, and can be 110, 995, or both).
+     *
+     *     `imap` We will check for an IMAP server at the host specified in the url parameter
+     * (port is required, and can be 143, 993, or both).
+     *
+     *     `dns` We will check for a DNS server at the host specified in the url parameter
+     * (request_body is required, and should contain the domain to query the DNS server with).
+     *
+     *     `playwright` We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
-    public readonly monitorType!: pulumi.Output<string>;
+    declare public readonly monitorType: pulumi.Output<string>;
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The time when this monitor was paused.
      */
-    public /*out*/ readonly pausedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly pausedAt: pulumi.Output<string>;
     /**
      * For Playwright monitors, the JavaScript source code of the scenario.
      */
-    public readonly playwrightScript!: pulumi.Output<string>;
+    declare public readonly playwrightScript: pulumi.Output<string>;
     /**
      * Set the escalation policy for the monitor.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
-     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop,
-     * and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
     /**
      * Pronounceable name of the monitor. We will use this when we call you. Try to make it tongue-friendly, please?
      */
-    public readonly pronounceableName!: pulumi.Output<string>;
+    declare public readonly pronounceableName: pulumi.Output<string>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    public readonly push!: pulumi.Output<boolean>;
+    declare public readonly push: pulumi.Output<boolean>;
     /**
      * How long the monitor must be up to automatically mark an incident as resolved after being down. In seconds.
      */
-    public readonly recoveryPeriod!: pulumi.Output<number>;
+    declare public readonly recoveryPeriod: pulumi.Output<number>;
     /**
      * An array of regions to set. Allowed values are ["us", "eu", "as", "au"] or any subset of these regions.
      */
-    public readonly regions!: pulumi.Output<string[]>;
+    declare public readonly regions: pulumi.Output<string[]>;
     /**
      * Set to true to keep cookies when redirecting.
      */
-    public readonly rememberCookies!: pulumi.Output<boolean>;
+    declare public readonly rememberCookies: pulumi.Output<boolean>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server
-     * with).
+     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server with).
      */
-    public readonly requestBody!: pulumi.Output<string>;
+    declare public readonly requestBody: pulumi.Output<string>;
     /**
      * An array of request headers, consisting of name and value pairs
      */
-    public readonly requestHeaders!: pulumi.Output<{[key: string]: string}[]>;
+    declare public readonly requestHeaders: pulumi.Output<{[key: string]: string}[]>;
     /**
-     * How long to wait before timing out the request? - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`,
-     * `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000. - For
-     * Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid
-     * options: 15, 30, 45, 60. - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10,
-     * 15, 30, 45, 60.
+     * How long to wait before timing out the request?
+     *   - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`, `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60.
+     *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
-    public readonly requestTimeout!: pulumi.Output<number>;
+    declare public readonly requestTimeout: pulumi.Output<number>;
     /**
-     * Required if monitor_type is set to keyword or udp. We will create a new incident if this keyword is missing on your
-     * page.
+     * Required if monitor_type is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
-    public readonly requiredKeyword!: pulumi.Output<string>;
+    declare public readonly requiredKeyword: pulumi.Output<string>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or
-     * `scenario_name` must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
-    public readonly scenarioName!: pulumi.Output<string | undefined>;
+    declare public readonly scenarioName: pulumi.Output<string | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    public readonly sms!: pulumi.Output<boolean>;
+    declare public readonly sms: pulumi.Output<boolean>;
     /**
-     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60.
-     * Set to -1 to disable SSL expiration check.
+     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable SSL expiration check.
      */
-    public readonly sslExpiration!: pulumi.Output<number>;
+    declare public readonly sslExpiration: pulumi.Output<number>;
     /**
      * The status of this website check.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
-     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
-     * In seconds.
+     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team. In seconds.
      */
-    public readonly teamWait!: pulumi.Output<number>;
+    declare public readonly teamWait: pulumi.Output<number>;
     /**
      * The time when this monitor was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except
-     * Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
+     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
     /**
      * Should we verify SSL certificate validity?
      */
-    public readonly verifySsl!: pulumi.Output<boolean>;
+    declare public readonly verifySsl: pulumi.Output<boolean>;
 
     /**
      * Create a Monitor resource with the given unique name, arguments, and options.
@@ -255,96 +263,96 @@ export class Monitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorState | undefined;
-            resourceInputs["authPassword"] = state ? state.authPassword : undefined;
-            resourceInputs["authUsername"] = state ? state.authUsername : undefined;
-            resourceInputs["call"] = state ? state.call : undefined;
-            resourceInputs["checkFrequency"] = state ? state.checkFrequency : undefined;
-            resourceInputs["confirmationPeriod"] = state ? state.confirmationPeriod : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["criticalAlert"] = state ? state.criticalAlert : undefined;
-            resourceInputs["domainExpiration"] = state ? state.domainExpiration : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["expectedStatusCodes"] = state ? state.expectedStatusCodes : undefined;
-            resourceInputs["expirationPolicyId"] = state ? state.expirationPolicyId : undefined;
-            resourceInputs["followRedirects"] = state ? state.followRedirects : undefined;
-            resourceInputs["httpMethod"] = state ? state.httpMethod : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["lastCheckedAt"] = state ? state.lastCheckedAt : undefined;
-            resourceInputs["maintenanceDays"] = state ? state.maintenanceDays : undefined;
-            resourceInputs["maintenanceFrom"] = state ? state.maintenanceFrom : undefined;
-            resourceInputs["maintenanceTimezone"] = state ? state.maintenanceTimezone : undefined;
-            resourceInputs["maintenanceTo"] = state ? state.maintenanceTo : undefined;
-            resourceInputs["monitorGroupId"] = state ? state.monitorGroupId : undefined;
-            resourceInputs["monitorType"] = state ? state.monitorType : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["pausedAt"] = state ? state.pausedAt : undefined;
-            resourceInputs["playwrightScript"] = state ? state.playwrightScript : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["pronounceableName"] = state ? state.pronounceableName : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["recoveryPeriod"] = state ? state.recoveryPeriod : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["rememberCookies"] = state ? state.rememberCookies : undefined;
-            resourceInputs["requestBody"] = state ? state.requestBody : undefined;
-            resourceInputs["requestHeaders"] = state ? state.requestHeaders : undefined;
-            resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
-            resourceInputs["requiredKeyword"] = state ? state.requiredKeyword : undefined;
-            resourceInputs["scenarioName"] = state ? state.scenarioName : undefined;
-            resourceInputs["sms"] = state ? state.sms : undefined;
-            resourceInputs["sslExpiration"] = state ? state.sslExpiration : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["teamWait"] = state ? state.teamWait : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["verifySsl"] = state ? state.verifySsl : undefined;
+            resourceInputs["authPassword"] = state?.authPassword;
+            resourceInputs["authUsername"] = state?.authUsername;
+            resourceInputs["call"] = state?.call;
+            resourceInputs["checkFrequency"] = state?.checkFrequency;
+            resourceInputs["confirmationPeriod"] = state?.confirmationPeriod;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["domainExpiration"] = state?.domainExpiration;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["expectedStatusCodes"] = state?.expectedStatusCodes;
+            resourceInputs["expirationPolicyId"] = state?.expirationPolicyId;
+            resourceInputs["followRedirects"] = state?.followRedirects;
+            resourceInputs["httpMethod"] = state?.httpMethod;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["lastCheckedAt"] = state?.lastCheckedAt;
+            resourceInputs["maintenanceDays"] = state?.maintenanceDays;
+            resourceInputs["maintenanceFrom"] = state?.maintenanceFrom;
+            resourceInputs["maintenanceTimezone"] = state?.maintenanceTimezone;
+            resourceInputs["maintenanceTo"] = state?.maintenanceTo;
+            resourceInputs["monitorGroupId"] = state?.monitorGroupId;
+            resourceInputs["monitorType"] = state?.monitorType;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["pausedAt"] = state?.pausedAt;
+            resourceInputs["playwrightScript"] = state?.playwrightScript;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["pronounceableName"] = state?.pronounceableName;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["recoveryPeriod"] = state?.recoveryPeriod;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["rememberCookies"] = state?.rememberCookies;
+            resourceInputs["requestBody"] = state?.requestBody;
+            resourceInputs["requestHeaders"] = state?.requestHeaders;
+            resourceInputs["requestTimeout"] = state?.requestTimeout;
+            resourceInputs["requiredKeyword"] = state?.requiredKeyword;
+            resourceInputs["scenarioName"] = state?.scenarioName;
+            resourceInputs["sms"] = state?.sms;
+            resourceInputs["sslExpiration"] = state?.sslExpiration;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["teamWait"] = state?.teamWait;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["verifySsl"] = state?.verifySsl;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
-            if ((!args || args.monitorType === undefined) && !opts.urn) {
+            if (args?.monitorType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitorType'");
             }
             resourceInputs["authPassword"] = args?.authPassword ? pulumi.secret(args.authPassword) : undefined;
             resourceInputs["authUsername"] = args?.authUsername ? pulumi.secret(args.authUsername) : undefined;
-            resourceInputs["call"] = args ? args.call : undefined;
-            resourceInputs["checkFrequency"] = args ? args.checkFrequency : undefined;
-            resourceInputs["confirmationPeriod"] = args ? args.confirmationPeriod : undefined;
-            resourceInputs["criticalAlert"] = args ? args.criticalAlert : undefined;
-            resourceInputs["domainExpiration"] = args ? args.domainExpiration : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["call"] = args?.call;
+            resourceInputs["checkFrequency"] = args?.checkFrequency;
+            resourceInputs["confirmationPeriod"] = args?.confirmationPeriod;
+            resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["domainExpiration"] = args?.domainExpiration;
+            resourceInputs["email"] = args?.email;
             resourceInputs["environmentVariables"] = args?.environmentVariables ? pulumi.secret(args.environmentVariables) : undefined;
-            resourceInputs["expectedStatusCodes"] = args ? args.expectedStatusCodes : undefined;
-            resourceInputs["expirationPolicyId"] = args ? args.expirationPolicyId : undefined;
-            resourceInputs["followRedirects"] = args ? args.followRedirects : undefined;
-            resourceInputs["httpMethod"] = args ? args.httpMethod : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["maintenanceDays"] = args ? args.maintenanceDays : undefined;
-            resourceInputs["maintenanceFrom"] = args ? args.maintenanceFrom : undefined;
-            resourceInputs["maintenanceTimezone"] = args ? args.maintenanceTimezone : undefined;
-            resourceInputs["maintenanceTo"] = args ? args.maintenanceTo : undefined;
-            resourceInputs["monitorGroupId"] = args ? args.monitorGroupId : undefined;
-            resourceInputs["monitorType"] = args ? args.monitorType : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["playwrightScript"] = args ? args.playwrightScript : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["pronounceableName"] = args ? args.pronounceableName : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["recoveryPeriod"] = args ? args.recoveryPeriod : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["rememberCookies"] = args ? args.rememberCookies : undefined;
-            resourceInputs["requestBody"] = args ? args.requestBody : undefined;
-            resourceInputs["requestHeaders"] = args ? args.requestHeaders : undefined;
-            resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
-            resourceInputs["requiredKeyword"] = args ? args.requiredKeyword : undefined;
-            resourceInputs["scenarioName"] = args ? args.scenarioName : undefined;
-            resourceInputs["sms"] = args ? args.sms : undefined;
-            resourceInputs["sslExpiration"] = args ? args.sslExpiration : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["teamWait"] = args ? args.teamWait : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["verifySsl"] = args ? args.verifySsl : undefined;
+            resourceInputs["expectedStatusCodes"] = args?.expectedStatusCodes;
+            resourceInputs["expirationPolicyId"] = args?.expirationPolicyId;
+            resourceInputs["followRedirects"] = args?.followRedirects;
+            resourceInputs["httpMethod"] = args?.httpMethod;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["maintenanceDays"] = args?.maintenanceDays;
+            resourceInputs["maintenanceFrom"] = args?.maintenanceFrom;
+            resourceInputs["maintenanceTimezone"] = args?.maintenanceTimezone;
+            resourceInputs["maintenanceTo"] = args?.maintenanceTo;
+            resourceInputs["monitorGroupId"] = args?.monitorGroupId;
+            resourceInputs["monitorType"] = args?.monitorType;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["playwrightScript"] = args?.playwrightScript;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["pronounceableName"] = args?.pronounceableName;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["recoveryPeriod"] = args?.recoveryPeriod;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["rememberCookies"] = args?.rememberCookies;
+            resourceInputs["requestBody"] = args?.requestBody;
+            resourceInputs["requestHeaders"] = args?.requestHeaders;
+            resourceInputs["requestTimeout"] = args?.requestTimeout;
+            resourceInputs["requiredKeyword"] = args?.requiredKeyword;
+            resourceInputs["scenarioName"] = args?.scenarioName;
+            resourceInputs["sms"] = args?.sms;
+            resourceInputs["sslExpiration"] = args?.sslExpiration;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["teamWait"] = args?.teamWait;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["verifySsl"] = args?.verifySsl;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastCheckedAt"] = undefined /*out*/;
             resourceInputs["pausedAt"] = undefined /*out*/;
@@ -387,13 +395,11 @@ export interface MonitorState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
-     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to
-     * -1 to disable domain expiration check.
+     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable domain expiration check.
      */
     domainExpiration?: pulumi.Input<number>;
     /**
@@ -401,18 +407,15 @@ export interface MonitorState {
      */
     email?: pulumi.Input<boolean>;
     /**
-     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd"
-     * }`.
+     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd" }`.
      */
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from
-     * the server is not in the list of expected status codes.
+     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
     expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When
-     * set to null, an e-mail is sent to the entire team.
+     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When set to null, an e-mail is sent to the entire team.
      */
     expirationPolicyId?: pulumi.Input<number>;
     /**
@@ -424,7 +427,11 @@ export interface MonitorState {
      */
     httpMethod?: pulumi.Input<string>;
     /**
-     * Valid values: `ipv4` Use IPv4 only, `ipv6` Use IPv6 only.
+     * Valid values:
+     *
+     *     `ipv4` Use IPv4 only,
+     *
+     *     `ipv6` Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -432,8 +439,7 @@ export interface MonitorState {
      */
     lastCheckedAt?: pulumi.Input<string>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
     maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -441,8 +447,7 @@ export interface MonitorState {
      */
     maintenanceFrom?: pulumi.Input<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     maintenanceTimezone?: pulumi.Input<string>;
     /**
@@ -454,18 +459,37 @@ export interface MonitorState {
      */
     monitorGroupId?: pulumi.Input<number>;
     /**
-     * Valid values: `status` We will check your website for 2XX HTTP status code. `expected_status_code` We will check if your
-     * website returned one of the values in expected_status_codes. `keyword` We will check if your website contains the
-     * required_keyword. `keyword_absence` We will check if your website doesn't contain the required_keyword. `ping` We will
-     * ping your host specified in the url parameter. `tcp` We will test a TCP port at your host specified in the url parameter
-     * (port is required). `udp` We will test a UDP port at your host specified in the url parameter (port and required_keyword
-     * are required). `smtp` We will check for a SMTP server at the host specified in the url parameter (port is required, and
-     * can be one of 25, 465, 587, or a combination of those ports separated by comma). `pop` We will check for a POP3 server
-     * at the host specified in the url parameter (port is required, and can be 110, 995, or both). `imap` We will check for an
-     * IMAP server at the host specified in the url parameter (port is required, and can be 143, 993, or both). `dns` We will
-     * check for a DNS server at the host specified in the url parameter (request_body is required, and should contain the
-     * domain to query the DNS server with). `playwright` We will run the scenario defined by playwright_script, identified in
-     * the UI by scenario_name
+     * Valid values:
+     *
+     *     `status` We will check your website for 2XX HTTP status code.
+     *
+     * 	`expected_status_code` We will check if your website returned one of the values in expected_status_codes.
+     *
+     *     `keyword` We will check if your website contains the required_keyword.
+     *
+     *     `keyword_absence` We will check if your website doesn't contain the required_keyword.
+     *
+     *     `ping` We will ping your host specified in the url parameter.
+     *
+     *     `tcp` We will test a TCP port at your host specified in the url parameter
+     * (port is required).
+     *
+     *     `udp` We will test a UDP port at your host specified in the url parameter
+     * (port and required_keyword are required).
+     *
+     *     `smtp` We will check for a SMTP server at the host specified in the url parameter
+     * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
+     *
+     *     `pop` We will check for a POP3 server at the host specified in the url parameter
+     * (port is required, and can be 110, 995, or both).
+     *
+     *     `imap` We will check for an IMAP server at the host specified in the url parameter
+     * (port is required, and can be 143, 993, or both).
+     *
+     *     `dns` We will check for a DNS server at the host specified in the url parameter
+     * (request_body is required, and should contain the domain to query the DNS server with).
+     *
+     *     `playwright` We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
     monitorType?: pulumi.Input<string>;
     /**
@@ -485,8 +509,7 @@ export interface MonitorState {
      */
     policyId?: pulumi.Input<string>;
     /**
-     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop,
-     * and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
     port?: pulumi.Input<string>;
     /**
@@ -510,8 +533,7 @@ export interface MonitorState {
      */
     rememberCookies?: pulumi.Input<boolean>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server
-     * with).
+     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server with).
      */
     requestBody?: pulumi.Input<string>;
     /**
@@ -519,21 +541,18 @@ export interface MonitorState {
      */
     requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * How long to wait before timing out the request? - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`,
-     * `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000. - For
-     * Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid
-     * options: 15, 30, 45, 60. - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10,
-     * 15, 30, 45, 60.
+     * How long to wait before timing out the request?
+     *   - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`, `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60.
+     *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
     requestTimeout?: pulumi.Input<number>;
     /**
-     * Required if monitor_type is set to keyword or udp. We will create a new incident if this keyword is missing on your
-     * page.
+     * Required if monitor_type is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
     requiredKeyword?: pulumi.Input<string>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or
-     * `scenario_name` must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
     scenarioName?: pulumi.Input<string>;
     /**
@@ -541,8 +560,7 @@ export interface MonitorState {
      */
     sms?: pulumi.Input<boolean>;
     /**
-     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60.
-     * Set to -1 to disable SSL expiration check.
+     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable SSL expiration check.
      */
     sslExpiration?: pulumi.Input<number>;
     /**
@@ -554,8 +572,7 @@ export interface MonitorState {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
-     * In seconds.
+     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team. In seconds.
      */
     teamWait?: pulumi.Input<number>;
     /**
@@ -563,8 +580,7 @@ export interface MonitorState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except
-     * Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
+     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
     url?: pulumi.Input<string>;
     /**
@@ -598,13 +614,11 @@ export interface MonitorArgs {
      */
     confirmationPeriod?: pulumi.Input<number>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
-     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to
-     * -1 to disable domain expiration check.
+     * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable domain expiration check.
      */
     domainExpiration?: pulumi.Input<number>;
     /**
@@ -612,18 +626,15 @@ export interface MonitorArgs {
      */
     email?: pulumi.Input<boolean>;
     /**
-     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd"
-     * }`.
+     * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd" }`.
      */
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from
-     * the server is not in the list of expected status codes.
+     * Required if monitor_type is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
     expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When
-     * set to null, an e-mail is sent to the entire team.
+     * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When set to null, an e-mail is sent to the entire team.
      */
     expirationPolicyId?: pulumi.Input<number>;
     /**
@@ -635,12 +646,15 @@ export interface MonitorArgs {
      */
     httpMethod?: pulumi.Input<string>;
     /**
-     * Valid values: `ipv4` Use IPv4 only, `ipv6` Use IPv6 only.
+     * Valid values:
+     *
+     *     `ipv4` Use IPv4 only,
+     *
+     *     `ipv6` Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
     maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -648,8 +662,7 @@ export interface MonitorArgs {
      */
     maintenanceFrom?: pulumi.Input<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     maintenanceTimezone?: pulumi.Input<string>;
     /**
@@ -661,18 +674,37 @@ export interface MonitorArgs {
      */
     monitorGroupId?: pulumi.Input<number>;
     /**
-     * Valid values: `status` We will check your website for 2XX HTTP status code. `expected_status_code` We will check if your
-     * website returned one of the values in expected_status_codes. `keyword` We will check if your website contains the
-     * required_keyword. `keyword_absence` We will check if your website doesn't contain the required_keyword. `ping` We will
-     * ping your host specified in the url parameter. `tcp` We will test a TCP port at your host specified in the url parameter
-     * (port is required). `udp` We will test a UDP port at your host specified in the url parameter (port and required_keyword
-     * are required). `smtp` We will check for a SMTP server at the host specified in the url parameter (port is required, and
-     * can be one of 25, 465, 587, or a combination of those ports separated by comma). `pop` We will check for a POP3 server
-     * at the host specified in the url parameter (port is required, and can be 110, 995, or both). `imap` We will check for an
-     * IMAP server at the host specified in the url parameter (port is required, and can be 143, 993, or both). `dns` We will
-     * check for a DNS server at the host specified in the url parameter (request_body is required, and should contain the
-     * domain to query the DNS server with). `playwright` We will run the scenario defined by playwright_script, identified in
-     * the UI by scenario_name
+     * Valid values:
+     *
+     *     `status` We will check your website for 2XX HTTP status code.
+     *
+     * 	`expected_status_code` We will check if your website returned one of the values in expected_status_codes.
+     *
+     *     `keyword` We will check if your website contains the required_keyword.
+     *
+     *     `keyword_absence` We will check if your website doesn't contain the required_keyword.
+     *
+     *     `ping` We will ping your host specified in the url parameter.
+     *
+     *     `tcp` We will test a TCP port at your host specified in the url parameter
+     * (port is required).
+     *
+     *     `udp` We will test a UDP port at your host specified in the url parameter
+     * (port and required_keyword are required).
+     *
+     *     `smtp` We will check for a SMTP server at the host specified in the url parameter
+     * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
+     *
+     *     `pop` We will check for a POP3 server at the host specified in the url parameter
+     * (port is required, and can be 110, 995, or both).
+     *
+     *     `imap` We will check for an IMAP server at the host specified in the url parameter
+     * (port is required, and can be 143, 993, or both).
+     *
+     *     `dns` We will check for a DNS server at the host specified in the url parameter
+     * (request_body is required, and should contain the domain to query the DNS server with).
+     *
+     *     `playwright` We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
     monitorType: pulumi.Input<string>;
     /**
@@ -688,8 +720,7 @@ export interface MonitorArgs {
      */
     policyId?: pulumi.Input<string>;
     /**
-     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop,
-     * and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if monitor_type is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
     port?: pulumi.Input<string>;
     /**
@@ -713,8 +744,7 @@ export interface MonitorArgs {
      */
     rememberCookies?: pulumi.Input<boolean>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server
-     * with).
+     * Request body for POST, PUT, PATCH requests. Required if monitor_type is set to dns (domain to query the DNS server with).
      */
     requestBody?: pulumi.Input<string>;
     /**
@@ -722,21 +752,18 @@ export interface MonitorArgs {
      */
     requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * How long to wait before timing out the request? - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`,
-     * `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000. - For
-     * Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid
-     * options: 15, 30, 45, 60. - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10,
-     * 15, 30, 45, 60.
+     * How long to wait before timing out the request?
+     *   - For Server and Port monitors (types `ping`, `tcp`, `udp`, `smtp`, `pop`, `imap` and `dns`) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type `playwright`), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60.
+     *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
     requestTimeout?: pulumi.Input<number>;
     /**
-     * Required if monitor_type is set to keyword or udp. We will create a new incident if this keyword is missing on your
-     * page.
+     * Required if monitor_type is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
     requiredKeyword?: pulumi.Input<string>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or
-     * `scenario_name` must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
     scenarioName?: pulumi.Input<string>;
     /**
@@ -744,8 +771,7 @@ export interface MonitorArgs {
      */
     sms?: pulumi.Input<boolean>;
     /**
-     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60.
-     * Set to -1 to disable SSL expiration check.
+     * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable SSL expiration check.
      */
     sslExpiration?: pulumi.Input<number>;
     /**
@@ -753,13 +779,11 @@ export interface MonitorArgs {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
-     * In seconds.
+     * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team. In seconds.
      */
     teamWait?: pulumi.Input<number>;
     /**
-     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except
-     * Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
+     * URL of your website or the host you want to ping (see monitor_type below). Required for all monitor types except Playwright. For Playwright monitors, either `url` or `scenario_name` must be provided.
      */
     url?: pulumi.Input<string>;
     /**

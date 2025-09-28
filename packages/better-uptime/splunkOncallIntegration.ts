@@ -35,15 +35,15 @@ export class SplunkOncallIntegration extends pulumi.CustomResource {
     /**
      * The name of the Splunk On-Call Integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The Splunk On-Call URL to post webhooks to.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a SplunkOncallIntegration resource with the given unique name, arguments, and options.
@@ -58,17 +58,17 @@ export class SplunkOncallIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SplunkOncallIntegrationState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as SplunkOncallIntegrationArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SplunkOncallIntegration.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

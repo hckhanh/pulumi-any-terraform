@@ -160,10 +160,8 @@ export type PrometheusIntegration = import("./prometheusIntegration").Prometheus
 export const PrometheusIntegration: typeof import("./prometheusIntegration").PrometheusIntegration = null as any;
 utilities.lazyLoad(exports, ["PrometheusIntegration"], () => require("./prometheusIntegration"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { SeverityArgs, SeverityState } from "./severity";
 export type Severity = import("./severity").Severity;

@@ -35,19 +35,19 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
     /**
      * The PagerDuty routing key.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The name of the PagerDuty Integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */
-    public readonly severity!: pulumi.Output<string>;
+    declare public readonly severity: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
 
     /**
      * Create a PagerdutyIntegration resource with the given unique name, arguments, and options.
@@ -62,22 +62,22 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagerdutyIntegrationState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["severity"] = state ? state.severity : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["severity"] = state?.severity;
+            resourceInputs["teamName"] = state?.teamName;
         } else {
             const args = argsOrState as PagerdutyIntegrationArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.severity === undefined) && !opts.urn) {
+            if (args?.severity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["severity"] = args?.severity;
+            resourceInputs["teamName"] = args?.teamName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PagerdutyIntegration.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

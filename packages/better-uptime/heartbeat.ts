@@ -35,99 +35,95 @@ export class Heartbeat extends pulumi.CustomResource {
     /**
      * Whether to call when a new incident is created.
      */
-    public readonly call!: pulumi.Output<boolean>;
+    declare public readonly call: pulumi.Output<boolean>;
     /**
      * The time when this heartbeat was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    public readonly criticalAlert!: pulumi.Output<boolean>;
+    declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    public readonly email!: pulumi.Output<boolean>;
+    declare public readonly email: pulumi.Output<boolean>;
     /**
-     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend
-     * setting this to approx. 20% of period
+     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend setting this to approx. 20% of period
      */
-    public readonly grace!: pulumi.Output<number>;
+    declare public readonly grace: pulumi.Output<number>;
     /**
      * Set this attribute if you want to add this heartbeat to a heartbeat group..
      */
-    public readonly heartbeatGroupId!: pulumi.Output<number>;
+    declare public readonly heartbeatGroupId: pulumi.Output<number>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    public readonly maintenanceDays!: pulumi.Output<string[]>;
+    declare public readonly maintenanceDays: pulumi.Output<string[]>;
     /**
      * Start of the maintenance window each day. We won't create incidents during this window. Example: "01:00:00"
      */
-    public readonly maintenanceFrom!: pulumi.Output<string>;
+    declare public readonly maintenanceFrom: pulumi.Output<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    public readonly maintenanceTimezone!: pulumi.Output<string>;
+    declare public readonly maintenanceTimezone: pulumi.Output<string>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    public readonly maintenanceTo!: pulumi.Output<string>;
+    declare public readonly maintenanceTo: pulumi.Output<string>;
     /**
      * A name of the service for this heartbeat.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Set to true to pause monitoring — we won't notify you about downtime. Set to false to resume monitoring.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The time when this heartbeat was paused.
      */
-    public /*out*/ readonly pausedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly pausedAt: pulumi.Output<string>;
     /**
      * How often should we expect this heartbeat? In seconds. Minimum value: 30 seconds
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * Set the escalation policy for the heartbeat.
      */
-    public readonly policyId!: pulumi.Output<string | undefined>;
+    declare public readonly policyId: pulumi.Output<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    public readonly push!: pulumi.Output<boolean>;
+    declare public readonly push: pulumi.Output<boolean>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    public readonly sms!: pulumi.Output<boolean>;
+    declare public readonly sms: pulumi.Output<boolean>;
     /**
      * An index controlling the position of a heartbeat in the heartbeat group.
      */
-    public readonly sortIndex!: pulumi.Output<number>;
+    declare public readonly sortIndex: pulumi.Output<number>;
     /**
      * The status of this heartbeat.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    public readonly teamWait!: pulumi.Output<number>;
+    declare public readonly teamWait: pulumi.Output<number>;
     /**
      * The time when this heartbeat was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The url of this heartbeat.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Heartbeat resource with the given unique name, arguments, and options.
@@ -142,55 +138,55 @@ export class Heartbeat extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HeartbeatState | undefined;
-            resourceInputs["call"] = state ? state.call : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["criticalAlert"] = state ? state.criticalAlert : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["grace"] = state ? state.grace : undefined;
-            resourceInputs["heartbeatGroupId"] = state ? state.heartbeatGroupId : undefined;
-            resourceInputs["maintenanceDays"] = state ? state.maintenanceDays : undefined;
-            resourceInputs["maintenanceFrom"] = state ? state.maintenanceFrom : undefined;
-            resourceInputs["maintenanceTimezone"] = state ? state.maintenanceTimezone : undefined;
-            resourceInputs["maintenanceTo"] = state ? state.maintenanceTo : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["pausedAt"] = state ? state.pausedAt : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["sms"] = state ? state.sms : undefined;
-            resourceInputs["sortIndex"] = state ? state.sortIndex : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["teamWait"] = state ? state.teamWait : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["call"] = state?.call;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["grace"] = state?.grace;
+            resourceInputs["heartbeatGroupId"] = state?.heartbeatGroupId;
+            resourceInputs["maintenanceDays"] = state?.maintenanceDays;
+            resourceInputs["maintenanceFrom"] = state?.maintenanceFrom;
+            resourceInputs["maintenanceTimezone"] = state?.maintenanceTimezone;
+            resourceInputs["maintenanceTo"] = state?.maintenanceTo;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["pausedAt"] = state?.pausedAt;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["sms"] = state?.sms;
+            resourceInputs["sortIndex"] = state?.sortIndex;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["teamWait"] = state?.teamWait;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as HeartbeatArgs | undefined;
-            if ((!args || args.grace === undefined) && !opts.urn) {
+            if (args?.grace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grace'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            resourceInputs["call"] = args ? args.call : undefined;
-            resourceInputs["criticalAlert"] = args ? args.criticalAlert : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["grace"] = args ? args.grace : undefined;
-            resourceInputs["heartbeatGroupId"] = args ? args.heartbeatGroupId : undefined;
-            resourceInputs["maintenanceDays"] = args ? args.maintenanceDays : undefined;
-            resourceInputs["maintenanceFrom"] = args ? args.maintenanceFrom : undefined;
-            resourceInputs["maintenanceTimezone"] = args ? args.maintenanceTimezone : undefined;
-            resourceInputs["maintenanceTo"] = args ? args.maintenanceTo : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["sms"] = args ? args.sms : undefined;
-            resourceInputs["sortIndex"] = args ? args.sortIndex : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["teamWait"] = args ? args.teamWait : undefined;
+            resourceInputs["call"] = args?.call;
+            resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["grace"] = args?.grace;
+            resourceInputs["heartbeatGroupId"] = args?.heartbeatGroupId;
+            resourceInputs["maintenanceDays"] = args?.maintenanceDays;
+            resourceInputs["maintenanceFrom"] = args?.maintenanceFrom;
+            resourceInputs["maintenanceTimezone"] = args?.maintenanceTimezone;
+            resourceInputs["maintenanceTo"] = args?.maintenanceTo;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["sms"] = args?.sms;
+            resourceInputs["sortIndex"] = args?.sortIndex;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["teamWait"] = args?.teamWait;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["pausedAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -215,8 +211,7 @@ export interface HeartbeatState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -224,8 +219,7 @@ export interface HeartbeatState {
      */
     email?: pulumi.Input<boolean>;
     /**
-     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend
-     * setting this to approx. 20% of period
+     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend setting this to approx. 20% of period
      */
     grace?: pulumi.Input<number>;
     /**
@@ -233,8 +227,7 @@ export interface HeartbeatState {
      */
     heartbeatGroupId?: pulumi.Input<number>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
     maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -242,8 +235,7 @@ export interface HeartbeatState {
      */
     maintenanceFrom?: pulumi.Input<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     maintenanceTimezone?: pulumi.Input<string>;
     /**
@@ -313,8 +305,7 @@ export interface HeartbeatArgs {
      */
     call?: pulumi.Input<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -322,8 +313,7 @@ export interface HeartbeatArgs {
      */
     email?: pulumi.Input<boolean>;
     /**
-     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend
-     * setting this to approx. 20% of period
+     * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend setting this to approx. 20% of period
      */
     grace: pulumi.Input<number>;
     /**
@@ -331,8 +321,7 @@ export interface HeartbeatArgs {
      */
     heartbeatGroupId?: pulumi.Input<number>;
     /**
-     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed
-     * values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
+     * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
     maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -340,8 +329,7 @@ export interface HeartbeatArgs {
      */
     maintenanceFrom?: pulumi.Input<string>;
     /**
-     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails
-     * TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     maintenanceTimezone?: pulumi.Input<string>;
     /**

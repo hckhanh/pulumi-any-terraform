@@ -37,36 +37,35 @@ export class OutgoingWebhook extends pulumi.CustomResource {
     /**
      * Custom webhook template configuration.
      */
-    public readonly customWebhookTemplateAttributes!: pulumi.Output<outputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
+    declare public readonly customWebhookTemplateAttributes: pulumi.Output<outputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
     /**
      * The name of the outgoing webhook.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
-    public readonly onIncidentAcknowledged!: pulumi.Output<boolean | undefined>;
+    declare public readonly onIncidentAcknowledged: pulumi.Output<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */
-    public readonly onIncidentResolved!: pulumi.Output<boolean | undefined>;
+    declare public readonly onIncidentResolved: pulumi.Output<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident starts. Only when `trigger_type=incident_change`.
      */
-    public readonly onIncidentStarted!: pulumi.Output<boolean | undefined>;
+    declare public readonly onIncidentStarted: pulumi.Output<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`,
-     * `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
      */
-    public readonly triggerType!: pulumi.Output<string>;
+    declare public readonly triggerType: pulumi.Output<string>;
     /**
      * The URL to send webhooks to.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a OutgoingWebhook resource with the given unique name, arguments, and options.
@@ -81,30 +80,30 @@ export class OutgoingWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OutgoingWebhookState | undefined;
-            resourceInputs["customWebhookTemplateAttributes"] = state ? state.customWebhookTemplateAttributes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onIncidentAcknowledged"] = state ? state.onIncidentAcknowledged : undefined;
-            resourceInputs["onIncidentResolved"] = state ? state.onIncidentResolved : undefined;
-            resourceInputs["onIncidentStarted"] = state ? state.onIncidentStarted : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["triggerType"] = state ? state.triggerType : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["customWebhookTemplateAttributes"] = state?.customWebhookTemplateAttributes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onIncidentAcknowledged"] = state?.onIncidentAcknowledged;
+            resourceInputs["onIncidentResolved"] = state?.onIncidentResolved;
+            resourceInputs["onIncidentStarted"] = state?.onIncidentStarted;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["triggerType"] = state?.triggerType;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as OutgoingWebhookArgs | undefined;
-            if ((!args || args.triggerType === undefined) && !opts.urn) {
+            if (args?.triggerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerType'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["customWebhookTemplateAttributes"] = args ? args.customWebhookTemplateAttributes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onIncidentAcknowledged"] = args ? args.onIncidentAcknowledged : undefined;
-            resourceInputs["onIncidentResolved"] = args ? args.onIncidentResolved : undefined;
-            resourceInputs["onIncidentStarted"] = args ? args.onIncidentStarted : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["triggerType"] = args ? args.triggerType : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["customWebhookTemplateAttributes"] = args?.customWebhookTemplateAttributes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onIncidentAcknowledged"] = args?.onIncidentAcknowledged;
+            resourceInputs["onIncidentResolved"] = args?.onIncidentResolved;
+            resourceInputs["onIncidentStarted"] = args?.onIncidentStarted;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["triggerType"] = args?.triggerType;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OutgoingWebhook.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -140,8 +139,7 @@ export interface OutgoingWebhookState {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`,
-     * `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
      */
     triggerType?: pulumi.Input<string>;
     /**
@@ -179,8 +177,7 @@ export interface OutgoingWebhookArgs {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`,
-     * `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
      */
     triggerType: pulumi.Input<string>;
     /**

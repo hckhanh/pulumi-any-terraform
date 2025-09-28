@@ -35,52 +35,51 @@ export class AzureIntegration extends pulumi.CustomResource {
     /**
      * Whether to call when a new incident is created.
      */
-    public readonly call!: pulumi.Output<boolean>;
+    declare public readonly call: pulumi.Output<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    public readonly criticalAlert!: pulumi.Output<boolean>;
+    declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    public readonly email!: pulumi.Output<boolean>;
+    declare public readonly email: pulumi.Output<boolean>;
     /**
      * The name of the Azure Integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Is the Azure integration paused.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * ID of the escalation policy associated with the Azure integration.
      */
-    public readonly policyId!: pulumi.Output<number>;
+    declare public readonly policyId: pulumi.Output<number>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    public readonly push!: pulumi.Output<boolean>;
+    declare public readonly push: pulumi.Output<boolean>;
     /**
      * How long the alert must be up to automatically mark an incident as resolved. In seconds.
      */
-    public readonly recoveryPeriod!: pulumi.Output<number>;
+    declare public readonly recoveryPeriod: pulumi.Output<number>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    public readonly sms!: pulumi.Output<boolean>;
+    declare public readonly sms: pulumi.Output<boolean>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * How long we wait before escalating the incident alert to the team. In seconds.
      */
-    public readonly teamWait!: pulumi.Output<number>;
+    declare public readonly teamWait: pulumi.Output<number>;
     /**
      * The webhook URL for the Azure integration.
      */
-    public /*out*/ readonly webhookUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly webhookUrl: pulumi.Output<string>;
 
     /**
      * Create a AzureIntegration resource with the given unique name, arguments, and options.
@@ -95,31 +94,31 @@ export class AzureIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureIntegrationState | undefined;
-            resourceInputs["call"] = state ? state.call : undefined;
-            resourceInputs["criticalAlert"] = state ? state.criticalAlert : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["recoveryPeriod"] = state ? state.recoveryPeriod : undefined;
-            resourceInputs["sms"] = state ? state.sms : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["teamWait"] = state ? state.teamWait : undefined;
-            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["call"] = state?.call;
+            resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["recoveryPeriod"] = state?.recoveryPeriod;
+            resourceInputs["sms"] = state?.sms;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["teamWait"] = state?.teamWait;
+            resourceInputs["webhookUrl"] = state?.webhookUrl;
         } else {
             const args = argsOrState as AzureIntegrationArgs | undefined;
-            resourceInputs["call"] = args ? args.call : undefined;
-            resourceInputs["criticalAlert"] = args ? args.criticalAlert : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["recoveryPeriod"] = args ? args.recoveryPeriod : undefined;
-            resourceInputs["sms"] = args ? args.sms : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["teamWait"] = args ? args.teamWait : undefined;
+            resourceInputs["call"] = args?.call;
+            resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["recoveryPeriod"] = args?.recoveryPeriod;
+            resourceInputs["sms"] = args?.sms;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["teamWait"] = args?.teamWait;
             resourceInputs["webhookUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -136,8 +135,7 @@ export interface AzureIntegrationState {
      */
     call?: pulumi.Input<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -191,8 +189,7 @@ export interface AzureIntegrationArgs {
      */
     call?: pulumi.Input<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**

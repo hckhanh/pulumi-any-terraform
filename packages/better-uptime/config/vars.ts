@@ -8,8 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("better-uptime");
 
 /**
- * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit,
- * minimum 10).
+ * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit, minimum 10).
  */
 export declare const apiRateBurst: number | undefined;
 Object.defineProperty(exports, "apiRateBurst", {
@@ -75,9 +74,7 @@ Object.defineProperty(exports, "apiTimeout", {
 });
 
 /**
- * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See
- * https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain
- * the API token for your team.
+ * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
