@@ -37,60 +37,53 @@ export class StatusPageResource extends pulumi.CustomResource {
     /**
      * The availability of this resource (from 0.0 to 1.0).
      */
-    public /*out*/ readonly availability!: pulumi.Output<number>;
+    declare public /*out*/ readonly availability: pulumi.Output<number>;
     /**
      * A detailed text displayed as a help icon.
      */
-    public readonly explanation!: pulumi.Output<string>;
+    declare public readonly explanation: pulumi.Output<string>;
     /**
      * Do you want to display detailed historical status for this item? This field is deprecated, use widget_type instead.
      *
      * @deprecated Deprecated
      */
-    public readonly history!: pulumi.Output<boolean>;
+    declare public readonly history: pulumi.Output<boolean>;
     /**
-     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the
-     * resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this
-     * position and shift resources below to accommodate.
+     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * The resource name displayed publicly on your status page.
      */
-    public readonly publicName!: pulumi.Output<string>;
+    declare public readonly publicName: pulumi.Output<string>;
     /**
      * The ID of the resource you are adding.
      */
-    public readonly resourceId!: pulumi.Output<number>;
+    declare public readonly resourceId: pulumi.Output<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup,
-     * WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
-     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused),
-     * `operational`, `maintenance`, `degraded`, or `downtime`
+     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused), `operational`, `maintenance`, `degraded`, or `downtime`
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * History of a single status page resource history
      */
-    public /*out*/ readonly statusHistories!: pulumi.Output<outputs.StatusPageResourceStatusHistory[]>;
+    declare public /*out*/ readonly statusHistories: pulumi.Output<outputs.StatusPageResourceStatusHistory[]>;
     /**
      * The ID of the Status Page.
      */
-    public readonly statusPageId!: pulumi.Output<string>;
+    declare public readonly statusPageId: pulumi.Output<string>;
     /**
-     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first
-     * section. If there are no sections in the status page yet, one will be automatically created for you.
+     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first section. If there are no sections in the status page yet, one will be automatically created for you.
      */
-    public readonly statusPageSectionId!: pulumi.Output<number>;
+    declare public readonly statusPageSectionId: pulumi.Output<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display
-     * detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes
-     * preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
-    public readonly widgetType!: pulumi.Output<string>;
+    declare public readonly widgetType: pulumi.Output<string>;
 
     /**
      * Create a StatusPageResource resource with the given unique name, arguments, and options.
@@ -105,41 +98,41 @@ export class StatusPageResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StatusPageResourceState | undefined;
-            resourceInputs["availability"] = state ? state.availability : undefined;
-            resourceInputs["explanation"] = state ? state.explanation : undefined;
-            resourceInputs["history"] = state ? state.history : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["publicName"] = state ? state.publicName : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusHistories"] = state ? state.statusHistories : undefined;
-            resourceInputs["statusPageId"] = state ? state.statusPageId : undefined;
-            resourceInputs["statusPageSectionId"] = state ? state.statusPageSectionId : undefined;
-            resourceInputs["widgetType"] = state ? state.widgetType : undefined;
+            resourceInputs["availability"] = state?.availability;
+            resourceInputs["explanation"] = state?.explanation;
+            resourceInputs["history"] = state?.history;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["publicName"] = state?.publicName;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusHistories"] = state?.statusHistories;
+            resourceInputs["statusPageId"] = state?.statusPageId;
+            resourceInputs["statusPageSectionId"] = state?.statusPageSectionId;
+            resourceInputs["widgetType"] = state?.widgetType;
         } else {
             const args = argsOrState as StatusPageResourceArgs | undefined;
-            if ((!args || args.publicName === undefined) && !opts.urn) {
+            if (args?.publicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicName'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if ((!args || args.statusPageId === undefined) && !opts.urn) {
+            if (args?.statusPageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'statusPageId'");
             }
-            resourceInputs["explanation"] = args ? args.explanation : undefined;
-            resourceInputs["history"] = args ? args.history : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["publicName"] = args ? args.publicName : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["statusPageId"] = args ? args.statusPageId : undefined;
-            resourceInputs["statusPageSectionId"] = args ? args.statusPageSectionId : undefined;
-            resourceInputs["widgetType"] = args ? args.widgetType : undefined;
+            resourceInputs["explanation"] = args?.explanation;
+            resourceInputs["history"] = args?.history;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["publicName"] = args?.publicName;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["statusPageId"] = args?.statusPageId;
+            resourceInputs["statusPageSectionId"] = args?.statusPageSectionId;
+            resourceInputs["widgetType"] = args?.widgetType;
             resourceInputs["availability"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistories"] = undefined /*out*/;
@@ -168,9 +161,7 @@ export interface StatusPageResourceState {
      */
     history?: pulumi.Input<boolean>;
     /**
-     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the
-     * resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this
-     * position and shift resources below to accommodate.
+     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
     position?: pulumi.Input<number>;
     /**
@@ -182,13 +173,11 @@ export interface StatusPageResourceState {
      */
     resourceId?: pulumi.Input<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup,
-     * WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused),
-     * `operational`, `maintenance`, `degraded`, or `downtime`
+     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused), `operational`, `maintenance`, `degraded`, or `downtime`
      */
     status?: pulumi.Input<string>;
     /**
@@ -200,14 +189,11 @@ export interface StatusPageResourceState {
      */
     statusPageId?: pulumi.Input<string>;
     /**
-     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first
-     * section. If there are no sections in the status page yet, one will be automatically created for you.
+     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first section. If there are no sections in the status page yet, one will be automatically created for you.
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display
-     * detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes
-     * preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }
@@ -227,9 +213,7 @@ export interface StatusPageResourceArgs {
      */
     history?: pulumi.Input<boolean>;
     /**
-     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the
-     * resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this
-     * position and shift resources below to accommodate.
+     * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
     position?: pulumi.Input<number>;
     /**
@@ -241,8 +225,7 @@ export interface StatusPageResourceArgs {
      */
     resourceId: pulumi.Input<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup,
-     * WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType: pulumi.Input<string>;
     /**
@@ -250,14 +233,11 @@ export interface StatusPageResourceArgs {
      */
     statusPageId: pulumi.Input<string>;
     /**
-     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first
-     * section. If there are no sections in the status page yet, one will be automatically created for you.
+     * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first section. If there are no sections in the status page yet, one will be automatically created for you.
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display
-     * detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes
-     * preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }

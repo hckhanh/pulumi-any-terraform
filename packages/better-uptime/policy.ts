@@ -37,31 +37,31 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Incident token that can be used for manually reporting incidents.
      */
-    public /*out*/ readonly incidentToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly incidentToken: pulumi.Output<string>;
     /**
      * The name of this Policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Set this attribute if you want to add this policy to a policy group.
      */
-    public readonly policyGroupId!: pulumi.Output<number>;
+    declare public readonly policyGroupId: pulumi.Output<number>;
     /**
      * How many times should the entire policy be repeated if no one acknowledges the incident.
      */
-    public readonly repeatCount!: pulumi.Output<number>;
+    declare public readonly repeatCount: pulumi.Output<number>;
     /**
      * How long in seconds to wait before each repetition.
      */
-    public readonly repeatDelay!: pulumi.Output<number>;
+    declare public readonly repeatDelay: pulumi.Output<number>;
     /**
      * An array of escalation policy steps
      */
-    public readonly steps!: pulumi.Output<outputs.PolicyStep[]>;
+    declare public readonly steps: pulumi.Output<outputs.PolicyStep[]>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -76,24 +76,24 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["incidentToken"] = state ? state.incidentToken : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyGroupId"] = state ? state.policyGroupId : undefined;
-            resourceInputs["repeatCount"] = state ? state.repeatCount : undefined;
-            resourceInputs["repeatDelay"] = state ? state.repeatDelay : undefined;
-            resourceInputs["steps"] = state ? state.steps : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
+            resourceInputs["incidentToken"] = state?.incidentToken;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyGroupId"] = state?.policyGroupId;
+            resourceInputs["repeatCount"] = state?.repeatCount;
+            resourceInputs["repeatDelay"] = state?.repeatDelay;
+            resourceInputs["steps"] = state?.steps;
+            resourceInputs["teamName"] = state?.teamName;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.steps === undefined) && !opts.urn) {
+            if (args?.steps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'steps'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyGroupId"] = args ? args.policyGroupId : undefined;
-            resourceInputs["repeatCount"] = args ? args.repeatCount : undefined;
-            resourceInputs["repeatDelay"] = args ? args.repeatDelay : undefined;
-            resourceInputs["steps"] = args ? args.steps : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyGroupId"] = args?.policyGroupId;
+            resourceInputs["repeatCount"] = args?.repeatCount;
+            resourceInputs["repeatDelay"] = args?.repeatDelay;
+            resourceInputs["steps"] = args?.steps;
+            resourceInputs["teamName"] = args?.teamName;
             resourceInputs["incidentToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

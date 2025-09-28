@@ -35,36 +35,35 @@ export class Severity extends pulumi.CustomResource {
     /**
      * Whether to call when a new incident is created.
      */
-    public readonly call!: pulumi.Output<boolean>;
+    declare public readonly call: pulumi.Output<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    public readonly criticalAlert!: pulumi.Output<boolean>;
+    declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    public readonly email!: pulumi.Output<boolean>;
+    declare public readonly email: pulumi.Output<boolean>;
     /**
      * The name of this Severity.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    public readonly push!: pulumi.Output<boolean>;
+    declare public readonly push: pulumi.Output<boolean>;
     /**
      * Set this attribute if you want to add this severity to a severity group.
      */
-    public readonly severityGroupId!: pulumi.Output<number>;
+    declare public readonly severityGroupId: pulumi.Output<number>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    public readonly sms!: pulumi.Output<boolean>;
+    declare public readonly sms: pulumi.Output<boolean>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Severity resource with the given unique name, arguments, and options.
@@ -79,24 +78,24 @@ export class Severity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SeverityState | undefined;
-            resourceInputs["call"] = state ? state.call : undefined;
-            resourceInputs["criticalAlert"] = state ? state.criticalAlert : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["severityGroupId"] = state ? state.severityGroupId : undefined;
-            resourceInputs["sms"] = state ? state.sms : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
+            resourceInputs["call"] = state?.call;
+            resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["severityGroupId"] = state?.severityGroupId;
+            resourceInputs["sms"] = state?.sms;
+            resourceInputs["teamName"] = state?.teamName;
         } else {
             const args = argsOrState as SeverityArgs | undefined;
-            resourceInputs["call"] = args ? args.call : undefined;
-            resourceInputs["criticalAlert"] = args ? args.criticalAlert : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["severityGroupId"] = args ? args.severityGroupId : undefined;
-            resourceInputs["sms"] = args ? args.sms : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["call"] = args?.call;
+            resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["severityGroupId"] = args?.severityGroupId;
+            resourceInputs["sms"] = args?.sms;
+            resourceInputs["teamName"] = args?.teamName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Severity.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -112,8 +111,7 @@ export interface SeverityState {
      */
     call?: pulumi.Input<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -151,8 +149,7 @@ export interface SeverityArgs {
      */
     call?: pulumi.Input<boolean>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**

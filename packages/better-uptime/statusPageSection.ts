@@ -35,17 +35,15 @@ export class StatusPageSection extends pulumi.CustomResource {
     /**
      * The section name displayed publicly on your status page.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
-     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section
-     * to the end of the status page. When you specify a position of an existing section, we add the section to this position
-     * and shift sections below to accommodate.
+     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section to the end of the status page. When you specify a position of an existing section, we add the section to this position and shift sections below to accommodate.
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * The ID of the Status Page.
      */
-    public readonly statusPageId!: pulumi.Output<string>;
+    declare public readonly statusPageId: pulumi.Output<string>;
 
     /**
      * Create a StatusPageSection resource with the given unique name, arguments, and options.
@@ -60,17 +58,17 @@ export class StatusPageSection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StatusPageSectionState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["statusPageId"] = state ? state.statusPageId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["statusPageId"] = state?.statusPageId;
         } else {
             const args = argsOrState as StatusPageSectionArgs | undefined;
-            if ((!args || args.statusPageId === undefined) && !opts.urn) {
+            if (args?.statusPageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'statusPageId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["statusPageId"] = args ? args.statusPageId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["statusPageId"] = args?.statusPageId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StatusPageSection.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -86,9 +84,7 @@ export interface StatusPageSectionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section
-     * to the end of the status page. When you specify a position of an existing section, we add the section to this position
-     * and shift sections below to accommodate.
+     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section to the end of the status page. When you specify a position of an existing section, we add the section to this position and shift sections below to accommodate.
      */
     position?: pulumi.Input<number>;
     /**
@@ -106,9 +102,7 @@ export interface StatusPageSectionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section
-     * to the end of the status page. When you specify a position of an existing section, we add the section to this position
-     * and shift sections below to accommodate.
+     * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section to the end of the status page. When you specify a position of an existing section, we add the section to this position and shift sections below to accommodate.
      */
     position?: pulumi.Input<number>;
     /**

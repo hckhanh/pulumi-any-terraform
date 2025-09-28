@@ -37,132 +37,123 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * The overall status of this status page.
      */
-    public /*out*/ readonly aggregateState!: pulumi.Output<string>;
+    declare public /*out*/ readonly aggregateState: pulumi.Output<string>;
     /**
      * Add an announcement to your status page.
      */
-    public readonly announcement!: pulumi.Output<string>;
+    declare public readonly announcement: pulumi.Output<string>;
     /**
      * Modify the design of the announcement embed.
      */
-    public readonly announcementEmbedCss!: pulumi.Output<string>;
+    declare public readonly announcementEmbedCss: pulumi.Output<string>;
     /**
      * Point your embedded announcement to a specified URL.
      */
-    public readonly announcementEmbedLink!: pulumi.Output<string>;
+    declare public readonly announcementEmbedLink: pulumi.Output<string>;
     /**
-     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet:
-     * `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async"
-     * type="text/javascript"></script>`
+     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet: `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async" type="text/javascript"></script>`
      */
-    public readonly announcementEmbedVisible!: pulumi.Output<boolean>;
+    declare public readonly announcementEmbedVisible: pulumi.Output<boolean>;
     /**
      * Generate automatic reports when your services go down
      */
-    public readonly automaticReports!: pulumi.Output<boolean>;
+    declare public readonly automaticReports: pulumi.Output<boolean>;
     /**
      * Name of your company.
      */
-    public readonly companyName!: pulumi.Output<string>;
+    declare public readonly companyName: pulumi.Output<string>;
     /**
      * URL of your company's website.
      */
-    public readonly companyUrl!: pulumi.Output<string>;
+    declare public readonly companyUrl: pulumi.Output<string>;
     /**
      * URL that should be used for contacting you in case of an emergency.
      */
-    public readonly contactUrl!: pulumi.Output<string>;
+    declare public readonly contactUrl: pulumi.Output<string>;
     /**
      * The time when this status page was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Unleash your inner designer and tweak our status page design to fit your branding.
      */
-    public readonly customCss!: pulumi.Output<string>;
+    declare public readonly customCss: pulumi.Output<string>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com.
-     * Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
      */
-    public readonly customDomain!: pulumi.Output<string>;
+    declare public readonly customDomain: pulumi.Output<string>;
     /**
      * Add custom behavior to your status page. It is only allowed for status pages with a custom domain name.
      */
-    public readonly customJavascript!: pulumi.Output<string>;
+    declare public readonly customJavascript: pulumi.Output<string>;
     /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
-    public readonly design!: pulumi.Output<string>;
+    declare public readonly design: pulumi.Output<string>;
     /**
      * Specify your own Google Analytics ID if you want to receive hits on your status page.
      */
-    public readonly googleAnalyticsId!: pulumi.Output<string>;
+    declare public readonly googleAnalyticsId: pulumi.Output<string>;
     /**
      * Hide your status page from search engines.
      */
-    public readonly hideFromSearchEngines!: pulumi.Output<boolean>;
+    declare public readonly hideFromSearchEngines: pulumi.Output<boolean>;
     /**
      * Number of days to display on the status page. Between 7 and 365 days.
      */
-    public readonly history!: pulumi.Output<number>;
+    declare public readonly history: pulumi.Output<number>;
     /**
-     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and
-     * comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable
-     * feature](https://betterstack.com/pricing#status-pages).
+     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable feature](https://betterstack.com/pricing#status-pages).
      */
-    public readonly ipAllowlists!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipAllowlists: pulumi.Output<string[] | undefined>;
     /**
-     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values:
-     * 'vertical', 'horizontal'.
+     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values: 'vertical', 'horizontal'.
      */
-    public readonly layout!: pulumi.Output<string>;
+    declare public readonly layout: pulumi.Output<string>;
     /**
      * A direct link to your company's logo. The image should be under 20MB in size.
      */
-    public readonly logoUrl!: pulumi.Output<string>;
+    declare public readonly logoUrl: pulumi.Output<string>;
     /**
      * If you don't want to display short incidents on your status page, this attribute is for you.
      */
-    public readonly minIncidentLength!: pulumi.Output<number>;
+    declare public readonly minIncidentLength: pulumi.Output<number>;
     /**
      * Adjust the navigation links on your status page. Only applicable when design: v2. Only first 4 links considered.
      */
-    public readonly navigationLinks!: pulumi.Output<outputs.StatusPageNavigationLink[] | undefined>;
+    declare public readonly navigationLinks: pulumi.Output<outputs.StatusPageNavigationLink[] | undefined>;
     /**
-     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We
-     * will set password_enabled: false automatically when you send us an empty password.
+     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We will set password_enabled: false automatically when you send us an empty password.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Do you want to enable password protection on your status page?
      */
-    public readonly passwordEnabled!: pulumi.Output<boolean>;
+    declare public readonly passwordEnabled: pulumi.Output<boolean>;
     /**
      * Set this attribute if you want to add this status page to a status page group.
      */
-    public readonly statusPageGroupId!: pulumi.Output<number>;
+    declare public readonly statusPageGroupId: pulumi.Output<number>;
     /**
-     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose
-     * carefully
+     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose carefully
      */
-    public readonly subdomain!: pulumi.Output<string>;
+    declare public readonly subdomain: pulumi.Output<string>;
     /**
      * Do you want to allow users to subscribe to your status page changes?
      */
-    public readonly subscribable!: pulumi.Output<boolean>;
+    declare public readonly subscribable: pulumi.Output<boolean>;
     /**
      * Choose theme of your status page. Only applicable when design: v2. Possible values: 'light', 'dark'.
      */
-    public readonly theme!: pulumi.Output<string>;
+    declare public readonly theme: pulumi.Output<string>;
     /**
-     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone
-     * documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    public readonly timezone!: pulumi.Output<string>;
+    declare public readonly timezone: pulumi.Output<string>;
     /**
      * The time when this status page was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a StatusPage resource with the given unique name, arguments, and options.
@@ -177,77 +168,77 @@ export class StatusPage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StatusPageState | undefined;
-            resourceInputs["aggregateState"] = state ? state.aggregateState : undefined;
-            resourceInputs["announcement"] = state ? state.announcement : undefined;
-            resourceInputs["announcementEmbedCss"] = state ? state.announcementEmbedCss : undefined;
-            resourceInputs["announcementEmbedLink"] = state ? state.announcementEmbedLink : undefined;
-            resourceInputs["announcementEmbedVisible"] = state ? state.announcementEmbedVisible : undefined;
-            resourceInputs["automaticReports"] = state ? state.automaticReports : undefined;
-            resourceInputs["companyName"] = state ? state.companyName : undefined;
-            resourceInputs["companyUrl"] = state ? state.companyUrl : undefined;
-            resourceInputs["contactUrl"] = state ? state.contactUrl : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customCss"] = state ? state.customCss : undefined;
-            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
-            resourceInputs["customJavascript"] = state ? state.customJavascript : undefined;
-            resourceInputs["design"] = state ? state.design : undefined;
-            resourceInputs["googleAnalyticsId"] = state ? state.googleAnalyticsId : undefined;
-            resourceInputs["hideFromSearchEngines"] = state ? state.hideFromSearchEngines : undefined;
-            resourceInputs["history"] = state ? state.history : undefined;
-            resourceInputs["ipAllowlists"] = state ? state.ipAllowlists : undefined;
-            resourceInputs["layout"] = state ? state.layout : undefined;
-            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
-            resourceInputs["minIncidentLength"] = state ? state.minIncidentLength : undefined;
-            resourceInputs["navigationLinks"] = state ? state.navigationLinks : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordEnabled"] = state ? state.passwordEnabled : undefined;
-            resourceInputs["statusPageGroupId"] = state ? state.statusPageGroupId : undefined;
-            resourceInputs["subdomain"] = state ? state.subdomain : undefined;
-            resourceInputs["subscribable"] = state ? state.subscribable : undefined;
-            resourceInputs["theme"] = state ? state.theme : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["aggregateState"] = state?.aggregateState;
+            resourceInputs["announcement"] = state?.announcement;
+            resourceInputs["announcementEmbedCss"] = state?.announcementEmbedCss;
+            resourceInputs["announcementEmbedLink"] = state?.announcementEmbedLink;
+            resourceInputs["announcementEmbedVisible"] = state?.announcementEmbedVisible;
+            resourceInputs["automaticReports"] = state?.automaticReports;
+            resourceInputs["companyName"] = state?.companyName;
+            resourceInputs["companyUrl"] = state?.companyUrl;
+            resourceInputs["contactUrl"] = state?.contactUrl;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customCss"] = state?.customCss;
+            resourceInputs["customDomain"] = state?.customDomain;
+            resourceInputs["customJavascript"] = state?.customJavascript;
+            resourceInputs["design"] = state?.design;
+            resourceInputs["googleAnalyticsId"] = state?.googleAnalyticsId;
+            resourceInputs["hideFromSearchEngines"] = state?.hideFromSearchEngines;
+            resourceInputs["history"] = state?.history;
+            resourceInputs["ipAllowlists"] = state?.ipAllowlists;
+            resourceInputs["layout"] = state?.layout;
+            resourceInputs["logoUrl"] = state?.logoUrl;
+            resourceInputs["minIncidentLength"] = state?.minIncidentLength;
+            resourceInputs["navigationLinks"] = state?.navigationLinks;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordEnabled"] = state?.passwordEnabled;
+            resourceInputs["statusPageGroupId"] = state?.statusPageGroupId;
+            resourceInputs["subdomain"] = state?.subdomain;
+            resourceInputs["subscribable"] = state?.subscribable;
+            resourceInputs["theme"] = state?.theme;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as StatusPageArgs | undefined;
-            if ((!args || args.companyName === undefined) && !opts.urn) {
+            if (args?.companyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'companyName'");
             }
-            if ((!args || args.companyUrl === undefined) && !opts.urn) {
+            if (args?.companyUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'companyUrl'");
             }
-            if ((!args || args.subdomain === undefined) && !opts.urn) {
+            if (args?.subdomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subdomain'");
             }
-            if ((!args || args.timezone === undefined) && !opts.urn) {
+            if (args?.timezone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timezone'");
             }
-            resourceInputs["announcement"] = args ? args.announcement : undefined;
-            resourceInputs["announcementEmbedCss"] = args ? args.announcementEmbedCss : undefined;
-            resourceInputs["announcementEmbedLink"] = args ? args.announcementEmbedLink : undefined;
-            resourceInputs["announcementEmbedVisible"] = args ? args.announcementEmbedVisible : undefined;
-            resourceInputs["automaticReports"] = args ? args.automaticReports : undefined;
-            resourceInputs["companyName"] = args ? args.companyName : undefined;
-            resourceInputs["companyUrl"] = args ? args.companyUrl : undefined;
-            resourceInputs["contactUrl"] = args ? args.contactUrl : undefined;
-            resourceInputs["customCss"] = args ? args.customCss : undefined;
-            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
-            resourceInputs["customJavascript"] = args ? args.customJavascript : undefined;
-            resourceInputs["design"] = args ? args.design : undefined;
-            resourceInputs["googleAnalyticsId"] = args ? args.googleAnalyticsId : undefined;
-            resourceInputs["hideFromSearchEngines"] = args ? args.hideFromSearchEngines : undefined;
-            resourceInputs["history"] = args ? args.history : undefined;
-            resourceInputs["ipAllowlists"] = args ? args.ipAllowlists : undefined;
-            resourceInputs["layout"] = args ? args.layout : undefined;
-            resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
-            resourceInputs["minIncidentLength"] = args ? args.minIncidentLength : undefined;
-            resourceInputs["navigationLinks"] = args ? args.navigationLinks : undefined;
+            resourceInputs["announcement"] = args?.announcement;
+            resourceInputs["announcementEmbedCss"] = args?.announcementEmbedCss;
+            resourceInputs["announcementEmbedLink"] = args?.announcementEmbedLink;
+            resourceInputs["announcementEmbedVisible"] = args?.announcementEmbedVisible;
+            resourceInputs["automaticReports"] = args?.automaticReports;
+            resourceInputs["companyName"] = args?.companyName;
+            resourceInputs["companyUrl"] = args?.companyUrl;
+            resourceInputs["contactUrl"] = args?.contactUrl;
+            resourceInputs["customCss"] = args?.customCss;
+            resourceInputs["customDomain"] = args?.customDomain;
+            resourceInputs["customJavascript"] = args?.customJavascript;
+            resourceInputs["design"] = args?.design;
+            resourceInputs["googleAnalyticsId"] = args?.googleAnalyticsId;
+            resourceInputs["hideFromSearchEngines"] = args?.hideFromSearchEngines;
+            resourceInputs["history"] = args?.history;
+            resourceInputs["ipAllowlists"] = args?.ipAllowlists;
+            resourceInputs["layout"] = args?.layout;
+            resourceInputs["logoUrl"] = args?.logoUrl;
+            resourceInputs["minIncidentLength"] = args?.minIncidentLength;
+            resourceInputs["navigationLinks"] = args?.navigationLinks;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["passwordEnabled"] = args ? args.passwordEnabled : undefined;
-            resourceInputs["statusPageGroupId"] = args ? args.statusPageGroupId : undefined;
-            resourceInputs["subdomain"] = args ? args.subdomain : undefined;
-            resourceInputs["subscribable"] = args ? args.subscribable : undefined;
-            resourceInputs["theme"] = args ? args.theme : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["passwordEnabled"] = args?.passwordEnabled;
+            resourceInputs["statusPageGroupId"] = args?.statusPageGroupId;
+            resourceInputs["subdomain"] = args?.subdomain;
+            resourceInputs["subscribable"] = args?.subscribable;
+            resourceInputs["theme"] = args?.theme;
+            resourceInputs["timezone"] = args?.timezone;
             resourceInputs["aggregateState"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -280,9 +271,7 @@ export interface StatusPageState {
      */
     announcementEmbedLink?: pulumi.Input<string>;
     /**
-     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet:
-     * `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async"
-     * type="text/javascript"></script>`
+     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet: `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async" type="text/javascript"></script>`
      */
     announcementEmbedVisible?: pulumi.Input<boolean>;
     /**
@@ -310,8 +299,7 @@ export interface StatusPageState {
      */
     customCss?: pulumi.Input<string>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com.
-     * Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -335,14 +323,11 @@ export interface StatusPageState {
      */
     history?: pulumi.Input<number>;
     /**
-     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and
-     * comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable
-     * feature](https://betterstack.com/pricing#status-pages).
+     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable feature](https://betterstack.com/pricing#status-pages).
      */
     ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values:
-     * 'vertical', 'horizontal'.
+     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values: 'vertical', 'horizontal'.
      */
     layout?: pulumi.Input<string>;
     /**
@@ -358,8 +343,7 @@ export interface StatusPageState {
      */
     navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[]>;
     /**
-     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We
-     * will set password_enabled: false automatically when you send us an empty password.
+     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We will set password_enabled: false automatically when you send us an empty password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -371,8 +355,7 @@ export interface StatusPageState {
      */
     statusPageGroupId?: pulumi.Input<number>;
     /**
-     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose
-     * carefully
+     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose carefully
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -384,8 +367,7 @@ export interface StatusPageState {
      */
     theme?: pulumi.Input<string>;
     /**
-     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone
-     * documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -411,9 +393,7 @@ export interface StatusPageArgs {
      */
     announcementEmbedLink?: pulumi.Input<string>;
     /**
-     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet:
-     * `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async"
-     * type="text/javascript"></script>`
+     * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet: `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async" type="text/javascript"></script>`
      */
     announcementEmbedVisible?: pulumi.Input<boolean>;
     /**
@@ -437,8 +417,7 @@ export interface StatusPageArgs {
      */
     customCss?: pulumi.Input<string>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com.
-     * Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -462,14 +441,11 @@ export interface StatusPageArgs {
      */
     history?: pulumi.Input<number>;
     /**
-     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and
-     * comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable
-     * feature](https://betterstack.com/pricing#status-pages).
+     * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable feature](https://betterstack.com/pricing#status-pages).
      */
     ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values:
-     * 'vertical', 'horizontal'.
+     * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values: 'vertical', 'horizontal'.
      */
     layout?: pulumi.Input<string>;
     /**
@@ -485,8 +461,7 @@ export interface StatusPageArgs {
      */
     navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[]>;
     /**
-     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We
-     * will set password_enabled: false automatically when you send us an empty password.
+     * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We will set password_enabled: false automatically when you send us an empty password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -498,8 +473,7 @@ export interface StatusPageArgs {
      */
     statusPageGroupId?: pulumi.Input<number>;
     /**
-     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose
-     * carefully
+     * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose carefully
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -511,8 +485,7 @@ export interface StatusPageArgs {
      */
     theme?: pulumi.Input<string>;
     /**
-     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone
-     * documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+     * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     timezone: pulumi.Input<string>;
 }

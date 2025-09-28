@@ -35,120 +35,113 @@ export class EmailIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge
-     * and resolve incidents.
+     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    public readonly acknowledgedAlertIdField!: pulumi.Output<outputs.EmailIntegrationAcknowledgedAlertIdField | undefined>;
+    declare public readonly acknowledgedAlertIdField: pulumi.Output<outputs.EmailIntegrationAcknowledgedAlertIdField | undefined>;
     /**
-     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of
-     * them. Valid values are unused, all, or any
+     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    public readonly acknowledgedRuleType!: pulumi.Output<string>;
+    declare public readonly acknowledgedRuleType: pulumi.Output<string>;
     /**
      * An array of rules to match to acknowledge an incident.
      */
-    public readonly acknowledgedRules!: pulumi.Output<outputs.EmailIntegrationAcknowledgedRule[] | undefined>;
+    declare public readonly acknowledgedRules: pulumi.Output<outputs.EmailIntegrationAcknowledgedRule[] | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    public readonly call!: pulumi.Output<boolean>;
+    declare public readonly call: pulumi.Output<boolean>;
     /**
      * A field describing how to extract an incident cause, used as a short description shared with the team member on-call.
      */
-    public readonly causeField!: pulumi.Output<outputs.EmailIntegrationCauseField | undefined>;
+    declare public readonly causeField: pulumi.Output<outputs.EmailIntegrationCauseField | undefined>;
     /**
      * The time when this email integration was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    public readonly criticalAlert!: pulumi.Output<boolean>;
+    declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    public readonly email!: pulumi.Output<boolean>;
+    declare public readonly email: pulumi.Output<boolean>;
     /**
      * The email address we expect emails to receive at.
      */
-    public /*out*/ readonly emailAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly emailAddress: pulumi.Output<string>;
     /**
      * The name of this Email integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An array of additional fields, which will be extracted when acknowledging an incident.
      */
-    public readonly otherAcknowledgedFields!: pulumi.Output<outputs.EmailIntegrationOtherAcknowledgedField[] | undefined>;
+    declare public readonly otherAcknowledgedFields: pulumi.Output<outputs.EmailIntegrationOtherAcknowledgedField[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when resolving an incident.
      */
-    public readonly otherResolvedFields!: pulumi.Output<outputs.EmailIntegrationOtherResolvedField[] | undefined>;
+    declare public readonly otherResolvedFields: pulumi.Output<outputs.EmailIntegrationOtherResolvedField[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when starting an incident.
      */
-    public readonly otherStartedFields!: pulumi.Output<outputs.EmailIntegrationOtherStartedField[] | undefined>;
+    declare public readonly otherStartedFields: pulumi.Output<outputs.EmailIntegrationOtherStartedField[] | undefined>;
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * ID of the escalation policy associated with the email integration.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    public readonly push!: pulumi.Output<boolean>;
+    declare public readonly push: pulumi.Output<boolean>;
     /**
      * How long the integration must be up to automatically mark an incident as resolved after being down.
      */
-    public readonly recoveryPeriod!: pulumi.Output<number>;
+    declare public readonly recoveryPeriod: pulumi.Output<number>;
     /**
-     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    public readonly resolvedAlertIdField!: pulumi.Output<outputs.EmailIntegrationResolvedAlertIdField | undefined>;
+    declare public readonly resolvedAlertIdField: pulumi.Output<outputs.EmailIntegrationResolvedAlertIdField | undefined>;
     /**
-     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them.
-     * Valid values are unused, all, or any
+     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    public readonly resolvedRuleType!: pulumi.Output<string>;
+    declare public readonly resolvedRuleType: pulumi.Output<string>;
     /**
      * An array of rules to match to resolved an incident.
      */
-    public readonly resolvedRules!: pulumi.Output<outputs.EmailIntegrationResolvedRule[] | undefined>;
+    declare public readonly resolvedRules: pulumi.Output<outputs.EmailIntegrationResolvedRule[] | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    public readonly sms!: pulumi.Output<boolean>;
+    declare public readonly sms: pulumi.Output<boolean>;
     /**
-     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    public readonly startedAlertIdField!: pulumi.Output<outputs.EmailIntegrationStartedAlertIdField | undefined>;
+    declare public readonly startedAlertIdField: pulumi.Output<outputs.EmailIntegrationStartedAlertIdField | undefined>;
     /**
-     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid
-     * values are unused, all, or any
+     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    public readonly startedRuleType!: pulumi.Output<string>;
+    declare public readonly startedRuleType: pulumi.Output<string>;
     /**
      * An array of rules to match to start a new incident.
      */
-    public readonly startedRules!: pulumi.Output<outputs.EmailIntegrationStartedRule[] | undefined>;
+    declare public readonly startedRules: pulumi.Output<outputs.EmailIntegrationStartedRule[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    public readonly teamWait!: pulumi.Output<number>;
+    declare public readonly teamWait: pulumi.Output<number>;
     /**
      * The time when this email integration was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a EmailIntegration resource with the given unique name, arguments, and options.
@@ -163,68 +156,68 @@ export class EmailIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailIntegrationState | undefined;
-            resourceInputs["acknowledgedAlertIdField"] = state ? state.acknowledgedAlertIdField : undefined;
-            resourceInputs["acknowledgedRuleType"] = state ? state.acknowledgedRuleType : undefined;
-            resourceInputs["acknowledgedRules"] = state ? state.acknowledgedRules : undefined;
-            resourceInputs["call"] = state ? state.call : undefined;
-            resourceInputs["causeField"] = state ? state.causeField : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["criticalAlert"] = state ? state.criticalAlert : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["emailAddress"] = state ? state.emailAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["otherAcknowledgedFields"] = state ? state.otherAcknowledgedFields : undefined;
-            resourceInputs["otherResolvedFields"] = state ? state.otherResolvedFields : undefined;
-            resourceInputs["otherStartedFields"] = state ? state.otherStartedFields : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["recoveryPeriod"] = state ? state.recoveryPeriod : undefined;
-            resourceInputs["resolvedAlertIdField"] = state ? state.resolvedAlertIdField : undefined;
-            resourceInputs["resolvedRuleType"] = state ? state.resolvedRuleType : undefined;
-            resourceInputs["resolvedRules"] = state ? state.resolvedRules : undefined;
-            resourceInputs["sms"] = state ? state.sms : undefined;
-            resourceInputs["startedAlertIdField"] = state ? state.startedAlertIdField : undefined;
-            resourceInputs["startedRuleType"] = state ? state.startedRuleType : undefined;
-            resourceInputs["startedRules"] = state ? state.startedRules : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["teamWait"] = state ? state.teamWait : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["acknowledgedAlertIdField"] = state?.acknowledgedAlertIdField;
+            resourceInputs["acknowledgedRuleType"] = state?.acknowledgedRuleType;
+            resourceInputs["acknowledgedRules"] = state?.acknowledgedRules;
+            resourceInputs["call"] = state?.call;
+            resourceInputs["causeField"] = state?.causeField;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["emailAddress"] = state?.emailAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["otherAcknowledgedFields"] = state?.otherAcknowledgedFields;
+            resourceInputs["otherResolvedFields"] = state?.otherResolvedFields;
+            resourceInputs["otherStartedFields"] = state?.otherStartedFields;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["recoveryPeriod"] = state?.recoveryPeriod;
+            resourceInputs["resolvedAlertIdField"] = state?.resolvedAlertIdField;
+            resourceInputs["resolvedRuleType"] = state?.resolvedRuleType;
+            resourceInputs["resolvedRules"] = state?.resolvedRules;
+            resourceInputs["sms"] = state?.sms;
+            resourceInputs["startedAlertIdField"] = state?.startedAlertIdField;
+            resourceInputs["startedRuleType"] = state?.startedRuleType;
+            resourceInputs["startedRules"] = state?.startedRules;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["teamWait"] = state?.teamWait;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as EmailIntegrationArgs | undefined;
-            if ((!args || args.acknowledgedRuleType === undefined) && !opts.urn) {
+            if (args?.acknowledgedRuleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acknowledgedRuleType'");
             }
-            if ((!args || args.resolvedRuleType === undefined) && !opts.urn) {
+            if (args?.resolvedRuleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resolvedRuleType'");
             }
-            if ((!args || args.startedRuleType === undefined) && !opts.urn) {
+            if (args?.startedRuleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startedRuleType'");
             }
-            resourceInputs["acknowledgedAlertIdField"] = args ? args.acknowledgedAlertIdField : undefined;
-            resourceInputs["acknowledgedRuleType"] = args ? args.acknowledgedRuleType : undefined;
-            resourceInputs["acknowledgedRules"] = args ? args.acknowledgedRules : undefined;
-            resourceInputs["call"] = args ? args.call : undefined;
-            resourceInputs["causeField"] = args ? args.causeField : undefined;
-            resourceInputs["criticalAlert"] = args ? args.criticalAlert : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["otherAcknowledgedFields"] = args ? args.otherAcknowledgedFields : undefined;
-            resourceInputs["otherResolvedFields"] = args ? args.otherResolvedFields : undefined;
-            resourceInputs["otherStartedFields"] = args ? args.otherStartedFields : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["recoveryPeriod"] = args ? args.recoveryPeriod : undefined;
-            resourceInputs["resolvedAlertIdField"] = args ? args.resolvedAlertIdField : undefined;
-            resourceInputs["resolvedRuleType"] = args ? args.resolvedRuleType : undefined;
-            resourceInputs["resolvedRules"] = args ? args.resolvedRules : undefined;
-            resourceInputs["sms"] = args ? args.sms : undefined;
-            resourceInputs["startedAlertIdField"] = args ? args.startedAlertIdField : undefined;
-            resourceInputs["startedRuleType"] = args ? args.startedRuleType : undefined;
-            resourceInputs["startedRules"] = args ? args.startedRules : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["teamWait"] = args ? args.teamWait : undefined;
+            resourceInputs["acknowledgedAlertIdField"] = args?.acknowledgedAlertIdField;
+            resourceInputs["acknowledgedRuleType"] = args?.acknowledgedRuleType;
+            resourceInputs["acknowledgedRules"] = args?.acknowledgedRules;
+            resourceInputs["call"] = args?.call;
+            resourceInputs["causeField"] = args?.causeField;
+            resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["otherAcknowledgedFields"] = args?.otherAcknowledgedFields;
+            resourceInputs["otherResolvedFields"] = args?.otherResolvedFields;
+            resourceInputs["otherStartedFields"] = args?.otherStartedFields;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["recoveryPeriod"] = args?.recoveryPeriod;
+            resourceInputs["resolvedAlertIdField"] = args?.resolvedAlertIdField;
+            resourceInputs["resolvedRuleType"] = args?.resolvedRuleType;
+            resourceInputs["resolvedRules"] = args?.resolvedRules;
+            resourceInputs["sms"] = args?.sms;
+            resourceInputs["startedAlertIdField"] = args?.startedAlertIdField;
+            resourceInputs["startedRuleType"] = args?.startedRuleType;
+            resourceInputs["startedRules"] = args?.startedRules;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["teamWait"] = args?.teamWait;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["emailAddress"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -239,13 +232,11 @@ export class EmailIntegration extends pulumi.CustomResource {
  */
 export interface EmailIntegrationState {
     /**
-     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge
-     * and resolve incidents.
+     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField>;
     /**
-     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of
-     * them. Valid values are unused, all, or any
+     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     acknowledgedRuleType?: pulumi.Input<string>;
     /**
@@ -265,8 +256,7 @@ export interface EmailIntegrationState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -310,13 +300,11 @@ export interface EmailIntegrationState {
      */
     recoveryPeriod?: pulumi.Input<number>;
     /**
-     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField>;
     /**
-     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them.
-     * Valid values are unused, all, or any
+     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     resolvedRuleType?: pulumi.Input<string>;
     /**
@@ -328,13 +316,11 @@ export interface EmailIntegrationState {
      */
     sms?: pulumi.Input<boolean>;
     /**
-     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField>;
     /**
-     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid
-     * values are unused, all, or any
+     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     startedRuleType?: pulumi.Input<string>;
     /**
@@ -360,13 +346,11 @@ export interface EmailIntegrationState {
  */
 export interface EmailIntegrationArgs {
     /**
-     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge
-     * and resolve incidents.
+     * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField>;
     /**
-     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of
-     * them. Valid values are unused, all, or any
+     * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     acknowledgedRuleType: pulumi.Input<string>;
     /**
@@ -382,8 +366,7 @@ export interface EmailIntegrationArgs {
      */
     causeField?: pulumi.Input<inputs.EmailIntegrationCauseField>;
     /**
-     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is
-     * created.
+     * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
@@ -423,13 +406,11 @@ export interface EmailIntegrationArgs {
      */
     recoveryPeriod?: pulumi.Input<number>;
     /**
-     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField>;
     /**
-     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them.
-     * Valid values are unused, all, or any
+     * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     resolvedRuleType: pulumi.Input<string>;
     /**
@@ -441,13 +422,11 @@ export interface EmailIntegrationArgs {
      */
     sms?: pulumi.Input<boolean>;
     /**
-     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and
-     * resolve incidents.
+     * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
     startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField>;
     /**
-     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid
-     * values are unused, all, or any
+     * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
     startedRuleType: pulumi.Input<string>;
     /**

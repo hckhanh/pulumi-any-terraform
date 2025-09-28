@@ -35,23 +35,23 @@ export class StatusPageGroup extends pulumi.CustomResource {
     /**
      * The time when this status page group was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A name of the group that you can see in the dashboard.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Set sort_index to specify how to sort your status page groups.
      */
-    public readonly sortIndex!: pulumi.Output<number>;
+    declare public readonly sortIndex: pulumi.Output<number>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The time when this status page group was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a StatusPageGroup resource with the given unique name, arguments, and options.
@@ -66,16 +66,16 @@ export class StatusPageGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StatusPageGroupState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sortIndex"] = state ? state.sortIndex : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sortIndex"] = state?.sortIndex;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as StatusPageGroupArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sortIndex"] = args ? args.sortIndex : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sortIndex"] = args?.sortIndex;
+            resourceInputs["teamName"] = args?.teamName;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

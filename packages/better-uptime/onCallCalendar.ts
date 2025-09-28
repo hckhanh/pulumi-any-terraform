@@ -37,23 +37,23 @@ export class OnCallCalendar extends pulumi.CustomResource {
     /**
      * Whether the on-call calendar is the default on-call calendar.
      */
-    public /*out*/ readonly defaultCalendar!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly defaultCalendar: pulumi.Output<boolean>;
     /**
      * Name of the on-call calendar.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration block for the on-call rotation schedule. Ignored when omitted - on-call can be controlled in Better Stack.
      */
-    public readonly onCallRotation!: pulumi.Output<outputs.OnCallCalendarOnCallRotation | undefined>;
+    declare public readonly onCallRotation: pulumi.Output<outputs.OnCallCalendarOnCallRotation | undefined>;
     /**
      * Array of on-call persons.
      */
-    public /*out*/ readonly onCallUsers!: pulumi.Output<outputs.OnCallCalendarOnCallUser[]>;
+    declare public /*out*/ readonly onCallUsers: pulumi.Output<outputs.OnCallCalendarOnCallUser[]>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
 
     /**
      * Create a OnCallCalendar resource with the given unique name, arguments, and options.
@@ -68,16 +68,16 @@ export class OnCallCalendar extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OnCallCalendarState | undefined;
-            resourceInputs["defaultCalendar"] = state ? state.defaultCalendar : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onCallRotation"] = state ? state.onCallRotation : undefined;
-            resourceInputs["onCallUsers"] = state ? state.onCallUsers : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
+            resourceInputs["defaultCalendar"] = state?.defaultCalendar;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onCallRotation"] = state?.onCallRotation;
+            resourceInputs["onCallUsers"] = state?.onCallUsers;
+            resourceInputs["teamName"] = state?.teamName;
         } else {
             const args = argsOrState as OnCallCalendarArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onCallRotation"] = args ? args.onCallRotation : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onCallRotation"] = args?.onCallRotation;
+            resourceInputs["teamName"] = args?.teamName;
             resourceInputs["defaultCalendar"] = undefined /*out*/;
             resourceInputs["onCallUsers"] = undefined /*out*/;
         }

@@ -35,19 +35,19 @@ export class CatalogAttribute extends pulumi.CustomResource {
     /**
      * The name of the Catalog attribute.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The position of the attribute in the Catalog relation.
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * Whether this attribute is one of the primary attributes.
      */
-    public readonly primary!: pulumi.Output<boolean | undefined>;
+    declare public readonly primary: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Catalog relation this attribute belongs to.
      */
-    public readonly relationId!: pulumi.Output<string>;
+    declare public readonly relationId: pulumi.Output<string>;
 
     /**
      * Create a CatalogAttribute resource with the given unique name, arguments, and options.
@@ -62,19 +62,19 @@ export class CatalogAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogAttributeState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["primary"] = state ? state.primary : undefined;
-            resourceInputs["relationId"] = state ? state.relationId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["primary"] = state?.primary;
+            resourceInputs["relationId"] = state?.relationId;
         } else {
             const args = argsOrState as CatalogAttributeArgs | undefined;
-            if ((!args || args.relationId === undefined) && !opts.urn) {
+            if (args?.relationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'relationId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["primary"] = args ? args.primary : undefined;
-            resourceInputs["relationId"] = args ? args.relationId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["primary"] = args?.primary;
+            resourceInputs["relationId"] = args?.relationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogAttribute.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

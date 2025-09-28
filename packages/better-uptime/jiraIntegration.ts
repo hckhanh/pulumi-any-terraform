@@ -35,28 +35,27 @@ export class JiraIntegration extends pulumi.CustomResource {
     /**
      * Whether to automatically create issues in Jira on incident start.
      */
-    public readonly automaticIssueCreation!: pulumi.Output<boolean>;
+    declare public readonly automaticIssueCreation: pulumi.Output<boolean>;
     /**
-     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can
-     * set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
+     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
      */
-    public readonly betterStackId!: pulumi.Output<string | undefined>;
+    declare public readonly betterStackId: pulumi.Output<string | undefined>;
     /**
      * JSON object representing Jira fields.
      */
-    public readonly jiraFieldsJson!: pulumi.Output<string>;
+    declare public readonly jiraFieldsJson: pulumi.Output<string>;
     /**
      * The Jira issue type ID.
      */
-    public readonly jiraIssueTypeId!: pulumi.Output<string>;
+    declare public readonly jiraIssueTypeId: pulumi.Output<string>;
     /**
      * The Jira project key.
      */
-    public readonly jiraProjectKey!: pulumi.Output<string>;
+    declare public readonly jiraProjectKey: pulumi.Output<string>;
     /**
      * The name of the Jira Integration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a JiraIntegration resource with the given unique name, arguments, and options.
@@ -71,20 +70,20 @@ export class JiraIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JiraIntegrationState | undefined;
-            resourceInputs["automaticIssueCreation"] = state ? state.automaticIssueCreation : undefined;
-            resourceInputs["betterStackId"] = state ? state.betterStackId : undefined;
-            resourceInputs["jiraFieldsJson"] = state ? state.jiraFieldsJson : undefined;
-            resourceInputs["jiraIssueTypeId"] = state ? state.jiraIssueTypeId : undefined;
-            resourceInputs["jiraProjectKey"] = state ? state.jiraProjectKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["automaticIssueCreation"] = state?.automaticIssueCreation;
+            resourceInputs["betterStackId"] = state?.betterStackId;
+            resourceInputs["jiraFieldsJson"] = state?.jiraFieldsJson;
+            resourceInputs["jiraIssueTypeId"] = state?.jiraIssueTypeId;
+            resourceInputs["jiraProjectKey"] = state?.jiraProjectKey;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as JiraIntegrationArgs | undefined;
-            resourceInputs["automaticIssueCreation"] = args ? args.automaticIssueCreation : undefined;
-            resourceInputs["betterStackId"] = args ? args.betterStackId : undefined;
-            resourceInputs["jiraFieldsJson"] = args ? args.jiraFieldsJson : undefined;
-            resourceInputs["jiraIssueTypeId"] = args ? args.jiraIssueTypeId : undefined;
-            resourceInputs["jiraProjectKey"] = args ? args.jiraProjectKey : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["automaticIssueCreation"] = args?.automaticIssueCreation;
+            resourceInputs["betterStackId"] = args?.betterStackId;
+            resourceInputs["jiraFieldsJson"] = args?.jiraFieldsJson;
+            resourceInputs["jiraIssueTypeId"] = args?.jiraIssueTypeId;
+            resourceInputs["jiraProjectKey"] = args?.jiraProjectKey;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JiraIntegration.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -100,8 +99,7 @@ export interface JiraIntegrationState {
      */
     automaticIssueCreation?: pulumi.Input<boolean>;
     /**
-     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can
-     * set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
+     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
      */
     betterStackId?: pulumi.Input<string>;
     /**
@@ -131,8 +129,7 @@ export interface JiraIntegrationArgs {
      */
     automaticIssueCreation?: pulumi.Input<boolean>;
     /**
-     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can
-     * set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
+     * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
      */
     betterStackId?: pulumi.Input<string>;
     /**
