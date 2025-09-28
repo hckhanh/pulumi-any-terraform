@@ -61,6 +61,16 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:bunnynet/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
+    }
 }
 
 /**
@@ -83,4 +93,14 @@ export interface ProviderArgs {
      * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
      */
     streamApiUrl?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }
