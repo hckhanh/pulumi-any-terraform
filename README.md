@@ -18,15 +18,35 @@ This project automatically bridges Terraform providers to Pulumi, providing:
 
 Each package can be installed independently:
 
+### Available Providers
+
+| Provider      | Package Name           | Current Version | Description                           |
+| ------------- | ---------------------- | --------------- | ------------------------------------- |
+| Better Uptime | `pulumi-better-uptime` | 0.20.7          | Website monitoring and status pages   |
+| Bunny.net     | `pulumi-bunnynet`      | 0.9.0           | CDN, storage, DNS, and edge computing |
+| Infisical     | `pulumi-infisical`     | 0.15.38         | Secret management platform            |
+| Logtail       | `pulumi-logtail`       | 0.6.6           | Log management and analytics          |
+| Namecheap     | `pulumi-namecheap`     | 2.2.11          | Domain registration and DNS           |
+| TeamCity      | `pulumi-teamcity`      | 0.1.2           | CI/CD server management               |
+| Time          | `pulumi-time`          | 0.13.5          | Time-based resources and delays       |
+
+### Installation Commands
+
 ```bash
-# For Namecheap provider
+# Install any provider with npm
+npm install pulumi-bunnynet
 npm install pulumi-namecheap
+npm install pulumi-infisical
 
 # Or with yarn
+yarn add pulumi-bunnynet
 yarn add pulumi-namecheap
+yarn add pulumi-infisical
 
 # Or with pnpm
+pnpm add pulumi-bunnynet
 pnpm add pulumi-namecheap
+pnpm add pulumi-infisical
 ```
 
 ## Maintenance Instructions
