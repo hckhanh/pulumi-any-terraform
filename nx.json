@@ -30,6 +30,18 @@
     "prettier:root": ["prettier", "!{workspaceRoot}/packages/**"]
   },
   "plugins": [
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": false,
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
     "./tools/audit.ts",
     "./tools/build.ts",
     "./tools/linter.ts",
@@ -37,7 +49,7 @@
     "./tools/syncpack.ts"
   ],
   "release": {
-    "projects": ["packages/**/*"],
+    "projects": ["packages/*"],
     "projectsRelationship": "independent",
     "versionPlans": true,
     "changelog": {
@@ -51,5 +63,8 @@
     "bucket": "nx-caches",
     "forcePathStyle": true,
     "localMode": "no-cache"
+  },
+  "sync": {
+    "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]
   }
 }
