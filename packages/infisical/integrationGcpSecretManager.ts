@@ -37,35 +37,35 @@ export class IntegrationGcpSecretManager extends pulumi.CustomResource {
     /**
      * The slug of the environment to sync to GCP Secret Manager (prod, dev, staging, etc).
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID of the GCP project.
      */
-    public readonly gcpProjectId!: pulumi.Output<string>;
+    declare public readonly gcpProjectId: pulumi.Output<string>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    public /*out*/ readonly integrationAuthId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationAuthId: pulumi.Output<string>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * Integration options
      */
-    public readonly options!: pulumi.Output<outputs.IntegrationGcpSecretManagerOptions>;
+    declare public readonly options: pulumi.Output<outputs.IntegrationGcpSecretManagerOptions>;
     /**
      * The ID of your Infisical project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
     /**
      * Service account json for the GCP project.
      */
-    public readonly serviceAccountJson!: pulumi.Output<string>;
+    declare public readonly serviceAccountJson: pulumi.Output<string>;
 
     /**
      * Create a IntegrationGcpSecretManager resource with the given unique name, arguments, and options.
@@ -80,36 +80,36 @@ export class IntegrationGcpSecretManager extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationGcpSecretManagerState | undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["gcpProjectId"] = state ? state.gcpProjectId : undefined;
-            resourceInputs["integrationAuthId"] = state ? state.integrationAuthId : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
-            resourceInputs["serviceAccountJson"] = state ? state.serviceAccountJson : undefined;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["gcpProjectId"] = state?.gcpProjectId;
+            resourceInputs["integrationAuthId"] = state?.integrationAuthId;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretPath"] = state?.secretPath;
+            resourceInputs["serviceAccountJson"] = state?.serviceAccountJson;
         } else {
             const args = argsOrState as IntegrationGcpSecretManagerArgs | undefined;
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.gcpProjectId === undefined) && !opts.urn) {
+            if (args?.gcpProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpProjectId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            if ((!args || args.serviceAccountJson === undefined) && !opts.urn) {
+            if (args?.serviceAccountJson === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountJson'");
             }
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["gcpProjectId"] = args ? args.gcpProjectId : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["gcpProjectId"] = args?.gcpProjectId;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretPath"] = args?.secretPath;
             resourceInputs["serviceAccountJson"] = args?.serviceAccountJson ? pulumi.secret(args.serviceAccountJson) : undefined;
             resourceInputs["integrationAuthId"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;

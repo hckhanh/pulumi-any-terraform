@@ -37,39 +37,39 @@ export class DynamicSecretSqlDatabase extends pulumi.CustomResource {
     /**
      * The configuration of the dynamic secret
      */
-    public readonly configuration!: pulumi.Output<outputs.DynamicSecretSqlDatabaseConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.DynamicSecretSqlDatabaseConfiguration>;
     /**
      * The default TTL that will be applied for all the leases.
      */
-    public readonly defaultTtl!: pulumi.Output<string>;
+    declare public readonly defaultTtl: pulumi.Output<string>;
     /**
      * The slug of the environment to create the dynamic secret in.
      */
-    public readonly environmentSlug!: pulumi.Output<string>;
+    declare public readonly environmentSlug: pulumi.Output<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
-    public readonly maxTtl!: pulumi.Output<string | undefined>;
+    declare public readonly maxTtl: pulumi.Output<string | undefined>;
     /**
      * The metadata associated with this dynamic secret
      */
-    public readonly metadatas!: pulumi.Output<outputs.DynamicSecretSqlDatabaseMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.DynamicSecretSqlDatabaseMetadata[] | undefined>;
     /**
      * The name of the dynamic secret.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The path to create the dynamic secret in.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The slug of the project to create dynamic secret in.
      */
-    public readonly projectSlug!: pulumi.Output<string>;
+    declare public readonly projectSlug: pulumi.Output<string>;
     /**
      * The username template of the dynamic secret
      */
-    public readonly usernameTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly usernameTemplate: pulumi.Output<string | undefined>;
 
     /**
      * Create a DynamicSecretSqlDatabase resource with the given unique name, arguments, and options.
@@ -84,41 +84,41 @@ export class DynamicSecretSqlDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DynamicSecretSqlDatabaseState | undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["defaultTtl"] = state ? state.defaultTtl : undefined;
-            resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
-            resourceInputs["maxTtl"] = state ? state.maxTtl : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["projectSlug"] = state ? state.projectSlug : undefined;
-            resourceInputs["usernameTemplate"] = state ? state.usernameTemplate : undefined;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["defaultTtl"] = state?.defaultTtl;
+            resourceInputs["environmentSlug"] = state?.environmentSlug;
+            resourceInputs["maxTtl"] = state?.maxTtl;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["projectSlug"] = state?.projectSlug;
+            resourceInputs["usernameTemplate"] = state?.usernameTemplate;
         } else {
             const args = argsOrState as DynamicSecretSqlDatabaseArgs | undefined;
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.defaultTtl === undefined) && !opts.urn) {
+            if (args?.defaultTtl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultTtl'");
             }
-            if ((!args || args.environmentSlug === undefined) && !opts.urn) {
+            if (args?.environmentSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentSlug'");
             }
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if ((!args || args.projectSlug === undefined) && !opts.urn) {
+            if (args?.projectSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectSlug'");
             }
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["defaultTtl"] = args ? args.defaultTtl : undefined;
-            resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
-            resourceInputs["maxTtl"] = args ? args.maxTtl : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["projectSlug"] = args ? args.projectSlug : undefined;
-            resourceInputs["usernameTemplate"] = args ? args.usernameTemplate : undefined;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["defaultTtl"] = args?.defaultTtl;
+            resourceInputs["environmentSlug"] = args?.environmentSlug;
+            resourceInputs["maxTtl"] = args?.maxTtl;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["projectSlug"] = args?.projectSlug;
+            resourceInputs["usernameTemplate"] = args?.usernameTemplate;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DynamicSecretSqlDatabase.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -142,7 +142,7 @@ export interface DynamicSecretSqlDatabaseState {
      */
     environmentSlug?: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
     maxTtl?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface DynamicSecretSqlDatabaseArgs {
      */
     environmentSlug: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
     maxTtl?: pulumi.Input<string>;
     /**

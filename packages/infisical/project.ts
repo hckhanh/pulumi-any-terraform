@@ -35,36 +35,36 @@ export class Project extends pulumi.CustomResource {
     /**
      * The audit log retention in days
      */
-    public readonly auditLogRetentionDays!: pulumi.Output<number>;
+    declare public readonly auditLogRetentionDays: pulumi.Output<number>;
     /**
      * The description of the project
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the project has delete protection, defaults to false
      */
-    public readonly hasDeleteProtection!: pulumi.Output<boolean>;
+    declare public readonly hasDeleteProtection: pulumi.Output<boolean>;
     /**
      * The ID of the KMS secret manager key to use for the project
      */
-    public readonly kmsSecretManagerKeyId!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public readonly kmsSecretManagerKeyId: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * The name of the project
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether to create default environments for the project (dev, staging, prod), defaults to true
      */
-    public readonly shouldCreateDefaultEnvs!: pulumi.Output<boolean | undefined>;
+    declare public readonly shouldCreateDefaultEnvs: pulumi.Output<boolean | undefined>;
     /**
      * The slug of the project
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * The name of the template to use for the project
      */
-    public readonly templateName!: pulumi.Output<string | undefined>;
+    declare public readonly templateName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -79,28 +79,28 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["auditLogRetentionDays"] = state ? state.auditLogRetentionDays : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hasDeleteProtection"] = state ? state.hasDeleteProtection : undefined;
-            resourceInputs["kmsSecretManagerKeyId"] = state ? state.kmsSecretManagerKeyId : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["shouldCreateDefaultEnvs"] = state ? state.shouldCreateDefaultEnvs : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["auditLogRetentionDays"] = state?.auditLogRetentionDays;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hasDeleteProtection"] = state?.hasDeleteProtection;
+            resourceInputs["kmsSecretManagerKeyId"] = state?.kmsSecretManagerKeyId;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["shouldCreateDefaultEnvs"] = state?.shouldCreateDefaultEnvs;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["templateName"] = state?.templateName;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.slug === undefined) && !opts.urn) {
+            if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
-            resourceInputs["auditLogRetentionDays"] = args ? args.auditLogRetentionDays : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hasDeleteProtection"] = args ? args.hasDeleteProtection : undefined;
-            resourceInputs["kmsSecretManagerKeyId"] = args ? args.kmsSecretManagerKeyId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["shouldCreateDefaultEnvs"] = args ? args.shouldCreateDefaultEnvs : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["auditLogRetentionDays"] = args?.auditLogRetentionDays;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hasDeleteProtection"] = args?.hasDeleteProtection;
+            resourceInputs["kmsSecretManagerKeyId"] = args?.kmsSecretManagerKeyId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["shouldCreateDefaultEnvs"] = args?.shouldCreateDefaultEnvs;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["templateName"] = args?.templateName;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

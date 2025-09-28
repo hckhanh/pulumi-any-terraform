@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export class SecretSyncGithub extends pulumi.CustomResource {
+export class SecretSyncGitlab extends pulumi.CustomResource {
     /**
-     * Get an existing SecretSyncGithub resource's state with the given name, ID, and optional extra
+     * Get an existing SecretSyncGitlab resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,22 +16,22 @@ export class SecretSyncGithub extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecretSyncGithubState, opts?: pulumi.CustomResourceOptions): SecretSyncGithub {
-        return new SecretSyncGithub(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecretSyncGitlabState, opts?: pulumi.CustomResourceOptions): SecretSyncGitlab {
+        return new SecretSyncGitlab(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'infisical:index/secretSyncGithub:SecretSyncGithub';
+    public static readonly __pulumiType = 'infisical:index/secretSyncGitlab:SecretSyncGitlab';
 
     /**
-     * Returns true if the given object is an instance of SecretSyncGithub.  This is designed to work even
+     * Returns true if the given object is an instance of SecretSyncGitlab.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SecretSyncGithub {
+    public static isInstance(obj: any): obj is SecretSyncGitlab {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SecretSyncGithub.__pulumiType;
+        return obj['__pulumiType'] === SecretSyncGitlab.__pulumiType;
     }
 
     /**
@@ -39,23 +39,23 @@ export class SecretSyncGithub extends pulumi.CustomResource {
      */
     declare public readonly autoSyncEnabled: pulumi.Output<boolean>;
     /**
-     * The ID of the github Connection to use for syncing.
+     * The ID of the gitlab Connection to use for syncing.
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
-     * An optional description for the Github sync.
+     * An optional description for the GitLab sync.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
-    declare public readonly destinationConfig: pulumi.Output<outputs.SecretSyncGithubDestinationConfig>;
+    declare public readonly destinationConfig: pulumi.Output<outputs.SecretSyncGitlabDestinationConfig>;
     /**
      * The slug of the project environment to sync secrets from.
      */
     declare public readonly environment: pulumi.Output<string>;
     /**
-     * The name of the Github sync to create. Must be slug-friendly.
+     * The name of the GitLab sync to create. Must be slug-friendly.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -69,21 +69,21 @@ export class SecretSyncGithub extends pulumi.CustomResource {
     /**
      * Parameters to modify how secrets are synced.
      */
-    declare public readonly syncOptions: pulumi.Output<outputs.SecretSyncGithubSyncOptions>;
+    declare public readonly syncOptions: pulumi.Output<outputs.SecretSyncGitlabSyncOptions>;
 
     /**
-     * Create a SecretSyncGithub resource with the given unique name, arguments, and options.
+     * Create a SecretSyncGitlab resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SecretSyncGithubArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SecretSyncGithubArgs | SecretSyncGithubState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SecretSyncGitlabArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SecretSyncGitlabArgs | SecretSyncGitlabState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SecretSyncGithubState | undefined;
+            const state = argsOrState as SecretSyncGitlabState | undefined;
             resourceInputs["autoSyncEnabled"] = state?.autoSyncEnabled;
             resourceInputs["connectionId"] = state?.connectionId;
             resourceInputs["description"] = state?.description;
@@ -94,7 +94,7 @@ export class SecretSyncGithub extends pulumi.CustomResource {
             resourceInputs["secretPath"] = state?.secretPath;
             resourceInputs["syncOptions"] = state?.syncOptions;
         } else {
-            const args = argsOrState as SecretSyncGithubArgs | undefined;
+            const args = argsOrState as SecretSyncGitlabArgs | undefined;
             if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
@@ -124,36 +124,36 @@ export class SecretSyncGithub extends pulumi.CustomResource {
             resourceInputs["syncOptions"] = args?.syncOptions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SecretSyncGithub.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+        super(SecretSyncGitlab.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
 
 /**
- * Input properties used for looking up and filtering SecretSyncGithub resources.
+ * Input properties used for looking up and filtering SecretSyncGitlab resources.
  */
-export interface SecretSyncGithubState {
+export interface SecretSyncGitlabState {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
     autoSyncEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the github Connection to use for syncing.
+     * The ID of the gitlab Connection to use for syncing.
      */
     connectionId?: pulumi.Input<string>;
     /**
-     * An optional description for the Github sync.
+     * An optional description for the GitLab sync.
      */
     description?: pulumi.Input<string>;
     /**
      * The destination configuration for the secret sync.
      */
-    destinationConfig?: pulumi.Input<inputs.SecretSyncGithubDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.SecretSyncGitlabDestinationConfig>;
     /**
      * The slug of the project environment to sync secrets from.
      */
     environment?: pulumi.Input<string>;
     /**
-     * The name of the Github sync to create. Must be slug-friendly.
+     * The name of the GitLab sync to create. Must be slug-friendly.
      */
     name?: pulumi.Input<string>;
     /**
@@ -167,35 +167,35 @@ export interface SecretSyncGithubState {
     /**
      * Parameters to modify how secrets are synced.
      */
-    syncOptions?: pulumi.Input<inputs.SecretSyncGithubSyncOptions>;
+    syncOptions?: pulumi.Input<inputs.SecretSyncGitlabSyncOptions>;
 }
 
 /**
- * The set of arguments for constructing a SecretSyncGithub resource.
+ * The set of arguments for constructing a SecretSyncGitlab resource.
  */
-export interface SecretSyncGithubArgs {
+export interface SecretSyncGitlabArgs {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
     autoSyncEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the github Connection to use for syncing.
+     * The ID of the gitlab Connection to use for syncing.
      */
     connectionId: pulumi.Input<string>;
     /**
-     * An optional description for the Github sync.
+     * An optional description for the GitLab sync.
      */
     description?: pulumi.Input<string>;
     /**
      * The destination configuration for the secret sync.
      */
-    destinationConfig: pulumi.Input<inputs.SecretSyncGithubDestinationConfig>;
+    destinationConfig: pulumi.Input<inputs.SecretSyncGitlabDestinationConfig>;
     /**
      * The slug of the project environment to sync secrets from.
      */
     environment: pulumi.Input<string>;
     /**
-     * The name of the Github sync to create. Must be slug-friendly.
+     * The name of the GitLab sync to create. Must be slug-friendly.
      */
     name?: pulumi.Input<string>;
     /**
@@ -209,5 +209,5 @@ export interface SecretSyncGithubArgs {
     /**
      * Parameters to modify how secrets are synced.
      */
-    syncOptions: pulumi.Input<inputs.SecretSyncGithubSyncOptions>;
+    syncOptions: pulumi.Input<inputs.SecretSyncGitlabSyncOptions>;
 }

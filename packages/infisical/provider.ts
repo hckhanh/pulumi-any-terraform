@@ -30,21 +30,21 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * (DEPRECATED, Use the `auth` attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
      */
-    public readonly clientId!: pulumi.Output<string | undefined>;
+    declare public readonly clientId: pulumi.Output<string | undefined>;
     /**
      * (DEPRECATED, use `auth` attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
      */
-    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    declare public readonly clientSecret: pulumi.Output<string | undefined>;
     /**
      * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided,
      * https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment
      * variable
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * (DEPRECATED, Use machine identity auth), Used to fetch/modify secrets for a given project
      */
-    public readonly serviceToken!: pulumi.Output<string | undefined>;
+    declare public readonly serviceToken: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -57,10 +57,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["auth"] = pulumi.output(args ? args.auth : undefined).apply(JSON.stringify);
+            resourceInputs["auth"] = pulumi.output(args?.auth).apply(JSON.stringify);
             resourceInputs["clientId"] = args?.clientId ? pulumi.secret(args.clientId) : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["host"] = args?.host;
             resourceInputs["serviceToken"] = args?.serviceToken ? pulumi.secret(args.serviceToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

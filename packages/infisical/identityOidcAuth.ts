@@ -37,53 +37,53 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenMaxTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenMaxTtl: pulumi.Output<number>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    public readonly accessTokenNumUsesLimit!: pulumi.Output<number>;
+    declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
      * address...
      */
-    public readonly accessTokenTrustedIps!: pulumi.Output<outputs.IdentityOidcAuthAccessTokenTrustedIp[]>;
+    declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityOidcAuthAccessTokenTrustedIp[]>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
      * The comma-separated list of intended recipients.
      */
-    public readonly boundAudiences!: pulumi.Output<string[]>;
+    declare public readonly boundAudiences: pulumi.Output<string[]>;
     /**
      * The attributes that should be present in the JWT for it to be valid. The provided values can be a glob pattern.
      */
-    public readonly boundClaims!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly boundClaims: pulumi.Output<{[key: string]: string}>;
     /**
      * The unique identifier of the identity provider issuing the OIDC tokens.
      */
-    public readonly boundIssuer!: pulumi.Output<string>;
+    declare public readonly boundIssuer: pulumi.Output<string>;
     /**
      * The expected principal that is the subject of the JWT.
      */
-    public readonly boundSubject!: pulumi.Output<string>;
+    declare public readonly boundSubject: pulumi.Output<string>;
     /**
      * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become
      * identity.metadata.oidc.claims.role
      */
-    public readonly claimMetadataMapping!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly claimMetadataMapping: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * The PEM-encoded CA cert for establishing secure communication with the Identity Provider endpoints
      */
-    public readonly oidcCaCertificate!: pulumi.Output<string>;
+    declare public readonly oidcCaCertificate: pulumi.Output<string>;
     /**
      * The URL used to retrieve the OpenID Connect configuration from the identity provider.
      */
-    public readonly oidcDiscoveryUrl!: pulumi.Output<string>;
+    declare public readonly oidcDiscoveryUrl: pulumi.Output<string>;
 
     /**
      * Create a IdentityOidcAuth resource with the given unique name, arguments, and options.
@@ -98,41 +98,41 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityOidcAuthState | undefined;
-            resourceInputs["accessTokenMaxTtl"] = state ? state.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = state ? state.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = state ? state.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = state ? state.accessTokenTtl : undefined;
-            resourceInputs["boundAudiences"] = state ? state.boundAudiences : undefined;
-            resourceInputs["boundClaims"] = state ? state.boundClaims : undefined;
-            resourceInputs["boundIssuer"] = state ? state.boundIssuer : undefined;
-            resourceInputs["boundSubject"] = state ? state.boundSubject : undefined;
-            resourceInputs["claimMetadataMapping"] = state ? state.claimMetadataMapping : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["oidcCaCertificate"] = state ? state.oidcCaCertificate : undefined;
-            resourceInputs["oidcDiscoveryUrl"] = state ? state.oidcDiscoveryUrl : undefined;
+            resourceInputs["accessTokenMaxTtl"] = state?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = state?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = state?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = state?.accessTokenTtl;
+            resourceInputs["boundAudiences"] = state?.boundAudiences;
+            resourceInputs["boundClaims"] = state?.boundClaims;
+            resourceInputs["boundIssuer"] = state?.boundIssuer;
+            resourceInputs["boundSubject"] = state?.boundSubject;
+            resourceInputs["claimMetadataMapping"] = state?.claimMetadataMapping;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["oidcCaCertificate"] = state?.oidcCaCertificate;
+            resourceInputs["oidcDiscoveryUrl"] = state?.oidcDiscoveryUrl;
         } else {
             const args = argsOrState as IdentityOidcAuthArgs | undefined;
-            if ((!args || args.boundIssuer === undefined) && !opts.urn) {
+            if (args?.boundIssuer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'boundIssuer'");
             }
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            if ((!args || args.oidcDiscoveryUrl === undefined) && !opts.urn) {
+            if (args?.oidcDiscoveryUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oidcDiscoveryUrl'");
             }
-            resourceInputs["accessTokenMaxTtl"] = args ? args.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = args ? args.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = args ? args.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = args ? args.accessTokenTtl : undefined;
-            resourceInputs["boundAudiences"] = args ? args.boundAudiences : undefined;
-            resourceInputs["boundClaims"] = args ? args.boundClaims : undefined;
-            resourceInputs["boundIssuer"] = args ? args.boundIssuer : undefined;
-            resourceInputs["boundSubject"] = args ? args.boundSubject : undefined;
-            resourceInputs["claimMetadataMapping"] = args ? args.claimMetadataMapping : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["oidcCaCertificate"] = args ? args.oidcCaCertificate : undefined;
-            resourceInputs["oidcDiscoveryUrl"] = args ? args.oidcDiscoveryUrl : undefined;
+            resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = args?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = args?.accessTokenTtl;
+            resourceInputs["boundAudiences"] = args?.boundAudiences;
+            resourceInputs["boundClaims"] = args?.boundClaims;
+            resourceInputs["boundIssuer"] = args?.boundIssuer;
+            resourceInputs["boundSubject"] = args?.boundSubject;
+            resourceInputs["claimMetadataMapping"] = args?.claimMetadataMapping;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["oidcCaCertificate"] = args?.oidcCaCertificate;
+            resourceInputs["oidcDiscoveryUrl"] = args?.oidcDiscoveryUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityOidcAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

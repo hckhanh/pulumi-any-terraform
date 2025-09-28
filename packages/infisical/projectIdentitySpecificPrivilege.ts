@@ -37,47 +37,47 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
     /**
      * The identity id to create identity specific privilege
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode,
      * temporary_range and temporary_access_start_time is required.
      */
-    public readonly isTemporary!: pulumi.Output<boolean>;
+    declare public readonly isTemporary: pulumi.Output<boolean>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
      * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
      * to the project identity specific privilege
      */
-    public readonly permission!: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
+    declare public readonly permission: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
     /**
      * The permissions assigned to the project identity specific privilege. Refer to the documentation here
      * https://infisical.com/docs/internals/permissions for its usage.
      */
-    public readonly permissionsV2s!: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermissionsV2[] | undefined>;
+    declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermissionsV2[] | undefined>;
     /**
      * The slug of the project to create identity specific privilege
      */
-    public readonly projectSlug!: pulumi.Output<string>;
+    declare public readonly projectSlug: pulumi.Output<string>;
     /**
      * The slug for the new privilege
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
      */
-    public readonly temporaryAccessEndTime!: pulumi.Output<string>;
+    declare public readonly temporaryAccessEndTime: pulumi.Output<string>;
     /**
      * ISO time for which temporary access should begin. The current time is used by default.
      */
-    public readonly temporaryAccessStartTime!: pulumi.Output<string>;
+    declare public readonly temporaryAccessStartTime: pulumi.Output<string>;
     /**
      * Type of temporary access given. Types: relative. Default: relative
      */
-    public readonly temporaryMode!: pulumi.Output<string>;
+    declare public readonly temporaryMode: pulumi.Output<string>;
     /**
      * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
      */
-    public readonly temporaryRange!: pulumi.Output<string>;
+    declare public readonly temporaryRange: pulumi.Output<string>;
 
     /**
      * Create a ProjectIdentitySpecificPrivilege resource with the given unique name, arguments, and options.
@@ -92,34 +92,34 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIdentitySpecificPrivilegeState | undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["isTemporary"] = state ? state.isTemporary : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["permissionsV2s"] = state ? state.permissionsV2s : undefined;
-            resourceInputs["projectSlug"] = state ? state.projectSlug : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["temporaryAccessEndTime"] = state ? state.temporaryAccessEndTime : undefined;
-            resourceInputs["temporaryAccessStartTime"] = state ? state.temporaryAccessStartTime : undefined;
-            resourceInputs["temporaryMode"] = state ? state.temporaryMode : undefined;
-            resourceInputs["temporaryRange"] = state ? state.temporaryRange : undefined;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["isTemporary"] = state?.isTemporary;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["permissionsV2s"] = state?.permissionsV2s;
+            resourceInputs["projectSlug"] = state?.projectSlug;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["temporaryAccessEndTime"] = state?.temporaryAccessEndTime;
+            resourceInputs["temporaryAccessStartTime"] = state?.temporaryAccessStartTime;
+            resourceInputs["temporaryMode"] = state?.temporaryMode;
+            resourceInputs["temporaryRange"] = state?.temporaryRange;
         } else {
             const args = argsOrState as ProjectIdentitySpecificPrivilegeArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            if ((!args || args.projectSlug === undefined) && !opts.urn) {
+            if (args?.projectSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectSlug'");
             }
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["isTemporary"] = args ? args.isTemporary : undefined;
-            resourceInputs["permission"] = args ? args.permission : undefined;
-            resourceInputs["permissionsV2s"] = args ? args.permissionsV2s : undefined;
-            resourceInputs["projectSlug"] = args ? args.projectSlug : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
-            resourceInputs["temporaryAccessEndTime"] = args ? args.temporaryAccessEndTime : undefined;
-            resourceInputs["temporaryAccessStartTime"] = args ? args.temporaryAccessStartTime : undefined;
-            resourceInputs["temporaryMode"] = args ? args.temporaryMode : undefined;
-            resourceInputs["temporaryRange"] = args ? args.temporaryRange : undefined;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["isTemporary"] = args?.isTemporary;
+            resourceInputs["permission"] = args?.permission;
+            resourceInputs["permissionsV2s"] = args?.permissionsV2s;
+            resourceInputs["projectSlug"] = args?.projectSlug;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["temporaryAccessEndTime"] = args?.temporaryAccessEndTime;
+            resourceInputs["temporaryAccessStartTime"] = args?.temporaryAccessStartTime;
+            resourceInputs["temporaryMode"] = args?.temporaryMode;
+            resourceInputs["temporaryRange"] = args?.temporaryRange;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectIdentitySpecificPrivilege.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

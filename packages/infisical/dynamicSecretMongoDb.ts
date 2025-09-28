@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export class DynamicSecretKubernetes extends pulumi.CustomResource {
+export class DynamicSecretMongoDb extends pulumi.CustomResource {
     /**
-     * Get an existing DynamicSecretKubernetes resource's state with the given name, ID, and optional extra
+     * Get an existing DynamicSecretMongoDb resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,28 +16,28 @@ export class DynamicSecretKubernetes extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DynamicSecretKubernetesState, opts?: pulumi.CustomResourceOptions): DynamicSecretKubernetes {
-        return new DynamicSecretKubernetes(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DynamicSecretMongoDbState, opts?: pulumi.CustomResourceOptions): DynamicSecretMongoDb {
+        return new DynamicSecretMongoDb(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes';
+    public static readonly __pulumiType = 'infisical:index/dynamicSecretMongoDb:DynamicSecretMongoDb';
 
     /**
-     * Returns true if the given object is an instance of DynamicSecretKubernetes.  This is designed to work even
+     * Returns true if the given object is an instance of DynamicSecretMongoDb.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DynamicSecretKubernetes {
+    public static isInstance(obj: any): obj is DynamicSecretMongoDb {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DynamicSecretKubernetes.__pulumiType;
+        return obj['__pulumiType'] === DynamicSecretMongoDb.__pulumiType;
     }
 
     /**
      * The configuration of the dynamic secret
      */
-    declare public readonly configuration: pulumi.Output<outputs.DynamicSecretKubernetesConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.DynamicSecretMongoDbConfiguration>;
     /**
      * The default TTL that will be applied for all the leases.
      */
@@ -53,7 +53,7 @@ export class DynamicSecretKubernetes extends pulumi.CustomResource {
     /**
      * The metadata associated with this dynamic secret
      */
-    declare public readonly metadatas: pulumi.Output<outputs.DynamicSecretKubernetesMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.DynamicSecretMongoDbMetadata[] | undefined>;
     /**
      * The name of the dynamic secret.
      */
@@ -72,18 +72,18 @@ export class DynamicSecretKubernetes extends pulumi.CustomResource {
     declare public readonly usernameTemplate: pulumi.Output<string | undefined>;
 
     /**
-     * Create a DynamicSecretKubernetes resource with the given unique name, arguments, and options.
+     * Create a DynamicSecretMongoDb resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DynamicSecretKubernetesArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DynamicSecretKubernetesArgs | DynamicSecretKubernetesState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DynamicSecretMongoDbArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DynamicSecretMongoDbArgs | DynamicSecretMongoDbState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DynamicSecretKubernetesState | undefined;
+            const state = argsOrState as DynamicSecretMongoDbState | undefined;
             resourceInputs["configuration"] = state?.configuration;
             resourceInputs["defaultTtl"] = state?.defaultTtl;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
@@ -94,7 +94,7 @@ export class DynamicSecretKubernetes extends pulumi.CustomResource {
             resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["usernameTemplate"] = state?.usernameTemplate;
         } else {
-            const args = argsOrState as DynamicSecretKubernetesArgs | undefined;
+            const args = argsOrState as DynamicSecretMongoDbArgs | undefined;
             if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
@@ -121,18 +121,18 @@ export class DynamicSecretKubernetes extends pulumi.CustomResource {
             resourceInputs["usernameTemplate"] = args?.usernameTemplate;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DynamicSecretKubernetes.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+        super(DynamicSecretMongoDb.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
 
 /**
- * Input properties used for looking up and filtering DynamicSecretKubernetes resources.
+ * Input properties used for looking up and filtering DynamicSecretMongoDb resources.
  */
-export interface DynamicSecretKubernetesState {
+export interface DynamicSecretMongoDbState {
     /**
      * The configuration of the dynamic secret
      */
-    configuration?: pulumi.Input<inputs.DynamicSecretKubernetesConfiguration>;
+    configuration?: pulumi.Input<inputs.DynamicSecretMongoDbConfiguration>;
     /**
      * The default TTL that will be applied for all the leases.
      */
@@ -148,7 +148,7 @@ export interface DynamicSecretKubernetesState {
     /**
      * The metadata associated with this dynamic secret
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretKubernetesMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoDbMetadata>[]>;
     /**
      * The name of the dynamic secret.
      */
@@ -168,13 +168,13 @@ export interface DynamicSecretKubernetesState {
 }
 
 /**
- * The set of arguments for constructing a DynamicSecretKubernetes resource.
+ * The set of arguments for constructing a DynamicSecretMongoDb resource.
  */
-export interface DynamicSecretKubernetesArgs {
+export interface DynamicSecretMongoDbArgs {
     /**
      * The configuration of the dynamic secret
      */
-    configuration: pulumi.Input<inputs.DynamicSecretKubernetesConfiguration>;
+    configuration: pulumi.Input<inputs.DynamicSecretMongoDbConfiguration>;
     /**
      * The default TTL that will be applied for all the leases.
      */
@@ -190,7 +190,7 @@ export interface DynamicSecretKubernetesArgs {
     /**
      * The metadata associated with this dynamic secret
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretKubernetesMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoDbMetadata>[]>;
     /**
      * The name of the dynamic secret.
      */

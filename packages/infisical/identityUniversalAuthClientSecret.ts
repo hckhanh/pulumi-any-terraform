@@ -35,39 +35,39 @@ export class IdentityUniversalAuthClientSecret extends pulumi.CustomResource {
     /**
      * The client ID of the secret.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * The client secret.
      */
-    public /*out*/ readonly clientSecret!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
      * The UTC timestamp of the created at.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the client secret.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the identity to create a client secret for
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * A flag indicating token has been revoked
      */
-    public /*out*/ readonly isRevoked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isRevoked: pulumi.Output<boolean>;
     /**
      * The number of times that the client secret is used
      */
-    public /*out*/ readonly numberOfUses!: pulumi.Output<number>;
+    declare public /*out*/ readonly numberOfUses: pulumi.Output<number>;
     /**
      * The maximum number of times that the client secret can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    public readonly numberOfUsesLimit!: pulumi.Output<number>;
+    declare public readonly numberOfUsesLimit: pulumi.Output<number>;
     /**
      * The lifetime for the client secret in seconds. Default: 0 - not expiring
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
 
     /**
      * Create a IdentityUniversalAuthClientSecret resource with the given unique name, arguments, and options.
@@ -82,24 +82,24 @@ export class IdentityUniversalAuthClientSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityUniversalAuthClientSecretState | undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["isRevoked"] = state ? state.isRevoked : undefined;
-            resourceInputs["numberOfUses"] = state ? state.numberOfUses : undefined;
-            resourceInputs["numberOfUsesLimit"] = state ? state.numberOfUsesLimit : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["isRevoked"] = state?.isRevoked;
+            resourceInputs["numberOfUses"] = state?.numberOfUses;
+            resourceInputs["numberOfUsesLimit"] = state?.numberOfUsesLimit;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as IdentityUniversalAuthClientSecretArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["numberOfUsesLimit"] = args ? args.numberOfUsesLimit : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["numberOfUsesLimit"] = args?.numberOfUsesLimit;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

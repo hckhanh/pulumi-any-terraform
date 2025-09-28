@@ -37,30 +37,30 @@ export class ProjectRole extends pulumi.CustomResource {
     /**
      * The description for the new role. Defaults to an empty string.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name for the new role
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
      * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
      * to the project role
      */
-    public readonly permissions!: pulumi.Output<outputs.ProjectRolePermission[] | undefined>;
+    declare public readonly permissions: pulumi.Output<outputs.ProjectRolePermission[] | undefined>;
     /**
      * The permissions assigned to the project role. Refer to the documentation here
      * https://infisical.com/docs/internals/permissions for its usage.
      */
-    public readonly permissionsV2s!: pulumi.Output<outputs.ProjectRolePermissionsV2[] | undefined>;
+    declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectRolePermissionsV2[] | undefined>;
     /**
      * The slug of the project to create role
      */
-    public readonly projectSlug!: pulumi.Output<string>;
+    declare public readonly projectSlug: pulumi.Output<string>;
     /**
      * The slug for the new role
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a ProjectRole resource with the given unique name, arguments, and options.
@@ -75,26 +75,26 @@ export class ProjectRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectRoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["permissionsV2s"] = state ? state.permissionsV2s : undefined;
-            resourceInputs["projectSlug"] = state ? state.projectSlug : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["permissionsV2s"] = state?.permissionsV2s;
+            resourceInputs["projectSlug"] = state?.projectSlug;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as ProjectRoleArgs | undefined;
-            if ((!args || args.projectSlug === undefined) && !opts.urn) {
+            if (args?.projectSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectSlug'");
             }
-            if ((!args || args.slug === undefined) && !opts.urn) {
+            if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["permissionsV2s"] = args ? args.permissionsV2s : undefined;
-            resourceInputs["projectSlug"] = args ? args.projectSlug : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["permissionsV2s"] = args?.permissionsV2s;
+            resourceInputs["projectSlug"] = args?.projectSlug;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectRole.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

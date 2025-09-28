@@ -35,35 +35,35 @@ export class IntegrationDatabricks extends pulumi.CustomResource {
     /**
      * The Databricks host URL.
      */
-    public readonly databricksHost!: pulumi.Output<string>;
+    declare public readonly databricksHost: pulumi.Output<string>;
     /**
      * The Databricks secret scope. Example: your-secret-scope
      */
-    public readonly databricksSecretScope!: pulumi.Output<string>;
+    declare public readonly databricksSecretScope: pulumi.Output<string>;
     /**
      * The Databricks access token.
      */
-    public readonly databricksToken!: pulumi.Output<string>;
+    declare public readonly databricksToken: pulumi.Output<string>;
     /**
      * The slug of the environment to sync to Databricks (prod, dev, staging, etc).
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    public /*out*/ readonly integrationAuthId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationAuthId: pulumi.Output<string>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * The ID of your Infisical project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
 
     /**
      * Create a IntegrationDatabricks resource with the given unique name, arguments, and options.
@@ -78,40 +78,40 @@ export class IntegrationDatabricks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationDatabricksState | undefined;
-            resourceInputs["databricksHost"] = state ? state.databricksHost : undefined;
-            resourceInputs["databricksSecretScope"] = state ? state.databricksSecretScope : undefined;
-            resourceInputs["databricksToken"] = state ? state.databricksToken : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["integrationAuthId"] = state ? state.integrationAuthId : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
+            resourceInputs["databricksHost"] = state?.databricksHost;
+            resourceInputs["databricksSecretScope"] = state?.databricksSecretScope;
+            resourceInputs["databricksToken"] = state?.databricksToken;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["integrationAuthId"] = state?.integrationAuthId;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretPath"] = state?.secretPath;
         } else {
             const args = argsOrState as IntegrationDatabricksArgs | undefined;
-            if ((!args || args.databricksHost === undefined) && !opts.urn) {
+            if (args?.databricksHost === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databricksHost'");
             }
-            if ((!args || args.databricksSecretScope === undefined) && !opts.urn) {
+            if (args?.databricksSecretScope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databricksSecretScope'");
             }
-            if ((!args || args.databricksToken === undefined) && !opts.urn) {
+            if (args?.databricksToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databricksToken'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            resourceInputs["databricksHost"] = args ? args.databricksHost : undefined;
-            resourceInputs["databricksSecretScope"] = args ? args.databricksSecretScope : undefined;
+            resourceInputs["databricksHost"] = args?.databricksHost;
+            resourceInputs["databricksSecretScope"] = args?.databricksSecretScope;
             resourceInputs["databricksToken"] = args?.databricksToken ? pulumi.secret(args.databricksToken) : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretPath"] = args?.secretPath;
             resourceInputs["integrationAuthId"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
         }
