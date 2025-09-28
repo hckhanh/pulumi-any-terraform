@@ -37,5 +37,7 @@ jobs:
         run: pnpm nx report
       - name: Build packages
         run: pnpm nx run-many -t build
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish packages
         run: pnpm nx release publish
