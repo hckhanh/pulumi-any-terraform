@@ -90,7 +90,7 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly cacheStales: pulumi.Output<string[]>;
     /**
-     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `webp`
+     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `state`, `webp`
      */
     declare public readonly cacheVaries: pulumi.Output<string[]>;
     /**
@@ -643,7 +643,7 @@ export interface PullzoneState {
      */
     cacheStales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `webp`
+     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `state`, `webp`
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -998,7 +998,7 @@ export interface PullzoneArgs {
      */
     cacheStales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `webp`
+     * Options: `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `state`, `webp`
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
     /**

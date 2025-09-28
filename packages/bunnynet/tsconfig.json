@@ -21,6 +21,8 @@
         "config/index.ts",
         "config/vars.ts",
         "dnsRecord.ts",
+        "dnsScript.ts",
+        "dnsScriptVariable.ts",
         "dnsZone.ts",
         "getComputeContainerAppContainer.ts",
         "getComputeContainerAppContainerEndpoint.ts",

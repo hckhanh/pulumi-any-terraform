@@ -35,6 +35,16 @@ export type DnsRecord = import("./dnsRecord").DnsRecord;
 export const DnsRecord: typeof import("./dnsRecord").DnsRecord = null as any;
 utilities.lazyLoad(exports, ["DnsRecord"], () => require("./dnsRecord"));
 
+export { DnsScriptArgs, DnsScriptState } from "./dnsScript";
+export type DnsScript = import("./dnsScript").DnsScript;
+export const DnsScript: typeof import("./dnsScript").DnsScript = null as any;
+utilities.lazyLoad(exports, ["DnsScript"], () => require("./dnsScript"));
+
+export { DnsScriptVariableArgs, DnsScriptVariableState } from "./dnsScriptVariable";
+export type DnsScriptVariable = import("./dnsScriptVariable").DnsScriptVariable;
+export const DnsScriptVariable: typeof import("./dnsScriptVariable").DnsScriptVariable = null as any;
+utilities.lazyLoad(exports, ["DnsScriptVariable"], () => require("./dnsScriptVariable"));
+
 export { DnsZoneArgs, DnsZoneState } from "./dnsZone";
 export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
@@ -176,6 +186,10 @@ const _module = {
                 return new ComputeScriptVariable(name, <any>undefined, { urn })
             case "bunnynet:index/dnsRecord:DnsRecord":
                 return new DnsRecord(name, <any>undefined, { urn })
+            case "bunnynet:index/dnsScript:DnsScript":
+                return new DnsScript(name, <any>undefined, { urn })
+            case "bunnynet:index/dnsScriptVariable:DnsScriptVariable":
+                return new DnsScriptVariable(name, <any>undefined, { urn })
             case "bunnynet:index/dnsZone:DnsZone":
                 return new DnsZone(name, <any>undefined, { urn })
             case "bunnynet:index/pullzone:Pullzone":
@@ -215,6 +229,8 @@ pulumi.runtime.registerResourceModule("bunnynet", "index/computeScript", _module
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScriptSecret", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScriptVariable", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsRecord", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/dnsScript", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/dnsScriptVariable", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsZone", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzone", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/pullzoneAccessList", _module)

@@ -71,7 +71,7 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * The name of the linked resource.
      */
-    declare public readonly linkName: pulumi.Output<string>;
+    declare public /*out*/ readonly linkName: pulumi.Output<string>;
     /**
      * Options: `Http`, `Monitor`, `None`, `Ping`
      */
@@ -88,6 +88,10 @@ export class DnsRecord extends pulumi.CustomResource {
      * The priority of the DNS record.
      */
     declare public readonly priority: pulumi.Output<number>;
+    /**
+     * The ID of the linked pullzone.
+     */
+    declare public readonly pullzoneId: pulumi.Output<number>;
     /**
      * Options: `Geolocation`, `Latency`, `None`
      */
@@ -145,6 +149,7 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["port"] = state?.port;
             resourceInputs["priority"] = state?.priority;
+            resourceInputs["pullzoneId"] = state?.pullzoneId;
             resourceInputs["smartRoutingType"] = state?.smartRoutingType;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["ttl"] = state?.ttl;
@@ -170,11 +175,11 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["geolocationLat"] = args?.geolocationLat;
             resourceInputs["geolocationLong"] = args?.geolocationLong;
             resourceInputs["latencyZone"] = args?.latencyZone;
-            resourceInputs["linkName"] = args?.linkName;
             resourceInputs["monitorType"] = args?.monitorType;
             resourceInputs["name"] = args?.name;
             resourceInputs["port"] = args?.port;
             resourceInputs["priority"] = args?.priority;
+            resourceInputs["pullzoneId"] = args?.pullzoneId;
             resourceInputs["smartRoutingType"] = args?.smartRoutingType;
             resourceInputs["tag"] = args?.tag;
             resourceInputs["ttl"] = args?.ttl;
@@ -184,6 +189,7 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["zone"] = args?.zone;
             resourceInputs["acceleratedPullzone"] = undefined /*out*/;
             resourceInputs["dnsRecordId"] = undefined /*out*/;
+            resourceInputs["linkName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsRecord.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -251,6 +257,10 @@ export interface DnsRecordState {
      */
     priority?: pulumi.Input<number>;
     /**
+     * The ID of the linked pullzone.
+     */
+    pullzoneId?: pulumi.Input<number>;
+    /**
      * Options: `Geolocation`, `Latency`, `None`
      */
     smartRoutingType?: pulumi.Input<string>;
@@ -314,10 +324,6 @@ export interface DnsRecordArgs {
      */
     latencyZone?: pulumi.Input<string>;
     /**
-     * The name of the linked resource.
-     */
-    linkName?: pulumi.Input<string>;
-    /**
      * Options: `Http`, `Monitor`, `None`, `Ping`
      */
     monitorType?: pulumi.Input<string>;
@@ -333,6 +339,10 @@ export interface DnsRecordArgs {
      * The priority of the DNS record.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * The ID of the linked pullzone.
+     */
+    pullzoneId?: pulumi.Input<number>;
     /**
      * Options: `Geolocation`, `Latency`, `None`
      */
