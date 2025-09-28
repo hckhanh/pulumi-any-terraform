@@ -35,23 +35,23 @@ export class SourceGroup extends pulumi.CustomResource {
     /**
      * The time when this source group was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The name of this source group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The sort index of this source group.
      */
-    public readonly sortIndex!: pulumi.Output<number | undefined>;
+    declare public readonly sortIndex: pulumi.Output<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The time when this source group was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SourceGroup resource with the given unique name, arguments, and options.
@@ -66,16 +66,16 @@ export class SourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceGroupState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sortIndex"] = state ? state.sortIndex : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sortIndex"] = state?.sortIndex;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SourceGroupArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sortIndex"] = args ? args.sortIndex : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sortIndex"] = args?.sortIndex;
+            resourceInputs["teamName"] = args?.teamName;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

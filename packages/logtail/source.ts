@@ -37,99 +37,99 @@ export class Source extends pulumi.CustomResource {
     /**
      * The time when this monitor group was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id,
      * secret_access_key) are required.
      */
-    public readonly customBucket!: pulumi.Output<outputs.SourceCustomBucket | undefined>;
+    declare public readonly customBucket: pulumi.Output<outputs.SourceCustomBucket | undefined>;
     /**
      * Data region or private cluster name to create the source in. Permitted values for most plans are: `us_east`, `us_west`,
      * `germany`, `singapore`.
      */
-    public readonly dataRegion!: pulumi.Output<string>;
+    declare public readonly dataRegion: pulumi.Output<string>;
     /**
      * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for
      * your specific source platform for details.
      */
-    public /*out*/ readonly ingestingHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly ingestingHost: pulumi.Output<string>;
     /**
      * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's
      * usage quota and you want to prioritize some sources over others).
      */
-    public readonly ingestingPaused!: pulumi.Output<boolean>;
+    declare public readonly ingestingPaused: pulumi.Output<boolean>;
     /**
      * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID:
      * {message_json.pid} {level} {message}"
      */
-    public readonly liveTailPattern!: pulumi.Output<string>;
+    declare public readonly liveTailPattern: pulumi.Output<string>;
     /**
      * Data retention for logs in days. There might be additional charges for longer retention.
      */
-    public readonly logsRetention!: pulumi.Output<number>;
+    declare public readonly logsRetention: pulumi.Output<number>;
     /**
      * Data retention for metrics in days. There might be additional charges for longer retention.
      */
-    public readonly metricsRetention!: pulumi.Output<number>;
+    declare public readonly metricsRetention: pulumi.Output<number>;
     /**
      * The name of this source.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `cloudflare_logpush` -
-     * `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` - `elasticsearch` - `erlang` -
-     * `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub` - `haproxy` - `heroku` -
-     * `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` - `nginx` - `open_telemetry`
-     * - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis` - `render` - `rsyslog` -
-     * `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
+     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
+     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
+     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
+     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
+     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
     /**
      * For scrape platform types, how often to scrape the URLs.
      */
-    public readonly scrapeFrequencySecs!: pulumi.Output<number | undefined>;
+    declare public readonly scrapeFrequencySecs: pulumi.Output<number | undefined>;
     /**
      * Basic auth password for scraping.
      */
-    public readonly scrapeRequestBasicAuthPassword!: pulumi.Output<string | undefined>;
+    declare public readonly scrapeRequestBasicAuthPassword: pulumi.Output<string | undefined>;
     /**
      * Basic auth username for scraping.
      */
-    public readonly scrapeRequestBasicAuthUser!: pulumi.Output<string | undefined>;
+    declare public readonly scrapeRequestBasicAuthUser: pulumi.Output<string | undefined>;
     /**
      * An array of request headers, each containing `name` and `value` fields.
      */
-    public readonly scrapeRequestHeaders!: pulumi.Output<{[key: string]: string}[] | undefined>;
+    declare public readonly scrapeRequestHeaders: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
      * For scrape platform types, the set of urls to scrape.
      */
-    public readonly scrapeUrls!: pulumi.Output<string[] | undefined>;
+    declare public readonly scrapeUrls: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the source group this source belongs to.
      */
-    public readonly sourceGroupId!: pulumi.Output<number | undefined>;
+    declare public readonly sourceGroupId: pulumi.Output<number | undefined>;
     /**
      * The table name generated for this source.
      */
-    public /*out*/ readonly tableName!: pulumi.Output<string>;
+    declare public /*out*/ readonly tableName: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The token of this source. This token is used to identify and route the data you will send to Better Stack.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The time when this monitor group was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The VRL code that's used to transform events. Read more about [VRL
      * transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    public readonly vrlTransformation!: pulumi.Output<string | undefined>;
+    declare public readonly vrlTransformation: pulumi.Output<string | undefined>;
 
     /**
      * Create a Source resource with the given unique name, arguments, and options.
@@ -144,48 +144,48 @@ export class Source extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customBucket"] = state ? state.customBucket : undefined;
-            resourceInputs["dataRegion"] = state ? state.dataRegion : undefined;
-            resourceInputs["ingestingHost"] = state ? state.ingestingHost : undefined;
-            resourceInputs["ingestingPaused"] = state ? state.ingestingPaused : undefined;
-            resourceInputs["liveTailPattern"] = state ? state.liveTailPattern : undefined;
-            resourceInputs["logsRetention"] = state ? state.logsRetention : undefined;
-            resourceInputs["metricsRetention"] = state ? state.metricsRetention : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["scrapeFrequencySecs"] = state ? state.scrapeFrequencySecs : undefined;
-            resourceInputs["scrapeRequestBasicAuthPassword"] = state ? state.scrapeRequestBasicAuthPassword : undefined;
-            resourceInputs["scrapeRequestBasicAuthUser"] = state ? state.scrapeRequestBasicAuthUser : undefined;
-            resourceInputs["scrapeRequestHeaders"] = state ? state.scrapeRequestHeaders : undefined;
-            resourceInputs["scrapeUrls"] = state ? state.scrapeUrls : undefined;
-            resourceInputs["sourceGroupId"] = state ? state.sourceGroupId : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["vrlTransformation"] = state ? state.vrlTransformation : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customBucket"] = state?.customBucket;
+            resourceInputs["dataRegion"] = state?.dataRegion;
+            resourceInputs["ingestingHost"] = state?.ingestingHost;
+            resourceInputs["ingestingPaused"] = state?.ingestingPaused;
+            resourceInputs["liveTailPattern"] = state?.liveTailPattern;
+            resourceInputs["logsRetention"] = state?.logsRetention;
+            resourceInputs["metricsRetention"] = state?.metricsRetention;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["scrapeFrequencySecs"] = state?.scrapeFrequencySecs;
+            resourceInputs["scrapeRequestBasicAuthPassword"] = state?.scrapeRequestBasicAuthPassword;
+            resourceInputs["scrapeRequestBasicAuthUser"] = state?.scrapeRequestBasicAuthUser;
+            resourceInputs["scrapeRequestHeaders"] = state?.scrapeRequestHeaders;
+            resourceInputs["scrapeUrls"] = state?.scrapeUrls;
+            resourceInputs["sourceGroupId"] = state?.sourceGroupId;
+            resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vrlTransformation"] = state?.vrlTransformation;
         } else {
             const args = argsOrState as SourceArgs | undefined;
-            if ((!args || args.platform === undefined) && !opts.urn) {
+            if (args?.platform === undefined && !opts.urn) {
                 throw new Error("Missing required property 'platform'");
             }
-            resourceInputs["customBucket"] = args ? args.customBucket : undefined;
-            resourceInputs["dataRegion"] = args ? args.dataRegion : undefined;
-            resourceInputs["ingestingPaused"] = args ? args.ingestingPaused : undefined;
-            resourceInputs["liveTailPattern"] = args ? args.liveTailPattern : undefined;
-            resourceInputs["logsRetention"] = args ? args.logsRetention : undefined;
-            resourceInputs["metricsRetention"] = args ? args.metricsRetention : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["scrapeFrequencySecs"] = args ? args.scrapeFrequencySecs : undefined;
+            resourceInputs["customBucket"] = args?.customBucket;
+            resourceInputs["dataRegion"] = args?.dataRegion;
+            resourceInputs["ingestingPaused"] = args?.ingestingPaused;
+            resourceInputs["liveTailPattern"] = args?.liveTailPattern;
+            resourceInputs["logsRetention"] = args?.logsRetention;
+            resourceInputs["metricsRetention"] = args?.metricsRetention;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["scrapeFrequencySecs"] = args?.scrapeFrequencySecs;
             resourceInputs["scrapeRequestBasicAuthPassword"] = args?.scrapeRequestBasicAuthPassword ? pulumi.secret(args.scrapeRequestBasicAuthPassword) : undefined;
-            resourceInputs["scrapeRequestBasicAuthUser"] = args ? args.scrapeRequestBasicAuthUser : undefined;
-            resourceInputs["scrapeRequestHeaders"] = args ? args.scrapeRequestHeaders : undefined;
-            resourceInputs["scrapeUrls"] = args ? args.scrapeUrls : undefined;
-            resourceInputs["sourceGroupId"] = args ? args.sourceGroupId : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["vrlTransformation"] = args ? args.vrlTransformation : undefined;
+            resourceInputs["scrapeRequestBasicAuthUser"] = args?.scrapeRequestBasicAuthUser;
+            resourceInputs["scrapeRequestHeaders"] = args?.scrapeRequestHeaders;
+            resourceInputs["scrapeUrls"] = args?.scrapeUrls;
+            resourceInputs["sourceGroupId"] = args?.sourceGroupId;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["vrlTransformation"] = args?.vrlTransformation;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
@@ -246,12 +246,12 @@ export interface SourceState {
     name?: pulumi.Input<string>;
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `cloudflare_logpush` -
-     * `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` - `elasticsearch` - `erlang` -
-     * `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub` - `haproxy` - `heroku` -
-     * `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` - `nginx` - `open_telemetry`
-     * - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis` - `render` - `rsyslog` -
-     * `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
+     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
+     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
+     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
+     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
+     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
      */
     platform?: pulumi.Input<string>;
     /**
@@ -339,12 +339,12 @@ export interface SourceArgs {
     name?: pulumi.Input<string>;
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `cloudflare_logpush` -
-     * `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` - `elasticsearch` - `erlang` -
-     * `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub` - `haproxy` - `heroku` -
-     * `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` - `nginx` - `open_telemetry`
-     * - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis` - `render` - `rsyslog` -
-     * `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
+     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
+     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
+     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
+     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
+     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
      */
     platform: pulumi.Input<string>;
     /**

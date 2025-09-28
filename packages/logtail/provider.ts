@@ -30,7 +30,7 @@ export class Provider extends pulumi.ProviderResource {
      * https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your
      * team.
      */
-    public readonly apiToken!: pulumi.Output<string>;
+    declare public readonly apiToken: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -43,7 +43,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.apiToken === undefined) && !opts.urn) {
+            if (args?.apiToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiToken'");
             }
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;

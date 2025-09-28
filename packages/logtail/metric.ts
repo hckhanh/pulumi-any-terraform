@@ -35,27 +35,27 @@ export class Metric extends pulumi.CustomResource {
     /**
      * The list of aggregations to perform on the metric.
      */
-    public readonly aggregations!: pulumi.Output<string[]>;
+    declare public readonly aggregations: pulumi.Output<string[]>;
     /**
      * The name of this metric.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the source this metric belongs to.
      */
-    public readonly sourceId!: pulumi.Output<string>;
+    declare public readonly sourceId: pulumi.Output<string>;
     /**
      * The SQL expression used to extract the metric value.
      */
-    public readonly sqlExpression!: pulumi.Output<string>;
+    declare public readonly sqlExpression: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    public readonly teamName!: pulumi.Output<string | undefined>;
+    declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
      * The type of the metric.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Metric resource with the given unique name, arguments, and options.
@@ -70,32 +70,32 @@ export class Metric extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricState | undefined;
-            resourceInputs["aggregations"] = state ? state.aggregations : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sourceId"] = state ? state.sourceId : undefined;
-            resourceInputs["sqlExpression"] = state ? state.sqlExpression : undefined;
-            resourceInputs["teamName"] = state ? state.teamName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["aggregations"] = state?.aggregations;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sourceId"] = state?.sourceId;
+            resourceInputs["sqlExpression"] = state?.sqlExpression;
+            resourceInputs["teamName"] = state?.teamName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if ((!args || args.aggregations === undefined) && !opts.urn) {
+            if (args?.aggregations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregations'");
             }
-            if ((!args || args.sourceId === undefined) && !opts.urn) {
+            if (args?.sourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            if ((!args || args.sqlExpression === undefined) && !opts.urn) {
+            if (args?.sqlExpression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sqlExpression'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["aggregations"] = args ? args.aggregations : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
-            resourceInputs["sqlExpression"] = args ? args.sqlExpression : undefined;
-            resourceInputs["teamName"] = args ? args.teamName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["aggregations"] = args?.aggregations;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sourceId"] = args?.sourceId;
+            resourceInputs["sqlExpression"] = args?.sqlExpression;
+            resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Metric.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
