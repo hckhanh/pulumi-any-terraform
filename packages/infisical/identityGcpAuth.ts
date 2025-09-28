@@ -37,44 +37,44 @@ export class IdentityGcpAuth extends pulumi.CustomResource {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenMaxTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenMaxTtl: pulumi.Output<number>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    public readonly accessTokenNumUsesLimit!: pulumi.Output<number>;
+    declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
      * address..
      */
-    public readonly accessTokenTrustedIps!: pulumi.Output<outputs.IdentityGcpAuthAccessTokenTrustedIp[]>;
+    declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityGcpAuthAccessTokenTrustedIp[]>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
      * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation
      * property will only work for GCE instances
      */
-    public readonly allowedProjects!: pulumi.Output<string[]>;
+    declare public readonly allowedProjects: pulumi.Output<string[]>;
     /**
      * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this
      * could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
-    public readonly allowedServiceAccountEmails!: pulumi.Output<string[]>;
+    declare public readonly allowedServiceAccountEmails: pulumi.Output<string[]>;
     /**
      * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the
      * fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this
      * validation property will only work for GCE instances.
      */
-    public readonly allowedZones!: pulumi.Output<string[]>;
+    declare public readonly allowedZones: pulumi.Output<string[]>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * The Type of GCP Auth Method to use: Options are gce, iam. Default:gce
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a IdentityGcpAuth resource with the given unique name, arguments, and options.
@@ -89,29 +89,29 @@ export class IdentityGcpAuth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityGcpAuthState | undefined;
-            resourceInputs["accessTokenMaxTtl"] = state ? state.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = state ? state.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = state ? state.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = state ? state.accessTokenTtl : undefined;
-            resourceInputs["allowedProjects"] = state ? state.allowedProjects : undefined;
-            resourceInputs["allowedServiceAccountEmails"] = state ? state.allowedServiceAccountEmails : undefined;
-            resourceInputs["allowedZones"] = state ? state.allowedZones : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessTokenMaxTtl"] = state?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = state?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = state?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = state?.accessTokenTtl;
+            resourceInputs["allowedProjects"] = state?.allowedProjects;
+            resourceInputs["allowedServiceAccountEmails"] = state?.allowedServiceAccountEmails;
+            resourceInputs["allowedZones"] = state?.allowedZones;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as IdentityGcpAuthArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            resourceInputs["accessTokenMaxTtl"] = args ? args.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = args ? args.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = args ? args.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = args ? args.accessTokenTtl : undefined;
-            resourceInputs["allowedProjects"] = args ? args.allowedProjects : undefined;
-            resourceInputs["allowedServiceAccountEmails"] = args ? args.allowedServiceAccountEmails : undefined;
-            resourceInputs["allowedZones"] = args ? args.allowedZones : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = args?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = args?.accessTokenTtl;
+            resourceInputs["allowedProjects"] = args?.allowedProjects;
+            resourceInputs["allowedServiceAccountEmails"] = args?.allowedServiceAccountEmails;
+            resourceInputs["allowedZones"] = args?.allowedZones;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityGcpAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

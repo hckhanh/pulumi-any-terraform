@@ -37,39 +37,39 @@ export class SecretSyncSupabase extends pulumi.CustomResource {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
-    public readonly autoSyncEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoSyncEnabled: pulumi.Output<boolean>;
     /**
      * The ID of the supabase Connection to use for syncing.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * An optional description for the Supabase sync.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
-    public readonly destinationConfig!: pulumi.Output<outputs.SecretSyncSupabaseDestinationConfig>;
+    declare public readonly destinationConfig: pulumi.Output<outputs.SecretSyncSupabaseDestinationConfig>;
     /**
      * The slug of the project environment to sync secrets from.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The name of the Supabase sync to create. Must be slug-friendly.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the Infisical project to create the sync in.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The folder path to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
     /**
      * Parameters to modify how secrets are synced.
      */
-    public readonly syncOptions!: pulumi.Output<outputs.SecretSyncSupabaseSyncOptions>;
+    declare public readonly syncOptions: pulumi.Output<outputs.SecretSyncSupabaseSyncOptions>;
 
     /**
      * Create a SecretSyncSupabase resource with the given unique name, arguments, and options.
@@ -84,44 +84,44 @@ export class SecretSyncSupabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretSyncSupabaseState | undefined;
-            resourceInputs["autoSyncEnabled"] = state ? state.autoSyncEnabled : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
-            resourceInputs["syncOptions"] = state ? state.syncOptions : undefined;
+            resourceInputs["autoSyncEnabled"] = state?.autoSyncEnabled;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationConfig"] = state?.destinationConfig;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretPath"] = state?.secretPath;
+            resourceInputs["syncOptions"] = state?.syncOptions;
         } else {
             const args = argsOrState as SecretSyncSupabaseArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if ((!args || args.destinationConfig === undefined) && !opts.urn) {
+            if (args?.destinationConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationConfig'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            if ((!args || args.syncOptions === undefined) && !opts.urn) {
+            if (args?.syncOptions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'syncOptions'");
             }
-            resourceInputs["autoSyncEnabled"] = args ? args.autoSyncEnabled : undefined;
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
-            resourceInputs["syncOptions"] = args ? args.syncOptions : undefined;
+            resourceInputs["autoSyncEnabled"] = args?.autoSyncEnabled;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationConfig"] = args?.destinationConfig;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretPath"] = args?.secretPath;
+            resourceInputs["syncOptions"] = args?.syncOptions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretSyncSupabase.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

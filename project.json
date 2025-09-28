@@ -36,13 +36,13 @@
         "audit",
         "audit:signatures",
         "build",
-        "prettier:check",
         "syncpack:format:check",
-        "syncpack:lint"
+        "syncpack:lint",
+        "prettier:check"
       ]
     },
     "fix": {
-      "dependsOn": ["audit:fix", "prettier:write", "syncpack:format"]
+      "dependsOn": ["audit:fix", "syncpack:format", "prettier:write"]
     }
   }
 }

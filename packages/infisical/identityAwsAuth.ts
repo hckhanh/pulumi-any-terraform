@@ -37,41 +37,41 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenMaxTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenMaxTtl: pulumi.Output<number>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    public readonly accessTokenNumUsesLimit!: pulumi.Output<number>;
+    declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
      * address..
      */
-    public readonly accessTokenTrustedIps!: pulumi.Output<outputs.IdentityAwsAuthAccessTokenTrustedIp[]>;
+    declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityAwsAuthAccessTokenTrustedIp[]>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
      * List of trusted AWS account IDs that are allowed to authenticate with Infisical.
      */
-    public readonly allowedAccountIds!: pulumi.Output<string[]>;
+    declare public readonly allowedAccountIds: pulumi.Output<string[]>;
     /**
      * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three
      * forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or
      * `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to
      * authenticate with Infisical under the identity
      */
-    public readonly allowedPrincipalArns!: pulumi.Output<string[]>;
+    declare public readonly allowedPrincipalArns: pulumi.Output<string[]>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g.
      * `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints
      * [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
-    public readonly stsEndpoint!: pulumi.Output<string>;
+    declare public readonly stsEndpoint: pulumi.Output<string>;
 
     /**
      * Create a IdentityAwsAuth resource with the given unique name, arguments, and options.
@@ -86,27 +86,27 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityAwsAuthState | undefined;
-            resourceInputs["accessTokenMaxTtl"] = state ? state.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = state ? state.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = state ? state.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = state ? state.accessTokenTtl : undefined;
-            resourceInputs["allowedAccountIds"] = state ? state.allowedAccountIds : undefined;
-            resourceInputs["allowedPrincipalArns"] = state ? state.allowedPrincipalArns : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["stsEndpoint"] = state ? state.stsEndpoint : undefined;
+            resourceInputs["accessTokenMaxTtl"] = state?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = state?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = state?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = state?.accessTokenTtl;
+            resourceInputs["allowedAccountIds"] = state?.allowedAccountIds;
+            resourceInputs["allowedPrincipalArns"] = state?.allowedPrincipalArns;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["stsEndpoint"] = state?.stsEndpoint;
         } else {
             const args = argsOrState as IdentityAwsAuthArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            resourceInputs["accessTokenMaxTtl"] = args ? args.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = args ? args.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = args ? args.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = args ? args.accessTokenTtl : undefined;
-            resourceInputs["allowedAccountIds"] = args ? args.allowedAccountIds : undefined;
-            resourceInputs["allowedPrincipalArns"] = args ? args.allowedPrincipalArns : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["stsEndpoint"] = args ? args.stsEndpoint : undefined;
+            resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = args?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = args?.accessTokenTtl;
+            resourceInputs["allowedAccountIds"] = args?.allowedAccountIds;
+            resourceInputs["allowedPrincipalArns"] = args?.allowedPrincipalArns;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["stsEndpoint"] = args?.stsEndpoint;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityAwsAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

@@ -35,27 +35,27 @@ export class SecretImport extends pulumi.CustomResource {
     /**
      * The environment slug of the secret import to modify/create
      */
-    public readonly environmentSlug!: pulumi.Output<string>;
+    declare public readonly environmentSlug: pulumi.Output<string>;
     /**
      * The path where the secret should be imported
      */
-    public readonly folderPath!: pulumi.Output<string>;
+    declare public readonly folderPath: pulumi.Output<string>;
     /**
      * The environment slug of the secret import to modify/create
      */
-    public readonly importEnvironmentSlug!: pulumi.Output<string>;
+    declare public readonly importEnvironmentSlug: pulumi.Output<string>;
     /**
      * The path where the secret should be imported from
      */
-    public readonly importFolderPath!: pulumi.Output<string>;
+    declare public readonly importFolderPath: pulumi.Output<string>;
     /**
      * The is_replication of the secret import to modify/create
      */
-    public readonly isReplication!: pulumi.Output<boolean>;
+    declare public readonly isReplication: pulumi.Output<boolean>;
     /**
      * The Infisical project ID
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a SecretImport resource with the given unique name, arguments, and options.
@@ -70,38 +70,38 @@ export class SecretImport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretImportState | undefined;
-            resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
-            resourceInputs["folderPath"] = state ? state.folderPath : undefined;
-            resourceInputs["importEnvironmentSlug"] = state ? state.importEnvironmentSlug : undefined;
-            resourceInputs["importFolderPath"] = state ? state.importFolderPath : undefined;
-            resourceInputs["isReplication"] = state ? state.isReplication : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["environmentSlug"] = state?.environmentSlug;
+            resourceInputs["folderPath"] = state?.folderPath;
+            resourceInputs["importEnvironmentSlug"] = state?.importEnvironmentSlug;
+            resourceInputs["importFolderPath"] = state?.importFolderPath;
+            resourceInputs["isReplication"] = state?.isReplication;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as SecretImportArgs | undefined;
-            if ((!args || args.environmentSlug === undefined) && !opts.urn) {
+            if (args?.environmentSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentSlug'");
             }
-            if ((!args || args.folderPath === undefined) && !opts.urn) {
+            if (args?.folderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            if ((!args || args.importEnvironmentSlug === undefined) && !opts.urn) {
+            if (args?.importEnvironmentSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'importEnvironmentSlug'");
             }
-            if ((!args || args.importFolderPath === undefined) && !opts.urn) {
+            if (args?.importFolderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'importFolderPath'");
             }
-            if ((!args || args.isReplication === undefined) && !opts.urn) {
+            if (args?.isReplication === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isReplication'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
-            resourceInputs["folderPath"] = args ? args.folderPath : undefined;
-            resourceInputs["importEnvironmentSlug"] = args ? args.importEnvironmentSlug : undefined;
-            resourceInputs["importFolderPath"] = args ? args.importFolderPath : undefined;
-            resourceInputs["isReplication"] = args ? args.isReplication : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["environmentSlug"] = args?.environmentSlug;
+            resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["importEnvironmentSlug"] = args?.importEnvironmentSlug;
+            resourceInputs["importFolderPath"] = args?.importFolderPath;
+            resourceInputs["isReplication"] = args?.isReplication;
+            resourceInputs["projectId"] = args?.projectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretImport.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

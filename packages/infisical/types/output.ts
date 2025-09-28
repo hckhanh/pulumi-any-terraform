@@ -112,6 +112,48 @@ export interface AppConnectionGcpCredentials {
     serviceAccountEmail?: string;
 }
 
+export interface AppConnectionGitlabCredentials {
+    /**
+     * The Access Token used to access GitLab.
+     */
+    accessToken: string;
+    /**
+     * The type of token used to connect with GitLab. Supported options: 'project' and 'personal'
+     */
+    accessTokenType: string;
+    /**
+     * The GitLab instance URL to connect with. (default: https://gitlab.com)
+     */
+    instanceUrl?: string;
+}
+
+export interface AppConnectionLdapCredentials {
+    /**
+     * The Distinguished Name (DN) or User Principal Name (UPN) of the principal to bind with (e.g., 'CN=John,CN=Users,DC=example,DC=com').
+     */
+    dn: string;
+    /**
+     * The password to bind with for authentication.
+     */
+    password: string;
+    /**
+     * The LDAP provider (e.g., 'active-directory').
+     */
+    provider: string;
+    /**
+     * The SSL certificate (PEM format) to use for secure connection when using ldaps:// with a self-signed certificate.
+     */
+    sslCertificate?: string;
+    /**
+     * Whether or not to reject unauthorized SSL certificates (true/false) when using ldaps://. Set to false only in test environments.
+     */
+    sslRejectUnauthorized: boolean;
+    /**
+     * The LDAP server URL (e.g., 'ldap://example.com:389' or 'ldaps://example.com:636').
+     */
+    url: string;
+}
+
 export interface AppConnectionMssqlCredentials {
     /**
      * The name of the database to connect to.
@@ -415,6 +457,102 @@ export interface DynamicSecretKubernetesConfigurationStaticConfig {
 }
 
 export interface DynamicSecretKubernetesMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
+export interface DynamicSecretMongoAtlasConfiguration {
+    /**
+     * Admin user private API key
+     */
+    adminPrivateKey: string;
+    /**
+     * Admin user public API key
+     */
+    adminPublicKey: string;
+    /**
+     * Unique 24-hexadecimal digit string that identifies your project. This is the same as the project ID.
+     */
+    groupId: string;
+    roles: outputs.DynamicSecretMongoAtlasConfigurationRole[];
+    scopes: outputs.DynamicSecretMongoAtlasConfigurationScope[];
+}
+
+export interface DynamicSecretMongoAtlasConfigurationRole {
+    /**
+     * Collection on which this role applies.
+     */
+    collectionName?: string;
+    /**
+     * Database to which the user is granted access privileges.
+     */
+    databaseName: string;
+    /**
+     * Human-readable label that identifies a group of privileges assigned to a database user. This value can either be a built-in role or a custom role.
+     */
+    roleName: string;
+}
+
+export interface DynamicSecretMongoAtlasConfigurationScope {
+    /**
+     * Human-readable label that identifies the cluster or MongoDB Atlas Data Lake that this database user can access.
+     */
+    name: string;
+    /**
+     * Category of resource that this database user can access. Supported options: CLUSTER, DATA_LAKE, STREAM
+     */
+    type: string;
+}
+
+export interface DynamicSecretMongoAtlasMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
+export interface DynamicSecretMongoDbConfiguration {
+    /**
+     * The CA certificate to use to connect to the database.
+     */
+    ca?: string;
+    /**
+     * The name of the database to use.
+     */
+    database: string;
+    /**
+     * The host of the database server.
+     */
+    host: string;
+    /**
+     * The password to use to connect to the database.
+     */
+    password: string;
+    /**
+     * The port of the database server.
+     */
+    port?: number;
+    /**
+     * A list of role names to assign to the user. The role names can either be built-in or custom.
+     */
+    roles: string[];
+    /**
+     * The username to use to connect to the database.
+     */
+    username: string;
+}
+
+export interface DynamicSecretMongoDbMetadata {
     /**
      * The key of the metadata object
      */
@@ -1008,6 +1146,9 @@ export interface SecretRotationAwsIamUserSecretSecretsMapping {
     secretAccessKey: string;
 }
 
+export interface SecretRotationAwsIamUserSecretTemporaryParameters {
+}
+
 export interface SecretRotationAzureClientSecretParameters {
     /**
      * The client ID of the Azure Application to rotate the client secret for.
@@ -1039,6 +1180,87 @@ export interface SecretRotationAzureClientSecretSecretsMapping {
      * The name of the secret that the rotated client secret will be mapped to.
      */
     clientSecret: string;
+}
+
+export interface SecretRotationAzureClientSecretTemporaryParameters {
+}
+
+export interface SecretRotationLdapPasswordParameters {
+    /**
+     * The Distinguished Name (DN) of the LDAP entry to rotate the password for.
+     */
+    dn: string;
+    /**
+     * Password generation requirements.
+     */
+    passwordRequirements: outputs.SecretRotationLdapPasswordParametersPasswordRequirements;
+    /**
+     * The method to use for rotating the password. Supported options: connection-principal and target-principal (default: connection-principal)
+     */
+    rotationMethod?: string;
+}
+
+export interface SecretRotationLdapPasswordParametersPasswordRequirements {
+    /**
+     * String of allowed symbols for password generation.
+     */
+    allowedSymbols?: string;
+    /**
+     * The length of the generated password.
+     */
+    length: number;
+    /**
+     * Required character types in the generated password.
+     */
+    required: outputs.SecretRotationLdapPasswordParametersPasswordRequirementsRequired;
+}
+
+export interface SecretRotationLdapPasswordParametersPasswordRequirementsRequired {
+    /**
+     * Minimum number of digits required in the password.
+     */
+    digits: number;
+    /**
+     * Minimum number of lowercase letters required in the password.
+     */
+    lowercase: number;
+    /**
+     * Minimum number of symbols required in the password.
+     */
+    symbols: number;
+    /**
+     * Minimum number of uppercase letters required in the password.
+     */
+    uppercase: number;
+}
+
+export interface SecretRotationLdapPasswordRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationLdapPasswordSecretsMapping {
+    /**
+     * The name of the secret that the Distinguished Name will be mapped to.
+     */
+    dn: string;
+    /**
+     * The name of the secret that the generated password will be mapped to.
+     */
+    password: string;
+}
+
+export interface SecretRotationLdapPasswordTemporaryParameters {
+    /**
+     * The password of the provided principal if 'parameters.rotation_method' is set to 'target-principal'.
+     */
+    password?: string;
 }
 
 export interface SecretRotationMssqlCredentialsParameters {
@@ -1074,6 +1296,9 @@ export interface SecretRotationMssqlCredentialsSecretsMapping {
     username: string;
 }
 
+export interface SecretRotationMssqlCredentialsTemporaryParameters {
+}
+
 export interface SecretRotationMysqlCredentialsParameters {
     /**
      * The username of the first login to rotate passwords for. This user must already exists in your database.
@@ -1105,6 +1330,9 @@ export interface SecretRotationMysqlCredentialsSecretsMapping {
      * The name of the secret that the active username will be mapped to.
      */
     username: string;
+}
+
+export interface SecretRotationMysqlCredentialsTemporaryParameters {
 }
 
 export interface SecretRotationOracledbCredentialsParameters {
@@ -1140,6 +1368,9 @@ export interface SecretRotationOracledbCredentialsSecretsMapping {
     username: string;
 }
 
+export interface SecretRotationOracledbCredentialsTemporaryParameters {
+}
+
 export interface SecretRotationPostgresCredentialsParameters {
     /**
      * The username of the first login to rotate passwords for. This user must already exists in your database.
@@ -1171,6 +1402,9 @@ export interface SecretRotationPostgresCredentialsSecretsMapping {
      * The name of the secret that the active username will be mapped to.
      */
     username: string;
+}
+
+export interface SecretRotationPostgresCredentialsTemporaryParameters {
 }
 
 export interface SecretSecretReminder {
@@ -1564,6 +1798,60 @@ export interface SecretSyncGithubSyncOptions {
     initialSyncBehavior: string;
     /**
      * The format to use for structuring secret keys in the Github destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncGitlabDestinationConfig {
+    /**
+     * The GitLab Group ID to sync secrets to. Required when scope is 'group'.
+     */
+    groupId?: string;
+    /**
+     * The GitLab Group Name to sync secrets to. Optional when scope is 'group'.
+     */
+    groupName?: string;
+    /**
+     * The GitLab Project ID to sync secrets to. Required when scope is 'project'.
+     */
+    projectId?: string;
+    /**
+     * The GitLab Project Name to sync secrets to. Optional when scope is 'project'.
+     */
+    projectName?: string;
+    /**
+     * The GitLab scope that secrets should be synced to. Supported options: 'project', 'group'
+     */
+    scope: string;
+    /**
+     * Whether variables should be hidden
+     */
+    shouldHideSecrets: boolean;
+    /**
+     * Whether variables should be masked in logs
+     */
+    shouldMaskSecrets: boolean;
+    /**
+     * Whether variables should be protected
+     */
+    shouldProtectSecrets: boolean;
+    /**
+     * The GitLab environment scope that secrets should be synced to. (default: *)
+     */
+    targetEnvironment: string;
+}
+
+export interface SecretSyncGitlabSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from GitLab. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the GitLab destination.
      */
     keySchema?: string;
 }

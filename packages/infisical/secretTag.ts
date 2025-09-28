@@ -35,19 +35,19 @@ export class SecretTag extends pulumi.CustomResource {
     /**
      * Color code for the tag.
      */
-    public readonly color!: pulumi.Output<string>;
+    declare public readonly color: pulumi.Output<string>;
     /**
      * The name for the new tag
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project id associated with the secret tag
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The slug for the new tag
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a SecretTag resource with the given unique name, arguments, and options.
@@ -62,25 +62,25 @@ export class SecretTag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretTagState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as SecretTagArgs | undefined;
-            if ((!args || args.color === undefined) && !opts.urn) {
+            if (args?.color === undefined && !opts.urn) {
                 throw new Error("Missing required property 'color'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.slug === undefined) && !opts.urn) {
+            if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretTag.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

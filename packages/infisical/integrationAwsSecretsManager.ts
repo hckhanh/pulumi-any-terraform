@@ -38,54 +38,54 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
      * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly accessKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly assumeRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly assumeRoleArn: pulumi.Output<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
-    public readonly awsRegion!: pulumi.Output<string>;
+    declare public readonly awsRegion: pulumi.Output<string>;
     /**
      * The slug of the environment to sync to AWS Secrets Manager (prod, dev, staging, etc).
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    public /*out*/ readonly integrationAuthId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationAuthId: pulumi.Output<string>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to
      * a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
-    public readonly mappingBehavior!: pulumi.Output<string>;
+    declare public readonly mappingBehavior: pulumi.Output<string>;
     /**
      * Integration options
      */
-    public readonly options!: pulumi.Output<outputs.IntegrationAwsSecretsManagerOptions>;
+    declare public readonly options: pulumi.Output<outputs.IntegrationAwsSecretsManagerOptions>;
     /**
      * The ID of your Infisical project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly secretAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly secretAccessKey: pulumi.Output<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
     /**
      * The path in AWS Secrets Manager to sync secrets to. This is required if mapping_behavior is 'many-to-one'.
      */
-    public readonly secretsManagerPath!: pulumi.Output<string | undefined>;
+    declare public readonly secretsManagerPath: pulumi.Output<string | undefined>;
 
     /**
      * Create a IntegrationAwsSecretsManager resource with the given unique name, arguments, and options.
@@ -100,42 +100,42 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationAwsSecretsManagerState | undefined;
-            resourceInputs["accessKeyId"] = state ? state.accessKeyId : undefined;
-            resourceInputs["assumeRoleArn"] = state ? state.assumeRoleArn : undefined;
-            resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["integrationAuthId"] = state ? state.integrationAuthId : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["mappingBehavior"] = state ? state.mappingBehavior : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretAccessKey"] = state ? state.secretAccessKey : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
-            resourceInputs["secretsManagerPath"] = state ? state.secretsManagerPath : undefined;
+            resourceInputs["accessKeyId"] = state?.accessKeyId;
+            resourceInputs["assumeRoleArn"] = state?.assumeRoleArn;
+            resourceInputs["awsRegion"] = state?.awsRegion;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["integrationAuthId"] = state?.integrationAuthId;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["mappingBehavior"] = state?.mappingBehavior;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretAccessKey"] = state?.secretAccessKey;
+            resourceInputs["secretPath"] = state?.secretPath;
+            resourceInputs["secretsManagerPath"] = state?.secretsManagerPath;
         } else {
             const args = argsOrState as IntegrationAwsSecretsManagerArgs | undefined;
-            if ((!args || args.awsRegion === undefined) && !opts.urn) {
+            if (args?.awsRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsRegion'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
             resourceInputs["accessKeyId"] = args?.accessKeyId ? pulumi.secret(args.accessKeyId) : undefined;
-            resourceInputs["assumeRoleArn"] = args ? args.assumeRoleArn : undefined;
-            resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["mappingBehavior"] = args ? args.mappingBehavior : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["assumeRoleArn"] = args?.assumeRoleArn;
+            resourceInputs["awsRegion"] = args?.awsRegion;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["mappingBehavior"] = args?.mappingBehavior;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["secretAccessKey"] = args?.secretAccessKey ? pulumi.secret(args.secretAccessKey) : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
-            resourceInputs["secretsManagerPath"] = args ? args.secretsManagerPath : undefined;
+            resourceInputs["secretPath"] = args?.secretPath;
+            resourceInputs["secretsManagerPath"] = args?.secretsManagerPath;
             resourceInputs["integrationAuthId"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
         }

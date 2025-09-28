@@ -35,35 +35,35 @@ export class IntegrationCircleci extends pulumi.CustomResource {
     /**
      * The organization slug of your CircleCI organization.
      */
-    public readonly circleciOrgSlug!: pulumi.Output<string>;
+    declare public readonly circleciOrgSlug: pulumi.Output<string>;
     /**
      * The project ID of your CircleCI project.
      */
-    public readonly circleciProjectId!: pulumi.Output<string>;
+    declare public readonly circleciProjectId: pulumi.Output<string>;
     /**
      * Your personal CircleCI token to authenticate with.
      */
-    public readonly circleciToken!: pulumi.Output<string>;
+    declare public readonly circleciToken: pulumi.Output<string>;
     /**
      * The slug of the environment to sync to CircleCI (prod, dev, staging, etc).
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    public /*out*/ readonly integrationAuthId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationAuthId: pulumi.Output<string>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * The ID of your Infisical project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
 
     /**
      * Create a IntegrationCircleci resource with the given unique name, arguments, and options.
@@ -78,40 +78,40 @@ export class IntegrationCircleci extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationCircleciState | undefined;
-            resourceInputs["circleciOrgSlug"] = state ? state.circleciOrgSlug : undefined;
-            resourceInputs["circleciProjectId"] = state ? state.circleciProjectId : undefined;
-            resourceInputs["circleciToken"] = state ? state.circleciToken : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["integrationAuthId"] = state ? state.integrationAuthId : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
+            resourceInputs["circleciOrgSlug"] = state?.circleciOrgSlug;
+            resourceInputs["circleciProjectId"] = state?.circleciProjectId;
+            resourceInputs["circleciToken"] = state?.circleciToken;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["integrationAuthId"] = state?.integrationAuthId;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretPath"] = state?.secretPath;
         } else {
             const args = argsOrState as IntegrationCircleciArgs | undefined;
-            if ((!args || args.circleciOrgSlug === undefined) && !opts.urn) {
+            if (args?.circleciOrgSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'circleciOrgSlug'");
             }
-            if ((!args || args.circleciProjectId === undefined) && !opts.urn) {
+            if (args?.circleciProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'circleciProjectId'");
             }
-            if ((!args || args.circleciToken === undefined) && !opts.urn) {
+            if (args?.circleciToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'circleciToken'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            resourceInputs["circleciOrgSlug"] = args ? args.circleciOrgSlug : undefined;
-            resourceInputs["circleciProjectId"] = args ? args.circleciProjectId : undefined;
+            resourceInputs["circleciOrgSlug"] = args?.circleciOrgSlug;
+            resourceInputs["circleciProjectId"] = args?.circleciProjectId;
             resourceInputs["circleciToken"] = args?.circleciToken ? pulumi.secret(args.circleciToken) : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["secretPath"] = args?.secretPath;
             resourceInputs["integrationAuthId"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
         }

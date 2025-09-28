@@ -37,35 +37,35 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
     /**
      * The required approvers
      */
-    public readonly approvers!: pulumi.Output<outputs.AccessApprovalPolicyApprover[]>;
+    declare public readonly approvers: pulumi.Output<outputs.AccessApprovalPolicyApprover[]>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
-    public readonly enforcementLevel!: pulumi.Output<string>;
+    declare public readonly enforcementLevel: pulumi.Output<string>;
     /**
      * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
      */
-    public readonly environmentSlug!: pulumi.Output<string | undefined>;
+    declare public readonly environmentSlug: pulumi.Output<string | undefined>;
     /**
      * The environments to apply the access approval policy to
      */
-    public readonly environmentSlugs!: pulumi.Output<string[] | undefined>;
+    declare public readonly environmentSlugs: pulumi.Output<string[] | undefined>;
     /**
      * The name of the access approval policy
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project to add the access approval policy
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The number of required approvers
      */
-    public readonly requiredApprovals!: pulumi.Output<number>;
+    declare public readonly requiredApprovals: pulumi.Output<number>;
     /**
      * The secret path to apply the access approval policy to
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
 
     /**
      * Create a AccessApprovalPolicy resource with the given unique name, arguments, and options.
@@ -80,36 +80,36 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalPolicyState | undefined;
-            resourceInputs["approvers"] = state ? state.approvers : undefined;
-            resourceInputs["enforcementLevel"] = state ? state.enforcementLevel : undefined;
-            resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
-            resourceInputs["environmentSlugs"] = state ? state.environmentSlugs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["requiredApprovals"] = state ? state.requiredApprovals : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
+            resourceInputs["approvers"] = state?.approvers;
+            resourceInputs["enforcementLevel"] = state?.enforcementLevel;
+            resourceInputs["environmentSlug"] = state?.environmentSlug;
+            resourceInputs["environmentSlugs"] = state?.environmentSlugs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["requiredApprovals"] = state?.requiredApprovals;
+            resourceInputs["secretPath"] = state?.secretPath;
         } else {
             const args = argsOrState as AccessApprovalPolicyArgs | undefined;
-            if ((!args || args.approvers === undefined) && !opts.urn) {
+            if (args?.approvers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'approvers'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.requiredApprovals === undefined) && !opts.urn) {
+            if (args?.requiredApprovals === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requiredApprovals'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            resourceInputs["approvers"] = args ? args.approvers : undefined;
-            resourceInputs["enforcementLevel"] = args ? args.enforcementLevel : undefined;
-            resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
-            resourceInputs["environmentSlugs"] = args ? args.environmentSlugs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["requiredApprovals"] = args ? args.requiredApprovals : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
+            resourceInputs["approvers"] = args?.approvers;
+            resourceInputs["enforcementLevel"] = args?.enforcementLevel;
+            resourceInputs["environmentSlug"] = args?.environmentSlug;
+            resourceInputs["environmentSlugs"] = args?.environmentSlugs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["requiredApprovals"] = args?.requiredApprovals;
+            resourceInputs["secretPath"] = args?.secretPath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessApprovalPolicy.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
