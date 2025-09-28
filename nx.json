@@ -33,13 +33,13 @@
     {
       "plugin": "@nx/js/typescript",
       "options": {
-        "typecheck": false,
         "build": {
           "targetName": "build",
           "configName": "tsconfig.json",
           "buildDepsName": "build-deps",
           "watchDepsName": "watch-deps"
-        }
+        },
+        "typecheck": false
       }
     },
     "./tools/audit.ts",
