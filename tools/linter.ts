@@ -17,6 +17,7 @@ class LinterPlugin extends Plugin {
           targets: {
             check: {
               dependsOn: [
+                'audit:signatures',
                 'build',
                 'prettier:check',
                 'syncpack:format:check',

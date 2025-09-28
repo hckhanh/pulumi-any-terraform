@@ -15,7 +15,7 @@ class AuditPlugin extends Plugin {
         [projectRoot]: {
           root: projectRoot,
           targets: {
-            audit: {
+            'audit:signatures': {
               command: 'npm audit signature --no-package-lock',
               inputs: ['{projectRoot}/package.json'],
               options: { cwd: '{projectRoot}' },

@@ -14,6 +14,35 @@
       "options": {
         "ignore-path": "root.prettierignore"
       }
+    },
+    "audit": {
+      "command": "pnpm audit",
+      "inputs": ["{projectRoot}/pnpm-lock.yaml"],
+      "metadata": {
+        "description": "Check for security vulnerabilities in your dependencies",
+        "technologies": ["node"]
+      }
+    },
+    "audit:fix": {
+      "command": "pnpm audit --fix",
+      "inputs": ["{projectRoot}/pnpm-lock.yaml"],
+      "metadata": {
+        "description": "Check for and fix security vulnerabilities in your dependencies",
+        "technologies": ["node"]
+      }
+    },
+    "check": {
+      "dependsOn": [
+        "audit",
+        "audit:signatures",
+        "build",
+        "prettier:check",
+        "syncpack:format:check",
+        "syncpack:lint"
+      ]
+    },
+    "fix": {
+      "dependsOn": ["audit:fix", "prettier:write", "syncpack:format"]
     }
   }
 }
