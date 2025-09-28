@@ -30,7 +30,7 @@ jobs:
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Check
-        run: pnpm nx affected --targets=lint,audit,build
+        run: pnpm nx affected -t check
         env:
           NX_KEY: ${{ secrets.NX_KEY }}
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
