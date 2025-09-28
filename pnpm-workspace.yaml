@@ -7,3 +7,6 @@ onlyBuiltDependencies:
   - nx
   - oxc-resolver
   - protobufjs
+
+overrides:
+  axios@<1.12.0: '>=1.12.0'
