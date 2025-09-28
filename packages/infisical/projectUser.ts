@@ -37,23 +37,23 @@ export class ProjectUser extends pulumi.CustomResource {
     /**
      * The membershipId of the project user
      */
-    public /*out*/ readonly membershipId!: pulumi.Output<string>;
+    declare public /*out*/ readonly membershipId: pulumi.Output<string>;
     /**
      * The id of the project
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The roles assigned to the project user
      */
-    public readonly roles!: pulumi.Output<outputs.ProjectUserRole[]>;
+    declare public readonly roles: pulumi.Output<outputs.ProjectUserRole[]>;
     /**
      * The user details of the project user
      */
-    public /*out*/ readonly user!: pulumi.Output<outputs.ProjectUserUser>;
+    declare public /*out*/ readonly user: pulumi.Output<outputs.ProjectUserUser>;
     /**
      * The usename of the user. By default its the email
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a ProjectUser resource with the given unique name, arguments, and options.
@@ -68,25 +68,25 @@ export class ProjectUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectUserState | undefined;
-            resourceInputs["membershipId"] = state ? state.membershipId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["membershipId"] = state?.membershipId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ProjectUserArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["username"] = args?.username;
             resourceInputs["membershipId"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
         }

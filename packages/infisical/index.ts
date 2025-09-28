@@ -50,6 +50,16 @@ export type AppConnectionGcp = import("./appConnectionGcp").AppConnectionGcp;
 export const AppConnectionGcp: typeof import("./appConnectionGcp").AppConnectionGcp = null as any;
 utilities.lazyLoad(exports, ["AppConnectionGcp"], () => require("./appConnectionGcp"));
 
+export { AppConnectionGitlabArgs, AppConnectionGitlabState } from "./appConnectionGitlab";
+export type AppConnectionGitlab = import("./appConnectionGitlab").AppConnectionGitlab;
+export const AppConnectionGitlab: typeof import("./appConnectionGitlab").AppConnectionGitlab = null as any;
+utilities.lazyLoad(exports, ["AppConnectionGitlab"], () => require("./appConnectionGitlab"));
+
+export { AppConnectionLdapArgs, AppConnectionLdapState } from "./appConnectionLdap";
+export type AppConnectionLdap = import("./appConnectionLdap").AppConnectionLdap;
+export const AppConnectionLdap: typeof import("./appConnectionLdap").AppConnectionLdap = null as any;
+utilities.lazyLoad(exports, ["AppConnectionLdap"], () => require("./appConnectionLdap"));
+
 export { AppConnectionMssqlArgs, AppConnectionMssqlState } from "./appConnectionMssql";
 export type AppConnectionMssql = import("./appConnectionMssql").AppConnectionMssql;
 export const AppConnectionMssql: typeof import("./appConnectionMssql").AppConnectionMssql = null as any;
@@ -89,6 +99,16 @@ export { DynamicSecretKubernetesArgs, DynamicSecretKubernetesState } from "./dyn
 export type DynamicSecretKubernetes = import("./dynamicSecretKubernetes").DynamicSecretKubernetes;
 export const DynamicSecretKubernetes: typeof import("./dynamicSecretKubernetes").DynamicSecretKubernetes = null as any;
 utilities.lazyLoad(exports, ["DynamicSecretKubernetes"], () => require("./dynamicSecretKubernetes"));
+
+export { DynamicSecretMongoAtlasArgs, DynamicSecretMongoAtlasState } from "./dynamicSecretMongoAtlas";
+export type DynamicSecretMongoAtlas = import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas;
+export const DynamicSecretMongoAtlas: typeof import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretMongoAtlas"], () => require("./dynamicSecretMongoAtlas"));
+
+export { DynamicSecretMongoDbArgs, DynamicSecretMongoDbState } from "./dynamicSecretMongoDb";
+export type DynamicSecretMongoDb = import("./dynamicSecretMongoDb").DynamicSecretMongoDb;
+export const DynamicSecretMongoDb: typeof import("./dynamicSecretMongoDb").DynamicSecretMongoDb = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretMongoDb"], () => require("./dynamicSecretMongoDb"));
 
 export { DynamicSecretSqlDatabaseArgs, DynamicSecretSqlDatabaseState } from "./dynamicSecretSqlDatabase";
 export type DynamicSecretSqlDatabase = import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase;
@@ -270,6 +290,11 @@ export type SecretRotationAzureClientSecret = import("./secretRotationAzureClien
 export const SecretRotationAzureClientSecret: typeof import("./secretRotationAzureClientSecret").SecretRotationAzureClientSecret = null as any;
 utilities.lazyLoad(exports, ["SecretRotationAzureClientSecret"], () => require("./secretRotationAzureClientSecret"));
 
+export { SecretRotationLdapPasswordArgs, SecretRotationLdapPasswordState } from "./secretRotationLdapPassword";
+export type SecretRotationLdapPassword = import("./secretRotationLdapPassword").SecretRotationLdapPassword;
+export const SecretRotationLdapPassword: typeof import("./secretRotationLdapPassword").SecretRotationLdapPassword = null as any;
+utilities.lazyLoad(exports, ["SecretRotationLdapPassword"], () => require("./secretRotationLdapPassword"));
+
 export { SecretRotationMssqlCredentialsArgs, SecretRotationMssqlCredentialsState } from "./secretRotationMssqlCredentials";
 export type SecretRotationMssqlCredentials = import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials;
 export const SecretRotationMssqlCredentials: typeof import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials = null as any;
@@ -355,6 +380,11 @@ export type SecretSyncGithub = import("./secretSyncGithub").SecretSyncGithub;
 export const SecretSyncGithub: typeof import("./secretSyncGithub").SecretSyncGithub = null as any;
 utilities.lazyLoad(exports, ["SecretSyncGithub"], () => require("./secretSyncGithub"));
 
+export { SecretSyncGitlabArgs, SecretSyncGitlabState } from "./secretSyncGitlab";
+export type SecretSyncGitlab = import("./secretSyncGitlab").SecretSyncGitlab;
+export const SecretSyncGitlab: typeof import("./secretSyncGitlab").SecretSyncGitlab = null as any;
+utilities.lazyLoad(exports, ["SecretSyncGitlab"], () => require("./secretSyncGitlab"));
+
 export { SecretSyncRenderArgs, SecretSyncRenderState } from "./secretSyncRender";
 export type SecretSyncRender = import("./secretSyncRender").SecretSyncRender;
 export const SecretSyncRender: typeof import("./secretSyncRender").SecretSyncRender = null as any;
@@ -402,6 +432,10 @@ const _module = {
                 return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
                 return new AppConnectionGcp(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionGitlab:AppConnectionGitlab":
+                return new AppConnectionGitlab(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionLdap:AppConnectionLdap":
+                return new AppConnectionLdap(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMssql:AppConnectionMssql":
                 return new AppConnectionMssql(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMysql:AppConnectionMysql":
@@ -418,6 +452,10 @@ const _module = {
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
                 return new DynamicSecretKubernetes(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretMongoAtlas:DynamicSecretMongoAtlas":
+                return new DynamicSecretMongoAtlas(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretMongoDb:DynamicSecretMongoDb":
+                return new DynamicSecretMongoDb(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretSqlDatabase:DynamicSecretSqlDatabase":
                 return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
@@ -476,6 +514,8 @@ const _module = {
                 return new SecretRotationAwsIamUserSecret(name, <any>undefined, { urn })
             case "infisical:index/secretRotationAzureClientSecret:SecretRotationAzureClientSecret":
                 return new SecretRotationAzureClientSecret(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationLdapPassword:SecretRotationLdapPassword":
+                return new SecretRotationLdapPassword(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMssqlCredentials:SecretRotationMssqlCredentials":
                 return new SecretRotationMssqlCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMysqlCredentials:SecretRotationMysqlCredentials":
@@ -510,6 +550,8 @@ const _module = {
                 return new SecretSyncGcpSecretManager(name, <any>undefined, { urn })
             case "infisical:index/secretSyncGithub:SecretSyncGithub":
                 return new SecretSyncGithub(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncGitlab:SecretSyncGitlab":
+                return new SecretSyncGitlab(name, <any>undefined, { urn })
             case "infisical:index/secretSyncRender:SecretSyncRender":
                 return new SecretSyncRender(name, <any>undefined, { urn })
             case "infisical:index/secretSyncSupabase:SecretSyncSupabase":
@@ -530,6 +572,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflar
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGitlab", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLdap", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb", _module)
@@ -538,6 +582,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", 
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
@@ -567,6 +613,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretFolder", _module
 pulumi.runtime.registerResourceModule("infisical", "index/secretImport", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUserSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLdapPassword", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationOracledbCredentials", _module)
@@ -584,6 +631,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncDatabricks",
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGcpSecretManager", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGithub", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGitlab", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)

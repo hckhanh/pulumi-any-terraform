@@ -37,47 +37,51 @@ export class SecretRotationMysqlCredentials extends pulumi.CustomResource {
     /**
      * Whether secrets should be automatically rotated.
      */
-    public readonly autoRotationEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoRotationEnabled: pulumi.Output<boolean>;
     /**
      * The ID of the connection to use for the secret rotation.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * The description of the secret rotation.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The slug of the project environment to rotate secrets from.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The name of the secret rotation.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Parameters to modify how secrets are rotated.
      */
-    public readonly parameters!: pulumi.Output<outputs.SecretRotationMysqlCredentialsParameters>;
+    declare public readonly parameters: pulumi.Output<outputs.SecretRotationMysqlCredentialsParameters>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * At which UTC time the rotation should occur.
      */
-    public readonly rotateAtUtc!: pulumi.Output<outputs.SecretRotationMysqlCredentialsRotateAtUtc>;
+    declare public readonly rotateAtUtc: pulumi.Output<outputs.SecretRotationMysqlCredentialsRotateAtUtc>;
     /**
      * How many days to wait between each rotation.
      */
-    public readonly rotationInterval!: pulumi.Output<number>;
+    declare public readonly rotationInterval: pulumi.Output<number>;
     /**
      * The folder path to rotate secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    public readonly secretsMapping!: pulumi.Output<outputs.SecretRotationMysqlCredentialsSecretsMapping>;
+    declare public readonly secretsMapping: pulumi.Output<outputs.SecretRotationMysqlCredentialsSecretsMapping>;
+    /**
+     * Temporary parameters to modify how secrets are rotated.
+     */
+    declare public readonly temporaryParameters: pulumi.Output<outputs.SecretRotationMysqlCredentialsTemporaryParameters | undefined>;
 
     /**
      * Create a SecretRotationMysqlCredentials resource with the given unique name, arguments, and options.
@@ -92,48 +96,50 @@ export class SecretRotationMysqlCredentials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretRotationMysqlCredentialsState | undefined;
-            resourceInputs["autoRotationEnabled"] = state ? state.autoRotationEnabled : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rotateAtUtc"] = state ? state.rotateAtUtc : undefined;
-            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
-            resourceInputs["secretsMapping"] = state ? state.secretsMapping : undefined;
+            resourceInputs["autoRotationEnabled"] = state?.autoRotationEnabled;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateAtUtc"] = state?.rotateAtUtc;
+            resourceInputs["rotationInterval"] = state?.rotationInterval;
+            resourceInputs["secretPath"] = state?.secretPath;
+            resourceInputs["secretsMapping"] = state?.secretsMapping;
+            resourceInputs["temporaryParameters"] = state?.temporaryParameters;
         } else {
             const args = argsOrState as SecretRotationMysqlCredentialsArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.parameters === undefined) && !opts.urn) {
+            if (args?.parameters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameters'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
-            if ((!args || args.secretsMapping === undefined) && !opts.urn) {
+            if (args?.secretsMapping === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretsMapping'");
             }
-            resourceInputs["autoRotationEnabled"] = args ? args.autoRotationEnabled : undefined;
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rotateAtUtc"] = args ? args.rotateAtUtc : undefined;
-            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
-            resourceInputs["secretsMapping"] = args ? args.secretsMapping : undefined;
+            resourceInputs["autoRotationEnabled"] = args?.autoRotationEnabled;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateAtUtc"] = args?.rotateAtUtc;
+            resourceInputs["rotationInterval"] = args?.rotationInterval;
+            resourceInputs["secretPath"] = args?.secretPath;
+            resourceInputs["secretsMapping"] = args?.secretsMapping;
+            resourceInputs["temporaryParameters"] = args?.temporaryParameters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretRotationMysqlCredentials.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -188,6 +194,10 @@ export interface SecretRotationMysqlCredentialsState {
      * Secret mappings to modify how secrets are rotated.
      */
     secretsMapping?: pulumi.Input<inputs.SecretRotationMysqlCredentialsSecretsMapping>;
+    /**
+     * Temporary parameters to modify how secrets are rotated.
+     */
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationMysqlCredentialsTemporaryParameters>;
 }
 
 /**
@@ -238,4 +248,8 @@ export interface SecretRotationMysqlCredentialsArgs {
      * Secret mappings to modify how secrets are rotated.
      */
     secretsMapping: pulumi.Input<inputs.SecretRotationMysqlCredentialsSecretsMapping>;
+    /**
+     * Temporary parameters to modify how secrets are rotated.
+     */
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationMysqlCredentialsTemporaryParameters>;
 }

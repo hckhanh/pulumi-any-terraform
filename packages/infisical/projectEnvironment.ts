@@ -35,19 +35,19 @@ export class ProjectEnvironment extends pulumi.CustomResource {
     /**
      * The name of the environment
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The position of the environment
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The slug of the environment
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a ProjectEnvironment resource with the given unique name, arguments, and options.
@@ -62,22 +62,22 @@ export class ProjectEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectEnvironmentState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as ProjectEnvironmentArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.slug === undefined) && !opts.urn) {
+            if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectEnvironment.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

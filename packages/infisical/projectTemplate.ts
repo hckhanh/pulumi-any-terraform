@@ -37,24 +37,24 @@ export class ProjectTemplate extends pulumi.CustomResource {
     /**
      * The description of the project template
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The environments for the project template
      */
-    public readonly environments!: pulumi.Output<outputs.ProjectTemplateEnvironment[] | undefined>;
+    declare public readonly environments: pulumi.Output<outputs.ProjectTemplateEnvironment[] | undefined>;
     /**
      * The name of the project template
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The roles for the project template
      */
-    public readonly roles!: pulumi.Output<outputs.ProjectTemplateRole[]>;
+    declare public readonly roles: pulumi.Output<outputs.ProjectTemplateRole[]>;
     /**
      * The type of the project template. Refer to the documentation here
      * https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ProjectTemplate resource with the given unique name, arguments, and options.
@@ -69,21 +69,21 @@ export class ProjectTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectTemplateState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environments"] = state ? state.environments : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ProjectTemplateArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environments"] = args?.environments;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectTemplate.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

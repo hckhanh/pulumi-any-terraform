@@ -37,28 +37,28 @@ export class Identity extends pulumi.CustomResource {
     /**
      * The authentication types of the identity
      */
-    public /*out*/ readonly authModes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly authModes: pulumi.Output<string[]>;
     /**
      * Whether the identity has delete protection, defaults to false
      */
-    public readonly hasDeleteProtection!: pulumi.Output<boolean>;
+    declare public readonly hasDeleteProtection: pulumi.Output<boolean>;
     /**
      * The metadata associated with this identity
      */
-    public readonly metadatas!: pulumi.Output<outputs.IdentityMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.IdentityMetadata[] | undefined>;
     /**
      * The name for the identity
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the organization for the identity
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created
      * custom roles, you can use their slugs as well.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a Identity resource with the given unique name, arguments, and options.
@@ -73,25 +73,25 @@ export class Identity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityState | undefined;
-            resourceInputs["authModes"] = state ? state.authModes : undefined;
-            resourceInputs["hasDeleteProtection"] = state ? state.hasDeleteProtection : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["authModes"] = state?.authModes;
+            resourceInputs["hasDeleteProtection"] = state?.hasDeleteProtection;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as IdentityArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["hasDeleteProtection"] = args ? args.hasDeleteProtection : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["hasDeleteProtection"] = args?.hasDeleteProtection;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["role"] = args?.role;
             resourceInputs["authModes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

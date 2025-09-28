@@ -37,23 +37,23 @@ export class AppConnectionFlyio extends pulumi.CustomResource {
     /**
      * The credentials for the Fly.io App Connection
      */
-    public readonly credentials!: pulumi.Output<outputs.AppConnectionFlyioCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.AppConnectionFlyioCredentials>;
     /**
      * The hash of the Fly.io App Connection credentials
      */
-    public /*out*/ readonly credentialsHash!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialsHash: pulumi.Output<string>;
     /**
      * An optional description for the Fly.io App Connection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The method used to authenticate with Fly.io. Possible values are: access-token
      */
-    public readonly method!: pulumi.Output<string>;
+    declare public readonly method: pulumi.Output<string>;
     /**
      * The name of the Fly.io App Connection to create. Must be slug-friendly
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a AppConnectionFlyio resource with the given unique name, arguments, and options.
@@ -68,23 +68,23 @@ export class AppConnectionFlyio extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppConnectionFlyioState | undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["credentialsHash"] = state ? state.credentialsHash : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["credentialsHash"] = state?.credentialsHash;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AppConnectionFlyioArgs | undefined;
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.method === undefined) && !opts.urn) {
+            if (args?.method === undefined && !opts.urn) {
                 throw new Error("Missing required property 'method'");
             }
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["name"] = args?.name;
             resourceInputs["credentialsHash"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

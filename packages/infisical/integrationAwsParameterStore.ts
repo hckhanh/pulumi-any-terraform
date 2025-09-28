@@ -38,49 +38,49 @@ export class IntegrationAwsParameterStore extends pulumi.CustomResource {
      * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly accessKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly assumeRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly assumeRoleArn: pulumi.Output<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
-    public readonly awsRegion!: pulumi.Output<string>;
+    declare public readonly awsRegion: pulumi.Output<string>;
     /**
      * The slug of the environment to sync to AWS Parameter Store (prod, dev, staging, etc).
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    public /*out*/ readonly integrationAuthId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationAuthId: pulumi.Output<string>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    public /*out*/ readonly integrationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
      * Integration options
      */
-    public readonly options!: pulumi.Output<outputs.IntegrationAwsParameterStoreOptions>;
+    declare public readonly options: pulumi.Output<outputs.IntegrationAwsParameterStoreOptions>;
     /**
      * The path in AWS Parameter Store to sync secrets to.
      */
-    public readonly parameterStorePath!: pulumi.Output<string>;
+    declare public readonly parameterStorePath: pulumi.Output<string>;
     /**
      * The ID of your Infisical project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
      * access_key_id, or set assume_role_arn to assume a role.
      */
-    public readonly secretAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly secretAccessKey: pulumi.Output<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    public readonly secretPath!: pulumi.Output<string>;
+    declare public readonly secretPath: pulumi.Output<string>;
 
     /**
      * Create a IntegrationAwsParameterStore resource with the given unique name, arguments, and options.
@@ -95,43 +95,43 @@ export class IntegrationAwsParameterStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationAwsParameterStoreState | undefined;
-            resourceInputs["accessKeyId"] = state ? state.accessKeyId : undefined;
-            resourceInputs["assumeRoleArn"] = state ? state.assumeRoleArn : undefined;
-            resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["integrationAuthId"] = state ? state.integrationAuthId : undefined;
-            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["parameterStorePath"] = state ? state.parameterStorePath : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["secretAccessKey"] = state ? state.secretAccessKey : undefined;
-            resourceInputs["secretPath"] = state ? state.secretPath : undefined;
+            resourceInputs["accessKeyId"] = state?.accessKeyId;
+            resourceInputs["assumeRoleArn"] = state?.assumeRoleArn;
+            resourceInputs["awsRegion"] = state?.awsRegion;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["integrationAuthId"] = state?.integrationAuthId;
+            resourceInputs["integrationId"] = state?.integrationId;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["parameterStorePath"] = state?.parameterStorePath;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["secretAccessKey"] = state?.secretAccessKey;
+            resourceInputs["secretPath"] = state?.secretPath;
         } else {
             const args = argsOrState as IntegrationAwsParameterStoreArgs | undefined;
-            if ((!args || args.awsRegion === undefined) && !opts.urn) {
+            if (args?.awsRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsRegion'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.parameterStorePath === undefined) && !opts.urn) {
+            if (args?.parameterStorePath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterStorePath'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.secretPath === undefined) && !opts.urn) {
+            if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
             resourceInputs["accessKeyId"] = args?.accessKeyId ? pulumi.secret(args.accessKeyId) : undefined;
-            resourceInputs["assumeRoleArn"] = args ? args.assumeRoleArn : undefined;
-            resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["parameterStorePath"] = args ? args.parameterStorePath : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["assumeRoleArn"] = args?.assumeRoleArn;
+            resourceInputs["awsRegion"] = args?.awsRegion;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["parameterStorePath"] = args?.parameterStorePath;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["secretAccessKey"] = args?.secretAccessKey ? pulumi.secret(args.secretAccessKey) : undefined;
-            resourceInputs["secretPath"] = args ? args.secretPath : undefined;
+            resourceInputs["secretPath"] = args?.secretPath;
             resourceInputs["integrationAuthId"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
         }

@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export class AppConnectionAws extends pulumi.CustomResource {
+export class AppConnectionGitlab extends pulumi.CustomResource {
     /**
-     * Get an existing AppConnectionAws resource's state with the given name, ID, and optional extra
+     * Get an existing AppConnectionGitlab resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,65 +16,65 @@ export class AppConnectionAws extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppConnectionAwsState, opts?: pulumi.CustomResourceOptions): AppConnectionAws {
-        return new AppConnectionAws(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppConnectionGitlabState, opts?: pulumi.CustomResourceOptions): AppConnectionGitlab {
+        return new AppConnectionGitlab(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'infisical:index/appConnectionAws:AppConnectionAws';
+    public static readonly __pulumiType = 'infisical:index/appConnectionGitlab:AppConnectionGitlab';
 
     /**
-     * Returns true if the given object is an instance of AppConnectionAws.  This is designed to work even
+     * Returns true if the given object is an instance of AppConnectionGitlab.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AppConnectionAws {
+    public static isInstance(obj: any): obj is AppConnectionGitlab {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AppConnectionAws.__pulumiType;
+        return obj['__pulumiType'] === AppConnectionGitlab.__pulumiType;
     }
 
     /**
-     * The credentials for the AWS App Connection
+     * The credentials for the GitLab App Connection
      */
-    declare public readonly credentials: pulumi.Output<outputs.AppConnectionAwsCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.AppConnectionGitlabCredentials>;
     /**
-     * The hash of the AWS App Connection credentials
+     * The hash of the GitLab App Connection credentials
      */
     declare public /*out*/ readonly credentialsHash: pulumi.Output<string>;
     /**
-     * An optional description for the AWS App Connection.
+     * An optional description for the GitLab App Connection.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The method used to authenticate with AWS. Possible values are: assume-role, access-key
+     * The method used to authenticate with GitLab. Possible values are: access-token
      */
     declare public readonly method: pulumi.Output<string>;
     /**
-     * The name of the AWS App Connection to create. Must be slug-friendly
+     * The name of the GitLab App Connection to create. Must be slug-friendly
      */
     declare public readonly name: pulumi.Output<string>;
 
     /**
-     * Create a AppConnectionAws resource with the given unique name, arguments, and options.
+     * Create a AppConnectionGitlab resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AppConnectionAwsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: AppConnectionAwsArgs | AppConnectionAwsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AppConnectionGitlabArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: AppConnectionGitlabArgs | AppConnectionGitlabState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AppConnectionAwsState | undefined;
+            const state = argsOrState as AppConnectionGitlabState | undefined;
             resourceInputs["credentials"] = state?.credentials;
             resourceInputs["credentialsHash"] = state?.credentialsHash;
             resourceInputs["description"] = state?.description;
             resourceInputs["method"] = state?.method;
             resourceInputs["name"] = state?.name;
         } else {
-            const args = argsOrState as AppConnectionAwsArgs | undefined;
+            const args = argsOrState as AppConnectionGitlabArgs | undefined;
             if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
@@ -88,54 +88,54 @@ export class AppConnectionAws extends pulumi.CustomResource {
             resourceInputs["credentialsHash"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppConnectionAws.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+        super(AppConnectionGitlab.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
 
 /**
- * Input properties used for looking up and filtering AppConnectionAws resources.
+ * Input properties used for looking up and filtering AppConnectionGitlab resources.
  */
-export interface AppConnectionAwsState {
+export interface AppConnectionGitlabState {
     /**
-     * The credentials for the AWS App Connection
+     * The credentials for the GitLab App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionAwsCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionGitlabCredentials>;
     /**
-     * The hash of the AWS App Connection credentials
+     * The hash of the GitLab App Connection credentials
      */
     credentialsHash?: pulumi.Input<string>;
     /**
-     * An optional description for the AWS App Connection.
+     * An optional description for the GitLab App Connection.
      */
     description?: pulumi.Input<string>;
     /**
-     * The method used to authenticate with AWS. Possible values are: assume-role, access-key
+     * The method used to authenticate with GitLab. Possible values are: access-token
      */
     method?: pulumi.Input<string>;
     /**
-     * The name of the AWS App Connection to create. Must be slug-friendly
+     * The name of the GitLab App Connection to create. Must be slug-friendly
      */
     name?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a AppConnectionAws resource.
+ * The set of arguments for constructing a AppConnectionGitlab resource.
  */
-export interface AppConnectionAwsArgs {
+export interface AppConnectionGitlabArgs {
     /**
-     * The credentials for the AWS App Connection
+     * The credentials for the GitLab App Connection
      */
-    credentials: pulumi.Input<inputs.AppConnectionAwsCredentials>;
+    credentials: pulumi.Input<inputs.AppConnectionGitlabCredentials>;
     /**
-     * An optional description for the AWS App Connection.
+     * An optional description for the GitLab App Connection.
      */
     description?: pulumi.Input<string>;
     /**
-     * The method used to authenticate with AWS. Possible values are: assume-role, access-key
+     * The method used to authenticate with GitLab. Possible values are: access-token
      */
     method: pulumi.Input<string>;
     /**
-     * The name of the AWS App Connection to create. Must be slug-friendly
+     * The name of the GitLab App Connection to create. Must be slug-friendly
      */
     name?: pulumi.Input<string>;
 }

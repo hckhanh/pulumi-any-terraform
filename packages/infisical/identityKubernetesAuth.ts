@@ -37,52 +37,52 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenMaxTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenMaxTtl: pulumi.Output<number>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    public readonly accessTokenNumUsesLimit!: pulumi.Output<number>;
+    declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
      * address..
      */
-    public readonly accessTokenTrustedIps!: pulumi.Output<outputs.IdentityKubernetesAuthAccessTokenTrustedIp[]>;
+    declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityKubernetesAuthAccessTokenTrustedIp[]>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
      * An optional audience claim that the service account JWT token must have to authenticate with Infisical.
      */
-    public readonly allowedAudience!: pulumi.Output<string>;
+    declare public readonly allowedAudience: pulumi.Output<string>;
     /**
      * List of trusted namespaces that service accounts must belong to authenticate with Infisical.
      */
-    public readonly allowedNamespaces!: pulumi.Output<string[]>;
+    declare public readonly allowedNamespaces: pulumi.Output<string[]>;
     /**
      * List of trusted service account names that are allowed to authenticate with Infisical.
      */
-    public readonly allowedServiceAccountNames!: pulumi.Output<string[]>;
+    declare public readonly allowedServiceAccountNames: pulumi.Output<string[]>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the
      * Kubernetes API server.
      */
-    public readonly kubernetesCaCertificate!: pulumi.Output<string>;
+    declare public readonly kubernetesCaCertificate: pulumi.Output<string>;
     /**
      * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by
      * running `kubectl cluster-info`.
      */
-    public readonly kubernetesHost!: pulumi.Output<string>;
+    declare public readonly kubernetesHost: pulumi.Output<string>;
     /**
      * A long-lived service account JWT token for Infisical to access the [TokenReview
      * API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other
      * service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
-    public readonly tokenReviewerJwt!: pulumi.Output<string>;
+    declare public readonly tokenReviewerJwt: pulumi.Output<string>;
 
     /**
      * Create a IdentityKubernetesAuth resource with the given unique name, arguments, and options.
@@ -97,39 +97,39 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityKubernetesAuthState | undefined;
-            resourceInputs["accessTokenMaxTtl"] = state ? state.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = state ? state.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = state ? state.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = state ? state.accessTokenTtl : undefined;
-            resourceInputs["allowedAudience"] = state ? state.allowedAudience : undefined;
-            resourceInputs["allowedNamespaces"] = state ? state.allowedNamespaces : undefined;
-            resourceInputs["allowedServiceAccountNames"] = state ? state.allowedServiceAccountNames : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["kubernetesCaCertificate"] = state ? state.kubernetesCaCertificate : undefined;
-            resourceInputs["kubernetesHost"] = state ? state.kubernetesHost : undefined;
-            resourceInputs["tokenReviewerJwt"] = state ? state.tokenReviewerJwt : undefined;
+            resourceInputs["accessTokenMaxTtl"] = state?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = state?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = state?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = state?.accessTokenTtl;
+            resourceInputs["allowedAudience"] = state?.allowedAudience;
+            resourceInputs["allowedNamespaces"] = state?.allowedNamespaces;
+            resourceInputs["allowedServiceAccountNames"] = state?.allowedServiceAccountNames;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["kubernetesCaCertificate"] = state?.kubernetesCaCertificate;
+            resourceInputs["kubernetesHost"] = state?.kubernetesHost;
+            resourceInputs["tokenReviewerJwt"] = state?.tokenReviewerJwt;
         } else {
             const args = argsOrState as IdentityKubernetesAuthArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            if ((!args || args.kubernetesHost === undefined) && !opts.urn) {
+            if (args?.kubernetesHost === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesHost'");
             }
-            if ((!args || args.tokenReviewerJwt === undefined) && !opts.urn) {
+            if (args?.tokenReviewerJwt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenReviewerJwt'");
             }
-            resourceInputs["accessTokenMaxTtl"] = args ? args.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = args ? args.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = args ? args.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = args ? args.accessTokenTtl : undefined;
-            resourceInputs["allowedAudience"] = args ? args.allowedAudience : undefined;
-            resourceInputs["allowedNamespaces"] = args ? args.allowedNamespaces : undefined;
-            resourceInputs["allowedServiceAccountNames"] = args ? args.allowedServiceAccountNames : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["kubernetesCaCertificate"] = args ? args.kubernetesCaCertificate : undefined;
-            resourceInputs["kubernetesHost"] = args ? args.kubernetesHost : undefined;
-            resourceInputs["tokenReviewerJwt"] = args ? args.tokenReviewerJwt : undefined;
+            resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = args?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = args?.accessTokenTtl;
+            resourceInputs["allowedAudience"] = args?.allowedAudience;
+            resourceInputs["allowedNamespaces"] = args?.allowedNamespaces;
+            resourceInputs["allowedServiceAccountNames"] = args?.allowedServiceAccountNames;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["kubernetesCaCertificate"] = args?.kubernetesCaCertificate;
+            resourceInputs["kubernetesHost"] = args?.kubernetesHost;
+            resourceInputs["tokenReviewerJwt"] = args?.tokenReviewerJwt;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityKubernetesAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

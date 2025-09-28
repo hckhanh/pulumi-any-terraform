@@ -35,15 +35,15 @@ export class Group extends pulumi.CustomResource {
     /**
      * The name of the group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The role of the group.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The slug of the group.
      */
-    public readonly slug!: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -58,20 +58,20 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.slug === undefined) && !opts.urn) {
+            if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

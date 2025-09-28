@@ -37,28 +37,28 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenMaxTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenMaxTtl: pulumi.Output<number>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    public readonly accessTokenNumUsesLimit!: pulumi.Output<number>;
+    declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
      * address..
      */
-    public readonly accessTokenTrustedIps!: pulumi.Output<outputs.IdentityAzureAuthAccessTokenTrustedIp[]>;
+    declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityAzureAuthAccessTokenTrustedIp[]>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    public readonly accessTokenTtl!: pulumi.Output<number>;
+    declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
      * List of Azure AD service principal IDs that are allowed to authenticate with Infisical
      */
-    public readonly allowedServicePrincipalIds!: pulumi.Output<string[]>;
+    declare public readonly allowedServicePrincipalIds: pulumi.Output<string[]>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    public readonly identityId!: pulumi.Output<string>;
+    declare public readonly identityId: pulumi.Output<string>;
     /**
      * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the
      * access token JWT later used in the login operation against Infisical. See the
@@ -66,11 +66,11 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
      * parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS)
      * endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
-    public readonly resourceUrl!: pulumi.Output<string>;
+    declare public readonly resourceUrl: pulumi.Output<string>;
     /**
      * The [tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for the Azure AD organization.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a IdentityAzureAuth resource with the given unique name, arguments, and options.
@@ -85,30 +85,30 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityAzureAuthState | undefined;
-            resourceInputs["accessTokenMaxTtl"] = state ? state.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = state ? state.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = state ? state.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = state ? state.accessTokenTtl : undefined;
-            resourceInputs["allowedServicePrincipalIds"] = state ? state.allowedServicePrincipalIds : undefined;
-            resourceInputs["identityId"] = state ? state.identityId : undefined;
-            resourceInputs["resourceUrl"] = state ? state.resourceUrl : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["accessTokenMaxTtl"] = state?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = state?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = state?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = state?.accessTokenTtl;
+            resourceInputs["allowedServicePrincipalIds"] = state?.allowedServicePrincipalIds;
+            resourceInputs["identityId"] = state?.identityId;
+            resourceInputs["resourceUrl"] = state?.resourceUrl;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as IdentityAzureAuthArgs | undefined;
-            if ((!args || args.identityId === undefined) && !opts.urn) {
+            if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["accessTokenMaxTtl"] = args ? args.accessTokenMaxTtl : undefined;
-            resourceInputs["accessTokenNumUsesLimit"] = args ? args.accessTokenNumUsesLimit : undefined;
-            resourceInputs["accessTokenTrustedIps"] = args ? args.accessTokenTrustedIps : undefined;
-            resourceInputs["accessTokenTtl"] = args ? args.accessTokenTtl : undefined;
-            resourceInputs["allowedServicePrincipalIds"] = args ? args.allowedServicePrincipalIds : undefined;
-            resourceInputs["identityId"] = args ? args.identityId : undefined;
-            resourceInputs["resourceUrl"] = args ? args.resourceUrl : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
+            resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
+            resourceInputs["accessTokenTrustedIps"] = args?.accessTokenTrustedIps;
+            resourceInputs["accessTokenTtl"] = args?.accessTokenTtl;
+            resourceInputs["allowedServicePrincipalIds"] = args?.allowedServicePrincipalIds;
+            resourceInputs["identityId"] = args?.identityId;
+            resourceInputs["resourceUrl"] = args?.resourceUrl;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityAzureAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

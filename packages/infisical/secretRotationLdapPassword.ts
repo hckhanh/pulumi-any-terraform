@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
+export class SecretRotationLdapPassword extends pulumi.CustomResource {
     /**
-     * Get an existing SecretRotationPostgresCredentials resource's state with the given name, ID, and optional extra
+     * Get an existing SecretRotationLdapPassword resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,22 +16,22 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecretRotationPostgresCredentialsState, opts?: pulumi.CustomResourceOptions): SecretRotationPostgresCredentials {
-        return new SecretRotationPostgresCredentials(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecretRotationLdapPasswordState, opts?: pulumi.CustomResourceOptions): SecretRotationLdapPassword {
+        return new SecretRotationLdapPassword(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'infisical:index/secretRotationPostgresCredentials:SecretRotationPostgresCredentials';
+    public static readonly __pulumiType = 'infisical:index/secretRotationLdapPassword:SecretRotationLdapPassword';
 
     /**
-     * Returns true if the given object is an instance of SecretRotationPostgresCredentials.  This is designed to work even
+     * Returns true if the given object is an instance of SecretRotationLdapPassword.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SecretRotationPostgresCredentials {
+    public static isInstance(obj: any): obj is SecretRotationLdapPassword {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SecretRotationPostgresCredentials.__pulumiType;
+        return obj['__pulumiType'] === SecretRotationLdapPassword.__pulumiType;
     }
 
     /**
@@ -57,7 +57,7 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
     /**
      * Parameters to modify how secrets are rotated.
      */
-    declare public readonly parameters: pulumi.Output<outputs.SecretRotationPostgresCredentialsParameters>;
+    declare public readonly parameters: pulumi.Output<outputs.SecretRotationLdapPasswordParameters>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
@@ -65,7 +65,7 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
     /**
      * At which UTC time the rotation should occur.
      */
-    declare public readonly rotateAtUtc: pulumi.Output<outputs.SecretRotationPostgresCredentialsRotateAtUtc>;
+    declare public readonly rotateAtUtc: pulumi.Output<outputs.SecretRotationLdapPasswordRotateAtUtc>;
     /**
      * How many days to wait between each rotation.
      */
@@ -77,25 +77,25 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    declare public readonly secretsMapping: pulumi.Output<outputs.SecretRotationPostgresCredentialsSecretsMapping>;
+    declare public readonly secretsMapping: pulumi.Output<outputs.SecretRotationLdapPasswordSecretsMapping>;
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    declare public readonly temporaryParameters: pulumi.Output<outputs.SecretRotationPostgresCredentialsTemporaryParameters | undefined>;
+    declare public readonly temporaryParameters: pulumi.Output<outputs.SecretRotationLdapPasswordTemporaryParameters | undefined>;
 
     /**
-     * Create a SecretRotationPostgresCredentials resource with the given unique name, arguments, and options.
+     * Create a SecretRotationLdapPassword resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SecretRotationPostgresCredentialsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SecretRotationPostgresCredentialsArgs | SecretRotationPostgresCredentialsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SecretRotationLdapPasswordArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SecretRotationLdapPasswordArgs | SecretRotationLdapPasswordState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SecretRotationPostgresCredentialsState | undefined;
+            const state = argsOrState as SecretRotationLdapPasswordState | undefined;
             resourceInputs["autoRotationEnabled"] = state?.autoRotationEnabled;
             resourceInputs["connectionId"] = state?.connectionId;
             resourceInputs["description"] = state?.description;
@@ -109,7 +109,7 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
             resourceInputs["secretsMapping"] = state?.secretsMapping;
             resourceInputs["temporaryParameters"] = state?.temporaryParameters;
         } else {
-            const args = argsOrState as SecretRotationPostgresCredentialsArgs | undefined;
+            const args = argsOrState as SecretRotationLdapPasswordArgs | undefined;
             if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
@@ -142,14 +142,14 @@ export class SecretRotationPostgresCredentials extends pulumi.CustomResource {
             resourceInputs["temporaryParameters"] = args?.temporaryParameters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SecretRotationPostgresCredentials.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+        super(SecretRotationLdapPassword.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
 
 /**
- * Input properties used for looking up and filtering SecretRotationPostgresCredentials resources.
+ * Input properties used for looking up and filtering SecretRotationLdapPassword resources.
  */
-export interface SecretRotationPostgresCredentialsState {
+export interface SecretRotationLdapPasswordState {
     /**
      * Whether secrets should be automatically rotated.
      */
@@ -173,7 +173,7 @@ export interface SecretRotationPostgresCredentialsState {
     /**
      * Parameters to modify how secrets are rotated.
      */
-    parameters?: pulumi.Input<inputs.SecretRotationPostgresCredentialsParameters>;
+    parameters?: pulumi.Input<inputs.SecretRotationLdapPasswordParameters>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
@@ -181,7 +181,7 @@ export interface SecretRotationPostgresCredentialsState {
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationPostgresCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationLdapPasswordRotateAtUtc>;
     /**
      * How many days to wait between each rotation.
      */
@@ -193,17 +193,17 @@ export interface SecretRotationPostgresCredentialsState {
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    secretsMapping?: pulumi.Input<inputs.SecretRotationPostgresCredentialsSecretsMapping>;
+    secretsMapping?: pulumi.Input<inputs.SecretRotationLdapPasswordSecretsMapping>;
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationPostgresCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationLdapPasswordTemporaryParameters>;
 }
 
 /**
- * The set of arguments for constructing a SecretRotationPostgresCredentials resource.
+ * The set of arguments for constructing a SecretRotationLdapPassword resource.
  */
-export interface SecretRotationPostgresCredentialsArgs {
+export interface SecretRotationLdapPasswordArgs {
     /**
      * Whether secrets should be automatically rotated.
      */
@@ -227,7 +227,7 @@ export interface SecretRotationPostgresCredentialsArgs {
     /**
      * Parameters to modify how secrets are rotated.
      */
-    parameters: pulumi.Input<inputs.SecretRotationPostgresCredentialsParameters>;
+    parameters: pulumi.Input<inputs.SecretRotationLdapPasswordParameters>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
@@ -235,7 +235,7 @@ export interface SecretRotationPostgresCredentialsArgs {
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationPostgresCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationLdapPasswordRotateAtUtc>;
     /**
      * How many days to wait between each rotation.
      */
@@ -247,9 +247,9 @@ export interface SecretRotationPostgresCredentialsArgs {
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    secretsMapping: pulumi.Input<inputs.SecretRotationPostgresCredentialsSecretsMapping>;
+    secretsMapping: pulumi.Input<inputs.SecretRotationLdapPasswordSecretsMapping>;
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationPostgresCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationLdapPasswordTemporaryParameters>;
 }

@@ -35,27 +35,27 @@ export class SecretFolder extends pulumi.CustomResource {
     /**
      * The ID of the environment
      */
-    public /*out*/ readonly environmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly environmentId: pulumi.Output<string>;
     /**
      * The environment slug of the folder to modify/create
      */
-    public readonly environmentSlug!: pulumi.Output<string>;
+    declare public readonly environmentSlug: pulumi.Output<string>;
     /**
      * The path where the folder should be created/updated
      */
-    public readonly folderPath!: pulumi.Output<string>;
+    declare public readonly folderPath: pulumi.Output<string>;
     /**
      * The name for the folder
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The full path of the folder, including its name.
      */
-    public /*out*/ readonly path!: pulumi.Output<string>;
+    declare public /*out*/ readonly path: pulumi.Output<string>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a SecretFolder resource with the given unique name, arguments, and options.
@@ -70,27 +70,27 @@ export class SecretFolder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretFolderState | undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["environmentSlug"] = state ? state.environmentSlug : undefined;
-            resourceInputs["folderPath"] = state ? state.folderPath : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["environmentSlug"] = state?.environmentSlug;
+            resourceInputs["folderPath"] = state?.folderPath;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as SecretFolderArgs | undefined;
-            if ((!args || args.environmentSlug === undefined) && !opts.urn) {
+            if (args?.environmentSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentSlug'");
             }
-            if ((!args || args.folderPath === undefined) && !opts.urn) {
+            if (args?.folderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["environmentSlug"] = args ? args.environmentSlug : undefined;
-            resourceInputs["folderPath"] = args ? args.folderPath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["environmentSlug"] = args?.environmentSlug;
+            resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;
         }

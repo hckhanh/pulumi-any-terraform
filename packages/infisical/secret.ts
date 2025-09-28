@@ -37,29 +37,34 @@ export class Secret extends pulumi.CustomResource {
     /**
      * The environment slug of the secret to modify/create
      */
-    public readonly envSlug!: pulumi.Output<string>;
+    declare public readonly envSlug: pulumi.Output<string>;
     /**
      * The path to the folder where the given secret resides
      */
-    public readonly folderPath!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public readonly folderPath: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * The name of the secret
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly secretReminder!: pulumi.Output<outputs.SecretSecretReminder | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly secretReminder: pulumi.Output<outputs.SecretSecretReminder | undefined>;
     /**
      * Tag ids to be attached for the secrets.
      */
-    public readonly tagIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly tagIds: pulumi.Output<string[] | undefined>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if `value_wo` is not set.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
+    declare public readonly valueWo: pulumi.Output<string | undefined>;
+    /**
+     * Used together with value_wo to trigger an update. Increment this value when an update to the value_wo is required.
+     */
+    declare public readonly valueWoVersion: pulumi.Output<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -74,32 +79,33 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            resourceInputs["envSlug"] = state ? state.envSlug : undefined;
-            resourceInputs["folderPath"] = state ? state.folderPath : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secretReminder"] = state ? state.secretReminder : undefined;
-            resourceInputs["tagIds"] = state ? state.tagIds : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["envSlug"] = state?.envSlug;
+            resourceInputs["folderPath"] = state?.folderPath;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secretReminder"] = state?.secretReminder;
+            resourceInputs["tagIds"] = state?.tagIds;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["valueWo"] = state?.valueWo;
+            resourceInputs["valueWoVersion"] = state?.valueWoVersion;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.envSlug === undefined) && !opts.urn) {
+            if (args?.envSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envSlug'");
             }
-            if ((!args || args.folderPath === undefined) && !opts.urn) {
+            if (args?.folderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
-            resourceInputs["envSlug"] = args ? args.envSlug : undefined;
-            resourceInputs["folderPath"] = args ? args.folderPath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secretReminder"] = args ? args.secretReminder : undefined;
-            resourceInputs["tagIds"] = args ? args.tagIds : undefined;
+            resourceInputs["envSlug"] = args?.envSlug;
+            resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secretReminder"] = args?.secretReminder;
+            resourceInputs["tagIds"] = args?.tagIds;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["valueWo"] = args?.valueWo;
+            resourceInputs["valueWoVersion"] = args?.valueWoVersion;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -132,9 +138,14 @@ export interface SecretState {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if `value_wo` is not set.
      */
     value?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string>;
+    /**
+     * Used together with value_wo to trigger an update. Increment this value when an update to the value_wo is required.
+     */
+    valueWoVersion?: pulumi.Input<number>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
@@ -163,9 +174,14 @@ export interface SecretArgs {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if `value_wo` is not set.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string>;
+    /**
+     * Used together with value_wo to trigger an update. Increment this value when an update to the value_wo is required.
+     */
+    valueWoVersion?: pulumi.Input<number>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
