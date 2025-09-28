@@ -2,11 +2,14 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
+      "outputs": ["{projectRoot}/bin"],
+      "dependsOn": ["^build"],
       "cache": true
     }
   },
   "namedInputs": {
     "sources": ["{projectRoot}/package.json", "{projectRoot}/**/*.ts"],
+    "sources:all": ["{projectRoot}/**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts}"],
     "syncpack": [
       "{projectRoot}/package.json",
       "{workspaceRoot}/.syncpackrc.json",
@@ -16,23 +19,22 @@
       "{workspaceRoot}/**/package.json",
       "{workspaceRoot}/.syncpackrc.json",
       { "externalDependencies": ["syncpack"] }
-    ]
+    ],
+    "prettier": [
+      "sources:all",
+      "{workspaceRoot}/.prettierrc",
+      "{projectRoot}/**/*.{yml,yaml,json,md,html,css}",
+      "!{projectRoot}/package.json",
+      { "externalDependencies": ["prettier"] }
+    ],
+    "prettier:root": ["prettier", "!{workspaceRoot}/packages/**"]
   },
   "plugins": [
-    {
-      "plugin": "@nx/js/typescript",
-      "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        },
-        "build": {
-          "targetName": "build",
-          "configName": "tsconfig.json",
-          "buildDepsName": "build-deps",
-          "watchDepsName": "watch-deps"
-        }
-      }
-    }
+    "./tools/audit.ts",
+    "./tools/build.ts",
+    "./tools/linter.ts",
+    "./tools/prettier.ts",
+    "./tools/syncpack.ts"
   ],
   "release": {
     "projects": ["packages/**/*"],

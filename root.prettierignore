@@ -1,0 +1,5 @@
+packages
+pnpm-lock.yaml
+
+.nx
+.idea

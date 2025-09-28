@@ -2,51 +2,18 @@
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "name": "root",
   "projectType": "library",
-  "namedInputs": {
-    "syncpack": [
-      "{projectRoot}/package.json",
-      "{workspaceRoot}/.syncpackrc.json"
-    ]
-  },
   "targets": {
-    "syncpack:fix": {
-      "command": "pnpm syncpack fix",
-      "inputs": ["syncpack:workspace"],
-      "cache": true,
+    "prettier:check": {
+      "inputs": ["prettier:root"],
       "options": {
-        "source": "{projectRoot}/package.json"
-      }
-    },
-    "syncpack:format": {
-      "command": "pnpm syncpack format",
-      "inputs": ["syncpack"],
-      "cache": true,
-      "dependsOn": ["syncpack:fix"],
-      "options": {
-        "source": "{projectRoot}/package.json"
-      }
-    },
-    "syncpack:format:check": {
-      "command": "pnpm syncpack format --check",
-      "inputs": ["syncpack"],
-      "cache": true,
-      "options": {
-        "source": "{projectRoot}/package.json"
-      }
-    },
-    "syncpack:lint": {
-      "command": "pnpm syncpack lint",
-      "inputs": ["syncpack:workspace"],
-      "cache": true,
-      "options": {
-        "source": "{projectRoot}/package.json"
+        "ignore-path": "root.prettierignore"
       }
     },
     "prettier:write": {
-      "command": "pnpm prettier --write ."
-    },
-    "fix": {
-      "dependsOn": ["syncpack:format", "prettier:write"]
+      "inputs": ["prettier:root"],
+      "options": {
+        "ignore-path": "root.prettierignore"
+      }
     }
   }
 }

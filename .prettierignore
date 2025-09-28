@@ -2,10 +2,9 @@
 pnpm-lock.yaml
 **/package.json
 
-# TypeScript
-**/*.ts
-**/*.js
-**/tsconfig.json
+# Generated packages
+packages/**/*.{js,ts}
+packages/**/tsconfig.{js,ts}
 
 # Nx
 /.nx/cache
