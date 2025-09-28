@@ -1,3 +1,55 @@
+## 0.9.0 (2025-09-28)
+
+### 🚀 Features
+
+- This minor release adds new DNS script functionality and enhances existing DNS record capabilities in the Bunny.net Pulumi provider by: ([#53](https://github.com/hckhanh/pulumi-any-terraform/pull/53))
+
+  1. **New DNS Script Resources**: Added support for DNS scripts and their environment variables for advanced DNS management
+  2. **Enhanced DNS Record Management**: Improved DNS record properties with pullzone linking and API alignment
+  3. **Provider Updates**: Updated to Bunny.net provider version 0.10.0 with improved build tooling
+  #### New Features
+  ##### DNS Script Management
+  - **`DnsScript` Resource**: Create and manage DNS scripts with content and automatic release tracking
+    - Properties: `content` (script code), `name`, `dnsScriptId` (output), `release` (output)
+    - Enables programmable DNS behavior and custom routing logic
+  - **`DnsScriptVariable` Resource**: Manage environment variables for DNS scripts
+    - Properties: `name`, `value`, `script` (DNS script ID), `dnsScriptVariableId` (output)
+    - Supports dynamic configuration of DNS script behavior
+  ##### DNS Record Enhancements
+  - **API Alignment**: Updated DNS record properties to match latest Bunny.net API
+    - `linkName` changed from input to computed output property
+    - Added `pullzoneId` input property for explicit pullzone linking
+    - Enhanced cache vary options with new `state` option alongside existing `avif`, `cookie`, `country`, `hostname`, `mobile`, `querystring`, `webp`
+  #### Technical Improvements
+  ##### Provider Updates
+  - **Version Upgrade**: Updated from Bunny.net provider v0.8.1 to v0.10.0
+  - **Build Enhancement**: Improved TypeScript compilation in postinstall script with automatic `@types` package detection
+  - **Type Safety**: Enhanced TypeScript configuration with proper type declarations
+  ##### Code Quality
+  - **Export Management**: Added proper exports for new DNS script resources in index.ts
+  - **Resource Registration**: Updated Pulumi runtime registration for new resource types
+  - **Documentation**: Added comprehensive JSDoc comments for all new properties and methods
+  #### Files Modified
+  ##### New Files
+  - `dnsScript.ts` - DNS script resource implementation
+  - `dnsScriptVariable.ts` - DNS script variable resource implementation
+  ##### Updated Files
+  - `dnsRecord.ts` - Enhanced with pullzone linking and updated property model
+  - `pullzone.ts` - Added new cache vary option (`state`)
+  - `index.ts` - Added exports for new DNS script resources
+  - `package.json` - Updated provider version and parameterization
+  - `scripts/postinstall.js` - Enhanced build script with automatic type detection
+  - `tsconfig.json` - Added new files to compilation
+  - `utilities.ts` - Updated provider version references
+  #### Breaking Changes
+  None — all changes are additive or enhance existing functionality.
+  #### Impact
+  This release significantly expands DNS management capabilities, enabling users to implement custom DNS logic through scripts while maintaining full compatibility with existing configurations. The enhanced DNS record management provides better integration with Bunny.net's pullzone features.
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.8.8 (2025-08-26)
 
 ### 🩹 Fixes
