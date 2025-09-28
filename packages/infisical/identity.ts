@@ -55,8 +55,7 @@ export class Identity extends pulumi.CustomResource {
      */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created
-     * custom roles, you can use their slugs as well.
+     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created custom roles, you can use their slugs as well.
      */
     declare public readonly role: pulumi.Output<string>;
 
@@ -124,8 +123,7 @@ export interface IdentityState {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created
-     * custom roles, you can use their slugs as well.
+     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created custom roles, you can use their slugs as well.
      */
     role?: pulumi.Input<string>;
 }
@@ -151,8 +149,7 @@ export interface IdentityArgs {
      */
     orgId: pulumi.Input<string>;
     /**
-     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created
-     * custom roles, you can use their slugs as well.
+     * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created custom roles, you can use their slugs as well.
      */
     role: pulumi.Input<string>;
 }

@@ -255,10 +255,8 @@ export type ProjectUser = import("./projectUser").ProjectUser;
 export const ProjectUser: typeof import("./projectUser").ProjectUser = null as any;
 utilities.lazyLoad(exports, ["ProjectUser"], () => require("./projectUser"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;

@@ -43,8 +43,7 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address...
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityOidcAuthAccessTokenTrustedIp[]>;
     /**
@@ -68,8 +67,7 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
      */
     declare public readonly boundSubject: pulumi.Output<string>;
     /**
-     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become
-     * identity.metadata.oidc.claims.role
+     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become identity.metadata.oidc.claims.role
      */
     declare public readonly claimMetadataMapping: pulumi.Output<{[key: string]: string}>;
     /**
@@ -152,8 +150,7 @@ export interface IdentityOidcAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address...
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[]>;
     /**
@@ -177,8 +174,7 @@ export interface IdentityOidcAuthState {
      */
     boundSubject?: pulumi.Input<string>;
     /**
-     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become
-     * identity.metadata.oidc.claims.role
+     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become identity.metadata.oidc.claims.role
      */
     claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -208,8 +204,7 @@ export interface IdentityOidcAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address...
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[]>;
     /**
@@ -233,8 +228,7 @@ export interface IdentityOidcAuthArgs {
      */
     boundSubject?: pulumi.Input<string>;
     /**
-     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become
-     * identity.metadata.oidc.claims.role
+     * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become identity.metadata.oidc.claims.role
      */
     claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -39,19 +39,15 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode,
-     * temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
      */
     declare public readonly isTemporary: pulumi.Output<boolean>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project identity specific privilege
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project identity specific privilege
      */
     declare public readonly permission: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermissionsV2[] | undefined>;
     /**
@@ -135,19 +131,15 @@ export interface ProjectIdentitySpecificPrivilegeState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode,
-     * temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
      */
     isTemporary?: pulumi.Input<boolean>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project identity specific privilege
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project identity specific privilege
      */
     permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
     /**
@@ -185,19 +177,15 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode,
-     * temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
      */
     isTemporary?: pulumi.Input<boolean>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project identity specific privilege
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project identity specific privilege
      */
     permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
     /**

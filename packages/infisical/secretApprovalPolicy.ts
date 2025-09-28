@@ -35,7 +35,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to allow the approvers to approve their own changes
+     * Whether to allow the  approvers to approve their own changes
      */
     declare public readonly allowSelfApproval: pulumi.Output<boolean>;
     /**
@@ -127,7 +127,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
  */
 export interface SecretApprovalPolicyState {
     /**
-     * Whether to allow the approvers to approve their own changes
+     * Whether to allow the  approvers to approve their own changes
      */
     allowSelfApproval?: pulumi.Input<boolean>;
     /**
@@ -169,7 +169,7 @@ export interface SecretApprovalPolicyState {
  */
 export interface SecretApprovalPolicyArgs {
     /**
-     * Whether to allow the approvers to approve their own changes
+     * Whether to allow the  approvers to approve their own changes
      */
     allowSelfApproval?: pulumi.Input<boolean>;
     /**

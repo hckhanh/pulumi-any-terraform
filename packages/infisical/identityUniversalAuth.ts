@@ -43,8 +43,7 @@ export class IdentityUniversalAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityUniversalAuthAccessTokenTrustedIp[]>;
     /**
@@ -52,8 +51,7 @@ export class IdentityUniversalAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access
-     * token. You can use 0.0.0.0/0, to allow usage from any network address.
+     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access token. You can use 0.0.0.0/0, to allow usage from any network address.
      */
     declare public readonly clientSecretTrustedIps: pulumi.Output<outputs.IdentityUniversalAuthClientSecretTrustedIp[]>;
     /**
@@ -110,8 +108,7 @@ export interface IdentityUniversalAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityUniversalAuthAccessTokenTrustedIp>[]>;
     /**
@@ -119,8 +116,7 @@ export interface IdentityUniversalAuthState {
      */
     accessTokenTtl?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access
-     * token. You can use 0.0.0.0/0, to allow usage from any network address.
+     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access token. You can use 0.0.0.0/0, to allow usage from any network address.
      */
     clientSecretTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityUniversalAuthClientSecretTrustedIp>[]>;
     /**
@@ -142,8 +138,7 @@ export interface IdentityUniversalAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityUniversalAuthAccessTokenTrustedIp>[]>;
     /**
@@ -151,8 +146,7 @@ export interface IdentityUniversalAuthArgs {
      */
     accessTokenTtl?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access
-     * token. You can use 0.0.0.0/0, to allow usage from any network address.
+     * A list of IPs or CIDR ranges that the Client Secret can be used from together with the Client ID to get back an access token. You can use 0.0.0.0/0, to allow usage from any network address.
      */
     clientSecretTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityUniversalAuthClientSecretTrustedIp>[]>;
     /**
