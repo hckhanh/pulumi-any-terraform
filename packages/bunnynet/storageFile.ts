@@ -61,8 +61,7 @@ export class StorageFile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
-     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the
-     * content directly.
+     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the content directly.
      */
     declare public readonly source: pulumi.Output<string | undefined>;
     /**
@@ -148,8 +147,7 @@ export interface StorageFileState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the
-     * content directly.
+     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the content directly.
      */
     source?: pulumi.Input<string>;
     /**
@@ -175,8 +173,7 @@ export interface StorageFileArgs {
      */
     path: pulumi.Input<string>;
     /**
-     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the
-     * content directly.
+     * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the content directly.
      */
     source?: pulumi.Input<string>;
     /**

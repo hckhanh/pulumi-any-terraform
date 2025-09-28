@@ -35,13 +35,7 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
     }
 
     /**
-     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
-     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
-     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
-     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
-     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
-     * `SetResponseHeader`, `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`, `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`, `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`, `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`, `SetStatusCode`
      */
     declare public readonly action: pulumi.Output<string | undefined>;
     declare public readonly actionParameter1: pulumi.Output<string | undefined>;
@@ -127,13 +121,7 @@ export class PullzoneEdgerule extends pulumi.CustomResource {
  */
 export interface PullzoneEdgeruleState {
     /**
-     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
-     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
-     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
-     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
-     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
-     * `SetResponseHeader`, `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`, `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`, `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`, `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`, `SetStatusCode`
      */
     action?: pulumi.Input<string>;
     actionParameter1?: pulumi.Input<string>;
@@ -168,13 +156,7 @@ export interface PullzoneEdgeruleState {
  */
 export interface PullzoneEdgeruleArgs {
     /**
-     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`,
-     * `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`,
-     * `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`,
-     * `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`,
-     * `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`,
-     * `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`,
-     * `SetResponseHeader`, `SetStatusCode`
+     * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableShield`, `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableTokenAuthentication`, `DisableWAF`, `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`, `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`, `SetStatusCode`
      */
     action?: pulumi.Input<string>;
     actionParameter1?: pulumi.Input<string>;

@@ -129,8 +129,7 @@ export class StreamLibrary extends pulumi.CustomResource {
      */
     declare public readonly playerCaptionsFontSize: pulumi.Output<number>;
     /**
-     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`,
-     * `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
+     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`, `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
      */
     declare public readonly playerControls: pulumi.Output<string[]>;
     /**
@@ -435,8 +434,7 @@ export interface StreamLibraryState {
      */
     playerCaptionsFontSize?: pulumi.Input<number>;
     /**
-     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`,
-     * `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
+     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`, `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
      */
     playerControls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -623,8 +621,7 @@ export interface StreamLibraryArgs {
      */
     playerCaptionsFontSize?: pulumi.Input<number>;
     /**
-     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`,
-     * `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
+     * Options: `airplay`, `captions`, `chromecast`, `current-time`, `duration`, `fast-forward`, `fullscreen`, `mute`, `pip`, `play`, `play-large`, `progress`, `rewind`, `settings`, `volume`
      */
     playerControls?: pulumi.Input<pulumi.Input<string>[]>;
     /**

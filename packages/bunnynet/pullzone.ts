@@ -39,13 +39,11 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly addCanonicalHeader: pulumi.Output<boolean>;
     /**
-     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     declare public readonly allowReferers: pulumi.Output<string[]>;
     /**
-     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected.
-     * If empty, all the IPs will be allowed
+     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected. If empty, all the IPs will be allowed
      */
     declare public readonly blockIps: pulumi.Output<string[]>;
     /**
@@ -57,8 +55,7 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly blockPostRequests: pulumi.Output<boolean>;
     /**
-     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     declare public readonly blockReferers: pulumi.Output<string[]>;
     /**
@@ -94,13 +91,11 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly cacheVaries: pulumi.Output<string[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not
-     * be used.
+     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     declare public readonly cacheVaryCookies: pulumi.Output<string[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be
-     * used to construct the key
+     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
     declare public readonly cacheVaryQuerystrings: pulumi.Output<string[]>;
     /**
@@ -313,8 +308,7 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly requestCoalescingEnabled: pulumi.Output<boolean>;
     /**
-     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined
-     * requests to the origin.
+     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined requests to the origin.
      */
     declare public readonly requestCoalescingTimeout: pulumi.Output<number>;
     declare public readonly routing: pulumi.Output<outputs.PullzoneRouting | undefined>;
@@ -592,13 +586,11 @@ export interface PullzoneState {
      */
     addCanonicalHeader?: pulumi.Input<boolean>;
     /**
-     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     allowReferers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected.
-     * If empty, all the IPs will be allowed
+     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected. If empty, all the IPs will be allowed
      */
     blockIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -610,8 +602,7 @@ export interface PullzoneState {
      */
     blockPostRequests?: pulumi.Input<boolean>;
     /**
-     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     blockReferers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -647,13 +638,11 @@ export interface PullzoneState {
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not
-     * be used.
+     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be
-     * used to construct the key
+     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
     cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -866,8 +855,7 @@ export interface PullzoneState {
      */
     requestCoalescingEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined
-     * requests to the origin.
+     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined requests to the origin.
      */
     requestCoalescingTimeout?: pulumi.Input<number>;
     routing?: pulumi.Input<inputs.PullzoneRouting>;
@@ -947,13 +935,11 @@ export interface PullzoneArgs {
      */
     addCanonicalHeader?: pulumi.Input<boolean>;
     /**
-     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     allowReferers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected.
-     * If empty, all the IPs will be allowed
+     * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected. If empty, all the IPs will be allowed
      */
     blockIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -965,8 +951,7 @@ export interface PullzoneArgs {
      */
     blockPostRequests?: pulumi.Input<boolean>;
     /**
-     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer:
-     * hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
+     * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
     blockReferers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1002,13 +987,11 @@ export interface PullzoneArgs {
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not
-     * be used.
+     * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be
-     * used to construct the key
+     * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
     cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1213,8 +1196,7 @@ export interface PullzoneArgs {
      */
     requestCoalescingEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined
-     * requests to the origin.
+     * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined requests to the origin.
      */
     requestCoalescingTimeout?: pulumi.Input<number>;
     routing?: pulumi.Input<inputs.PullzoneRouting>;

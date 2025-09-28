@@ -113,8 +113,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     declare public readonly value: pulumi.Output<string>;
     /**
-     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified
-     * weight.
+     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified weight.
      */
     declare public readonly weight: pulumi.Output<number>;
     /**
@@ -281,8 +280,7 @@ export interface DnsRecordState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified
-     * weight.
+     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified weight.
      */
     weight?: pulumi.Input<number>;
     /**
@@ -364,8 +362,7 @@ export interface DnsRecordArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified
-     * weight.
+     * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified weight.
      */
     weight?: pulumi.Input<number>;
     /**

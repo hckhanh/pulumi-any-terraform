@@ -90,10 +90,8 @@ export const getVideoLanguage: typeof import("./getVideoLanguage").getVideoLangu
 export const getVideoLanguageOutput: typeof import("./getVideoLanguage").getVideoLanguageOutput = null as any;
 utilities.lazyLoad(exports, ["getVideoLanguage","getVideoLanguageOutput"], () => require("./getVideoLanguage"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { PullzoneArgs, PullzoneState } from "./pullzone";
 export type Pullzone = import("./pullzone").Pullzone;
