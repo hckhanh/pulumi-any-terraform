@@ -9,6 +9,7 @@
   "private": true,
   "devDependencies": {
     "@nx/devkit": "21.5.3",
+    "@nx/js": "21.5.3",
     "@nx/s3-cache": "4.0.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.13.19",
