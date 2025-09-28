@@ -2,10 +2,9 @@ name: Publish
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - published
-      - prereleased
+  push:
+    tags:
+      - '*@*.*.*'
 
 env:
   NX_KEY: ${{ secrets.NX_KEY }}
