@@ -1,3 +1,21 @@
+## 0.9.1 (2025-09-28)
+
+### 🩹 Fixes
+
+- - Consolidate multi-line comments into single-line format for better readability across all resource files ([#65](https://github.com/hckhanh/pulumi-any-terraform/pull/65))
+
+  - Modernize TypeScript patterns using declare syntax for class properties
+  - Add terraformConfig method to Provider class for enhanced configuration
+  - Update package version from 0.8.0 to 0.14.0 with improved parameterization
+  - Improve export patterns in index.ts with cleaner provider imports
+  - Apply consistent code modernization across all 10 resource files including DNS records, pull zones, edge rules, hostnames, storage files, and stream libraries
+  - Enhance JSDoc comment formatting and accessibility
+  - Update utilities with version information for better package management
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.9.0 (2025-09-28)
 
 ### 🚀 Features

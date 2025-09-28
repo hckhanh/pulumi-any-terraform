@@ -1,3 +1,20 @@
+## 0.20.8 (2025-09-28)
+
+### 🩹 Fixes
+
+- - Modernize TypeScript patterns using declare syntax for class properties across all integration resources ([#62](https://github.com/hckhanh/pulumi-any-terraform/pull/62))
+
+  - Use optional chaining (`?.`) and modern destructuring patterns for cleaner code
+  - Consolidate multi-line comments into single-line format for better readability
+  - Improve TypeScript compilation with better type handling in postinstall script
+  - Update target to ES2020 for better compatibility
+  - Apply consistent code modernization across all 30+ resource files including AWS CloudWatch, Azure, Datadog, catalog, monitoring, and webhook integrations
+  - Enhance code consistency with standardized formatting and modern JavaScript patterns
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.20.7 (2025-08-26)
 
 ### 🩹 Fixes

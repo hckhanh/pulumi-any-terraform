@@ -1,3 +1,19 @@
+## 0.15.41 (2025-09-28)
+
+### 🩹 Fixes
+
+- - Consolidate multi-line comments into single-line format for better readability across all resource files ([1dfd316](https://github.com/hckhanh/pulumi-any-terraform/commit/1dfd316))
+
+  - Modernize TypeScript patterns using declare syntax for class properties
+  - Apply consistent code modernization across all 18 resource files including identity authentication methods (AWS, Azure, GCP, Kubernetes, OIDC, Universal), integrations (AWS Parameter Store, AWS Secrets Manager), and project management resources
+  - Improve documentation formatting and accessibility in JSDoc comments
+  - Enhance code consistency with standardized comment patterns
+  - Update configuration variables with cleaner comment structure
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.15.40 (2025-09-28)
 
 ### 🩹 Fixes
