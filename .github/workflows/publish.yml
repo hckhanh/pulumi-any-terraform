@@ -19,7 +19,6 @@ permissions:
 jobs:
   npm-packages:
     name: NPM Packages
-    if: ${{ github.actor != 'renovate[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -41,5 +40,4 @@ jobs:
       - name: Publish packages
         run: pnpm nx release publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
