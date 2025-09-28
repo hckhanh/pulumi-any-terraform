@@ -1,7 +1,7 @@
 {
   "name": "pulumi-logtail",
   "description": "A Pulumi provider for managing Logtail log management and analytics resources, dynamically bridged from the Terraform Logtail provider with support for sources, metrics, and log aggregation.",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",
