@@ -34,6 +34,12 @@ yarn add pulumi-namecheap
 pnpm add pulumi-namecheap
 ```
 
+### bun
+
+```bash
+bun add pulumi-namecheap
+```
+
 ## Configuration
 
 Before using the provider, you need to configure authentication with your Namecheap API credentials.

@@ -37,18 +37,18 @@ export class DomainRecords extends pulumi.CustomResource {
     /**
      * Purchased available domain name on your account
      */
-    public readonly domain!: pulumi.Output<string>;
-    public readonly domainRecordsId!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
+    declare public readonly domainRecordsId: pulumi.Output<string>;
     /**
      * Possible values: NONE, MXE, MX, FWD, OX, GMAIL
      */
-    public readonly emailType!: pulumi.Output<string | undefined>;
+    declare public readonly emailType: pulumi.Output<string | undefined>;
     /**
      * Possible values: MERGE (default), OVERWRITE
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
-    public readonly nameservers!: pulumi.Output<string[] | undefined>;
-    public readonly records!: pulumi.Output<outputs.DomainRecordsRecord[] | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
+    declare public readonly nameservers: pulumi.Output<string[] | undefined>;
+    declare public readonly records: pulumi.Output<outputs.DomainRecordsRecord[] | undefined>;
 
     /**
      * Create a DomainRecords resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class DomainRecords extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainRecordsState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["domainRecordsId"] = state ? state.domainRecordsId : undefined;
-            resourceInputs["emailType"] = state ? state.emailType : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["nameservers"] = state ? state.nameservers : undefined;
-            resourceInputs["records"] = state ? state.records : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["domainRecordsId"] = state?.domainRecordsId;
+            resourceInputs["emailType"] = state?.emailType;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["nameservers"] = state?.nameservers;
+            resourceInputs["records"] = state?.records;
         } else {
             const args = argsOrState as DomainRecordsArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["domainRecordsId"] = args ? args.domainRecordsId : undefined;
-            resourceInputs["emailType"] = args ? args.emailType : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["nameservers"] = args ? args.nameservers : undefined;
-            resourceInputs["records"] = args ? args.records : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["domainRecordsId"] = args?.domainRecordsId;
+            resourceInputs["emailType"] = args?.emailType;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["nameservers"] = args?.nameservers;
+            resourceInputs["records"] = args?.records;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainRecords.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

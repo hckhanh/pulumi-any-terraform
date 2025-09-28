@@ -10,10 +10,8 @@ export type DomainRecords = import("./domainRecords").DomainRecords;
 export const DomainRecords: typeof import("./domainRecords").DomainRecords = null as any;
 utilities.lazyLoad(exports, ["DomainRecords"], () => require("./domainRecords"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 
 // Export sub-modules:

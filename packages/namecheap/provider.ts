@@ -28,19 +28,19 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The namecheap API key
      */
-    public readonly apiKey!: pulumi.Output<string>;
+    declare public readonly apiKey: pulumi.Output<string>;
     /**
      * A registered api user for namecheap
      */
-    public readonly apiUser!: pulumi.Output<string>;
+    declare public readonly apiUser: pulumi.Output<string>;
     /**
      * Client IP address
      */
-    public readonly clientIp!: pulumi.Output<string | undefined>;
+    declare public readonly clientIp: pulumi.Output<string | undefined>;
     /**
      * A registered user name for namecheap
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -53,23 +53,33 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.apiKey === undefined) && !opts.urn) {
+            if (args?.apiKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiKey'");
             }
-            if ((!args || args.apiUser === undefined) && !opts.urn) {
+            if (args?.apiUser === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiUser'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["apiUser"] = args ? args.apiUser : undefined;
-            resourceInputs["clientIp"] = args ? args.clientIp : undefined;
-            resourceInputs["useSandbox"] = pulumi.output(args ? args.useSandbox : undefined).apply(JSON.stringify);
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["apiKey"] = args?.apiKey;
+            resourceInputs["apiUser"] = args?.apiUser;
+            resourceInputs["clientIp"] = args?.clientIp;
+            resourceInputs["useSandbox"] = pulumi.output(args?.useSandbox).apply(JSON.stringify);
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+    }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:namecheap/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
     }
 }
 
@@ -97,4 +107,14 @@ export interface ProviderArgs {
      * A registered user name for namecheap
      */
     userName: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }
