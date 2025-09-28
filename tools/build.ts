@@ -17,11 +17,10 @@ class BuildPlugin extends Plugin {
           targets: {
             build: {
               command: 'node ./scripts/postinstall.js',
-              inputs: ['sources'],
+              inputs: ['sources', { externalDependencies: ['typescript'] }],
               options: { cwd: '{projectRoot}' },
               metadata: {
-                description: 'Build the project.',
-                technologies: ['typescript'],
+                description: 'Builds the project with `postinstall.js` script.',
               },
             },
           },
