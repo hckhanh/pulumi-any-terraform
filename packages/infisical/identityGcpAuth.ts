@@ -43,8 +43,7 @@ export class IdentityGcpAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityGcpAuthAccessTokenTrustedIp[]>;
     /**
@@ -52,19 +51,15 @@ export class IdentityGcpAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenTtl: pulumi.Output<number>;
     /**
-     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation
-     * property will only work for GCE instances
+     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation property will only work for GCE instances
      */
     declare public readonly allowedProjects: pulumi.Output<string[]>;
     /**
-     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this
-     * could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
+     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
     declare public readonly allowedServiceAccountEmails: pulumi.Output<string[]>;
     /**
-     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the
-     * fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this
-     * validation property will only work for GCE instances.
+     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this validation property will only work for GCE instances.
      */
     declare public readonly allowedZones: pulumi.Output<string[]>;
     /**
@@ -131,8 +126,7 @@ export interface IdentityGcpAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[]>;
     /**
@@ -140,19 +134,15 @@ export interface IdentityGcpAuthState {
      */
     accessTokenTtl?: pulumi.Input<number>;
     /**
-     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation
-     * property will only work for GCE instances
+     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation property will only work for GCE instances
      */
     allowedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this
-     * could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
+     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
     allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the
-     * fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this
-     * validation property will only work for GCE instances.
+     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this validation property will only work for GCE instances.
      */
     allowedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -178,8 +168,7 @@ export interface IdentityGcpAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[]>;
     /**
@@ -187,19 +176,15 @@ export interface IdentityGcpAuthArgs {
      */
     accessTokenTtl?: pulumi.Input<number>;
     /**
-     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation
-     * property will only work for GCE instances
+     * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation property will only work for GCE instances
      */
     allowedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this
-     * could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
+     * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
     allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the
-     * fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this
-     * validation property will only work for GCE instances.
+     * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this validation property will only work for GCE instances.
      */
     allowedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -43,8 +43,7 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityKubernetesAuthAccessTokenTrustedIp[]>;
     /**
@@ -68,19 +67,15 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the
-     * Kubernetes API server.
+     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the Kubernetes API server.
      */
     declare public readonly kubernetesCaCertificate: pulumi.Output<string>;
     /**
-     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by
-     * running `kubectl cluster-info`.
+     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
     declare public readonly kubernetesHost: pulumi.Output<string>;
     /**
-     * A long-lived service account JWT token for Infisical to access the [TokenReview
-     * API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other
-     * service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
+     * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
     declare public readonly tokenReviewerJwt: pulumi.Output<string>;
 
@@ -149,8 +144,7 @@ export interface IdentityKubernetesAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[]>;
     /**
@@ -174,19 +168,15 @@ export interface IdentityKubernetesAuthState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the
-     * Kubernetes API server.
+     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the Kubernetes API server.
      */
     kubernetesCaCertificate?: pulumi.Input<string>;
     /**
-     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by
-     * running `kubectl cluster-info`.
+     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
     kubernetesHost?: pulumi.Input<string>;
     /**
-     * A long-lived service account JWT token for Infisical to access the [TokenReview
-     * API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other
-     * service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
+     * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
     tokenReviewerJwt?: pulumi.Input<string>;
 }
@@ -204,8 +194,7 @@ export interface IdentityKubernetesAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[]>;
     /**
@@ -229,19 +218,15 @@ export interface IdentityKubernetesAuthArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the
-     * Kubernetes API server.
+     * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the Kubernetes API server.
      */
     kubernetesCaCertificate?: pulumi.Input<string>;
     /**
-     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by
-     * running `kubectl cluster-info`.
+     * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
     kubernetesHost: pulumi.Input<string>;
     /**
-     * A long-lived service account JWT token for Infisical to access the [TokenReview
-     * API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other
-     * service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
+     * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
     tokenReviewerJwt: pulumi.Input<string>;
 }

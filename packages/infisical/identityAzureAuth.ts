@@ -43,8 +43,7 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityAzureAuthAccessTokenTrustedIp[]>;
     /**
@@ -60,11 +59,7 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the
-     * access token JWT later used in the login operation against Infisical. See the
-     * [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)
-     * parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS)
-     * endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     declare public readonly resourceUrl: pulumi.Output<string>;
     /**
@@ -128,8 +123,7 @@ export interface IdentityAzureAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[]>;
     /**
@@ -145,11 +139,7 @@ export interface IdentityAzureAuthState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the
-     * access token JWT later used in the login operation against Infisical. See the
-     * [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)
-     * parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS)
-     * endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     resourceUrl?: pulumi.Input<string>;
     /**
@@ -171,8 +161,7 @@ export interface IdentityAzureAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[]>;
     /**
@@ -188,11 +177,7 @@ export interface IdentityAzureAuthArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the
-     * access token JWT later used in the login operation against Infisical. See the
-     * [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)
-     * parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS)
-     * endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     resourceUrl?: pulumi.Input<string>;
     /**

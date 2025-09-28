@@ -51,8 +51,7 @@ export class ProjectTemplate extends pulumi.CustomResource {
      */
     declare public readonly roles: pulumi.Output<outputs.ProjectTemplateRole[]>;
     /**
-     * The type of the project template. Refer to the documentation here
-     * https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
+     * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -111,8 +110,7 @@ export interface ProjectTemplateState {
      */
     roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[]>;
     /**
-     * The type of the project template. Refer to the documentation here
-     * https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
+     * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     type?: pulumi.Input<string>;
 }
@@ -138,8 +136,7 @@ export interface ProjectTemplateArgs {
      */
     roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[]>;
     /**
-     * The type of the project template. Refer to the documentation here
-     * https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
+     * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     type: pulumi.Input<string>;
 }

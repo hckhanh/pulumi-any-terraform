@@ -43,8 +43,7 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
      */
     declare public readonly accessTokenNumUsesLimit: pulumi.Output<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     declare public readonly accessTokenTrustedIps: pulumi.Output<outputs.IdentityAwsAuthAccessTokenTrustedIp[]>;
     /**
@@ -56,10 +55,7 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
      */
     declare public readonly allowedAccountIds: pulumi.Output<string[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three
-     * forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or
-     * `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to
-     * authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
      */
     declare public readonly allowedPrincipalArns: pulumi.Output<string[]>;
     /**
@@ -67,9 +63,7 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g.
-     * `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints
-     * [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
+     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g. `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
     declare public readonly stsEndpoint: pulumi.Output<string>;
 
@@ -126,8 +120,7 @@ export interface IdentityAwsAuthState {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[]>;
     /**
@@ -139,10 +132,7 @@ export interface IdentityAwsAuthState {
      */
     allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three
-     * forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or
-     * `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to
-     * authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
      */
     allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -150,9 +140,7 @@ export interface IdentityAwsAuthState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g.
-     * `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints
-     * [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
+     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g. `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
     stsEndpoint?: pulumi.Input<string>;
 }
@@ -170,8 +158,7 @@ export interface IdentityAwsAuthArgs {
      */
     accessTokenNumUsesLimit?: pulumi.Input<number>;
     /**
-     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network
-     * address..
+     * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
     accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[]>;
     /**
@@ -183,10 +170,7 @@ export interface IdentityAwsAuthArgs {
      */
     allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three
-     * forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or
-     * `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to
-     * authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
      */
     allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -194,9 +178,7 @@ export interface IdentityAwsAuthArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g.
-     * `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints
-     * [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
+     * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g. `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
     stsEndpoint?: pulumi.Input<string>;
 }

@@ -35,13 +35,11 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
     }
 
     /**
-     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly assumeRoleArn: pulumi.Output<string | undefined>;
     /**
@@ -61,8 +59,7 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     /**
-     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to
-     * a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
+     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
     declare public readonly mappingBehavior: pulumi.Output<string>;
     /**
@@ -74,8 +71,7 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly secretAccessKey: pulumi.Output<string | undefined>;
     /**
@@ -151,13 +147,11 @@ export class IntegrationAwsSecretsManager extends pulumi.CustomResource {
  */
 export interface IntegrationAwsSecretsManagerState {
     /**
-     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     assumeRoleArn?: pulumi.Input<string>;
     /**
@@ -177,8 +171,7 @@ export interface IntegrationAwsSecretsManagerState {
      */
     integrationId?: pulumi.Input<string>;
     /**
-     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to
-     * a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
+     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
     mappingBehavior?: pulumi.Input<string>;
     /**
@@ -190,8 +183,7 @@ export interface IntegrationAwsSecretsManagerState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     secretAccessKey?: pulumi.Input<string>;
     /**
@@ -209,13 +201,11 @@ export interface IntegrationAwsSecretsManagerState {
  */
 export interface IntegrationAwsSecretsManagerArgs {
     /**
-     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     assumeRoleArn?: pulumi.Input<string>;
     /**
@@ -227,8 +217,7 @@ export interface IntegrationAwsSecretsManagerArgs {
      */
     environment: pulumi.Input<string>;
     /**
-     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to
-     * a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
+     * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
     mappingBehavior?: pulumi.Input<string>;
     /**
@@ -240,8 +229,7 @@ export interface IntegrationAwsSecretsManagerArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     secretAccessKey?: pulumi.Input<string>;
     /**

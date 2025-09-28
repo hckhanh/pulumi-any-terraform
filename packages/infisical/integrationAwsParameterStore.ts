@@ -35,13 +35,11 @@ export class IntegrationAwsParameterStore extends pulumi.CustomResource {
     }
 
     /**
-     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly assumeRoleArn: pulumi.Output<string | undefined>;
     /**
@@ -73,8 +71,7 @@ export class IntegrationAwsParameterStore extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     declare public readonly secretAccessKey: pulumi.Output<string | undefined>;
     /**
@@ -147,13 +144,11 @@ export class IntegrationAwsParameterStore extends pulumi.CustomResource {
  */
 export interface IntegrationAwsParameterStoreState {
     /**
-     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     assumeRoleArn?: pulumi.Input<string>;
     /**
@@ -185,8 +180,7 @@ export interface IntegrationAwsParameterStoreState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     secretAccessKey?: pulumi.Input<string>;
     /**
@@ -200,13 +194,11 @@ export interface IntegrationAwsParameterStoreState {
  */
 export interface IntegrationAwsParameterStoreArgs {
     /**
-     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     assumeRoleArn?: pulumi.Input<string>;
     /**
@@ -230,8 +222,7 @@ export interface IntegrationAwsParameterStoreArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and
-     * access_key_id, or set assume_role_arn to assume a role.
+     * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set secret_access_key and access_key_id, or set assume_role_arn to assume a role.
      */
     secretAccessKey?: pulumi.Input<string>;
     /**

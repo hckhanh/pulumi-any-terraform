@@ -36,9 +36,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly clientSecret: pulumi.Output<string | undefined>;
     /**
-     * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided,
-     * https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment
-     * variable
+     * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided, https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment variable
      */
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
@@ -68,6 +66,16 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:infisical/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
+    }
 }
 
 /**
@@ -87,13 +95,21 @@ export interface ProviderArgs {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided,
-     * https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment
-     * variable
+     * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided, https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment variable
      */
     host?: pulumi.Input<string>;
     /**
      * (DEPRECATED, Use machine identity auth), Used to fetch/modify secrets for a given project
      */
     serviceToken?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

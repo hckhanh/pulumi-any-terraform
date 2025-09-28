@@ -43,14 +43,11 @@ export class ProjectRole extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project role
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project role
      */
     declare public readonly permissions: pulumi.Output<outputs.ProjectRolePermission[] | undefined>;
     /**
-     * The permissions assigned to the project role. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project role. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectRolePermissionsV2[] | undefined>;
     /**
@@ -114,14 +111,11 @@ export interface ProjectRoleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project role
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project role
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[]>;
     /**
-     * The permissions assigned to the project role. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project role. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
     /**
@@ -147,14 +141,11 @@ export interface ProjectRoleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in
-     * https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned
-     * to the project role
+     * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project role
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[]>;
     /**
-     * The permissions assigned to the project role. Refer to the documentation here
-     * https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project role. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
     /**
