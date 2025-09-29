@@ -1,3 +1,13 @@
+## 0.9.2 (2025-09-29)
+
+### 🩹 Fixes
+
+- - Resource dns_record: `weight` automatically set to `null` for non-`A`/`AAAA`/`SRV` records ([dd2f87c](https://github.com/hckhanh/pulumi-any-terraform/commit/dd2f87c))
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.9.1 (2025-09-28)
 
 ### 🩹 Fixes
