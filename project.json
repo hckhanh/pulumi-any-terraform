@@ -3,18 +3,6 @@
   "name": "root",
   "projectType": "library",
   "targets": {
-    "prettier:check": {
-      "inputs": ["prettier:root"],
-      "options": {
-        "ignore-path": "root.prettierignore"
-      }
-    },
-    "prettier:write": {
-      "inputs": ["prettier:root"],
-      "options": {
-        "ignore-path": "root.prettierignore"
-      }
-    },
     "audit": {
       "command": "pnpm audit",
       "inputs": ["{projectRoot}/pnpm-lock.yaml"],
@@ -43,6 +31,18 @@
     },
     "fix": {
       "dependsOn": ["audit:fix", "syncpack:format", "prettier:write"]
+    },
+    "prettier:check": {
+      "inputs": ["prettier:root"],
+      "options": {
+        "ignore-path": "root.prettierignore"
+      }
+    },
+    "prettier:write": {
+      "inputs": ["prettier:root"],
+      "options": {
+        "ignore-path": "root.prettierignore"
+      }
     }
   }
 }
