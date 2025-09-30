@@ -1,0 +1,63 @@
+{
+  "name": "pulumi-portainer",
+  "description": "A Pulumi provider for managing Portainer container management platform resources, dynamically bridged from the Terraform Portainer provider with support for environments, stacks, users, teams, registries, and container orchestration.",
+  "version": "1.13.0",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/portainer"
+  },
+  "private": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.198.0",
+    "@types/node": "24.5.2",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "portainer",
+    "container-management",
+    "docker",
+    "kubernetes",
+    "orchestration",
+    "environments",
+    "stacks",
+    "registries",
+    "teams",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.14.0",
+    "parameterization": {
+      "name": "portainer",
+      "version": "1.13.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4xMy4wIn19"
+    }
+  }
+}
