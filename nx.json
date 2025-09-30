@@ -11,12 +11,12 @@
     "sources": ["{projectRoot}/package.json", "{projectRoot}/**/*.ts"],
     "sources:all": ["{projectRoot}/**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts}"],
     "syncpack": [
-      "{projectRoot}/package.json",
+      "{workspaceRoot}/**/package.json",
       "{workspaceRoot}/.syncpackrc.json",
       { "externalDependencies": ["syncpack"] }
     ],
-    "syncpack:workspace": [
-      "{workspaceRoot}/**/package.json",
+    "syncpack:format": [
+      "{projectRoot}/package.json",
       "{workspaceRoot}/.syncpackrc.json",
       { "externalDependencies": ["syncpack"] }
     ],

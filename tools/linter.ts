@@ -19,9 +19,9 @@ class LinterPlugin extends Plugin {
               dependsOn: [
                 'audit:signatures',
                 'build',
-                'syncpack:format:check',
-                'syncpack:lint',
                 'prettier:check',
+                'root:syncpack:lint',
+                'syncpack:format:check',
               ],
               metadata: {
                 description: 'Run all linters and checks for the project.',

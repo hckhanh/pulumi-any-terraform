@@ -32,6 +32,24 @@
     "fix": {
       "dependsOn": ["audit:fix", "syncpack:format", "prettier:write"]
     },
+    "syncpack:fix": {
+      "command": "pnpm syncpack fix",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "metadata": {
+        "description": "Fix every auto-fixable issue found by `syncpack lint`.",
+        "technologies": ["node"]
+      }
+    },
+    "syncpack:lint": {
+      "command": "pnpm syncpack lint",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "metadata": {
+        "description": "Lint all versions and ranges and exit with `0` or `1` based on whether all files match your Syncpack configuration file.",
+        "technologies": ["node"]
+      }
+    },
     "prettier:check": {
       "inputs": ["prettier:root"],
       "options": {
