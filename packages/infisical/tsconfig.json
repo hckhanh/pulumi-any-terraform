@@ -34,8 +34,6 @@
         "config/vars.ts",
         "dynamicSecretAwsIam.ts",
         "dynamicSecretKubernetes.ts",
-        "dynamicSecretMongoAtlas.ts",
-        "dynamicSecretMongoDb.ts",
         "dynamicSecretSqlDatabase.ts",
         "getGroups.ts",
         "getIdentityDetails.ts",

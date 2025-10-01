@@ -100,16 +100,6 @@ export type DynamicSecretKubernetes = import("./dynamicSecretKubernetes").Dynami
 export const DynamicSecretKubernetes: typeof import("./dynamicSecretKubernetes").DynamicSecretKubernetes = null as any;
 utilities.lazyLoad(exports, ["DynamicSecretKubernetes"], () => require("./dynamicSecretKubernetes"));
 
-export { DynamicSecretMongoAtlasArgs, DynamicSecretMongoAtlasState } from "./dynamicSecretMongoAtlas";
-export type DynamicSecretMongoAtlas = import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas;
-export const DynamicSecretMongoAtlas: typeof import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas = null as any;
-utilities.lazyLoad(exports, ["DynamicSecretMongoAtlas"], () => require("./dynamicSecretMongoAtlas"));
-
-export { DynamicSecretMongoDbArgs, DynamicSecretMongoDbState } from "./dynamicSecretMongoDb";
-export type DynamicSecretMongoDb = import("./dynamicSecretMongoDb").DynamicSecretMongoDb;
-export const DynamicSecretMongoDb: typeof import("./dynamicSecretMongoDb").DynamicSecretMongoDb = null as any;
-utilities.lazyLoad(exports, ["DynamicSecretMongoDb"], () => require("./dynamicSecretMongoDb"));
-
 export { DynamicSecretSqlDatabaseArgs, DynamicSecretSqlDatabaseState } from "./dynamicSecretSqlDatabase";
 export type DynamicSecretSqlDatabase = import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase;
 export const DynamicSecretSqlDatabase: typeof import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase = null as any;
@@ -450,10 +440,6 @@ const _module = {
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
                 return new DynamicSecretKubernetes(name, <any>undefined, { urn })
-            case "infisical:index/dynamicSecretMongoAtlas:DynamicSecretMongoAtlas":
-                return new DynamicSecretMongoAtlas(name, <any>undefined, { urn })
-            case "infisical:index/dynamicSecretMongoDb:DynamicSecretMongoDb":
-                return new DynamicSecretMongoDb(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretSqlDatabase:DynamicSecretSqlDatabase":
                 return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
@@ -580,8 +566,6 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", 
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
-pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
-pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)

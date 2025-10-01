@@ -47,7 +47,7 @@ export class DynamicSecretAwsIam extends pulumi.CustomResource {
      */
     declare public readonly environmentSlug: pulumi.Output<string>;
     /**
-     * The maximum limit a TTL can be leased or renewed for.
+     * The maximum limit a TTL can be leases or renewed.
      */
     declare public readonly maxTtl: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface DynamicSecretAwsIamState {
      */
     environmentSlug?: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leased or renewed for.
+     * The maximum limit a TTL can be leases or renewed.
      */
     maxTtl?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface DynamicSecretAwsIamArgs {
      */
     environmentSlug: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leased or renewed for.
+     * The maximum limit a TTL can be leases or renewed.
      */
     maxTtl?: pulumi.Input<string>;
     /**
