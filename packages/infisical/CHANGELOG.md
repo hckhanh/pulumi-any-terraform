@@ -1,3 +1,13 @@
+## 0.15.42 (2025-10-01)
+
+### 🩹 Fixes
+
+- Downgrade [Infisical/infisical](https://registry.terraform.io/providers/Infisical/infisical) provider from `0.15.37` to `0.15.34` due to error with creating `infisical_secret` (Infisical/terraform-provider-infisical#200) ([18ca5ae](https://github.com/hckhanh/pulumi-any-terraform/commit/18ca5ae))
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.15.41 (2025-09-28)
 
 ### 🩹 Fixes
