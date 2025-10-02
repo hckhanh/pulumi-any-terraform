@@ -23,8 +23,12 @@ jobs:
           filter: tree:0
       - name: Setup toolchains
         uses: jdx/mise-action@5ac50f778e26fac95da98d50503682459e86d566 # v3.2.0
+      - name: Setup Socket Firewall
+        uses: SocketDev/action@v1.1.1
+        with:
+          mode: firewall
       - name: Install dependencies
-        run: pnpm install
+        run: sfw pnpm install
       - name: Show Nx report
         run: pnpm nx report
       - name: Set SHAs
