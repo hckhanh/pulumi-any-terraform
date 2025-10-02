@@ -24,7 +24,7 @@ jobs:
       - name: Setup toolchains
         uses: jdx/mise-action@5ac50f778e26fac95da98d50503682459e86d566 # v3.2.0
       - name: Setup Socket Firewall
-        uses: SocketDev/action@v1.1.1
+        uses: SocketDev/action@1e94b32a5364d19b4bccd8cd4320c0832eaca39f # v1.1.1
         with:
           mode: firewall
       - name: Install dependencies
