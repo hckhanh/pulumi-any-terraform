@@ -219,11 +219,15 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly optimizerEnabled: pulumi.Output<boolean>;
     /**
-     * Indicates whether the CSS minifcation should be enabled.
+     * Indicates whether HTML Prerender should be enabled.
+     */
+    declare public readonly optimizerHtmlPrerender: pulumi.Output<boolean>;
+    /**
+     * Indicates whether the CSS minification should be enabled.
      */
     declare public readonly optimizerMinifyCss: pulumi.Output<boolean>;
     /**
-     * Indicates whether the JavaScript minifcation should be enabled.
+     * Indicates whether the JavaScript minification should be enabled.
      */
     declare public readonly optimizerMinifyJs: pulumi.Output<boolean>;
     /**
@@ -377,6 +381,14 @@ export class Pullzone extends pulumi.CustomResource {
      * Indicates whether cache update is performed in the background.
      */
     declare public readonly useBackgroundUpdate: pulumi.Output<boolean>;
+    /**
+     * Indicates whether the WebSocket support is enabled.
+     */
+    declare public readonly websocketsEnabled: pulumi.Output<boolean>;
+    /**
+     * The maximum allowed concurrent WebSocket connections.
+     */
+    declare public readonly websocketsMaxConnections: pulumi.Output<number>;
 
     /**
      * Create a Pullzone resource with the given unique name, arguments, and options.
@@ -437,6 +449,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["optimizerClassesForce"] = state?.optimizerClassesForce;
             resourceInputs["optimizerDynamicImageApi"] = state?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = state?.optimizerEnabled;
+            resourceInputs["optimizerHtmlPrerender"] = state?.optimizerHtmlPrerender;
             resourceInputs["optimizerMinifyCss"] = state?.optimizerMinifyCss;
             resourceInputs["optimizerMinifyJs"] = state?.optimizerMinifyJs;
             resourceInputs["optimizerSmartimage"] = state?.optimizerSmartimage;
@@ -479,6 +492,8 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["tokenAuthIpValidation"] = state?.tokenAuthIpValidation;
             resourceInputs["tokenAuthKey"] = state?.tokenAuthKey;
             resourceInputs["useBackgroundUpdate"] = state?.useBackgroundUpdate;
+            resourceInputs["websocketsEnabled"] = state?.websocketsEnabled;
+            resourceInputs["websocketsMaxConnections"] = state?.websocketsMaxConnections;
         } else {
             const args = argsOrState as PullzoneArgs | undefined;
             resourceInputs["addCanonicalHeader"] = args?.addCanonicalHeader;
@@ -526,6 +541,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["optimizerClassesForce"] = args?.optimizerClassesForce;
             resourceInputs["optimizerDynamicImageApi"] = args?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = args?.optimizerEnabled;
+            resourceInputs["optimizerHtmlPrerender"] = args?.optimizerHtmlPrerender;
             resourceInputs["optimizerMinifyCss"] = args?.optimizerMinifyCss;
             resourceInputs["optimizerMinifyJs"] = args?.optimizerMinifyJs;
             resourceInputs["optimizerSmartimage"] = args?.optimizerSmartimage;
@@ -566,6 +582,8 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["tokenAuthEnabled"] = args?.tokenAuthEnabled;
             resourceInputs["tokenAuthIpValidation"] = args?.tokenAuthIpValidation;
             resourceInputs["useBackgroundUpdate"] = args?.useBackgroundUpdate;
+            resourceInputs["websocketsEnabled"] = args?.websocketsEnabled;
+            resourceInputs["websocketsMaxConnections"] = args?.websocketsMaxConnections;
             resourceInputs["cdnDomain"] = undefined /*out*/;
             resourceInputs["pullzoneId"] = undefined /*out*/;
             resourceInputs["tokenAuthKey"] = undefined /*out*/;
@@ -766,11 +784,15 @@ export interface PullzoneState {
      */
     optimizerEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the CSS minifcation should be enabled.
+     * Indicates whether HTML Prerender should be enabled.
+     */
+    optimizerHtmlPrerender?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the CSS minification should be enabled.
      */
     optimizerMinifyCss?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the JavaScript minifcation should be enabled.
+     * Indicates whether the JavaScript minification should be enabled.
      */
     optimizerMinifyJs?: pulumi.Input<boolean>;
     /**
@@ -924,6 +946,14 @@ export interface PullzoneState {
      * Indicates whether cache update is performed in the background.
      */
     useBackgroundUpdate?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the WebSocket support is enabled.
+     */
+    websocketsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum allowed concurrent WebSocket connections.
+     */
+    websocketsMaxConnections?: pulumi.Input<number>;
 }
 
 /**
@@ -1111,11 +1141,15 @@ export interface PullzoneArgs {
      */
     optimizerEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the CSS minifcation should be enabled.
+     * Indicates whether HTML Prerender should be enabled.
+     */
+    optimizerHtmlPrerender?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the CSS minification should be enabled.
      */
     optimizerMinifyCss?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the JavaScript minifcation should be enabled.
+     * Indicates whether the JavaScript minification should be enabled.
      */
     optimizerMinifyJs?: pulumi.Input<boolean>;
     /**
@@ -1261,4 +1295,12 @@ export interface PullzoneArgs {
      * Indicates whether cache update is performed in the background.
      */
     useBackgroundUpdate?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the WebSocket support is enabled.
+     */
+    websocketsEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum allowed concurrent WebSocket connections.
+     */
+    websocketsMaxConnections?: pulumi.Input<number>;
 }
