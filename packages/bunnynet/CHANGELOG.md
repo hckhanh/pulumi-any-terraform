@@ -1,3 +1,17 @@
+## 0.10.0 (2025-10-03)
+
+### 🚀 Features
+
+- Update bunnynet provider to v0.10.2 with new pullzone features for WebSocket connections and HTML prerendering optimization. ([64fce1f](https://github.com/hckhanh/pulumi-any-terraform/commit/64fce1f))
+
+  - **pullzone**: Add WebSocket support with `websocketsEnabled` and `websocketsMaxConnections` properties
+  - **pullzone**: Add HTML prerendering support with `optimizerHtmlPrerender` property
+  - **pullzone**: Fix typos in JSDoc comments (minifcation → minification)
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.9.2 (2025-09-29)
 
 ### 🩹 Fixes
