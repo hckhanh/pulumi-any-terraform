@@ -68,5 +68,10 @@
   },
   "sync": {
     "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]
+  },
+  "pluginsConfig": {
+    "@nx/js": {
+      "projectsAffectedByDependencyUpdates": "auto"
+    }
   }
 }
