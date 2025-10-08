@@ -207,6 +207,10 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Indicates whether Burrow Smart Routing should be enabled.
+     */
+    declare public readonly optimizerBurrow: pulumi.Output<boolean>;
+    /**
      * Indicates whether the optimizer class list should be enforced.
      */
     declare public readonly optimizerClassesForce: pulumi.Output<boolean>;
@@ -446,6 +450,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["logStorageEnabled"] = state?.logStorageEnabled;
             resourceInputs["logStorageZone"] = state?.logStorageZone;
             resourceInputs["name"] = state?.name;
+            resourceInputs["optimizerBurrow"] = state?.optimizerBurrow;
             resourceInputs["optimizerClassesForce"] = state?.optimizerClassesForce;
             resourceInputs["optimizerDynamicImageApi"] = state?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = state?.optimizerEnabled;
@@ -538,6 +543,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["logStorageEnabled"] = args?.logStorageEnabled;
             resourceInputs["logStorageZone"] = args?.logStorageZone;
             resourceInputs["name"] = args?.name;
+            resourceInputs["optimizerBurrow"] = args?.optimizerBurrow;
             resourceInputs["optimizerClassesForce"] = args?.optimizerClassesForce;
             resourceInputs["optimizerDynamicImageApi"] = args?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = args?.optimizerEnabled;
@@ -771,6 +777,10 @@ export interface PullzoneState {
      * The name of the pull zone.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates whether Burrow Smart Routing should be enabled.
+     */
+    optimizerBurrow?: pulumi.Input<boolean>;
     /**
      * Indicates whether the optimizer class list should be enforced.
      */
@@ -1128,6 +1138,10 @@ export interface PullzoneArgs {
      * The name of the pull zone.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Indicates whether Burrow Smart Routing should be enabled.
+     */
+    optimizerBurrow?: pulumi.Input<boolean>;
     /**
      * Indicates whether the optimizer class list should be enforced.
      */
