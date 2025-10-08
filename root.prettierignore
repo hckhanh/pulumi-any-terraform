@@ -1,5 +1,10 @@
+# dependencies
 packages
 pnpm-lock.yaml
 
-.nx
+# Nx
+.nx/cache
+.nx/workspace-data
+
+# IntelliJ based IDEs
 .idea

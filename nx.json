@@ -23,6 +23,8 @@
     "prettier": [
       "sources:all",
       "{workspaceRoot}/.prettierrc",
+      "{workspaceRoot}/.prettierignore",
+      "{workspaceRoot}/root.prettierignore",
       "{projectRoot}/**/*.{yml,yaml,json,md,html,css}",
       "!{projectRoot}/package.json",
       { "externalDependencies": ["prettier"] }
