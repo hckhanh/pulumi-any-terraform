@@ -1,3 +1,17 @@
+## 0.10.1 (2025-10-08)
+
+### 🩹 Fixes
+
+- Add `"sideEffects": false` to the package.json to indicate the package is side-effect-free ([a5e20a3](https://github.com/hckhanh/pulumi-any-terraform/commit/a5e20a3))
+- Update bunnynet to v0.10.3 with Burrow Smart Routing support: ([83d7092](https://github.com/hckhanh/pulumi-any-terraform/commit/83d7092))
+
+  - Add `optimizerBurrow` property to Pullzone resource
+  - Update parameterization version from 0.10.2 to 0.10.3
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.10.0 (2025-10-03)
 
 ### 🚀 Features
