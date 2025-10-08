@@ -2,7 +2,6 @@
   "name": "pulumi-time",
   "description": "A Pulumi provider for managing time-based resources and operations, dynamically bridged from the Terraform Time provider with support for delays, offsets, rotations, and time-based scheduling.",
   "version": "0.13.5",
-  "sideEffects": false,
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",
@@ -10,6 +9,7 @@
     "directory": "packages/time"
   },
   "private": false,
+  "sideEffects": false,
   "main": "./bin/index.js",
   "module": "./bin/index.js",
   "types": "./bin/index.d.ts",
