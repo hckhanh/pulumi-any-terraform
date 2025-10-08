@@ -47,7 +47,7 @@ jobs:
     name: Lint and Build
     runs-on: ubuntu-latest
     needs: fix
-    if: ${{ ! contains(github.event.head_commit.message , 'chore(release)') && (always() && (needs.scan.result == 'success' && (needs.autofix.result == 'success' || needs.autofix.result == 'skipped'))) }}
+    if: ${{ ! contains(github.event.head_commit.message , 'chore(release)') && (always() && (needs.fix.result == 'success' || needs.fix.result == 'skipped')) }}
     permissions:
       id-token: write
     steps:
