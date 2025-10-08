@@ -20,7 +20,7 @@
     "async-mutex": "0.5.0"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.200.0",
+    "@pulumi/pulumi": "3.201.0",
     "@types/node": "24.6.2",
     "typescript": "5.9.3"
   },
