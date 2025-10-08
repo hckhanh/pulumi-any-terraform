@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   test:
-    name: Lint and Build
+    name: Fix, Lint and Build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -33,6 +33,20 @@ jobs:
         run: pnpm nx report
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+      - name: Fix
+        run: pnpm nx affected -t fix
+        if: ${{ github.actor != 'renovate[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') }}
+        env:
+          NX_KEY: ${{ secrets.NX_KEY }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Update package lock file
+        run: pnpm install --fix-lockfile --no-frozen-lockfile
+        if: ${{ github.actor != 'renovate[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') }}
+      - name: Submit autofix
+        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1.3.2
+        if: ${{ github.actor != 'renovate[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') }}
       - name: Check
         run: pnpm nx affected -t check
         env:
