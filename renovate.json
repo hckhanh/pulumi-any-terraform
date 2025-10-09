@@ -6,7 +6,7 @@
     ":automergePr",
     ":automergeMinor",
     ":automergeTypes",
-    "npm:unpublishSafe",
+    "security:minimumReleaseAgeNpm",
     "group:definitelyTyped",
     "schedule:nonOfficeHours",
     ":separateMultipleMajorReleases",
