@@ -1,3 +1,16 @@
+## 1.13.3 (2025-10-10)
+
+### 🩹 Fixes
+
+- Recommended update for all users on v1.13.0. ([ae88a48](https://github.com/hckhanh/pulumi-any-terraform/commit/ae88a48))
+
+  - Fixed false in-place updates for stacks deployed via method=file
+  - Fixed random recreate plans for docker networks due to missing EnableIPv4/EnableIPv6 fieldsNo breaking changes.
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 1.13.2 (2025-10-08)
 
 ### 🩹 Fixes
