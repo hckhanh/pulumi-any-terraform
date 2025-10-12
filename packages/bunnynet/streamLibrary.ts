@@ -149,6 +149,10 @@ export class StreamLibrary extends pulumi.CustomResource {
      */
     declare public readonly playerPrimaryColor: pulumi.Output<string>;
     /**
+     * Specifies the video player version.
+     */
+    declare public readonly playerVersion: pulumi.Output<number>;
+    /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */
     declare public readonly playerWatchtimeHeatmapEnabled: pulumi.Output<boolean>;
@@ -260,6 +264,7 @@ export class StreamLibrary extends pulumi.CustomResource {
             resourceInputs["playerFontFamily"] = state?.playerFontFamily;
             resourceInputs["playerLanguage"] = state?.playerLanguage;
             resourceInputs["playerPrimaryColor"] = state?.playerPrimaryColor;
+            resourceInputs["playerVersion"] = state?.playerVersion;
             resourceInputs["playerWatchtimeHeatmapEnabled"] = state?.playerWatchtimeHeatmapEnabled;
             resourceInputs["pullzone"] = state?.pullzone;
             resourceInputs["referersAlloweds"] = state?.referersAlloweds;
@@ -308,6 +313,7 @@ export class StreamLibrary extends pulumi.CustomResource {
             resourceInputs["playerFontFamily"] = args?.playerFontFamily;
             resourceInputs["playerLanguage"] = args?.playerLanguage;
             resourceInputs["playerPrimaryColor"] = args?.playerPrimaryColor;
+            resourceInputs["playerVersion"] = args?.playerVersion;
             resourceInputs["playerWatchtimeHeatmapEnabled"] = args?.playerWatchtimeHeatmapEnabled;
             resourceInputs["referersAlloweds"] = args?.referersAlloweds;
             resourceInputs["referersBlockeds"] = args?.referersBlockeds;
@@ -453,6 +459,10 @@ export interface StreamLibraryState {
      * Customizes the appearance of the video player.
      */
     playerPrimaryColor?: pulumi.Input<string>;
+    /**
+     * Specifies the video player version.
+     */
+    playerVersion?: pulumi.Input<number>;
     /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */
@@ -640,6 +650,10 @@ export interface StreamLibraryArgs {
      * Customizes the appearance of the video player.
      */
     playerPrimaryColor?: pulumi.Input<string>;
+    /**
+     * Specifies the video player version.
+     */
+    playerVersion?: pulumi.Input<number>;
     /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */

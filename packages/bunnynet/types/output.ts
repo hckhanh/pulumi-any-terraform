@@ -339,6 +339,14 @@ export interface PullzoneEdgeruleTrigger {
 
 export interface PullzoneOrigin {
     /**
+     * The ID if the compute container app.
+     */
+    containerAppId: string;
+    /**
+     * The ID if the compute container app endpoint.
+     */
+    containerEndpointId: string;
+    /**
      * Indicates whether the zone will follow origin redirects.
      */
     followRedirects: boolean;

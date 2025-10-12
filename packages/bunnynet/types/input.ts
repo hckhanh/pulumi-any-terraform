@@ -323,6 +323,14 @@ export interface PullzoneEdgeruleTrigger {
 
 export interface PullzoneOrigin {
     /**
+     * The ID if the compute container app.
+     */
+    containerAppId?: pulumi.Input<string>;
+    /**
+     * The ID if the compute container app endpoint.
+     */
+    containerEndpointId?: pulumi.Input<string>;
+    /**
      * Indicates whether the zone will follow origin redirects.
      */
     followRedirects?: pulumi.Input<boolean>;
