@@ -1,3 +1,15 @@
+## 1.13.4 (2025-10-15)
+
+### 🩹 Fixes
+
+- - Resolved issue with `portainer_docker_config` resource causing "invalid config version" errors when updating data. ([0cfb194](https://github.com/hckhanh/pulumi-any-terraform/commit/0cfb194))
+
+  - Fixed prune option not working on stack create for repository-based stacks (now performs automatic redeploy with prune=true).
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 1.13.3 (2025-10-10)
 
 ### 🩹 Fixes
