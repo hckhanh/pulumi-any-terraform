@@ -11,14 +11,14 @@
     "release": "nx release --skip-publish"
   },
   "devDependencies": {
-    "@nx/devkit": "21.6.6",
-    "@nx/js": "21.6.6",
+    "@nx/devkit": "22.0.1",
+    "@nx/js": "22.0.1",
     "@nx/s3-cache": "4.0.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.13.5",
     "@swc/helpers": "0.5.17",
     "@types/node": "24.9.1",
-    "nx": "21.6.6",
+    "nx": "22.0.1",
     "prettier": "3.6.2",
     "syncpack": "14.0.0-alpha.23"
   },
