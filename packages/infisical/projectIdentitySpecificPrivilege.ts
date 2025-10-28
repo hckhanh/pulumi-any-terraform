@@ -39,7 +39,7 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     declare public readonly isTemporary: pulumi.Output<boolean>;
     /**
@@ -59,7 +59,7 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
-     * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
     declare public readonly temporaryAccessEndTime: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export interface ProjectIdentitySpecificPrivilegeState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     isTemporary?: pulumi.Input<boolean>;
     /**
@@ -151,7 +151,7 @@ export interface ProjectIdentitySpecificPrivilegeState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
     temporaryAccessEndTime?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * Flag to indicate the assigned specific privilege is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned specific privilege is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     isTemporary?: pulumi.Input<boolean>;
     /**
@@ -197,7 +197,7 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
      */
     slug?: pulumi.Input<string>;
     /**
-     * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
     temporaryAccessEndTime?: pulumi.Input<string>;
     /**

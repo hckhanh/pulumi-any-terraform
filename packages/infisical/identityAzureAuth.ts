@@ -59,7 +59,7 @@ export class IdentityAzureAuth extends pulumi.CustomResource {
      */
     declare public readonly identityId: pulumi.Output<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     declare public readonly resourceUrl: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface IdentityAzureAuthState {
      */
     identityId?: pulumi.Input<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     resourceUrl?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface IdentityAzureAuthArgs {
      */
     identityId: pulumi.Input<string>;
     /**
-     * The resource URL for the application registered in Azure AD. The value is expected to match the `aud` claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
+     * The resource URL for the application registered in Azure AD. The value is expected to match the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
     resourceUrl?: pulumi.Input<string>;
     /**

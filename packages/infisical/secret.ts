@@ -53,9 +53,14 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly tagIds: pulumi.Output<string[] | undefined>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
      */
-    declare public readonly value: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
+    declare public readonly valueWo: pulumi.Output<string | undefined>;
+    /**
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     */
+    declare public readonly valueWoVersion: pulumi.Output<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
@@ -81,6 +86,8 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretReminder"] = state?.secretReminder;
             resourceInputs["tagIds"] = state?.tagIds;
             resourceInputs["value"] = state?.value;
+            resourceInputs["valueWo"] = state?.valueWo;
+            resourceInputs["valueWoVersion"] = state?.valueWoVersion;
             resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as SecretArgs | undefined;
@@ -90,15 +97,14 @@ export class Secret extends pulumi.CustomResource {
             if (args?.folderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            if (args?.value === undefined && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
             resourceInputs["envSlug"] = args?.envSlug;
             resourceInputs["folderPath"] = args?.folderPath;
             resourceInputs["name"] = args?.name;
             resourceInputs["secretReminder"] = args?.secretReminder;
             resourceInputs["tagIds"] = args?.tagIds;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
+            resourceInputs["valueWo"] = args?.valueWo;
+            resourceInputs["valueWoVersion"] = args?.valueWoVersion;
             resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
@@ -132,9 +138,14 @@ export interface SecretState {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
      */
     value?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string>;
+    /**
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     */
+    valueWoVersion?: pulumi.Input<number>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
@@ -163,9 +174,14 @@ export interface SecretArgs {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The value of the secret
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string>;
+    /**
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     */
+    valueWoVersion?: pulumi.Input<number>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */

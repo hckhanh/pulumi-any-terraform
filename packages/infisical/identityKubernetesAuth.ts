@@ -63,6 +63,10 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
      */
     declare public readonly allowedServiceAccountNames: pulumi.Output<string[]>;
     /**
+     * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
+     */
+    declare public readonly gatewayId: pulumi.Output<string | undefined>;
+    /**
      * The ID of the identity to attach the configuration onto.
      */
     declare public readonly identityId: pulumi.Output<string>;
@@ -73,11 +77,15 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
     /**
      * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
-    declare public readonly kubernetesHost: pulumi.Output<string>;
+    declare public readonly kubernetesHost: pulumi.Output<string | undefined>;
     /**
      * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
-    declare public readonly tokenReviewerJwt: pulumi.Output<string>;
+    declare public readonly tokenReviewerJwt: pulumi.Output<string | undefined>;
+    /**
+     * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
+     */
+    declare public readonly tokenReviewerMode: pulumi.Output<string>;
 
     /**
      * Create a IdentityKubernetesAuth resource with the given unique name, arguments, and options.
@@ -99,20 +107,16 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
             resourceInputs["allowedAudience"] = state?.allowedAudience;
             resourceInputs["allowedNamespaces"] = state?.allowedNamespaces;
             resourceInputs["allowedServiceAccountNames"] = state?.allowedServiceAccountNames;
+            resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["identityId"] = state?.identityId;
             resourceInputs["kubernetesCaCertificate"] = state?.kubernetesCaCertificate;
             resourceInputs["kubernetesHost"] = state?.kubernetesHost;
             resourceInputs["tokenReviewerJwt"] = state?.tokenReviewerJwt;
+            resourceInputs["tokenReviewerMode"] = state?.tokenReviewerMode;
         } else {
             const args = argsOrState as IdentityKubernetesAuthArgs | undefined;
             if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
-            }
-            if (args?.kubernetesHost === undefined && !opts.urn) {
-                throw new Error("Missing required property 'kubernetesHost'");
-            }
-            if (args?.tokenReviewerJwt === undefined && !opts.urn) {
-                throw new Error("Missing required property 'tokenReviewerJwt'");
             }
             resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
             resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
@@ -121,10 +125,12 @@ export class IdentityKubernetesAuth extends pulumi.CustomResource {
             resourceInputs["allowedAudience"] = args?.allowedAudience;
             resourceInputs["allowedNamespaces"] = args?.allowedNamespaces;
             resourceInputs["allowedServiceAccountNames"] = args?.allowedServiceAccountNames;
+            resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["identityId"] = args?.identityId;
             resourceInputs["kubernetesCaCertificate"] = args?.kubernetesCaCertificate;
             resourceInputs["kubernetesHost"] = args?.kubernetesHost;
             resourceInputs["tokenReviewerJwt"] = args?.tokenReviewerJwt;
+            resourceInputs["tokenReviewerMode"] = args?.tokenReviewerMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityKubernetesAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -164,6 +170,10 @@ export interface IdentityKubernetesAuthState {
      */
     allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
+     */
+    gatewayId?: pulumi.Input<string>;
+    /**
      * The ID of the identity to attach the configuration onto.
      */
     identityId?: pulumi.Input<string>;
@@ -179,6 +189,10 @@ export interface IdentityKubernetesAuthState {
      * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
     tokenReviewerJwt?: pulumi.Input<string>;
+    /**
+     * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
+     */
+    tokenReviewerMode?: pulumi.Input<string>;
 }
 
 /**
@@ -214,6 +228,10 @@ export interface IdentityKubernetesAuthArgs {
      */
     allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
+     */
+    gatewayId?: pulumi.Input<string>;
+    /**
      * The ID of the identity to attach the configuration onto.
      */
     identityId: pulumi.Input<string>;
@@ -224,9 +242,13 @@ export interface IdentityKubernetesAuthArgs {
     /**
      * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
-    kubernetesHost: pulumi.Input<string>;
+    kubernetesHost?: pulumi.Input<string>;
     /**
      * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
-    tokenReviewerJwt: pulumi.Input<string>;
+    tokenReviewerJwt?: pulumi.Input<string>;
+    /**
+     * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
+     */
+    tokenReviewerMode?: pulumi.Input<string>;
 }

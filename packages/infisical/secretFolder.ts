@@ -45,6 +45,10 @@ export class SecretFolder extends pulumi.CustomResource {
      */
     declare public readonly folderPath: pulumi.Output<string>;
     /**
+     * Whether to force delete the folder even if it contains resources.
+     */
+    declare public readonly forceDelete: pulumi.Output<boolean>;
+    /**
      * The name for the folder
      */
     declare public readonly name: pulumi.Output<string>;
@@ -73,6 +77,7 @@ export class SecretFolder extends pulumi.CustomResource {
             resourceInputs["environmentId"] = state?.environmentId;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
             resourceInputs["folderPath"] = state?.folderPath;
+            resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["name"] = state?.name;
             resourceInputs["path"] = state?.path;
             resourceInputs["projectId"] = state?.projectId;
@@ -89,6 +94,7 @@ export class SecretFolder extends pulumi.CustomResource {
             }
             resourceInputs["environmentSlug"] = args?.environmentSlug;
             resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["environmentId"] = undefined /*out*/;
@@ -116,6 +122,10 @@ export interface SecretFolderState {
      */
     folderPath?: pulumi.Input<string>;
     /**
+     * Whether to force delete the folder even if it contains resources.
+     */
+    forceDelete?: pulumi.Input<boolean>;
+    /**
      * The name for the folder
      */
     name?: pulumi.Input<string>;
@@ -141,6 +151,10 @@ export interface SecretFolderArgs {
      * The path where the folder should be created/updated
      */
     folderPath: pulumi.Input<string>;
+    /**
+     * Whether to force delete the folder even if it contains resources.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * The name for the folder
      */

@@ -100,6 +100,16 @@ export type DynamicSecretKubernetes = import("./dynamicSecretKubernetes").Dynami
 export const DynamicSecretKubernetes: typeof import("./dynamicSecretKubernetes").DynamicSecretKubernetes = null as any;
 utilities.lazyLoad(exports, ["DynamicSecretKubernetes"], () => require("./dynamicSecretKubernetes"));
 
+export { DynamicSecretMongoAtlasArgs, DynamicSecretMongoAtlasState } from "./dynamicSecretMongoAtlas";
+export type DynamicSecretMongoAtlas = import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas;
+export const DynamicSecretMongoAtlas: typeof import("./dynamicSecretMongoAtlas").DynamicSecretMongoAtlas = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretMongoAtlas"], () => require("./dynamicSecretMongoAtlas"));
+
+export { DynamicSecretMongoDbArgs, DynamicSecretMongoDbState } from "./dynamicSecretMongoDb";
+export type DynamicSecretMongoDb = import("./dynamicSecretMongoDb").DynamicSecretMongoDb;
+export const DynamicSecretMongoDb: typeof import("./dynamicSecretMongoDb").DynamicSecretMongoDb = null as any;
+utilities.lazyLoad(exports, ["DynamicSecretMongoDb"], () => require("./dynamicSecretMongoDb"));
+
 export { DynamicSecretSqlDatabaseArgs, DynamicSecretSqlDatabaseState } from "./dynamicSecretSqlDatabase";
 export type DynamicSecretSqlDatabase = import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase;
 export const DynamicSecretSqlDatabase: typeof import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase = null as any;
@@ -114,6 +124,11 @@ export { GetIdentityDetailsResult } from "./getIdentityDetails";
 export const getIdentityDetails: typeof import("./getIdentityDetails").getIdentityDetails = null as any;
 export const getIdentityDetailsOutput: typeof import("./getIdentityDetails").getIdentityDetailsOutput = null as any;
 utilities.lazyLoad(exports, ["getIdentityDetails","getIdentityDetailsOutput"], () => require("./getIdentityDetails"));
+
+export { GetKmsKeyPublicKeyArgs, GetKmsKeyPublicKeyResult, GetKmsKeyPublicKeyOutputArgs } from "./getKmsKeyPublicKey";
+export const getKmsKeyPublicKey: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKey = null as any;
+export const getKmsKeyPublicKeyOutput: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getKmsKeyPublicKey","getKmsKeyPublicKeyOutput"], () => require("./getKmsKeyPublicKey"));
 
 export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
 export const getProjects: typeof import("./getProjects").getProjects = null as any;
@@ -204,6 +219,11 @@ export { IntegrationGcpSecretManagerArgs, IntegrationGcpSecretManagerState } fro
 export type IntegrationGcpSecretManager = import("./integrationGcpSecretManager").IntegrationGcpSecretManager;
 export const IntegrationGcpSecretManager: typeof import("./integrationGcpSecretManager").IntegrationGcpSecretManager = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpSecretManager"], () => require("./integrationGcpSecretManager"));
+
+export { KmsKeyArgs, KmsKeyState } from "./kmsKey";
+export type KmsKey = import("./kmsKey").KmsKey;
+export const KmsKey: typeof import("./kmsKey").KmsKey = null as any;
+utilities.lazyLoad(exports, ["KmsKey"], () => require("./kmsKey"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -440,6 +460,10 @@ const _module = {
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
                 return new DynamicSecretKubernetes(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretMongoAtlas:DynamicSecretMongoAtlas":
+                return new DynamicSecretMongoAtlas(name, <any>undefined, { urn })
+            case "infisical:index/dynamicSecretMongoDb:DynamicSecretMongoDb":
+                return new DynamicSecretMongoDb(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretSqlDatabase:DynamicSecretSqlDatabase":
                 return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
@@ -470,6 +494,8 @@ const _module = {
                 return new IntegrationDatabricks(name, <any>undefined, { urn })
             case "infisical:index/integrationGcpSecretManager:IntegrationGcpSecretManager":
                 return new IntegrationGcpSecretManager(name, <any>undefined, { urn })
+            case "infisical:index/kmsKey:KmsKey":
+                return new KmsKey(name, <any>undefined, { urn })
             case "infisical:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "infisical:index/projectEnvironment:ProjectEnvironment":
@@ -566,6 +592,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", 
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
@@ -581,6 +609,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/integrationAwsSecretsM
 pulumi.runtime.registerResourceModule("infisical", "index/integrationCircleci", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/integrationDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/integrationGcpSecretManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/kmsKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/project", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectGroup", _module)

@@ -467,6 +467,102 @@ export interface DynamicSecretKubernetesMetadata {
     value: string;
 }
 
+export interface DynamicSecretMongoAtlasConfiguration {
+    /**
+     * Admin user private API key
+     */
+    adminPrivateKey: string;
+    /**
+     * Admin user public API key
+     */
+    adminPublicKey: string;
+    /**
+     * Unique 24-hexadecimal digit string that identifies your project. This is the same as the project ID.
+     */
+    groupId: string;
+    roles: outputs.DynamicSecretMongoAtlasConfigurationRole[];
+    scopes: outputs.DynamicSecretMongoAtlasConfigurationScope[];
+}
+
+export interface DynamicSecretMongoAtlasConfigurationRole {
+    /**
+     * Collection on which this role applies.
+     */
+    collectionName?: string;
+    /**
+     * Database to which the user is granted access privileges.
+     */
+    databaseName: string;
+    /**
+     * Human-readable label that identifies a group of privileges assigned to a database user. This value can either be a built-in role or a custom role.
+     */
+    roleName: string;
+}
+
+export interface DynamicSecretMongoAtlasConfigurationScope {
+    /**
+     * Human-readable label that identifies the cluster or MongoDB Atlas Data Lake that this database user can access.
+     */
+    name: string;
+    /**
+     * Category of resource that this database user can access. Supported options: CLUSTER, DATA_LAKE, STREAM
+     */
+    type: string;
+}
+
+export interface DynamicSecretMongoAtlasMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
+export interface DynamicSecretMongoDbConfiguration {
+    /**
+     * The CA certificate to use to connect to the database.
+     */
+    ca?: string;
+    /**
+     * The name of the database to use.
+     */
+    database: string;
+    /**
+     * The host of the database server.
+     */
+    host: string;
+    /**
+     * The password to use to connect to the database.
+     */
+    password: string;
+    /**
+     * The port of the database server.
+     */
+    port?: number;
+    /**
+     * A list of role names to assign to the user. The role names can either be built-in or custom.
+     */
+    roles: string[];
+    /**
+     * The username to use to connect to the database.
+     */
+    username: string;
+}
+
+export interface DynamicSecretMongoDbMetadata {
+    /**
+     * The key of the metadata object
+     */
+    key: string;
+    /**
+     * The value of the metadata object
+     */
+    value: string;
+}
+
 export interface DynamicSecretSqlDatabaseConfiguration {
     /**
      * The CA certificate to use to connect to the database.
@@ -709,7 +805,7 @@ export interface IntegrationAwsSecretsManagerOptions {
      */
     awsTags?: outputs.IntegrationAwsSecretsManagerOptionsAwsTag[];
     /**
-     * The sync mode for AWS tags. The supported options are `secret-metadata` and `custom`. If `secret-metadata` is selected, the metadata of the Infisical secrets are used as tags in AWS (only supported for one-to-one integrations). If `custom` is selected, then the key/value pairs in the `aws_tags` field is used.
+     * The sync mode for AWS tags. The supported options are `secret-metadata` and <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`">`custom`</span>. If `secret-metadata` is selected, the metadata of the Infisical secrets are used as tags in AWS (only supported for one-to-one integrations). If <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`">`custom`</span> is selected, then the key/value pairs in the <span pulumi-lang-nodejs="`awsTags`" pulumi-lang-dotnet="`AwsTags`" pulumi-lang-go="`awsTags`" pulumi-lang-python="`aws_tags`" pulumi-lang-yaml="`awsTags`" pulumi-lang-java="`awsTags`">`aws_tags`</span> field is used.
      */
     metadataSyncMode?: string;
     /**
@@ -742,7 +838,7 @@ export interface IntegrationGcpSecretManagerOptions {
 
 export interface ProjectGroupRole {
     /**
-     * Flag to indicate the assigned role is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     isTemporary?: boolean;
     /**
@@ -784,7 +880,7 @@ export interface ProjectIdentityRole {
      */
     id: string;
     /**
-     * Flag to indicate the assigned role is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     isTemporary: boolean;
     /**
@@ -792,7 +888,7 @@ export interface ProjectIdentityRole {
      */
     roleSlug: string;
     /**
-     * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
     temporaryAccessEndTime: string;
     /**
@@ -958,7 +1054,7 @@ export interface ProjectUserRole {
      */
     id: string;
     /**
-     * Flag to indicate the assigned role is temporary or not. When is_temporary is true fields temporary_mode, temporary_range and temporary_access_start_time is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
     isTemporary: boolean;
     /**
@@ -966,7 +1062,7 @@ export interface ProjectUserRole {
      */
     roleSlug: string;
     /**
-     * ISO time for which temporary access will end. Computed based on temporary_range and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
     temporaryAccessEndTime: string;
     /**
@@ -1403,7 +1499,7 @@ export interface SecretSyncAwsSecretsManagerDestinationConfig {
      */
     awsRegion: string;
     /**
-     * The name of the AWS secret to map to. This only applies when mapping_behavior is set to 'many-to-one'.
+     * The name of the AWS secret to map to. This only applies when<span pulumi-lang-nodejs=" mappingBehavior " pulumi-lang-dotnet=" MappingBehavior " pulumi-lang-go=" mappingBehavior " pulumi-lang-python=" mapping_behavior " pulumi-lang-yaml=" mappingBehavior " pulumi-lang-java=" mappingBehavior "> mapping_behavior </span>is set to 'many-to-one'.
      */
     awsSecretsManagerSecretName?: string;
     /**
@@ -1670,11 +1766,11 @@ export interface SecretSyncGithubDestinationConfig {
      */
     repositoryEnvironment?: string;
     /**
-     * The repository to sync the secrets to, required if scope is `repository` or `repository-environment`. This is only the name of the repository, without the repository owner included. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `go-sdk` here.
+     * The repository to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span> or `repository-environment`. This is only the name of the repository, without the repository owner included. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `go-sdk` here.
      */
     repositoryName?: string;
     /**
-     * The owner of the Github repository, required if scope is `repository`, `repository-environment`, or `organization`. This is the organization name, or the username for personal repositories. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `Infisical` here.
+     * The owner of the Github repository, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span>, `repository-environment`, or <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span>. This is the organization name, or the username for personal repositories. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `Infisical` here.
      */
     repositoryOwner?: string;
     /**
@@ -1682,11 +1778,11 @@ export interface SecretSyncGithubDestinationConfig {
      */
     scope: string;
     /**
-     * The repository ids to sync the secrets to, required if scope is `organization` and the visibility field is set to `selected`
+     * The repository ids to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span> and the visibility field is set to <span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`">`selected`</span>
      */
     selectedRepositoryIds?: number[];
     /**
-     * The visibility of the Github repository, required if scope is `organization`. Accepted values are: `all`|`private`|`selected`
+     * The visibility of the Github repository, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span>. Accepted values are: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>|<span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>|<span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`">`selected`</span>
      */
     visibility?: string;
 }

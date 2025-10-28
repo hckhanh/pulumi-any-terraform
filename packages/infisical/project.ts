@@ -65,6 +65,10 @@ export class Project extends pulumi.CustomResource {
      * The name of the template to use for the project
      */
     declare public readonly templateName: pulumi.Output<string | undefined>;
+    /**
+     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     */
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -88,6 +92,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["shouldCreateDefaultEnvs"] = state?.shouldCreateDefaultEnvs;
             resourceInputs["slug"] = state?.slug;
             resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if (args?.slug === undefined && !opts.urn) {
@@ -101,6 +106,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["shouldCreateDefaultEnvs"] = args?.shouldCreateDefaultEnvs;
             resourceInputs["slug"] = args?.slug;
             resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["type"] = args?.type;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +151,10 @@ export interface ProjectState {
      * The name of the template to use for the project
      */
     templateName?: pulumi.Input<string>;
+    /**
+     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -183,4 +193,8 @@ export interface ProjectArgs {
      * The name of the template to use for the project
      */
     templateName?: pulumi.Input<string>;
+    /**
+     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     */
+    type?: pulumi.Input<string>;
 }

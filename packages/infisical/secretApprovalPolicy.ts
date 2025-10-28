@@ -47,7 +47,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly enforcementLevel: pulumi.Output<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the secret approval policy to
      */
     declare public readonly environmentSlug: pulumi.Output<string | undefined>;
     /**
@@ -139,7 +139,7 @@ export interface SecretApprovalPolicyState {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the secret approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface SecretApprovalPolicyArgs {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the secret approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the secret approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
     /**

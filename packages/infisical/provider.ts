@@ -28,11 +28,11 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * (DEPRECATED, Use the `auth` attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
+     * (DEPRECATED, Use the <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
      */
     declare public readonly clientId: pulumi.Output<string | undefined>;
     /**
-     * (DEPRECATED, use `auth` attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
+     * (DEPRECATED, use <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
      */
     declare public readonly clientSecret: pulumi.Output<string | undefined>;
     /**
@@ -87,11 +87,11 @@ export interface ProviderArgs {
      */
     auth?: pulumi.Input<inputs.ProviderAuth>;
     /**
-     * (DEPRECATED, Use the `auth` attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
+     * (DEPRECATED, Use the <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, use `auth` attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
+     * (DEPRECATED, use <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
      */
     clientSecret?: pulumi.Input<string>;
     /**

@@ -43,7 +43,7 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly enforcementLevel: pulumi.Output<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the access approval policy to
      */
     declare public readonly environmentSlug: pulumi.Output<string | undefined>;
     /**
@@ -129,7 +129,7 @@ export interface AccessApprovalPolicyState {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the access approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
     /**
@@ -167,7 +167,7 @@ export interface AccessApprovalPolicyArgs {
      */
     enforcementLevel?: pulumi.Input<string>;
     /**
-     * (DEPRECATED, Use environment_slugs instead) The environment to apply the access approval policy to
+     * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the access approval policy to
      */
     environmentSlug?: pulumi.Input<string>;
     /**

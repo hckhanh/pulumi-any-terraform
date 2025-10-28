@@ -31,6 +31,7 @@ export interface GetProjectsResult {
     readonly name: string;
     readonly orgId: string;
     readonly slug: string;
+    readonly type: string;
     readonly updatedAt: string;
     readonly upgradeStatus: string;
     readonly version: number;

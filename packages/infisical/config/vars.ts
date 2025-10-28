@@ -21,7 +21,7 @@ Object.defineProperty(exports, "auth", {
 });
 
 /**
- * (DEPRECATED, Use the `auth` attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
+ * (DEPRECATED, Use the <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
  */
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
@@ -32,7 +32,7 @@ Object.defineProperty(exports, "clientId", {
 });
 
 /**
- * (DEPRECATED, use `auth` attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
+ * (DEPRECATED, use <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
  */
 export declare const clientSecret: string | undefined;
 Object.defineProperty(exports, "clientSecret", {

@@ -47,7 +47,7 @@ export class DynamicSecretSqlDatabase extends pulumi.CustomResource {
      */
     declare public readonly environmentSlug: pulumi.Output<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
     declare public readonly maxTtl: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface DynamicSecretSqlDatabaseState {
      */
     environmentSlug?: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
     maxTtl?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface DynamicSecretSqlDatabaseArgs {
      */
     environmentSlug: pulumi.Input<string>;
     /**
-     * The maximum limit a TTL can be leases or renewed.
+     * The maximum limit a TTL can be leased or renewed for.
      */
     maxTtl?: pulumi.Input<string>;
     /**

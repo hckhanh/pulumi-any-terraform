@@ -49,7 +49,7 @@ export class SecretImport extends pulumi.CustomResource {
      */
     declare public readonly importFolderPath: pulumi.Output<string>;
     /**
-     * The is_replication of the secret import to modify/create
+     * The<span pulumi-lang-nodejs=" isReplication " pulumi-lang-dotnet=" IsReplication " pulumi-lang-go=" isReplication " pulumi-lang-python=" is_replication " pulumi-lang-yaml=" isReplication " pulumi-lang-java=" isReplication "> is_replication </span>of the secret import to modify/create
      */
     declare public readonly isReplication: pulumi.Output<boolean>;
     /**
@@ -129,7 +129,7 @@ export interface SecretImportState {
      */
     importFolderPath?: pulumi.Input<string>;
     /**
-     * The is_replication of the secret import to modify/create
+     * The<span pulumi-lang-nodejs=" isReplication " pulumi-lang-dotnet=" IsReplication " pulumi-lang-go=" isReplication " pulumi-lang-python=" is_replication " pulumi-lang-yaml=" isReplication " pulumi-lang-java=" isReplication "> is_replication </span>of the secret import to modify/create
      */
     isReplication?: pulumi.Input<boolean>;
     /**
@@ -159,7 +159,7 @@ export interface SecretImportArgs {
      */
     importFolderPath: pulumi.Input<string>;
     /**
-     * The is_replication of the secret import to modify/create
+     * The<span pulumi-lang-nodejs=" isReplication " pulumi-lang-dotnet=" IsReplication " pulumi-lang-go=" isReplication " pulumi-lang-python=" is_replication " pulumi-lang-yaml=" isReplication " pulumi-lang-java=" isReplication "> is_replication </span>of the secret import to modify/create
      */
     isReplication: pulumi.Input<boolean>;
     /**

@@ -55,7 +55,7 @@ export class IdentityAwsAuth extends pulumi.CustomResource {
      */
     declare public readonly allowedAccountIds: pulumi.Output<string[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span> to authenticate with Infisical under the identity
      */
     declare public readonly allowedPrincipalArns: pulumi.Output<string[]>;
     /**
@@ -132,7 +132,7 @@ export interface IdentityAwsAuthState {
      */
     allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span> to authenticate with Infisical under the identity
      */
     allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -170,7 +170,7 @@ export interface IdentityAwsAuthArgs {
      */
     allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account `123456789012` to authenticate with Infisical under the identity
+     * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span> to authenticate with Infisical under the identity
      */
     allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
