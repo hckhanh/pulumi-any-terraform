@@ -1,3 +1,13 @@
+## 0.16.0-0 (2025-10-28)
+
+### 🚀 Features
+
+- Bump infisical to [v0.15.41](https://github.com/Infisical/terraform-provider-infisical/releases/tag/v0.15.41) ([8e90ee5](https://github.com/hckhanh/pulumi-any-terraform/commit/8e90ee5))
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 0.15.43 (2025-10-08)
 
 ### 🩹 Fixes
