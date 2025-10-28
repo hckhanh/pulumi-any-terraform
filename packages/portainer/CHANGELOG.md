@@ -1,3 +1,13 @@
+## 1.14.0 (2025-10-28)
+
+### 🚀 Features
+
+- Bump portainer to [v1.14.1](https://github.com/portainer/terraform-provider-portainer/releases/tag/v1.14.1) adjust parameters and attributes include registry and settings modifications ([030c36d](https://github.com/hckhanh/pulumi-any-terraform/commit/030c36d))
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 1.13.4 (2025-10-15)
 
 ### 🩹 Fixes
