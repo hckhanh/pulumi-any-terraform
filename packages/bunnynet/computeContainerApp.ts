@@ -62,6 +62,7 @@ export class ComputeContainerApp extends pulumi.CustomResource {
      * The regions that will be statically provisioned and will always be running and available to users.
      */
     declare public readonly regionsRequireds: pulumi.Output<string[]>;
+    declare public readonly version: pulumi.Output<number>;
 
     /**
      * Create a ComputeContainerApp resource with the given unique name, arguments, and options.
@@ -83,6 +84,7 @@ export class ComputeContainerApp extends pulumi.CustomResource {
             resourceInputs["regionsAlloweds"] = state?.regionsAlloweds;
             resourceInputs["regionsMaxAllowed"] = state?.regionsMaxAllowed;
             resourceInputs["regionsRequireds"] = state?.regionsRequireds;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ComputeContainerAppArgs | undefined;
             if (args?.regionsAlloweds === undefined && !opts.urn) {
@@ -98,6 +100,7 @@ export class ComputeContainerApp extends pulumi.CustomResource {
             resourceInputs["regionsAlloweds"] = args?.regionsAlloweds;
             resourceInputs["regionsMaxAllowed"] = args?.regionsMaxAllowed;
             resourceInputs["regionsRequireds"] = args?.regionsRequireds;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeContainerApp.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -136,6 +139,7 @@ export interface ComputeContainerAppState {
      * The regions that will be statically provisioned and will always be running and available to users.
      */
     regionsRequireds?: pulumi.Input<pulumi.Input<string>[]>;
+    version?: pulumi.Input<number>;
 }
 
 /**
@@ -170,4 +174,5 @@ export interface ComputeContainerAppArgs {
      * The regions that will be statically provisioned and will always be running and available to users.
      */
     regionsRequireds: pulumi.Input<pulumi.Input<string>[]>;
+    version?: pulumi.Input<number>;
 }

@@ -75,6 +75,11 @@ export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
 
+export { GetPullzoneArgs, GetPullzoneResult, GetPullzoneOutputArgs } from "./getPullzone";
+export const getPullzone: typeof import("./getPullzone").getPullzone = null as any;
+export const getPullzoneOutput: typeof import("./getPullzone").getPullzoneOutput = null as any;
+utilities.lazyLoad(exports, ["getPullzone","getPullzoneOutput"], () => require("./getPullzone"));
+
 export { GetPullzoneAccessListsArgs, GetPullzoneAccessListsResult, GetPullzoneAccessListsOutputArgs } from "./getPullzoneAccessLists";
 export const getPullzoneAccessLists: typeof import("./getPullzoneAccessLists").getPullzoneAccessLists = null as any;
 export const getPullzoneAccessListsOutput: typeof import("./getPullzoneAccessLists").getPullzoneAccessListsOutput = null as any;

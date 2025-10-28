@@ -169,7 +169,7 @@ export interface ComputeContainerAppContainerLivenessProbe {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Options: `grpc`, `http`, `tcp`
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -226,7 +226,7 @@ export interface ComputeContainerAppContainerReadinessProbe {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Options: `grpc`, `http`, `tcp`
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -283,7 +283,7 @@ export interface ComputeContainerAppContainerStartupProbe {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Options: `grpc`, `http`, `tcp`
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -304,6 +304,146 @@ export interface ComputeContainerAppContainerStartupProbeHttp {
      * The HTTP path to be requested.
      */
     path: pulumi.Input<string>;
+}
+
+export interface GetPullzoneOrigin {
+    /**
+     * The ID if the compute container app.
+     */
+    containerAppId?: string;
+    /**
+     * The ID if the compute container app endpoint.
+     */
+    containerEndpointId?: string;
+    /**
+     * Indicates whether the zone will follow origin redirects.
+     */
+    followRedirects?: boolean;
+    /**
+     * Indicates whether the current hostname is forwarded to the origin.
+     */
+    forwardHostHeader?: boolean;
+    /**
+     * The host header that will be sent to the origin.
+     */
+    hostHeader?: string;
+    /**
+     * The ID of the compute script used as a middleware.
+     */
+    middlewareScript?: number;
+    /**
+     * The ID of the linked compute script.
+     */
+    script?: number;
+    /**
+     * The ID of the linked storage zone.
+     */
+    storagezone?: number;
+    /**
+     * Options: `ComputeContainer`, `ComputeScript`, `DnsAccelerate`, `OriginUrl`, `StorageZone`
+     */
+    type?: string;
+    /**
+     * The origin URL from where the files are fetched.
+     */
+    url?: string;
+    /**
+     * Indicates whether the Origin's TLS certificate should be verified.
+     */
+    verifySsl?: boolean;
+}
+
+export interface GetPullzoneOriginArgs {
+    /**
+     * The ID if the compute container app.
+     */
+    containerAppId?: pulumi.Input<string>;
+    /**
+     * The ID if the compute container app endpoint.
+     */
+    containerEndpointId?: pulumi.Input<string>;
+    /**
+     * Indicates whether the zone will follow origin redirects.
+     */
+    followRedirects?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the current hostname is forwarded to the origin.
+     */
+    forwardHostHeader?: pulumi.Input<boolean>;
+    /**
+     * The host header that will be sent to the origin.
+     */
+    hostHeader?: pulumi.Input<string>;
+    /**
+     * The ID of the compute script used as a middleware.
+     */
+    middlewareScript?: pulumi.Input<number>;
+    /**
+     * The ID of the linked compute script.
+     */
+    script?: pulumi.Input<number>;
+    /**
+     * The ID of the linked storage zone.
+     */
+    storagezone?: pulumi.Input<number>;
+    /**
+     * Options: `ComputeContainer`, `ComputeScript`, `DnsAccelerate`, `OriginUrl`, `StorageZone`
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The origin URL from where the files are fetched.
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * Indicates whether the Origin's TLS certificate should be verified.
+     */
+    verifySsl?: pulumi.Input<boolean>;
+}
+
+export interface GetPullzoneRouting {
+    /**
+     * The list of blocked countries with the two-letter Alpha2 ISO codes. Traffic connecting from a blocked country will be rejected on the DNS level.
+     */
+    blockedCountries?: string[];
+    /**
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
+     */
+    filters?: string[];
+    /**
+     * The list of budget redirected countries with the two-letter Alpha2 ISO codes. Traffic from a redirected country will connect to the cheapest possible node in North America or Europe.
+     */
+    redirectedCountries?: string[];
+    /**
+     * Options: `Standard`, `Volume`
+     */
+    tier?: string;
+    /**
+     * Options: `AF`, `ASIA`, `EU`, `SA`, `US`
+     */
+    zones?: string[];
+}
+
+export interface GetPullzoneRoutingArgs {
+    /**
+     * The list of blocked countries with the two-letter Alpha2 ISO codes. Traffic connecting from a blocked country will be rejected on the DNS level.
+     */
+    blockedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
+     */
+    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of budget redirected countries with the two-letter Alpha2 ISO codes. Traffic from a redirected country will connect to the cheapest possible node in North America or Europe.
+     */
+    redirectedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Options: `Standard`, `Volume`
+     */
+    tier?: pulumi.Input<string>;
+    /**
+     * Options: `AF`, `ASIA`, `EU`, `SA`, `US`
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PullzoneEdgeruleAction {
@@ -409,7 +549,7 @@ export interface PullzoneRouting {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Options: `all`, `eu`, `scripting`
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     /**

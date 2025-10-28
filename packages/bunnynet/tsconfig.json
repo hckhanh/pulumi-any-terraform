@@ -29,6 +29,7 @@
         "getComputeContainerImageregistry.ts",
         "getDnsRecord.ts",
         "getDnsZone.ts",
+        "getPullzone.ts",
         "getPullzoneAccessLists.ts",
         "getRegion.ts",
         "getVideoLanguage.ts",
