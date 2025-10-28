@@ -34,32 +34,32 @@ export class Settings extends pulumi.CustomResource {
         return obj['__pulumiType'] === Settings.__pulumiType;
     }
 
-    declare public readonly authenticationMethod: pulumi.Output<number | undefined>;
+    declare public readonly authenticationMethod: pulumi.Output<number>;
     declare public readonly blackListedLabels: pulumi.Output<outputs.SettingsBlackListedLabel[] | undefined>;
-    declare public readonly disableKubeRolesSync: pulumi.Output<boolean | undefined>;
-    declare public readonly disableKubeShell: pulumi.Output<boolean | undefined>;
-    declare public readonly disableKubeconfigDownload: pulumi.Output<boolean | undefined>;
-    declare public readonly displayDonationHeader: pulumi.Output<boolean | undefined>;
-    declare public readonly displayExternalContributors: pulumi.Output<boolean | undefined>;
-    declare public readonly edgeAgentCheckinInterval: pulumi.Output<number | undefined>;
-    declare public readonly edgePortainerUrl: pulumi.Output<string | undefined>;
-    declare public readonly enableEdgeComputeFeatures: pulumi.Output<boolean | undefined>;
-    declare public readonly enableTelemetry: pulumi.Output<boolean | undefined>;
-    declare public readonly enforceEdgeId: pulumi.Output<boolean | undefined>;
+    declare public readonly disableKubeRolesSync: pulumi.Output<boolean>;
+    declare public readonly disableKubeShell: pulumi.Output<boolean>;
+    declare public readonly disableKubeconfigDownload: pulumi.Output<boolean>;
+    declare public readonly displayDonationHeader: pulumi.Output<boolean>;
+    declare public readonly displayExternalContributors: pulumi.Output<boolean>;
+    declare public readonly edgeAgentCheckinInterval: pulumi.Output<number>;
+    declare public readonly edgePortainerUrl: pulumi.Output<string>;
+    declare public readonly enableEdgeComputeFeatures: pulumi.Output<boolean>;
+    declare public readonly enableTelemetry: pulumi.Output<boolean>;
+    declare public readonly enforceEdgeId: pulumi.Output<boolean>;
     declare public readonly globalDeploymentOptions: pulumi.Output<outputs.SettingsGlobalDeploymentOptions | undefined>;
-    declare public readonly helmRepositoryUrl: pulumi.Output<string | undefined>;
+    declare public readonly helmRepositoryUrl: pulumi.Output<string>;
     declare public readonly internalAuthSettings: pulumi.Output<outputs.SettingsInternalAuthSettings | undefined>;
-    declare public readonly isDockerDesktopExtension: pulumi.Output<boolean | undefined>;
-    declare public readonly kubeconfigExpiry: pulumi.Output<string | undefined>;
-    declare public readonly kubectlShellImage: pulumi.Output<string | undefined>;
+    declare public readonly isDockerDesktopExtension: pulumi.Output<boolean>;
+    declare public readonly kubeconfigExpiry: pulumi.Output<string>;
+    declare public readonly kubectlShellImage: pulumi.Output<string>;
     declare public readonly ldapSettings: pulumi.Output<outputs.SettingsLdapSettings | undefined>;
-    declare public readonly logoUrl: pulumi.Output<string | undefined>;
+    declare public readonly logoUrl: pulumi.Output<string>;
     declare public readonly oauthSettings: pulumi.Output<outputs.SettingsOauthSettings | undefined>;
     declare public readonly settingsId: pulumi.Output<string>;
-    declare public readonly snapshotInterval: pulumi.Output<string | undefined>;
-    declare public readonly templatesUrl: pulumi.Output<string | undefined>;
-    declare public readonly trustOnFirstConnect: pulumi.Output<boolean | undefined>;
-    declare public readonly userSessionTimeout: pulumi.Output<string | undefined>;
+    declare public readonly snapshotInterval: pulumi.Output<string>;
+    declare public readonly templatesUrl: pulumi.Output<string>;
+    declare public readonly trustOnFirstConnect: pulumi.Output<boolean>;
+    declare public readonly userSessionTimeout: pulumi.Output<string>;
 
     /**
      * Create a Settings resource with the given unique name, arguments, and options.

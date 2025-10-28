@@ -125,60 +125,60 @@ export interface SettingsBlackListedLabel {
 }
 
 export interface SettingsGlobalDeploymentOptions {
-    hideStacksFunctionality?: boolean;
+    hideStacksFunctionality: boolean;
 }
 
 export interface SettingsInternalAuthSettings {
-    requiredPasswordLength?: number;
+    requiredPasswordLength: number;
 }
 
 export interface SettingsLdapSettings {
-    anonymousMode?: boolean;
-    autoCreateUsers?: boolean;
+    anonymousMode: boolean;
+    autoCreateUsers: boolean;
     groupSearchSettings?: outputs.SettingsLdapSettingsGroupSearchSetting[];
-    password?: string;
-    readerDn?: string;
+    password: string;
+    readerDn: string;
     searchSettings?: outputs.SettingsLdapSettingsSearchSetting[];
-    startTls?: boolean;
+    startTls: boolean;
     tlsConfig?: outputs.SettingsLdapSettingsTlsConfig;
-    url?: string;
+    url: string;
 }
 
 export interface SettingsLdapSettingsGroupSearchSetting {
-    groupAttribute?: string;
-    groupBaseDn?: string;
-    groupFilter?: string;
+    groupAttribute: string;
+    groupBaseDn: string;
+    groupFilter: string;
 }
 
 export interface SettingsLdapSettingsSearchSetting {
-    baseDn?: string;
-    filter?: string;
-    userNameAttribute?: string;
+    baseDn: string;
+    filter: string;
+    userNameAttribute: string;
 }
 
 export interface SettingsLdapSettingsTlsConfig {
-    tls?: boolean;
-    tlsCaCert?: string;
-    tlsCert?: string;
-    tlsKey?: string;
-    tlsSkipVerify?: boolean;
+    tls: boolean;
+    tlsCaCert: string;
+    tlsCert: string;
+    tlsKey: string;
+    tlsSkipVerify: boolean;
 }
 
 export interface SettingsOauthSettings {
-    accessTokenUri?: string;
-    authStyle?: number;
-    authorizationUri?: string;
-    clientId?: string;
-    clientSecret?: string;
-    defaultTeamId?: number;
-    kubeSecretKeys?: number[];
-    logoutUri?: string;
-    oauthAutoCreateUsers?: boolean;
-    redirectUri?: string;
-    resourceUri?: string;
-    scopes?: string;
-    sso?: boolean;
-    userIdentifier?: string;
+    accessTokenUri: string;
+    authStyle: number;
+    authorizationUri: string;
+    clientId: string;
+    clientSecret: string;
+    defaultTeamId: number;
+    kubeSecretKeys: number[];
+    logoutUri: string;
+    oauthAutoCreateUsers: boolean;
+    redirectUri: string;
+    resourceUri: string;
+    scopes: string;
+    sso: boolean;
+    userIdentifier: string;
 }
 
 export interface StackEnv {
