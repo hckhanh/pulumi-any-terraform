@@ -15,7 +15,7 @@
     "@nx/js": "22.0.2",
     "@nx/s3-cache": "4.0.0",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.13.5",
+    "@swc/core": "1.13.21",
     "@swc/helpers": "0.5.17",
     "@types/node": "24.9.2",
     "nx": "22.0.2",
