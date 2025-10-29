@@ -25,6 +25,11 @@ export type Chat = import("./chat").Chat;
 export const Chat: typeof import("./chat").Chat = null as any;
 utilities.lazyLoad(exports, ["Chat"], () => require("./chat"));
 
+export { CheckArgs, CheckState } from "./check";
+export type Check = import("./check").Check;
+export const Check: typeof import("./check").Check = null as any;
+utilities.lazyLoad(exports, ["Check"], () => require("./check"));
+
 export { CloudCredentialsArgs, CloudCredentialsState } from "./cloudCredentials";
 export type CloudCredentials = import("./cloudCredentials").CloudCredentials;
 export const CloudCredentials: typeof import("./cloudCredentials").CloudCredentials = null as any;
@@ -49,6 +54,11 @@ export { CustomTemplateArgs, CustomTemplateState } from "./customTemplate";
 export type CustomTemplate = import("./customTemplate").CustomTemplate;
 export const CustomTemplate: typeof import("./customTemplate").CustomTemplate = null as any;
 utilities.lazyLoad(exports, ["CustomTemplate"], () => require("./customTemplate"));
+
+export { DeployArgs, DeployState } from "./deploy";
+export type Deploy = import("./deploy").Deploy;
+export const Deploy: typeof import("./deploy").Deploy = null as any;
+utilities.lazyLoad(exports, ["Deploy"], () => require("./deploy"));
 
 export { DockerConfigArgs, DockerConfigState } from "./dockerConfig";
 export type DockerConfig = import("./dockerConfig").DockerConfig;
@@ -390,6 +400,8 @@ const _module = {
                 return new BackupS3(name, <any>undefined, { urn })
             case "portainer:index/chat:Chat":
                 return new Chat(name, <any>undefined, { urn })
+            case "portainer:index/check:Check":
+                return new Check(name, <any>undefined, { urn })
             case "portainer:index/cloudCredentials:CloudCredentials":
                 return new CloudCredentials(name, <any>undefined, { urn })
             case "portainer:index/cloudProviderProvision:CloudProviderProvision":
@@ -400,6 +412,8 @@ const _module = {
                 return new ContainerExec(name, <any>undefined, { urn })
             case "portainer:index/customTemplate:CustomTemplate":
                 return new CustomTemplate(name, <any>undefined, { urn })
+            case "portainer:index/deploy:Deploy":
+                return new Deploy(name, <any>undefined, { urn })
             case "portainer:index/dockerConfig:DockerConfig":
                 return new DockerConfig(name, <any>undefined, { urn })
             case "portainer:index/dockerImage:DockerImage":
@@ -535,11 +549,13 @@ pulumi.runtime.registerResourceModule("portainer", "index/auth", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backup", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backupS3", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/chat", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/check", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/cloudCredentials", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/cloudProviderProvision", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/composeConvert", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/containerExec", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/customTemplate", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/deploy", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/dockerConfig", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/dockerImage", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/dockerNetwork", _module)
