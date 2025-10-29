@@ -1,3 +1,25 @@
+## 1.15.0 (2025-10-29)
+
+### 🚀 Features
+
+- ### New Features ([3929fef](https://github.com/hckhanh/pulumi-any-terraform/commit/3929fef))
+
+  - Added new resource `portainer_deploy`
+  - Automates image updates and environment variable synchronization for stacks in Portainer (Swarm & Standalone).
+  - Added new resource `portainer_check`
+  - Enables validation of running containers or services after deployment with retries and state checks.
+  - Enhanced documentation
+  - Updated README and added detailed examples for CI/CD automation using new resources.
+
+  ### Improvements
+
+  - Added comprehensive Terraform examples for end-to-end automation (pull → deploy → exec → check).
+  - Fixed and unified documentation structure across all resources.
+
+### ❤️ Thank You
+
+- Khánh Hoàng @hckhanh
+
 ## 1.14.0 (2025-10-28)
 
 ### 🚀 Features
