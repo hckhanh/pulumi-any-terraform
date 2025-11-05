@@ -21,17 +21,20 @@ This script automatically checks for updates to Terraform providers and updates 
 ### Usage
 
 Manual execution:
+
 ```bash
 node .github/scripts/check-updates.js
 ```
 
 Automated execution via GitHub Actions:
+
 - Runs weekly on Mondays at 00:00 UTC
 - Can be triggered manually via workflow dispatch
 
 ### Output
 
 The script produces:
+
 - Updated `package.json` files with new provider versions
 - Updated `CHANGELOG.md` files with release information
 - Nx release plan files
@@ -40,6 +43,7 @@ The script produces:
 ### Environment Variables
 
 When running in GitHub Actions, the script uses:
+
 - `GITHUB_OUTPUT`: To pass update information to subsequent workflow steps
 
 ### API Endpoints
