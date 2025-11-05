@@ -48,8 +48,8 @@ When running in GitHub Actions, the script uses:
 
 ### API Endpoints
 
-- **OpenTofu Registry**: `https://registry.opentofu.org/v1/providers/{namespace}/{name}/versions`
-- **GitHub Releases**: `https://api.github.com/repos/{namespace}/terraform-provider-{name}/releases/tags/v{version}`
+- **OpenTofu Registry**: `https://registry.opentofu.org/v1/providers/{namespace}/{name}` - to get the GitHub repository URL
+- **GitHub Releases**: `https://api.github.com/repos/{owner}/{repo}/releases/latest` - to get the latest version and changelog
 
 ### Error Handling
 

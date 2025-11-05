@@ -44,8 +44,10 @@ async function getGitHubRepoFromRegistry(namespace, name) {
  */
 async function getLatestGitHubRelease(repoUrl) {
   try {
-    // Extract owner/repo from URL
-    const match = repoUrl.match(/github\.com\/([^\/]+\/[^\/]+)/)
+    // Extract owner/repo from URL (handle .git suffix and trailing paths)
+    const match = repoUrl.match(
+      /github\.com\/([^\/]+\/[^\/]+?)(?:\.git|\/.*)?$/,
+    )
     if (!match) {
       console.error(`Invalid GitHub URL: ${repoUrl}`)
       return null
@@ -330,10 +332,32 @@ async function main() {
       packageJson.pulumi.parameterization.value,
       'base64',
     ).toString('utf8')
-    const currentProvider = JSON.parse(decodedParam).remote
+
+    let currentProvider
+    try {
+      const parsed = JSON.parse(decodedParam)
+      if (!parsed.remote || typeof parsed.remote !== 'object') {
+        console.log(`  Invalid parameterization structure`)
+        continue
+      }
+      currentProvider = parsed.remote
+    } catch (error) {
+      console.log(`  Failed to parse parameterization: ${error.message}`)
+      continue
+    }
 
     // Parse namespace and name from URL
+    if (!currentProvider.url || typeof currentProvider.url !== 'string') {
+      console.log(`  Invalid provider URL`)
+      continue
+    }
+
     const urlParts = currentProvider.url.split('/')
+    if (urlParts.length < 2) {
+      console.log(`  Invalid provider URL format`)
+      continue
+    }
+
     const namespace = urlParts[urlParts.length - 2]
     const name = urlParts[urlParts.length - 1]
 
@@ -430,18 +454,13 @@ async function main() {
 
     // Set outputs for GitHub Actions
     if (process.env.GITHUB_OUTPUT) {
-      // Properly escape all special characters for GitHub Actions output
-      const escapedSummary = updateSummary
-        .replace(/%/g, '%25') // Must be first to avoid double-escaping
-        .replace(/\r/g, '%0D')
-        .replace(/\n/g, '%0A')
-        .replace(/:/g, '%3A')
-        .replace(/,/g, '%2C')
+      // Use base64 encoding to safely pass multiline content with special characters
+      const encodedSummary = Buffer.from(updateSummary).toString('base64')
 
       fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_updates=true\n`)
       fs.appendFileSync(
         process.env.GITHUB_OUTPUT,
-        `update_summary=${escapedSummary}\n`,
+        `update_summary_base64=${encodedSummary}\n`,
       )
     }
   } else {
