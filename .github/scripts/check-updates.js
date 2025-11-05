@@ -6,6 +6,26 @@ const { execSync, spawnSync } = require('node:child_process')
 const os = require('node:os')
 
 /**
+ * Determines the semver bump type based on version comparison
+ * @param {string} oldVersion - Current version (e.g., "1.2.3")
+ * @param {string} newVersion - New version (e.g., "2.0.0")
+ * @returns {string} Bump type: "major", "minor", or "patch"
+ */
+function determineBumpType(oldVersion, newVersion) {
+  const parseVersion = (v) => {
+    const parts = v.replace(/^v/, '').split('.').map(Number)
+    return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 }
+  }
+
+  const oldV = parseVersion(oldVersion)
+  const newV = parseVersion(newVersion)
+
+  if (newV.major > oldV.major) return 'major'
+  if (newV.minor > oldV.minor) return 'minor'
+  return 'patch'
+}
+
+/**
  * Fetches the GitHub repository URL from Terraform registry
  * @param {string} namespace - Provider namespace
  * @param {string} name - Provider name
@@ -384,10 +404,14 @@ async function main() {
     // Update package
     updatePackage(packagePath, currentProvider, latestVersion, namespace, name)
 
+    const bumpType = determineBumpType(currentProvider.version, latestVersion)
+
     updates.push({
       name: packageJson.name,
+      projectName: pkg, // The directory name which is the nx project name
       oldVersion: currentProvider.version,
       newVersion: latestVersion,
+      bumpType,
       namespace,
       providerName: name,
     })
@@ -398,24 +422,37 @@ async function main() {
   if (updates.length > 0) {
     console.log(`\nUpdated ${updates.length} package(s)`)
 
-    // Create release plan
-    const releaseMessage = updates
-      .map((u) => `Update ${u.name} from ${u.oldVersion} to ${u.newVersion}`)
-      .join('\n\n')
-
+    // Create release plan for each project
     try {
-      // Use spawnSync to avoid command injection
-      const result = spawnSync(
-        'pnpm',
-        ['nx', 'release', 'plan', `--message=${releaseMessage}`],
-        {
-          stdio: 'inherit',
-          cwd: process.cwd(),
-        },
-      )
+      for (const update of updates) {
+        const releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
 
-      if (result.status !== 0) {
-        throw new Error(`nx release plan failed with status ${result.status}`)
+        console.log(
+          `\nCreating release plan for ${update.projectName} (${update.bumpType})...`,
+        )
+
+        // Use spawnSync to avoid command injection
+        const result = spawnSync(
+          'pnpm',
+          [
+            'nx',
+            'release',
+            'plan',
+            update.bumpType,
+            `--message=${releaseMessage}`,
+            `--projects=${update.projectName}`,
+          ],
+          {
+            stdio: 'inherit',
+            cwd: process.cwd(),
+          },
+        )
+
+        if (result.status !== 0) {
+          throw new Error(
+            `nx release plan failed for ${update.projectName} with status ${result.status}`,
+          )
+        }
       }
 
       // Stage all changes
