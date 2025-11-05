@@ -147,12 +147,17 @@ function updatePackage(
     console.log(`  Creating temporary Pulumi project in ${tempDir}`)
 
     // Initialize Pulumi project with TypeScript template
+    // Set a passphrase for the temporary project (not used for secrets)
     const initResult = spawnSync(
       'pulumi',
       ['new', 'typescript', '--yes', '--force'],
       {
         cwd: tempDir,
         stdio: 'pipe',
+        env: {
+          ...process.env,
+          PULUMI_CONFIG_PASSPHRASE: 'temp-passphrase-for-update',
+        },
       },
     )
 
@@ -175,6 +180,10 @@ function updatePackage(
       {
         cwd: tempDir,
         stdio: 'pipe',
+        env: {
+          ...process.env,
+          PULUMI_CONFIG_PASSPHRASE: 'temp-passphrase-for-update',
+        },
       },
     )
 
