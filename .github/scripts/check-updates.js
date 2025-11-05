@@ -2,7 +2,7 @@
 
 const fs = require('node:fs')
 const path = require('node:path')
-const { execSync, spawnSync } = require('node:child_process')
+const { spawnSync } = require('node:child_process')
 const os = require('node:os')
 
 /**
@@ -427,7 +427,7 @@ async function main() {
     try {
       for (const update of updates) {
         // Include changelog in message if available, otherwise use simple update message
-        let releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
+        let releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion} to match upstream terraform provider`
         if (update.changelog) {
           releaseMessage += `\n\n${update.changelog}`
         }
