@@ -10,12 +10,14 @@ This script automatically checks for updates to Terraform providers and updates 
 
 1. **Scans packages**: Iterates through all packages in the `packages/` directory
 2. **Extracts provider info**: Decodes the base64-encoded parameterization value to get the current provider version and registry URL
-3. **Checks for updates**: Queries the OpenTofu registry API for the latest version of each provider
-4. **Fetches changelogs**: Attempts to fetch release notes from GitHub if available
+3. **Gets GitHub repository**: Queries the OpenTofu registry to get the source GitHub repository
+4. **Fetches latest release**: Gets the latest release version and changelog from GitHub API
 5. **Updates packages**: For packages with newer versions available:
-   - Updates the `package.json` with new parameterization value
-   - Adds an entry to `CHANGELOG.md` with release notes or a generic update message
-6. **Creates release plan**: Uses `nx release plan` to prepare versioning for updated packages
+   - Creates a temporary Pulumi project
+   - Runs `pulumi package add terraform-provider namespace/name@version`
+   - Copies generated TypeScript files to the package directory
+   - Updates the `pulumi` property in `package.json` with new parameterization
+6. **Creates release plan**: Uses `nx release plan` to prepare versioning and changelog updates
 7. **Stages changes**: Adds all changes to git staging area
 
 ### Usage

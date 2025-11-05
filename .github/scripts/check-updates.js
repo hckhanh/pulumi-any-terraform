@@ -124,7 +124,6 @@ function copyDirectory(src, dest, excludeFiles = []) {
  * @param {string} newVersion - New version to update to
  * @param {string} namespace - Provider namespace
  * @param {string} providerName - Provider name
- * @param {string|null} changelog - Changelog content
  */
 function updatePackage(
   packagePath,
@@ -132,7 +131,6 @@ function updatePackage(
   newVersion,
   namespace,
   providerName,
-  changelog,
 ) {
   const packageJsonPath = path.join(packagePath, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
@@ -160,17 +158,15 @@ function updatePackage(
     }
 
     // Run pulumi package add command
+    // Note: pulumi package add terraform-provider uses Terraform registry format
+    // We need to use registry.terraform.io, not registry.opentofu.org
+    const registryUrl = `registry.terraform.io/${namespace}/${providerName}`
     console.log(
-      `  Running: pulumi package add terraform-provider ${namespace}/${providerName}@v${newVersion}`,
+      `  Running: pulumi package add terraform-provider ${registryUrl}@v${newVersion}`,
     )
     const addResult = spawnSync(
       'pulumi',
-      [
-        'package',
-        'add',
-        'terraform-provider',
-        `${namespace}/${providerName}@v${newVersion}`,
-      ],
+      ['package', 'add', 'terraform-provider', `${registryUrl}@v${newVersion}`],
       {
         cwd: tempDir,
         stdio: 'pipe',
@@ -262,34 +258,6 @@ function updatePackage(
         console.log(`  Updated pulumi property in package.json`)
       }
     }
-
-    // Update CHANGELOG.md
-    const changelogPath = path.join(packagePath, 'CHANGELOG.md')
-    let changelogContent = ''
-
-    if (fs.existsSync(changelogPath)) {
-      changelogContent = fs.readFileSync(changelogPath, 'utf8')
-    }
-
-    const date = new Date().toISOString().split('T')[0]
-    const changelogEntry = changelog
-      ? `## ${newVersion} (${date})\n\n${changelog}\n\n`
-      : `## ${newVersion} (${date})\n\nUpdate to version ${newVersion}\n\n`
-
-    // Prepend new entry at the beginning (before the first ## entry)
-    const versionMatch = changelogContent.match(/^##\s/m)
-    if (versionMatch) {
-      const insertPos = versionMatch.index
-      changelogContent =
-        changelogContent.slice(0, insertPos) +
-        changelogEntry +
-        changelogContent.slice(insertPos)
-    } else {
-      // No version entries yet, just append to the end
-      changelogContent = changelogContent + '\n' + changelogEntry
-    }
-
-    fs.writeFileSync(changelogPath, changelogContent)
 
     console.log(`Updated ${packageJson.name} to version ${newVersion}`)
   } finally {
@@ -393,14 +361,7 @@ async function main() {
     }
 
     // Update package
-    updatePackage(
-      packagePath,
-      currentProvider,
-      latestVersion,
-      namespace,
-      name,
-      changelog,
-    )
+    updatePackage(packagePath, currentProvider, latestVersion, namespace, name)
 
     updates.push({
       name: packageJson.name,
