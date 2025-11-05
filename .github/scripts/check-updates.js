@@ -168,15 +168,18 @@ function updatePackage(
     }
 
     // Run pulumi package add command
-    // Note: pulumi package add terraform-provider uses Terraform registry format
-    // We need to use registry.terraform.io, not registry.opentofu.org
-    const registryUrl = `registry.terraform.io/${namespace}/${providerName}`
     console.log(
-      `  Running: pulumi package add terraform-provider ${registryUrl}@v${newVersion}`,
+      `  Running: pulumi package add terraform-provider ${namespace}/${providerName} ${newVersion}`,
     )
     const addResult = spawnSync(
       'pulumi',
-      ['package', 'add', 'terraform-provider', `${registryUrl}@v${newVersion}`],
+      [
+        'package',
+        'add',
+        'terraform-provider',
+        `${namespace}/${providerName}`,
+        newVersion,
+      ],
       {
         cwd: tempDir,
         stdio: 'pipe',
@@ -242,8 +245,12 @@ function updatePackage(
       const srcPath = path.join(sdkDir, entry.name)
       const destPath = path.join(packagePath, entry.name)
 
-      // Skip README.md and package.json (we'll handle package.json separately)
-      if (entry.name === 'README.md' || entry.name === 'package.json') {
+      // Skip README.md, package.json, and .gitignore (we'll handle package.json separately)
+      if (
+        entry.name === 'README.md' ||
+        entry.name === 'package.json' ||
+        entry.name === '.gitignore'
+      ) {
         continue
       }
 
