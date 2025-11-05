@@ -2,7 +2,7 @@
 
 const fs = require('node:fs')
 const path = require('node:path')
-const { execSync } = require('node:child_process')
+const { execSync, spawnSync } = require('node:child_process')
 
 /**
  * Fetches the latest version of a Terraform provider from the OpenTofu registry
@@ -213,10 +213,19 @@ async function main() {
       .join('\n\n')
 
     try {
-      execSync(`pnpm nx release plan --message="${releaseMessage}"`, {
-        stdio: 'inherit',
-        cwd: process.cwd(),
-      })
+      // Use spawnSync to avoid command injection
+      const result = spawnSync(
+        'pnpm',
+        ['nx', 'release', 'plan', `--message=${releaseMessage}`],
+        {
+          stdio: 'inherit',
+          cwd: process.cwd(),
+        },
+      )
+
+      if (result.status !== 0) {
+        throw new Error(`nx release plan failed with status ${result.status}`)
+      }
 
       // Stage all changes
       execSync('git add .', { stdio: 'inherit', cwd: process.cwd() })
