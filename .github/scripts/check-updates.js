@@ -6,14 +6,14 @@ const { execSync, spawnSync } = require('node:child_process')
 const os = require('node:os')
 
 /**
- * Fetches the GitHub repository URL from OpenTofu registry
+ * Fetches the GitHub repository URL from Terraform registry
  * @param {string} namespace - Provider namespace
  * @param {string} name - Provider name
  * @returns {Promise<string|null>} GitHub repository URL or null
  */
 async function getGitHubRepoFromRegistry(namespace, name) {
   try {
-    const registryUrl = `https://registry.opentofu.org/v1/providers/${namespace}/${name}`
+    const registryUrl = `https://registry.terraform.io/v1/providers/${namespace}/${name}`
     const response = await fetch(registryUrl)
 
     if (!response.ok) {

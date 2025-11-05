@@ -10,7 +10,7 @@ This script automatically checks for updates to Terraform providers and updates 
 
 1. **Scans packages**: Iterates through all packages in the `packages/` directory
 2. **Extracts provider info**: Decodes the base64-encoded parameterization value to get the current provider version and registry URL
-3. **Gets GitHub repository**: Queries the OpenTofu registry to get the source GitHub repository
+3. **Gets GitHub repository**: Queries the Terraform registry to get the source GitHub repository
 4. **Fetches latest release**: Gets the latest release version and changelog from GitHub API
 5. **Updates packages**: For packages with newer versions available:
    - Creates a temporary Pulumi project
@@ -50,7 +50,7 @@ When running in GitHub Actions, the script uses:
 
 ### API Endpoints
 
-- **OpenTofu Registry**: `https://registry.opentofu.org/v1/providers/{namespace}/{name}` - to get the GitHub repository URL
+- **Terraform Registry**: `https://registry.terraform.io/v1/providers/{namespace}/{name}` - to get the GitHub repository URL
 - **GitHub Releases**: `https://api.github.com/repos/{owner}/{repo}/releases/latest` - to get the latest version and changelog
 
 ### Error Handling
