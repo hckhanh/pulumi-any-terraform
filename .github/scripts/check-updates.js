@@ -405,11 +405,13 @@ async function main() {
 
     // Set outputs for GitHub Actions
     if (process.env.GITHUB_OUTPUT) {
-      // Escape newlines and backslashes for multiline output
+      // Properly escape all special characters for GitHub Actions output
       const escapedSummary = updateSummary
-        .replace(/\\/g, '\\\\')
-        .replace(/\n/g, '\\n')
-        .replace(/\r/g, '\\r')
+        .replace(/%/g, '%25') // Must be first to avoid double-escaping
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A')
+        .replace(/:/g, '%3A')
+        .replace(/,/g, '%2C')
 
       fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_updates=true\n`)
       fs.appendFileSync(
