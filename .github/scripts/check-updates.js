@@ -56,12 +56,17 @@ async function getLatestGitHubRelease(repoUrl) {
     const repoPath = match[1]
     const apiUrl = `https://api.github.com/repos/${repoPath}/releases/latest`
 
-    const response = await fetch(apiUrl, {
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'User-Agent': 'pulumi-any-terraform-updater',
-      },
-    })
+    const headers = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'pulumi-any-terraform-updater',
+    }
+
+    // Add authentication if GITHUB_TOKEN is available
+    if (process.env.GITHUB_TOKEN) {
+      headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
+    }
+
+    const response = await fetch(apiUrl, { headers })
 
     if (!response.ok) {
       console.error(

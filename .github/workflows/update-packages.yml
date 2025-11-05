@@ -39,6 +39,8 @@ jobs:
 
       - name: Check for updates
         id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node .github/scripts/check-updates.js
 
