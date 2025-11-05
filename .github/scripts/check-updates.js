@@ -6,67 +6,82 @@ const { execSync, spawnSync } = require('node:child_process')
 const os = require('node:os')
 
 /**
- * Fetches the latest version of a Terraform provider from the OpenTofu registry
+ * Fetches the GitHub repository URL from OpenTofu registry
  * @param {string} namespace - Provider namespace
  * @param {string} name - Provider name
- * @returns {Promise<string|null>} Latest version or null if not found
+ * @returns {Promise<string|null>} GitHub repository URL or null
  */
-async function getLatestProviderVersion(namespace, name) {
+async function getGitHubRepoFromRegistry(namespace, name) {
   try {
-    const registryUrl = `https://registry.opentofu.org/v1/providers/${namespace}/${name}/versions`
+    const registryUrl = `https://registry.opentofu.org/v1/providers/${namespace}/${name}`
     const response = await fetch(registryUrl)
 
     if (!response.ok) {
       console.error(
-        `Failed to fetch versions for ${namespace}/${name}: ${response.status}`,
+        `Failed to fetch provider info for ${namespace}/${name}: ${response.status}`,
       )
       return null
     }
 
     const data = await response.json()
 
-    if (!data.versions || data.versions.length === 0) {
-      console.error(`No versions found for ${namespace}/${name}`)
-      return null
+    // The source field contains the GitHub repository URL
+    if (data.source) {
+      return data.source
     }
 
-    // Return the latest version (versions are sorted by the API)
-    return data.versions[0].version
+    return null
   } catch (error) {
-    console.error(`Error fetching version for ${namespace}/${name}:`, error)
+    console.error(`Error fetching repo info for ${namespace}/${name}:`, error)
     return null
   }
 }
 
 /**
- * Fetches changelog for a specific version of a provider
- * @param {string} namespace - Provider namespace
- * @param {string} name - Provider name
- * @param {string} version - Version to fetch changelog for
- * @returns {Promise<string|null>} Changelog content or null
+ * Fetches the latest release from GitHub repository
+ * @param {string} repoUrl - GitHub repository URL (e.g., "https://github.com/BunnyWay/terraform-provider-bunnynet")
+ * @returns {Promise<{version: string, changelog: string|null}|null>} Latest release info or null
  */
-async function getProviderChangelog(namespace, name, version) {
+async function getLatestGitHubRelease(repoUrl) {
   try {
-    // Try to fetch from GitHub releases
-    const githubUrl = `https://api.github.com/repos/${namespace}/terraform-provider-${name}/releases/tags/v${version}`
-    const response = await fetch(githubUrl, {
+    // Extract owner/repo from URL
+    const match = repoUrl.match(/github\.com\/([^\/]+\/[^\/]+)/)
+    if (!match) {
+      console.error(`Invalid GitHub URL: ${repoUrl}`)
+      return null
+    }
+
+    const repoPath = match[1]
+    const apiUrl = `https://api.github.com/repos/${repoPath}/releases/latest`
+
+    const response = await fetch(apiUrl, {
       headers: {
         Accept: 'application/vnd.github+json',
         'User-Agent': 'pulumi-any-terraform-updater',
       },
     })
 
-    if (response.ok) {
-      const data = await response.json()
-      return data.body || null
+    if (!response.ok) {
+      console.error(
+        `Failed to fetch latest release from ${repoPath}: ${response.status}`,
+      )
+      return null
     }
 
-    return null
+    const data = await response.json()
+
+    // Extract version (remove 'v' prefix if present)
+    let version = data.tag_name
+    if (version && version.startsWith('v')) {
+      version = version.substring(1)
+    }
+
+    return {
+      version: version || null,
+      changelog: data.body || null,
+    }
   } catch (error) {
-    console.error(
-      `Error fetching changelog for ${namespace}/${name}@${version}:`,
-      error,
-    )
+    console.error(`Error fetching GitHub release from ${repoUrl}:`, error)
     return null
   }
 }
@@ -325,13 +340,26 @@ async function main() {
     console.log(`Checking ${pkg} (${namespace}/${name})...`)
     console.log(`  Current version: ${currentProvider.version}`)
 
-    // Fetch latest version
-    const latestVersion = await getLatestProviderVersion(namespace, name)
+    // Get GitHub repository URL from registry
+    const githubRepoUrl = await getGitHubRepoFromRegistry(namespace, name)
 
-    if (!latestVersion) {
-      console.log(`  Could not fetch latest version`)
+    if (!githubRepoUrl) {
+      console.log(`  Could not find GitHub repository for ${namespace}/${name}`)
       continue
     }
+
+    console.log(`  GitHub repository: ${githubRepoUrl}`)
+
+    // Fetch latest release from GitHub
+    const releaseInfo = await getLatestGitHubRelease(githubRepoUrl)
+
+    if (!releaseInfo || !releaseInfo.version) {
+      console.log(`  Could not fetch latest release from GitHub`)
+      continue
+    }
+
+    const latestVersion = releaseInfo.version
+    const changelog = releaseInfo.changelog
 
     console.log(`  Latest version: ${latestVersion}`)
 
@@ -339,9 +367,6 @@ async function main() {
       console.log(`  Already up to date`)
       continue
     }
-
-    // Fetch changelog
-    const changelog = await getProviderChangelog(namespace, name, latestVersion)
 
     // Update package
     updatePackage(
