@@ -228,7 +228,14 @@ async function main() {
       }
 
       // Stage all changes
-      execSync('git add .', { stdio: 'inherit', cwd: process.cwd() })
+      const gitResult = spawnSync('git', ['add', '.'], {
+        stdio: 'inherit',
+        cwd: process.cwd(),
+      })
+
+      if (gitResult.status !== 0) {
+        throw new Error(`git add failed with status ${gitResult.status}`)
+      }
 
       console.log('\nChanges staged successfully')
     } catch (error) {
@@ -238,10 +245,16 @@ async function main() {
 
     // Set outputs for GitHub Actions
     if (process.env.GITHUB_OUTPUT) {
+      // Escape newlines and backslashes for multiline output
+      const escapedSummary = updateSummary
+        .replace(/\\/g, '\\\\')
+        .replace(/\n/g, '\\n')
+        .replace(/\r/g, '\\r')
+
       fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_updates=true\n`)
       fs.appendFileSync(
         process.env.GITHUB_OUTPUT,
-        `update_summary=${updateSummary}\n`,
+        `update_summary=${escapedSummary}\n`,
       )
     }
   } else {
