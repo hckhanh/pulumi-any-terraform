@@ -3,6 +3,7 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const { execSync, spawnSync } = require('node:child_process')
+const os = require('node:os')
 
 /**
  * Fetches the latest version of a Terraform provider from the OpenTofu registry
@@ -71,62 +72,214 @@ async function getProviderChangelog(namespace, name, version) {
 }
 
 /**
- * Updates a package's provider version
+ * Recursively copy directory contents
+ * @param {string} src - Source directory
+ * @param {string} dest - Destination directory
+ * @param {string[]} excludeFiles - Files to exclude (e.g., ['README.md'])
+ */
+function copyDirectory(src, dest, excludeFiles = []) {
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true })
+  }
+
+  const entries = fs.readdirSync(src, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name)
+    const destPath = path.join(dest, entry.name)
+
+    if (excludeFiles.includes(entry.name)) {
+      continue
+    }
+
+    if (entry.isDirectory()) {
+      copyDirectory(srcPath, destPath, excludeFiles)
+    } else {
+      fs.copyFileSync(srcPath, destPath)
+    }
+  }
+}
+
+/**
+ * Updates a package's provider version using pulumi package add
  * @param {string} packagePath - Path to the package
  * @param {object} currentProvider - Current provider information
  * @param {string} newVersion - New version to update to
+ * @param {string} namespace - Provider namespace
+ * @param {string} providerName - Provider name
  * @param {string|null} changelog - Changelog content
  */
-function updatePackage(packagePath, currentProvider, newVersion, changelog) {
+function updatePackage(
+  packagePath,
+  currentProvider,
+  newVersion,
+  namespace,
+  providerName,
+  changelog,
+) {
   const packageJsonPath = path.join(packagePath, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 
-  // Update parameterization
-  const newParamValue = {
-    remote: {
-      url: currentProvider.url,
-      version: newVersion,
-    },
+  // Create a temporary directory for the Pulumi project
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pulumi-update-'))
+
+  try {
+    console.log(`  Creating temporary Pulumi project in ${tempDir}`)
+
+    // Initialize Pulumi project with TypeScript template
+    const initResult = spawnSync(
+      'pulumi',
+      ['new', 'typescript', '--yes', '--force'],
+      {
+        cwd: tempDir,
+        stdio: 'pipe',
+      },
+    )
+
+    if (initResult.status !== 0) {
+      throw new Error(
+        `Failed to initialize Pulumi project: ${initResult.stderr?.toString()}`,
+      )
+    }
+
+    // Run pulumi package add command
+    console.log(
+      `  Running: pulumi package add terraform-provider ${namespace}/${providerName}@v${newVersion}`,
+    )
+    const addResult = spawnSync(
+      'pulumi',
+      [
+        'package',
+        'add',
+        'terraform-provider',
+        `${namespace}/${providerName}@v${newVersion}`,
+      ],
+      {
+        cwd: tempDir,
+        stdio: 'pipe',
+      },
+    )
+
+    if (addResult.status !== 0) {
+      throw new Error(`Failed to add provider: ${addResult.stderr?.toString()}`)
+    }
+
+    // Find the generated SDK directory
+    const sdksDir = path.join(tempDir, 'sdks')
+    if (!fs.existsSync(sdksDir)) {
+      throw new Error(`SDKs directory not found at ${sdksDir}`)
+    }
+
+    // Find the generated package directory that matches the provider name
+    // The sdks folder contains multiple packages (package1, package2, etc.)
+    const sdkPackages = fs
+      .readdirSync(sdksDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+
+    if (sdkPackages.length === 0) {
+      throw new Error(`No package directories found in ${sdksDir}`)
+    }
+
+    // Try to find the package by checking package.json name or use the first one
+    let sdkDir = null
+    for (const pkgDir of sdkPackages) {
+      const pkgPath = path.join(sdksDir, pkgDir.name)
+      const pkgJsonPath = path.join(pkgPath, 'package.json')
+
+      if (fs.existsSync(pkgJsonPath)) {
+        const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+        // Check if this package matches the provider name
+        if (
+          pkgJson.name.includes(providerName) ||
+          pkgJson.pulumi?.name === providerName
+        ) {
+          sdkDir = pkgPath
+          console.log(`  Found matching package at ${sdkDir}`)
+          break
+        }
+      }
+    }
+
+    // If no match found, use the first package directory
+    if (!sdkDir) {
+      sdkDir = path.join(sdksDir, sdkPackages[0].name)
+      console.log(`  Using first package directory at ${sdkDir}`)
+    }
+
+    console.log(`  Copying files from generated SDK to ${packagePath}`)
+
+    // Copy all TypeScript files and other files (excluding README.md and package.json)
+    const entries = fs.readdirSync(sdkDir, { withFileTypes: true })
+
+    for (const entry of entries) {
+      const srcPath = path.join(sdkDir, entry.name)
+      const destPath = path.join(packagePath, entry.name)
+
+      // Skip README.md and package.json (we'll handle package.json separately)
+      if (entry.name === 'README.md' || entry.name === 'package.json') {
+        continue
+      }
+
+      if (entry.isDirectory()) {
+        // Copy entire directory
+        copyDirectory(srcPath, destPath)
+      } else {
+        // Copy file
+        fs.copyFileSync(srcPath, destPath)
+      }
+    }
+
+    // Update package.json: only copy the pulumi property
+    const generatedPackageJsonPath = path.join(sdkDir, 'package.json')
+    if (fs.existsSync(generatedPackageJsonPath)) {
+      const generatedPackageJson = JSON.parse(
+        fs.readFileSync(generatedPackageJsonPath, 'utf8'),
+      )
+
+      if (generatedPackageJson.pulumi) {
+        packageJson.pulumi = generatedPackageJson.pulumi
+        fs.writeFileSync(
+          packageJsonPath,
+          JSON.stringify(packageJson, null, 2) + '\n',
+        )
+        console.log(`  Updated pulumi property in package.json`)
+      }
+    }
+
+    // Update CHANGELOG.md
+    const changelogPath = path.join(packagePath, 'CHANGELOG.md')
+    let changelogContent = ''
+
+    if (fs.existsSync(changelogPath)) {
+      changelogContent = fs.readFileSync(changelogPath, 'utf8')
+    }
+
+    const date = new Date().toISOString().split('T')[0]
+    const changelogEntry = changelog
+      ? `## ${newVersion} (${date})\n\n${changelog}\n\n`
+      : `## ${newVersion} (${date})\n\nUpdate to version ${newVersion}\n\n`
+
+    // Prepend new entry at the beginning (before the first ## entry)
+    const versionMatch = changelogContent.match(/^##\s/m)
+    if (versionMatch) {
+      const insertPos = versionMatch.index
+      changelogContent =
+        changelogContent.slice(0, insertPos) +
+        changelogEntry +
+        changelogContent.slice(insertPos)
+    } else {
+      // No version entries yet, just append to the end
+      changelogContent = changelogContent + '\n' + changelogEntry
+    }
+
+    fs.writeFileSync(changelogPath, changelogContent)
+
+    console.log(`Updated ${packageJson.name} to version ${newVersion}`)
+  } finally {
+    // Clean up temporary directory
+    fs.rmSync(tempDir, { recursive: true, force: true })
+    console.log(`  Cleaned up temporary directory`)
   }
-
-  const encodedParam = Buffer.from(JSON.stringify(newParamValue)).toString(
-    'base64',
-  )
-  packageJson.pulumi.parameterization.value = encodedParam
-  packageJson.pulumi.parameterization.version = newVersion
-
-  // Write updated package.json
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n')
-
-  // Update CHANGELOG.md
-  const changelogPath = path.join(packagePath, 'CHANGELOG.md')
-  let changelogContent = ''
-
-  if (fs.existsSync(changelogPath)) {
-    changelogContent = fs.readFileSync(changelogPath, 'utf8')
-  }
-
-  const date = new Date().toISOString().split('T')[0]
-  const changelogEntry = changelog
-    ? `## ${newVersion} (${date})\n\n${changelog}\n\n`
-    : `## ${newVersion} (${date})\n\nUpdate to version ${newVersion}\n\n`
-
-  // Prepend new entry at the beginning (before the first ## entry)
-  const versionMatch = changelogContent.match(/^##\s/m)
-  if (versionMatch) {
-    const insertPos = versionMatch.index
-    changelogContent =
-      changelogContent.slice(0, insertPos) +
-      changelogEntry +
-      changelogContent.slice(insertPos)
-  } else {
-    // No version entries yet, just append to the end
-    changelogContent = changelogContent + '\n' + changelogEntry
-  }
-
-  fs.writeFileSync(changelogPath, changelogContent)
-
-  console.log(`Updated ${packageJson.name} to version ${newVersion}`)
 }
 
 /**
@@ -191,7 +344,14 @@ async function main() {
     const changelog = await getProviderChangelog(namespace, name, latestVersion)
 
     // Update package
-    updatePackage(packagePath, currentProvider, latestVersion, changelog)
+    updatePackage(
+      packagePath,
+      currentProvider,
+      latestVersion,
+      namespace,
+      name,
+      changelog,
+    )
 
     updates.push({
       name: packageJson.name,
