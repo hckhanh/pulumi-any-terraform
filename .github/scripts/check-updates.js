@@ -412,6 +412,7 @@ async function main() {
       oldVersion: currentProvider.version,
       newVersion: latestVersion,
       bumpType,
+      changelog, // Include changelog for potential use in release message
       namespace,
       providerName: name,
     })
@@ -425,7 +426,11 @@ async function main() {
     // Create release plan for each project
     try {
       for (const update of updates) {
-        const releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
+        // Include changelog in message if available, otherwise use simple update message
+        let releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
+        if (update.changelog) {
+          releaseMessage += `\n\n${update.changelog}`
+        }
 
         console.log(
           `\nCreating release plan for ${update.projectName} (${update.bumpType})...`,
