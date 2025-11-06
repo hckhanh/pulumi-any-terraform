@@ -53,7 +53,12 @@ jobs:
           ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
           DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
 
-          # Validate URL is from GitHub API
+          # Validate download URL
+          if [[ -z "$DOWNLOAD_URL" || "$DOWNLOAD_URL" == "null" ]]; then
+            echo "Error: Failed to find matching asset in release."
+            echo "Expected asset: $ASSET_NAME"
+            exit 1
+          fi
           if [[ ! "$DOWNLOAD_URL" =~ ^https://api\.github\.com/ ]]; then
             echo "Error: Invalid download URL: $DOWNLOAD_URL"
             exit 1
@@ -63,9 +68,9 @@ jobs:
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
             -H "Accept: application/octet-stream" \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-            "$DOWNLOAD_URL"
-          if [ $? -ne 0 ] || [ ! -s /tmp/pulumi-terraform-provider.tar.gz ]; then
-            echo "Error: Failed to download Pulumi terraform-provider plugin."
+            "$DOWNLOAD_URL" || { echo "Error: Failed to download Pulumi terraform-provider plugin."; exit 1; }
+          if [ ! -s /tmp/pulumi-terraform-provider.tar.gz ]; then
+            echo "Error: Downloaded Pulumi terraform-provider plugin is empty."
             exit 1
           fi
 
