@@ -55,7 +55,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update packages to match upstream terraform providers"
+            git commit -m "chore(release): update packages to match upstream terraform providers"
             git push origin main
           fi
         env:
