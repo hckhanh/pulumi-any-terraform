@@ -6,12 +6,6 @@ on:
     tags:
       - '*@*.*.*'
 
-env:
-  NX_KEY: ${{ secrets.NX_KEY }}
-  AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
 permissions:
   contents: read
 
@@ -36,11 +30,16 @@ jobs:
           mode: firewall
       - name: Install dependencies
         run: sfw pnpm install
-      - name: Show Nx report
-        run: pnpm nx report
       - name: Build packages
         run: pnpm nx run-many -t build
+        env:
+          NX_KEY: ${{ secrets.NX_KEY }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Update npm
         run: npm install -g npm@latest
       - name: Publish packages
         run: pnpm nx release publish
+        env:
+          NX_KEY: ${{ secrets.NX_KEY }}

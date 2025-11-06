@@ -28,8 +28,6 @@ jobs:
           mode: firewall
       - name: Install dependencies
         run: sfw pnpm install
-      - name: Show Nx report
-        run: pnpm nx report
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Fix
@@ -64,8 +62,6 @@ jobs:
           mode: firewall
       - name: Install dependencies
         run: sfw pnpm install
-      - name: Show Nx report
-        run: pnpm nx report
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Check
