@@ -1,0 +1,85 @@
+---
+title: Logtail Provider
+description: Manage Logtail log management resources with Pulumi
+---
+
+# Logtail Provider
+
+The Logtail provider enables you to manage log sources, metrics, and analytics resources in Logtail using Pulumi. This provider is dynamically bridged from the [Terraform Logtail Provider](https://registry.terraform.io/providers/BetterStackHQ/logtail).
+
+## Installation
+
+```bash
+npm install pulumi-logtail
+```
+
+## Configuration
+
+### Getting API Token
+
+1. Log in to Logtail at [logs.betterstack.com](https://logs.betterstack.com)
+2. Navigate to Settings → API Tokens
+3. Create a new API token
+4. Copy the token value
+
+### Provider Setup
+
+```bash
+pulumi config set logtail:apiToken YOUR_API_TOKEN --secret
+```
+
+Or using environment variables:
+
+```bash
+export LOGTAIL_API_TOKEN="your-api-token"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as logtail from "pulumi-logtail";
+
+// Create a log source
+const source = new logtail.Source("app-logs", {
+    name: "Application Logs",
+    platform: "docker",
+});
+
+export const sourceToken = source.token;
+```
+
+## Key Features
+
+### Log Sources
+
+```typescript
+const dockerSource = new logtail.Source("docker", {
+    name: "Docker Containers",
+    platform: "docker",
+});
+
+const syslogSource = new logtail.Source("syslog", {
+    name: "System Logs",
+    platform: "syslog",
+});
+```
+
+### Views
+
+```typescript
+const errorView = new logtail.View("errors", {
+    name: "Error Logs",
+    query: "level:error",
+});
+```
+
+## Learn More
+
+- [Logtail Documentation](https://docs.logtail.com/)
+- [Terraform Provider](https://registry.terraform.io/providers/BetterStackHQ/logtail)
+
+<Cards>
+  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
+  <Card title="Other Providers" href="/docs" description="Explore more providers" />
+</Cards>

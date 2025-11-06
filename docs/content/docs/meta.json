@@ -1,0 +1,22 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+    "getting-started",
+    "architecture",
+    "---Providers---",
+    "providers/better-uptime",
+    "providers/bunnynet",
+    "providers/infisical",
+    "providers/logtail",
+    "providers/namecheap",
+    "providers/portainer",
+    "providers/teamcity",
+    "providers/time",
+    "---Development---",
+    "contributing",
+    "troubleshooting",
+    "ci-cd",
+    "faq"
+  ]
+}

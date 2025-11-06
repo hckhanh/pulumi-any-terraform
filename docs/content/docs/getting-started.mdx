@@ -1,0 +1,306 @@
+---
+title: Getting Started
+description: Learn how to install and use Pulumi Any Terraform providers in your infrastructure projects
+---
+
+# Getting Started
+
+This guide will help you get up and running with Pulumi Any Terraform providers in minutes.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **Node.js** 18.0 or later (for TypeScript/JavaScript)
+- **Pulumi CLI** 3.190.0 or later
+- **Package Manager**: npm, yarn, or pnpm
+- A Pulumi account (sign up at [app.pulumi.com](https://app.pulumi.com))
+
+### Installing Pulumi
+
+If you don't have Pulumi installed:
+
+```bash
+# macOS
+brew install pulumi/tap/pulumi
+
+# Windows
+choco install pulumi
+
+# Linux
+curl -fsSL https://get.pulumi.com | sh
+```
+
+Verify your installation:
+
+```bash
+pulumi version
+```
+
+## Installation
+
+Each provider can be installed independently as an npm package.
+
+### Using npm
+
+```bash
+npm install pulumi-namecheap
+```
+
+### Using yarn
+
+```bash
+yarn add pulumi-namecheap
+```
+
+### Using pnpm
+
+```bash
+pnpm add pulumi-namecheap
+```
+
+## Creating Your First Project
+
+### 1. Initialize a Pulumi Project
+
+Create a new directory and initialize a Pulumi project:
+
+```bash
+mkdir my-infrastructure
+cd my-infrastructure
+pulumi new typescript
+```
+
+Follow the prompts to set up your project. This creates:
+- `Pulumi.yaml` - Project configuration
+- `index.ts` - Your infrastructure code
+- `package.json` - Node.js dependencies
+
+### 2. Install a Provider
+
+Add a provider to your project:
+
+```bash
+npm install pulumi-namecheap
+```
+
+### 3. Configure Provider Credentials
+
+Most providers require API credentials. Configure them using Pulumi config:
+
+```bash
+# For Namecheap
+pulumi config set namecheap:apiUser YOUR_API_USER
+pulumi config set namecheap:apiKey YOUR_API_KEY --secret
+pulumi config set namecheap:userName YOUR_USERNAME
+```
+
+Alternatively, use environment variables:
+
+```bash
+export NAMECHEAP_API_USER="your-api-user"
+export NAMECHEAP_API_KEY="your-api-key"
+export NAMECHEAP_USER_NAME="your-username"
+```
+
+### 4. Write Your Infrastructure Code
+
+Edit `index.ts` to define your infrastructure:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "pulumi-namecheap";
+
+// Create a DNS record
+const wwwRecord = new namecheap.Record("www-record", {
+    domain: "example.com",
+    hostname: "www",
+    type: "A",
+    address: "192.168.1.1",
+    ttl: 300,
+});
+
+// Export the record ID
+export const recordId = wwwRecord.id;
+```
+
+### 5. Deploy Your Infrastructure
+
+Preview and deploy your infrastructure:
+
+```bash
+# Preview changes
+pulumi preview
+
+# Deploy changes
+pulumi up
+```
+
+Pulumi will show you what resources will be created. Type "yes" to proceed.
+
+### 6. Update and Manage
+
+To update your infrastructure, modify your code and run `pulumi up` again:
+
+```typescript
+// Update the IP address
+const wwwRecord = new namecheap.Record("www-record", {
+    domain: "example.com",
+    hostname: "www",
+    type: "A",
+    address: "192.168.1.2", // Changed
+    ttl: 300,
+});
+```
+
+```bash
+pulumi up
+```
+
+### 7. Clean Up
+
+When you're done, destroy your resources:
+
+```bash
+pulumi destroy
+```
+
+## Example: Multi-Resource Deployment
+
+Here's a more complete example using Better Uptime to set up monitoring:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as betteruptime from "pulumi-better-uptime";
+
+// Create a monitor
+const monitor = new betteruptime.Monitor("api-monitor", {
+    url: "https://api.example.com/health",
+    monitorType: "status",
+    checkFrequency: 60, // Check every 60 seconds
+    confirmationPeriod: 120,
+    requestTimeout: 30,
+    recoveryPeriod: 0,
+    ssl: {
+        checkExpiry: true,
+        expiryThreshold: 30,
+    },
+    pronounceableName: "API Health Monitor",
+});
+
+// Create an incident policy
+const policy = new betteruptime.Policy("critical-policy", {
+    name: "Critical Alerts",
+    repeatCount: 3,
+    repeatDelay: 300,
+});
+
+// Associate monitor with policy
+const policyMonitor = new betteruptime.MonitorGroupPolicy("monitor-policy", {
+    monitorGroupId: monitor.id,
+    policyId: policy.id,
+});
+
+// Export monitor URL
+export const monitorUrl = pulumi.interpolate`https://betteruptime.com/monitors/${monitor.id}`;
+```
+
+## Using Multiple Providers
+
+You can use multiple providers in the same project:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "pulumi-namecheap";
+import * as betteruptime from "pulumi-better-uptime";
+
+// Domain configuration
+const apiRecord = new namecheap.Record("api-record", {
+    domain: "example.com",
+    hostname: "api",
+    type: "A",
+    address: "192.168.1.100",
+});
+
+// Monitor the domain
+const apiMonitor = new betteruptime.Monitor("api-monitor", {
+    url: pulumi.interpolate`https://api.example.com/health`,
+    monitorType: "status",
+    checkFrequency: 60,
+});
+
+export const apiUrl = pulumi.interpolate`https://api.example.com`;
+export const monitorId = apiMonitor.id;
+```
+
+## Configuration Best Practices
+
+### 1. Use Pulumi Config for Secrets
+
+Always use `--secret` flag for sensitive data:
+
+```bash
+pulumi config set myProvider:apiKey xyz123 --secret
+```
+
+### 2. Organize with Stacks
+
+Use different stacks for different environments:
+
+```bash
+# Create production stack
+pulumi stack init production
+pulumi config set myProvider:endpoint https://api.production.com
+
+# Create staging stack
+pulumi stack init staging
+pulumi config set myProvider:endpoint https://api.staging.com
+```
+
+### 3. Use Stack References
+
+Share outputs between stacks:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+
+// Reference another stack's outputs
+const networkStack = new pulumi.StackReference("my-org/network/production");
+const vpcId = networkStack.getOutput("vpcId");
+```
+
+## Next Steps
+
+Now that you've created your first infrastructure:
+
+<Cards>
+  <Card title="Architecture" href="/docs/architecture" description="Learn how the bridge works internally" />
+  <Card title="Provider Documentation" href="/docs/providers/namecheap" description="Explore specific provider features" />
+  <Card title="Contributing" href="/docs/contributing" description="Help improve the project" />
+  <Card title="Troubleshooting" href="/docs/troubleshooting" description="Solve common issues" />
+</Cards>
+
+## Common Commands
+
+Here's a quick reference of Pulumi commands:
+
+| Command | Description |
+|---------|-------------|
+| `pulumi new` | Create a new project |
+| `pulumi preview` | Preview changes before deploying |
+| `pulumi up` | Deploy infrastructure |
+| `pulumi destroy` | Destroy all resources |
+| `pulumi stack` | Manage stacks |
+| `pulumi config` | Manage configuration |
+| `pulumi state` | Manage state |
+| `pulumi refresh` | Refresh state to match actual resources |
+| `pulumi cancel` | Cancel an in-progress update |
+
+## Getting Help
+
+If you run into issues:
+
+1. Check the [Troubleshooting Guide](/docs/troubleshooting)
+2. Review [Pulumi Documentation](https://www.pulumi.com/docs/)
+3. Search [GitHub Issues](https://github.com/hckhanh/pulumi-any-terraform/issues)
+4. Open a new issue with details about your problem

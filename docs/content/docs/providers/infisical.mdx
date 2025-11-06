@@ -1,0 +1,101 @@
+---
+title: Infisical Provider
+description: Manage secrets with Infisical using Pulumi
+---
+
+# Infisical Provider
+
+The Infisical provider enables you to manage secrets, projects, and access controls in Infisical using Pulumi. This provider is dynamically bridged from the [Terraform Infisical Provider](https://registry.terraform.io/providers/Infisical/infisical).
+
+## Installation
+
+```bash
+npm install pulumi-infisical
+```
+
+## Configuration
+
+### Getting Service Token
+
+1. Log in to Infisical at [app.infisical.com](https://app.infisical.com)
+2. Navigate to your project → Settings → Service Tokens
+3. Create a new service token
+4. Copy the token value
+
+### Provider Setup
+
+```bash
+pulumi config set infisical:token YOUR_SERVICE_TOKEN --secret
+```
+
+Or using environment variables:
+
+```bash
+export INFISICAL_TOKEN="your-service-token"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as infisical from "pulumi-infisical";
+
+// Create a project
+const project = new infisical.Project("my-project", {
+    name: "My Application",
+    slug: "my-app",
+});
+
+// Create a secret
+const secret = new infisical.Secret("api-key", {
+    projectId: project.id,
+    environment: "production",
+    key: "API_KEY",
+    value: "super-secret-value",
+});
+
+export const projectId = project.id;
+```
+
+## Key Features
+
+### Project Management
+
+```typescript
+const project = new infisical.Project("project", {
+    name: "My Application",
+    slug: "my-app",
+});
+```
+
+### Secret Management
+
+```typescript
+const secret = new infisical.Secret("database-password", {
+    projectId: project.id,
+    environment: "production",
+    key: "DATABASE_PASSWORD",
+    value: dbPassword,
+    type: "shared",
+});
+```
+
+### Identity Management
+
+```typescript
+const identity = new infisical.Identity("api-identity", {
+    name: "API Service",
+    roleSlug: "developer",
+    projectId: project.id,
+});
+```
+
+## Learn More
+
+- [Infisical Documentation](https://infisical.com/docs)
+- [Terraform Provider](https://registry.terraform.io/providers/Infisical/infisical)
+
+<Cards>
+  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
+  <Card title="Other Providers" href="/docs" description="Explore more providers" />
+</Cards>
