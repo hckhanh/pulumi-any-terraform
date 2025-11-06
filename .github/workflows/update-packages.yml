@@ -35,7 +35,7 @@ jobs:
       - name: Check for updates
         id: check
         run: |
-          node scripts/check-updates.js
+          node .github/scripts/check-updates.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Fix

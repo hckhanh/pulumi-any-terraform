@@ -25,7 +25,7 @@ This script automatically checks for updates to Terraform providers and updates 
 Manual execution:
 
 ```bash
-node scripts/check-updates.js
+node .github/scripts/check-updates.js
 ```
 
 Automated execution via GitHub Actions:
