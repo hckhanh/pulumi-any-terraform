@@ -3,8 +3,6 @@ title: Bunnynet Provider
 description: Manage Bunny.net CDN and edge computing resources with Pulumi
 ---
 
-# Bunnynet Provider
-
 The Bunnynet provider enables you to manage Bunny.net CDN, storage, DNS, and edge computing resources using Pulumi. This provider is dynamically bridged from the [Terraform Bunnynet Provider](https://registry.terraform.io/providers/simplesurance/bunny).
 
 ## Installation
@@ -88,13 +86,3 @@ const dnsRecord = new bunnynet.DnsRecord("www", {
     ttl: 300,
 });
 ```
-
-## Learn More
-
-- [Bunny.net Documentation](https://docs.bunny.net/)
-- [Terraform Provider](https://registry.terraform.io/providers/simplesurance/bunny)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

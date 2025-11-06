@@ -3,8 +3,6 @@ title: TeamCity Provider
 description: Manage TeamCity CI/CD resources with Pulumi
 ---
 
-# TeamCity Provider
-
 The TeamCity provider enables you to manage projects, build configurations, VCS roots, and team resources in TeamCity using Pulumi. This provider is dynamically bridged from the [Terraform TeamCity Provider](https://registry.terraform.io/providers/cvbarros/teamcity).
 
 ## Installation
@@ -38,8 +36,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as teamcity from "pulumi-teamcity";
 
 // Create a project
-const project = new teamcity.Project("my-project", {
-    name: "My Application",
+const project = new teamcity.Project("web-project", {
+    name: "Web Application",
 });
 
 // Create a VCS root
@@ -69,8 +67,8 @@ export const projectId = project.id;
 
 ```typescript
 const project = new teamcity.Project("project", {
-    name: "My Application",
-    description: "Main application project",
+    name: "Web Application",
+    description: "Main web application project",
 });
 ```
 
@@ -96,13 +94,3 @@ const vcs = new teamcity.VcsRoot("repo", {
     },
 });
 ```
-
-## Learn More
-
-- [TeamCity Documentation](https://www.jetbrains.com/help/teamcity/)
-- [Terraform Provider](https://registry.terraform.io/providers/cvbarros/teamcity)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

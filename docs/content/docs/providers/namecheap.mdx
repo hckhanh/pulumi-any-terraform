@@ -3,8 +3,6 @@ title: Namecheap Provider
 description: Manage Namecheap domains and DNS records with Pulumi
 ---
 
-# Namecheap Provider
-
 The Namecheap provider enables you to manage domain names and DNS records on Namecheap using Pulumi. This provider is dynamically bridged from the [Terraform Namecheap Provider](https://registry.terraform.io/providers/namecheap/namecheap).
 
 ## Installation
@@ -371,17 +369,3 @@ const wwwRecord = new namecheap.Record("www", {
     ttl: 300,
 });
 ```
-
-## Learn More
-
-- [Namecheap API Documentation](https://www.namecheap.com/support/api/)
-- [Terraform Namecheap Provider](https://registry.terraform.io/providers/namecheap/namecheap)
-- [DNS Best Practices](https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain)
-
-## Next Steps
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Learn the basics" />
-  <Card title="Architecture" href="/docs/architecture" description="Understand the bridge" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

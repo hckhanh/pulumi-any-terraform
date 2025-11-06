@@ -3,8 +3,6 @@ title: Logtail Provider
 description: Manage Logtail log management resources with Pulumi
 ---
 
-# Logtail Provider
-
 The Logtail provider enables you to manage log sources, metrics, and analytics resources in Logtail using Pulumi. This provider is dynamically bridged from the [Terraform Logtail Provider](https://registry.terraform.io/providers/BetterStackHQ/logtail).
 
 ## Installation
@@ -73,13 +71,3 @@ const errorView = new logtail.View("errors", {
     query: "level:error",
 });
 ```
-
-## Learn More
-
-- [Logtail Documentation](https://docs.logtail.com/)
-- [Terraform Provider](https://registry.terraform.io/providers/BetterStackHQ/logtail)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

@@ -3,8 +3,6 @@ title: Infisical Provider
 description: Manage secrets with Infisical using Pulumi
 ---
 
-# Infisical Provider
-
 The Infisical provider enables you to manage secrets, projects, and access controls in Infisical using Pulumi. This provider is dynamically bridged from the [Terraform Infisical Provider](https://registry.terraform.io/providers/Infisical/infisical).
 
 ## Installation
@@ -34,6 +32,37 @@ Or using environment variables:
 export INFISICAL_TOKEN="your-service-token"
 ```
 
+### Self-Hosted Infisical
+
+If you're using a self-hosted Infisical instance, configure the custom host URL:
+
+```bash
+pulumi config set infisical:hostUrl https://infisical.your-domain.com
+```
+
+Or using environment variables:
+
+```bash
+export INFISICAL_HOST_URL="https://infisical.your-domain.com"
+```
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as infisical from "pulumi-infisical";
+
+// Configure provider for self-hosted instance
+const provider = new infisical.Provider("self-hosted", {
+    hostUrl: "https://infisical.your-domain.com",
+    token: config.requireSecret("token"),
+});
+
+// Use the provider
+const project = new infisical.Project("project", {
+    name: "Backend Service",
+    slug: "backend-service",
+}, { provider });
+```
+
 ## Quick Start
 
 ```typescript
@@ -41,9 +70,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as infisical from "pulumi-infisical";
 
 // Create a project
-const project = new infisical.Project("my-project", {
-    name: "My Application",
-    slug: "my-app",
+const project = new infisical.Project("api-project", {
+    name: "API Service",
+    slug: "api-service",
 });
 
 // Create a secret
@@ -62,9 +91,9 @@ export const projectId = project.id;
 ### Project Management
 
 ```typescript
-const project = new infisical.Project("project", {
-    name: "My Application",
-    slug: "my-app",
+const project = new infisical.Project("backend-project", {
+    name: "Backend Service",
+    slug: "backend-service",
 });
 ```
 
@@ -89,13 +118,3 @@ const identity = new infisical.Identity("api-identity", {
     projectId: project.id,
 });
 ```
-
-## Learn More
-
-- [Infisical Documentation](https://infisical.com/docs)
-- [Terraform Provider](https://registry.terraform.io/providers/Infisical/infisical)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

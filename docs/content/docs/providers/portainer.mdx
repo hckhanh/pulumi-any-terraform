@@ -3,8 +3,6 @@ title: Portainer Provider
 description: Manage container environments with Portainer using Pulumi
 ---
 
-# Portainer Provider
-
 The Portainer provider enables you to manage container environments, stacks, users, and teams in Portainer using Pulumi. This provider is dynamically bridged from the [Terraform Portainer Provider](https://registry.terraform.io/providers/portainer/portainer).
 
 ## Installation
@@ -60,7 +58,7 @@ export const stackId = stack.id;
 
 ```typescript
 const appStack = new portainer.Stack("app", {
-    name: "my-application",
+    name: "web-application",
     environmentId: environment.id,
     stackFile: stackContent,
 });
@@ -85,13 +83,3 @@ const user = new portainer.User("developer", {
     role: 2, // Standard user
 });
 ```
-
-## Learn More
-
-- [Portainer Documentation](https://docs.portainer.io/)
-- [Terraform Provider](https://registry.terraform.io/providers/portainer/portainer)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>

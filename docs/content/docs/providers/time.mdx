@@ -3,8 +3,6 @@ title: Time Provider
 description: Manage time-based resources and operations with Pulumi
 ---
 
-# Time Provider
-
 The Time provider enables you to manage time-based resources like delays, offsets, and rotations in your infrastructure code. This provider is dynamically bridged from the [Terraform Time Provider](https://registry.terraform.io/providers/hashicorp/time).
 
 ## Installation
@@ -172,12 +170,3 @@ const credentialRotation = new time.Rotating("creds", {
     rotationDays: 90,
 });
 ```
-
-## Learn More
-
-- [Terraform Time Provider](https://registry.terraform.io/providers/hashicorp/time)
-
-<Cards>
-  <Card title="Getting Started" href="/docs/getting-started" description="Basic setup guide" />
-  <Card title="Other Providers" href="/docs" description="Explore more providers" />
-</Cards>
