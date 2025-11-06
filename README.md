@@ -21,16 +21,16 @@ A collection of dynamically bridged Pulumi providers that enable you to use any 
 
 ## 📦 Available Providers
 
-| Provider | Package | Description |
-|----------|---------|-------------|
+| Provider          | Package                | Description                        |
+| ----------------- | ---------------------- | ---------------------------------- |
 | **Better Uptime** | `pulumi-better-uptime` | Monitoring and incident management |
-| **Bunnynet** | `pulumi-bunnynet` | CDN and edge computing |
-| **Infisical** | `pulumi-infisical` | Secrets management |
-| **Logtail** | `pulumi-logtail` | Log management and analytics |
-| **Namecheap** | `pulumi-namecheap` | Domain and DNS management |
-| **Portainer** | `pulumi-portainer` | Container management |
-| **TeamCity** | `pulumi-teamcity` | CI/CD platform |
-| **Time** | `pulumi-time` | Time-based resources |
+| **Bunnynet**      | `pulumi-bunnynet`      | CDN and edge computing             |
+| **Infisical**     | `pulumi-infisical`     | Secrets management                 |
+| **Logtail**       | `pulumi-logtail`       | Log management and analytics       |
+| **Namecheap**     | `pulumi-namecheap`     | Domain and DNS management          |
+| **Portainer**     | `pulumi-portainer`     | Container management               |
+| **TeamCity**      | `pulumi-teamcity`      | CI/CD platform                     |
+| **Time**          | `pulumi-time`          | Time-based resources               |
 
 ## ⚡ Quick Start
 
@@ -49,23 +49,23 @@ pnpm add pulumi-namecheap
 ### Basic Usage
 
 ```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as namecheap from "pulumi-namecheap";
+import * as pulumi from '@pulumi/pulumi'
+import * as namecheap from 'pulumi-namecheap'
 
 // Configure provider (or use environment variables)
-const config = new pulumi.Config("namecheap");
+const config = new pulumi.Config('namecheap')
 
 // Create a DNS record
-const record = new namecheap.Record("www-record", {
-    domain: "example.com",
-    hostname: "www",
-    type: "A",
-    address: "192.168.1.1",
-    ttl: 300,
-});
+const record = new namecheap.Record('www-record', {
+  domain: 'example.com',
+  hostname: 'www',
+  type: 'A',
+  address: '192.168.1.1',
+  ttl: 300,
+})
 
 // Export the record ID
-export const recordId = record.id;
+export const recordId = record.id
 ```
 
 ### Deploy
@@ -95,6 +95,7 @@ Terraform Provider → Bridge → Pulumi Package → Your Infrastructure Code
 ```
 
 Key components:
+
 - **Nx Monorepo** - Efficient build orchestration
 - **TypeScript** - Full type safety and IntelliSense
 - **Automated CI/CD** - GitHub Actions with automated testing and publishing
@@ -200,6 +201,7 @@ We welcome contributions! Here's how you can help:
 5. **Submit** a pull request
 
 Please read our [Contributing Guide](docs/) for details on:
+
 - Code standards
 - Development workflow
 - Adding new providers
@@ -241,27 +243,27 @@ This project integrates with:
 ### Multi-Provider Infrastructure
 
 ```typescript
-import * as pulumi from "@pulumi/pulumi";
-import * as namecheap from "pulumi-namecheap";
-import * as betteruptime from "pulumi-better-uptime";
+import * as pulumi from '@pulumi/pulumi'
+import * as namecheap from 'pulumi-namecheap'
+import * as betteruptime from 'pulumi-better-uptime'
 
 // DNS Configuration
-const apiRecord = new namecheap.Record("api", {
-    domain: "example.com",
-    hostname: "api",
-    type: "A",
-    address: "192.168.1.100",
-});
+const apiRecord = new namecheap.Record('api', {
+  domain: 'example.com',
+  hostname: 'api',
+  type: 'A',
+  address: '192.168.1.100',
+})
 
 // Monitoring
-const monitor = new betteruptime.Monitor("api-monitor", {
-    url: pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`,
-    monitorType: "status",
-    checkFrequency: 60,
-});
+const monitor = new betteruptime.Monitor('api-monitor', {
+  url: pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`,
+  monitorType: 'status',
+  checkFrequency: 60,
+})
 
-export const apiUrl = pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`;
-export const monitorId = monitor.id;
+export const apiUrl = pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`
+export const monitorId = monitor.id
 ```
 
 ## 🙏 Acknowledgments
