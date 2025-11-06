@@ -5,10 +5,8 @@ const withMDX = createMDX()
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  experimental: {
-    turbopackUseSystemTlsCerts: true,
-  },
-  async redirects() {
+  reactCompiler: true,
+  redirects() {
     return [
       {
         source: '/',
