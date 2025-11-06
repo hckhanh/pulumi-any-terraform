@@ -5,9 +5,12 @@ on:
   push:
     branches:
       - 'main'
-  schedule:
-    # Run weekly on Monday at 01:00 UTC (1 hour after update.yml)
-    - cron: '0 1 * * 1'
+  workflow_run:
+    workflows: ['Update']
+    types:
+      - completed
+    branches:
+      - 'main'
 
 permissions:
   contents: read
@@ -16,6 +19,7 @@ jobs:
   npm-packages:
     name: NPM Packages
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     permissions:
       id-token: write
       contents: write
