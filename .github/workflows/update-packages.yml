@@ -34,18 +34,10 @@ jobs:
         run: pulumi login --local
       - name: Install Pulumi terraform-provider plugin
         run: |
-          # Detect system architecture
-          ARCH=$(uname -m)
-          case "$ARCH" in
-            x86_64) ARCH="amd64" ;;
-            aarch64) ARCH="arm64" ;;
-            armv7l) ARCH="arm" ;;
-          esac
-
           # Get the latest release information
           LATEST_RELEASE=$(curl -fsSL -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/pulumi/pulumi-terraform-provider/releases/latest)
-          VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name | sub("^v"; "")')
-          ASSET_NAME="pulumi-terraform-provider-v${VERSION}-linux-${ARCH}.tar.gz"
+          VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
+          ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
           DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
 
           # Download and install the plugin
@@ -53,7 +45,7 @@ jobs:
             -H "Accept: application/octet-stream" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "$DOWNLOAD_URL"
-          pulumi plugin install resource terraform-provider "v${VERSION}" --file /tmp/pulumi-terraform-provider.tar.gz
+          pulumi plugin install resource terraform-provider "$VERSION" --file /tmp/pulumi-terraform-provider.tar.gz
           rm /tmp/pulumi-terraform-provider.tar.gz
       - name: Check for updates
         id: check
