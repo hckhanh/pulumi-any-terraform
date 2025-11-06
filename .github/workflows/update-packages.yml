@@ -38,7 +38,18 @@ jobs:
         run: |
           # Get the latest release information
           LATEST_RELEASE=$(curl -fsSL -H "Authorization: Bearer ${GITHUB_TOKEN}" https://api.github.com/repos/pulumi/pulumi-terraform-provider/releases/latest)
+          if [[ -z "$LATEST_RELEASE" ]]; then
+            echo "Error: Failed to fetch latest release information from GitHub API."
+            exit 1
+          fi
+
           VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
+          if [[ -z "$VERSION" || "$VERSION" == "null" ]]; then
+            echo "Error: Failed to extract version from release information."
+            echo "LATEST_RELEASE: $LATEST_RELEASE"
+            exit 1
+          fi
+
           ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
           DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
 
@@ -53,6 +64,11 @@ jobs:
             -H "Accept: application/octet-stream" \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
             "$DOWNLOAD_URL"
+          if [ $? -ne 0 ] || [ ! -s /tmp/pulumi-terraform-provider.tar.gz ]; then
+            echo "Error: Failed to download Pulumi terraform-provider plugin."
+            exit 1
+          fi
+
           pulumi plugin install resource terraform-provider "$VERSION" --file /tmp/pulumi-terraform-provider.tar.gz
           rm /tmp/pulumi-terraform-provider.tar.gz
       - name: Check for updates
