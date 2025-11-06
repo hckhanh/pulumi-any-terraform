@@ -68,7 +68,7 @@ jobs:
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
             -H "Accept: application/octet-stream" \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-            "$DOWNLOAD_URL" || { echo "Error: Failed to download Pulumi terraform-provider plugin."; exit 1; }
+            "$DOWNLOAD_URL"
           if [ ! -s /tmp/pulumi-terraform-provider.tar.gz ]; then
             echo "Error: Downloaded Pulumi terraform-provider plugin is empty."
             exit 1
