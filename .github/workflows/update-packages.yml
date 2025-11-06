@@ -1,4 +1,4 @@
-name: Update Packages
+name: Update
 
 on:
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
           ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
           DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
-          
+
           # Download and install the plugin
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
             -H "Accept: application/octet-stream" \
