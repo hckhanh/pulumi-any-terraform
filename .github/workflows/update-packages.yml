@@ -59,7 +59,7 @@ jobs:
             echo "Expected asset: $ASSET_NAME"
             exit 1
           fi
-          if [[ ! "$DOWNLOAD_URL" =~ ^https://api\.github\.com/ ]]; then
+          if [[ ! "$DOWNLOAD_URL" =~ ^https://api\.github\.com/repos/ ]]; then
             echo "Error: Invalid download URL: $DOWNLOAD_URL"
             exit 1
           fi
