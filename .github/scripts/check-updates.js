@@ -473,14 +473,7 @@ ${changesetMessage}
 
     // Set outputs for GitHub Actions
     if (process.env.GITHUB_OUTPUT) {
-      // Use base64 encoding to safely pass multiline content with special characters
-      const encodedSummary = Buffer.from(updateSummary).toString('base64')
-
       fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_updates=true\n`)
-      fs.appendFileSync(
-        process.env.GITHUB_OUTPUT,
-        `update_summary_base64=${encodedSummary}\n`,
-      )
     }
   } else {
     console.log('\nNo updates available')

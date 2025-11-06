@@ -51,13 +51,6 @@ jobs:
           node .github/scripts/check-updates.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Decode update summary
-        if: steps.check.outputs.has_updates == 'true'
-        id: decode
-        run: |
-          echo "update_summary<<EOF" >> $GITHUB_OUTPUT
-          echo "${{ steps.check.outputs.update_summary_base64 }}" | base64 -d >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
       - name: Fix
         run: |
           pnpm nx run-many -t fix
