@@ -5,9 +5,6 @@ on:
   schedule:
     # Run weekly on Monday at 01:00 UTC (1 hour after update.yml)
     - cron: '0 1 * * 1'
-  push:
-    branches:
-      - main
 
 permissions:
   contents: read
