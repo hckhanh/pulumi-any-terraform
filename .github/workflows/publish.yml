@@ -34,7 +34,6 @@ jobs:
         run: npm install -g npm@latest
       - name: Publish to npm
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
-        id: changesets
         with:
           commit: 'chore(release): match upstream terraform providers'
           title: 'Update packages to match upstream terraform providers'
