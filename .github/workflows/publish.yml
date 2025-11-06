@@ -30,16 +30,19 @@ jobs:
           mode: firewall
       - name: Install dependencies
         run: sfw pnpm install
-      - name: Build packages
-        run: pnpm nx run-many -t build
+      - name: Update npm
+        run: npm install -g npm@latest
+      - name: Publish to npm
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
+        id: changesets
+        with:
+          commit: 'chore(release): match upstream terraform providers'
+          title: 'Update packages to match upstream terraform providers'
+          publish: pnpm release
+          commitMode: 'github-api'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NX_KEY: ${{ secrets.NX_KEY }}
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Update npm
-        run: npm install -g npm@latest
-      - name: Publish packages
-        run: pnpm nx release publish
-        env:
-          NX_KEY: ${{ secrets.NX_KEY }}
