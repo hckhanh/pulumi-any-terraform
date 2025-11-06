@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
 import { RootProvider } from 'fumadocs-ui/provider/next'
+import type { Metadata } from 'next'
 import './global.css'
 import { inter, jetbrainsMono } from '@/lib/fonts'
 
