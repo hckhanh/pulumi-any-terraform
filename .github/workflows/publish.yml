@@ -3,8 +3,8 @@ name: Publish
 on:
   workflow_dispatch:
   push:
-    tags:
-      - '*@*.*.*'
+    branches:
+      - main
 
 permissions:
   contents: read
