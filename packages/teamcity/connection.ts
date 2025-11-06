@@ -34,9 +34,9 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
-    public /*out*/ readonly featureId!: pulumi.Output<string>;
-    public readonly githubApp!: pulumi.Output<outputs.ConnectionGithubApp>;
-    public readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly featureId: pulumi.Output<string>;
+    declare public readonly githubApp: pulumi.Output<outputs.ConnectionGithubApp>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -51,19 +51,19 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["featureId"] = state ? state.featureId : undefined;
-            resourceInputs["githubApp"] = state ? state.githubApp : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["featureId"] = state?.featureId;
+            resourceInputs["githubApp"] = state?.githubApp;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.githubApp === undefined) && !opts.urn) {
+            if (args?.githubApp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'githubApp'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["githubApp"] = args ? args.githubApp : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["githubApp"] = args?.githubApp;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["featureId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -37,10 +37,10 @@ export class Group extends pulumi.CustomResource {
     /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly parentGroups!: pulumi.Output<string[] | undefined>;
-    public readonly roles!: pulumi.Output<outputs.GroupRole[] | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parentGroups: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<outputs.GroupRole[] | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -55,16 +55,16 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentGroups"] = state ? state.parentGroups : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentGroups"] = state?.parentGroups;
+            resourceInputs["roles"] = state?.roles;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentGroups"] = args ? args.parentGroups : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentGroups"] = args?.parentGroups;
+            resourceInputs["roles"] = args?.roles;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

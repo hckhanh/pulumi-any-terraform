@@ -32,11 +32,11 @@ export class VersionedSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === VersionedSettings.__pulumiType;
     }
 
-    public readonly allowUiEditing!: pulumi.Output<boolean>;
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly settings!: pulumi.Output<string>;
-    public readonly showChanges!: pulumi.Output<boolean>;
-    public readonly vcsrootId!: pulumi.Output<string>;
+    declare public readonly allowUiEditing: pulumi.Output<boolean>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly settings: pulumi.Output<string>;
+    declare public readonly showChanges: pulumi.Output<boolean>;
+    declare public readonly vcsrootId: pulumi.Output<string>;
 
     /**
      * Create a VersionedSettings resource with the given unique name, arguments, and options.
@@ -51,33 +51,33 @@ export class VersionedSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VersionedSettingsState | undefined;
-            resourceInputs["allowUiEditing"] = state ? state.allowUiEditing : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
-            resourceInputs["showChanges"] = state ? state.showChanges : undefined;
-            resourceInputs["vcsrootId"] = state ? state.vcsrootId : undefined;
+            resourceInputs["allowUiEditing"] = state?.allowUiEditing;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["settings"] = state?.settings;
+            resourceInputs["showChanges"] = state?.showChanges;
+            resourceInputs["vcsrootId"] = state?.vcsrootId;
         } else {
             const args = argsOrState as VersionedSettingsArgs | undefined;
-            if ((!args || args.allowUiEditing === undefined) && !opts.urn) {
+            if (args?.allowUiEditing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowUiEditing'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.settings === undefined) && !opts.urn) {
+            if (args?.settings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'settings'");
             }
-            if ((!args || args.showChanges === undefined) && !opts.urn) {
+            if (args?.showChanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'showChanges'");
             }
-            if ((!args || args.vcsrootId === undefined) && !opts.urn) {
+            if (args?.vcsrootId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vcsrootId'");
             }
-            resourceInputs["allowUiEditing"] = args ? args.allowUiEditing : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
-            resourceInputs["showChanges"] = args ? args.showChanges : undefined;
-            resourceInputs["vcsrootId"] = args ? args.vcsrootId : undefined;
+            resourceInputs["allowUiEditing"] = args?.allowUiEditing;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["settings"] = args?.settings;
+            resourceInputs["showChanges"] = args?.showChanges;
+            resourceInputs["vcsrootId"] = args?.vcsrootId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VersionedSettings.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

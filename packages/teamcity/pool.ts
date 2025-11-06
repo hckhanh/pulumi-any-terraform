@@ -32,16 +32,16 @@ export class Pool extends pulumi.CustomResource {
         return obj['__pulumiType'] === Pool.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly poolId!: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly poolId: pulumi.Output<number>;
     /**
      * Projects assigned to the given pool. List of Project IDs.
      */
-    public readonly projects!: pulumi.Output<string[]>;
+    declare public readonly projects: pulumi.Output<string[]>;
     /**
      * Agents capacity for the given pool, don't add for unlimited
      */
-    public readonly size!: pulumi.Output<number | undefined>;
+    declare public readonly size: pulumi.Output<number | undefined>;
 
     /**
      * Create a Pool resource with the given unique name, arguments, and options.
@@ -56,15 +56,15 @@ export class Pool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoolState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["projects"] = state ? state.projects : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["projects"] = state?.projects;
+            resourceInputs["size"] = state?.size;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projects"] = args ? args.projects : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projects"] = args?.projects;
+            resourceInputs["size"] = args?.size;
             resourceInputs["poolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

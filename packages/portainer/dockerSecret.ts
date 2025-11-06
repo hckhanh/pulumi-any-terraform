@@ -32,7 +32,12 @@ export class DockerSecret extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerSecret.__pulumiType;
     }
 
-    declare public readonly data: pulumi.Output<string>;
+    declare public readonly data: pulumi.Output<string | undefined>;
+    declare public readonly dataWo: pulumi.Output<string | undefined>;
+    /**
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     */
+    declare public readonly dataWoVersion: pulumi.Output<number | undefined>;
     declare public readonly dockerSecretId: pulumi.Output<string>;
     declare public readonly driver: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly endpointId: pulumi.Output<number>;
@@ -54,6 +59,8 @@ export class DockerSecret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DockerSecretState | undefined;
             resourceInputs["data"] = state?.data;
+            resourceInputs["dataWo"] = state?.dataWo;
+            resourceInputs["dataWoVersion"] = state?.dataWoVersion;
             resourceInputs["dockerSecretId"] = state?.dockerSecretId;
             resourceInputs["driver"] = state?.driver;
             resourceInputs["endpointId"] = state?.endpointId;
@@ -62,13 +69,12 @@ export class DockerSecret extends pulumi.CustomResource {
             resourceInputs["templating"] = state?.templating;
         } else {
             const args = argsOrState as DockerSecretArgs | undefined;
-            if (args?.data === undefined && !opts.urn) {
-                throw new Error("Missing required property 'data'");
-            }
             if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
             resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
+            resourceInputs["dataWo"] = args?.dataWo ? pulumi.secret(args.dataWo) : undefined;
+            resourceInputs["dataWoVersion"] = args?.dataWoVersion;
             resourceInputs["dockerSecretId"] = args?.dockerSecretId;
             resourceInputs["driver"] = args?.driver;
             resourceInputs["endpointId"] = args?.endpointId;
@@ -77,7 +83,7 @@ export class DockerSecret extends pulumi.CustomResource {
             resourceInputs["templating"] = args?.templating;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["data"] };
+        const secretOpts = { additionalSecretOutputs: ["data", "dataWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DockerSecret.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
@@ -88,6 +94,11 @@ export class DockerSecret extends pulumi.CustomResource {
  */
 export interface DockerSecretState {
     data?: pulumi.Input<string>;
+    dataWo?: pulumi.Input<string>;
+    /**
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     */
+    dataWoVersion?: pulumi.Input<number>;
     dockerSecretId?: pulumi.Input<string>;
     driver?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     endpointId?: pulumi.Input<number>;
@@ -100,7 +111,12 @@ export interface DockerSecretState {
  * The set of arguments for constructing a DockerSecret resource.
  */
 export interface DockerSecretArgs {
-    data: pulumi.Input<string>;
+    data?: pulumi.Input<string>;
+    dataWo?: pulumi.Input<string>;
+    /**
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     */
+    dataWoVersion?: pulumi.Input<number>;
     dockerSecretId?: pulumi.Input<string>;
     driver?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     endpointId: pulumi.Input<number>;

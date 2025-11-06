@@ -34,11 +34,11 @@ export class Vcsroot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vcsroot.__pulumiType;
     }
 
-    public readonly git!: pulumi.Output<outputs.VcsrootGit>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly pollingInterval!: pulumi.Output<number | undefined>;
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly vcsrootId!: pulumi.Output<string>;
+    declare public readonly git: pulumi.Output<outputs.VcsrootGit>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly pollingInterval: pulumi.Output<number | undefined>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly vcsrootId: pulumi.Output<string>;
 
     /**
      * Create a Vcsroot resource with the given unique name, arguments, and options.
@@ -53,24 +53,24 @@ export class Vcsroot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VcsrootState | undefined;
-            resourceInputs["git"] = state ? state.git : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pollingInterval"] = state ? state.pollingInterval : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["vcsrootId"] = state ? state.vcsrootId : undefined;
+            resourceInputs["git"] = state?.git;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pollingInterval"] = state?.pollingInterval;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["vcsrootId"] = state?.vcsrootId;
         } else {
             const args = argsOrState as VcsrootArgs | undefined;
-            if ((!args || args.git === undefined) && !opts.urn) {
+            if (args?.git === undefined && !opts.urn) {
                 throw new Error("Missing required property 'git'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["git"] = args ? args.git : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pollingInterval"] = args ? args.pollingInterval : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["vcsrootId"] = args ? args.vcsrootId : undefined;
+            resourceInputs["git"] = args?.git;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pollingInterval"] = args?.pollingInterval;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["vcsrootId"] = args?.vcsrootId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vcsroot.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

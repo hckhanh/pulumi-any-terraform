@@ -43,7 +43,7 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly explanation: pulumi.Output<string>;
     /**
-     * Do you want to display detailed historical status for this item? This field is deprecated, use widget_type instead.
+     * Do you want to display detailed historical status for this item? This field is deprecated, use<span pulumi-lang-nodejs=" widgetType " pulumi-lang-dotnet=" WidgetType " pulumi-lang-go=" widgetType " pulumi-lang-python=" widget_type " pulumi-lang-yaml=" widgetType " pulumi-lang-java=" widgetType "> widget_type </span>instead.
      *
      * @deprecated Deprecated
      */
@@ -65,7 +65,7 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
-     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused), `operational`, `maintenance`, `degraded`, or `downtime`
+     * The current status of the resource. Can be one of <span pulumi-lang-nodejs="`notMonitored`" pulumi-lang-dotnet="`NotMonitored`" pulumi-lang-go="`notMonitored`" pulumi-lang-python="`not_monitored`" pulumi-lang-yaml="`notMonitored`" pulumi-lang-java="`notMonitored`">`not_monitored`</span> (when the underlying monitor is paused), <span pulumi-lang-nodejs="`operational`" pulumi-lang-dotnet="`Operational`" pulumi-lang-go="`operational`" pulumi-lang-python="`operational`" pulumi-lang-yaml="`operational`" pulumi-lang-java="`operational`">`operational`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`">`degraded`</span>, or <span pulumi-lang-nodejs="`downtime`" pulumi-lang-dotnet="`Downtime`" pulumi-lang-go="`downtime`" pulumi-lang-python="`downtime`" pulumi-lang-yaml="`downtime`" pulumi-lang-java="`downtime`">`downtime`</span>
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -81,7 +81,7 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly statusPageSectionId: pulumi.Output<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     declare public readonly widgetType: pulumi.Output<string>;
 
@@ -155,7 +155,7 @@ export interface StatusPageResourceState {
      */
     explanation?: pulumi.Input<string>;
     /**
-     * Do you want to display detailed historical status for this item? This field is deprecated, use widget_type instead.
+     * Do you want to display detailed historical status for this item? This field is deprecated, use<span pulumi-lang-nodejs=" widgetType " pulumi-lang-dotnet=" WidgetType " pulumi-lang-go=" widgetType " pulumi-lang-python=" widget_type " pulumi-lang-yaml=" widgetType " pulumi-lang-java=" widgetType "> widget_type </span>instead.
      *
      * @deprecated Deprecated
      */
@@ -177,7 +177,7 @@ export interface StatusPageResourceState {
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The current status of the resource. Can be one of `not_monitored` (when the underlying monitor is paused), `operational`, `maintenance`, `degraded`, or `downtime`
+     * The current status of the resource. Can be one of <span pulumi-lang-nodejs="`notMonitored`" pulumi-lang-dotnet="`NotMonitored`" pulumi-lang-go="`notMonitored`" pulumi-lang-python="`not_monitored`" pulumi-lang-yaml="`notMonitored`" pulumi-lang-java="`notMonitored`">`not_monitored`</span> (when the underlying monitor is paused), <span pulumi-lang-nodejs="`operational`" pulumi-lang-dotnet="`Operational`" pulumi-lang-go="`operational`" pulumi-lang-python="`operational`" pulumi-lang-yaml="`operational`" pulumi-lang-java="`operational`">`operational`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`">`degraded`</span>, or <span pulumi-lang-nodejs="`downtime`" pulumi-lang-dotnet="`Downtime`" pulumi-lang-go="`downtime`" pulumi-lang-python="`downtime`" pulumi-lang-yaml="`downtime`" pulumi-lang-java="`downtime`">`downtime`</span>
      */
     status?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface StatusPageResourceState {
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }
@@ -207,7 +207,7 @@ export interface StatusPageResourceArgs {
      */
     explanation?: pulumi.Input<string>;
     /**
-     * Do you want to display detailed historical status for this item? This field is deprecated, use widget_type instead.
+     * Do you want to display detailed historical status for this item? This field is deprecated, use<span pulumi-lang-nodejs=" widgetType " pulumi-lang-dotnet=" WidgetType " pulumi-lang-go=" widgetType " pulumi-lang-python=" widget_type " pulumi-lang-yaml=" widgetType " pulumi-lang-java=" widgetType "> widget_type </span>instead.
      *
      * @deprecated Deprecated
      */
@@ -237,7 +237,7 @@ export interface StatusPageResourceArgs {
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status, response_times - add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }

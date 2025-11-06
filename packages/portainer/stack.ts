@@ -68,9 +68,19 @@ export class Stack extends pulumi.CustomResource {
      */
     declare public readonly pullImage: pulumi.Output<boolean | undefined>;
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
+    declare public readonly repositoryPasswordWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
+    declare public readonly repositoryUrlWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
+    /**
+     * Write-only repository username (supports ephemeral values).
+     */
+    declare public readonly repositoryUsernameWo: pulumi.Output<string | undefined>;
+    /**
+     * Version flag for write-only repository credentials; increment to trigger recreation.
+     */
+    declare public readonly repositoryWoVersion: pulumi.Output<number | undefined>;
     declare public readonly stackFileContent: pulumi.Output<string | undefined>;
     declare public readonly stackFilePath: pulumi.Output<string | undefined>;
     declare public readonly stackId: pulumi.Output<string>;
@@ -120,9 +130,13 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["prune"] = state?.prune;
             resourceInputs["pullImage"] = state?.pullImage;
             resourceInputs["repositoryPassword"] = state?.repositoryPassword;
+            resourceInputs["repositoryPasswordWo"] = state?.repositoryPasswordWo;
             resourceInputs["repositoryReferenceName"] = state?.repositoryReferenceName;
             resourceInputs["repositoryUrl"] = state?.repositoryUrl;
+            resourceInputs["repositoryUrlWo"] = state?.repositoryUrlWo;
             resourceInputs["repositoryUsername"] = state?.repositoryUsername;
+            resourceInputs["repositoryUsernameWo"] = state?.repositoryUsernameWo;
+            resourceInputs["repositoryWoVersion"] = state?.repositoryWoVersion;
             resourceInputs["stackFileContent"] = state?.stackFileContent;
             resourceInputs["stackFilePath"] = state?.stackFilePath;
             resourceInputs["stackId"] = state?.stackId;
@@ -160,9 +174,13 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["prune"] = args?.prune;
             resourceInputs["pullImage"] = args?.pullImage;
             resourceInputs["repositoryPassword"] = args?.repositoryPassword ? pulumi.secret(args.repositoryPassword) : undefined;
+            resourceInputs["repositoryPasswordWo"] = args?.repositoryPasswordWo ? pulumi.secret(args.repositoryPasswordWo) : undefined;
             resourceInputs["repositoryReferenceName"] = args?.repositoryReferenceName;
             resourceInputs["repositoryUrl"] = args?.repositoryUrl;
+            resourceInputs["repositoryUrlWo"] = args?.repositoryUrlWo;
             resourceInputs["repositoryUsername"] = args?.repositoryUsername;
+            resourceInputs["repositoryUsernameWo"] = args?.repositoryUsernameWo ? pulumi.secret(args.repositoryUsernameWo) : undefined;
+            resourceInputs["repositoryWoVersion"] = args?.repositoryWoVersion;
             resourceInputs["stackFileContent"] = args?.stackFileContent;
             resourceInputs["stackFilePath"] = args?.stackFilePath;
             resourceInputs["stackId"] = args?.stackId;
@@ -175,7 +193,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["webhookUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["repositoryPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["repositoryPassword", "repositoryPasswordWo", "repositoryUsernameWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Stack.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
@@ -219,9 +237,19 @@ export interface StackState {
      */
     pullImage?: pulumi.Input<boolean>;
     repositoryPassword?: pulumi.Input<string>;
+    repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
+    repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;
+    /**
+     * Write-only repository username (supports ephemeral values).
+     */
+    repositoryUsernameWo?: pulumi.Input<string>;
+    /**
+     * Version flag for write-only repository credentials; increment to trigger recreation.
+     */
+    repositoryWoVersion?: pulumi.Input<number>;
     stackFileContent?: pulumi.Input<string>;
     stackFilePath?: pulumi.Input<string>;
     stackId?: pulumi.Input<string>;
@@ -281,9 +309,19 @@ export interface StackArgs {
      */
     pullImage?: pulumi.Input<boolean>;
     repositoryPassword?: pulumi.Input<string>;
+    repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
+    repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;
+    /**
+     * Write-only repository username (supports ephemeral values).
+     */
+    repositoryUsernameWo?: pulumi.Input<string>;
+    /**
+     * Version flag for write-only repository credentials; increment to trigger recreation.
+     */
+    repositoryWoVersion?: pulumi.Input<number>;
     stackFileContent?: pulumi.Input<string>;
     stackFilePath?: pulumi.Input<string>;
     stackId?: pulumi.Input<string>;

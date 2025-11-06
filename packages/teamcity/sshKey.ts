@@ -32,9 +32,9 @@ export class SshKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === SshKey.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly privateKey!: pulumi.Output<string>;
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a SshKey resource with the given unique name, arguments, and options.
@@ -49,20 +49,20 @@ export class SshKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshKeyState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as SshKeyArgs | undefined;
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["privateKey"] };

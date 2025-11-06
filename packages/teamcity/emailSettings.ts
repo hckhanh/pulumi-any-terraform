@@ -32,13 +32,13 @@ export class EmailSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === EmailSettings.__pulumiType;
     }
 
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly from!: pulumi.Output<string>;
-    public readonly host!: pulumi.Output<string>;
-    public readonly login!: pulumi.Output<string>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly port!: pulumi.Output<number>;
-    public readonly secureConnection!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly from: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
+    declare public readonly login: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly port: pulumi.Output<number>;
+    declare public readonly secureConnection: pulumi.Output<string>;
 
     /**
      * Create a EmailSettings resource with the given unique name, arguments, and options.
@@ -53,34 +53,34 @@ export class EmailSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailSettingsState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["from"] = state ? state.from : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["login"] = state ? state.login : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["secureConnection"] = state ? state.secureConnection : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["from"] = state?.from;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["login"] = state?.login;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["secureConnection"] = state?.secureConnection;
         } else {
             const args = argsOrState as EmailSettingsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.from === undefined) && !opts.urn) {
+            if (args?.from === undefined && !opts.urn) {
                 throw new Error("Missing required property 'from'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["from"] = args ? args.from : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["from"] = args?.from;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["login"] = args?.login;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["secureConnection"] = args ? args.secureConnection : undefined;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["secureConnection"] = args?.secureConnection;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

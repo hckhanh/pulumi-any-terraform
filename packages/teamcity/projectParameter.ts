@@ -32,9 +32,9 @@ export class ProjectParameter extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProjectParameter.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ProjectParameter resource with the given unique name, arguments, and options.
@@ -49,20 +49,20 @@ export class ProjectParameter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectParameterState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ProjectParameterArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectParameter.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

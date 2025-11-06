@@ -690,6 +690,10 @@ export interface IdentityOidcAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string>;
 }
 
+export interface IdentityTokenAuthAccessTokenTrustedIp {
+    ipAddress?: pulumi.Input<string>;
+}
+
 export interface IdentityUniversalAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string>;
 }

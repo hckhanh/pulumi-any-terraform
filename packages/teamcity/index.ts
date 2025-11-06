@@ -35,6 +35,11 @@ export const getBuildConfiguration: typeof import("./getBuildConfiguration").get
 export const getBuildConfigurationOutput: typeof import("./getBuildConfiguration").getBuildConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getBuildConfiguration","getBuildConfigurationOutput"], () => require("./getBuildConfiguration"));
 
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
 export { GetPoolArgs, GetPoolResult, GetPoolOutputArgs } from "./getPool";
 export const getPool: typeof import("./getPool").getPool = null as any;
 export const getPoolOutput: typeof import("./getPool").getPoolOutput = null as any;
@@ -50,6 +55,11 @@ export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
 export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getSshKey","getSshKeyOutput"], () => require("./getSshKey"));
 
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
 export { GlobalSettingsArgs, GlobalSettingsState } from "./globalSettings";
 export type GlobalSettings = import("./globalSettings").GlobalSettings;
 export const GlobalSettings: typeof import("./globalSettings").GlobalSettings = null as any;
@@ -64,6 +74,11 @@ export { GroupMemberArgs, GroupMemberState } from "./groupMember";
 export type GroupMember = import("./groupMember").GroupMember;
 export const GroupMember: typeof import("./groupMember").GroupMember = null as any;
 utilities.lazyLoad(exports, ["GroupMember"], () => require("./groupMember"));
+
+export { GroupRoleAssignmentArgs, GroupRoleAssignmentState } from "./groupRoleAssignment";
+export type GroupRoleAssignment = import("./groupRoleAssignment").GroupRoleAssignment;
+export const GroupRoleAssignment: typeof import("./groupRoleAssignment").GroupRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["GroupRoleAssignment"], () => require("./groupRoleAssignment"));
 
 export { LicenseArgs, LicenseState } from "./license";
 export type License = import("./license").License;
@@ -85,10 +100,8 @@ export type ProjectParameter = import("./projectParameter").ProjectParameter;
 export const ProjectParameter: typeof import("./projectParameter").ProjectParameter = null as any;
 utilities.lazyLoad(exports, ["ProjectParameter"], () => require("./projectParameter"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
@@ -109,6 +122,11 @@ export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserRoleAssignmentArgs, UserRoleAssignmentState } from "./userRoleAssignment";
+export type UserRoleAssignment = import("./userRoleAssignment").UserRoleAssignment;
+export const UserRoleAssignment: typeof import("./userRoleAssignment").UserRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["UserRoleAssignment"], () => require("./userRoleAssignment"));
 
 export { VcsrootArgs, VcsrootState } from "./vcsroot";
 export type Vcsroot = import("./vcsroot").Vcsroot;
@@ -150,6 +168,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "teamcity:index/groupMember:GroupMember":
                 return new GroupMember(name, <any>undefined, { urn })
+            case "teamcity:index/groupRoleAssignment:GroupRoleAssignment":
+                return new GroupRoleAssignment(name, <any>undefined, { urn })
             case "teamcity:index/license:License":
                 return new License(name, <any>undefined, { urn })
             case "teamcity:index/pool:Pool":
@@ -166,6 +186,8 @@ const _module = {
                 return new SshKey(name, <any>undefined, { urn })
             case "teamcity:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "teamcity:index/userRoleAssignment:UserRoleAssignment":
+                return new UserRoleAssignment(name, <any>undefined, { urn })
             case "teamcity:index/vcsroot:Vcsroot":
                 return new Vcsroot(name, <any>undefined, { urn })
             case "teamcity:index/versionedSettings:VersionedSettings":
@@ -183,6 +205,7 @@ pulumi.runtime.registerResourceModule("teamcity", "index/emailSettings", _module
 pulumi.runtime.registerResourceModule("teamcity", "index/globalSettings", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/group", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/groupMember", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/groupRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/license", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/pool", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/project", _module)
@@ -191,6 +214,7 @@ pulumi.runtime.registerResourceModule("teamcity", "index/role", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/secureToken", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/user", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/userRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/vcsroot", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/versionedSettings", _module)
 pulumi.runtime.registerResourcePackage("teamcity", {

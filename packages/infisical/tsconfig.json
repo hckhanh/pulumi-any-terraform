@@ -51,6 +51,7 @@
         "identityGcpAuth.ts",
         "identityKubernetesAuth.ts",
         "identityOidcAuth.ts",
+        "identityTokenAuth.ts",
         "identityUniversalAuth.ts",
         "identityUniversalAuthClientSecret.ts",
         "index.ts",

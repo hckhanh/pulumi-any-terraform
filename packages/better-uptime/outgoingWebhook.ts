@@ -59,7 +59,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
      */
     declare public readonly triggerType: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface OutgoingWebhookState {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
      */
     triggerType?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface OutgoingWebhookArgs {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: `incident_change`, `on_call_change`, `monitor_change`.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
      */
     triggerType: pulumi.Input<string>;
     /**

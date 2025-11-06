@@ -25,10 +25,10 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly host!: pulumi.Output<string | undefined>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly token!: pulumi.Output<string | undefined>;
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -41,16 +41,26 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
+            resourceInputs["host"] = args?.host;
+            resourceInputs["maxRetries"] = pulumi.output(args?.maxRetries).apply(JSON.stringify);
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+    }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:teamcity/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
     }
 }
 
@@ -66,4 +76,14 @@ export interface ProviderArgs {
     password?: pulumi.Input<string>;
     token?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

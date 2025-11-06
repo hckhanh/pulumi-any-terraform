@@ -34,10 +34,10 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
-    public readonly githubUsername!: pulumi.Output<string | undefined>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly roles!: pulumi.Output<outputs.UserRole[] | undefined>;
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly githubUsername: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly roles: pulumi.Output<outputs.UserRole[] | undefined>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -52,19 +52,19 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["githubUsername"] = state ? state.githubUsername : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["githubUsername"] = state?.githubUsername;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["githubUsername"] = args ? args.githubUsername : undefined;
+            resourceInputs["githubUsername"] = args?.githubUsername;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

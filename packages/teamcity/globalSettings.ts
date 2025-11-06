@@ -34,16 +34,16 @@ export class GlobalSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalSettings.__pulumiType;
     }
 
-    public readonly artifactDirectories!: pulumi.Output<string>;
-    public readonly artifactsDomainIsolation!: pulumi.Output<outputs.GlobalSettingsArtifactsDomainIsolation>;
-    public readonly defaultExecutionTimeout!: pulumi.Output<number>;
-    public readonly defaultQuietPeriod!: pulumi.Output<number>;
-    public readonly defaultVcsCheckInterval!: pulumi.Output<number>;
-    public readonly encryption!: pulumi.Output<outputs.GlobalSettingsEncryption>;
-    public readonly enforceDefaultVcsCheckInterval!: pulumi.Output<boolean>;
-    public readonly maxArtifactNumber!: pulumi.Output<number>;
-    public readonly maxArtifactSize!: pulumi.Output<number>;
-    public readonly rootUrl!: pulumi.Output<string>;
+    declare public readonly artifactDirectories: pulumi.Output<string>;
+    declare public readonly artifactsDomainIsolation: pulumi.Output<outputs.GlobalSettingsArtifactsDomainIsolation>;
+    declare public readonly defaultExecutionTimeout: pulumi.Output<number>;
+    declare public readonly defaultQuietPeriod: pulumi.Output<number>;
+    declare public readonly defaultVcsCheckInterval: pulumi.Output<number>;
+    declare public readonly encryption: pulumi.Output<outputs.GlobalSettingsEncryption>;
+    declare public readonly enforceDefaultVcsCheckInterval: pulumi.Output<boolean>;
+    declare public readonly maxArtifactNumber: pulumi.Output<number>;
+    declare public readonly maxArtifactSize: pulumi.Output<number>;
+    declare public readonly rootUrl: pulumi.Output<string>;
 
     /**
      * Create a GlobalSettings resource with the given unique name, arguments, and options.
@@ -58,28 +58,28 @@ export class GlobalSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalSettingsState | undefined;
-            resourceInputs["artifactDirectories"] = state ? state.artifactDirectories : undefined;
-            resourceInputs["artifactsDomainIsolation"] = state ? state.artifactsDomainIsolation : undefined;
-            resourceInputs["defaultExecutionTimeout"] = state ? state.defaultExecutionTimeout : undefined;
-            resourceInputs["defaultQuietPeriod"] = state ? state.defaultQuietPeriod : undefined;
-            resourceInputs["defaultVcsCheckInterval"] = state ? state.defaultVcsCheckInterval : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["enforceDefaultVcsCheckInterval"] = state ? state.enforceDefaultVcsCheckInterval : undefined;
-            resourceInputs["maxArtifactNumber"] = state ? state.maxArtifactNumber : undefined;
-            resourceInputs["maxArtifactSize"] = state ? state.maxArtifactSize : undefined;
-            resourceInputs["rootUrl"] = state ? state.rootUrl : undefined;
+            resourceInputs["artifactDirectories"] = state?.artifactDirectories;
+            resourceInputs["artifactsDomainIsolation"] = state?.artifactsDomainIsolation;
+            resourceInputs["defaultExecutionTimeout"] = state?.defaultExecutionTimeout;
+            resourceInputs["defaultQuietPeriod"] = state?.defaultQuietPeriod;
+            resourceInputs["defaultVcsCheckInterval"] = state?.defaultVcsCheckInterval;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["enforceDefaultVcsCheckInterval"] = state?.enforceDefaultVcsCheckInterval;
+            resourceInputs["maxArtifactNumber"] = state?.maxArtifactNumber;
+            resourceInputs["maxArtifactSize"] = state?.maxArtifactSize;
+            resourceInputs["rootUrl"] = state?.rootUrl;
         } else {
             const args = argsOrState as GlobalSettingsArgs | undefined;
-            resourceInputs["artifactDirectories"] = args ? args.artifactDirectories : undefined;
-            resourceInputs["artifactsDomainIsolation"] = args ? args.artifactsDomainIsolation : undefined;
-            resourceInputs["defaultExecutionTimeout"] = args ? args.defaultExecutionTimeout : undefined;
-            resourceInputs["defaultQuietPeriod"] = args ? args.defaultQuietPeriod : undefined;
-            resourceInputs["defaultVcsCheckInterval"] = args ? args.defaultVcsCheckInterval : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["enforceDefaultVcsCheckInterval"] = args ? args.enforceDefaultVcsCheckInterval : undefined;
-            resourceInputs["maxArtifactNumber"] = args ? args.maxArtifactNumber : undefined;
-            resourceInputs["maxArtifactSize"] = args ? args.maxArtifactSize : undefined;
-            resourceInputs["rootUrl"] = args ? args.rootUrl : undefined;
+            resourceInputs["artifactDirectories"] = args?.artifactDirectories;
+            resourceInputs["artifactsDomainIsolation"] = args?.artifactsDomainIsolation;
+            resourceInputs["defaultExecutionTimeout"] = args?.defaultExecutionTimeout;
+            resourceInputs["defaultQuietPeriod"] = args?.defaultQuietPeriod;
+            resourceInputs["defaultVcsCheckInterval"] = args?.defaultVcsCheckInterval;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["enforceDefaultVcsCheckInterval"] = args?.enforceDefaultVcsCheckInterval;
+            resourceInputs["maxArtifactNumber"] = args?.maxArtifactNumber;
+            resourceInputs["maxArtifactSize"] = args?.maxArtifactSize;
+            resourceInputs["rootUrl"] = args?.rootUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalSettings.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

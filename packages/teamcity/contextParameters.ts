@@ -32,8 +32,8 @@ export class ContextParameters extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContextParameters.__pulumiType;
     }
 
-    public readonly params!: pulumi.Output<{[key: string]: string}>;
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly params: pulumi.Output<{[key: string]: string}>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a ContextParameters resource with the given unique name, arguments, and options.
@@ -48,18 +48,18 @@ export class ContextParameters extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContextParametersState | undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as ContextParametersArgs | undefined;
-            if ((!args || args.params === undefined) && !opts.urn) {
+            if (args?.params === undefined && !opts.urn) {
                 throw new Error("Missing required property 'params'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["projectId"] = args?.projectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContextParameters.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

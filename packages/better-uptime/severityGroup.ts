@@ -41,7 +41,7 @@ export class SeverityGroup extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Set sort_index to specify how to sort your severity groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your severity groups.
      */
     declare public readonly sortIndex: pulumi.Output<number>;
     /**
@@ -97,7 +97,7 @@ export interface SeverityGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set sort_index to specify how to sort your severity groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your severity groups.
      */
     sortIndex?: pulumi.Input<number>;
     /**
@@ -119,7 +119,7 @@ export interface SeverityGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set sort_index to specify how to sort your severity groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your severity groups.
      */
     sortIndex?: pulumi.Input<number>;
     /**

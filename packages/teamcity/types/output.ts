@@ -81,6 +81,36 @@ export interface ConnectionGithubApp {
     webhookSecret: string;
 }
 
+export interface GetGroupRole {
+    /**
+     * Whether the role is assigned globally.
+     */
+    global: boolean;
+    /**
+     * The role ID.
+     */
+    id: string;
+    /**
+     * The project ID if the role is project-specific.
+     */
+    project: string;
+}
+
+export interface GetUserRole {
+    /**
+     * Whether the role is assigned globally.
+     */
+    global: boolean;
+    /**
+     * The role ID.
+     */
+    id: string;
+    /**
+     * The project ID if the role is project-specific.
+     */
+    project: string;
+}
+
 export interface GlobalSettingsArtifactsDomainIsolation {
     artifactsUrl: string;
     /**

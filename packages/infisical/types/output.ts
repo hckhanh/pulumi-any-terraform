@@ -769,6 +769,10 @@ export interface IdentityOidcAuthAccessTokenTrustedIp {
     ipAddress: string;
 }
 
+export interface IdentityTokenAuthAccessTokenTrustedIp {
+    ipAddress: string;
+}
+
 export interface IdentityUniversalAuthAccessTokenTrustedIp {
     ipAddress: string;
 }

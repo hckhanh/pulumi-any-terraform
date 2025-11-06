@@ -32,8 +32,8 @@ export class SecureToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecureToken.__pulumiType;
     }
 
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a SecureToken resource with the given unique name, arguments, and options.
@@ -48,17 +48,17 @@ export class SecureToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecureTokenState | undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as SecureTokenArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

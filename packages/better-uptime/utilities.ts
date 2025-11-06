@@ -110,12 +110,12 @@ export async function getPackage() : Promise<string | undefined> {
 			const monitor = runtime.getMonitor();
 			const params = new resproto.Parameterization();
 			params.setName("better-uptime");
-			params.setVersion("0.20.3");
-			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIwLjMifX0="), c => c.charCodeAt(0)));
+			params.setVersion("0.20.4");
+			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIwLjQifX0="), c => c.charCodeAt(0)));
 
 			const req = new resproto.RegisterPackageRequest();
 			req.setName("terraform-provider");
-			req.setVersion("0.14.0");
+			req.setVersion("1.0.1");
 			req.setDownloadUrl("");
 			req.setParameterization(params);
 			const resp : any = await new Promise((resolve, reject) => {

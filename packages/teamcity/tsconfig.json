@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "bin",
-        "target": "es2016",
+        "target": "ES2020",
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
@@ -21,12 +21,15 @@
         "contextParameters.ts",
         "emailSettings.ts",
         "getBuildConfiguration.ts",
+        "getGroup.ts",
         "getPool.ts",
         "getServer.ts",
         "getSshKey.ts",
+        "getUser.ts",
         "globalSettings.ts",
         "group.ts",
         "groupMember.ts",
+        "groupRoleAssignment.ts",
         "index.ts",
         "license.ts",
         "pool.ts",
@@ -40,6 +43,7 @@
         "types/input.ts",
         "types/output.ts",
         "user.ts",
+        "userRoleAssignment.ts",
         "utilities.ts",
         "vcsroot.ts",
         "versionedSettings.ts"

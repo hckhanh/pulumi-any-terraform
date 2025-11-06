@@ -32,7 +32,7 @@ export class License extends pulumi.CustomResource {
         return obj['__pulumiType'] === License.__pulumiType;
     }
 
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
 
     /**
      * Create a License resource with the given unique name, arguments, and options.
@@ -47,10 +47,10 @@ export class License extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["key"] = state?.key;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;

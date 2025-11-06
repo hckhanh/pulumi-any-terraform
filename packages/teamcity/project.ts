@@ -32,9 +32,9 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly parentProjectId!: pulumi.Output<string>;
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parentProjectId: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -49,14 +49,14 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentProjectId"] = state ? state.parentProjectId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentProjectId"] = state?.parentProjectId;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentProjectId"] = args ? args.parentProjectId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentProjectId"] = args?.parentProjectId;
+            resourceInputs["projectId"] = args?.projectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

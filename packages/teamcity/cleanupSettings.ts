@@ -34,10 +34,10 @@ export class CleanupSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === CleanupSettings.__pulumiType;
     }
 
-    public readonly cron!: pulumi.Output<outputs.CleanupSettingsCron | undefined>;
-    public readonly daily!: pulumi.Output<outputs.CleanupSettingsDaily | undefined>;
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly maxDuration!: pulumi.Output<number>;
+    declare public readonly cron: pulumi.Output<outputs.CleanupSettingsCron | undefined>;
+    declare public readonly daily: pulumi.Output<outputs.CleanupSettingsDaily | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly maxDuration: pulumi.Output<number>;
 
     /**
      * Create a CleanupSettings resource with the given unique name, arguments, and options.
@@ -52,22 +52,22 @@ export class CleanupSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CleanupSettingsState | undefined;
-            resourceInputs["cron"] = state ? state.cron : undefined;
-            resourceInputs["daily"] = state ? state.daily : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["maxDuration"] = state ? state.maxDuration : undefined;
+            resourceInputs["cron"] = state?.cron;
+            resourceInputs["daily"] = state?.daily;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["maxDuration"] = state?.maxDuration;
         } else {
             const args = argsOrState as CleanupSettingsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.maxDuration === undefined) && !opts.urn) {
+            if (args?.maxDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxDuration'");
             }
-            resourceInputs["cron"] = args ? args.cron : undefined;
-            resourceInputs["daily"] = args ? args.daily : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["maxDuration"] = args ? args.maxDuration : undefined;
+            resourceInputs["cron"] = args?.cron;
+            resourceInputs["daily"] = args?.daily;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["maxDuration"] = args?.maxDuration;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CleanupSettings.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());

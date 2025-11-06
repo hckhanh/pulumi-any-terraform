@@ -34,13 +34,13 @@ export class AuthSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthSettings.__pulumiType;
     }
 
-    public readonly allowGuest!: pulumi.Output<boolean>;
-    public readonly collapseLoginForm!: pulumi.Output<boolean>;
-    public readonly emailVerification!: pulumi.Output<boolean>;
-    public readonly guestUsername!: pulumi.Output<string>;
-    public readonly modules!: pulumi.Output<outputs.AuthSettingsModules>;
-    public readonly perProjectPermissions!: pulumi.Output<boolean>;
-    public readonly welcomeText!: pulumi.Output<string>;
+    declare public readonly allowGuest: pulumi.Output<boolean>;
+    declare public readonly collapseLoginForm: pulumi.Output<boolean>;
+    declare public readonly emailVerification: pulumi.Output<boolean>;
+    declare public readonly guestUsername: pulumi.Output<string>;
+    declare public readonly modules: pulumi.Output<outputs.AuthSettingsModules>;
+    declare public readonly perProjectPermissions: pulumi.Output<boolean>;
+    declare public readonly welcomeText: pulumi.Output<string>;
 
     /**
      * Create a AuthSettings resource with the given unique name, arguments, and options.
@@ -55,43 +55,43 @@ export class AuthSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthSettingsState | undefined;
-            resourceInputs["allowGuest"] = state ? state.allowGuest : undefined;
-            resourceInputs["collapseLoginForm"] = state ? state.collapseLoginForm : undefined;
-            resourceInputs["emailVerification"] = state ? state.emailVerification : undefined;
-            resourceInputs["guestUsername"] = state ? state.guestUsername : undefined;
-            resourceInputs["modules"] = state ? state.modules : undefined;
-            resourceInputs["perProjectPermissions"] = state ? state.perProjectPermissions : undefined;
-            resourceInputs["welcomeText"] = state ? state.welcomeText : undefined;
+            resourceInputs["allowGuest"] = state?.allowGuest;
+            resourceInputs["collapseLoginForm"] = state?.collapseLoginForm;
+            resourceInputs["emailVerification"] = state?.emailVerification;
+            resourceInputs["guestUsername"] = state?.guestUsername;
+            resourceInputs["modules"] = state?.modules;
+            resourceInputs["perProjectPermissions"] = state?.perProjectPermissions;
+            resourceInputs["welcomeText"] = state?.welcomeText;
         } else {
             const args = argsOrState as AuthSettingsArgs | undefined;
-            if ((!args || args.allowGuest === undefined) && !opts.urn) {
+            if (args?.allowGuest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowGuest'");
             }
-            if ((!args || args.collapseLoginForm === undefined) && !opts.urn) {
+            if (args?.collapseLoginForm === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collapseLoginForm'");
             }
-            if ((!args || args.emailVerification === undefined) && !opts.urn) {
+            if (args?.emailVerification === undefined && !opts.urn) {
                 throw new Error("Missing required property 'emailVerification'");
             }
-            if ((!args || args.guestUsername === undefined) && !opts.urn) {
+            if (args?.guestUsername === undefined && !opts.urn) {
                 throw new Error("Missing required property 'guestUsername'");
             }
-            if ((!args || args.modules === undefined) && !opts.urn) {
+            if (args?.modules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modules'");
             }
-            if ((!args || args.perProjectPermissions === undefined) && !opts.urn) {
+            if (args?.perProjectPermissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perProjectPermissions'");
             }
-            if ((!args || args.welcomeText === undefined) && !opts.urn) {
+            if (args?.welcomeText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'welcomeText'");
             }
-            resourceInputs["allowGuest"] = args ? args.allowGuest : undefined;
-            resourceInputs["collapseLoginForm"] = args ? args.collapseLoginForm : undefined;
-            resourceInputs["emailVerification"] = args ? args.emailVerification : undefined;
-            resourceInputs["guestUsername"] = args ? args.guestUsername : undefined;
-            resourceInputs["modules"] = args ? args.modules : undefined;
-            resourceInputs["perProjectPermissions"] = args ? args.perProjectPermissions : undefined;
-            resourceInputs["welcomeText"] = args ? args.welcomeText : undefined;
+            resourceInputs["allowGuest"] = args?.allowGuest;
+            resourceInputs["collapseLoginForm"] = args?.collapseLoginForm;
+            resourceInputs["emailVerification"] = args?.emailVerification;
+            resourceInputs["guestUsername"] = args?.guestUsername;
+            resourceInputs["modules"] = args?.modules;
+            resourceInputs["perProjectPermissions"] = args?.perProjectPermissions;
+            resourceInputs["welcomeText"] = args?.welcomeText;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthSettings.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
