@@ -35,7 +35,7 @@ jobs:
       - name: Check for updates
         id: check
         run: |
-          node scripts/check-updates.js
+          node .github/scripts/check-updates.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Fix
@@ -55,7 +55,7 @@ jobs:
           commit: 'chore(release): match upstream terraform providers'
           title: 'Update packages to match upstream terraform providers'
           publish: pnpm release
-          commitMode: 'github-api'
+          commitMode: 'git-cli'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NX_KEY: ${{ secrets.NX_KEY }}
