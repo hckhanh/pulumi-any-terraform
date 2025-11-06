@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://github.com/hckhanh/pulumi-any-terraform',
+    url: 'https://pulumi.khanh.id',
     title: 'Pulumi Any Terraform - Bridge Terraform Providers to Pulumi',
     description:
       'Use any Terraform provider with Pulumi. Get full type safety and seamless infrastructure-as-code integration.',
