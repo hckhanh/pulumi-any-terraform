@@ -1,7 +1,7 @@
 {
   "name": "pulumi-better-uptime",
   "description": "A Pulumi provider for managing Better Uptime monitoring, alerting, and incident management resources, dynamically bridged from the Terraform Better Uptime provider with support for monitors, heartbeats, integrations, status pages, and policies.",
-  "version": "0.20.9",
+  "version": "0.20.10",
   "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
   "repository": {
     "type": "git",

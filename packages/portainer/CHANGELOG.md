@@ -1,9 +1,26 @@
 ## 1.15.0 (2025-10-29)
 
+## 1.16.0
+
+### Minor Changes
+
+- 72aa8c6: ## v1.16.0 – Add write-only (\_wo) ephemeral secret support
+
+  ### Features
+  - Added `_wo` (write-only) attributes for ephemeral secrets across multiple resources.
+  - Introduced `_wo_version` flag for rotation and re-creation of ephemeral-sensitive data.
+
+  ### Updated Resources
+  - `portainer_stack`
+  - `portainer_docker_secret`
+
+  ### Documentation
+  - Extended examples for ephemeral secret usage.
+  - Updated resource docs with `_wo` attribute descriptions and usage notes.
+
 ### 🚀 Features
 
 - ### New Features ([3929fef](https://github.com/hckhanh/pulumi-any-terraform/commit/3929fef))
-
   - Added new resource `portainer_deploy`
   - Automates image updates and environment variable synchronization for stacks in Portainer (Swarm & Standalone).
   - Added new resource `portainer_check`
@@ -12,7 +29,6 @@
   - Updated README and added detailed examples for CI/CD automation using new resources.
 
   ### Improvements
-
   - Added comprehensive Terraform examples for end-to-end automation (pull → deploy → exec → check).
   - Fixed and unified documentation structure across all resources.
 
@@ -47,7 +63,6 @@
 ### 🩹 Fixes
 
 - Recommended update for all users on v1.13.0. ([ae88a48](https://github.com/hckhanh/pulumi-any-terraform/commit/ae88a48))
-
   - Fixed false in-place updates for stacks deployed via method=file
   - Fixed random recreate plans for docker networks due to missing EnableIPv4/EnableIPv6 fieldsNo breaking changes.
 
