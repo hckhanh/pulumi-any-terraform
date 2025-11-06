@@ -8,9 +8,10 @@
   },
   "private": true,
   "scripts": {
-    "release": "nx release --skip-publish"
+    "release": "nx run-many -t build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.7",
     "@nx/devkit": "22.0.2",
     "@nx/js": "22.0.2",
     "@nx/s3-cache": "4.0.0",
