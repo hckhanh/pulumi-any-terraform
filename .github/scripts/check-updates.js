@@ -423,41 +423,36 @@ async function main() {
   if (updates.length > 0) {
     console.log(`\nUpdated ${updates.length} package(s)`)
 
-    // Create release plan for each project
+    // Create changeset files for each project
     try {
+      const changesetsDir = path.join(process.cwd(), '.changeset')
+
       for (const update of updates) {
-        // Include changelog in message if available, otherwise use simple update message
-        let releaseMessage = `Update ${update.name} from ${update.oldVersion} to ${update.newVersion} to match upstream terraform provider`
-        if (update.changelog) {
-          releaseMessage += `\n\n${update.changelog}`
-        }
+        // Create changeset message
+        let changesetMessage = update.changelog
+          ? update.changelog
+          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
 
         console.log(
-          `\nCreating release plan for ${update.projectName} (${update.bumpType})...`,
+          `\nCreating changeset for ${update.name} (${update.bumpType})...`,
         )
 
-        // Use spawnSync to avoid command injection
-        const result = spawnSync(
-          'pnpm',
-          [
-            'nx',
-            'release',
-            'plan',
-            update.bumpType,
-            `--message=${releaseMessage}`,
-            `--projects=${update.projectName}`,
-          ],
-          {
-            stdio: 'inherit',
-            cwd: process.cwd(),
-          },
-        )
+        // Generate a unique filename using timestamp and package name
+        const timestamp = Date.now()
+        const sanitizedName = update.name.replace(/[^a-z0-9]/gi, '-')
+        const changesetFilename = `${sanitizedName}-${timestamp}.md`
+        const changesetPath = path.join(changesetsDir, changesetFilename)
 
-        if (result.status !== 0) {
-          throw new Error(
-            `nx release plan failed for ${update.projectName} with status ${result.status}`,
-          )
-        }
+        // Create changeset content
+        const changesetContent = `---
+'${update.name}': ${update.bumpType}
+---
+
+${changesetMessage}
+`
+
+        fs.writeFileSync(changesetPath, changesetContent)
+        console.log(`  Created changeset: ${changesetFilename}`)
       }
 
       // Stage all changes
@@ -472,7 +467,7 @@ async function main() {
 
       console.log('\nChanges staged successfully')
     } catch (error) {
-      console.error('Error creating release plan:', error)
+      console.error('Error creating changesets:', error)
       process.exit(1)
     }
 
