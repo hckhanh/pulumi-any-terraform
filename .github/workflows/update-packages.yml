@@ -67,3 +67,10 @@ jobs:
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Auto-merge release PR
+        if: steps.changesets.outputs.pullRequestNumber != ''
+        run: |
+          gh pr merge ${{ steps.changesets.outputs.pullRequestNumber }} --rebase --delete-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
