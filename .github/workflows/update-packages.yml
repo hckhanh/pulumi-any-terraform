@@ -44,7 +44,9 @@ jobs:
           echo "${{ steps.check.outputs.update_summary_base64 }}" | base64 -d >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
       - name: Fix
-        run: pnpm nx run-many -t fix
+        run: |
+          pnpm nx run-many -t fix
+          git add .
         env:
           NX_KEY: ${{ secrets.NX_KEY }}
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
