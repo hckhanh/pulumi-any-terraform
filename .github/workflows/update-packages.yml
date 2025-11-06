@@ -37,7 +37,8 @@ jobs:
           # Get the latest release information
           LATEST_RELEASE=$(curl -fsSL https://api.github.com/repos/pulumi/pulumi-terraform-provider/releases/latest)
           VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
-          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name | contains("linux-amd64.tar.gz")) | .url')
+          ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
+          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
           
           # Download and install the plugin
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
