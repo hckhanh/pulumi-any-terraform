@@ -30,6 +30,8 @@ jobs:
           mode: firewall
       - name: Install dependencies
         run: sfw pnpm install
+      - name: Setup Pulumi backend
+        run: pulumi login --local
       - name: Check for updates
         id: check
         run: |
