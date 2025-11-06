@@ -40,6 +40,12 @@ jobs:
           ASSET_NAME="pulumi-terraform-provider-${VERSION}-linux-amd64.tar.gz"
           DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
 
+          # Validate URL is from GitHub API
+          if [[ ! "$DOWNLOAD_URL" =~ ^https://api\.github\.com/ ]]; then
+            echo "Error: Invalid download URL: $DOWNLOAD_URL"
+            exit 1
+          fi
+
           # Download and install the plugin
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
             -H "Accept: application/octet-stream" \
