@@ -34,10 +34,16 @@ jobs:
         run: pulumi login --local
       - name: Install Pulumi terraform-provider plugin
         run: |
+          # Get the latest release information
+          LATEST_RELEASE=$(curl -fsSL https://api.github.com/repos/pulumi/pulumi-terraform-provider/releases/latest)
+          VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
+          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name | contains("linux-amd64.tar.gz")) | .url')
+          
+          # Download and install the plugin
           curl -fsSL -o /tmp/pulumi-terraform-provider.tar.gz \
             -H "Accept: application/octet-stream" \
-            "https://api.github.com/repos/pulumi/pulumi-terraform-provider/releases/assets/307410012"
-          pulumi plugin install resource terraform-provider v1.0.1 --file /tmp/pulumi-terraform-provider.tar.gz
+            "$DOWNLOAD_URL"
+          pulumi plugin install resource terraform-provider "$VERSION" --file /tmp/pulumi-terraform-provider.tar.gz
           rm /tmp/pulumi-terraform-provider.tar.gz
       - name: Check for updates
         id: check
