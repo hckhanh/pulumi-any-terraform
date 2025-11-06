@@ -1,5 +1,11 @@
 ## 0.1.3 (2025-10-08)
 
+## 0.1.4
+
+### Patch Changes
+
+- 72aa8c6: Update pulumi-teamcity from 0.0.83 to 0.0.85
+
 ### 🩹 Fixes
 
 - Add `"sideEffects": false` to the package.json to indicate the package is side-effect-free ([a5e20a3](https://github.com/hckhanh/pulumi-any-terraform/commit/a5e20a3))

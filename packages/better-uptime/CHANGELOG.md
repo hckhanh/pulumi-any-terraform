@@ -1,5 +1,14 @@
 ## 0.20.9 (2025-10-08)
 
+## 0.20.10
+
+### Patch Changes
+
+- 72aa8c6: ## What's Changed
+  - U-7085 [monitor] Set strict defaults for parameters essential for monitoring by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-better-uptime/pull/172
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-better-uptime/compare/v0.20.3...v0.20.4
+
 ### 🩹 Fixes
 
 - Add `"sideEffects": false` to the package.json to indicate the package is side-effect-free ([a5e20a3](https://github.com/hckhanh/pulumi-any-terraform/commit/a5e20a3))
