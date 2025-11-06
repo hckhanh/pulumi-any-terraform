@@ -8,3 +8,6 @@ pnpm-lock.yaml
 
 # IntelliJ based IDEs
 .idea
+
+# Docs
+docs

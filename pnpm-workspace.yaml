@@ -1,5 +1,6 @@
 packages:
   - packages/*
+  - docs
 
 onlyBuiltDependencies:
   - '@swc/core'
@@ -7,6 +8,7 @@ onlyBuiltDependencies:
   - nx
   - oxc-resolver
   - protobufjs
+  - sharp
 
 overrides:
   axios@<1.12.0: '>=1.12.0'
