@@ -50,16 +50,6 @@
     "./tools/prettier.ts",
     "./tools/syncpack.ts"
   ],
-  "release": {
-    "projects": ["packages/*"],
-    "projectsRelationship": "independent",
-    "versionPlans": true,
-    "changelog": {
-      "projectChangelogs": {
-        "createRelease": "github"
-      }
-    }
-  },
   "s3": {
     "region": "auto",
     "bucket": "nx-caches",
