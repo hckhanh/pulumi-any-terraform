@@ -32,10 +32,10 @@ jobs:
         run: sfw pnpm install
       - name: Check for updates
         id: check
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node .github/scripts/check-updates.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Decode update summary
         if: steps.check.outputs.has_updates == 'true'
         id: decode
