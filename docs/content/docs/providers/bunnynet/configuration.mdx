@@ -1,0 +1,178 @@
+---
+title: Configuration
+description: Set up and configure the Bunnynet provider for CDN and edge computing
+---
+
+This guide covers how to configure the Bunnynet provider for Pulumi.
+
+## Overview
+
+The Bunnynet provider requires an API key for authentication. You can manage CDN pull zones, storage zones, and edge compute scripts.
+
+## Provider Configuration
+
+### Basic Setup
+
+```typescript
+import * as bunnynet from "@pulumi-contrib/bunnynet";
+
+// Configure the provider with API key
+const config = new pulumi.Config("bunnynet");
+const apiKey = config.requireSecret("apiKey");
+```
+
+### Configuration Methods
+
+#### 1. Provider Block (Recommended)
+
+```typescript
+import * as bunnynet from "@pulumi-contrib/bunnynet";
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config("bunnynet");
+
+// API key from Pulumi config
+const provider = new bunnynet.Provider("bunnynet", {
+    apiKey: config.requireSecret("apiKey"),
+});
+```
+
+#### 2. Environment Variables
+
+```bash
+export BUNNY_API_KEY="your-api-key-here"
+```
+
+#### 3. Pulumi Configuration
+
+```bash
+# Set API key (encrypted)
+pulumi config set bunnynet:apiKey --secret <your-api-key>
+
+# Verify configuration
+pulumi config get bunnynet:apiKey
+```
+
+## Getting API Credentials
+
+### Create API Key
+
+1. Log in to Bunny.net dashboard
+2. Navigate to **Account** → **API**
+3. Click **Add API Key**
+4. Name your key (e.g., "Pulumi Integration")
+5. Set appropriate permissions
+6. Copy the generated API key
+
+### Required Permissions
+
+For full management capabilities:
+- **Pull Zones**: Read, Write
+- **Storage Zones**: Read, Write
+- **Billing**: Read (for usage monitoring)
+- **Statistics**: Read (for analytics)
+
+## Configuration Options
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `apiKey` | string | Yes | Bunny.net API key |
+
+## Best Practices
+
+### Security
+
+```typescript
+// ✅ DO: Use Pulumi secrets for API keys
+const config = new pulumi.Config("bunnynet");
+const apiKey = config.requireSecret("apiKey");
+
+// ❌ DON'T: Hardcode API keys
+const provider = new bunnynet.Provider("bad", {
+    apiKey: "abc123...",  // Never do this!
+});
+```
+
+### Multi-Account Setup
+
+```typescript
+// Production account
+const prodProvider = new bunnynet.Provider("prod", {
+    apiKey: prodConfig.requireSecret("apiKey"),
+});
+
+// Development account
+const devProvider = new bunnynet.Provider("dev", {
+    apiKey: devConfig.requireSecret("apiKey"),
+});
+```
+
+## Integration Examples
+
+### With Pull Zone
+
+```typescript
+import * as bunnynet from "@pulumi-contrib/bunnynet";
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config("bunnynet");
+
+// Create a CDN pull zone
+const pullZone = new bunnynet.PullZone("website-cdn", {
+    name: "example-cdn",
+    originUrl: "https://origin.example.com",
+    storageZoneId: 0,
+});
+```
+
+### With Storage Zone
+
+```typescript
+// Create a storage zone
+const storageZone = new bunnynet.StorageZone("assets", {
+    name: "example-assets",
+    region: "NY",
+    replicationRegions: ["LA", "SG"],
+});
+```
+
+## Troubleshooting
+
+### Invalid API Key
+
+**Error**: "Authentication failed: Invalid API key"
+
+**Solution**:
+1. Verify API key is correct
+2. Check key hasn't been revoked
+3. Ensure key has required permissions
+
+```bash
+# Test API key
+curl -H "AccessKey: $BUNNY_API_KEY" \
+     https://api.bunny.net/pullzone
+```
+
+### Rate Limiting
+
+**Error**: "Rate limit exceeded"
+
+**Solution**:
+- Bunny.net has rate limits (varies by plan)
+- Add delays between resource creations
+- Use resource `dependsOn` to sequence operations
+
+### Permission Errors
+
+**Error**: "Insufficient permissions"
+
+**Solution**:
+- Verify API key has correct permissions
+- Check account plan supports the feature
+- Ensure you're accessing resources you own
+
+## Additional Resources
+
+- [Bunny.net API Documentation](https://docs.bunny.net/reference/bunnynet-api-overview)
+- [Pull Zone Resource](/docs/providers/bunnynet/pull-zone)
+- [Storage Zone Resource](/docs/providers/bunnynet/storage-zone)
