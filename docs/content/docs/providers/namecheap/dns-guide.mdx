@@ -1,0 +1,442 @@
+---
+title: DNS Management Guide
+description: Best practices and patterns for managing DNS records with the Namecheap provider
+---
+
+This guide covers DNS management strategies, best practices, and common patterns when using the Namecheap provider.
+
+## DNS Record Management Strategies
+
+### OVERWRITE vs MERGE Mode
+
+The Namecheap provider supports two modes for managing DNS records:
+
+**OVERWRITE Mode** (Recommended for Infrastructure as Code)
+- Replaces all existing records with those defined in your code
+- Provides full control and predictability
+- Any manual changes will be overwritten on next deployment
+
+```typescript
+const dns = new namecheap.DomainRecords("example-com", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        { hostname: "@", type: "A", address: "192.0.2.1" },
+        { hostname: "www", type: "CNAME", address: "example.com." },
+    ],
+});
+```
+
+**MERGE Mode** (Use with Caution)
+- Adds or updates records without removing existing ones
+- Allows manual and automated management
+- Can lead to configuration drift
+
+```typescript
+const additionalDns = new namecheap.DomainRecords("additional-records", {
+    domain: "example.com",
+    mode: "MERGE",
+    records: [
+        { hostname: "api", type: "A", address: "192.0.2.2" },
+    ],
+});
+```
+
+## Common DNS Patterns
+
+### Multi-Region Setup with Health Checking
+
+Configure DNS for a multi-region application:
+
+```typescript
+const primaryRegion = new namecheap.DomainRecords("multi-region-dns", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Primary region
+        { 
+            hostname: "@", 
+            type: "A", 
+            address: "192.0.2.1",
+            ttl: 300 // Low TTL for quick failover
+        },
+        // Secondary region (manual failover)
+        { 
+            hostname: "backup", 
+            type: "A", 
+            address: "192.0.2.2",
+            ttl: 300
+        },
+        // Region-specific endpoints
+        {
+            hostname: "us-east",
+            type: "A",
+            address: "192.0.2.1",
+        },
+        {
+            hostname: "eu-west",
+            type: "A",
+            address: "192.0.2.3",
+        },
+    ],
+});
+```
+
+### Subdomain Delegation
+
+Delegate a subdomain to different nameservers:
+
+```typescript
+const mainDomain = new namecheap.DomainRecords("main-domain", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Delegate dev.example.com to different nameservers
+        {
+            hostname: "dev",
+            type: "NS",
+            address: "ns1.development.example.com.",
+        },
+        {
+            hostname: "dev",
+            type: "NS",
+            address: "ns2.development.example.com.",
+        },
+    ],
+});
+```
+
+### Email Configuration
+
+Set up email with MX records and SPF:
+
+```typescript
+const emailSetup = new namecheap.DomainRecords("email-setup", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    emailType: "MX",
+    records: [
+        // MX records for Google Workspace
+        {
+            hostname: "@",
+            type: "MX",
+            address: "ASPMX.L.GOOGLE.COM.",
+            mxPref: 1,
+        },
+        {
+            hostname: "@",
+            type: "MX",
+            address: "ALT1.ASPMX.L.GOOGLE.COM.",
+            mxPref: 5,
+        },
+        {
+            hostname: "@",
+            type: "MX",
+            address: "ALT2.ASPMX.L.GOOGLE.COM.",
+            mxPref: 5,
+        },
+        // SPF record
+        {
+            hostname: "@",
+            type: "TXT",
+            address: "v=spf1 include:_spf.google.com ~all",
+        },
+        // DKIM record
+        {
+            hostname: "google._domainkey",
+            type: "TXT",
+            address: "v=DKIM1; k=rsa; p=MIGfMA0GCS...",
+        },
+        // DMARC record
+        {
+            hostname: "_dmarc",
+            type: "TXT",
+            address: "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com",
+        },
+    ],
+});
+```
+
+### CDN and Load Balancer Setup
+
+Configure DNS for CDN and load balancer:
+
+```typescript
+const cdnSetup = new namecheap.DomainRecords("cdn-setup", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Main site through CDN
+        {
+            hostname: "@",
+            type: "CNAME",
+            address: "example.cdn.cloudflare.net.",
+        },
+        {
+            hostname: "www",
+            type: "CNAME",
+            address: "example.cdn.cloudflare.net.",
+        },
+        // Assets subdomain
+        {
+            hostname: "assets",
+            type: "CNAME",
+            address: "assets.example.cdn.net.",
+        },
+        // API through load balancer
+        {
+            hostname: "api",
+            type: "A",
+            address: "192.0.2.10",
+        },
+    ],
+});
+```
+
+### Development and Staging Environments
+
+Organize DNS for multiple environments:
+
+```typescript
+const productionDns = new namecheap.DomainRecords("production", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        { hostname: "@", type: "A", address: prodIp },
+        { hostname: "www", type: "CNAME", address: "example.com." },
+        { hostname: "api", type: "A", address: prodApiIp },
+    ],
+});
+
+const stagingDns = new namecheap.DomainRecords("staging", {
+    domain: "example.com",
+    mode: "MERGE", // Won't conflict with production
+    records: [
+        { hostname: "staging", type: "A", address: stagingIp },
+        { hostname: "staging-api", type: "A", address: stagingApiIp },
+    ],
+});
+
+const devDns = new namecheap.DomainRecords("development", {
+    domain: "example.com",
+    mode: "MERGE",
+    records: [
+        { hostname: "dev", type: "A", address: devIp },
+        { hostname: "dev-api", type: "A", address: devApiIp },
+    ],
+});
+```
+
+## TTL Configuration Best Practices
+
+### Choosing the Right TTL
+
+| Use Case | Recommended TTL | Reason |
+|----------|----------------|---------|
+| Production (stable) | 3600-86400 (1-24 hours) | Reduce DNS queries, improve performance |
+| Pre-migration | 300-600 (5-10 minutes) | Quick switchover during migration |
+| Active deployment | 60-300 (1-5 minutes) | Fast updates during changes |
+| Development/Testing | 60 (1 minute) | Rapid iteration |
+
+```typescript
+const stableDns = new namecheap.DomainRecords("stable", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 3600, // 1 hour for stable production
+        },
+    ],
+});
+
+const migrationDns = new namecheap.DomainRecords("migration", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 300, // 5 minutes for quick switchover
+        },
+    ],
+});
+```
+
+## Security Best Practices
+
+### CAA Records for Certificate Authority Authorization
+
+```typescript
+const securityDns = new namecheap.DomainRecords("security", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Allow Let's Encrypt
+        {
+            hostname: "@",
+            type: "CAA",
+            address: "0 issue \"letsencrypt.org\"",
+        },
+        // Allow DigiCert
+        {
+            hostname: "@",
+            type: "CAA",
+            address: "0 issue \"digicert.com\"",
+        },
+        // Incident reporting
+        {
+            hostname: "@",
+            type: "CAA",
+            address: "0 iodef \"mailto:security@example.com\"",
+        },
+    ],
+});
+```
+
+### Wildcard Certificates
+
+```typescript
+const wildcardDns = new namecheap.DomainRecords("wildcard", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Wildcard for all subdomains
+        {
+            hostname: "*",
+            type: "A",
+            address: "192.0.2.1",
+        },
+        // Specific subdomain override
+        {
+            hostname: "api",
+            type: "A",
+            address: "192.0.2.2",
+        },
+    ],
+});
+```
+
+## DNS Verification and Testing
+
+### Verification Commands
+
+After deploying DNS changes, verify with these commands:
+
+```bash
+# Check A record
+dig example.com A +short
+
+# Check CNAME record
+dig www.example.com CNAME +short
+
+# Check MX records
+dig example.com MX +short
+
+# Check TXT records
+dig example.com TXT +short
+
+# Check nameservers
+dig example.com NS +short
+
+# Query specific DNS server
+dig @8.8.8.8 example.com A +short
+```
+
+### DNS Propagation
+
+DNS changes can take time to propagate:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+
+// Export DNS records for verification
+export const dnsRecords = dns.records.apply(records => 
+    records.map(r => `${r.hostname}.example.com -> ${r.address}`)
+);
+
+// Add a note about propagation
+export const note = "DNS changes may take up to 48 hours to fully propagate";
+```
+
+## Common Issues and Solutions
+
+### Issue: CNAME at Root Domain
+
+**Problem**: Cannot create CNAME record at root (@) domain
+
+```typescript
+// ❌ This will fail
+{
+    hostname: "@",
+    type: "CNAME",
+    address: "example.com.",
+}
+```
+
+**Solution**: Use A record or ALIAS record instead
+
+```typescript
+// ✅ Use A record
+{
+    hostname: "@",
+    type: "A",
+    address: "192.0.2.1",
+}
+```
+
+### Issue: Conflicting Records
+
+**Problem**: Multiple records of different types for same hostname
+
+**Solution**: Use different hostnames or consolidate records
+
+```typescript
+// ✅ Correct: Different hostnames
+const records = [
+    { hostname: "@", type: "A", address: "192.0.2.1" },
+    { hostname: "www", type: "CNAME", address: "example.com." },
+];
+```
+
+### Issue: Email Delivery Problems
+
+**Problem**: Emails not being delivered
+
+**Solution**: Verify MX, SPF, DKIM, and DMARC records
+
+```bash
+# Check MX records
+dig example.com MX
+
+# Check SPF
+dig example.com TXT | grep spf
+
+# Test email configuration
+https://mxtoolbox.com/
+```
+
+## Monitoring and Alerting
+
+### DNS Health Checks
+
+Use Pulumi to create monitoring for DNS records:
+
+```typescript
+// Example integration with monitoring service
+const dnsMonitor = dns.records.apply(records => {
+    records.forEach(record => {
+        // Set up monitoring for each critical record
+        console.log(`Monitor: ${record.hostname}.example.com`);
+    });
+});
+```
+
+## Next Steps
+
+- [Domain Records Resource](/docs/providers/namecheap/domain-records) - Full API reference
+- [Configuration Guide](/docs/providers/namecheap/configuration) - Provider setup
+- [Migration Guide](/docs/providers/namecheap/migration-guide) - Import existing domains

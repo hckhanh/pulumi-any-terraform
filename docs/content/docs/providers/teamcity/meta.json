@@ -1,8 +1,16 @@
 {
   "title": "TeamCity",
+  "description": "CI/CD automation server - manage projects, build configurations, and VCS roots",
   "root": true,
   "icon": "Workflow",
   "pages": [
-    "index"
+    "index",
+    "configuration",
+    "---Resources",
+    "project",
+    "build-config",
+    "vcs-root",
+    "---Guides",
+    "cicd-guide"
   ]
 }

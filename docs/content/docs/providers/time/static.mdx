@@ -1,0 +1,286 @@
+---
+title: Static Resource
+description: Capture a static timestamp at resource creation time
+---
+
+The `time.Static` resource captures a timestamp when the resource is created and keeps it unchanged until the resource is recreated.
+
+## Example Usage
+
+### Basic Timestamp
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+// Capture creation timestamp
+const timestamp = new time.Static("creation-time", {});
+
+export const createdAt = timestamp.rfc3339;
+```
+
+### With Triggers
+
+```typescript
+const config = new pulumi.Config();
+const version = config.require("version");
+
+const deploymentTime = new time.Static("deployment-time", {
+    triggers: {
+        version: version, // New timestamp when version changes
+    },
+});
+
+export const deploymentInfo = {
+    version: version,
+    deployedAt: deploymentTime.rfc3339,
+};
+```
+
+### Resource Tagging
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as time from "@pulumi/time";
+
+const createdAt = new time.Static("creation-time", {});
+
+const instance = new aws.ec2.Instance("server", {
+    // ... configuration
+    tags: {
+        Name: "web-server",
+        CreatedAt: createdAt.rfc3339,
+        CreatedUnix: createdAt.unix.apply(u => u.toString()),
+    },
+});
+```
+
+## Argument Reference
+
+### Optional Arguments
+
+- **`rfc3339`** (string): Base timestamp in RFC3339 format. Defaults to current time.
+- **`triggers`** (map): Arbitrary map that causes new timestamp when values change.
+
+## Attribute Reference
+
+- **`day`** (number): Day of the timestamp (1-31).
+- **`hour`** (number): Hour of the timestamp (0-23).
+- **`id`** (string): Unique identifier (same as unix timestamp).
+- **`minute`** (number): Minute of the timestamp (0-59).
+- **`month`** (number): Month of the timestamp (1-12).
+- **`rfc3339`** (string): Timestamp in RFC3339 format.
+- **`second`** (number): Second of the timestamp (0-59).
+- **`unix`** (number): Unix timestamp (seconds since epoch).
+- **`year`** (number): Year of the timestamp.
+
+## Use Cases
+
+### Deployment Tracking
+
+```typescript
+import * as time from "@pulumi/time";
+
+const deploymentTimestamp = new time.Static("deployment-timestamp", {});
+
+export const deploymentMetadata = {
+    timestamp: deploymentTimestamp.rfc3339,
+    unix: deploymentTimestamp.unix,
+    readable: deploymentTimestamp.rfc3339.apply(t => 
+        new Date(t).toLocaleString()
+    ),
+};
+```
+
+### Resource Lifecycle Tracking
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as time from "@pulumi/time";
+
+const resourceCreated = new time.Static("resource-created", {});
+
+const bucket = new aws.s3.Bucket("data", {
+    bucket: "my-bucket",
+    tags: {
+        CreatedAt: resourceCreated.rfc3339,
+        CreatedBy: "pulumi",
+        Environment: "production",
+    },
+});
+
+export const bucketMetadata = {
+    name: bucket.bucket,
+    createdAt: resourceCreated.rfc3339,
+};
+```
+
+### Version Tracking
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+const config = new pulumi.Config();
+const appVersion = config.require("appVersion");
+
+const versionTimestamp = new time.Static("version-timestamp", {
+    triggers: {
+        version: appVersion,
+    },
+});
+
+export const versionInfo = {
+    version: appVersion,
+    deployedAt: versionTimestamp.rfc3339,
+    deployedUnix: versionTimestamp.unix,
+};
+```
+
+### Audit Trail
+
+```typescript
+import * as time from "@pulumi/time";
+
+const stackCreated = new time.Static("stack-created", {});
+
+const auditInfo = {
+    stackName: pulumi.getStack(),
+    projectName: pulumi.getProject(),
+    createdAt: stackCreated.rfc3339,
+    createdUnix: stackCreated.unix,
+};
+
+export const auditTrail = auditInfo;
+```
+
+### Configuration Snapshot
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+const config = new pulumi.Config();
+const configHash = config.require("configHash");
+
+const configTimestamp = new time.Static("config-timestamp", {
+    triggers: {
+        configHash: configHash, // New timestamp when config changes
+    },
+});
+
+export const configSnapshot = {
+    hash: configHash,
+    updatedAt: configTimestamp.rfc3339,
+    updatedUnix: configTimestamp.unix,
+};
+```
+
+## Comparison with Other Time Resources
+
+| Resource | Behavior | Use Case |
+|----------|----------|----------|
+| **Static** | Captures timestamp once, unchanging | Creation time tracking |
+| **Offset** | Calculates future/past time | Expiration dates |
+| **Rotating** | Changes on schedule | Automatic rotation triggers |
+| **Sleep** | Adds delays | Waiting for resources |
+
+## Example: Complete Metadata System
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as aws from "@pulumi/aws";
+
+const config = new pulumi.Config();
+const appVersion = config.require("version");
+const environment = config.require("environment");
+
+// Capture deployment time
+const deployedAt = new time.Static("deployed-at", {
+    triggers: {
+        version: appVersion,
+        environment: environment,
+    },
+});
+
+// Calculate expiration (90 days for dev, never for prod)
+const expiresAt = new time.Offset("expires-at", {
+    baseRfc3339: deployedAt.rfc3339,
+    offsetDays: environment === "dev" ? 90 : 36500, // 100 years = "never"
+});
+
+// Create resources with metadata
+const instance = new aws.ec2.Instance("app-server", {
+    instanceType: "t3.micro",
+    tags: {
+        Name: `app-${environment}`,
+        Version: appVersion,
+        Environment: environment,
+        DeployedAt: deployedAt.rfc3339,
+        ExpiresAt: expiresAt.rfc3339,
+        ManagedBy: "pulumi",
+    },
+});
+
+export const metadata = {
+    version: appVersion,
+    environment: environment,
+    deployedAt: deployedAt.rfc3339,
+    expiresAt: expiresAt.rfc3339,
+    instanceId: instance.id,
+};
+```
+
+## Best Practices
+
+### Use for Immutable Timestamps
+
+```typescript
+// ✅ Good: Capture creation time
+const created = new time.Static("created", {});
+
+// ❌ Bad: Use Rotating for changing timestamps
+// const changing = new time.Static("changing", {});
+```
+
+### Combine with Triggers
+
+```typescript
+// ✅ Good: Update timestamp on meaningful changes
+const deployed = new time.Static("deployed", {
+    triggers: {
+        version: appVersion,
+        config: configHash,
+    },
+});
+
+// ❌ Bad: Random triggers
+const timestamp = new time.Static("timestamp", {
+    triggers: {
+        random: Math.random().toString(),
+    },
+});
+```
+
+### Export for Visibility
+
+```typescript
+const timestamp = new time.Static("timestamp", {});
+
+// ✅ Good: Export for tracking
+export const creationTime = timestamp.rfc3339;
+export const creationUnix = timestamp.unix;
+```
+
+## Import
+
+Time static resources cannot be imported as they represent point-in-time captures rather than existing infrastructure.
+
+## Notes
+
+- Timestamp is captured at resource creation
+- Unchanging unless resource is recreated
+- Use triggers to force new timestamp
+- All times are in UTC
+- Useful for audit trails and metadata

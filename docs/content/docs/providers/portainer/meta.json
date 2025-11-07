@@ -1,8 +1,16 @@
 {
   "title": "Portainer",
+  "description": "Container management platform - manage Docker environments, stacks, and registries",
   "root": true,
   "icon": "Container",
   "pages": [
-    "index"
+    "index",
+    "configuration",
+    "---Resources",
+    "stack",
+    "registry",
+    "user",
+    "---Guides",
+    "container-guide"
   ]
 }

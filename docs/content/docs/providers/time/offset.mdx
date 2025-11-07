@@ -1,0 +1,159 @@
+---
+title: Offset Resource
+description: Calculate time offsets from a base timestamp
+---
+
+The `time.Offset` resource calculates a future or past timestamp by applying offsets to a base time.
+
+## Example Usage
+
+### Basic Offset
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+// Calculate 7 days from now
+const futureDate = new time.Offset("future-date", {
+    offsetDays: 7,
+});
+
+export const oneWeekFromNow = futureDate.rfc3339;
+```
+
+### Multiple Offsets
+
+```typescript
+const complexOffset = new time.Offset("complex-offset", {
+    offsetDays: 30,
+    offsetHours: 12,
+    offsetMinutes: 30,
+});
+
+export const calculatedTime = complexOffset.rfc3339;
+```
+
+### Custom Base Time
+
+```typescript
+const customOffset = new time.Offset("custom-base", {
+    baseRfc3339: "2024-01-01T00:00:00Z",
+    offsetDays: 90,
+});
+
+export const futureDate = customOffset.rfc3339;
+```
+
+### Past Timestamps
+
+```typescript
+const pastDate = new time.Offset("past-date", {
+    offsetDays: -7, // 7 days ago
+});
+
+export const lastWeek = pastDate.rfc3339;
+```
+
+## Argument Reference
+
+### Optional Arguments
+
+- **`baseRfc3339`** (string): Base timestamp in RFC3339 format. Defaults to current time.
+- **`offsetDays`** (number): Number of days to offset (positive for future, negative for past).
+- **`offsetHours`** (number): Number of hours to offset.
+- **`offsetMinutes`** (number): Number of minutes to offset.
+- **`offsetMonths`** (number): Number of months to offset.
+- **`offsetSeconds`** (number): Number of seconds to offset.
+- **`offsetYears`** (number): Number of years to offset.
+- **`triggers`** (map): Arbitrary map of values that triggers recreation.
+
+## Attribute Reference
+
+- **`day`** (number): Day of the month (1-31).
+- **`hour`** (number): Hour of the day (0-23).
+- **`minute`** (number): Minute of the hour (0-59).
+- **`month`** (number): Month of the year (1-12).
+- **`rfc3339`** (string): Full timestamp in RFC3339 format.
+- **`second`** (number): Second of the minute (0-59).
+- **`unix`** (number): Unix timestamp (seconds since epoch).
+- **`year`** (number): Year.
+
+## Use Cases
+
+### Certificate Expiration
+
+```typescript
+import * as time from "@pulumi/time";
+
+const certExpiration = new time.Offset("cert-expires", {
+    offsetDays: 90, // 90-day certificate
+});
+
+// Use with certificate resource
+export const certificateValidUntil = certExpiration.rfc3339;
+export const expirationWarning = certExpiration.rfc3339.apply(t =>
+    `Certificate expires on ${t}`
+);
+```
+
+### License Management
+
+```typescript
+const licenseExpiration = new time.Offset("license-expiry", {
+    baseRfc3339: "2024-01-01T00:00:00Z",
+    offsetYears: 1, // 1-year license
+});
+
+export const licenseValidUntil = licenseExpiration.rfc3339;
+export const daysRemaining = licenseExpiration.unix.apply(unix => {
+    const now = Math.floor(Date.now() / 1000);
+    const days = Math.floor((unix - now) / 86400);
+    return `${days} days remaining`;
+});
+```
+
+### Scheduled Events
+
+```typescript
+const eventDate = new time.Offset("event-date", {
+    offsetDays: 14, // Event in 2 weeks
+    offsetHours: 9, // 9 AM
+});
+
+export const eventSchedule = {
+    dateTime: eventDate.rfc3339,
+    unix: eventDate.unix,
+    humanReadable: eventDate.rfc3339.apply(t => new Date(t).toLocaleString()),
+};
+```
+
+### Maintenance Windows
+
+```typescript
+const maintenanceStart = new time.Offset("maintenance-start", {
+    offsetDays: 7,
+    offsetHours: 2, // 2 AM next week
+});
+
+const maintenanceEnd = new time.Offset("maintenance-end", {
+    baseRfc3339: maintenanceStart.rfc3339,
+    offsetHours: 4, // 4-hour window
+});
+
+export const maintenanceWindow = {
+    start: maintenanceStart.rfc3339,
+    end: maintenanceEnd.rfc3339,
+    duration: "4 hours",
+};
+```
+
+## Import
+
+Time offset resources cannot be imported as they represent calculations rather than existing infrastructure.
+
+## Notes
+
+- All times are in UTC
+- Offsets are cumulative (days + hours + minutes, etc.)
+- Base time defaults to the time of resource creation
+- Resource is recreated if triggers change

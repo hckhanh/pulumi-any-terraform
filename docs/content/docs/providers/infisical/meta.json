@@ -1,8 +1,17 @@
 {
   "title": "Infisical",
+  "description": "Secrets management platform - manage secrets, projects, and access policies",
   "root": true,
   "icon": "Key",
   "pages": [
-    "index"
+    "index",
+    "configuration",
+    "---Resources",
+    "project",
+    "secret",
+    "project-identity",
+    "---Guides",
+    "secrets-guide",
+    "self-hosted-guide"
   ]
 }

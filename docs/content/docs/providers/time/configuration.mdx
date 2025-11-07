@@ -1,0 +1,238 @@
+---
+title: Configuration
+description: Configure the Time provider for time-based resource management
+---
+
+The Time provider allows you to manage time-based resources in your infrastructure, useful for scheduled operations, delays, and time calculations.
+
+## Provider Configuration
+
+The Time provider doesn't require authentication or API credentials. It's a utility provider that operates locally.
+
+### Basic Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+// No provider configuration needed
+// Resources can be used directly
+const offset = new time.Offset("example", {
+    offsetDays: 7,
+});
+```
+
+### Provider Instance (Optional)
+
+While not required, you can explicitly create a provider instance:
+
+```typescript
+const provider = new time.Provider("time-provider", {
+    // No configuration options required
+});
+
+const resource = new time.Offset("with-provider", {
+    offsetDays: 7,
+}, { provider });
+```
+
+## Configuration Reference
+
+The Time provider has no required configuration options. All functionality is available without setup.
+
+### Optional Settings
+
+While the provider itself needs no configuration, individual resources have their own options:
+
+- **Triggers**: Force resource recreation on specific changes
+- **Base time**: Reference time for calculations
+- **Offsets**: Time adjustments (days, hours, minutes, etc.)
+- **Rotation**: Automatic rotation intervals
+
+## Use Cases
+
+The Time provider is commonly used for:
+
+1. **Scheduled Rotations**: Rotate secrets, passwords, or certificates on a schedule
+2. **Deployment Delays**: Add delays between resource creations
+3. **Time Calculations**: Calculate future or past timestamps
+4. **Expiration Management**: Track and manage resource expiration
+
+## Timezone Handling
+
+All timestamps are in UTC. If you need local time:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+const offset = new time.Offset("local-time", {
+    offsetHours: -5, // EST is UTC-5
+});
+
+export const utcTime = offset.rfc3339;
+export const note = "Adjust offsetHours based on your timezone";
+```
+
+## Integration Examples
+
+### With Secret Rotation
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+
+// Rotate every 30 days
+const rotation = new time.Rotating("password-rotation", {
+    rotationDays: 30,
+});
+
+// Password changes when rotation triggers
+const password = new random.RandomPassword("db-password", {
+    length: 32,
+    special: true,
+}, {
+    // Rotation ID triggers new password generation
+    ignoreChanges: [],
+    replaceOnChanges: [rotation.id],
+});
+
+export const nextRotation = rotation.rfc3339;
+```
+
+### With Deployment Delays
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as aws from "@pulumi/aws";
+
+const database = new aws.rds.Instance("db", {
+    // ... configuration
+});
+
+// Wait 30 seconds after database creation
+const delay = new time.Sleep("db-ready-delay", {
+    createDuration: "30s",
+}, { dependsOn: [database] });
+
+// Application deployment waits for delay
+const app = new aws.ecs.Service("app", {
+    // ... configuration
+}, { dependsOn: [delay] });
+```
+
+## Best Practices
+
+### Use Descriptive Names
+
+```typescript
+// ✅ Good: Clear purpose
+const certificateRotation = new time.Rotating("cert-rotation-90d", {
+    rotationDays: 90,
+});
+
+// ❌ Bad: Unclear purpose
+const time1 = new time.Rotating("time", {
+    rotationDays: 90,
+});
+```
+
+### Document Rotation Schedules
+
+```typescript
+const apiKeyRotation = new time.Rotating("api-key-rotation", {
+    rotationDays: 30,
+});
+
+// Export for visibility
+export const apiKeyRotationSchedule = {
+    interval: "30 days",
+    nextRotation: apiKeyRotation.rfc3339,
+    purpose: "Rotate API keys monthly for security",
+};
+```
+
+### Combine with Other Providers
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as namecheap from "@pulumi/namecheap";
+
+// Calculate certificate expiration (90 days from now)
+const certExpiration = new time.Offset("cert-expiration", {
+    offsetDays: 90,
+});
+
+// Use in DNS TXT record for tracking
+const dns = new namecheap.DomainRecords("dns", {
+    domain: "example.com",
+    records: [
+        {
+            hostname: "_cert-expires",
+            type: "TXT",
+            address: certExpiration.rfc3339.apply(t => `expires=${t}`),
+        },
+    ],
+});
+```
+
+## Testing
+
+### Local Development
+
+Time resources work immediately:
+
+```typescript
+const testTime = new time.Static("test", {});
+export const currentTime = testTime.rfc3339;
+
+// Run to see current time
+// pulumi up
+```
+
+### Validation
+
+```typescript
+const offset = new time.Offset("validation", {
+    offsetDays: 7,
+});
+
+// Verify calculation
+export const oneWeekFromNow = offset.rfc3339;
+export const verification = offset.rfc3339.apply(t => 
+    `One week from now: ${t}`
+);
+```
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue: Time not updating**
+```
+Time resources are static after creation
+```
+Solution: Use Rotating resource for automatic updates
+
+**Issue: Timezone confusion**
+```
+All times are in UTC
+```
+Solution: Use offsetHours to adjust for your timezone
+
+**Issue: Rotation not triggering**
+```
+Resources not recreating on schedule
+```
+Solution: Ensure rotation triggers are properly configured
+
+## Next Steps
+
+- [Offset Resource](/docs/providers/time/offset) - Calculate time offsets
+- [Rotating Resource](/docs/providers/time/rotating) - Automatic time-based rotations
+- [Sleep Resource](/docs/providers/time/sleep) - Add delays to deployments
+- [Static Resource](/docs/providers/time/static) - Capture current timestamp
+- [Time Management Guide](/docs/providers/time/time-guide) - Patterns and best practices

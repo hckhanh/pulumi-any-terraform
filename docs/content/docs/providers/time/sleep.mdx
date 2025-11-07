@@ -1,0 +1,308 @@
+---
+title: Sleep Resource
+description: Add time delays to resource provisioning
+---
+
+The `time.Sleep` resource adds delays before or after resource creation/destruction, useful for waiting on external systems.
+
+## Example Usage
+
+### Basic Delay
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+// Wait 30 seconds after creation
+const delay = new time.Sleep("wait", {
+    createDuration: "30s",
+});
+```
+
+### Wait for Database
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as time from "@pulumi/time";
+
+const database = new aws.rds.Instance("db", {
+    // ... configuration
+});
+
+// Wait for database to be fully ready
+const dbReadyDelay = new time.Sleep("db-ready", {
+    createDuration: "60s",
+}, { dependsOn: [database] });
+
+// Application starts after delay
+const app = new aws.ecs.Service("app", {
+    // ... configuration
+}, { dependsOn: [dbReadyDelay] });
+```
+
+### Destruction Delay
+
+```typescript
+const cleanupDelay = new time.Sleep("cleanup-delay", {
+    destroyDuration: "30s",
+});
+
+// Resources that depend on this will wait 30s before being destroyed
+```
+
+### Both Create and Destroy Delays
+
+```typescript
+const bothDelays = new time.Sleep("both-delays", {
+    createDuration: "60s",
+    destroyDuration: "30s",
+});
+```
+
+## Argument Reference
+
+### Optional Arguments
+
+- **`createDuration`** (string): Duration to wait after creation (e.g., "30s", "5m", "1h").
+- **`destroyDuration`** (string): Duration to wait before destruction.
+- **`triggers`** (map): Arbitrary map that causes recreation when values change.
+
+## Duration Format
+
+Durations use Go duration format:
+- `s` - seconds
+- `m` - minutes
+- `h` - hours
+
+Examples:
+- `"30s"` - 30 seconds
+- `"5m"` - 5 minutes
+- `"1h30m"` - 1 hour 30 minutes
+- `"90s"` - 90 seconds (1.5 minutes)
+
+## Use Cases
+
+### Database Connection Delay
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as time from "@pulumi/time";
+
+const db = new aws.rds.Instance("database", {
+    engine: "postgres",
+    // ... configuration
+});
+
+// Wait for database to accept connections
+const dbWait = new time.Sleep("db-connection-wait", {
+    createDuration: "120s", // 2 minutes
+}, { dependsOn: [db] });
+
+const dbSetup = new aws.lambda.Invocation("db-setup", {
+    functionName: "setup-database",
+    input: JSON.stringify({ dbEndpoint: db.endpoint }),
+}, { dependsOn: [dbWait] });
+```
+
+### Service Stabilization
+
+```typescript
+import * as kubernetes from "@pulumi/kubernetes";
+import * as time from "@pulumi/time";
+
+const deployment = new kubernetes.apps.v1.Deployment("app", {
+    // ... configuration
+});
+
+// Wait for pods to be ready
+const stabilizationWait = new time.Sleep("stabilization", {
+    createDuration: "60s",
+}, { dependsOn: [deployment] });
+
+const healthCheck = new kubernetes.batch.v1.Job("health-check", {
+    // ... configuration
+}, { dependsOn: [stabilizationWait] });
+```
+
+### DNS Propagation Delay
+
+```typescript
+import * as namecheap from "@pulumi/namecheap";
+import * as time from "@pulumi/time";
+
+const dns = new namecheap.DomainRecords("dns", {
+    domain: "example.com",
+    records: [
+        { hostname: "@", type: "A", address: "192.0.2.1" },
+    ],
+});
+
+// Wait for DNS propagation
+const dnsPropagation = new time.Sleep("dns-propagation", {
+    createDuration: "5m", // 5 minutes
+}, { dependsOn: [dns] });
+
+// SSL certificate request after DNS is propagated
+// const sslCert = new ... { dependsOn: [dnsPropagation] });
+```
+
+### Graceful Shutdown
+
+```typescript
+const gracefulShutdown = new time.Sleep("graceful-shutdown", {
+    destroyDuration: "30s", // Allow 30s for connections to drain
+});
+
+// When this resource is destroyed, wait 30s before continuing
+```
+
+### API Rate Limiting
+
+```typescript
+import * as time from "@pulumi/time";
+
+// Stagger API calls to avoid rate limits
+const delays = [0, 10, 20, 30, 40].map(seconds =>
+    new time.Sleep(`delay-${seconds}`, {
+        createDuration: `${seconds}s`,
+    })
+);
+
+// Create resources with delays between them
+const resources = delays.map((delay, i) =>
+    new SomeResource(`resource-${i}`, {
+        // ... configuration
+    }, { dependsOn: [delay] })
+);
+```
+
+### Multi-Stage Deployment
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as time from "@pulumi/time";
+
+// Stage 1: Infrastructure
+const vpc = new aws.ec2.Vpc("vpc", {
+    cidrBlock: "10.0.0.0/16",
+});
+
+const stage1Wait = new time.Sleep("stage-1-wait", {
+    createDuration: "30s",
+}, { dependsOn: [vpc] });
+
+// Stage 2: Database
+const db = new aws.rds.Instance("db", {
+    // ... configuration
+}, { dependsOn: [stage1Wait] });
+
+const stage2Wait = new time.Sleep("stage-2-wait", {
+    createDuration: "60s",
+}, { dependsOn: [db] });
+
+// Stage 3: Application
+const app = new aws.ecs.Service("app", {
+    // ... configuration
+}, { dependsOn: [stage2Wait] });
+
+export const deploymentStages = {
+    stage1: "Infrastructure",
+    stage2: "Database",
+    stage3: "Application",
+    totalWaitTime: "90 seconds",
+};
+```
+
+## Best Practices
+
+### Use Appropriate Durations
+
+```typescript
+// ✅ Good: Appropriate for the use case
+const dbWait = new time.Sleep("db-ready", {
+    createDuration: "60s", // Reasonable for database startup
+});
+
+// ❌ Bad: Unnecessarily long
+const shortWait = new time.Sleep("quick", {
+    createDuration: "10m", // 10 minutes is too long for most cases
+});
+```
+
+### Document Why Delays Are Needed
+
+```typescript
+// ✅ Good: Documented reason
+const apiWait = new time.Sleep("api-propagation", {
+    createDuration: "30s",
+});
+export const apiWaitReason = "API gateway needs 30s to propagate configuration changes";
+
+// ❌ Bad: No context
+const wait = new time.Sleep("wait", {
+    createDuration: "30s",
+});
+```
+
+### Consider Alternatives
+
+Before using Sleep, consider if there's a better way:
+
+```typescript
+// ❌ Using Sleep to wait for resource
+const wait = new time.Sleep("wait", {
+    createDuration: "60s",
+}, { dependsOn: [resource] });
+
+// ✅ Better: Use resource's ready status if available
+const dependent = new SomeResource("dependent", {
+    // ... configuration
+}, { 
+    dependsOn: [resource],
+    // Some resources have built-in readiness checks
+});
+```
+
+## Troubleshooting
+
+### Delay Not Working
+
+**Problem**: Resources still fail despite delay
+
+```
+Resource creation failed: Connection refused
+```
+
+**Solution**: Increase duration or check if resource has readiness checks
+
+```typescript
+// Increase duration
+const longerWait = new time.Sleep("wait", {
+    createDuration: "120s", // Was 60s
+});
+```
+
+### Deployments Too Slow
+
+**Problem**: Delays making deployments unnecessarily slow
+
+**Solution**: Use minimum necessary delays
+
+```typescript
+// Start with longer delay, then optimize
+const optimizedWait = new time.Sleep("wait", {
+    createDuration: "30s", // Reduced from 60s after testing
+});
+```
+
+## Import
+
+Time sleep resources cannot be imported as they represent delays rather than existing infrastructure.
+
+## Notes
+
+- Sleep occurs during `pulumi up` or `pulumi destroy`
+- Does not consume cloud resources (local operation)
+- Useful for eventual consistency delays
+- Consider using resource-specific readiness checks when available
+- All times are wall-clock time, not CPU time

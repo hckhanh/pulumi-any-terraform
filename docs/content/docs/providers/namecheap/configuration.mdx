@@ -1,0 +1,208 @@
+---
+title: Configuration
+description: Configure the Namecheap provider for managing domains and DNS records
+---
+
+This guide covers all configuration options for the Namecheap provider, including authentication methods, API access setup, and provider settings.
+
+## Provider Configuration
+
+The Namecheap provider requires API credentials to interact with the Namecheap API. You can configure the provider using one of several methods.
+
+###Provider Block
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+const provider = new namecheap.Provider("namecheap-provider", {
+    userName: "your_username",
+    apiUser: "your_username",
+    apiKey: "your_api_key",
+    clientIp: "your.ip.address",
+    useSandbox: false,
+});
+```
+
+### Environment Variables
+
+Set environment variables to configure the provider without hardcoding credentials:
+
+```bash
+export NAMECHEAP_USER_NAME="your_username"
+export NAMECHEAP_API_USER="your_username"
+export NAMECHEAP_API_KEY="your_api_key"
+export NAMECHEAP_CLIENT_IP="your.ip.address"
+export NAMECHEAP_USE_SANDBOX="false"
+```
+
+### Pulumi Configuration
+
+Store credentials securely using Pulumi config:
+
+```bash
+pulumi config set namecheap:userName your_username
+pulumi config set namecheap:apiUser your_username
+pulumi config set --secret namecheap:apiKey your_api_key
+pulumi config set namecheap:clientIp your.ip.address
+pulumi config set namecheap:useSandbox false
+```
+
+Then reference in your code:
+
+```typescript
+const config = new pulumi.Config("namecheap");
+const provider = new namecheap.Provider("namecheap-provider", {
+    userName: config.require("userName"),
+    apiUser: config.require("apiUser"),
+    apiKey: config.requireSecret("apiKey"),
+    clientIp: config.require("clientIp"),
+    useSandbox: config.requireBoolean("useSandbox"),
+});
+```
+
+## Configuration Reference
+
+### Required Arguments
+
+- **`userName`** (string): Your Namecheap username
+- **`apiUser`** (string): API username (typically the same as userName)
+- **`apiKey`** (string): Your Namecheap API key
+- **`clientIp`** (string): Your whitelisted IP address
+
+### Optional Arguments
+
+- **`useSandbox`** (boolean): Use the Namecheap sandbox environment. Default: `false`
+
+## Getting API Credentials
+
+### Enable API Access
+
+1. Log in to your [Namecheap account](https://www.namecheap.com/)
+2. Navigate to **Profile** → **Tools** → **Business & Dev Tools** → **API Access**
+3. Enable API Access
+4. Whitelist your IP address
+5. Copy your API key
+
+### Sandbox Environment
+
+For testing, you can use the Namecheap sandbox:
+
+1. Create a sandbox account at [Namecheap Sandbox](https://www.sandbox.namecheap.com/)
+2. Enable API access in the sandbox
+3. Set `useSandbox: true` in your provider configuration
+
+## IP Whitelisting
+
+Namecheap requires you to whitelist the IP address that will make API calls:
+
+1. Go to **Profile** → **Tools** → **API Access**
+2. Click **Whitelist IP**
+3. Add your public IP address
+
+**Important**: If your IP changes, you must update the whitelist.
+
+### Finding Your Public IP
+
+```bash
+curl ifconfig.me
+```
+
+## Authentication Methods Comparison
+
+| Method | Security | Ease of Use | CI/CD Friendly | Best For |
+|--------|----------|-------------|----------------|----------|
+| Provider Block | Low | Easy | No | Local Development |
+| Environment Variables | Medium | Medium | Yes | CI/CD Pipelines |
+| Pulumi Config | High | Easy | Yes | Production |
+
+## Production Best Practices
+
+### Secret Management
+
+```typescript
+// ✅ Good: Use Pulumi secrets
+const config = new pulumi.Config("namecheap");
+const apiKey = config.requireSecret("apiKey");
+
+// ❌ Bad: Hardcode secrets
+const apiKey = "abc123...";
+```
+
+### Provider Aliasing
+
+Create multiple provider instances for different accounts:
+
+```typescript
+const productionProvider = new namecheap.Provider("prod", {
+    userName: config.require("prodUserName"),
+    apiUser: config.require("prodApiUser"),
+    apiKey: config.requireSecret("prodApiKey"),
+    clientIp: config.require("prodClientIp"),
+});
+
+const stagingProvider = new namecheap.Provider("staging", {
+    userName: config.require("stagingUserName"),
+    apiUser: config.require("stagingApiUser"),
+    apiKey: config.requireSecret("stagingApiKey"),
+    clientIp: config.require("stagingClientIp"),
+    useSandbox: true,
+});
+
+// Use different providers for different resources
+const prodDns = new namecheap.DomainRecords("prod-dns", {
+    domain: "example.com",
+    // ...
+}, { provider: productionProvider });
+
+const stagingDns = new namecheap.DomainRecords("staging-dns", {
+    domain: "staging.example.com",
+    // ...
+}, { provider: stagingProvider });
+```
+
+## Troubleshooting
+
+### Common Configuration Errors
+
+**Error: IP not whitelisted**
+```
+Error: Your IP address is not whitelisted
+```
+Solution: Add your IP to the whitelist in Namecheap dashboard
+
+**Error: Invalid API credentials**
+```
+Error: Authentication failed
+```
+Solution: Verify your apiKey, userName, and apiUser are correct
+
+**Error: Sandbox mode mismatch**
+```
+Error: Domain not found
+```
+Solution: Ensure `useSandbox` matches where your domain is registered (production vs sandbox)
+
+### Testing Configuration
+
+Test your configuration with a simple program:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+// This will validate your credentials on pulumi up
+const test = new namecheap.DomainRecords("test", {
+    domain: "yourdomain.com",
+    mode: "MERGE",
+    records: [],
+});
+
+export const configured = "Namecheap provider is configured correctly";
+```
+
+## Next Steps
+
+- [Domain Records Resource](/docs/providers/namecheap/domain-records) - Manage DNS records
+- [DNS Management Guide](/docs/providers/namecheap/dns-guide) - Best practices for DNS
+- [Migration Guide](/docs/providers/namecheap/migration-guide) - Migrate existing domains
