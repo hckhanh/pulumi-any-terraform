@@ -1,0 +1,183 @@
+---
+title: Configuration
+description: Set up and configure the Better Uptime provider for monitoring
+---
+
+This guide covers how to configure the Better Uptime provider for Pulumi.
+
+## Overview
+
+The Better Uptime provider requires an API token for authentication. You can manage uptime monitoring, status pages, incidents, and integrations.
+
+## Provider Configuration
+
+### Basic Setup
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+// Configure the provider with API token
+const config = new pulumi.Config("better-uptime");
+const apiToken = config.requireSecret("apiToken");
+```
+
+### Configuration Methods
+
+#### 1. Provider Block (Recommended)
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config("better-uptime");
+
+// API token from Pulumi config
+const provider = new betteruptime.Provider("betteruptime", {
+    apiToken: config.requireSecret("apiToken"),
+});
+```
+
+#### 2. Environment Variables
+
+```bash
+export BETTERUPTIME_API_TOKEN="your-api-token-here"
+```
+
+#### 3. Pulumi Configuration
+
+```bash
+# Set API token (encrypted)
+pulumi config set better-uptime:apiToken --secret <your-api-token>
+
+# Verify configuration
+pulumi config get better-uptime:apiToken
+```
+
+## Getting API Credentials
+
+### Create API Token
+
+1. Log in to Better Uptime dashboard
+2. Navigate to **Settings** → **API Tokens**
+3. Click **Create API Token**
+4. Name your token (e.g., "Pulumi Integration")
+5. Set appropriate permissions
+6. Copy the generated token
+
+### Required Permissions
+
+For full management capabilities:
+- **Monitors**: Read, Write
+- **Status Pages**: Read, Write
+- **Incidents**: Read, Write
+- **Integrations**: Read, Write
+- **Heartbeats**: Read, Write
+
+## Configuration Options
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `apiToken` | string | Yes | Better Uptime API token |
+
+## Best Practices
+
+### Security
+
+```typescript
+// ✅ DO: Use Pulumi secrets for API tokens
+const config = new pulumi.Config("better-uptime");
+const apiToken = config.requireSecret("apiToken");
+
+// ❌ DON'T: Hardcode API tokens
+const provider = new betteruptime.Provider("bad", {
+    apiToken: "bup_abc123...",  // Never do this!
+});
+```
+
+### Multi-Account Setup
+
+```typescript
+// Production account
+const prodProvider = new betteruptime.Provider("prod", {
+    apiToken: prodConfig.requireSecret("apiToken"),
+});
+
+// Staging account
+const stagingProvider = new betteruptime.Provider("staging", {
+    apiToken: stagingConfig.requireSecret("apiToken"),
+});
+```
+
+## Integration Examples
+
+### With Better Uptime Monitor
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config("better-uptime");
+
+// Create a website monitor
+const monitor = new betteruptime.Monitor("api-monitor", {
+    url: "https://api.example.com/health",
+    monitorType: "status",
+    checkFrequency: 60,
+    requestTimeout: 30,
+    confirmationPeriod: 60,
+});
+```
+
+### With Status Page
+
+```typescript
+// Create a status page
+const statusPage = new betteruptime.StatusPage("service-status", {
+    companyName: "Example Inc",
+    companyUrl: "https://example.com",
+    subdomain: "status-example",
+    timezone: "America/New_York",
+});
+```
+
+## Troubleshooting
+
+### Invalid API Token
+
+**Error**: "Authentication failed: Invalid API token"
+
+**Solution**:
+1. Verify token is correct
+2. Check token hasn't expired
+3. Ensure token has required permissions
+
+```bash
+# Test API token
+curl -H "Authorization: Bearer $BETTERUPTIME_API_TOKEN" \
+     https://betteruptime.com/api/v2/monitors
+```
+
+### Rate Limiting
+
+**Error**: "Rate limit exceeded"
+
+**Solution**:
+- Better Uptime has rate limits (default: 100 requests/minute)
+- Add delays between resource creations
+- Use resource `dependsOn` to sequence operations
+
+### Permission Errors
+
+**Error**: "Insufficient permissions"
+
+**Solution**:
+- Verify API token has correct permissions
+- Check account plan supports the feature
+- Ensure you're accessing resources you own
+
+## Additional Resources
+
+- [Better Uptime API Documentation](https://betteruptime.com/docs/api/v2)
+- [Monitor Resource](/docs/providers/better-uptime/monitor)
+- [Status Page Resource](/docs/providers/better-uptime/status-page)
+- [Heartbeat Resource](/docs/providers/better-uptime/heartbeat)

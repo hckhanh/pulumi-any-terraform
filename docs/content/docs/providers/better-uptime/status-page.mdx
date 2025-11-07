@@ -1,0 +1,394 @@
+---
+title: Status Page
+description: Create public status pages for service availability communication
+---
+
+The Status Page resource creates public-facing status pages to communicate service health to customers.
+
+## Example Usage
+
+### Basic Status Page
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+const statusPage = new betteruptime.StatusPage("service-status", {
+    companyName: "Example Inc",
+    companyUrl: "https://www.example.com",
+    subdomain: "status-example",
+    timezone: "America/New_York",
+});
+
+export const statusPageUrl = statusPage.url;
+```
+
+### Status Page with Custom Design
+
+```typescript
+const brandedStatusPage = new betteruptime.StatusPage("branded-status", {
+    companyName: "Acme Corporation",
+    companyUrl: "https://acme.com",
+    subdomain: "status-acme",
+    timezone: "UTC",
+    design: "v2",
+    layout: "horizontal",
+    theme: "dark",
+    customCss: `
+        .header { background: #0066cc; }
+        .status-badge { border-radius: 4px; }
+    `,
+});
+```
+
+### Status Page with Logo
+
+```typescript
+const statusWithLogo = new betteruptime.StatusPage("company-status", {
+    companyName: "Tech Startup",
+    companyUrl: "https://techstartup.com",
+    subdomain: "status",
+    timezone: "America/Los_Angeles",
+    logoUrl: "https://techstartup.com/logo.png",
+    faviconUrl: "https://techstartup.com/favicon.ico",
+});
+```
+
+### Multi-Language Status Page
+
+```typescript
+const multiLangStatus = new betteruptime.StatusPage("global-status", {
+    companyName: "Global Services",
+    companyUrl: "https://global.example.com",
+    subdomain: "status-global",
+    timezone: "UTC",
+    subscribeBySms: true,
+    smsNotificationsEnabled: true,
+    supportedLanguages: ["en", "es", "fr", "de"],
+    automaticTranslation: true,
+});
+```
+
+### Status Page with Announcement
+
+```typescript
+const statusWithAnnouncement = new betteruptime.StatusPage("api-status", {
+    companyName: "API Platform",
+    companyUrl: "https://api.example.com",
+    subdomain: "apistatus",
+    timezone: "America/New_York",
+    announcement: "Scheduled maintenance on Saturday 2AM-4AM EST",
+    announcementType: "maintenance",
+});
+```
+
+### Private Status Page
+
+```typescript
+const privateStatus = new betteruptime.StatusPage("internal-status", {
+    companyName: "Internal Services",
+    companyUrl: "https://internal.example.com",
+    subdomain: "status-internal",
+    timezone: "UTC",
+    passwordEnabled: true,
+    password: "secure-password-123",
+});
+```
+
+## Argument Reference
+
+### Required Arguments
+
+- **`companyName`** (String) - Company name displayed on status page
+- **`companyUrl`** (String) - Company website URL
+- **`subdomain`** (String) - Subdomain for status page (status-example.betteruptime.com)
+- **`timezone`** (String) - Timezone for incident times
+
+### Optional Arguments
+
+#### Branding
+- **`logoUrl`** (String) - URL to company logo
+- **`faviconUrl`** (String) - URL to favicon
+- **`customCss`** (String) - Custom CSS for styling
+- **`theme`** (String) - Theme: "light" or "dark". Default: "light"
+- **`layout`** (String) - Layout: "vertical" or "horizontal". Default: "vertical"
+- **`design`** (String) - Design version: "v1" or "v2". Default: "v2"
+
+#### Features
+- **`subscribeBySms`** (Boolean) - Enable SMS subscriptions. Default: false
+- **`smsNotificationsEnabled`** (Boolean) - Enable SMS notifications. Default: false
+- **`hideFromSearchEngines`** (Boolean) - Hide from search engines. Default: false
+- **`passwordEnabled`** (Boolean) - Enable password protection. Default: false
+- **`password`** (String) - Password for private status page
+- **`minIncidentLength`** (Number) - Minimum incident duration to display (seconds)
+- **`announcementEmbedEnabled`** (Boolean) - Enable announcement embed. Default: false
+- **`announcement`** (String) - Announcement text
+- **`announcementType`** (String) - Announcement type: "info", "maintenance", "warning"
+
+#### Localization
+- **`supportedLanguages`** (List) - Supported language codes (e.g., ["en", "es", "fr"])
+- **`automaticTranslation`** (Boolean) - Enable automatic translation. Default: false
+
+## Attribute Reference
+
+- **`id`** (String) - The status page ID
+- **`url`** (String) - Public status page URL
+- **`createdAt`** (String) - Creation timestamp
+- **`updatedAt`** (String) - Last update timestamp
+
+## Adding Monitors to Status Page
+
+### Status Page Resources
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+const statusPage = new betteruptime.StatusPage("services", {
+    companyName: "Example Inc",
+    subdomain: "status",
+    timezone: "UTC",
+});
+
+const apiMonitor = new betteruptime.Monitor("api", {
+    url: "https://api.example.com",
+    monitorType: "status",
+});
+
+const webMonitor = new betteruptime.Monitor("website", {
+    url: "https://www.example.com",
+    monitorType: "status",
+});
+
+// Add monitors to status page
+const apiResource = new betteruptime.StatusPageResource("api-resource", {
+    statusPageId: statusPage.id,
+    monitorId: apiMonitor.id,
+    publicName: "API",
+    position: 1,
+});
+
+const webResource = new betteruptime.StatusPageResource("web-resource", {
+    statusPageId: statusPage.id,
+    monitorId: webMonitor.id,
+    publicName: "Website",
+    position: 2,
+});
+```
+
+### Status Page Sections
+
+```typescript
+// Create sections for organization
+const section = new betteruptime.StatusPageSection("core-services", {
+    statusPageId: statusPage.id,
+    name: "Core Services",
+    position: 1,
+});
+
+const sectionResource = new betteruptime.StatusPageResource("api-in-section", {
+    statusPageId: statusPage.id,
+    statusPageSectionId: section.id,
+    monitorId: apiMonitor.id,
+    publicName: "API Service",
+    position: 1,
+});
+```
+
+## Best Practices
+
+### Subdomain Naming
+
+```typescript
+// ✅ Good subdomain names
+"status"           // Simple and clear
+"status-api"       // Service-specific
+"status-platform"  // Platform-specific
+
+// ❌ Avoid
+"my-cool-status"   // Too casual
+"status123"        // Meaningless numbers
+"asdfstatus"       // Unprofessional
+```
+
+### Theme Selection
+
+```typescript
+// Match your brand
+const lightTheme = new betteruptime.StatusPage("light", {
+    companyName: "Bright Corp",
+    subdomain: "status-bright",
+    timezone: "UTC",
+    theme: "light",
+    customCss: ".header { background: #ffffff; }",
+});
+
+const darkTheme = new betteruptime.StatusPage("dark", {
+    companyName: "Dark Corp",
+    subdomain: "status-dark",
+    timezone: "UTC",
+    theme: "dark",
+    customCss: ".header { background: #1a1a1a; }",
+});
+```
+
+### Privacy Settings
+
+```typescript
+// Public status page
+const publicStatus = new betteruptime.StatusPage("public", {
+    companyName: "Public Services",
+    subdomain: "status",
+    timezone: "UTC",
+    hideFromSearchEngines: false,
+});
+
+// Private internal status page
+const privateStatus = new betteruptime.StatusPage("private", {
+    companyName: "Internal Services",
+    subdomain: "status-internal",
+    timezone: "UTC",
+    passwordEnabled: true,
+    password: process.env.STATUS_PAGE_PASSWORD,
+    hideFromSearchEngines: true,
+});
+```
+
+### Announcement Management
+
+```typescript
+// Planned maintenance announcement
+const maintenanceStatus = new betteruptime.StatusPage("maintenance", {
+    companyName: "Services",
+    subdomain: "status",
+    timezone: "America/New_York",
+    announcement: "Scheduled maintenance: Saturday 2-4 AM EST",
+    announcementType: "maintenance",
+});
+
+// General information
+const infoStatus = new betteruptime.StatusPage("info", {
+    companyName: "Services",
+    subdomain: "status",
+    timezone: "UTC",
+    announcement: "New features coming soon!",
+    announcementType: "info",
+});
+```
+
+## Common Patterns
+
+### Complete Status Page Setup
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+// Create status page
+const statusPage = new betteruptime.StatusPage("company-status", {
+    companyName: "Acme Corp",
+    companyUrl: "https://acme.com",
+    subdomain: "status",
+    timezone: "America/New_York",
+    logoUrl: "https://acme.com/logo.png",
+    subscribeBySms: true,
+    smsNotificationsEnabled: true,
+});
+
+// Create sections
+const coreSection = new betteruptime.StatusPageSection("core", {
+    statusPageId: statusPage.id,
+    name: "Core Services",
+    position: 1,
+});
+
+const apiSection = new betteruptime.StatusPageSection("apis", {
+    statusPageId: statusPage.id,
+    name: "APIs",
+    position: 2,
+});
+
+// Add monitors
+const webMonitor = new betteruptime.Monitor("web", {
+    url: "https://www.acme.com",
+    monitorType: "status",
+});
+
+const apiMonitor = new betteruptime.Monitor("api", {
+    url: "https://api.acme.com",
+    monitorType: "status",
+});
+
+// Add to status page
+const webResource = new betteruptime.StatusPageResource("web-resource", {
+    statusPageId: statusPage.id,
+    statusPageSectionId: coreSection.id,
+    monitorId: webMonitor.id,
+    publicName: "Website",
+    position: 1,
+});
+
+const apiResource = new betteruptime.StatusPageResource("api-resource", {
+    statusPageId: statusPage.id,
+    statusPageSectionId: apiSection.id,
+    monitorId: apiMonitor.id,
+    publicName: "REST API",
+    position: 1,
+});
+
+export const statusUrl = statusPage.url;
+```
+
+## Import
+
+Status pages can be imported using their ID:
+
+```bash
+pulumi import better-uptime:index/statusPage:StatusPage example 123456
+```
+
+## Troubleshooting
+
+### Subdomain Already Taken
+
+**Error**: "Subdomain is already in use"
+
+**Solution**:
+- Choose a different subdomain
+- Add suffix like `-prod` or `-services`
+- Use company/product name
+
+### Custom CSS Not Applied
+
+**Causes**:
+- Invalid CSS syntax
+- Cache not cleared
+- Design version incompatibility
+
+**Solution**:
+```typescript
+const statusPage = new betteruptime.StatusPage("fixed", {
+    companyName: "Company",
+    subdomain: "status",
+    timezone: "UTC",
+    design: "v2", // Ensure using v2
+    customCss: `
+        /* Valid CSS only */
+        .header {
+            background-color: #0066cc;
+        }
+    `,
+});
+```
+
+### Password Protection Not Working
+
+**Cause**: Password not enabled or incorrect
+
+**Solution**:
+```typescript
+const protectedStatus = new betteruptime.StatusPage("protected", {
+    companyName: "Private Services",
+    subdomain: "status-private",
+    timezone: "UTC",
+    passwordEnabled: true, // Must be true
+    password: "your-secure-password",
+});
+```
