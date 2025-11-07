@@ -1,6 +1,6 @@
 {
   "title": "Bunnynet",
-  "description": "CDN and edge computing provider - manage pull zones, storage, and compute scripts",
+  "description": "CDN and edge computing provider",
   "root": true,
   "icon": "Rabbit",
   "pages": [

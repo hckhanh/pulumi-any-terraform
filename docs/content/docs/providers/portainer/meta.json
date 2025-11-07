@@ -1,6 +1,6 @@
 {
   "title": "Portainer",
-  "description": "Container management platform - manage Docker environments, stacks, and registries",
+  "description": "Container management platform",
   "root": true,
   "icon": "Container",
   "pages": [

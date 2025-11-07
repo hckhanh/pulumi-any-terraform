@@ -1,6 +1,6 @@
 {
   "title": "Time",
-  "description": "Time-based resource management - manage time offsets, rotating resources, and sleep delays",
+  "description": "Time-based resource management",
   "root": true,
   "icon": "Clock",
   "pages": [

@@ -1,6 +1,6 @@
 {
   "title": "Better Uptime",
-  "description": "Uptime monitoring and incident management - monitor websites, APIs, and servers",
+  "description": "Uptime monitoring and incident management",
   "root": true,
   "icon": "Activity",
   "pages": [

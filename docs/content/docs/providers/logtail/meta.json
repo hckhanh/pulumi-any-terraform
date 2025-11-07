@@ -1,6 +1,6 @@
 {
   "title": "Logtail",
-  "description": "Log management and analysis - manage log sources, metrics, and alerting",
+  "description": "Log management and analysis",
   "root": true,
   "icon": "FileText",
   "pages": [

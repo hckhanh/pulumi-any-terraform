@@ -1,6 +1,6 @@
 {
   "title": "Infisical",
-  "description": "Secrets management platform - manage secrets, projects, and access policies",
+  "description": "Secrets management platform",
   "root": true,
   "icon": "Key",
   "pages": [

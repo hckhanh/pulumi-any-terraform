@@ -1,6 +1,6 @@
 {
   "title": "Documentation",
-  "description": "General information about Pulumi Any Terraform - bridge any Terraform provider to Pulumi",
+  "description": "Bridge any Terraform provider to Pulumi",
   "root": true,
   "icon": "BookOpen",
   "pages": [

@@ -1,6 +1,6 @@
 {
   "title": "Namecheap",
-  "description": "Domain and DNS management provider - manage domain records and settings",
+  "description": "Domain and DNS management",
   "root": true,
   "icon": "Globe",
   "pages": [
