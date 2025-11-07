@@ -1,0 +1,12 @@
+{
+  "title": "Namecheap Provider",
+  "pages": [
+    "index",
+    "---Configuration---",
+    "configuration",
+    "---Resources---",
+    "resources/domain-records",
+    "---Examples---",
+    "examples"
+  ]
+}

@@ -1,0 +1,172 @@
+---
+title: Time Provider
+description: Manage time-based resources and operations with Pulumi
+---
+
+The Time provider enables you to manage time-based resources like delays, offsets, and rotations in your infrastructure code. This provider is dynamically bridged from the [Terraform Time Provider](https://registry.terraform.io/providers/hashicorp/time).
+
+## Installation
+
+```bash
+npm install pulumi-time
+```
+
+## Configuration
+
+No configuration required - the Time provider works out of the box.
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "pulumi-time";
+
+// Create a delay
+const delay = new time.Sleep("wait-for-deployment", {
+    createDuration: "30s", // Wait 30 seconds
+});
+
+// Use the delay in resource dependencies
+const resource = new SomeResource("dependent", {
+    // Resource properties
+}, { dependsOn: [delay] });
+```
+
+## Key Features
+
+### Delays
+
+Add delays between resource operations:
+
+```typescript
+// Wait 60 seconds before creating next resource
+const delay = new time.Sleep("deployment-delay", {
+    createDuration: "60s",
+});
+
+// Wait 30 seconds before destroying
+const deleteDelay = new time.Sleep("cleanup-delay", {
+    destroyDuration: "30s",
+});
+```
+
+### Time Offsets
+
+Calculate time offsets:
+
+```typescript
+const offset = new time.Offset("future-time", {
+    offsetDays: 30,
+    offsetHours: 12,
+    offsetMinutes: 30,
+});
+
+export const expirationTime = offset.rfc3339;
+```
+
+### Time Rotation
+
+Rotate resources on a schedule:
+
+```typescript
+const rotation = new time.Rotating("monthly-rotation", {
+    rotationDays: 30,
+});
+
+// Use rotation trigger
+const secret = new SomeSecret("rotated-secret", {
+    value: pulumi.interpolate`secret-${rotation.id}`,
+});
+```
+
+### Static Times
+
+Create static time values:
+
+```typescript
+const staticTime = new time.Static("timestamp", {});
+
+export const createdAt = staticTime.rfc3339;
+```
+
+## Common Use Cases
+
+### Staged Deployment
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "pulumi-time";
+
+// Deploy database
+const database = new Database("db", { /* ... */ });
+
+// Wait for database to stabilize
+const dbDelay = new time.Sleep("db-stabilize", {
+    createDuration: "60s",
+}, { dependsOn: [database] });
+
+// Deploy application after delay
+const app = new Application("app", {
+    databaseUrl: database.connectionString,
+}, { dependsOn: [dbDelay] });
+```
+
+### Certificate Rotation
+
+```typescript
+const rotation = new time.Rotating("cert-rotation", {
+    rotationDays: 90, // Rotate every 90 days
+});
+
+const certificate = new Certificate("cert", {
+    // Certificate properties
+    rotationTrigger: rotation.id,
+});
+```
+
+### Scheduled Resource Updates
+
+```typescript
+const monthlyRotation = new time.Rotating("monthly", {
+    rotationDays: 30,
+});
+
+const apiKey = new ApiKey("key", {
+    name: pulumi.interpolate`key-${monthlyRotation.id}`,
+});
+```
+
+## Duration Format
+
+Durations use Go's time format:
+- `s` = seconds
+- `m` = minutes
+- `h` = hours
+- Examples: `30s`, `5m`, `2h`, `1h30m`
+
+## Best Practices
+
+### 1. Use Delays for External Dependencies
+
+```typescript
+// Wait for external service
+const externalDelay = new time.Sleep("external-ready", {
+    createDuration: "120s",
+});
+```
+
+### 2. Implement Graceful Shutdowns
+
+```typescript
+const shutdownDelay = new time.Sleep("graceful-shutdown", {
+    destroyDuration: "30s",
+});
+```
+
+### 3. Rotate Credentials Regularly
+
+```typescript
+const credentialRotation = new time.Rotating("creds", {
+    rotationDays: 90,
+});
+```

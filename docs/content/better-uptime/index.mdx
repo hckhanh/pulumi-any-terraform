@@ -1,0 +1,281 @@
+---
+title: Better Uptime Provider
+description: Monitor websites and services with Better Uptime using Pulumi
+---
+
+The Better Uptime provider enables you to manage monitoring, alerting, and incident management resources using Pulumi. This provider is dynamically bridged from the [Terraform Better Uptime Provider](https://registry.terraform.io/providers/BetterStackHQ/better-uptime).
+
+## Installation
+
+```bash
+npm install pulumi-better-uptime
+```
+
+## Configuration
+
+### Getting API Token
+
+1. Log in to your Better Uptime account at [betteruptime.com](https://betteruptime.com)
+2. Navigate to Settings → API Tokens
+3. Create a new API token
+4. Copy the token value
+
+### Provider Setup
+
+```bash
+pulumi config set better-uptime:apiToken YOUR_API_TOKEN --secret
+```
+
+Or using environment variables:
+
+```bash
+export BETTER_UPTIME_API_TOKEN="your-api-token"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as betteruptime from "pulumi-better-uptime";
+
+// Create a monitor
+const monitor = new betteruptime.Monitor("website-monitor", {
+    url: "https://example.com",
+    monitorType: "status",
+    checkFrequency: 60,
+    requestTimeout: 30,
+    pronounceableName: "Example Website",
+});
+
+// Export monitor URL
+export const monitorUrl = pulumi.interpolate`https://betteruptime.com/monitors/${monitor.id}`;
+```
+
+## Key Features
+
+### Uptime Monitoring
+
+Monitor websites, APIs, and services:
+
+```typescript
+// HTTP status monitoring
+const httpMonitor = new betteruptime.Monitor("http-check", {
+    url: "https://api.example.com/health",
+    monitorType: "status",
+    checkFrequency: 60,
+    confirmationPeriod: 120,
+    requestTimeout: 30,
+    recoveryPeriod: 0,
+});
+
+// Ping monitoring
+const pingMonitor = new betteruptime.Monitor("server-ping", {
+    url: "192.168.1.1",
+    monitorType: "ping",
+    checkFrequency: 30,
+});
+
+// Keyword monitoring
+const keywordMonitor = new betteruptime.Monitor("keyword-check", {
+    url: "https://example.com",
+    monitorType: "keyword",
+    requiredKeyword: "operational",
+    checkFrequency: 300,
+});
+```
+
+### SSL Certificate Monitoring
+
+```typescript
+const sslMonitor = new betteruptime.Monitor("ssl-check", {
+    url: "https://example.com",
+    monitorType: "status",
+    ssl: {
+        checkExpiry: true,
+        expiryThreshold: 30, // Alert 30 days before expiry
+    },
+});
+```
+
+### Heartbeat Monitoring
+
+Monitor cron jobs and scheduled tasks:
+
+```typescript
+const heartbeat = new betteruptime.Heartbeat("backup-job", {
+    name: "Nightly Backup",
+    period: 86400, // 24 hours
+    grace: 3600, // 1 hour grace period
+});
+
+// Use heartbeat URL in your cron job
+export const heartbeatUrl = heartbeat.url;
+```
+
+### Incident Policies
+
+```typescript
+const policy = new betteruptime.Policy("critical-policy", {
+    name: "Critical Alerts",
+    repeatCount: 3,
+    repeatDelay: 300,
+});
+```
+
+### Integrations
+
+Connect with popular tools:
+
+```typescript
+// Slack integration
+const slackIntegration = new betteruptime.SlackIntegration("slack", {
+    webhookUrl: config.requireSecret("slackWebhook"),
+});
+
+// PagerDuty integration
+const pagerdutyIntegration = new betteruptime.PagerDutyIntegration("pagerduty", {
+    routingKey: config.requireSecret("pagerdutyKey"),
+});
+```
+
+## Common Use Cases
+
+### Complete Monitoring Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as betteruptime from "pulumi-better-uptime";
+
+// Monitor group
+const monitorGroup = new betteruptime.MonitorGroup("production", {
+    name: "Production Services",
+});
+
+// Website monitor
+const webMonitor = new betteruptime.Monitor("website", {
+    url: "https://example.com",
+    monitorType: "status",
+    checkFrequency: 60,
+    monitorGroupId: monitorGroup.id,
+});
+
+// API monitor
+const apiMonitor = new betteruptime.Monitor("api", {
+    url: "https://api.example.com/health",
+    monitorType: "status",
+    checkFrequency: 30,
+    monitorGroupId: monitorGroup.id,
+});
+
+// Incident policy
+const policy = new betteruptime.Policy("critical", {
+    name: "Critical Incidents",
+    repeatCount: 5,
+    repeatDelay: 300,
+});
+
+// Link monitors to policy
+const policyLink = new betteruptime.MonitorGroupPolicy("policy-link", {
+    monitorGroupId: monitorGroup.id,
+    policyId: policy.id,
+});
+
+export const dashboardUrl = pulumi.interpolate`https://betteruptime.com/team/monitors`;
+```
+
+## Best Practices
+
+### 1. Set Appropriate Check Frequencies
+
+```typescript
+// Critical services - check frequently
+const criticalMonitor = new betteruptime.Monitor("critical", {
+    url: "https://api.example.com",
+    checkFrequency: 30, // Every 30 seconds
+});
+
+// Non-critical services - check less frequently
+const nonCriticalMonitor = new betteruptime.Monitor("non-critical", {
+    url: "https://blog.example.com",
+    checkFrequency: 300, // Every 5 minutes
+});
+```
+
+### 2. Use Confirmation Periods
+
+Avoid false positives:
+
+```typescript
+const monitor = new betteruptime.Monitor("api", {
+    url: "https://api.example.com",
+    checkFrequency: 60,
+    confirmationPeriod: 120, // Confirm down for 2 minutes before alerting
+});
+```
+
+### 3. Organize with Monitor Groups
+
+```typescript
+const prodGroup = new betteruptime.MonitorGroup("production", {
+    name: "Production",
+});
+
+const stagingGroup = new betteruptime.MonitorGroup("staging", {
+    name: "Staging",
+});
+```
+
+## Monitor Types
+
+| Type | Description | Use Case |
+|------|-------------|----------|
+| `status` | HTTP status code check | Websites, APIs |
+| `ping` | ICMP ping | Servers, network devices |
+| `keyword` | Content verification | Page content monitoring |
+| `port` | Port availability | Custom services |
+| `heartbeat` | Expected check-ins | Cron jobs, batch processes |
+
+## Troubleshooting
+
+### Common Issues
+
+#### API Rate Limiting
+```
+Error: Rate limit exceeded
+```
+
+**Solution**: Reduce the frequency of API calls or contact Better Uptime support.
+
+#### Invalid URL Format
+```
+Error: Invalid URL format
+```
+
+**Solution**: Ensure URLs include the protocol (http:// or https://).
+
+## Resource Reference
+
+### Monitor
+
+**Key Arguments:**
+- `url` (Required): URL or IP to monitor
+- `monitorType` (Required): Type of monitor (status, ping, keyword, port, heartbeat)
+- `checkFrequency` (Optional): Check interval in seconds (default: 60)
+- `requestTimeout` (Optional): Request timeout in seconds (default: 30)
+- `confirmationPeriod` (Optional): Confirmation period in seconds (default: 0)
+
+**Attributes:**
+- `id`: Monitor ID
+- `status`: Current status
+- `createdAt`: Creation timestamp
+
+### Heartbeat
+
+**Key Arguments:**
+- `name` (Required): Heartbeat name
+- `period` (Required): Expected period in seconds
+- `grace` (Optional): Grace period in seconds
+
+**Attributes:**
+- `id`: Heartbeat ID
+- `url`: Check-in URL

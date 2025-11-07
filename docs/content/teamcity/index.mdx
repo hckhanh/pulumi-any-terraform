@@ -1,0 +1,96 @@
+---
+title: TeamCity Provider
+description: Manage TeamCity CI/CD resources with Pulumi
+---
+
+The TeamCity provider enables you to manage projects, build configurations, VCS roots, and team resources in TeamCity using Pulumi. This provider is dynamically bridged from the [Terraform TeamCity Provider](https://registry.terraform.io/providers/cvbarros/teamcity).
+
+## Installation
+
+```bash
+npm install pulumi-teamcity
+```
+
+## Configuration
+
+### Provider Setup
+
+```bash
+pulumi config set teamcity:url https://teamcity.example.com
+pulumi config set teamcity:username admin
+pulumi config set teamcity:password YOUR_PASSWORD --secret
+```
+
+Or using environment variables:
+
+```bash
+export TEAMCITY_URL="https://teamcity.example.com"
+export TEAMCITY_USERNAME="admin"
+export TEAMCITY_PASSWORD="your-password"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as teamcity from "pulumi-teamcity";
+
+// Create a project
+const project = new teamcity.Project("web-project", {
+    name: "Web Application",
+});
+
+// Create a VCS root
+const vcsRoot = new teamcity.VcsRoot("git-repo", {
+    projectId: project.id,
+    name: "Main Repository",
+    type: "git",
+    properties: {
+        url: "https://github.com/example/repo.git",
+        branch: "refs/heads/main",
+    },
+});
+
+// Create a build configuration
+const buildConfig = new teamcity.BuildConfig("build", {
+    projectId: project.id,
+    name: "Build",
+    vcsRootId: vcsRoot.id,
+});
+
+export const projectId = project.id;
+```
+
+## Key Features
+
+### Project Management
+
+```typescript
+const project = new teamcity.Project("project", {
+    name: "Web Application",
+    description: "Main web application project",
+});
+```
+
+### Build Configurations
+
+```typescript
+const build = new teamcity.BuildConfig("build", {
+    projectId: project.id,
+    name: "CI Build",
+    buildNumberFormat: "%build.counter%",
+});
+```
+
+### VCS Roots
+
+```typescript
+const vcs = new teamcity.VcsRoot("repo", {
+    projectId: project.id,
+    name: "Repository",
+    type: "git",
+    properties: {
+        url: "https://github.com/example/repo.git",
+    },
+});
+```
