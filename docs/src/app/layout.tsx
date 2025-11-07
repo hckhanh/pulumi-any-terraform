@@ -4,6 +4,7 @@ import './global.css'
 import { inter, jetbrainsMono } from '@/lib/fonts'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pulumi.khanh.id'),
   title: {
     default: 'Pulumi Any Terraform - Bridge Terraform Providers to Pulumi',
     template: '%s | Pulumi Any Terraform',

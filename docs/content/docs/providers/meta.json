@@ -1,0 +1,13 @@
+{
+  "title": "Providers",
+  "pages": [
+    "better-uptime",
+    "bunnynet",
+    "infisical",
+    "logtail",
+    "namecheap",
+    "portainer",
+    "teamcity",
+    "time"
+  ]
+}
