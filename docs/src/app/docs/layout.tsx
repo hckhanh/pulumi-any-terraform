@@ -4,21 +4,7 @@ import { source } from '@/lib/source'
 
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
-    <DocsLayout
-      tree={source.pageTree}
-      {...baseOptions()}
-      sidebar={{
-        tabs: {
-          transform(option, node) {
-            const meta = node.root?.file.data.meta
-            return {
-              ...option,
-              icon: meta?.icon,
-            }
-          },
-        },
-      }}
-    >
+    <DocsLayout tree={source.pageTree} {...baseOptions()}>
       {children}
     </DocsLayout>
   )
