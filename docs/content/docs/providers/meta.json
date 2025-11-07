@@ -1,5 +1,7 @@
 {
   "title": "Providers",
+  "root": true,
+  "icon": "Package",
   "pages": [
     "better-uptime",
     "bunnynet",
