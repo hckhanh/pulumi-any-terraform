@@ -1,0 +1,8 @@
+{
+  "title": "TeamCity",
+  "root": true,
+  "icon": "Workflow",
+  "pages": [
+    "index"
+  ]
+}

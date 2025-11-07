@@ -1,0 +1,8 @@
+{
+  "title": "Logtail",
+  "root": true,
+  "icon": "FileText",
+  "pages": [
+    "index"
+  ]
+}

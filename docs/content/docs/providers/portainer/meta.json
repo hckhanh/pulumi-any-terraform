@@ -1,0 +1,8 @@
+{
+  "title": "Portainer",
+  "root": true,
+  "icon": "Container",
+  "pages": [
+    "index"
+  ]
+}

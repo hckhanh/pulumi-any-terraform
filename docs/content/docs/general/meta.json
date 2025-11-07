@@ -6,10 +6,9 @@
     "index",
     "getting-started",
     "architecture",
-    "---Development---",
     "contributing",
     "troubleshooting",
-    "ci-cd",
-    "faq"
+    "faq",
+    "ci-cd"
   ]
 }

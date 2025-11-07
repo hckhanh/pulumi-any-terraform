@@ -10,7 +10,7 @@ const config = {
     return [
       {
         source: '/',
-        destination: '/docs',
+        destination: '/docs/general',
         permanent: true,
       },
     ]

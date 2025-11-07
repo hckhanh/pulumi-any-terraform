@@ -1,0 +1,8 @@
+{
+  "title": "Better Uptime",
+  "root": true,
+  "icon": "Activity",
+  "pages": [
+    "index"
+  ]
+}

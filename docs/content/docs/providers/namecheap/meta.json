@@ -1,0 +1,9 @@
+{
+  "title": "Namecheap",
+  "root": true,
+  "icon": "Globe",
+  "pages": [
+    "index",
+    "domain-records"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Bunnynet",
+  "root": true,
+  "icon": "Rabbit",
+  "pages": [
+    "index"
+  ]
+}
