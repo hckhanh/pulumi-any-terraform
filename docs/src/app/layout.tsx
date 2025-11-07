@@ -1,6 +1,7 @@
+import './global.css'
+
 import { RootProvider } from 'fumadocs-ui/provider/next'
 import type { Metadata } from 'next'
-import './global.css'
 import { inter, jetbrainsMono } from '@/lib/fonts'
 
 export const metadata: Metadata = {
