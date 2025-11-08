@@ -15,5 +15,11 @@
   ],
   "postUpdateOptions": ["pnpmDedupe"],
   "timezone": "Asia/Ho_Chi_Minh",
-  "packageRules": []
+  "packageRules": [
+    {
+      "groupName": "fumadocs monorepo",
+      "matchPackageNames": ["/^fumadocs-/"],
+      "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+    }
+  ]
 }
