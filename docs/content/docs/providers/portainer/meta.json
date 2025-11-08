@@ -1,0 +1,16 @@
+{
+  "title": "Portainer",
+  "description": "Container management platform",
+  "root": true,
+  "icon": "Container",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "stack",
+    "registry",
+    "user",
+    "---Guides",
+    "container-guide"
+  ]
+}

@@ -1,0 +1,230 @@
+---
+title: Rotating Resource
+description: Create timestamps that automatically rotate on a schedule
+---
+
+The `time.Rotating` resource creates a timestamp that automatically changes based on a rotation schedule, useful for triggering resource recreation.
+
+## Example Usage
+
+### Basic Rotation
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+// Rotate every 30 days
+const rotation = new time.Rotating("monthly-rotation", {
+    rotationDays: 30,
+});
+
+export const currentRotation = rotation.rfc3339;
+export const nextRotation = rotation.rfc3339.apply(t => {
+    const date = new Date(t);
+    date.setDate(date.getDate() + 30);
+    return date.toISOString();
+});
+```
+
+### With Secret Rotation
+
+```typescript
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+
+const passwordRotation = new time.Rotating("password-rotation", {
+    rotationDays: 90, // Rotate every 90 days
+});
+
+// Password automatically regenerates when rotation occurs
+const dbPassword = new random.RandomPassword("db-password", {
+    length: 32,
+    special: true,
+}, {
+    replaceOnChanges: [passwordRotation.id],
+});
+
+export const rotationId = passwordRotation.id;
+export const passwordLastRotated = passwordRotation.rfc3339;
+```
+
+### Monthly Rotation
+
+```typescript
+const monthlyRotation = new time.Rotating("monthly", {
+    rotationMonths: 1,
+});
+
+export const currentMonth = monthlyRotation.month;
+export const rotationTimestamp = monthlyRotation.rfc3339;
+```
+
+### Custom Rotation Period
+
+```typescript
+const customRotation = new time.Rotating("custom-rotation", {
+    rotationHours: 168, // Weekly (7 days × 24 hours)
+});
+
+export const weeklyRotation = customRotation.rfc3339;
+```
+
+## Argument Reference
+
+### Optional Arguments
+
+- **`rotationDays`** (number): Number of days between rotations.
+- **`rotationHours`** (number): Number of hours between rotations.
+- **`rotationMinutes`** (number): Number of minutes between rotations.
+- **`rotationMonths`** (number): Number of months between rotations.
+- **`rotationRfc3339`** (string): Base timestamp for rotation calculation in RFC3339 format.
+- **`rotationYears`** (number): Number of years between rotations.
+- **`triggers`** (map): Arbitrary map of values that forces new rotation.
+
+## Attribute Reference
+
+- **`day`** (number): Day of the current rotation (1-31).
+- **`hour`** (number): Hour of the current rotation (0-23).
+- **`id`** (string): Unique identifier that changes on each rotation.
+- **`minute`** (number): Minute of the current rotation (0-59).
+- **`month`** (number): Month of the current rotation (1-12).
+- **`rfc3339`** (string): Current rotation timestamp in RFC3339 format.
+- **`second`** (number): Second of the current rotation (0-59).
+- **`unix`** (number): Current rotation Unix timestamp.
+- **`year`** (number): Year of the current rotation.
+
+## Use Cases
+
+### API Key Rotation
+
+```typescript
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+
+const apiKeyRotation = new time.Rotating("api-key-rotation", {
+    rotationDays: 30, // Monthly rotation
+});
+
+const apiKey = new random.RandomString("api-key", {
+    length: 32,
+    special: false,
+}, {
+    replaceOnChanges: [apiKeyRotation.id],
+});
+
+export const apiKeyRotationSchedule = {
+    current: apiKeyRotation.rfc3339,
+    nextRotation: apiKeyRotation.rfc3339.apply(t => {
+        const next = new Date(t);
+        next.setDate(next.getDate() + 30);
+        return next.toISOString();
+    }),
+    rotationId: apiKeyRotation.id,
+};
+```
+
+### Certificate Rotation
+
+```typescript
+const certRotation = new time.Rotating("cert-rotation", {
+    rotationDays: 90, // Quarterly rotation
+});
+
+// Certificate resource that recreates on rotation
+// export const certificateRotation = certRotation.id;
+```
+
+### Database Password Rotation
+
+```typescript
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+import * as aws from "@pulumi/aws";
+
+const dbPasswordRotation = new time.Rotating("db-password-rotation", {
+    rotationDays: 90,
+});
+
+const dbPassword = new random.RandomPassword("db-password", {
+    length: 32,
+    special: true,
+}, {
+    replaceOnChanges: [dbPasswordRotation.id],
+});
+
+const dbInstance = new aws.rds.Instance("database", {
+    password: dbPassword.result,
+    // ... other configuration
+});
+
+export const passwordLastRotated = dbPasswordRotation.rfc3339;
+export const passwordRotationId = dbPasswordRotation.id;
+```
+
+### Token Rotation
+
+```typescript
+const tokenRotation = new time.Rotating("token-rotation", {
+    rotationHours: 24, // Daily rotation
+});
+
+const token = new random.RandomString("access-token", {
+    length: 64,
+    special: false,
+}, {
+    replaceOnChanges: [tokenRotation.id],
+});
+
+export const tokenInfo = {
+    lastRotated: tokenRotation.rfc3339,
+    rotatesIn: "24 hours",
+    rotationId: tokenRotation.id,
+};
+```
+
+## Rotation Behavior
+
+- The rotation occurs when `pulumi up` is run **after** the rotation period has elapsed
+- Multiple rotation periods (days, hours, minutes) are cumulative
+- The resource ID changes on each rotation, triggering dependent resources
+- First rotation happens when the resource is created
+
+## Example: Multi-Environment Rotation
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+const config = new pulumi.Config();
+const environment = config.require("environment");
+
+// Different rotation schedules per environment
+const rotationDays: Record<string, number> = {
+    dev: 7,      // Weekly for dev
+    staging: 30, // Monthly for staging
+    prod: 90,    // Quarterly for prod
+};
+
+const rotation = new time.Rotating(`${environment}-rotation`, {
+    rotationDays: rotationDays[environment],
+});
+
+export const rotationSchedule = {
+    environment,
+    rotationDays: rotationDays[environment],
+    lastRotation: rotation.rfc3339,
+    rotationId: rotation.id,
+};
+```
+
+## Import
+
+Time rotating resources cannot be imported as they represent time-based triggers rather than existing infrastructure.
+
+## Notes
+
+- Rotations only occur during `pulumi up` after the period has elapsed
+- The `id` attribute changes on each rotation
+- Use `replaceOnChanges` to trigger dependent resource recreation
+- Rotation periods are cumulative (e.g., rotationDays + rotationHours)
+- Consider time zone implications (all times are UTC)

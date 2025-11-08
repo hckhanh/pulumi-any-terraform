@@ -1,0 +1,15 @@
+{
+  "title": "Namecheap",
+  "description": "Domain and DNS management",
+  "root": true,
+  "icon": "Globe",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "domain-records",
+    "---Guides",
+    "dns-guide",
+    "migration-guide"
+  ]
+}

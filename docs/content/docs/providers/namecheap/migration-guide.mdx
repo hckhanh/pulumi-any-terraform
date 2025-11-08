@@ -1,0 +1,452 @@
+---
+title: Migration Guide
+description: Import and migrate existing Namecheap domains to Pulumi management
+---
+
+This guide explains how to import existing Namecheap domains and DNS records into Pulumi, allowing you to manage them as Infrastructure as Code.
+
+## Why Migrate to Pulumi?
+
+- **Version Control**: Track all DNS changes in Git
+- **Reproducibility**: Recreate environments easily
+- **Collaboration**: Team members can review and approve changes
+- **Automation**: Integrate with CI/CD pipelines
+- **Documentation**: Code serves as living documentation
+
+## Pre-Migration Checklist
+
+Before migrating, ensure you have:
+
+- [ ] Namecheap API access enabled
+- [ ] API credentials (username, API key)
+- [ ] IP address whitelisted
+- [ ] Backup of current DNS settings
+- [ ] List of domains to migrate
+- [ ] Understanding of current DNS configuration
+
+### Backup Current Configuration
+
+Export your current DNS records manually or via API:
+
+```bash
+# Using dig to document current records
+dig example.com ANY +noall +answer > example.com-backup.txt
+
+# Check MX records
+dig example.com MX +short >> example.com-backup.txt
+
+# Check TXT records
+dig example.com TXT +short >> example.com-backup.txt
+```
+
+## Import Strategy
+
+### Option 1: Import Existing Resources (Recommended)
+
+This approach imports existing DNS records into Pulumi state without changes.
+
+**Step 1: Create Pulumi code matching existing configuration**
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+const exampleDns = new namecheap.DomainRecords("example-com", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+        },
+        {
+            hostname: "www",
+            type: "CNAME",
+            address: "example.com.",
+        },
+        // Add all existing records here
+    ],
+});
+```
+
+**Step 2: Import the resource**
+
+```bash
+# Get the resource ID (domain name)
+pulumi import namecheap:index/domainRecords:DomainRecords example-com example.com
+```
+
+**Step 3: Verify the import**
+
+```bash
+pulumi preview
+# Should show no changes
+```
+
+### Option 2: Recreate Resources
+
+For simpler setups, you can define resources from scratch:
+
+**Step 1: Document existing configuration**
+
+Take screenshots or notes of your current Namecheap DNS settings.
+
+**Step 2: Create Pulumi program**
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+const dns = new namecheap.DomainRecords("new-dns", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Define all records
+    ],
+});
+```
+
+**Step 3: Apply with caution**
+
+```bash
+# Preview changes carefully
+pulumi preview
+
+# Apply only when satisfied
+pulumi up
+```
+
+## Migration Patterns
+
+### Single Domain Migration
+
+Simplest case - one domain with standard DNS:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+// Export current configuration to review
+const currentRecords = [
+    { hostname: "@", type: "A", address: "192.0.2.1" },
+    { hostname: "www", type: "CNAME", address: "example.com." },
+    { hostname: "mail", type: "A", address: "192.0.2.2" },
+    { hostname: "@", type: "MX", address: "mail.example.com.", mxPref: 10 },
+    { hostname: "@", type: "TXT", address: "v=spf1 mx ~all" },
+];
+
+const dns = new namecheap.DomainRecords("single-domain", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: currentRecords,
+});
+
+export const domainRecords = currentRecords.length;
+```
+
+### Multiple Domains Migration
+
+Organize multiple domains efficiently:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+// Define shared configuration
+const commonIp = "192.0.2.1";
+const mailServer = "mail.example.com.";
+
+interface DomainConfig {
+    domain: string;
+    records: Array<{
+        hostname: string;
+        type: string;
+        address: string;
+        mxPref?: number;
+    }>;
+}
+
+const domains: DomainConfig[] = [
+    {
+        domain: "example.com",
+        records: [
+            { hostname: "@", type: "A", address: commonIp },
+            { hostname: "www", type: "CNAME", address: "example.com." },
+        ],
+    },
+    {
+        domain: "example.org",
+        records: [
+            { hostname: "@", type: "A", address: commonIp },
+            { hostname: "www", type: "CNAME", address: "example.org." },
+        ],
+    },
+];
+
+// Create DNS records for each domain
+const dnsResources = domains.map(config => 
+    new namecheap.DomainRecords(`${config.domain.replace(".", "-")}`, {
+        domain: config.domain,
+        mode: "OVERWRITE",
+        records: config.records,
+    })
+);
+
+export const managedDomains = domains.map(d => d.domain);
+```
+
+### Environment-Based Migration
+
+Migrate dev, staging, and production separately:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi/namecheap";
+
+const config = new pulumi.Config();
+const environment = config.require("environment"); // dev, staging, prod
+
+interface EnvironmentConfig {
+    domain: string;
+    ip: string;
+    apiIp: string;
+}
+
+const envConfigs: Record<string, EnvironmentConfig> = {
+    dev: {
+        domain: "example.com",
+        ip: "192.0.2.10",
+        apiIp: "192.0.2.11",
+    },
+    staging: {
+        domain: "example.com",
+        ip: "192.0.2.20",
+        apiIp: "192.0.2.21",
+    },
+    prod: {
+        domain: "example.com",
+        ip: "192.0.2.1",
+        apiIp: "192.0.2.2",
+    },
+};
+
+const envConfig = envConfigs[environment];
+
+const dns = new namecheap.DomainRecords(`${environment}-dns`, {
+    domain: envConfig.domain,
+    mode: environment === "prod" ? "OVERWRITE" : "MERGE",
+    records: [
+        {
+            hostname: environment === "prod" ? "@" : environment,
+            type: "A",
+            address: envConfig.ip,
+        },
+        {
+            hostname: environment === "prod" ? "api" : `${environment}-api`,
+            type: "A",
+            address: envConfig.apiIp,
+        },
+    ],
+});
+
+export const environmentDns = {
+    environment,
+    domain: envConfig.domain,
+    records: dns.records,
+};
+```
+
+## Migration Steps
+
+### Phase 1: Preparation (Week 1)
+
+1. **Audit Current Configuration**
+   - Document all DNS records
+   - Identify critical services
+   - Note custom configurations
+
+2. **Set Up Development Environment**
+   ```bash
+   mkdir namecheap-migration
+   cd namecheap-migration
+   pulumi new typescript
+   npm install @pulumi/namecheap
+   ```
+
+3. **Test in Sandbox**
+   ```typescript
+   const provider = new namecheap.Provider("sandbox", {
+       useSandbox: true,
+       // ... credentials
+   });
+   ```
+
+### Phase 2: Non-Critical Domains (Week 2)
+
+1. **Start with development domains**
+2. **Import or recreate resources**
+3. **Verify DNS resolution**
+4. **Monitor for 24-48 hours**
+
+### Phase 3: Production Domains (Week 3-4)
+
+1. **Lower TTL values**
+   ```typescript
+   // Lower TTL 24-48 hours before migration
+   const dns = new namecheap.DomainRecords("pre-migration", {
+       domain: "example.com",
+       mode: "OVERWRITE",
+       records: records.map(r => ({ ...r, ttl: 300 })),
+   });
+   ```
+
+2. **Migrate during low-traffic period**
+3. **Monitor closely**
+4. **Keep backup plan ready**
+5. **Restore normal TTL after 48 hours**
+
+## Rollback Plan
+
+Always have a rollback strategy:
+
+```typescript
+// Store previous configuration in code comments or separate file
+/*
+Previous Configuration:
+@ A 192.0.2.100
+www CNAME example.com.
+*/
+
+const rollbackRecords = [
+    { hostname: "@", type: "A", address: "192.0.2.100" },
+    { hostname: "www", type: "CNAME", address: "example.com." },
+];
+
+// Keep rollback configuration ready
+if (config.getBoolean("rollback")) {
+    const rollbackDns = new namecheap.DomainRecords("rollback", {
+        domain: "example.com",
+        mode: "OVERWRITE",
+        records: rollbackRecords,
+    });
+}
+```
+
+## Post-Migration Tasks
+
+### Verification
+
+```bash
+# Verify DNS resolution
+dig example.com A +short
+dig www.example.com CNAME +short
+dig example.com MX +short
+
+# Check from multiple locations
+# Use online tools like:
+# - https://dnschecker.org/
+# - https://www.whatsmydns.net/
+```
+
+### Documentation
+
+```typescript
+// Add exports for documentation
+export const migrationDate = new Date().toISOString();
+export const migratedDomains = ["example.com", "example.org"];
+export const dnsRecordCount = dns.records.apply(r => r?.length || 0);
+```
+
+### Monitoring Setup
+
+Set up alerts for DNS changes:
+
+```typescript
+// Example: Log all DNS changes
+dns.records.apply(records => {
+    pulumi.log.info(`DNS Records Updated: ${JSON.stringify(records)}`);
+});
+```
+
+## Common Migration Issues
+
+### Issue: Import Fails
+
+**Problem**: Cannot import existing resource
+
+```bash
+error: resource 'example-com' already exists
+```
+
+**Solution**: Use different resource name or remove from state first
+
+```bash
+pulumi state delete namecheap:index/domainRecords:DomainRecords::example-com
+```
+
+### Issue: Records Not Matching
+
+**Problem**: Pulumi shows changes after import
+
+**Solution**: Ensure your code exactly matches existing configuration, including:
+- TTL values (use actual values, not defaults)
+- Record order (may need to reorder)
+- Trailing dots on CNAMEs
+
+### Issue: Downtime During Migration
+
+**Problem**: DNS resolution fails after migration
+
+**Solution**: 
+1. Check Namecheap API responded successfully
+2. Verify records in Namecheap dashboard
+3. Use low TTL values before migration
+4. Have rollback plan ready
+
+## Best Practices
+
+### Incremental Migration
+
+Don't migrate everything at once:
+
+```typescript
+// Phase 1: Import without changes
+pulumi import namecheap:index/domainRecords:DomainRecords example-com example.com
+
+// Phase 2: Make small changes
+// Phase 3: Refactor and optimize
+```
+
+### Use Stack Tags
+
+Track migration status:
+
+```bash
+pulumi stack tag set migration:status "in-progress"
+pulumi stack tag set migration:phase "phase-2"
+pulumi stack tag set migration:date "2024-01-15"
+```
+
+### Document Everything
+
+```typescript
+// Add comments explaining existing configuration
+const dns = new namecheap.DomainRecords("example-com", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    records: [
+        // Legacy web server - migrating to new IP in Q2
+        { hostname: "@", type: "A", address: "192.0.2.1" },
+        
+        // CDN CNAME - added 2023-06-15
+        { hostname: "www", type: "CNAME", address: "example.cdn.com." },
+    ],
+});
+```
+
+## Next Steps
+
+- [Configuration Guide](/docs/providers/namecheap/configuration) - Set up provider
+- [DNS Guide](/docs/providers/namecheap/dns-guide) - Best practices
+- [Domain Records](/docs/providers/namecheap/domain-records) - API reference

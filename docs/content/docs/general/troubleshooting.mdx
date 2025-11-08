@@ -1,0 +1,488 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for Pulumi Any Terraform providers
+---
+
+This guide covers common issues you might encounter when using Pulumi Any Terraform providers and how to resolve them.
+
+## Installation Issues
+
+### pnpm/npm Installation Fails
+
+**Problem**: Package installation fails with network errors
+
+```
+ERR_PNPM_FETCH_404
+```
+
+**Solutions**:
+1. Check your internet connection
+2. Clear npm cache: `npm cache clean --force`
+3. Clear pnpm cache: `pnpm store prune`
+4. Try using a different registry mirror
+5. Check if the package exists: `npm view pulumi-namecheap`
+
+### Dependency Conflicts
+
+**Problem**: Conflicting peer dependencies
+
+```
+ERESOLVE unable to resolve dependency tree
+```
+
+**Solutions**:
+1. Update Pulumi CLI: `pulumi upgrade`
+2. Use `--legacy-peer-deps` flag: `npm install --legacy-peer-deps`
+3. Check package.json for version conflicts
+4. Update @pulumi/pulumi to latest compatible version
+
+### TypeScript Version Issues
+
+**Problem**: TypeScript compilation errors
+
+```
+error TS2307: Cannot find module 'pulumi-namecheap'
+```
+
+**Solutions**:
+1. Ensure TypeScript version matches requirements (5.x)
+2. Install @types packages: `npm install @types/node`
+3. Check tsconfig.json configuration
+4. Rebuild: `npm run build`
+
+## Configuration Issues
+
+### Provider Authentication Fails
+
+**Problem**: API authentication errors
+
+```
+Error: Authentication failed: Invalid API key
+```
+
+**Solutions**:
+1. Verify credentials are correct
+2. Check environment variables are set: `echo $NAMECHEAP_API_KEY`
+3. Use Pulumi config: `pulumi config get namecheap:apiKey`
+4. Ensure secret flag is used: `pulumi config set key value --secret`
+5. Check IP whitelist settings (for providers that require it)
+
+### Missing Configuration
+
+**Problem**: Required configuration not set
+
+```
+Error: Missing required configuration 'apiKey'
+```
+
+**Solutions**:
+1. Set missing configuration: `pulumi config set provider:key value`
+2. Check for typos in config keys
+3. Verify stack is selected: `pulumi stack select`
+4. Review provider documentation for required config
+
+### Environment Variable Not Loaded
+
+**Problem**: Environment variables not recognized
+
+**Solutions**:
+1. Export variables in current shell: `export KEY=value`
+2. Add to `.env` file (if supported)
+3. Check variable name matches provider expectations
+4. Restart terminal/IDE after setting variables
+
+## Runtime Issues
+
+### Resource Creation Fails
+
+**Problem**: Resource fails to create
+
+```
+Error: creating Resource: API error
+```
+
+**Solutions**:
+1. Enable debug logging: `pulumi up --logtostderr -v=9`
+2. Check API rate limits
+3. Verify resource parameters are valid
+4. Check provider API status
+5. Review API documentation for constraints
+
+### State Conflicts
+
+**Problem**: State file conflicts
+
+```
+Error: resource already exists in state
+```
+
+**Solutions**:
+1. Refresh state: `pulumi refresh`
+2. Import existing resource: `pulumi import`
+3. Remove from state: `pulumi state delete`
+4. Check for duplicate resources in code
+
+### Timeout Errors
+
+**Problem**: Operations timeout
+
+```
+Error: timeout waiting for resource to become ready
+```
+
+**Solutions**:
+1. Increase timeout in resource options
+2. Check network connectivity
+3. Verify external service is available
+4. Review provider API performance
+
+### Update Failures
+
+**Problem**: Resource update fails
+
+```
+Error: updating Resource: conflict
+```
+
+**Solutions**:
+1. Run `pulumi refresh` first
+2. Check for manual changes outside Pulumi
+3. Review resource locking mechanisms
+4. Verify update is allowed by provider
+
+## Type Safety Issues
+
+### Type Errors in TypeScript
+
+**Problem**: Type checking errors
+
+```
+Type 'string' is not assignable to type 'Input<string>'
+```
+
+**Solutions**:
+1. Use proper Input types: `pulumi.Input<string>`
+2. Use `pulumi.output()` for transformations
+3. Check for type mismatches in args
+4. Regenerate types if stale
+
+### Missing Type Definitions
+
+**Problem**: No IntelliSense or autocomplete
+
+**Solutions**:
+1. Ensure package is installed correctly
+2. Restart TypeScript language server
+3. Check types are exported properly
+4. Verify tsconfig.json includes node_modules
+
+## Performance Issues
+
+### Slow Deployments
+
+**Problem**: `pulumi up` takes too long
+
+**Solutions**:
+1. Use `--parallel` flag for concurrent operations
+2. Reduce resource count per stack
+3. Check network latency to provider APIs
+4. Enable Pulumi state caching
+5. Review resource dependencies
+
+### Build Performance
+
+**Problem**: Build times are slow
+
+**Solutions**:
+1. Use Nx caching: `nx reset` then rebuild
+2. Enable incremental TypeScript compilation
+3. Reduce package size
+4. Update Node.js and TypeScript versions
+
+## Debugging
+
+### Enable Debug Logging
+
+Enable comprehensive logging:
+
+```bash
+# Pulumi debug logs
+export PULUMI_DEBUG_COMMANDS=true
+export PULUMI_DEBUG_PROMISE_LEAKS=true
+pulumi up --logtostderr -v=9
+
+# Terraform provider logs
+export TF_LOG=DEBUG
+export TF_LOG_PATH=./terraform.log
+```
+
+### Inspect State
+
+```bash
+# View current state
+pulumi stack export
+
+# View specific resource
+pulumi stack export | jq '.deployment.resources[] | select(.type=="namecheap:index:Record")'
+
+# List all resources
+pulumi stack --show-urns
+```
+
+### Test Provider Connection
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+
+pulumi.log.info("Testing provider connection...");
+
+// Try a simple operation
+const test = new Provider("test", {
+    // minimal config
+});
+
+pulumi.log.info("Provider initialized successfully");
+```
+
+## Provider-Specific Issues
+
+### Namecheap: IP Not Whitelisted
+
+**Problem**: API access denied
+
+**Solution**: Add your IP to Namecheap API whitelist in account settings
+
+### Better Uptime: Rate Limiting
+
+**Problem**: Too many requests
+
+**Solution**: Reduce check frequency or contact support for higher limits
+
+### Bunnynet: Region Not Available
+
+**Problem**: Storage region unavailable
+
+**Solution**: Check [Bunny.net documentation](https://docs.bunny.net/) for available regions
+
+### Infisical: Token Expired
+
+**Problem**: Service token expired
+
+**Solution**: Generate new service token in Infisical dashboard
+
+### Portainer: Connection Refused
+
+**Problem**: Cannot connect to Portainer
+
+**Solution**: Verify Portainer URL and check firewall rules
+
+## Common Error Messages
+
+### "Resource not found"
+
+**Cause**: Resource was deleted outside Pulumi
+
+**Solution**:
+```bash
+pulumi refresh  # Sync state with reality
+# or
+pulumi state delete urn  # Remove from state
+```
+
+### "Concurrent update detected"
+
+**Cause**: Multiple users updating same stack
+
+**Solution**:
+```bash
+pulumi cancel  # Cancel conflicting update
+pulumi refresh  # Sync state
+pulumi up  # Retry
+```
+
+### "Output cannot be used in input"
+
+**Cause**: Using Output type where Input type expected
+
+**Solution**:
+```typescript
+// Wrong
+const value = output.value;
+
+// Correct
+const value = pulumi.output(someOutput).apply(v => v);
+```
+
+### "Secret must be encrypted"
+
+**Cause**: Plain text used for secret value
+
+**Solution**:
+```bash
+pulumi config set key value --secret
+```
+
+## Best Practices to Avoid Issues
+
+### 1. Always Use Version Constraints
+
+```json
+{
+  "dependencies": {
+    "pulumi-namecheap": "^2.0.0"  // Use caret for compatible updates
+  }
+}
+```
+
+### 2. Pin Critical Dependencies
+
+```json
+{
+  "devDependencies": {
+    "@pulumi/pulumi": "3.205.0"  // Exact version for stability
+  }
+}
+```
+
+### 3. Use Separate Stacks
+
+```bash
+pulumi stack init dev
+pulumi stack init staging
+pulumi stack init production
+```
+
+### 4. Implement Resource Protection
+
+```typescript
+const criticalResource = new Resource("critical", {
+    // ...
+}, {
+    protect: true  // Prevent accidental deletion
+});
+```
+
+### 5. Use Stack References
+
+```typescript
+const networkStack = new pulumi.StackReference("org/network/prod");
+const vpcId = networkStack.getOutput("vpcId");
+```
+
+### 6. Regular State Refreshes
+
+```bash
+# Before major operations
+pulumi refresh
+pulumi preview
+pulumi up
+```
+
+## Getting Additional Help
+
+### Check Documentation
+
+1. Provider-specific documentation in this site
+2. [Pulumi Documentation](https://www.pulumi.com/docs/)
+3. Terraform provider documentation
+4. Provider API documentation
+
+### Community Support
+
+- **GitHub Issues**: [Report bugs](https://github.com/hckhanh/pulumi-any-terraform/issues)
+- **Pulumi Community Slack**: Get help from the community
+- **Stack Overflow**: Search for similar issues
+
+### Reporting Bugs
+
+When reporting bugs, include:
+
+1. **Provider and version**: `pulumi-namecheap@2.2.13`
+2. **Pulumi version**: `pulumi version`
+3. **Node.js version**: `node --version`
+4. **Error message**: Full error output
+5. **Minimal reproduction**: Simplified code that reproduces the issue
+6. **Environment**: OS, shell, terminal
+7. **Steps to reproduce**: Clear instructions
+
+### Example Bug Report
+
+```markdown
+**Provider**: pulumi-namecheap@2.2.13
+**Pulumi**: 3.205.0
+**Node.js**: v22.18.0
+**OS**: Ubuntu 22.04
+
+**Issue**: DNS record creation fails with timeout
+
+**Error**:
+```
+Error: creating Record: timeout waiting for completion
+```
+
+**Code**:
+```typescript
+const record = new namecheap.Record("test", {
+    domain: "example.com",
+    hostname: "test",
+    type: "A",
+    address: "192.168.1.1",
+});
+```
+
+**Steps**:
+1. Run `pulumi up`
+2. See timeout after 5 minutes
+3. Record is not created in Namecheap dashboard
+
+**Expected**: Record should be created successfully
+```
+
+## Preventive Measures
+
+### Regular Maintenance
+
+```bash
+# Weekly
+pulumi refresh  # Sync state
+pnpm update  # Update dependencies
+
+# Monthly
+pulumi stack export --file backup.json  # Backup state
+pnpm outdated  # Check for updates
+```
+
+### Monitoring
+
+Set up monitoring for:
+- Resource health
+- API quota usage
+- Stack update frequency
+- Error rates
+
+### Documentation
+
+Keep internal documentation for:
+- Custom resource patterns
+- Team conventions
+- Known issues and workarounds
+- Deployment procedures
+
+## Quick Reference
+
+| Issue | Quick Fix |
+|-------|-----------|
+| State out of sync | `pulumi refresh` |
+| Build cache issues | `pnpm nx reset` |
+| Dependency conflicts | `pnpm install --force` |
+| Config not found | `pulumi config set key value` |
+| Import existing resource | `pulumi import type name id` |
+| Cancel stuck update | `pulumi cancel` |
+| View state | `pulumi stack export` |
+| Debug logging | `pulumi up -v=9` |
+
+<Cards>
+  <Card title="Getting Started" href="/docs/getting-started" description="Learn the basics" />
+  <Card title="FAQ" href="/docs/faq" description="Frequently asked questions" />
+  <Card title="GitHub Issues" href="https://github.com/hckhanh/pulumi-any-terraform/issues" description="Report a bug" />
+</Cards>

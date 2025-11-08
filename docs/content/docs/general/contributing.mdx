@@ -1,0 +1,404 @@
+---
+title: Contributing
+description: Learn how to contribute to Pulumi Any Terraform
+---
+
+Thank you for your interest in contributing to Pulumi Any Terraform! This guide will help you get started with development, testing, and submitting contributions.
+
+## Development Setup
+
+### Prerequisites
+
+- **Node.js** 22.18.0 or later
+- **pnpm** 10.14.0 or later
+- **Git** for version control
+- A GitHub account
+
+### Setting Up Your Environment
+
+1. **Fork and clone the repository**:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/pulumi-any-terraform.git
+cd pulumi-any-terraform
+```
+
+2. **Install dependencies**:
+
+```bash
+pnpm install
+```
+
+3. **Verify your setup**:
+
+```bash
+pnpm run syncpack:check
+```
+
+## Project Structure
+
+```
+pulumi-any-terraform/
+├── packages/              # Provider packages
+│   ├── namecheap/        # Individual provider
+│   │   ├── bin/          # Compiled output (generated)
+│   │   ├── types/        # TypeScript types (generated)
+│   │   ├── package.json  # Package metadata
+│   │   └── README.md     # Provider docs
+│   └── ...
+├── tools/                 # Build system plugins
+│   ├── build.ts          # Build orchestration
+│   ├── linter.ts         # Code linting
+│   └── prettier.ts       # Code formatting
+├── docs/                  # Documentation site
+│   ├── content/          # MDX documentation
+│   └── src/              # Next.js app
+├── .github/              # CI/CD workflows
+└── nx.json               # Nx configuration
+```
+
+## Adding a New Provider
+
+### 1. Create Package Directory
+
+```bash
+mkdir -p packages/my-provider
+cd packages/my-provider
+```
+
+### 2. Create package.json
+
+```json
+{
+  "name": "pulumi-my-provider",
+  "description": "A Pulumi provider for [Service Name]",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hckhanh/pulumi-any-terraform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/my-provider"
+  },
+  "private": false,
+  "sideEffects": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.205.0",
+    "@types/node": "24.9.2",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "terraform",
+    "provider",
+    "my-provider"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "0.14.0",
+    "parameterization": {
+      "name": "my-provider",
+      "version": "1.0.0",
+      "value": "BASE64_ENCODED_VALUE_HERE"
+    }
+  }
+}
+```
+
+### 3. Generate Parameterization Value
+
+The `parameterization.value` field must be a base64-encoded JSON:
+
+```bash
+# Create the JSON
+echo '{"remote":{"url":"registry.opentofu.org/org/provider","version":"1.0.0"}}' | base64
+
+# Add to package.json
+```
+
+### 4. Create README.md
+
+Create comprehensive documentation for your provider (see existing providers for examples).
+
+### 5. Add TypeScript Configuration
+
+Create `tsconfig.json`:
+
+```json
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./bin",
+    "rootDir": "."
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "bin"]
+}
+```
+
+### 6. Test Your Provider
+
+```bash
+# Build the provider
+pnpm nx run my-provider:build
+
+# Check for issues
+pnpm nx run my-provider:check
+```
+
+## Development Workflow
+
+### Making Changes
+
+1. **Create a feature branch**:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+2. **Make your changes** following the coding standards
+
+3. **Format your code**:
+
+```bash
+pnpm run prettier:write
+```
+
+4. **Check for issues**:
+
+```bash
+pnpm nx affected -t check
+```
+
+5. **Build affected packages**:
+
+```bash
+pnpm nx affected -t build
+```
+
+### Running Quality Checks
+
+```bash
+# Check all packages
+pnpm nx run-many -t check
+
+# Fix formatting issues
+pnpm nx run-many -t fix
+
+# Check dependency versions
+pnpm run syncpack:check
+
+# Fix dependency versions
+pnpm run syncpack:fix
+```
+
+## Coding Standards
+
+### TypeScript Best Practices
+
+- Use `import type` for type-only imports
+- Avoid using `any` - prefer proper typing
+- Use `const` for variables that are never reassigned
+- Prefer arrow functions for consistency
+- Use template literals over string concatenation
+
+### File Organization
+
+- Keep generated files in `bin/` directory
+- Store type definitions in `types/` directory
+- Place documentation in provider README.md
+
+### Naming Conventions
+
+- Use kebab-case for file names: `my-component.ts`
+- Use PascalCase for classes: `MyResource`
+- Use camelCase for variables and functions: `myVariable`
+
+## Testing
+
+### Manual Testing
+
+Test your provider with a real Pulumi program:
+
+```typescript
+// test-program.ts
+import * as pulumi from "@pulumi/pulumi";
+import * as myprovider from "pulumi-my-provider";
+
+const resource = new myprovider.SomeResource("test", {
+    // Resource properties
+});
+
+export const resourceId = resource.id;
+```
+
+Run the test:
+
+```bash
+pulumi preview
+pulumi up
+```
+
+### Integration Testing
+
+Test with actual provider APIs:
+
+1. Set up required credentials
+2. Deploy test resources
+3. Verify resource creation
+4. Clean up resources
+
+## Documentation
+
+### Provider Documentation
+
+Each provider needs comprehensive documentation:
+
+1. **Installation instructions**
+2. **Configuration guide**
+3. **Quick start examples**
+4. **Common use cases**
+5. **Resource reference**
+6. **Troubleshooting guide**
+
+### Documentation Site
+
+Add provider documentation to the docs site:
+
+```bash
+# Create provider docs
+docs/content/docs/providers/my-provider.mdx
+```
+
+Update navigation in `docs/content/docs/meta.json`.
+
+## Submitting Changes
+
+### Creating a Pull Request
+
+1. **Push your branch**:
+
+```bash
+git push origin feature/your-feature-name
+```
+
+2. **Open a Pull Request** on GitHub
+
+3. **Fill out the PR template** with:
+   - Description of changes
+   - Related issue number
+   - Testing performed
+   - Breaking changes (if any)
+
+### PR Review Process
+
+1. Automated checks run (linting, building, testing)
+2. Maintainers review your code
+3. Address any feedback
+4. Once approved, your PR will be merged
+
+### After Merge
+
+- Your changes are automatically deployed
+- Packages are published to npm
+- Documentation is updated
+
+## Release Process
+
+### Version Management
+
+We use [Changesets](https://github.com/changesets/changesets) for version management:
+
+1. **Create a changeset**:
+
+```bash
+pnpm changeset
+```
+
+2. **Select packages** to version
+
+3. **Choose version bump** (patch, minor, major)
+
+4. **Describe changes**
+
+5. **Commit the changeset**:
+
+```bash
+git add .changeset/
+git commit -m "chore: add changeset"
+```
+
+### Publishing
+
+Publishing happens automatically when:
+1. PR is merged to main
+2. Changesets exist
+3. GitHub Actions runs the publish workflow
+4. Packages are published to npm
+
+## Getting Help
+
+### Resources
+
+- **GitHub Issues**: Report bugs and request features
+- **Pull Requests**: Browse existing contributions
+- **Documentation**: Read the full documentation site
+- **Pulumi Slack**: Join the community discussions
+
+### Common Questions
+
+**Q: How do I find the right Terraform provider version?**
+A: Check the [Terraform Registry](https://registry.terraform.io/) for the latest version.
+
+**Q: My build is failing. What should I do?**
+A: Run `pnpm nx reset` to clear caches, then try again.
+
+**Q: How do I test provider changes locally?**
+A: Use `pnpm link` to link your local package to a test Pulumi program.
+
+**Q: Can I add support for a private Terraform provider?**
+A: Yes, but you'll need to host it in a private registry and update the parameterization URL.
+
+## Code of Conduct
+
+We follow a Code of Conduct to ensure a welcoming environment:
+
+- Be respectful and inclusive
+- Provide constructive feedback
+- Focus on what is best for the community
+- Show empathy towards other community members
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the MIT License.
+
+## Thank You!
+
+Your contributions make this project better for everyone. We appreciate your time and effort!
+
+<Cards>
+  <Card title="Getting Started" href="/docs/getting-started" description="Learn the basics" />
+  <Card title="Architecture" href="/docs/architecture" description="Understand the system" />
+  <Card title="GitHub Repository" href="https://github.com/hckhanh/pulumi-any-terraform" description="View the source code" />
+</Cards>

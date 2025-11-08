@@ -6,6 +6,15 @@ const withMDX = createMDX()
 const config = {
   reactStrictMode: true,
   reactCompiler: true,
+  redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/docs/general',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withMDX(config)

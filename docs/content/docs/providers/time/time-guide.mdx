@@ -1,0 +1,430 @@
+---
+title: Time Management Guide
+description: Patterns and best practices for time-based resource management
+---
+
+This guide covers common patterns and best practices for using the Time provider in your infrastructure.
+
+## Understanding Time Resources
+
+The Time provider offers four resource types:
+
+| Resource | Purpose | Updates |
+|----------|---------|---------|
+| **Static** | Capture timestamp | Never (unless recreated) |
+| **Offset** | Calculate future/past time | On recreation or trigger |
+| **Rotating** | Automatic rotation | On schedule |
+| **Sleep** | Add delays | On every operation |
+
+## Common Patterns
+
+### Secret Rotation Pattern
+
+Automatically rotate secrets on a schedule:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+import * as aws from "@pulumi/aws";
+
+// Define rotation schedule
+const rotation = new time.Rotating("secret-rotation", {
+    rotationDays: 90, // Quarterly rotation
+});
+
+// Generate new password on rotation
+const password = new random.RandomPassword("db-password", {
+    length: 32,
+    special: true,
+}, {
+    replaceOnChanges: [rotation.id],
+});
+
+// Store in Secrets Manager
+const secret = new aws.secretsmanager.Secret("db-credentials", {
+    name: "database-password",
+});
+
+const secretVersion = new aws.secretsmanager.SecretVersion("db-credentials-version", {
+    secretId: secret.id,
+    secretString: password.result,
+});
+
+export const rotationInfo = {
+    lastRotated: rotation.rfc3339,
+    rotationId: rotation.id,
+    nextRotation: rotation.rfc3339.apply(t => {
+        const next = new Date(t);
+        next.setDate(next.getDate() + 90);
+        return next.toISOString();
+    }),
+};
+```
+
+### Certificate Lifecycle Pattern
+
+Manage certificate creation and expiration:
+
+```typescript
+import * as time from "@pulumi/time";
+import * as tls from "@pulumi/tls";
+
+// Capture certificate creation time
+const certCreated = new time.Static("cert-created", {});
+
+// Calculate expiration (1 year from creation)
+const certExpires = new time.Offset("cert-expires", {
+    baseRfc3339: certCreated.rfc3339,
+    offsetDays: 365,
+});
+
+// Set up rotation 30 days before expiration
+const certRotation = new time.Rotating("cert-rotation", {
+    rotationDays: 335, // 365 - 30
+});
+
+// Generate certificate
+const cert = new tls.PrivateKey("cert-key", {
+    algorithm: "RSA",
+    rsaBits: 4096,
+}, {
+    replaceOnChanges: [certRotation.id],
+});
+
+export const certificateLifecycle = {
+    createdAt: certCreated.rfc3339,
+    expiresAt: certExpires.rfc3339,
+    rotatesAt: certRotation.rfc3339,
+};
+```
+
+### Staged Deployment Pattern
+
+Deploy resources in stages with delays:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+import * as aws from "@pulumi/aws";
+
+// Stage 1: Database
+const database = new aws.rds.Instance("db", {
+    engine: "postgres",
+    instanceClass: "db.t3.micro",
+    allocatedStorage: 20,
+});
+
+const dbReadyWait = new time.Sleep("db-ready", {
+    createDuration: "120s",
+}, { dependsOn: [database] });
+
+// Stage 2: Cache
+const cache = new aws.elasticache.Cluster("cache", {
+    engine: "redis",
+    nodeType: "cache.t3.micro",
+    numCacheNodes: 1,
+}, { dependsOn: [dbReadyWait] });
+
+const cacheReadyWait = new time.Sleep("cache-ready", {
+    createDuration: "60s",
+}, { dependsOn: [cache] });
+
+// Stage 3: Application
+const app = new aws.ecs.Service("app", {
+    // ... configuration
+}, { dependsOn: [cacheReadyWait] });
+
+export const deploymentSequence = {
+    stage1: "Database (wait 120s)",
+    stage2: "Cache (wait 60s)",
+    stage3: "Application",
+    totalWaitTime: "180 seconds",
+};
+```
+
+### Expiration Management Pattern
+
+Track and manage resource expiration:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as time from "@pulumi/time";
+
+const licenseStart = new time.Static("license-start", {});
+
+const licenseExpiry = new time.Offset("license-expiry", {
+    baseRfc3339: licenseStart.rfc3339,
+    offsetYears: 1,
+});
+
+// Calculate days remaining
+const daysRemaining = pulumi.all([licenseStart.unix, licenseExpiry.unix])
+    .apply(([start, expiry]) => {
+        const now = Math.floor(Date.now() / 1000);
+        return Math.floor((expiry - now) / 86400);
+    });
+
+export const licenseInfo = {
+    issuedAt: licenseStart.rfc3339,
+    expiresAt: licenseExpiry.rfc3339,
+    daysRemaining: daysRemaining,
+    status: daysRemaining.apply(days => 
+        days > 30 ? "active" : days > 0 ? "expiring-soon" : "expired"
+    ),
+};
+```
+
+## Best Practices
+
+### Choose the Right Resource
+
+**Use Static when:**
+- Tracking resource creation time
+- Need unchanging timestamp
+- Building audit trails
+
+**Use Offset when:**
+- Calculating future dates
+- Setting expiration times
+- Scheduling one-time events
+
+**Use Rotating when:**
+- Implementing automatic rotation
+- Periodic updates needed
+- Triggering dependent resources
+
+**Use Sleep when:**
+- Waiting for external systems
+- Rate limiting API calls
+- Allowing resources to stabilize
+
+### Rotation Schedule Guidelines
+
+| Asset Type | Recommended Rotation | Reason |
+|------------|---------------------|---------|
+| Passwords | 90 days | Security compliance |
+| API Keys | 30-90 days | Limit exposure window |
+| Certificates | 90 days (renew at 60) | Prevent expiration |
+| Access Tokens | 24 hours | Minimize breach impact |
+| Encryption Keys | 1 year | Balance security/overhead |
+
+```typescript
+// Example: Environment-based rotation
+const config = new pulumi.Config();
+const env = config.require("environment");
+
+const rotationDays: Record<string, number> = {
+    dev: 7,      // Weekly
+    staging: 30, // Monthly
+    prod: 90,    // Quarterly
+};
+
+const rotation = new time.Rotating(`${env}-rotation`, {
+    rotationDays: rotationDays[env],
+});
+```
+
+### Delay Guidelines
+
+**Use minimum necessary delays:**
+
+```typescript
+// ✅ Good: Specific, tested delays
+const dbWait = new time.Sleep("db-ready", {
+    createDuration: "60s", // Database typically ready in 45s
+});
+
+// ❌ Bad: Arbitrary, excessive delays
+const longWait = new time.Sleep("wait", {
+    createDuration: "5m", // Too long without justification
+});
+```
+
+**Document why delays exist:**
+
+```typescript
+const apiWait = new time.Sleep("api-propagation", {
+    createDuration: "30s", // API Gateway needs 20-30s to propagate changes
+});
+
+export const deploymentNotes = {
+    apiPropagationDelay: "30 seconds",
+    reason: "API Gateway configuration propagation time",
+};
+```
+
+### Time Zone Considerations
+
+All time resources use UTC:
+
+```typescript
+// ✅ Good: Document timezone needs
+const maintenanceTime = new time.Offset("maintenance", {
+    offsetHours: 2, // 2 AM UTC = 9 PM EST
+});
+
+export const maintenanceSchedule = {
+    time: maintenanceTime.rfc3339,
+    timezone: "UTC",
+    note: "2 AM UTC = 9 PM EST",
+};
+
+// Use offsets for local time
+const localTime = new time.Offset("local-9am", {
+    offsetHours: 9 - (new Date().getTimezoneOffset() / 60),
+});
+```
+
+## Advanced Patterns
+
+### Multi-Stage Rotation
+
+Different rotation schedules for different stages:
+
+```typescript
+import * as time from "@pulumi/time";
+
+const stages = {
+    development: new time.Rotating("dev-rotation", {
+        rotationDays: 7,
+    }),
+    staging: new time.Rotating("staging-rotation", {
+        rotationDays: 30,
+    }),
+    production: new time.Rotating("prod-rotation", {
+        rotationDays: 90,
+    }),
+};
+
+export const rotationSchedules = {
+    development: "Weekly (7 days)",
+    staging: "Monthly (30 days)",
+    production: "Quarterly (90 days)",
+};
+```
+
+### Coordinated Rotation
+
+Rotate multiple resources together:
+
+```typescript
+import * as time from "@pulumi/time";
+import * as random from "@pulumi/random";
+
+const coordinatedRotation = new time.Rotating("coordinated", {
+    rotationDays: 90,
+});
+
+// All these rotate together
+const dbPassword = new random.RandomPassword("db-pass", {
+    length: 32,
+}, { replaceOnChanges: [coordinatedRotation.id] });
+
+const apiKey = new random.RandomString("api-key", {
+    length: 64,
+}, { replaceOnChanges: [coordinatedRotation.id] });
+
+const encryptionKey = new random.RandomBytes("encryption", {
+    length: 32,
+}, { replaceOnChanges: [coordinatedRotation.id] });
+
+export const rotationGroup = {
+    rotationId: coordinatedRotation.id,
+    lastRotated: coordinatedRotation.rfc3339,
+    resources: ["database-password", "api-key", "encryption-key"],
+};
+```
+
+### Graceful Updates
+
+Handle rotation without downtime:
+
+```typescript
+import * as time from "@pulumi/time";
+import * as aws from "@pulumi/aws";
+
+const newRotation = new time.Rotating("new-credentials", {
+    rotationDays: 90,
+});
+
+// Create new credentials before old ones expire
+const newPassword = new random.RandomPassword("new-password", {
+    length: 32,
+}, { replaceOnChanges: [newRotation.id] });
+
+// Update gradually (blue-green pattern)
+// 1. Create new credentials
+// 2. Update applications to use new credentials
+// 3. Remove old credentials after grace period
+
+const gracePeriod = new time.Sleep("grace-period", {
+    createDuration: "300s", // 5 minute overlap
+}, { dependsOn: [newPassword] });
+```
+
+## Troubleshooting
+
+### Rotation Not Triggering
+
+**Problem**: Resources not recreating on rotation
+
+```typescript
+// ❌ Missing replaceOnChanges
+const password = new random.RandomPassword("pass", {
+    length: 32,
+});
+```
+
+**Solution**: Use replaceOnChanges
+
+```typescript
+// ✅ Correct
+const password = new random.RandomPassword("pass", {
+    length: 32,
+}, {
+    replaceOnChanges: [rotation.id],
+});
+```
+
+### Unexpected Delays
+
+**Problem**: Deployments taking too long
+
+**Solution**: Review and optimize sleep durations
+
+```bash
+# Check current delays
+pulumi preview --show-replacement-steps
+```
+
+### Time Calculation Errors
+
+**Problem**: Incorrect time calculations
+
+```typescript
+// ❌ Wrong: Mixing base time and offsets
+const wrong = new time.Offset("wrong", {
+    baseRfc3339: "2024-01-01T00:00:00Z",
+    offsetDays: 30,
+    // Don't mix with rotating or static
+});
+```
+
+**Solution**: Use consistent time sources
+
+```typescript
+// ✅ Correct: Use one base time
+const base = new time.Static("base", {});
+const future = new time.Offset("future", {
+    baseRfc3339: base.rfc3339,
+    offsetDays: 30,
+});
+```
+
+## Next Steps
+
+- [Offset Resource](/docs/providers/time/offset) - Time calculations
+- [Rotating Resource](/docs/providers/time/rotating) - Automatic rotation
+- [Sleep Resource](/docs/providers/time/sleep) - Deployment delays
+- [Static Resource](/docs/providers/time/static) - Timestamp capture

@@ -1,0 +1,15 @@
+{
+  "title": "Documentation",
+  "description": "Bridge any Terraform provider to Pulumi",
+  "root": true,
+  "icon": "BookOpen",
+  "pages": [
+    "index",
+    "getting-started",
+    "architecture",
+    "contributing",
+    "troubleshooting",
+    "faq",
+    "ci-cd"
+  ]
+}

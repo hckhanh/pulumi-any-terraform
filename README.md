@@ -1,199 +1,301 @@
 # Pulumi Any Terraform
 
+> **Use any Terraform provider with Pulumi**  
+> Full type safety • Multi-language support • Seamless integration
+
 A collection of dynamically bridged Pulumi providers that enable you to use any Terraform provider within the Pulumi ecosystem. This repository provides seamless integration between Terraform providers and Pulumi, allowing you to leverage the extensive Terraform provider ecosystem while enjoying Pulumi's modern infrastructure-as-code experience.
 
 [![autofix enabled](https://shields.io/badge/autofix.ci-yes-success?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB2aWV3Qm94PSIwIDAgMTI4IDEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCB0cmFuc2Zvcm09InNjYWxlKDAuMDYxLC0wLjA2MSkgdHJhbnNsYXRlKC0yNTAsLTE3NTApIiBkPSJNMTMyNSAtMzQwcS0xMTUgMCAtMTY0LjUgMzIuNXQtNDkuNSAxMTQuNXEwIDMyIDUgNzAuNXQxMC41IDcyLjV0NS41IDU0djIyMHEtMzQgLTkgLTY5LjUgLTE0dC03MS41IC01cS0xMzYgMCAtMjUxLjUgNjJ0LTE5MSAxNjl0LTkyLjUgMjQxcS05MCAxMjAgLTkwIDI2NnEwIDEwOCA0OC41IDIwMC41dDEzMiAxNTUuNXQxODguNSA4MXExNSA5OSAxMDAuNSAxODAuNXQyMTcgMTMwLjV0MjgyLjUgNDlxMTM2IDAgMjU2LjUgLTQ2IHQyMDkgLTEyNy41dDEyOC41IC0xODkuNXExNDkgLTgyIDIyNyAtMjEzLjV0NzggLTI5OS41cTAgLTEzNiAtNTggLTI0NnQtMTY1LjUgLTE4NC41dC0yNTYuNSAtMTAzLjVsLTI0MyAtMzAwdi01MnEwIC0yNyAzLjUgLTU2LjV0Ni41IC01Ny41dDMgLTUycTAgLTg1IC00MS41IC0xMTguNXQtMTU3LjUgLTMzLjV6TTEzMjUgLTI2MHE3NyAwIDk4IDE0LjV0MjEgNTcuNXEwIDI5IC0zIDY4dC02LjUgNzN0LTMuNSA0OHY2NGwyMDcgMjQ5IHEtMzEgMCAtNjAgNS41dC01NCAxMi41bC0xMDQgLTEyM3EtMSAzNCAtMiA2My41dC0xIDU0LjVxMCA2OSA5IDEyM2wzMSAyMDBsLTExNSAtMjhsLTQ2IC0yNzFsLTIwNSAyMjZxLTE5IC0xNSAtNDMgLTI4LjV0LTU1IC0yNi41bDIxOSAtMjQydi0yNzZxMCAtMjAgLTUuNSAtNjB0LTEwLjUgLTc5dC01IC01OHEwIC00MCAzMCAtNTMuNXQxMDQgLTEzLjV6TTEyNjIgNjE2cS0xMTkgMCAtMjI5LjUgMzQuNXQtMTkzLjUgOTYuNWw0OCA2NCBxNzMgLTU1IDE3MC41IC04NXQyMDQuNSAtMzBxMTM3IDAgMjQ5IDQ1LjV0MTc5IDEyMXQ2NyAxNjUuNWg4MHEwIC0xMTQgLTc3LjUgLTIwNy41dC0yMDggLTE0OXQtMjg5LjUgLTU1LjV6TTgwMyA1OTVxODAgMCAxNDkgMjkuNXQxMDggNzIuNWwyMjEgLTY3bDMwOSA4NnE0NyAtMzIgMTA0LjUgLTUwdDExNy41IC0xOHE5MSAwIDE2NSAzOHQxMTguNSAxMDMuNXQ0NC41IDE0Ni41cTAgNzYgLTM0LjUgMTQ5dC05NS41IDEzNHQtMTQzIDk5IHEtMzcgMTA3IC0xMTUuNSAxODMuNXQtMTg2IDExNy41dC0yMzAuNSA0MXEtMTAzIDAgLTE5Ny41IC0yNnQtMTY5IC03Mi41dC0xMTcuNSAtMTA4dC00MyAtMTMxLjVxMCAtMzQgMTQuNSAtNjIuNXQ0MC41IC01MC41bC01NSAtNTlxLTM0IDI5IC01NCA2NS41dC0yNSA4MS41cS04MSAtMTggLTE0NSAtNzB0LTEwMSAtMTI1LjV0LTM3IC0xNTguNXEwIC0xMDIgNDguNSAtMTgwLjV0MTI5LjUgLTEyM3QxNzkgLTQ0LjV6Ii8+PC9zdmc+)](https://autofix.ci)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/badge/npm-packages-red)](https://www.npmjs.com/search?q=pulumi-)
 
-## Overview
+## 🚀 Features
 
-This project automatically bridges Terraform providers to Pulumi, providing:
+- **🔄 Full Terraform Compatibility** - Use any Terraform provider with Pulumi
+- **📘 Complete Type Safety** - Full TypeScript definitions with IntelliSense
+- **🌍 Multi-Language Support** - TypeScript, JavaScript, Python, Go, and C# (planned)
+- **⚡ Dynamic Updates** - Auto-sync with upstream Terraform providers
+- **🎯 Native Pulumi Experience** - Full integration with Pulumi's ecosystem
+- **🔒 Secure by Design** - Pulumi secrets management and state encryption
+- **📦 Production Ready** - Battle-tested bridge technology
 
-- **Full Terraform Compatibility**: Use any Terraform provider with Pulumi
-- **Type Safety**: Complete TypeScript definitions for all resources
-- **Multi-Language Support**: Generate providers for TypeScript, Python, Go, and C#
-- **Dynamic Updates**: Automatically stay in sync with upstream Terraform providers
-- **Native Pulumi Experience**: Full integration with Pulumi's state management and deployment engine
+## 📦 Available Providers
 
-## Installation
+| Provider          | Package                | Description                        |
+| ----------------- | ---------------------- | ---------------------------------- |
+| **Better Uptime** | `pulumi-better-uptime` | Monitoring and incident management |
+| **Bunnynet**      | `pulumi-bunnynet`      | CDN and edge computing             |
+| **Infisical**     | `pulumi-infisical`     | Secrets management                 |
+| **Logtail**       | `pulumi-logtail`       | Log management and analytics       |
+| **Namecheap**     | `pulumi-namecheap`     | Domain and DNS management          |
+| **Portainer**     | `pulumi-portainer`     | Container management               |
+| **TeamCity**      | `pulumi-teamcity`      | CI/CD platform                     |
+| **Time**          | `pulumi-time`          | Time-based resources               |
+
+## ⚡ Quick Start
+
+### Installation
 
 Each package can be installed independently:
 
 ```bash
-# For Namecheap provider
 npm install pulumi-namecheap
-
-# Or with yarn
+# or
 yarn add pulumi-namecheap
-
-# Or with pnpm
+# or
 pnpm add pulumi-namecheap
 ```
 
-## Maintenance Instructions
+### Basic Usage
+
+```typescript
+import * as pulumi from '@pulumi/pulumi'
+import * as namecheap from 'pulumi-namecheap'
+
+// Configure provider (or use environment variables)
+const config = new pulumi.Config('namecheap')
+
+// Create a DNS record
+const record = new namecheap.Record('www-record', {
+  domain: 'example.com',
+  hostname: 'www',
+  type: 'A',
+  address: '192.168.1.1',
+  ttl: 300,
+})
+
+// Export the record ID
+export const recordId = record.id
+```
+
+### Deploy
+
+```bash
+pulumi preview  # Preview changes
+pulumi up       # Deploy infrastructure
+```
+
+## 📚 Documentation
+
+Comprehensive documentation is available covering:
+
+- **[Getting Started](docs/)** - Installation, configuration, and first steps
+- **[Architecture](docs/)** - How the bridge works internally
+- **[Provider Guides](docs/)** - Detailed guides for each provider
+- **[Contributing](docs/)** - How to contribute new providers
+- **[Troubleshooting](docs/)** - Common issues and solutions
+- **[FAQ](docs/)** - Frequently asked questions
+
+## 🏗️ Architecture
+
+This project uses [Pulumi's Terraform Bridge](https://github.com/pulumi/pulumi-terraform-bridge) to automatically convert Terraform providers into native Pulumi providers:
+
+```
+Terraform Provider → Bridge → Pulumi Package → Your Infrastructure Code
+```
+
+Key components:
+
+- **Nx Monorepo** - Efficient build orchestration
+- **TypeScript** - Full type safety and IntelliSense
+- **Automated CI/CD** - GitHub Actions with automated testing and publishing
+- **Changesets** - Semantic versioning and release management
+
+## 🛠️ Development
 
 ### Prerequisites
 
-- Node.js 22.18.0
-- pnpm 10.14.0
-- Access to the repository with appropriate permissions
+- Node.js 22.18.0 or later
+- pnpm 10.14.0 or later
+- Pulumi CLI 3.190.0 or later
 
-### Development Setup
+### Setup
 
-1. **Clone the repository**:
+1. **Clone and install**:
 
    ```bash
    git clone https://github.com/hckhanh/pulumi-any-terraform.git
    cd pulumi-any-terraform
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
    pnpm install
    ```
 
-3. **Verify setup**:
+2. **Verify setup**:
    ```bash
    pnpm run syncpack:check
+   pnpm nx run-many -t check
    ```
 
-### Package Maintenance
+### Common Tasks
 
-#### Adding a New Provider
+```bash
+# Install dependencies
+pnpm install
 
-To add a new Terraform provider to this collection:
+# Check code quality
+pnpm nx run-many -t check
 
-1. Create a new package directory under `packages/`:
+# Fix formatting and linting
+pnpm nx run-many -t fix
 
-   ```bash
-   mkdir packages/your-provider
-   cd packages/your-provider
-   ```
+# Build all packages
+pnpm nx run-many -t build
 
-2. Initialize the package structure following the pattern of existing packages:
-   - `package.json` with appropriate metadata and dependencies
-   - `README.md` with comprehensive documentation
-   - Provider configuration and resource definitions
+# Sync dependency versions
+pnpm run syncpack:fix
 
-3. Update workspace configuration:
-   - Add the package to `pnpm-workspace.yaml` if not already covered by the wildcard
-   - Update `.syncpackrc.json` if needed for dependency management
-
-#### Updating Existing Providers
-
-1. **Update Terraform provider version**:
-   - Modify the `parameterization.value` field in `package.json`
-   - This base64-encoded value contains the provider configuration
-
-2. **Update package version**:
-
-   ```bash
-   cd packages/your-provider
-   # Update version in package.json
-   pnpm version patch|minor|major
-   ```
-
-3. **Regenerate types and documentation** (if applicable):
-   - Follow provider-specific regeneration steps
-   - Update README.md with new features or changes
-
-#### Quality Assurance
-
-1. **Check dependency synchronization**:
-
-   ```bash
-   pnpm run syncpack:check
-   ```
-
-2. **Fix dependency issues** (if any):
-
-   ```bash
-   pnpm run syncpack:fix
-   ```
-
-3. **Format code**:
-
-   ```bash
-   pnpm run prettier:write
-   ```
-
-4. **Validate package configuration**:
-   - Ensure all required fields are present in `package.json`
-   - Verify `keywords`, `description`, and `repository` fields are accurate
-   - Check that `files` array includes necessary distribution files
-
-#### Release Process
-
-1. **Prepare for release**:
-   - Ensure all changes are committed
-   - Update CHANGELOG.md (if maintained)
-   - Run quality assurance checks
-
-2. **Version management**:
-   - Use semantic versioning for all packages
-   - Coordinate version bumps across related packages if needed
-
-3. **Publishing** (if applicable):
-   - Follow npm publishing guidelines
-   - Ensure proper access permissions
-   - Verify package contents before publishing
-
-### Repository Structure
-
-```shell
-├── packages/                 # Individual provider packages
-│   └── namecheap/           # Namecheap provider package
-│       ├── README.md        # Provider-specific documentation
-│       ├── package.json     # Package configuration
-│       └── ...             # Provider implementation files
-├── .syncpackrc.json         # Dependency synchronization rules
-├── pnpm-workspace.yaml      # Workspace configuration
-├── package.json            # Root package configuration
-└── README.md               # This file
+# Format all code
+pnpm run prettier:write
 ```
 
-### Troubleshooting
+### Adding a New Provider
 
-#### Common Issues
+1. Create package directory structure
+2. Configure `package.json` with proper metadata
+3. Set up parameterization for Terraform provider
+4. Write comprehensive documentation
+5. Submit pull request
 
-1. **Dependency conflicts**:
-   - Run `pnpm run syncpack:check` to identify issues
-   - Use `pnpm run syncpack:fix` to automatically resolve common problems
+See the [Contributing Guide](docs/) for detailed instructions.
 
-2. **Build failures**:
-   - Check Node.js and pnpm versions match requirements
-   - Ensure all dependencies are properly installed
-   - Verify TypeScript configuration is correct
+### Project Structure
 
-3. **Provider sync issues**:
-   - Verify base64-encoded parameterization values are correct
-   - Check that upstream Terraform provider versions are valid
-   - Ensure network access to Terraform registry
+```
+pulumi-any-terraform/
+├── packages/              # Provider packages
+│   ├── better-uptime/    # Individual providers
+│   ├── bunnynet/
+│   ├── infisical/
+│   ├── logtail/
+│   ├── namecheap/
+│   ├── portainer/
+│   ├── teamcity/
+│   └── time/
+├── tools/                 # Build system plugins
+│   ├── build.ts
+│   ├── linter.ts
+│   └── prettier.ts
+├── docs/                  # Documentation site (Next.js)
+├── .github/              # CI/CD workflows
+├── nx.json               # Nx configuration
+└── pnpm-workspace.yaml   # Workspace config
+```
 
-#### Getting Help
+### CI/CD Pipeline
 
-- **Provider-specific issues**: Check individual provider README files
-- **General issues**: Open an issue in this repository
-- **Pulumi-related questions**: Consult [Pulumi documentation](https://www.pulumi.com/docs/)
+Automated workflows handle:
 
-## Contributing
+- **Testing**: Linting, type checking, and builds
+- **Auto-fixing**: Prettier and Biome fixes
+- **Dependency Updates**: Automated PRs for updates
+- **Publishing**: Automatic releases to NPM
+- **Security**: Socket Security and vulnerability scanning
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Make your changes following the maintenance guidelines above
-4. Run quality assurance checks
-5. Commit your changes: `git commit -m 'Add your feature'`
-6. Push to the branch: `git push origin feature/your-feature`
-7. Open a pull request
+## 🤝 Contributing
 
-## License
+We welcome contributions! Here's how you can help:
 
-MIT - see individual package licenses for specific details.
+1. **Fork** the repository
+2. **Create** a feature branch
+3. **Make** your changes
+4. **Test** thoroughly
+5. **Submit** a pull request
 
-## Author
+Please read our [Contributing Guide](docs/) for details on:
+
+- Code standards
+- Development workflow
+- Adding new providers
+- Testing requirements
+- Release process
+
+## 🐛 Troubleshooting
+
+Common issues and solutions:
+
+- **Installation fails**: Clear cache and retry
+- **Type errors**: Update @pulumi/pulumi version
+- **Authentication errors**: Check credentials and environment variables
+- **Build failures**: Clear Nx cache with `pnpm nx reset`
+
+See our [Troubleshooting Guide](docs/) for more help.
+
+## 🔗 External Connections
+
+This project integrates with:
+
+- **[Terraform Registry](https://registry.terraform.io/)** - Source for provider schemas
+- **[NPM Registry](https://www.npmjs.com/)** - Package distribution
+- **[Pulumi Service](https://www.pulumi.com/)** - State management (optional)
+- **[GitHub Actions](https://github.com/features/actions)** - CI/CD automation
+- **[Nx Cloud](https://nx.app/)** - Distributed caching
+- **[Socket Security](https://socket.dev/)** - Dependency security
+- **[Autofix.ci](https://autofix.ci/)** - Automated code fixes
+
+## 📊 Project Stats
+
+- **8 Providers** available
+- **MIT Licensed** - Free and open source
+- **Active Development** - Regular updates
+- **Production Ready** - Used in real projects
+
+## 🌟 Examples
+
+### Multi-Provider Infrastructure
+
+```typescript
+import * as pulumi from '@pulumi/pulumi'
+import * as namecheap from 'pulumi-namecheap'
+import * as betteruptime from 'pulumi-better-uptime'
+
+// DNS Configuration
+const apiRecord = new namecheap.Record('api', {
+  domain: 'example.com',
+  hostname: 'api',
+  type: 'A',
+  address: '192.168.1.100',
+})
+
+// Monitoring
+const monitor = new betteruptime.Monitor('api-monitor', {
+  url: pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`,
+  monitorType: 'status',
+  checkFrequency: 60,
+})
+
+export const apiUrl = pulumi.interpolate`https://${apiRecord.hostname}.${apiRecord.domain}`
+export const monitorId = monitor.id
+```
+
+## 🙏 Acknowledgments
+
+This project is built on top of:
+
+- **[Pulumi](https://www.pulumi.com/)** - Infrastructure as Code platform
+- **[Terraform](https://www.terraform.io/)** - Provider ecosystem
+- **[Nx](https://nx.dev/)** - Monorepo build system
+- All the amazing Terraform provider maintainers
+
+## 📜 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
 
 **Khánh Hoàng**
 
+- Website: [khanh.id](https://www.khanh.id)
 - Email: hi@khanh.id
-- Website: https://www.khanh.id
 - GitHub: [@hckhanh](https://github.com/hckhanh)
+
+## 🔗 Links
+
+- [Documentation](docs/)
+- [NPM Packages](https://www.npmjs.com/search?q=pulumi-)
+- [GitHub Repository](https://github.com/hckhanh/pulumi-any-terraform)
+- [Issue Tracker](https://github.com/hckhanh/pulumi-any-terraform/issues)
+- [Pulumi Documentation](https://www.pulumi.com/docs/)
+- [Terraform Registry](https://registry.terraform.io/)
+
+---
+
+**⭐ If you find this project useful, please consider giving it a star on GitHub!**

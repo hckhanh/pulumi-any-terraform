@@ -1,0 +1,223 @@
+---
+title: Namecheap Provider
+description: Manage DNS records and domains with Namecheap using Pulumi
+---
+
+The Namecheap provider allows you to manage DNS records and domain configurations on Namecheap through Pulumi's infrastructure as code approach.
+
+## Overview
+
+The Namecheap provider bridges the [Terraform Namecheap provider](https://registry.terraform.io/providers/namecheap/namecheap/latest/docs) to Pulumi, enabling you to:
+
+- Manage DNS records for your domains
+- Configure email forwarding and MX records
+- Use custom nameservers
+- Automate domain configuration
+
+## Installation
+
+Install the Namecheap provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add @pulumi-any-terraform/namecheap
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add @pulumi-any-terraform/namecheap
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add @pulumi-any-terraform/namecheap
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install @pulumi-any-terraform/namecheap
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+The provider requires authentication with Namecheap's API. You need:
+
+- **API Key**: Your Namecheap API key
+- **API User**: Your API username (often same as your account username)
+- **Username**: Your Namecheap account username
+- **Client IP** (optional): Your whitelisted IP address for API access
+
+### Getting API Credentials
+
+1. Log in to your Namecheap account
+2. Navigate to Profile → Tools → API Access
+3. Enable API access and whitelist your IP address
+4. Generate an API key
+
+### Configuration Options
+
+Configure the provider using one of these methods:
+
+#### Method 1: Configuration Block
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const provider = new namecheap.Provider("namecheap-provider", {
+    apiKey: "your-api-key",
+    apiUser: "your-api-username",
+    userName: "your-username",
+    clientIp: "your-ip-address", // Optional
+    useSandbox: false, // Set to true for testing
+});
+```
+
+#### Method 2: Environment Variables
+
+```bash
+export NAMECHEAP_API_KEY="your-api-key"
+export NAMECHEAP_API_USER="your-api-username"
+export NAMECHEAP_USER_NAME="your-username"
+export NAMECHEAP_CLIENT_IP="your-ip-address"
+export NAMECHEAP_USE_SANDBOX="false"
+```
+
+#### Method 3: Pulumi Configuration
+
+```bash
+pulumi config set namecheap:apiKey "your-api-key" --secret
+pulumi config set namecheap:apiUser "your-api-username"
+pulumi config set namecheap:userName "your-username"
+pulumi config set namecheap:clientIp "your-ip-address"
+pulumi config set namecheap:useSandbox false
+```
+
+## Quick Start
+
+Here's a simple example to create DNS records for a domain:
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+// Create DNS records for example.com
+const dnsRecords = new namecheap.DomainRecords("example-dns", {
+    domain: "example.com",
+    mode: "OVERWRITE", // or "MERGE" to merge with existing records
+    emailType: "MX",
+    records: [
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 300,
+        },
+        {
+            hostname: "www",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 300,
+        },
+        {
+            hostname: "@",
+            type: "MX",
+            address: "mail.example.com",
+            mxPref: 10,
+            ttl: 300,
+        },
+    ],
+});
+
+export const domainRecordsId = dnsRecords.domainRecordsId;
+```
+
+## Sandbox Mode
+
+For testing and development, enable sandbox mode to use Namecheap's sandbox environment:
+
+```typescript
+const provider = new namecheap.Provider("namecheap-sandbox", {
+    apiKey: "sandbox-api-key",
+    apiUser: "sandbox-username",
+    userName: "sandbox-username",
+    useSandbox: true,
+});
+```
+
+## Resources
+
+The Namecheap provider includes the following resources:
+
+- [DomainRecords](/docs/providers/namecheap/domain-records) - Manage DNS records for a domain
+
+## Best Practices
+
+### Security
+
+- **Never commit API keys** to source control
+- Use Pulumi secrets for sensitive configuration
+- Whitelist only necessary IP addresses for API access
+- Use separate API keys for different environments
+
+### DNS Management
+
+- **Use TTL wisely**: Lower TTL (300-600 seconds) for frequently changing records, higher TTL (3600+ seconds) for stable records
+- **OVERWRITE vs MERGE mode**: Use OVERWRITE for full control, MERGE to preserve existing records
+- **Test in sandbox**: Always test configuration changes in sandbox mode first
+
+### Example Project Structure
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const config = new pulumi.Config();
+const domain = config.require("domain");
+
+// Production DNS configuration
+const prodDns = new namecheap.DomainRecords("production-dns", {
+    domain: domain,
+    mode: "OVERWRITE",
+    records: [
+        // Web server
+        { hostname: "@", type: "A", address: "203.0.113.1", ttl: 3600 },
+        { hostname: "www", type: "A", address: "203.0.113.1", ttl: 3600 },
+        
+        // Mail server
+        { hostname: "@", type: "MX", address: "mail.example.com", mxPref: 10, ttl: 3600 },
+        
+        // API subdomain
+        { hostname: "api", type: "A", address: "203.0.113.2", ttl: 1800 },
+        
+        // TXT records for verification
+        { hostname: "@", type: "TXT", address: "v=spf1 include:_spf.example.com ~all", ttl: 3600 },
+    ],
+});
+```
+
+## Troubleshooting
+
+### API Access Issues
+
+**Error: Invalid API credentials**
+- Verify API key, API user, and username are correct
+- Ensure your IP address is whitelisted in Namecheap settings
+
+**Error: Domain not found**
+- Confirm the domain is purchased and active in your Namecheap account
+- Check for typos in the domain name
+
+### DNS Propagation
+
+DNS changes may take time to propagate:
+- **TTL determines cache time**: If previous TTL was 3600 seconds, changes may take up to 1 hour to fully propagate
+- **Use DNS tools**: Check propagation with tools like `dig` or online DNS checkers
+- **Lower TTL before changes**: If planning major DNS changes, lower TTL 24-48 hours in advance
+
+## Additional Resources
+
+- [Namecheap API Documentation](https://www.namecheap.com/support/api/)
+- [Terraform Namecheap Provider](https://registry.terraform.io/providers/namecheap/namecheap/latest/docs)
+- [Namecheap Knowledge Base](https://www.namecheap.com/support/knowledgebase/)

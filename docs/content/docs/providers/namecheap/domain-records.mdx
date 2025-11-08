@@ -1,0 +1,497 @@
+---
+title: DomainRecords
+description: Manage DNS records for a Namecheap domain
+---
+
+The `DomainRecords` resource allows you to manage DNS records for a domain registered on Namecheap.
+
+## Example Usage
+
+### Basic A Record
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const records = new namecheap.DomainRecords("my-domain", {
+    domain: "example.com",
+    records: [
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 300,
+        },
+    ],
+});
+```
+
+### Complete DNS Configuration
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const dnsConfig = new namecheap.DomainRecords("complete-dns", {
+    domain: "example.com",
+    mode: "OVERWRITE",
+    emailType: "MX",
+    records: [
+        // Root domain A record
+        {
+            hostname: "@",
+            type: "A",
+            address: "192.0.2.1",
+            ttl: 3600,
+        },
+        // WWW subdomain
+        {
+            hostname: "www",
+            type: "CNAME",
+            address: "example.com",
+            ttl: 3600,
+        },
+        // Mail exchanger
+        {
+            hostname: "@",
+            type: "MX",
+            address: "mail.example.com",
+            mxPref: 10,
+            ttl: 3600,
+        },
+        {
+            hostname: "@",
+            type: "MX",
+            address: "mail2.example.com",
+            mxPref: 20,
+            ttl: 3600,
+        },
+        // TXT record for SPF
+        {
+            hostname: "@",
+            type: "TXT",
+            address: "v=spf1 include:_spf.example.com ~all",
+            ttl: 3600,
+        },
+        // API subdomain
+        {
+            hostname: "api",
+            type: "A",
+            address: "192.0.2.2",
+            ttl: 1800,
+        },
+    ],
+});
+
+export const recordsId = dnsConfig.domainRecordsId;
+```
+
+### Multiple Environments
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const stack = pulumi.getStack();
+const domain = "example.com";
+
+// Production uses root domain
+const prodRecords = stack === "production" ? new namecheap.DomainRecords("prod-dns", {
+    domain: domain,
+    mode: "MERGE",
+    records: [
+        { hostname: "@", type: "A", address: "203.0.113.10", ttl: 3600 },
+        { hostname: "www", type: "A", address: "203.0.113.10", ttl: 3600 },
+    ],
+}) : undefined;
+
+// Staging uses subdomain
+const stagingRecords = stack === "staging" ? new namecheap.DomainRecords("staging-dns", {
+    domain: domain,
+    mode: "MERGE",
+    records: [
+        { hostname: "staging", type: "A", address: "203.0.113.20", ttl: 600 },
+        { hostname: "staging-api", type: "A", address: "203.0.113.21", ttl: 600 },
+    ],
+}) : undefined;
+```
+
+### Custom Nameservers
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const customNs = new namecheap.DomainRecords("custom-nameservers", {
+    domain: "example.com",
+    nameservers: [
+        "ns1.customdns.com",
+        "ns2.customdns.com",
+        "ns3.customdns.com",
+    ],
+});
+```
+
+### CNAME Records
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const cnameRecords = new namecheap.DomainRecords("cname-setup", {
+    domain: "example.com",
+    mode: "MERGE",
+    records: [
+        {
+            hostname: "blog",
+            type: "CNAME",
+            address: "myblog.platform.com",
+            ttl: 300,
+        },
+        {
+            hostname: "shop",
+            type: "CNAME",
+            address: "mystore.shopify.com",
+            ttl: 300,
+        },
+    ],
+});
+```
+
+## Resource Arguments
+
+### Required Arguments
+
+- **domain** (string, required)  
+  The purchased domain name on your Namecheap account (e.g., "example.com")
+
+### Optional Arguments
+
+- **domainRecordsId** (string, optional)  
+  Custom identifier for the domain records resource
+
+- **emailType** (string, optional)  
+  Email forwarding type for the domain  
+  **Possible values**: `NONE`, `MXE`, `MX`, `FWD`, `OX`, `GMAIL`  
+  **Default**: `NONE`
+
+- **mode** (string, optional)  
+  How to handle existing records  
+  **Possible values**:
+  - `MERGE` (default): Merge new records with existing records
+  - `OVERWRITE`: Replace all existing records with new records
+  
+  **Default**: `MERGE`
+
+- **nameservers** (string[], optional)  
+  Custom nameservers for the domain. When specified, this overrides Namecheap's default nameservers.  
+  **Example**: `["ns1.example.com", "ns2.example.com"]`
+
+- **records** (Record[], optional)  
+  Array of DNS records to create. See [Record Object](#record-object) below.
+
+### Record Object
+
+Each record in the `records` array supports the following properties:
+
+- **address** (string, required)  
+  The value for the DNS record. Can be an IP address or hostname depending on record type.  
+  **Examples**:
+  - A record: `"192.0.2.1"`
+  - CNAME record: `"example.com"`
+  - MX record: `"mail.example.com"`
+  - TXT record: `"v=spf1 include:_spf.example.com ~all"`
+
+- **hostname** (string, required)  
+  The subdomain or hostname for the record. Use `"@"` for the root domain.  
+  **Examples**: `"@"`, `"www"`, `"api"`, `"mail"`
+
+- **type** (string, required)  
+  The DNS record type  
+  **Possible values**: `A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `MX`, `MXE`, `NS`, `TXT`, `URL`, `URL301`, `FRAME`
+
+- **mxPref** (number, optional)  
+  MX preference (priority) for the mail server. Lower values have higher priority.  
+  **Required for MX records only**  
+  **Typical values**: `10`, `20`, `30`
+
+- **ttl** (number, optional)  
+  Time to live in seconds - how long DNS resolvers should cache this record  
+  **Range**: `60` to `60000` seconds  
+  **Common values**:
+  - `300` (5 minutes): For frequently changing records
+  - `1800` (30 minutes): For moderately stable records
+  - `3600` (1 hour): For stable records
+  - `86400` (24 hours): For very stable records
+
+## Resource Attributes
+
+The following attributes are exported by the resource:
+
+- **domain** (string)  
+  The domain name
+
+- **domainRecordsId** (string)  
+  The unique identifier for the domain records resource
+
+- **emailType** (string)  
+  The configured email type
+
+- **mode** (string)  
+  The merge mode used
+
+- **nameservers** (string[])  
+  The configured nameservers
+
+- **records** (Record[])  
+  The configured DNS records
+
+## Import
+
+Existing domain records can be imported using the domain name:
+
+```bash
+pulumi import namecheap:index/domainRecords:DomainRecords my-records example.com
+```
+
+## Record Type Reference
+
+### A Record
+Maps a hostname to an IPv4 address.
+
+```typescript
+{
+    hostname: "@",
+    type: "A",
+    address: "192.0.2.1",
+    ttl: 3600,
+}
+```
+
+### AAAA Record
+Maps a hostname to an IPv6 address.
+
+```typescript
+{
+    hostname: "@",
+    type: "AAAA",
+    address: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+    ttl: 3600,
+}
+```
+
+### CNAME Record
+Creates an alias from one domain name to another.
+
+```typescript
+{
+    hostname: "www",
+    type: "CNAME",
+    address: "example.com",
+    ttl: 3600,
+}
+```
+
+**Note**: CNAME records cannot be used for the root domain (@).
+
+### MX Record
+Specifies mail servers for the domain.
+
+```typescript
+{
+    hostname: "@",
+    type: "MX",
+    address: "mail.example.com",
+    mxPref: 10,
+    ttl: 3600,
+}
+```
+
+### TXT Record
+Stores text information for various purposes (SPF, DKIM, domain verification).
+
+```typescript
+{
+    hostname: "@",
+    type: "TXT",
+    address: "v=spf1 include:_spf.example.com ~all",
+    ttl: 3600,
+}
+```
+
+### NS Record
+Delegates a subdomain to different nameservers.
+
+```typescript
+{
+    hostname: "subdomain",
+    type: "NS",
+    address: "ns1.subdomain-host.com",
+    ttl: 3600,
+}
+```
+
+### CAA Record
+Specifies which certificate authorities can issue certificates for the domain.
+
+```typescript
+{
+    hostname: "@",
+    type: "CAA",
+    address: "0 issue \"letsencrypt.org\"",
+    ttl: 3600,
+}
+```
+
+### URL/URL301 Records
+Creates URL redirects (Namecheap-specific feature).
+
+```typescript
+{
+    hostname: "old-page",
+    type: "URL301",
+    address: "https://example.com/new-page",
+    ttl: 300,
+}
+```
+
+## Best Practices
+
+### TTL Selection
+
+- **Development/Testing**: 300-600 seconds (5-10 minutes)
+- **Staging**: 1800 seconds (30 minutes)
+- **Production (stable)**: 3600+ seconds (1+ hours)
+- **Before major changes**: Lower TTL 24-48 hours before planned changes
+
+### Record Organization
+
+Group related records together:
+
+```typescript
+const records = [
+    // Web servers
+    { hostname: "@", type: "A", address: "192.0.2.1", ttl: 3600 },
+    { hostname: "www", type: "A", address: "192.0.2.1", ttl: 3600 },
+    
+    // Mail servers
+    { hostname: "@", type: "MX", address: "mail1.example.com", mxPref: 10, ttl: 3600 },
+    { hostname: "@", type: "MX", address: "mail2.example.com", mxPref: 20, ttl: 3600 },
+    
+    // Email authentication
+    { hostname: "@", type: "TXT", address: "v=spf1 include:_spf.example.com ~all", ttl: 3600 },
+    { hostname: "_dmarc", type: "TXT", address: "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com", ttl: 3600 },
+    
+    // Services
+    { hostname: "api", type: "A", address: "192.0.2.2", ttl: 1800 },
+    { hostname: "cdn", type: "CNAME", address: "cdn.provider.com", ttl: 3600 },
+];
+```
+
+### Mode Selection
+
+- **OVERWRITE**: Use when you want complete control and Pulumi should manage ALL records
+- **MERGE**: Use when you want to manage specific records while preserving others (e.g., manual records or records managed elsewhere)
+
+### Security Considerations
+
+- Keep production domains separate from test domains
+- Use appropriate SPF, DKIM, and DMARC records for email security
+- Consider using CAA records to restrict certificate issuance
+- Monitor DNS changes through Pulumi state
+
+## Common Patterns
+
+### Multi-Region Setup
+
+```typescript
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+
+const regions = [
+    { hostname: "us", ip: "192.0.2.1" },
+    { hostname: "eu", ip: "198.51.100.1" },
+    { hostname: "asia", ip: "203.0.113.1" },
+];
+
+const regionalDns = new namecheap.DomainRecords("regional-dns", {
+    domain: "example.com",
+    mode: "MERGE",
+    records: regions.map(region => ({
+        hostname: region.hostname,
+        type: "A",
+        address: region.ip,
+        ttl: 300,
+    })),
+});
+```
+
+### Dynamic Records from Stack Outputs
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as namecheap from "@pulumi-any-terraform/namecheap";
+import * as aws from "@pulumi/aws";
+
+// Assume we have an ELB or other resource
+const loadBalancer = new aws.lb.LoadBalancer("app-lb", {
+    // ... configuration
+});
+
+const dnsRecords = new namecheap.DomainRecords("app-dns", {
+    domain: "example.com",
+    mode: "MERGE",
+    records: [
+        {
+            hostname: "app",
+            type: "CNAME",
+            address: loadBalancer.dnsName,
+            ttl: 300,
+        },
+    ],
+});
+```
+
+## Troubleshooting
+
+### Common Errors
+
+**Error: Domain not found**
+```
+Solution: Ensure the domain is purchased and active in your Namecheap account
+```
+
+**Error: Invalid record type**
+```
+Solution: Check that the record type is one of the supported values (A, AAAA, CNAME, MX, TXT, etc.)
+```
+
+**Error: CNAME conflict**
+```
+Solution: CNAME records cannot coexist with other record types for the same hostname
+```
+
+**Error: Invalid TTL value**
+```
+Solution: TTL must be between 60 and 60000 seconds
+```
+
+### DNS Not Updating
+
+1. Check the TTL of the previous record - changes may be cached
+2. Verify the record was actually updated in Namecheap's control panel
+3. Use `dig` or online DNS checkers to verify propagation
+4. Allow up to 48 hours for complete global propagation (though usually much faster)
+
+### Verification
+
+Check your DNS records after deployment:
+
+```bash
+# Check A record
+dig example.com A
+
+# Check MX records
+dig example.com MX
+
+# Check TXT records
+dig example.com TXT
+
+# Check specific subdomain
+dig api.example.com A
+```

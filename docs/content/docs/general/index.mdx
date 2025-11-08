@@ -1,0 +1,83 @@
+---
+title: Introduction
+description: A collection of dynamically bridged Pulumi providers that enable you to use any Terraform provider within the Pulumi ecosystem
+---
+
+Welcome to the Pulumi Any Terraform documentation! This project provides seamless integration between Terraform providers and Pulumi, allowing you to leverage the extensive Terraform provider ecosystem while enjoying Pulumi's modern infrastructure-as-code experience.
+
+## What is Pulumi Any Terraform?
+
+Pulumi Any Terraform is a collection of **dynamically bridged Pulumi providers** that automatically converts Terraform providers into fully-typed Pulumi packages. This means you can:
+
+- Use any Terraform provider with Pulumi's state management
+- Get complete TypeScript/JavaScript type safety
+- Enjoy native integration with Pulumi's deployment engine
+- Stay automatically synced with upstream Terraform providers
+
+## Key Features
+
+### 🔄 Full Terraform Compatibility
+Use any Terraform provider with Pulumi without manual conversion. The bridge automatically handles the translation between Terraform's schema and Pulumi's resource model.
+
+### 📘 Type Safety
+Complete TypeScript definitions for all resources, inputs, and outputs. Get IntelliSense, auto-completion, and compile-time type checking.
+
+### 🌍 Multi-Language Support
+Generated providers work with TypeScript, JavaScript, Python, Go, and C#. Write infrastructure code in your preferred language.
+
+### ⚡ Dynamic Updates
+Automatically stay in sync with upstream Terraform providers. No manual regeneration needed when providers update.
+
+### 🎯 Native Pulumi Experience
+Full integration with Pulumi's state management, stack outputs, secrets, and deployment engine. All Pulumi features work seamlessly.
+
+## Available Providers
+
+<Cards>
+  <Card title="Better Uptime" href="/docs/providers/better-uptime" description="Monitoring, alerting, and incident management" />
+  <Card title="Bunnynet" href="/docs/providers/bunnynet" description="CDN and edge computing platform" />
+  <Card title="Infisical" href="/docs/providers/infisical" description="Secrets management platform" />
+  <Card title="Logtail" href="/docs/providers/logtail" description="Log management and analytics" />
+  <Card title="Namecheap" href="/docs/providers/namecheap" description="Domain and DNS management" />
+  <Card title="Portainer" href="/docs/providers/portainer" description="Container management platform" />
+  <Card title="TeamCity" href="/docs/providers/teamcity" description="CI/CD platform" />
+  <Card title="Time" href="/docs/providers/time" description="Time-based resources and operations" />
+</Cards>
+
+## Quick Start
+
+Get started with any provider in seconds:
+
+```bash
+# Install a provider
+npm install pulumi-namecheap
+
+# Use in your Pulumi program
+import * as namecheap from "pulumi-namecheap";
+
+const record = new namecheap.Record("www", {
+    domain: "example.com",
+    type: "A",
+    address: "192.168.1.1"
+});
+```
+
+## Next Steps
+
+<Cards>
+  <Card title="Getting Started" href="/docs/getting-started" description="Learn how to set up and use the providers" />
+  <Card title="Architecture" href="/docs/architecture" description="Understand how the bridge works" />
+  <Card title="Contributing" href="/docs/contributing" description="Contribute to the project" />
+  <Card title="Troubleshooting" href="/docs/troubleshooting" description="Common issues and solutions" />
+</Cards>
+
+## Community & Support
+
+- **GitHub**: [hckhanh/pulumi-any-terraform](https://github.com/hckhanh/pulumi-any-terraform)
+- **Issues**: Report bugs and request features on GitHub
+- **Pulumi Docs**: [pulumi.com/docs](https://www.pulumi.com/docs/)
+- **Terraform Registry**: [registry.terraform.io](https://registry.terraform.io/)
+
+## License
+
+MIT - see individual package licenses for specific details.

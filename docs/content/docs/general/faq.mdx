@@ -1,0 +1,365 @@
+---
+title: FAQ
+description: Frequently asked questions about Pulumi Any Terraform
+---
+
+Common questions and answers about Pulumi Any Terraform providers.
+
+## General Questions
+
+### What is Pulumi Any Terraform?
+
+Pulumi Any Terraform is a collection of dynamically bridged Pulumi providers that enable you to use Terraform providers within the Pulumi ecosystem. It automatically converts Terraform providers into fully-typed Pulumi packages with complete TypeScript support.
+
+### How is this different from using Terraform directly?
+
+While Terraform uses HCL (HashiCorp Configuration Language), Pulumi lets you use real programming languages like TypeScript, Python, Go, and C#. This means:
+- Full IDE support with IntelliSense
+- Type safety and compile-time checks
+- Real programming constructs (loops, conditionals, functions)
+- Better code reusability and modularity
+- Native integration with existing codebases
+
+### How is this different from regular Pulumi providers?
+
+Regular Pulumi providers are built specifically for Pulumi. These bridged providers use Pulumi's bridge to automatically convert existing Terraform providers, giving you access to the vast Terraform ecosystem within Pulumi.
+
+### Is this production-ready?
+
+Yes! The bridge technology is mature and used by many Pulumi users in production. However, the stability of each provider depends on the underlying Terraform provider quality.
+
+## Installation & Setup
+
+### Which package manager should I use?
+
+Any of npm, yarn, or pnpm will work. The project itself uses pnpm for development, but you can use whichever you prefer:
+
+```bash
+npm install pulumi-namecheap
+# or
+yarn add pulumi-namecheap
+# or
+pnpm add pulumi-namecheap
+```
+
+### Do I need to install Terraform?
+
+No! The Terraform provider runtime is embedded in each Pulumi package. You only need Pulumi CLI and Node.js.
+
+### Can I use these providers with other Pulumi providers?
+
+Absolutely! You can mix and match any Pulumi providers in the same program:
+
+```typescript
+import * as aws from "@pulumi/aws";
+import * as namecheap from "pulumi-namecheap";
+
+const instance = new aws.ec2.Instance(/* ... */);
+const record = new namecheap.Record(/* ... */);
+```
+
+### What versions of Pulumi are supported?
+
+These providers require Pulumi 3.190.0 or later. We recommend using the latest stable version.
+
+### What Node.js version do I need?
+
+Node.js 18.0 or later is recommended. The project is developed with Node.js 22.18.0.
+
+## Usage Questions
+
+### How do I find provider documentation?
+
+1. Check this documentation site for provider guides
+2. Refer to the original Terraform provider documentation
+3. Use TypeScript IntelliSense in your IDE
+4. Check the provider's README in the package
+
+### Can I import existing resources?
+
+Yes! Use Pulumi's import command:
+
+```bash
+pulumi import namecheap:index:Record www domain.com/www/A
+```
+
+### How do I handle secrets?
+
+Use Pulumi's built-in secret management:
+
+```bash
+pulumi config set provider:apiKey value --secret
+```
+
+Or in code:
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config();
+const apiKey = config.requireSecret("apiKey");
+```
+
+### Can I use these providers in multiple languages?
+
+Currently, these packages are published for TypeScript/JavaScript. Support for Python, Go, and C# could be added in the future.
+
+### How do I update a provider?
+
+Update the package version:
+
+```bash
+npm update pulumi-namecheap
+```
+
+Then run your program:
+
+```bash
+pulumi preview
+pulumi up
+```
+
+## Technical Questions
+
+### How does the bridge work?
+
+The bridge uses Pulumi's `pulumi-terraform-bridge` to:
+1. Read the Terraform provider's schema
+2. Generate Pulumi resource definitions
+3. Create TypeScript type definitions
+4. Map Terraform operations to Pulumi lifecycle
+
+See the [Architecture](/docs/architecture) guide for details.
+
+### What happens to my Terraform state?
+
+You don't use Terraform state files. Pulumi manages its own state, which can be:
+- Stored in Pulumi Cloud (default)
+- Self-hosted in S3, Azure Blob, GCS, or local files
+
+### Can I migrate from Terraform to these providers?
+
+Yes, but you'll need to:
+1. Convert HCL to TypeScript
+2. Import existing resources into Pulumi state
+3. Test thoroughly before production
+
+### Are there any limitations?
+
+Some Terraform features don't translate perfectly:
+- Terraform modules don't exist (use TypeScript functions instead)
+- Some Terraform-specific syntax doesn't apply
+- Provider-specific quirks may exist
+
+### How are resources named?
+
+Resources use Pulumi's naming:
+- Resource name: Logical name in your code
+- Physical name: Auto-generated or explicit
+- URN: Unique Pulumi identifier
+
+### Can I use Terraform providers not in this collection?
+
+Yes! You can create your own bridged provider by:
+1. Creating a new package structure
+2. Configuring the parameterization
+3. Following the [Contributing Guide](/docs/contributing)
+
+## Performance Questions
+
+### Are these providers slower than native Pulumi?
+
+The bridge adds minimal overhead. Most time is spent in:
+- API calls to target services
+- Network latency
+- Resource creation/update time
+
+### How can I speed up deployments?
+
+1. Use `--parallel` flag for concurrent operations
+2. Split large stacks into smaller ones
+3. Use stack references for dependencies
+4. Enable Pulumi state caching
+
+### Do these providers support preview/dry-run?
+
+Yes! `pulumi preview` shows what will change before applying.
+
+## Troubleshooting Questions
+
+### My provider isn't working. What do I check?
+
+1. Verify credentials are configured correctly
+2. Check API access and IP whitelists
+3. Enable debug logging: `pulumi up -v=9`
+4. Review the [Troubleshooting Guide](/docs/troubleshooting)
+
+### I'm getting type errors. How do I fix them?
+
+1. Ensure TypeScript version is compatible
+2. Regenerate type definitions if needed
+3. Check for type mismatches in your code
+4. Use `pulumi.Input<T>` for inputs
+
+### How do I debug provider issues?
+
+Enable debug logging:
+
+```bash
+export PULUMI_DEBUG_COMMANDS=true
+export TF_LOG=DEBUG
+pulumi up -v=9
+```
+
+### Resources aren't updating. Why?
+
+1. Run `pulumi refresh` to sync state
+2. Check for manual changes outside Pulumi
+3. Verify update is allowed by provider
+4. Review resource protection settings
+
+## Development Questions
+
+### How do I contribute a new provider?
+
+Follow the [Contributing Guide](/docs/contributing):
+1. Fork the repository
+2. Create a new package
+3. Configure parameterization
+4. Submit a pull request
+
+### Can I modify generated code?
+
+No! Generated code is overwritten on rebuild. Instead:
+- Use wrapper functions
+- Create helper modules
+- Extend with TypeScript classes
+
+### How do I test my changes?
+
+1. Build the provider locally
+2. Link to a test program: `pnpm link`
+3. Run `pulumi preview` and `pulumi up`
+4. Verify resources in provider dashboard
+
+### How do I report bugs?
+
+1. Check [existing issues](https://github.com/hckhanh/pulumi-any-terraform/issues)
+2. Create a new issue with:
+   - Provider and version
+   - Error message
+   - Minimal reproduction code
+   - Environment details
+
+## Licensing Questions
+
+### What license is this project under?
+
+MIT License. See the LICENSE file for details.
+
+### Can I use this commercially?
+
+Yes! MIT license allows commercial use.
+
+### Are there any restrictions?
+
+The MIT license requires:
+- Include copyright notice
+- Include license text
+
+### What about the Terraform providers?
+
+Each Terraform provider has its own license. Check the provider's repository for details.
+
+## Cost Questions
+
+### Are these providers free?
+
+The Pulumi packages are free and open source. However:
+- Target services may have costs (API usage, resources)
+- Pulumi Cloud has free and paid tiers
+- Consider resource costs in your planning
+
+### Do I need a Pulumi subscription?
+
+No for basic usage. Pulumi offers:
+- **Free tier**: Individual developers
+- **Team tier**: Collaboration features
+- **Enterprise tier**: Advanced capabilities
+
+You can also self-host Pulumi state.
+
+## Comparison Questions
+
+### Pulumi Any Terraform vs Terraformer?
+
+Terraformer converts cloud resources to Terraform code. This project lets you use Terraform providers with Pulumi.
+
+### Pulumi Any Terraform vs CDK for Terraform?
+
+CDK for Terraform generates Terraform JSON. This project creates native Pulumi resources with the full Pulumi experience.
+
+### Pulumi Any Terraform vs native Pulumi providers?
+
+Native providers are built specifically for Pulumi and may have:
+- Better error messages
+- Pulumi-specific features
+- Tighter integration
+
+Bridged providers give you:
+- Access to any Terraform provider
+- Wider ecosystem
+- Regular updates from Terraform community
+
+## Future Questions
+
+### Will more providers be added?
+
+Yes! Providers are added based on:
+- Community demand
+- Provider popularity
+- Maintenance requirements
+
+### Will Python/Go/C# support be added?
+
+Potentially! This would require:
+- Multi-language code generation
+- Additional testing
+- Maintenance overhead
+
+### Can I request a new feature?
+
+Yes! [Open an issue](https://github.com/hckhanh/pulumi-any-terraform/issues) with:
+- Feature description
+- Use case
+- Benefits
+
+## Getting More Help
+
+### Where can I get help?
+
+- [GitHub Issues](https://github.com/hckhanh/pulumi-any-terraform/issues)
+- [Pulumi Community Slack](https://slack.pulumi.com/)
+- [Troubleshooting Guide](/docs/troubleshooting)
+- Provider-specific documentation
+
+### How do I stay updated?
+
+- Watch the [GitHub repository](https://github.com/hckhanh/pulumi-any-terraform)
+- Follow [Pulumi blog](https://www.pulumi.com/blog/)
+- Check provider release notes
+
+### Can I contribute to documentation?
+
+Absolutely! Documentation improvements are always welcome. See the [Contributing Guide](/docs/contributing).
+
+## Still Have Questions?
+
+If your question isn't answered here:
+
+<Cards>
+  <Card title="GitHub Issues" href="https://github.com/hckhanh/pulumi-any-terraform/issues" description="Ask the community" />
+  <Card title="Troubleshooting" href="/docs/troubleshooting" description="Common solutions" />
+  <Card title="Contributing" href="/docs/contributing" description="Development help" />
+  <Card title="Architecture" href="/docs/architecture" description="Technical details" />
+</Cards>

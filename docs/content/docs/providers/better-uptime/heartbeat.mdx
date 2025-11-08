@@ -1,0 +1,351 @@
+---
+title: Heartbeat
+description: Create heartbeat monitors for job and cron health checks
+---
+
+The Heartbeat resource creates monitors that expect regular "pings" from your jobs, cron tasks, or scheduled processes.
+
+## Example Usage
+
+### Basic Heartbeat
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+const heartbeat = new betteruptime.Heartbeat("backup-job", {
+    name: "Database Backup",
+    period: 86400, // 24 hours
+    grace: 3600, // 1 hour grace period
+});
+
+// Export the heartbeat URL to ping
+export const heartbeatUrl = heartbeat.url;
+```
+
+### Cron Job Heartbeat
+
+```typescript
+const cronHeartbeat = new betteruptime.Heartbeat("daily-sync", {
+    name: "Daily Data Sync",
+    period: 86400, // Every 24 hours
+    grace: 1800, // 30 minute grace period
+    call: true,
+    sms: true,
+    email: true,
+});
+```
+
+### Short-Interval Heartbeat
+
+```typescript
+const frequentJob = new betteruptime.Heartbeat("health-check-job", {
+    name: "Health Check Job",
+    period: 300, // Every 5 minutes
+    grace: 60, // 1 minute grace period
+});
+```
+
+### Heartbeat with Policy
+
+```typescript
+import * as betteruptime from "@pulumi-contrib/better-uptime";
+
+const policy = new betteruptime.Policy("ops-team", {
+    name: "Operations Team",
+});
+
+const criticalJob = new betteruptime.Heartbeat("critical-batch", {
+    name: "Critical Batch Process",
+    period: 3600, // Hourly
+    grace: 300, // 5 minutes
+    policyId: policy.id,
+    call: true,
+    sms: true,
+});
+```
+
+### Heartbeat Group
+
+```typescript
+const group = new betteruptime.HeartbeatGroup("batch-jobs", {
+    name: "Batch Processing Jobs",
+});
+
+const heartbeat1 = new betteruptime.Heartbeat("job1", {
+    name: "ETL Job 1",
+    period: 43200, // 12 hours
+    grace: 1800,
+    heartbeatGroupId: group.id,
+});
+
+const heartbeat2 = new betteruptime.Heartbeat("job2", {
+    name: "ETL Job 2",
+    period: 43200,
+    grace: 1800,
+    heartbeatGroupId: group.id,
+});
+```
+
+## Argument Reference
+
+### Required Arguments
+
+- **`name`** (String) - Name of the heartbeat monitor
+- **`period`** (Number) - Expected period between pings in seconds
+
+### Optional Arguments
+
+- **`grace`** (Number) - Grace period in seconds before alerting. Default: 0
+- **`call`** (Boolean) - Enable phone call notifications. Default: false
+- **`sms`** (Boolean) - Enable SMS notifications. Default: false
+- **`email`** (Boolean) - Enable email notifications. Default: true
+- **`push`** (Boolean) - Enable push notifications. Default: true
+- **`heartbeatGroupId`** (Number) - Heartbeat group ID
+- **`policyId`** (Number) - Escalation policy ID
+- **`paused`** (Boolean) - Whether the heartbeat is paused. Default: false
+- **`sort_index`** (Number) - Sort index for ordering
+
+## Attribute Reference
+
+- **`id`** (String) - The heartbeat ID
+- **`url`** (String) - The unique URL to ping
+- **`status`** (String) - Current heartbeat status (up, down, paused)
+- **`createdAt`** (String) - Creation timestamp
+- **`updatedAt`** (String) - Last update timestamp
+- **`lastPingAt`** (String) - Last successful ping timestamp
+
+## Using Heartbeat URLs
+
+### In Shell Scripts
+
+```bash
+#!/bin/bash
+# Your backup script
+
+# Perform backup
+pg_dump mydb > backup.sql
+
+# Ping heartbeat on success
+curl -fsS --retry 3 "https://uptime.betterstack.com/api/v1/heartbeat/xxx"
+```
+
+### In Python
+
+```python
+import requests
+
+def backup_job():
+    try:
+        # Perform backup
+        perform_backup()
+        
+        # Ping heartbeat
+        requests.get("https://uptime.betterstack.com/api/v1/heartbeat/xxx")
+    except Exception as e:
+        print(f"Backup failed: {e}")
+        # Don't ping on failure - will trigger alert
+```
+
+### In Node.js
+
+```javascript
+const https = require('https');
+
+async function cronJob() {
+    try {
+        await performTask();
+        
+        // Ping heartbeat
+        https.get('https://uptime.betterstack.com/api/v1/heartbeat/xxx');
+    } catch (error) {
+        console.error('Job failed:', error);
+        // Missing ping will trigger alert
+    }
+}
+```
+
+### In Docker
+
+```dockerfile
+FROM alpine:latest
+
+# Install curl
+RUN apk add --no-cache curl
+
+# Your cron job
+COPY backup.sh /backup.sh
+RUN chmod +x /backup.sh
+
+# Add heartbeat ping
+RUN echo "*/5 * * * * /backup.sh && curl -fsS https://uptime.betterstack.com/api/v1/heartbeat/xxx" > /etc/crontabs/root
+
+CMD ["crond", "-f"]
+```
+
+## Best Practices
+
+### Period and Grace Configuration
+
+| Job Frequency | Period | Grace | Use Case |
+|---------------|--------|-------|----------|
+| Every 5 min | 300s | 60s | Frequent health checks |
+| Hourly | 3600s | 300s | Regular maintenance |
+| Every 6 hours | 21600s | 1800s | Periodic sync jobs |
+| Daily | 86400s | 3600s | Daily backups |
+| Weekly | 604800s | 7200s | Weekly reports |
+
+### Error Handling
+
+```typescript
+// Only ping on success
+const heartbeat = new betteruptime.Heartbeat("reliable-job", {
+    name: "Data Processing",
+    period: 3600,
+    grace: 300,
+    call: true, // Alert immediately via call
+});
+
+// In your job script:
+// curl "$HEARTBEAT_URL" || exit 0  # Don't fail job if ping fails
+```
+
+### Monitoring Multiple Environments
+
+```typescript
+// Production heartbeat
+const prodHeartbeat = new betteruptime.Heartbeat("prod-backup", {
+    name: "Production Backup",
+    period: 86400,
+    grace: 1800,
+    call: true,
+    sms: true,
+});
+
+// Staging heartbeat
+const stagingHeartbeat = new betteruptime.Heartbeat("staging-backup", {
+    name: "Staging Backup",
+    period: 86400,
+    grace: 3600, // More grace for staging
+    email: true,
+});
+```
+
+### Grouped Heartbeats
+
+```typescript
+// Create a group for related jobs
+const group = new betteruptime.HeartbeatGroup("etl-pipeline", {
+    name: "ETL Pipeline Jobs",
+});
+
+const steps = ["extract", "transform", "load"].map((step, i) => 
+    new betteruptime.Heartbeat(`etl-${step}`, {
+        name: `ETL ${step.toUpperCase()}`,
+        period: 7200, // 2 hours
+        grace: 600,
+        heartbeatGroupId: group.id,
+        sortIndex: i,
+    })
+);
+```
+
+## Common Patterns
+
+### Database Backup Monitoring
+
+```typescript
+const dbBackup = new betteruptime.Heartbeat("postgres-backup", {
+    name: "PostgreSQL Backup",
+    period: 86400, // Daily
+    grace: 3600, // 1 hour grace
+    call: true,
+    sms: true,
+});
+
+// In backup script:
+// pg_dump db | gzip > backup.gz && curl "$HEARTBEAT_URL"
+```
+
+### Cron Job Monitoring
+
+```typescript
+const cronJob = new betteruptime.Heartbeat("report-generation", {
+    name: "Daily Report Generation",
+    period: 86400,
+    grace: 1800,
+});
+
+// Crontab:
+// 0 2 * * * /usr/local/bin/generate-report.sh && curl "$HEARTBEAT_URL"
+```
+
+### API Scheduled Task
+
+```typescript
+const scheduledTask = new betteruptime.Heartbeat("cleanup-task", {
+    name: "Cleanup Old Records",
+    period: 21600, // Every 6 hours
+    grace: 900, // 15 minutes
+});
+
+// In your API:
+// schedule.every(6).hours.do(cleanup_and_ping)
+```
+
+## Import
+
+Heartbeats can be imported using their ID:
+
+```bash
+pulumi import better-uptime:index/heartbeat:Heartbeat example 123456
+```
+
+## Troubleshooting
+
+### Heartbeat Not Receiving Pings
+
+**Causes**:
+- Incorrect URL
+- Network/firewall issues
+- Job failing before ping
+
+**Solution**:
+- Verify heartbeat URL is correct
+- Test with curl manually
+- Add logging to job
+
+```bash
+# Debug heartbeat ping
+curl -v "https://uptime.betterstack.com/api/v1/heartbeat/xxx"
+```
+
+### False Alerts
+
+**Cause**: Grace period too short for job variability
+
+**Solution**:
+```typescript
+// Increase grace period for variable jobs
+const variableJob = new betteruptime.Heartbeat("variable", {
+    name: "Variable Duration Job",
+    period: 3600,
+    grace: 1800, // 50% of period as grace
+});
+```
+
+### Missing Heartbeat Groups
+
+**Error**: "Heartbeat group not found"
+
+**Solution**: Ensure group is created before heartbeats:
+```typescript
+const group = new betteruptime.HeartbeatGroup("group", {
+    name: "My Group",
+});
+
+const heartbeat = new betteruptime.Heartbeat("hb", {
+    name: "Heartbeat",
+    period: 3600,
+    heartbeatGroupId: group.id,
+}, { dependsOn: [group] });
+```

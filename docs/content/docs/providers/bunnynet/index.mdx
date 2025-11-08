@@ -1,0 +1,109 @@
+---
+title: Bunnynet Provider
+description: Manage Bunny.net CDN and edge computing resources with Pulumi
+---
+
+The Bunnynet provider enables you to manage Bunny.net CDN, storage, DNS, and edge computing resources using Pulumi. This provider is dynamically bridged from the [Terraform Bunnynet Provider](https://registry.terraform.io/providers/simplesurance/bunny).
+
+## Installation
+
+Install the Bunnynet provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add pulumi-bunnynet
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add pulumi-bunnynet
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add pulumi-bunnynet
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install pulumi-bunnynet
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+### Getting API Key
+
+1. Log in to your Bunny.net account at [bunny.net](https://bunny.net)
+2. Navigate to Account → API
+3. Copy your API key
+
+### Provider Setup
+
+```bash
+pulumi config set bunnynet:apiKey YOUR_API_KEY --secret
+```
+
+Or using environment variables:
+
+```bash
+export BUNNY_API_KEY="your-api-key"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as bunnynet from "pulumi-bunnynet";
+
+// Create a pull zone (CDN)
+const pullZone = new bunnynet.PullZone("my-cdn", {
+    name: "my-website-cdn",
+    originUrl: "https://example.com",
+});
+
+export const cdnUrl = pullZone.cdnUrl;
+```
+
+## Key Features
+
+### Pull Zones (CDN)
+
+```typescript
+const pullZone = new bunnynet.PullZone("cdn", {
+    name: "my-cdn",
+    originUrl: "https://origin.example.com",
+    cacheControlMaxAge: 3600,
+    enableGeoZoneAsia: true,
+    enableGeoZoneEurope: true,
+    enableGeoZoneUS: true,
+});
+```
+
+### Storage Zones
+
+```typescript
+const storageZone = new bunnynet.StorageZone("storage", {
+    name: "my-storage",
+    region: "DE", // Germany
+    replicationRegions: ["NY", "LA"],
+});
+```
+
+### DNS Management
+
+```typescript
+const dnsZone = new bunnynet.DnsZone("dns", {
+    domain: "example.com",
+});
+
+const dnsRecord = new bunnynet.DnsRecord("www", {
+    zoneId: dnsZone.id,
+    name: "www",
+    type: "A",
+    value: "192.168.1.1",
+    ttl: 300,
+});
+```

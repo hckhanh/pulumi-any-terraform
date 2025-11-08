@@ -1,0 +1,16 @@
+{
+  "title": "Better Uptime",
+  "description": "Uptime monitoring and incident management",
+  "root": true,
+  "icon": "Activity",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "monitor",
+    "status-page",
+    "heartbeat",
+    "---Guides",
+    "monitoring-guide"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Bunnynet",
+  "description": "CDN and edge computing provider",
+  "root": true,
+  "icon": "Rabbit",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "pullzone",
+    "storage-zone",
+    "compute-script",
+    "---Guides",
+    "cdn-guide"
+  ]
+}

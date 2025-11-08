@@ -1,0 +1,17 @@
+{
+  "title": "Time",
+  "description": "Time-based resource management",
+  "root": true,
+  "icon": "Clock",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "offset",
+    "rotating",
+    "sleep",
+    "static",
+    "---Guides",
+    "time-guide"
+  ]
+}

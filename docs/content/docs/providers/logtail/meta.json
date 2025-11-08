@@ -1,0 +1,15 @@
+{
+  "title": "Logtail",
+  "description": "Log management and analysis",
+  "root": true,
+  "icon": "FileText",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "source",
+    "metric",
+    "---Guides",
+    "logging-guide"
+  ]
+}
