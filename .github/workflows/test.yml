@@ -27,7 +27,7 @@ jobs:
         with:
           mode: firewall
       - name: Install dependencies
-        run: sfw pnpm install
+        run: sfw pnpm install --no-frozen-lockfile
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Fix
