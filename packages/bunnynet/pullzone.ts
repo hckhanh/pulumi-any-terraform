@@ -63,7 +63,7 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly blockRootPath: pulumi.Output<boolean>;
     /**
-     * Indicates whether the cache slice (Optimize for video) feature is enabled for the Pull Zone
+     * Indicates whether the cache slice (Optimize for large object delivery) feature is enabled for the Pull Zone
      */
     declare public readonly cacheChunked: pulumi.Output<boolean>;
     /**
@@ -634,7 +634,7 @@ export interface PullzoneState {
      */
     blockRootPath?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the cache slice (Optimize for video) feature is enabled for the Pull Zone
+     * Indicates whether the cache slice (Optimize for large object delivery) feature is enabled for the Pull Zone
      */
     cacheChunked?: pulumi.Input<boolean>;
     /**
@@ -999,7 +999,7 @@ export interface PullzoneArgs {
      */
     blockRootPath?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the cache slice (Optimize for video) feature is enabled for the Pull Zone
+     * Indicates whether the cache slice (Optimize for large object delivery) feature is enabled for the Pull Zone
      */
     cacheChunked?: pulumi.Input<boolean>;
     /**
