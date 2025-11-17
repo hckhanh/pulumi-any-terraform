@@ -47,6 +47,10 @@ jobs:
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Update lockfile
+        run: |
+          pnpm install --no-frozen-lockfile
+          git add .
       - name: Commit and push changes to main
         if: steps.check.outputs.has_updates == 'true'
         run: |
