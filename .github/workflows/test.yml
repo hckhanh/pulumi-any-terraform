@@ -27,9 +27,7 @@ jobs:
         uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
         with:
           mode: firewall
-      - name: Install dependencies
-        run: sfw pnpm install --no-frozen-lockfile
-      - name: Optimize packages
+      - name: Optimize dependencies with @socketregistry overrides
         run: socket optimize
       - name: Update package lock file
         run: |
