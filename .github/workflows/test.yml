@@ -31,6 +31,12 @@ jobs:
         run: sfw pnpm install --no-frozen-lockfile
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+      - name: Optimize packages
+        run: socket optimize
+      - name: Update package lock file
+        run: |
+          rm -rf **/node_modules pnpm-lock.yaml
+          pnpm install --no-frozen-lockfile
       - name: Fix
         run: pnpm nx affected -t fix
         env:
@@ -38,8 +44,6 @@ jobs:
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Update package lock file
-        run: pnpm install --fix-lockfile --no-frozen-lockfile
       - name: Submit autofix
         uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1.3.2
   lint:
