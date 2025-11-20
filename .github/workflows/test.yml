@@ -27,12 +27,12 @@ jobs:
         uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
         with:
           mode: firewall
-      - name: Optimize dependencies with @socketregistry overrides
-        run: socket optimize
       - name: Update package lock file
         run: |
           rm -rf **/node_modules pnpm-lock.yaml
           pnpm install --no-frozen-lockfile
+      - name: Optimize dependencies with @socketregistry overrides
+        run: socket optimize
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Fix
