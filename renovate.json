@@ -17,6 +17,12 @@
   "timezone": "Asia/Ho_Chi_Minh",
   "packageRules": [
     {
+      "description": "Ignore overrides updates from @socketregistry",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["pnpm.overrides"],
+      "enabled": false
+    },
+    {
       "groupName": "fumadocs monorepo",
       "matchPackageNames": ["/^fumadocs-/"],
       "matchUpdateTypes": ["digest", "patch", "minor", "major"]
