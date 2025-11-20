@@ -11,14 +11,6 @@
         "technologies": ["node"]
       }
     },
-    "audit:fix": {
-      "command": "pnpm audit --fix",
-      "inputs": ["{projectRoot}/pnpm-lock.yaml"],
-      "metadata": {
-        "description": "Check for and fix security vulnerabilities in your dependencies",
-        "technologies": ["node"]
-      }
-    },
     "check": {
       "dependsOn": [
         "audit",
@@ -30,7 +22,7 @@
       ]
     },
     "fix": {
-      "dependsOn": ["audit:fix", "syncpack:format", "prettier:write"]
+      "dependsOn": ["syncpack:format", "prettier:write"]
     },
     "syncpack:fix": {
       "command": "pnpm syncpack fix",

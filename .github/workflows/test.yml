@@ -33,6 +33,8 @@ jobs:
           pnpm install --no-frozen-lockfile
       - name: Optimize dependencies with @socketregistry overrides
         run: socket optimize
+      - name: Fix dependencies audit
+        run: pnpm audit --fix
       - name: Set SHAs
         uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
       - name: Fix
