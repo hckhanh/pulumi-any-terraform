@@ -4,6 +4,7 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: 'Pulumi Any Terraform',
+      url: '/docs/general',
     },
   }
 }
