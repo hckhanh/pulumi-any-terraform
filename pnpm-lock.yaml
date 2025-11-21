@@ -122,8 +122,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -138,8 +138,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -154,8 +154,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -170,8 +170,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -186,8 +186,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -202,8 +202,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -218,8 +218,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -234,8 +234,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.206.0
-        version: 3.206.0(typescript@5.9.3)
+        specifier: 3.207.0
+        version: 3.207.0(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.1
         version: 24.10.1
@@ -2081,8 +2081,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@pulumi/pulumi@3.206.0':
-    resolution: {integrity: sha512-xTiAcs7LhVOK2mUvTCUOlS7tTtzSh0T+C9pOAOkbpJuAX0GKw+wg7PZZ3qQbqW63fGfCBHs7h27e9d9iyHEC/w==}
+  '@pulumi/pulumi@3.207.0':
+    resolution: {integrity: sha512-+23Mx9p2x569WuNw8V9LdiCS0h+8BZzYJoInleBcxB0rGVW4SQX9c9AVcrlhvD+lXFbB5FgX/JfT6dUC68B3TA==}
     engines: {node: '>=20'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -7775,7 +7775,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/pulumi@3.206.0(typescript@5.9.3)':
+  '@pulumi/pulumi@3.207.0(typescript@5.9.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.1
       '@logdna/tail-file': 2.2.0
