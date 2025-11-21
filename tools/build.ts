@@ -17,7 +17,10 @@ class BuildPlugin extends Plugin {
           targets: {
             build: {
               command: 'node ./scripts/postinstall.js',
-              inputs: ['sources', { externalDependencies: ['typescript', '@pulumi/pulumi'] }],
+              inputs: [
+                'sources',
+                { externalDependencies: ['typescript', '@pulumi/pulumi'] },
+              ],
               options: { cwd: '{projectRoot}' },
               metadata: {
                 description: 'Builds the project with `postinstall.js` script.',
