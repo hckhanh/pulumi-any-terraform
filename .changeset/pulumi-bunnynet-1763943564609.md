@@ -1,0 +1,3 @@
+---
+'pulumi-bunnynet': patch
+---

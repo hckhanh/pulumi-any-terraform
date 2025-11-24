@@ -33,9 +33,10 @@ export class ResourceControl extends pulumi.CustomResource {
     }
 
     declare public readonly administratorsOnly: pulumi.Output<boolean | undefined>;
+    declare public readonly portainerResourceControlId: pulumi.Output<string>;
     declare public readonly public: pulumi.Output<boolean | undefined>;
-    declare public readonly resourceControlId: pulumi.Output<string>;
-    declare public readonly resourceId: pulumi.Output<string>;
+    declare public readonly resourceControlId: pulumi.Output<number | undefined>;
+    declare public readonly resourceId: pulumi.Output<string | undefined>;
     declare public readonly teams: pulumi.Output<number[] | undefined>;
     declare public readonly type: pulumi.Output<number | undefined>;
     declare public readonly users: pulumi.Output<number[] | undefined>;
@@ -47,13 +48,14 @@ export class ResourceControl extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ResourceControlArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ResourceControlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceControlArgs | ResourceControlState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceControlState | undefined;
             resourceInputs["administratorsOnly"] = state?.administratorsOnly;
+            resourceInputs["portainerResourceControlId"] = state?.portainerResourceControlId;
             resourceInputs["public"] = state?.public;
             resourceInputs["resourceControlId"] = state?.resourceControlId;
             resourceInputs["resourceId"] = state?.resourceId;
@@ -62,10 +64,8 @@ export class ResourceControl extends pulumi.CustomResource {
             resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as ResourceControlArgs | undefined;
-            if (args?.resourceId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceId'");
-            }
             resourceInputs["administratorsOnly"] = args?.administratorsOnly;
+            resourceInputs["portainerResourceControlId"] = args?.portainerResourceControlId;
             resourceInputs["public"] = args?.public;
             resourceInputs["resourceControlId"] = args?.resourceControlId;
             resourceInputs["resourceId"] = args?.resourceId;
@@ -83,8 +83,9 @@ export class ResourceControl extends pulumi.CustomResource {
  */
 export interface ResourceControlState {
     administratorsOnly?: pulumi.Input<boolean>;
+    portainerResourceControlId?: pulumi.Input<string>;
     public?: pulumi.Input<boolean>;
-    resourceControlId?: pulumi.Input<string>;
+    resourceControlId?: pulumi.Input<number>;
     resourceId?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<number>[]>;
     type?: pulumi.Input<number>;
@@ -96,9 +97,10 @@ export interface ResourceControlState {
  */
 export interface ResourceControlArgs {
     administratorsOnly?: pulumi.Input<boolean>;
+    portainerResourceControlId?: pulumi.Input<string>;
     public?: pulumi.Input<boolean>;
-    resourceControlId?: pulumi.Input<string>;
-    resourceId: pulumi.Input<string>;
+    resourceControlId?: pulumi.Input<number>;
+    resourceId?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<number>[]>;
     type?: pulumi.Input<number>;
     users?: pulumi.Input<pulumi.Input<number>[]>;

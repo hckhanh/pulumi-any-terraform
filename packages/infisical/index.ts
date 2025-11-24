@@ -190,6 +190,11 @@ export type IdentityTokenAuth = import("./identityTokenAuth").IdentityTokenAuth;
 export const IdentityTokenAuth: typeof import("./identityTokenAuth").IdentityTokenAuth = null as any;
 utilities.lazyLoad(exports, ["IdentityTokenAuth"], () => require("./identityTokenAuth"));
 
+export { IdentityTokenAuthTokenArgs, IdentityTokenAuthTokenState } from "./identityTokenAuthToken";
+export type IdentityTokenAuthToken = import("./identityTokenAuthToken").IdentityTokenAuthToken;
+export const IdentityTokenAuthToken: typeof import("./identityTokenAuthToken").IdentityTokenAuthToken = null as any;
+utilities.lazyLoad(exports, ["IdentityTokenAuthToken"], () => require("./identityTokenAuthToken"));
+
 export { IdentityUniversalAuthArgs, IdentityUniversalAuthState } from "./identityUniversalAuth";
 export type IdentityUniversalAuth = import("./identityUniversalAuth").IdentityUniversalAuth;
 export const IdentityUniversalAuth: typeof import("./identityUniversalAuth").IdentityUniversalAuth = null as any;
@@ -487,6 +492,8 @@ const _module = {
                 return new IdentityOidcAuth(name, <any>undefined, { urn })
             case "infisical:index/identityTokenAuth:IdentityTokenAuth":
                 return new IdentityTokenAuth(name, <any>undefined, { urn })
+            case "infisical:index/identityTokenAuthToken:IdentityTokenAuthToken":
+                return new IdentityTokenAuthToken(name, <any>undefined, { urn })
             case "infisical:index/identityUniversalAuth:IdentityUniversalAuth":
                 return new IdentityUniversalAuth(name, <any>undefined, { urn })
             case "infisical:index/identityUniversalAuthClientSecret:IdentityUniversalAuthClientSecret":
@@ -610,6 +617,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/identityGcpAuth", _mod
 pulumi.runtime.registerResourceModule("infisical", "index/identityKubernetesAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityOidcAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuth", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuthToken", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityUniversalAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityUniversalAuthClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/integrationAwsParameterStore", _module)

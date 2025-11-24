@@ -49,7 +49,10 @@ export class Environment extends pulumi.CustomResource {
      * Map of team IDs to role IDs (e.g. teamID > roleID)
      */
     declare public readonly teamAccessPolicies: pulumi.Output<{[key: string]: number} | undefined>;
+    declare public readonly tlsCaCert: pulumi.Output<string | undefined>;
+    declare public readonly tlsCert: pulumi.Output<string | undefined>;
     declare public readonly tlsEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly tlsKey: pulumi.Output<string | undefined>;
     declare public readonly tlsSkipClientVerify: pulumi.Output<boolean | undefined>;
     declare public readonly tlsSkipVerify: pulumi.Output<boolean | undefined>;
     /**
@@ -82,7 +85,10 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["tagIds"] = state?.tagIds;
             resourceInputs["teamAccessPolicies"] = state?.teamAccessPolicies;
+            resourceInputs["tlsCaCert"] = state?.tlsCaCert;
+            resourceInputs["tlsCert"] = state?.tlsCert;
             resourceInputs["tlsEnabled"] = state?.tlsEnabled;
+            resourceInputs["tlsKey"] = state?.tlsKey;
             resourceInputs["tlsSkipClientVerify"] = state?.tlsSkipClientVerify;
             resourceInputs["tlsSkipVerify"] = state?.tlsSkipVerify;
             resourceInputs["type"] = state?.type;
@@ -101,7 +107,10 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["tagIds"] = args?.tagIds;
             resourceInputs["teamAccessPolicies"] = args?.teamAccessPolicies;
+            resourceInputs["tlsCaCert"] = args?.tlsCaCert ? pulumi.secret(args.tlsCaCert) : undefined;
+            resourceInputs["tlsCert"] = args?.tlsCert ? pulumi.secret(args.tlsCert) : undefined;
             resourceInputs["tlsEnabled"] = args?.tlsEnabled;
+            resourceInputs["tlsKey"] = args?.tlsKey ? pulumi.secret(args.tlsKey) : undefined;
             resourceInputs["tlsSkipClientVerify"] = args?.tlsSkipClientVerify;
             resourceInputs["tlsSkipVerify"] = args?.tlsSkipVerify;
             resourceInputs["type"] = args?.type;
@@ -110,6 +119,8 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["edgeKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["tlsCaCert", "tlsCert", "tlsKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Environment.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
@@ -135,7 +146,10 @@ export interface EnvironmentState {
      * Map of team IDs to role IDs (e.g. teamID > roleID)
      */
     teamAccessPolicies?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    tlsCaCert?: pulumi.Input<string>;
+    tlsCert?: pulumi.Input<string>;
     tlsEnabled?: pulumi.Input<boolean>;
+    tlsKey?: pulumi.Input<string>;
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**
@@ -167,7 +181,10 @@ export interface EnvironmentArgs {
      * Map of team IDs to role IDs (e.g. teamID > roleID)
      */
     teamAccessPolicies?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    tlsCaCert?: pulumi.Input<string>;
+    tlsCert?: pulumi.Input<string>;
     tlsEnabled?: pulumi.Input<boolean>;
+    tlsKey?: pulumi.Input<string>;
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**

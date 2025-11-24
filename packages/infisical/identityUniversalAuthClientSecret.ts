@@ -41,7 +41,7 @@ export class IdentityUniversalAuthClientSecret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
-     * The UTC timestamp of the created at.
+     * The UTC timestamp of the created at date.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export interface IdentityUniversalAuthClientSecretState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * The UTC timestamp of the created at.
+     * The UTC timestamp of the created at date.
      */
     createdAt?: pulumi.Input<string>;
     /**
