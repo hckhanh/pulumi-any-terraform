@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
           filter: tree:0
       - name: Setup toolchains
-        uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3.5.0
+        uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
       - name: Setup Socket Firewall
         uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
         with:
