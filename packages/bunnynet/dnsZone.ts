@@ -37,6 +37,30 @@ export class DnsZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dnsZoneId: pulumi.Output<number>;
     /**
+     * The DNSSEC algorithm.
+     */
+    declare public /*out*/ readonly dnssecAlgorithm: pulumi.Output<number>;
+    /**
+     * The DNSSEC digest.
+     */
+    declare public /*out*/ readonly dnssecDigest: pulumi.Output<string>;
+    /**
+     * The DNSSEC digest type.
+     */
+    declare public /*out*/ readonly dnssecDigestType: pulumi.Output<number>;
+    /**
+     * Indicates whether DNSSEC is enabled.
+     */
+    declare public readonly dnssecEnabled: pulumi.Output<boolean>;
+    /**
+     * The DNSSEC flags.
+     */
+    declare public /*out*/ readonly dnssecFlags: pulumi.Output<number>;
+    /**
+     * The DNSSEC key tag.
+     */
+    declare public /*out*/ readonly dnssecKeytag: pulumi.Output<number>;
+    /**
      * The domain name for the DNS zone.
      */
     declare public readonly domain: pulumi.Output<string>;
@@ -83,6 +107,12 @@ export class DnsZone extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
             resourceInputs["dnsZoneId"] = state?.dnsZoneId;
+            resourceInputs["dnssecAlgorithm"] = state?.dnssecAlgorithm;
+            resourceInputs["dnssecDigest"] = state?.dnssecDigest;
+            resourceInputs["dnssecDigestType"] = state?.dnssecDigestType;
+            resourceInputs["dnssecEnabled"] = state?.dnssecEnabled;
+            resourceInputs["dnssecFlags"] = state?.dnssecFlags;
+            resourceInputs["dnssecKeytag"] = state?.dnssecKeytag;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["logAnonymized"] = state?.logAnonymized;
             resourceInputs["logAnonymizedStyle"] = state?.logAnonymizedStyle;
@@ -96,6 +126,7 @@ export class DnsZone extends pulumi.CustomResource {
             if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
+            resourceInputs["dnssecEnabled"] = args?.dnssecEnabled;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["logAnonymized"] = args?.logAnonymized;
             resourceInputs["logAnonymizedStyle"] = args?.logAnonymizedStyle;
@@ -105,6 +136,11 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["nameserverCustom"] = args?.nameserverCustom;
             resourceInputs["soaEmail"] = args?.soaEmail;
             resourceInputs["dnsZoneId"] = undefined /*out*/;
+            resourceInputs["dnssecAlgorithm"] = undefined /*out*/;
+            resourceInputs["dnssecDigest"] = undefined /*out*/;
+            resourceInputs["dnssecDigestType"] = undefined /*out*/;
+            resourceInputs["dnssecFlags"] = undefined /*out*/;
+            resourceInputs["dnssecKeytag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsZone.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -119,6 +155,30 @@ export interface DnsZoneState {
      * The unique identifier for the DNS zone.
      */
     dnsZoneId?: pulumi.Input<number>;
+    /**
+     * The DNSSEC algorithm.
+     */
+    dnssecAlgorithm?: pulumi.Input<number>;
+    /**
+     * The DNSSEC digest.
+     */
+    dnssecDigest?: pulumi.Input<string>;
+    /**
+     * The DNSSEC digest type.
+     */
+    dnssecDigestType?: pulumi.Input<number>;
+    /**
+     * Indicates whether DNSSEC is enabled.
+     */
+    dnssecEnabled?: pulumi.Input<boolean>;
+    /**
+     * The DNSSEC flags.
+     */
+    dnssecFlags?: pulumi.Input<number>;
+    /**
+     * The DNSSEC key tag.
+     */
+    dnssecKeytag?: pulumi.Input<number>;
     /**
      * The domain name for the DNS zone.
      */
@@ -157,6 +217,10 @@ export interface DnsZoneState {
  * The set of arguments for constructing a DnsZone resource.
  */
 export interface DnsZoneArgs {
+    /**
+     * Indicates whether DNSSEC is enabled.
+     */
+    dnssecEnabled?: pulumi.Input<boolean>;
     /**
      * The domain name for the DNS zone.
      */

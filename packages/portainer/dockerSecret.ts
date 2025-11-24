@@ -43,6 +43,7 @@ export class DockerSecret extends pulumi.CustomResource {
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
     declare public readonly templating: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -66,6 +67,7 @@ export class DockerSecret extends pulumi.CustomResource {
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["resourceControlId"] = state?.resourceControlId;
             resourceInputs["templating"] = state?.templating;
         } else {
             const args = argsOrState as DockerSecretArgs | undefined;
@@ -81,6 +83,7 @@ export class DockerSecret extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["templating"] = args?.templating;
+            resourceInputs["resourceControlId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["data", "dataWo"] };
@@ -104,6 +107,7 @@ export interface DockerSecretState {
     endpointId?: pulumi.Input<number>;
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
+    resourceControlId?: pulumi.Input<number>;
     templating?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 

@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 export function getDnsZone(args: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("bunnynet:index/getDnsZone:getDnsZone", {
+        "dnssecEnabled": args.dnssecEnabled,
         "domain": args.domain,
     }, opts, utilities.getPackage());
 }
@@ -15,6 +16,7 @@ export function getDnsZone(args: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneArgs {
+    dnssecEnabled?: boolean;
     domain: string;
 }
 
@@ -22,6 +24,12 @@ export interface GetDnsZoneArgs {
  * A collection of values returned by getDnsZone.
  */
 export interface GetDnsZoneResult {
+    readonly dnssecAlgorithm: number;
+    readonly dnssecDigest: string;
+    readonly dnssecDigestType: number;
+    readonly dnssecEnabled?: boolean;
+    readonly dnssecFlags: number;
+    readonly dnssecKeytag: number;
     readonly domain: string;
     readonly id: number;
     readonly logAnonymized: boolean;
@@ -35,6 +43,7 @@ export interface GetDnsZoneResult {
 export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("bunnynet:index/getDnsZone:getDnsZone", {
+        "dnssecEnabled": args.dnssecEnabled,
         "domain": args.domain,
     }, opts, utilities.getPackage());
 }
@@ -43,5 +52,6 @@ export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneOutputArgs {
+    dnssecEnabled?: pulumi.Input<boolean>;
     domain: pulumi.Input<string>;
 }
