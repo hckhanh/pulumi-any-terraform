@@ -105,7 +105,7 @@ async function getLatestGitHubRelease(repoUrl) {
 
     return {
       version: version || null,
-      changelog: data.body || null,
+      changelog: data.body?.trim().replace(/#\d+/g, `${repoPath}$&`) || null,
     }
   } catch (error) {
     console.error(`Error fetching GitHub release from ${repoUrl}:`, error)
@@ -428,6 +428,8 @@ async function main() {
       const changesetsDir = path.join(process.cwd(), '.changeset')
 
       for (const update of updates) {
+        console.log('changelog', `"${update.changelog}"`)
+
         // Create changeset message
         let changesetMessage = update.changelog
           ? update.changelog
