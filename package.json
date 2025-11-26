@@ -21,7 +21,7 @@
     "@types/node": "24.10.1",
     "nx": "22.1.1",
     "prettier": "3.6.2",
-    "syncpack": "14.0.0-alpha.27"
+    "syncpack": "14.0.0-alpha.28"
   },
   "keywords": [
     "pulumi",
