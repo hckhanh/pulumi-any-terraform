@@ -1,5 +1,20 @@
 ## 1.15.0 (2025-10-29)
 
+## 1.17.0
+
+### Minor Changes
+
+- 5823858: ## **Release v1.17.0**
+
+  ## 🚀**Highlights**
+
+  This release introduces two major new features:
+  - **Full ResourceControl support for Docker Secrets** (discussion portainer/terraform-provider-portainer#71)
+  - **Extension of `portainer_environment` with TLS configuration parameters**
+    (`TLSCACertFile`, `TLSCertFile`, `TLSKeyFile`) – (discussion portainer/terraform-provider-portainer#70)
+
+  It also includes several fixes and stability improvements + added portainer_resource_control also to daily e2e tests.
+
 ## 1.16.1
 
 ### Patch Changes
