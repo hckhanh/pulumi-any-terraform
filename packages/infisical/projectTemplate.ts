@@ -41,7 +41,7 @@ export class ProjectTemplate extends pulumi.CustomResource {
     /**
      * The environments for the project template
      */
-    declare public readonly environments: pulumi.Output<outputs.ProjectTemplateEnvironment[] | undefined>;
+    declare public readonly environments: pulumi.Output<outputs.ProjectTemplateEnvironment[]>;
     /**
      * The name of the project template
      */

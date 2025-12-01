@@ -53,11 +53,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "parameterization": {
       "name": "teamcity",
-      "version": "0.0.85",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuODUifX0="
+      "version": "0.0.86",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuODYifX0="
     }
   }
 }

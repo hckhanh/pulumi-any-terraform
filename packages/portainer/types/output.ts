@@ -171,14 +171,30 @@ export interface SettingsOauthSettings {
     clientId: string;
     clientSecret: string;
     defaultTeamId: number;
+    hideInternalAuth: boolean;
     kubeSecretKeys: number[];
     logoutUri: string;
+    microsoftTenantId: string;
     oauthAutoCreateUsers: boolean;
+    oauthAutoMapTeamMemberships: boolean;
     redirectUri: string;
     resourceUri: string;
     scopes: string;
     sso: boolean;
+    teamMemberships?: outputs.SettingsOauthSettingsTeamMemberships;
     userIdentifier: string;
+}
+
+export interface SettingsOauthSettingsTeamMemberships {
+    adminAutoPopulate: boolean;
+    adminGroupClaimsRegexLists: string[];
+    oauthClaimMappings?: outputs.SettingsOauthSettingsTeamMembershipsOauthClaimMapping[];
+    oauthClaimName: string;
+}
+
+export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
+    claimValRegex: string;
+    team: number;
 }
 
 export interface StackEnv {

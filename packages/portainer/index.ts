@@ -368,6 +368,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserAdminArgs, UserAdminState } from "./userAdmin";
+export type UserAdmin = import("./userAdmin").UserAdmin;
+export const UserAdmin: typeof import("./userAdmin").UserAdmin = null as any;
+utilities.lazyLoad(exports, ["UserAdmin"], () => require("./userAdmin"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -536,6 +541,8 @@ const _module = {
                 return new Tls(name, <any>undefined, { urn })
             case "portainer:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "portainer:index/userAdmin:UserAdmin":
+                return new UserAdmin(name, <any>undefined, { urn })
             case "portainer:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             case "portainer:index/webhookExecute:WebhookExecute":
@@ -617,6 +624,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/team", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/teamMembership", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/tls", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/user", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/userAdmin", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhookExecute", _module)
 pulumi.runtime.registerResourcePackage("portainer", {

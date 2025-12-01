@@ -110,12 +110,12 @@ export async function getPackage() : Promise<string | undefined> {
 			const monitor = runtime.getMonitor();
 			const params = new resproto.Parameterization();
 			params.setName("logtail");
-			params.setVersion("0.6.4");
-			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIwLjYuNCJ9fQ=="), c => c.charCodeAt(0)));
+			params.setVersion("0.7.1");
+			params.setValue(Uint8Array.from(atob("eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIwLjcuMSJ9fQ=="), c => c.charCodeAt(0)));
 
 			const req = new resproto.RegisterPackageRequest();
 			req.setName("terraform-provider");
-			req.setVersion("0.8.0");
+			req.setVersion("1.0.2");
 			req.setDownloadUrl("");
 			req.setParameterization(params);
 			const resp : any = await new Promise((resolve, reject) => {

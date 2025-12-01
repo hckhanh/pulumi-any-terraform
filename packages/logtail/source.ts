@@ -39,28 +39,23 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id,
-     * secret_access_key) are required.
+     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
     declare public readonly customBucket: pulumi.Output<outputs.SourceCustomBucket | undefined>;
     /**
-     * Data region or private cluster name to create the source in. Permitted values for most plans are: `us_east`, `us_west`,
-     * `germany`, `singapore`.
+     * Data region or private cluster name to create the source in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`usWest`" pulumi-lang-dotnet="`UsWest`" pulumi-lang-go="`usWest`" pulumi-lang-python="`us_west`" pulumi-lang-yaml="`usWest`" pulumi-lang-java="`usWest`">`us_west`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
     declare public readonly dataRegion: pulumi.Output<string>;
     /**
-     * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for
-     * your specific source platform for details.
+     * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for your specific source platform for details.
      */
     declare public /*out*/ readonly ingestingHost: pulumi.Output<string>;
     /**
-     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's
-     * usage quota and you want to prioritize some sources over others).
+     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's usage quota and you want to prioritize some sources over others).
      */
     declare public readonly ingestingPaused: pulumi.Output<boolean>;
     /**
-     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID:
-     * {message_json.pid} {level} {message}"
+     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
     declare public readonly liveTailPattern: pulumi.Output<string>;
     /**
@@ -76,13 +71,56 @@ export class Source extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
-     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
-     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
-     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
-     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
-     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
+     *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
+     *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
+     *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
+     *     - <span pulumi-lang-nodejs="`awsFargate`" pulumi-lang-dotnet="`AwsFargate`" pulumi-lang-go="`awsFargate`" pulumi-lang-python="`aws_fargate`" pulumi-lang-yaml="`awsFargate`" pulumi-lang-java="`awsFargate`">`aws_fargate`</span>
+     *     - <span pulumi-lang-nodejs="`azureLogs`" pulumi-lang-dotnet="`AzureLogs`" pulumi-lang-go="`azureLogs`" pulumi-lang-python="`azure_logs`" pulumi-lang-yaml="`azureLogs`" pulumi-lang-java="`azureLogs`">`azure_logs`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareLogpush`" pulumi-lang-dotnet="`CloudflareLogpush`" pulumi-lang-go="`cloudflareLogpush`" pulumi-lang-python="`cloudflare_logpush`" pulumi-lang-yaml="`cloudflareLogpush`" pulumi-lang-java="`cloudflareLogpush`">`cloudflare_logpush`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareWorker`" pulumi-lang-dotnet="`CloudflareWorker`" pulumi-lang-go="`cloudflareWorker`" pulumi-lang-python="`cloudflare_worker`" pulumi-lang-yaml="`cloudflareWorker`" pulumi-lang-java="`cloudflareWorker`">`cloudflare_worker`</span>
+     *     - <span pulumi-lang-nodejs="`datadogAgent`" pulumi-lang-dotnet="`DatadogAgent`" pulumi-lang-go="`datadogAgent`" pulumi-lang-python="`datadog_agent`" pulumi-lang-yaml="`datadogAgent`" pulumi-lang-java="`datadogAgent`">`datadog_agent`</span>
+     *     - <span pulumi-lang-nodejs="`digitalocean`" pulumi-lang-dotnet="`Digitalocean`" pulumi-lang-go="`digitalocean`" pulumi-lang-python="`digitalocean`" pulumi-lang-yaml="`digitalocean`" pulumi-lang-java="`digitalocean`">`digitalocean`</span>
+     *     - <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>
+     *     - <span pulumi-lang-nodejs="`dokku`" pulumi-lang-dotnet="`Dokku`" pulumi-lang-go="`dokku`" pulumi-lang-python="`dokku`" pulumi-lang-yaml="`dokku`" pulumi-lang-java="`dokku`">`dokku`</span>
+     *     - <span pulumi-lang-nodejs="`dotnet`" pulumi-lang-dotnet="`Dotnet`" pulumi-lang-go="`dotnet`" pulumi-lang-python="`dotnet`" pulumi-lang-yaml="`dotnet`" pulumi-lang-java="`dotnet`">`dotnet`</span>
+     *     - <span pulumi-lang-nodejs="`elasticsearch`" pulumi-lang-dotnet="`Elasticsearch`" pulumi-lang-go="`elasticsearch`" pulumi-lang-python="`elasticsearch`" pulumi-lang-yaml="`elasticsearch`" pulumi-lang-java="`elasticsearch`">`elasticsearch`</span>
+     *     - <span pulumi-lang-nodejs="`erlang`" pulumi-lang-dotnet="`Erlang`" pulumi-lang-go="`erlang`" pulumi-lang-python="`erlang`" pulumi-lang-yaml="`erlang`" pulumi-lang-java="`erlang`">`erlang`</span>
+     *     - <span pulumi-lang-nodejs="`filebeat`" pulumi-lang-dotnet="`Filebeat`" pulumi-lang-go="`filebeat`" pulumi-lang-python="`filebeat`" pulumi-lang-yaml="`filebeat`" pulumi-lang-java="`filebeat`">`filebeat`</span>
+     *     - <span pulumi-lang-nodejs="`flights`" pulumi-lang-dotnet="`Flights`" pulumi-lang-go="`flights`" pulumi-lang-python="`flights`" pulumi-lang-yaml="`flights`" pulumi-lang-java="`flights`">`flights`</span>
+     *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
+     *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
+     *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
+     *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
+     *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
+     *     - <span pulumi-lang-nodejs="`heroku`" pulumi-lang-dotnet="`Heroku`" pulumi-lang-go="`heroku`" pulumi-lang-python="`heroku`" pulumi-lang-yaml="`heroku`" pulumi-lang-java="`heroku`">`heroku`</span>
+     *     - <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>
+     *     - <span pulumi-lang-nodejs="`java`" pulumi-lang-dotnet="`Java`" pulumi-lang-go="`java`" pulumi-lang-python="`java`" pulumi-lang-yaml="`java`" pulumi-lang-java="`java`">`java`</span>
+     *     - <span pulumi-lang-nodejs="`javascript`" pulumi-lang-dotnet="`Javascript`" pulumi-lang-go="`javascript`" pulumi-lang-python="`javascript`" pulumi-lang-yaml="`javascript`" pulumi-lang-java="`javascript`">`javascript`</span>
+     *     - <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>
+     *     - <span pulumi-lang-nodejs="`logstash`" pulumi-lang-dotnet="`Logstash`" pulumi-lang-go="`logstash`" pulumi-lang-python="`logstash`" pulumi-lang-yaml="`logstash`" pulumi-lang-java="`logstash`">`logstash`</span>
+     *     - <span pulumi-lang-nodejs="`minio`" pulumi-lang-dotnet="`Minio`" pulumi-lang-go="`minio`" pulumi-lang-python="`minio`" pulumi-lang-yaml="`minio`" pulumi-lang-java="`minio`">`minio`</span>
+     *     - <span pulumi-lang-nodejs="`mongodb`" pulumi-lang-dotnet="`Mongodb`" pulumi-lang-go="`mongodb`" pulumi-lang-python="`mongodb`" pulumi-lang-yaml="`mongodb`" pulumi-lang-java="`mongodb`">`mongodb`</span>
+     *     - <span pulumi-lang-nodejs="`mysql`" pulumi-lang-dotnet="`Mysql`" pulumi-lang-go="`mysql`" pulumi-lang-python="`mysql`" pulumi-lang-yaml="`mysql`" pulumi-lang-java="`mysql`">`mysql`</span>
+     *     - <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`">`nginx`</span>
+     *     - <span pulumi-lang-nodejs="`openTelemetry`" pulumi-lang-dotnet="`OpenTelemetry`" pulumi-lang-go="`openTelemetry`" pulumi-lang-python="`open_telemetry`" pulumi-lang-yaml="`openTelemetry`" pulumi-lang-java="`openTelemetry`">`open_telemetry`</span>
+     *     - <span pulumi-lang-nodejs="`php`" pulumi-lang-dotnet="`Php`" pulumi-lang-go="`php`" pulumi-lang-python="`php`" pulumi-lang-yaml="`php`" pulumi-lang-java="`php`">`php`</span>
+     *     - <span pulumi-lang-nodejs="`postgresql`" pulumi-lang-dotnet="`Postgresql`" pulumi-lang-go="`postgresql`" pulumi-lang-python="`postgresql`" pulumi-lang-yaml="`postgresql`" pulumi-lang-java="`postgresql`">`postgresql`</span>
+     *     - <span pulumi-lang-nodejs="`prometheus`" pulumi-lang-dotnet="`Prometheus`" pulumi-lang-go="`prometheus`" pulumi-lang-python="`prometheus`" pulumi-lang-yaml="`prometheus`" pulumi-lang-java="`prometheus`">`prometheus`</span>
+     *     - <span pulumi-lang-nodejs="`prometheusScrape`" pulumi-lang-dotnet="`PrometheusScrape`" pulumi-lang-go="`prometheusScrape`" pulumi-lang-python="`prometheus_scrape`" pulumi-lang-yaml="`prometheusScrape`" pulumi-lang-java="`prometheusScrape`">`prometheus_scrape`</span>
+     *     - <span pulumi-lang-nodejs="`python`" pulumi-lang-dotnet="`Python`" pulumi-lang-go="`python`" pulumi-lang-python="`python`" pulumi-lang-yaml="`python`" pulumi-lang-java="`python`">`python`</span>
+     *     - <span pulumi-lang-nodejs="`rabbitmq`" pulumi-lang-dotnet="`Rabbitmq`" pulumi-lang-go="`rabbitmq`" pulumi-lang-python="`rabbitmq`" pulumi-lang-yaml="`rabbitmq`" pulumi-lang-java="`rabbitmq`">`rabbitmq`</span>
+     *     - <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>
+     *     - <span pulumi-lang-nodejs="`render`" pulumi-lang-dotnet="`Render`" pulumi-lang-go="`render`" pulumi-lang-python="`render`" pulumi-lang-yaml="`render`" pulumi-lang-java="`render`">`render`</span>
+     *     - <span pulumi-lang-nodejs="`rsyslog`" pulumi-lang-dotnet="`Rsyslog`" pulumi-lang-go="`rsyslog`" pulumi-lang-python="`rsyslog`" pulumi-lang-yaml="`rsyslog`" pulumi-lang-java="`rsyslog`">`rsyslog`</span>
+     *     - <span pulumi-lang-nodejs="`ruby`" pulumi-lang-dotnet="`Ruby`" pulumi-lang-go="`ruby`" pulumi-lang-python="`ruby`" pulumi-lang-yaml="`ruby`" pulumi-lang-java="`ruby`">`ruby`</span>
+     *     - `syslog-ng`
+     *     - <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`">`traefik`</span>
+     *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
+     *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
+     *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
      */
     declare public readonly platform: pulumi.Output<string>;
     /**
@@ -98,7 +136,7 @@ export class Source extends pulumi.CustomResource {
      */
     declare public readonly scrapeRequestBasicAuthUser: pulumi.Output<string | undefined>;
     /**
-     * An array of request headers, each containing `name` and `value` fields.
+     * An array of request headers, each containing <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> fields.
      */
     declare public readonly scrapeRequestHeaders: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
@@ -126,8 +164,7 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The VRL code that's used to transform events. Read more about [VRL
-     * transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * The VRL code that's used to transform events. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     declare public readonly vrlTransformation: pulumi.Output<string | undefined>;
 
@@ -208,28 +245,23 @@ export interface SourceState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id,
-     * secret_access_key) are required.
+     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
     customBucket?: pulumi.Input<inputs.SourceCustomBucket>;
     /**
-     * Data region or private cluster name to create the source in. Permitted values for most plans are: `us_east`, `us_west`,
-     * `germany`, `singapore`.
+     * Data region or private cluster name to create the source in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`usWest`" pulumi-lang-dotnet="`UsWest`" pulumi-lang-go="`usWest`" pulumi-lang-python="`us_west`" pulumi-lang-yaml="`usWest`" pulumi-lang-java="`usWest`">`us_west`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
     dataRegion?: pulumi.Input<string>;
     /**
-     * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for
-     * your specific source platform for details.
+     * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for your specific source platform for details.
      */
     ingestingHost?: pulumi.Input<string>;
     /**
-     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's
-     * usage quota and you want to prioritize some sources over others).
+     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's usage quota and you want to prioritize some sources over others).
      */
     ingestingPaused?: pulumi.Input<boolean>;
     /**
-     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID:
-     * {message_json.pid} {level} {message}"
+     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
     liveTailPattern?: pulumi.Input<string>;
     /**
@@ -245,13 +277,56 @@ export interface SourceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
-     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
-     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
-     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
-     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
-     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
+     *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
+     *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
+     *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
+     *     - <span pulumi-lang-nodejs="`awsFargate`" pulumi-lang-dotnet="`AwsFargate`" pulumi-lang-go="`awsFargate`" pulumi-lang-python="`aws_fargate`" pulumi-lang-yaml="`awsFargate`" pulumi-lang-java="`awsFargate`">`aws_fargate`</span>
+     *     - <span pulumi-lang-nodejs="`azureLogs`" pulumi-lang-dotnet="`AzureLogs`" pulumi-lang-go="`azureLogs`" pulumi-lang-python="`azure_logs`" pulumi-lang-yaml="`azureLogs`" pulumi-lang-java="`azureLogs`">`azure_logs`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareLogpush`" pulumi-lang-dotnet="`CloudflareLogpush`" pulumi-lang-go="`cloudflareLogpush`" pulumi-lang-python="`cloudflare_logpush`" pulumi-lang-yaml="`cloudflareLogpush`" pulumi-lang-java="`cloudflareLogpush`">`cloudflare_logpush`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareWorker`" pulumi-lang-dotnet="`CloudflareWorker`" pulumi-lang-go="`cloudflareWorker`" pulumi-lang-python="`cloudflare_worker`" pulumi-lang-yaml="`cloudflareWorker`" pulumi-lang-java="`cloudflareWorker`">`cloudflare_worker`</span>
+     *     - <span pulumi-lang-nodejs="`datadogAgent`" pulumi-lang-dotnet="`DatadogAgent`" pulumi-lang-go="`datadogAgent`" pulumi-lang-python="`datadog_agent`" pulumi-lang-yaml="`datadogAgent`" pulumi-lang-java="`datadogAgent`">`datadog_agent`</span>
+     *     - <span pulumi-lang-nodejs="`digitalocean`" pulumi-lang-dotnet="`Digitalocean`" pulumi-lang-go="`digitalocean`" pulumi-lang-python="`digitalocean`" pulumi-lang-yaml="`digitalocean`" pulumi-lang-java="`digitalocean`">`digitalocean`</span>
+     *     - <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>
+     *     - <span pulumi-lang-nodejs="`dokku`" pulumi-lang-dotnet="`Dokku`" pulumi-lang-go="`dokku`" pulumi-lang-python="`dokku`" pulumi-lang-yaml="`dokku`" pulumi-lang-java="`dokku`">`dokku`</span>
+     *     - <span pulumi-lang-nodejs="`dotnet`" pulumi-lang-dotnet="`Dotnet`" pulumi-lang-go="`dotnet`" pulumi-lang-python="`dotnet`" pulumi-lang-yaml="`dotnet`" pulumi-lang-java="`dotnet`">`dotnet`</span>
+     *     - <span pulumi-lang-nodejs="`elasticsearch`" pulumi-lang-dotnet="`Elasticsearch`" pulumi-lang-go="`elasticsearch`" pulumi-lang-python="`elasticsearch`" pulumi-lang-yaml="`elasticsearch`" pulumi-lang-java="`elasticsearch`">`elasticsearch`</span>
+     *     - <span pulumi-lang-nodejs="`erlang`" pulumi-lang-dotnet="`Erlang`" pulumi-lang-go="`erlang`" pulumi-lang-python="`erlang`" pulumi-lang-yaml="`erlang`" pulumi-lang-java="`erlang`">`erlang`</span>
+     *     - <span pulumi-lang-nodejs="`filebeat`" pulumi-lang-dotnet="`Filebeat`" pulumi-lang-go="`filebeat`" pulumi-lang-python="`filebeat`" pulumi-lang-yaml="`filebeat`" pulumi-lang-java="`filebeat`">`filebeat`</span>
+     *     - <span pulumi-lang-nodejs="`flights`" pulumi-lang-dotnet="`Flights`" pulumi-lang-go="`flights`" pulumi-lang-python="`flights`" pulumi-lang-yaml="`flights`" pulumi-lang-java="`flights`">`flights`</span>
+     *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
+     *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
+     *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
+     *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
+     *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
+     *     - <span pulumi-lang-nodejs="`heroku`" pulumi-lang-dotnet="`Heroku`" pulumi-lang-go="`heroku`" pulumi-lang-python="`heroku`" pulumi-lang-yaml="`heroku`" pulumi-lang-java="`heroku`">`heroku`</span>
+     *     - <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>
+     *     - <span pulumi-lang-nodejs="`java`" pulumi-lang-dotnet="`Java`" pulumi-lang-go="`java`" pulumi-lang-python="`java`" pulumi-lang-yaml="`java`" pulumi-lang-java="`java`">`java`</span>
+     *     - <span pulumi-lang-nodejs="`javascript`" pulumi-lang-dotnet="`Javascript`" pulumi-lang-go="`javascript`" pulumi-lang-python="`javascript`" pulumi-lang-yaml="`javascript`" pulumi-lang-java="`javascript`">`javascript`</span>
+     *     - <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>
+     *     - <span pulumi-lang-nodejs="`logstash`" pulumi-lang-dotnet="`Logstash`" pulumi-lang-go="`logstash`" pulumi-lang-python="`logstash`" pulumi-lang-yaml="`logstash`" pulumi-lang-java="`logstash`">`logstash`</span>
+     *     - <span pulumi-lang-nodejs="`minio`" pulumi-lang-dotnet="`Minio`" pulumi-lang-go="`minio`" pulumi-lang-python="`minio`" pulumi-lang-yaml="`minio`" pulumi-lang-java="`minio`">`minio`</span>
+     *     - <span pulumi-lang-nodejs="`mongodb`" pulumi-lang-dotnet="`Mongodb`" pulumi-lang-go="`mongodb`" pulumi-lang-python="`mongodb`" pulumi-lang-yaml="`mongodb`" pulumi-lang-java="`mongodb`">`mongodb`</span>
+     *     - <span pulumi-lang-nodejs="`mysql`" pulumi-lang-dotnet="`Mysql`" pulumi-lang-go="`mysql`" pulumi-lang-python="`mysql`" pulumi-lang-yaml="`mysql`" pulumi-lang-java="`mysql`">`mysql`</span>
+     *     - <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`">`nginx`</span>
+     *     - <span pulumi-lang-nodejs="`openTelemetry`" pulumi-lang-dotnet="`OpenTelemetry`" pulumi-lang-go="`openTelemetry`" pulumi-lang-python="`open_telemetry`" pulumi-lang-yaml="`openTelemetry`" pulumi-lang-java="`openTelemetry`">`open_telemetry`</span>
+     *     - <span pulumi-lang-nodejs="`php`" pulumi-lang-dotnet="`Php`" pulumi-lang-go="`php`" pulumi-lang-python="`php`" pulumi-lang-yaml="`php`" pulumi-lang-java="`php`">`php`</span>
+     *     - <span pulumi-lang-nodejs="`postgresql`" pulumi-lang-dotnet="`Postgresql`" pulumi-lang-go="`postgresql`" pulumi-lang-python="`postgresql`" pulumi-lang-yaml="`postgresql`" pulumi-lang-java="`postgresql`">`postgresql`</span>
+     *     - <span pulumi-lang-nodejs="`prometheus`" pulumi-lang-dotnet="`Prometheus`" pulumi-lang-go="`prometheus`" pulumi-lang-python="`prometheus`" pulumi-lang-yaml="`prometheus`" pulumi-lang-java="`prometheus`">`prometheus`</span>
+     *     - <span pulumi-lang-nodejs="`prometheusScrape`" pulumi-lang-dotnet="`PrometheusScrape`" pulumi-lang-go="`prometheusScrape`" pulumi-lang-python="`prometheus_scrape`" pulumi-lang-yaml="`prometheusScrape`" pulumi-lang-java="`prometheusScrape`">`prometheus_scrape`</span>
+     *     - <span pulumi-lang-nodejs="`python`" pulumi-lang-dotnet="`Python`" pulumi-lang-go="`python`" pulumi-lang-python="`python`" pulumi-lang-yaml="`python`" pulumi-lang-java="`python`">`python`</span>
+     *     - <span pulumi-lang-nodejs="`rabbitmq`" pulumi-lang-dotnet="`Rabbitmq`" pulumi-lang-go="`rabbitmq`" pulumi-lang-python="`rabbitmq`" pulumi-lang-yaml="`rabbitmq`" pulumi-lang-java="`rabbitmq`">`rabbitmq`</span>
+     *     - <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>
+     *     - <span pulumi-lang-nodejs="`render`" pulumi-lang-dotnet="`Render`" pulumi-lang-go="`render`" pulumi-lang-python="`render`" pulumi-lang-yaml="`render`" pulumi-lang-java="`render`">`render`</span>
+     *     - <span pulumi-lang-nodejs="`rsyslog`" pulumi-lang-dotnet="`Rsyslog`" pulumi-lang-go="`rsyslog`" pulumi-lang-python="`rsyslog`" pulumi-lang-yaml="`rsyslog`" pulumi-lang-java="`rsyslog`">`rsyslog`</span>
+     *     - <span pulumi-lang-nodejs="`ruby`" pulumi-lang-dotnet="`Ruby`" pulumi-lang-go="`ruby`" pulumi-lang-python="`ruby`" pulumi-lang-yaml="`ruby`" pulumi-lang-java="`ruby`">`ruby`</span>
+     *     - `syslog-ng`
+     *     - <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`">`traefik`</span>
+     *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
+     *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
+     *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
      */
     platform?: pulumi.Input<string>;
     /**
@@ -267,7 +342,7 @@ export interface SourceState {
      */
     scrapeRequestBasicAuthUser?: pulumi.Input<string>;
     /**
-     * An array of request headers, each containing `name` and `value` fields.
+     * An array of request headers, each containing <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> fields.
      */
     scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
@@ -295,8 +370,7 @@ export interface SourceState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The VRL code that's used to transform events. Read more about [VRL
-     * transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * The VRL code that's used to transform events. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformation?: pulumi.Input<string>;
 }
@@ -306,23 +380,19 @@ export interface SourceState {
  */
 export interface SourceArgs {
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id,
-     * secret_access_key) are required.
+     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
     customBucket?: pulumi.Input<inputs.SourceCustomBucket>;
     /**
-     * Data region or private cluster name to create the source in. Permitted values for most plans are: `us_east`, `us_west`,
-     * `germany`, `singapore`.
+     * Data region or private cluster name to create the source in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`usWest`" pulumi-lang-dotnet="`UsWest`" pulumi-lang-go="`usWest`" pulumi-lang-python="`us_west`" pulumi-lang-yaml="`usWest`" pulumi-lang-java="`usWest`">`us_west`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
     dataRegion?: pulumi.Input<string>;
     /**
-     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's
-     * usage quota and you want to prioritize some sources over others).
+     * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's usage quota and you want to prioritize some sources over others).
      */
     ingestingPaused?: pulumi.Input<boolean>;
     /**
-     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID:
-     * {message_json.pid} {level} {message}"
+     * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
     liveTailPattern?: pulumi.Input<string>;
     /**
@@ -338,13 +408,56 @@ export interface SourceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value
-     * later. Valid values are: - `apache2` - `aws_cloudwatch` - `aws_ecs` - `aws_elb` - `aws_fargate` - `azure_logs` -
-     * `cloudflare_logpush` - `cloudflare_worker` - `datadog_agent` - `digitalocean` - `docker` - `dokku` - `dotnet` -
-     * `elasticsearch` - `erlang` - `filebeat` - `flights` - `fluentbit` - `fluentd` - `fly_io` - `go` - `google_cloud_pubsub`
-     * - `haproxy` - `heroku` - `http` - `java` - `javascript` - `kubernetes` - `logstash` - `minio` - `mongodb` - `mysql` -
-     * `nginx` - `open_telemetry` - `php` - `postgresql` - `prometheus` - `prometheus_scrape` - `python` - `rabbitmq` - `redis`
-     * - `render` - `rsyslog` - `ruby` - `syslog-ng` - `traefik` - `ubuntu` - `vector` - `vercel_integration`
+     * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
+     *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
+     *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
+     *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
+     *     - <span pulumi-lang-nodejs="`awsFargate`" pulumi-lang-dotnet="`AwsFargate`" pulumi-lang-go="`awsFargate`" pulumi-lang-python="`aws_fargate`" pulumi-lang-yaml="`awsFargate`" pulumi-lang-java="`awsFargate`">`aws_fargate`</span>
+     *     - <span pulumi-lang-nodejs="`azureLogs`" pulumi-lang-dotnet="`AzureLogs`" pulumi-lang-go="`azureLogs`" pulumi-lang-python="`azure_logs`" pulumi-lang-yaml="`azureLogs`" pulumi-lang-java="`azureLogs`">`azure_logs`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareLogpush`" pulumi-lang-dotnet="`CloudflareLogpush`" pulumi-lang-go="`cloudflareLogpush`" pulumi-lang-python="`cloudflare_logpush`" pulumi-lang-yaml="`cloudflareLogpush`" pulumi-lang-java="`cloudflareLogpush`">`cloudflare_logpush`</span>
+     *     - <span pulumi-lang-nodejs="`cloudflareWorker`" pulumi-lang-dotnet="`CloudflareWorker`" pulumi-lang-go="`cloudflareWorker`" pulumi-lang-python="`cloudflare_worker`" pulumi-lang-yaml="`cloudflareWorker`" pulumi-lang-java="`cloudflareWorker`">`cloudflare_worker`</span>
+     *     - <span pulumi-lang-nodejs="`datadogAgent`" pulumi-lang-dotnet="`DatadogAgent`" pulumi-lang-go="`datadogAgent`" pulumi-lang-python="`datadog_agent`" pulumi-lang-yaml="`datadogAgent`" pulumi-lang-java="`datadogAgent`">`datadog_agent`</span>
+     *     - <span pulumi-lang-nodejs="`digitalocean`" pulumi-lang-dotnet="`Digitalocean`" pulumi-lang-go="`digitalocean`" pulumi-lang-python="`digitalocean`" pulumi-lang-yaml="`digitalocean`" pulumi-lang-java="`digitalocean`">`digitalocean`</span>
+     *     - <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>
+     *     - <span pulumi-lang-nodejs="`dokku`" pulumi-lang-dotnet="`Dokku`" pulumi-lang-go="`dokku`" pulumi-lang-python="`dokku`" pulumi-lang-yaml="`dokku`" pulumi-lang-java="`dokku`">`dokku`</span>
+     *     - <span pulumi-lang-nodejs="`dotnet`" pulumi-lang-dotnet="`Dotnet`" pulumi-lang-go="`dotnet`" pulumi-lang-python="`dotnet`" pulumi-lang-yaml="`dotnet`" pulumi-lang-java="`dotnet`">`dotnet`</span>
+     *     - <span pulumi-lang-nodejs="`elasticsearch`" pulumi-lang-dotnet="`Elasticsearch`" pulumi-lang-go="`elasticsearch`" pulumi-lang-python="`elasticsearch`" pulumi-lang-yaml="`elasticsearch`" pulumi-lang-java="`elasticsearch`">`elasticsearch`</span>
+     *     - <span pulumi-lang-nodejs="`erlang`" pulumi-lang-dotnet="`Erlang`" pulumi-lang-go="`erlang`" pulumi-lang-python="`erlang`" pulumi-lang-yaml="`erlang`" pulumi-lang-java="`erlang`">`erlang`</span>
+     *     - <span pulumi-lang-nodejs="`filebeat`" pulumi-lang-dotnet="`Filebeat`" pulumi-lang-go="`filebeat`" pulumi-lang-python="`filebeat`" pulumi-lang-yaml="`filebeat`" pulumi-lang-java="`filebeat`">`filebeat`</span>
+     *     - <span pulumi-lang-nodejs="`flights`" pulumi-lang-dotnet="`Flights`" pulumi-lang-go="`flights`" pulumi-lang-python="`flights`" pulumi-lang-yaml="`flights`" pulumi-lang-java="`flights`">`flights`</span>
+     *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
+     *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
+     *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
+     *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
+     *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
+     *     - <span pulumi-lang-nodejs="`heroku`" pulumi-lang-dotnet="`Heroku`" pulumi-lang-go="`heroku`" pulumi-lang-python="`heroku`" pulumi-lang-yaml="`heroku`" pulumi-lang-java="`heroku`">`heroku`</span>
+     *     - <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>
+     *     - <span pulumi-lang-nodejs="`java`" pulumi-lang-dotnet="`Java`" pulumi-lang-go="`java`" pulumi-lang-python="`java`" pulumi-lang-yaml="`java`" pulumi-lang-java="`java`">`java`</span>
+     *     - <span pulumi-lang-nodejs="`javascript`" pulumi-lang-dotnet="`Javascript`" pulumi-lang-go="`javascript`" pulumi-lang-python="`javascript`" pulumi-lang-yaml="`javascript`" pulumi-lang-java="`javascript`">`javascript`</span>
+     *     - <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>
+     *     - <span pulumi-lang-nodejs="`logstash`" pulumi-lang-dotnet="`Logstash`" pulumi-lang-go="`logstash`" pulumi-lang-python="`logstash`" pulumi-lang-yaml="`logstash`" pulumi-lang-java="`logstash`">`logstash`</span>
+     *     - <span pulumi-lang-nodejs="`minio`" pulumi-lang-dotnet="`Minio`" pulumi-lang-go="`minio`" pulumi-lang-python="`minio`" pulumi-lang-yaml="`minio`" pulumi-lang-java="`minio`">`minio`</span>
+     *     - <span pulumi-lang-nodejs="`mongodb`" pulumi-lang-dotnet="`Mongodb`" pulumi-lang-go="`mongodb`" pulumi-lang-python="`mongodb`" pulumi-lang-yaml="`mongodb`" pulumi-lang-java="`mongodb`">`mongodb`</span>
+     *     - <span pulumi-lang-nodejs="`mysql`" pulumi-lang-dotnet="`Mysql`" pulumi-lang-go="`mysql`" pulumi-lang-python="`mysql`" pulumi-lang-yaml="`mysql`" pulumi-lang-java="`mysql`">`mysql`</span>
+     *     - <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`">`nginx`</span>
+     *     - <span pulumi-lang-nodejs="`openTelemetry`" pulumi-lang-dotnet="`OpenTelemetry`" pulumi-lang-go="`openTelemetry`" pulumi-lang-python="`open_telemetry`" pulumi-lang-yaml="`openTelemetry`" pulumi-lang-java="`openTelemetry`">`open_telemetry`</span>
+     *     - <span pulumi-lang-nodejs="`php`" pulumi-lang-dotnet="`Php`" pulumi-lang-go="`php`" pulumi-lang-python="`php`" pulumi-lang-yaml="`php`" pulumi-lang-java="`php`">`php`</span>
+     *     - <span pulumi-lang-nodejs="`postgresql`" pulumi-lang-dotnet="`Postgresql`" pulumi-lang-go="`postgresql`" pulumi-lang-python="`postgresql`" pulumi-lang-yaml="`postgresql`" pulumi-lang-java="`postgresql`">`postgresql`</span>
+     *     - <span pulumi-lang-nodejs="`prometheus`" pulumi-lang-dotnet="`Prometheus`" pulumi-lang-go="`prometheus`" pulumi-lang-python="`prometheus`" pulumi-lang-yaml="`prometheus`" pulumi-lang-java="`prometheus`">`prometheus`</span>
+     *     - <span pulumi-lang-nodejs="`prometheusScrape`" pulumi-lang-dotnet="`PrometheusScrape`" pulumi-lang-go="`prometheusScrape`" pulumi-lang-python="`prometheus_scrape`" pulumi-lang-yaml="`prometheusScrape`" pulumi-lang-java="`prometheusScrape`">`prometheus_scrape`</span>
+     *     - <span pulumi-lang-nodejs="`python`" pulumi-lang-dotnet="`Python`" pulumi-lang-go="`python`" pulumi-lang-python="`python`" pulumi-lang-yaml="`python`" pulumi-lang-java="`python`">`python`</span>
+     *     - <span pulumi-lang-nodejs="`rabbitmq`" pulumi-lang-dotnet="`Rabbitmq`" pulumi-lang-go="`rabbitmq`" pulumi-lang-python="`rabbitmq`" pulumi-lang-yaml="`rabbitmq`" pulumi-lang-java="`rabbitmq`">`rabbitmq`</span>
+     *     - <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>
+     *     - <span pulumi-lang-nodejs="`render`" pulumi-lang-dotnet="`Render`" pulumi-lang-go="`render`" pulumi-lang-python="`render`" pulumi-lang-yaml="`render`" pulumi-lang-java="`render`">`render`</span>
+     *     - <span pulumi-lang-nodejs="`rsyslog`" pulumi-lang-dotnet="`Rsyslog`" pulumi-lang-go="`rsyslog`" pulumi-lang-python="`rsyslog`" pulumi-lang-yaml="`rsyslog`" pulumi-lang-java="`rsyslog`">`rsyslog`</span>
+     *     - <span pulumi-lang-nodejs="`ruby`" pulumi-lang-dotnet="`Ruby`" pulumi-lang-go="`ruby`" pulumi-lang-python="`ruby`" pulumi-lang-yaml="`ruby`" pulumi-lang-java="`ruby`">`ruby`</span>
+     *     - `syslog-ng`
+     *     - <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`">`traefik`</span>
+     *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
+     *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
+     *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
      */
     platform: pulumi.Input<string>;
     /**
@@ -360,7 +473,7 @@ export interface SourceArgs {
      */
     scrapeRequestBasicAuthUser?: pulumi.Input<string>;
     /**
-     * An array of request headers, each containing `name` and `value` fields.
+     * An array of request headers, each containing <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> fields.
      */
     scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
@@ -376,8 +489,7 @@ export interface SourceArgs {
      */
     teamName?: pulumi.Input<string>;
     /**
-     * The VRL code that's used to transform events. Read more about [VRL
-     * transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * The VRL code that's used to transform events. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformation?: pulumi.Input<string>;
 }

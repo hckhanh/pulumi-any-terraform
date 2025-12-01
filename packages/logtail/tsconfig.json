@@ -15,9 +15,18 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "connection.ts",
+        "errorsApplication.ts",
+        "errorsApplicationGroup.ts",
+        "getConnection.ts",
+        "getErrorsApplication.ts",
+        "getErrorsApplicationGroup.ts",
         "getMetric.ts",
         "getSource.ts",
         "getSourceGroup.ts",
+        "getWarehouseEmbedding.ts",
+        "getWarehouseSource.ts",
+        "getWarehouseSourceGroup.ts",
         "index.ts",
         "metric.ts",
         "provider.ts",
@@ -26,6 +35,10 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "warehouseEmbedding.ts",
+        "warehouseSource.ts",
+        "warehouseSourceGroup.ts",
+        "warehouseTimeSeries.ts"
     ]
 }

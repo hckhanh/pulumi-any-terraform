@@ -26,9 +26,7 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See
-     * https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your
-     * team.
+     * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your team.
      */
     declare public readonly apiToken: pulumi.Output<string>;
 
@@ -53,6 +51,16 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<{[key: string]: any}> {
+        const result: pulumi.Output<Provider.TerraformConfigResult> = pulumi.runtime.call("pulumi:providers:logtail/terraformConfig", {
+            "__self__": this,
+        }, this, utilities.getPackage());
+        return result.result;
+    }
 }
 
 /**
@@ -60,9 +68,17 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See
-     * https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your
-     * team.
+     * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your team.
      */
     apiToken: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

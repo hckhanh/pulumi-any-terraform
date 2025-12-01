@@ -5,7 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ConnectionDataSource {
+    dataSources: pulumi.Input<pulumi.Input<string>[]>;
+    sourceId: pulumi.Input<number>;
+    sourceName: pulumi.Input<string>;
+    teamName: pulumi.Input<string>;
+}
+
 export interface SourceCustomBucket {
+    /**
+     * Access key ID
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * Bucket endpoint
+     */
+    endpoint: pulumi.Input<string>;
+    /**
+     * Whether we should keep data in the bucket after the retention period.
+     */
+    keepDataAfterRetention?: pulumi.Input<boolean>;
+    /**
+     * Bucket name
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Secret access key
+     */
+    secretAccessKey: pulumi.Input<string>;
+}
+
+export interface WarehouseSourceCustomBucket {
     /**
      * Access key ID
      */

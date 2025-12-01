@@ -8,9 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("logtail");
 
 /**
- * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See
- * https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your
- * team.
+ * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your team.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {

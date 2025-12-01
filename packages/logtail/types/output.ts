@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ConnectionDataSource {
+    dataSources: string[];
+    sourceId: number;
+    sourceName: string;
+    teamName: string;
+}
+
+export interface GetConnectionDataSource {
+    dataSources: string[];
+    sourceId: number;
+    sourceName: string;
+    teamName: string;
+}
+
 export interface GetSourceCustomBucket {
     accessKeyId: string;
     endpoint: string;
@@ -13,7 +27,38 @@ export interface GetSourceCustomBucket {
     secretAccessKey: string;
 }
 
+export interface GetWarehouseSourceCustomBucket {
+    accessKeyId: string;
+    endpoint: string;
+    keepDataAfterRetention: boolean;
+    name: string;
+    secretAccessKey: string;
+}
+
 export interface SourceCustomBucket {
+    /**
+     * Access key ID
+     */
+    accessKeyId: string;
+    /**
+     * Bucket endpoint
+     */
+    endpoint: string;
+    /**
+     * Whether we should keep data in the bucket after the retention period.
+     */
+    keepDataAfterRetention?: boolean;
+    /**
+     * Bucket name
+     */
+    name: string;
+    /**
+     * Secret access key
+     */
+    secretAccessKey: string;
+}
+
+export interface WarehouseSourceCustomBucket {
     /**
      * Access key ID
      */

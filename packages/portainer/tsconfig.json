@@ -92,6 +92,7 @@
         "types/input.ts",
         "types/output.ts",
         "user.ts",
+        "userAdmin.ts",
         "utilities.ts",
         "webhook.ts",
         "webhookExecute.ts"

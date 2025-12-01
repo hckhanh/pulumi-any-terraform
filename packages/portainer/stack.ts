@@ -81,6 +81,7 @@ export class Stack extends pulumi.CustomResource {
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
     declare public readonly repositoryWoVersion: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
     declare public readonly stackFileContent: pulumi.Output<string | undefined>;
     declare public readonly stackFilePath: pulumi.Output<string | undefined>;
     declare public readonly stackId: pulumi.Output<string>;
@@ -137,6 +138,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["repositoryUsername"] = state?.repositoryUsername;
             resourceInputs["repositoryUsernameWo"] = state?.repositoryUsernameWo;
             resourceInputs["repositoryWoVersion"] = state?.repositoryWoVersion;
+            resourceInputs["resourceControlId"] = state?.resourceControlId;
             resourceInputs["stackFileContent"] = state?.stackFileContent;
             resourceInputs["stackFilePath"] = state?.stackFilePath;
             resourceInputs["stackId"] = state?.stackId;
@@ -189,6 +191,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["swarmId"] = args?.swarmId;
             resourceInputs["tlsskipVerify"] = args?.tlsskipVerify;
             resourceInputs["updateInterval"] = args?.updateInterval;
+            resourceInputs["resourceControlId"] = undefined /*out*/;
             resourceInputs["webhookId"] = undefined /*out*/;
             resourceInputs["webhookUrl"] = undefined /*out*/;
         }
@@ -250,6 +253,7 @@ export interface StackState {
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
     repositoryWoVersion?: pulumi.Input<number>;
+    resourceControlId?: pulumi.Input<number>;
     stackFileContent?: pulumi.Input<string>;
     stackFilePath?: pulumi.Input<string>;
     stackId?: pulumi.Input<string>;

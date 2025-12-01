@@ -171,14 +171,30 @@ export interface SettingsOauthSettings {
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
     defaultTeamId?: pulumi.Input<number>;
+    hideInternalAuth?: pulumi.Input<boolean>;
     kubeSecretKeys?: pulumi.Input<pulumi.Input<number>[]>;
     logoutUri?: pulumi.Input<string>;
+    microsoftTenantId?: pulumi.Input<string>;
     oauthAutoCreateUsers?: pulumi.Input<boolean>;
+    oauthAutoMapTeamMemberships?: pulumi.Input<boolean>;
     redirectUri?: pulumi.Input<string>;
     resourceUri?: pulumi.Input<string>;
     scopes?: pulumi.Input<string>;
     sso?: pulumi.Input<boolean>;
+    teamMemberships?: pulumi.Input<inputs.SettingsOauthSettingsTeamMemberships>;
     userIdentifier?: pulumi.Input<string>;
+}
+
+export interface SettingsOauthSettingsTeamMemberships {
+    adminAutoPopulate?: pulumi.Input<boolean>;
+    adminGroupClaimsRegexLists?: pulumi.Input<pulumi.Input<string>[]>;
+    oauthClaimMappings?: pulumi.Input<pulumi.Input<inputs.SettingsOauthSettingsTeamMembershipsOauthClaimMapping>[]>;
+    oauthClaimName?: pulumi.Input<string>;
+}
+
+export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
+    claimValRegex?: pulumi.Input<string>;
+    team?: pulumi.Input<number>;
 }
 
 export interface StackEnv {

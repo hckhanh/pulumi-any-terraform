@@ -61,6 +61,10 @@ export class DnsZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dnssecKeytag: pulumi.Output<number>;
     /**
+     * The DNSSEC public key.
+     */
+    declare public /*out*/ readonly dnssecPublicKey: pulumi.Output<string>;
+    /**
      * The domain name for the DNS zone.
      */
     declare public readonly domain: pulumi.Output<string>;
@@ -113,6 +117,7 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["dnssecEnabled"] = state?.dnssecEnabled;
             resourceInputs["dnssecFlags"] = state?.dnssecFlags;
             resourceInputs["dnssecKeytag"] = state?.dnssecKeytag;
+            resourceInputs["dnssecPublicKey"] = state?.dnssecPublicKey;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["logAnonymized"] = state?.logAnonymized;
             resourceInputs["logAnonymizedStyle"] = state?.logAnonymizedStyle;
@@ -141,6 +146,7 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["dnssecDigestType"] = undefined /*out*/;
             resourceInputs["dnssecFlags"] = undefined /*out*/;
             resourceInputs["dnssecKeytag"] = undefined /*out*/;
+            resourceInputs["dnssecPublicKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsZone.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -179,6 +185,10 @@ export interface DnsZoneState {
      * The DNSSEC key tag.
      */
     dnssecKeytag?: pulumi.Input<number>;
+    /**
+     * The DNSSEC public key.
+     */
+    dnssecPublicKey?: pulumi.Input<string>;
     /**
      * The domain name for the DNS zone.
      */

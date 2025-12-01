@@ -41,6 +41,7 @@ export class DockerVolume extends pulumi.CustomResource {
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
 
     /**
      * Create a DockerVolume resource with the given unique name, arguments, and options.
@@ -62,6 +63,7 @@ export class DockerVolume extends pulumi.CustomResource {
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["resourceControlId"] = state?.resourceControlId;
         } else {
             const args = argsOrState as DockerVolumeArgs | undefined;
             if (args?.endpointId === undefined && !opts.urn) {
@@ -74,6 +76,7 @@ export class DockerVolume extends pulumi.CustomResource {
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["resourceControlId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DockerVolume.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -91,6 +94,7 @@ export interface DockerVolumeState {
     endpointId?: pulumi.Input<number>;
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
+    resourceControlId?: pulumi.Input<number>;
 }
 
 /**

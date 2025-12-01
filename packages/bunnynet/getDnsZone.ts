@@ -30,6 +30,7 @@ export interface GetDnsZoneResult {
     readonly dnssecEnabled?: boolean;
     readonly dnssecFlags: number;
     readonly dnssecKeytag: number;
+    readonly dnssecPublicKey: string;
     readonly domain: string;
     readonly id: number;
     readonly logAnonymized: boolean;

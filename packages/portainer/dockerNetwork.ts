@@ -50,6 +50,7 @@ export class DockerNetwork extends pulumi.CustomResource {
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
     declare public readonly scope: pulumi.Output<string | undefined>;
     declare public readonly swarmNodeId: pulumi.Output<string | undefined>;
 
@@ -82,6 +83,7 @@ export class DockerNetwork extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
+            resourceInputs["resourceControlId"] = state?.resourceControlId;
             resourceInputs["scope"] = state?.scope;
             resourceInputs["swarmNodeId"] = state?.swarmNodeId;
         } else {
@@ -107,6 +109,7 @@ export class DockerNetwork extends pulumi.CustomResource {
             resourceInputs["options"] = args?.options;
             resourceInputs["scope"] = args?.scope;
             resourceInputs["swarmNodeId"] = args?.swarmNodeId;
+            resourceInputs["resourceControlId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DockerNetwork.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -133,6 +136,7 @@ export interface DockerNetworkState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceControlId?: pulumi.Input<number>;
     scope?: pulumi.Input<string>;
     swarmNodeId?: pulumi.Input<string>;
 }

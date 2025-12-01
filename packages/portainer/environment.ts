@@ -42,6 +42,10 @@ export class Environment extends pulumi.CustomResource {
     declare public readonly groupId: pulumi.Output<number | undefined>;
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Public IP/URL used by Portainer for Published Ports (maps to PublicURL).
+     */
+    declare public readonly publicIp: pulumi.Output<string | undefined>;
+    /**
      * List of tag IDs to assign to the environment.
      */
     declare public readonly tagIds: pulumi.Output<number[] | undefined>;
@@ -56,7 +60,7 @@ export class Environment extends pulumi.CustomResource {
     declare public readonly tlsSkipClientVerify: pulumi.Output<boolean | undefined>;
     declare public readonly tlsSkipVerify: pulumi.Output<boolean | undefined>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
      */
     declare public readonly type: pulumi.Output<number>;
     /**
@@ -83,6 +87,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["environmentId"] = state?.environmentId;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["publicIp"] = state?.publicIp;
             resourceInputs["tagIds"] = state?.tagIds;
             resourceInputs["teamAccessPolicies"] = state?.teamAccessPolicies;
             resourceInputs["tlsCaCert"] = state?.tlsCaCert;
@@ -105,6 +110,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["environmentId"] = args?.environmentId;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["name"] = args?.name;
+            resourceInputs["publicIp"] = args?.publicIp;
             resourceInputs["tagIds"] = args?.tagIds;
             resourceInputs["teamAccessPolicies"] = args?.teamAccessPolicies;
             resourceInputs["tlsCaCert"] = args?.tlsCaCert ? pulumi.secret(args.tlsCaCert) : undefined;
@@ -139,6 +145,10 @@ export interface EnvironmentState {
     groupId?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     /**
+     * Public IP/URL used by Portainer for Published Ports (maps to PublicURL).
+     */
+    publicIp?: pulumi.Input<string>;
+    /**
      * List of tag IDs to assign to the environment.
      */
     tagIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -153,7 +163,7 @@ export interface EnvironmentState {
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
      */
     type?: pulumi.Input<number>;
     /**
@@ -174,6 +184,10 @@ export interface EnvironmentArgs {
     groupId?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     /**
+     * Public IP/URL used by Portainer for Published Ports (maps to PublicURL).
+     */
+    publicIp?: pulumi.Input<string>;
+    /**
      * List of tag IDs to assign to the environment.
      */
     tagIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -188,7 +202,7 @@ export interface EnvironmentArgs {
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
      */
     type: pulumi.Input<number>;
     /**
