@@ -1,5 +1,12 @@
 ## 0.16.0-0 (2025-10-28)
 
+## 0.16.2
+
+### Patch Changes
+
+- 5823858: Update pulumi-infisical from 0.15.46 to 0.15.47
+- 4a3c735: Update pulumi-infisical from 0.15.47 to 0.15.50
+
 ## 0.16.1
 
 ### Patch Changes
