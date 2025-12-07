@@ -1,5 +1,14 @@
 ## 0.16.0-0 (2025-10-28)
 
+## 0.16.3
+
+### Patch Changes
+
+- 3671817: ## What's Changed
+  - Chore: Update the subcategory for "Integration" resources to "Native Integrations" by @victorvhs017 in https://github.com/Infisical/terraform-provider-infisical/pull/220
+
+  **Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.15.52...v0.15.53
+
 ## 0.16.2
 
 ### Patch Changes

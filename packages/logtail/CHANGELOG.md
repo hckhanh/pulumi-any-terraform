@@ -1,5 +1,17 @@
 ## 0.6.8 (2025-10-08)
 
+## 0.7.1
+
+### Patch Changes
+
+- 3671817: ## What's Changed
+  - Add missing team_id to source output by @nathansamson in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/47
+
+  ## New Contributors
+  - @nathansamson made their first contribution in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/47
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v0.7.2...v0.7.3
+
 ## 0.7.0
 
 ### Minor Changes
