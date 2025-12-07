@@ -1,5 +1,18 @@
 ## 1.15.0 (2025-10-29)
 
+## 1.17.1
+
+### Patch Changes
+
+- 3671817: ### Release v1.20.1
+
+  #### Fix/Patch/Update
+  - Fixes terraform destroy failures when a stack's ResourceControl is deleted
+    automatically by Portainer.
+  - portainer_resource_control now gracefully handles 403/404 responses on delete,
+    e.g. when the parent stack has already removed the ResourceControl.
+  - This improves compatibility for Environment Admins and GitOps/stack workflows.
+
 ## 1.17.0
 
 ### Minor Changes

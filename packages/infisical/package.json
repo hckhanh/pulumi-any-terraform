@@ -1,7 +1,7 @@
 {
   "name": "pulumi-infisical",
   "description": "A Pulumi provider for managing Infisical secrets management platform, dynamically bridged from the Terraform Infisical provider with support for projects, secrets, identity management, integrations, and access controls.",
-  "version": "0.16.2",
+  "version": "0.16.3",
   "homepage": "https://pulumi.khanh.id",
   "repository": {
     "type": "git",
