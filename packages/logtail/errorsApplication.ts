@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ErrorsApplication extends pulumi.CustomResource {
@@ -40,6 +42,10 @@ export class ErrorsApplication extends pulumi.CustomResource {
      * The time when this application was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     */
+    declare public readonly customBucket: pulumi.Output<outputs.ErrorsApplicationCustomBucket | undefined>;
     /**
      * Data region or cluster name where application data will be stored. If omitted, the default data region for your team will be used.
      */
@@ -96,6 +102,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             const state = argsOrState as ErrorsApplicationState | undefined;
             resourceInputs["applicationGroupId"] = state?.applicationGroupId;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customBucket"] = state?.customBucket;
             resourceInputs["dataRegion"] = state?.dataRegion;
             resourceInputs["errorsRetention"] = state?.errorsRetention;
             resourceInputs["ingestingHost"] = state?.ingestingHost;
@@ -112,6 +119,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'platform'");
             }
             resourceInputs["applicationGroupId"] = args?.applicationGroupId;
+            resourceInputs["customBucket"] = args?.customBucket;
             resourceInputs["dataRegion"] = args?.dataRegion;
             resourceInputs["errorsRetention"] = args?.errorsRetention;
             resourceInputs["ingestingPaused"] = args?.ingestingPaused;
@@ -141,6 +149,10 @@ export interface ErrorsApplicationState {
      * The time when this application was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     */
+    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket>;
     /**
      * Data region or cluster name where application data will be stored. If omitted, the default data region for your team will be used.
      */
@@ -191,6 +203,10 @@ export interface ErrorsApplicationArgs {
      * ID of the application group this application belongs to.
      */
     applicationGroupId?: pulumi.Input<number>;
+    /**
+     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     */
+    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket>;
     /**
      * Data region or cluster name where application data will be stored. If omitted, the default data region for your team will be used.
      */

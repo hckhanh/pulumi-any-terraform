@@ -49,10 +49,6 @@ export class Metric extends pulumi.CustomResource {
      */
     declare public readonly sqlExpression: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
-     */
-    declare public readonly teamName: pulumi.Output<string | undefined>;
-    /**
      * The type of the metric.
      */
     declare public readonly type: pulumi.Output<string>;
@@ -74,7 +70,6 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["sourceId"] = state?.sourceId;
             resourceInputs["sqlExpression"] = state?.sqlExpression;
-            resourceInputs["teamName"] = state?.teamName;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as MetricArgs | undefined;
@@ -94,7 +89,6 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["sourceId"] = args?.sourceId;
             resourceInputs["sqlExpression"] = args?.sqlExpression;
-            resourceInputs["teamName"] = args?.teamName;
             resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -123,10 +117,6 @@ export interface MetricState {
      */
     sqlExpression?: pulumi.Input<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
-     */
-    teamName?: pulumi.Input<string>;
-    /**
      * The type of the metric.
      */
     type?: pulumi.Input<string>;
@@ -152,10 +142,6 @@ export interface MetricArgs {
      * The SQL expression used to extract the metric value.
      */
     sqlExpression: pulumi.Input<string>;
-    /**
-     * Used to specify the team the resource should be created in when using global tokens.
-     */
-    teamName?: pulumi.Input<string>;
     /**
      * The type of the metric.
      */

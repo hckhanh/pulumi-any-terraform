@@ -42,6 +42,7 @@ export interface GetSourceResult {
     readonly scrapeUrls: string[];
     readonly sourceGroupId: number;
     readonly tableName: string;
+    readonly teamId: string;
     readonly teamName: string;
     readonly token: string;
     readonly updatedAt: string;

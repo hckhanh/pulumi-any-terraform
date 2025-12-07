@@ -12,6 +12,29 @@ export interface ConnectionDataSource {
     teamName: pulumi.Input<string>;
 }
 
+export interface ErrorsApplicationCustomBucket {
+    /**
+     * Access key ID
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * Bucket endpoint
+     */
+    endpoint: pulumi.Input<string>;
+    /**
+     * Whether we should keep data in the bucket after the retention period.
+     */
+    keepDataAfterRetention?: pulumi.Input<boolean>;
+    /**
+     * Bucket name
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Secret access key
+     */
+    secretAccessKey: pulumi.Input<string>;
+}
+
 export interface SourceCustomBucket {
     /**
      * Access key ID

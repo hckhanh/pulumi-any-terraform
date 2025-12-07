@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getErrorsApplication(args: GetErrorsApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetErrorsApplicationResult> {
@@ -24,6 +26,7 @@ export interface GetErrorsApplicationArgs {
 export interface GetErrorsApplicationResult {
     readonly applicationGroupId: number;
     readonly createdAt: string;
+    readonly customBuckets: outputs.GetErrorsApplicationCustomBucket[];
     readonly dataRegion: string;
     readonly errorsRetention: number;
     readonly id: string;

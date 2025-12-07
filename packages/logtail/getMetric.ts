@@ -29,7 +29,6 @@ export interface GetMetricResult {
     readonly name: string;
     readonly sourceId: string;
     readonly sqlExpression: string;
-    readonly teamName: string;
     readonly type: string;
 }
 export function getMetricOutput(args: GetMetricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetricResult> {

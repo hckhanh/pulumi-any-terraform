@@ -12,11 +12,42 @@ export interface ConnectionDataSource {
     teamName: string;
 }
 
+export interface ErrorsApplicationCustomBucket {
+    /**
+     * Access key ID
+     */
+    accessKeyId: string;
+    /**
+     * Bucket endpoint
+     */
+    endpoint: string;
+    /**
+     * Whether we should keep data in the bucket after the retention period.
+     */
+    keepDataAfterRetention?: boolean;
+    /**
+     * Bucket name
+     */
+    name: string;
+    /**
+     * Secret access key
+     */
+    secretAccessKey: string;
+}
+
 export interface GetConnectionDataSource {
     dataSources: string[];
     sourceId: number;
     sourceName: string;
     teamName: string;
+}
+
+export interface GetErrorsApplicationCustomBucket {
+    accessKeyId: string;
+    endpoint: string;
+    keepDataAfterRetention: boolean;
+    name: string;
+    secretAccessKey: string;
 }
 
 export interface GetSourceCustomBucket {

@@ -152,6 +152,10 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly tableName: pulumi.Output<string>;
     /**
+     * The team ID for this resource. Can be used with<span pulumi-lang-nodejs=" tableName " pulumi-lang-dotnet=" TableName " pulumi-lang-go=" tableName " pulumi-lang-python=" table_name " pulumi-lang-yaml=" tableName " pulumi-lang-java=" tableName "> table_name </span>in [Query API](https://betterstack.com/docs/logs/query-api/connect-remotely/).
+     */
+    declare public /*out*/ readonly teamId: pulumi.Output<string>;
+    /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
@@ -198,6 +202,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["scrapeUrls"] = state?.scrapeUrls;
             resourceInputs["sourceGroupId"] = state?.sourceGroupId;
             resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["teamId"] = state?.teamId;
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["token"] = state?.token;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -226,6 +231,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
+            resourceInputs["teamId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -357,6 +363,10 @@ export interface SourceState {
      * The table name generated for this source.
      */
     tableName?: pulumi.Input<string>;
+    /**
+     * The team ID for this resource. Can be used with<span pulumi-lang-nodejs=" tableName " pulumi-lang-dotnet=" TableName " pulumi-lang-go=" tableName " pulumi-lang-python=" table_name " pulumi-lang-yaml=" tableName " pulumi-lang-java=" tableName "> table_name </span>in [Query API](https://betterstack.com/docs/logs/query-api/connect-remotely/).
+     */
+    teamId?: pulumi.Input<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */

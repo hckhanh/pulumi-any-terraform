@@ -57,8 +57,8 @@
     "version": "1.0.2",
     "parameterization": {
       "name": "logtail",
-      "version": "0.7.1",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIwLjcuMSJ9fQ=="
+      "version": "0.7.3",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIwLjcuMyJ9fQ=="
     }
   }
 }
