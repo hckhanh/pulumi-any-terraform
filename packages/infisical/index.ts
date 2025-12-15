@@ -115,6 +115,11 @@ export type DynamicSecretSqlDatabase = import("./dynamicSecretSqlDatabase").Dyna
 export const DynamicSecretSqlDatabase: typeof import("./dynamicSecretSqlDatabase").DynamicSecretSqlDatabase = null as any;
 utilities.lazyLoad(exports, ["DynamicSecretSqlDatabase"], () => require("./dynamicSecretSqlDatabase"));
 
+export { ExternalKmsAwsArgs, ExternalKmsAwsState } from "./externalKmsAws";
+export type ExternalKmsAws = import("./externalKmsAws").ExternalKmsAws;
+export const ExternalKmsAws: typeof import("./externalKmsAws").ExternalKmsAws = null as any;
+utilities.lazyLoad(exports, ["ExternalKmsAws"], () => require("./externalKmsAws"));
+
 export { GetGroupsResult } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
@@ -476,6 +481,8 @@ const _module = {
                 return new DynamicSecretMongoDb(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretSqlDatabase:DynamicSecretSqlDatabase":
                 return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
+            case "infisical:index/externalKmsAws:ExternalKmsAws":
+                return new ExternalKmsAws(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "infisical:index/identity:Identity":
@@ -609,6 +616,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernete
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/externalKmsAws", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAwsAuth", _module)

@@ -34,6 +34,10 @@ export class ProjectParameter extends pulumi.CustomResource {
 
     declare public readonly name: pulumi.Output<string>;
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * Parameter type. Use 'password' to create a secure (hidden) parameter. Defaults to 'text' if omitted.
+     */
+    declare public readonly type: pulumi.Output<string>;
     declare public readonly value: pulumi.Output<string>;
 
     /**
@@ -51,6 +55,7 @@ export class ProjectParameter extends pulumi.CustomResource {
             const state = argsOrState as ProjectParameterState | undefined;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["type"] = state?.type;
             resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ProjectParameterArgs | undefined;
@@ -62,9 +67,12 @@ export class ProjectParameter extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
-            resourceInputs["value"] = args?.value;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectParameter.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
@@ -75,6 +83,10 @@ export class ProjectParameter extends pulumi.CustomResource {
 export interface ProjectParameterState {
     name?: pulumi.Input<string>;
     projectId?: pulumi.Input<string>;
+    /**
+     * Parameter type. Use 'password' to create a secure (hidden) parameter. Defaults to 'text' if omitted.
+     */
+    type?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
@@ -84,5 +96,9 @@ export interface ProjectParameterState {
 export interface ProjectParameterArgs {
     name?: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
+    /**
+     * Parameter type. Use 'password' to create a secure (hidden) parameter. Defaults to 'text' if omitted.
+     */
+    type?: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }

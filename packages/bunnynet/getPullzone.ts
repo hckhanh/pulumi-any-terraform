@@ -6,10 +6,12 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getPullzone(args: GetPullzoneArgs, opts?: pulumi.InvokeOptions): Promise<GetPullzoneResult> {
+export function getPullzone(args?: GetPullzoneArgs, opts?: pulumi.InvokeOptions): Promise<GetPullzoneResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("bunnynet:index/getPullzone:getPullzone", {
         "id": args.id,
+        "name": args.name,
         "origin": args.origin,
         "routing": args.routing,
     }, opts, utilities.getPackage());
@@ -19,7 +21,8 @@ export function getPullzone(args: GetPullzoneArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getPullzone.
  */
 export interface GetPullzoneArgs {
-    id: number;
+    id?: number;
+    name?: string;
     origin?: inputs.GetPullzoneOrigin;
     routing?: inputs.GetPullzoneRouting;
 }
@@ -53,7 +56,7 @@ export interface GetPullzoneResult {
     readonly errorpageStatuspageCode: string;
     readonly errorpageStatuspageEnabled: boolean;
     readonly errorpageWhitelabel: boolean;
-    readonly id: number;
+    readonly id?: number;
     readonly limitAfter: number;
     readonly limitBandwidth: number;
     readonly limitBurst: number;
@@ -71,7 +74,7 @@ export interface GetPullzoneResult {
     readonly logForwardToken: string;
     readonly logStorageEnabled: boolean;
     readonly logStorageZone: number;
-    readonly name: string;
+    readonly name?: string;
     readonly optimizerBurrow: boolean;
     readonly optimizerClassesForce: boolean;
     readonly optimizerDynamicImageApi: boolean;
@@ -121,10 +124,12 @@ export interface GetPullzoneResult {
     readonly websocketsEnabled: boolean;
     readonly websocketsMaxConnections: number;
 }
-export function getPullzoneOutput(args: GetPullzoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPullzoneResult> {
+export function getPullzoneOutput(args?: GetPullzoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPullzoneResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("bunnynet:index/getPullzone:getPullzone", {
         "id": args.id,
+        "name": args.name,
         "origin": args.origin,
         "routing": args.routing,
     }, opts, utilities.getPackage());
@@ -134,7 +139,8 @@ export function getPullzoneOutput(args: GetPullzoneOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getPullzone.
  */
 export interface GetPullzoneOutputArgs {
-    id: pulumi.Input<number>;
+    id?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
     origin?: pulumi.Input<inputs.GetPullzoneOriginArgs>;
     routing?: pulumi.Input<inputs.GetPullzoneRoutingArgs>;
 }

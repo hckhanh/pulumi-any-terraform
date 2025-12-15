@@ -659,6 +659,44 @@ export interface DynamicSecretSqlDatabaseMetadata {
     value: pulumi.Input<string>;
 }
 
+export interface ExternalKmsAwsConfiguration {
+    /**
+     * The AWS KMS key ID to use for the external KMS. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-aws-kms-key-id
+     */
+    awsKmsKeyId: pulumi.Input<string>;
+    /**
+     * The AWS region where the KMS key is located
+     */
+    awsRegion: pulumi.Input<string>;
+    /**
+     * The AWS credentials for the external KMS
+     */
+    credential: pulumi.Input<inputs.ExternalKmsAwsConfigurationCredential>;
+    /**
+     * The Authentication Type to use. Must be access-key or assume-role
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface ExternalKmsAwsConfigurationCredential {
+    /**
+     * The AWS Access Key ID used to authenticate requests to AWS services. Required for access-key type. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-access-key-id
+     */
+    accessKeyId?: pulumi.Input<string>;
+    /**
+     * The Amazon Resource Name (ARN) of the IAM role to assume for performing operations. Infisical will assume this role using AWS Security Token Service (STS). Required for assume-role type. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-iam-role-arn-for-role-assumption
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID of the role to assume for performing operations. Required for assume-role type. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-assume-role-external-id
+     */
+    roleExternalId?: pulumi.Input<string>;
+    /**
+     * The AWS Secret Access Key associated with the Access Key ID to authenticate requests to AWS services. Required for access-key type. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-secret-access-key
+     */
+    secretAccessKey?: pulumi.Input<string>;
+}
+
 export interface IdentityAwsAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string>;
 }

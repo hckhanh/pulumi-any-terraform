@@ -37,6 +37,7 @@
         "dynamicSecretMongoAtlas.ts",
         "dynamicSecretMongoDb.ts",
         "dynamicSecretSqlDatabase.ts",
+        "externalKmsAws.ts",
         "getGroups.ts",
         "getIdentityDetails.ts",
         "getKmsKeyPublicKey.ts",
