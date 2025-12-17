@@ -18,7 +18,7 @@
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.4",
     "@swc/helpers": "0.5.17",
-    "@types/node": "24.10.3",
+    "@types/node": "24.10.4",
     "nx": "22.2.3",
     "prettier": "3.7.4",
     "syncpack": "14.0.0-alpha.32"
