@@ -1,5 +1,11 @@
 ## 0.1.3 (2025-10-08)
 
+## 0.1.6
+
+### Patch Changes
+
+- bc65a98: Update pulumi-teamcity from 0.0.86 to 0.0.87
+
 ## 0.1.5
 
 ### Patch Changes
