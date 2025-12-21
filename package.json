@@ -12,14 +12,14 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
-    "@nx/devkit": "22.2.7",
-    "@nx/js": "22.2.7",
+    "@nx/devkit": "22.3.1",
+    "@nx/js": "22.3.1",
     "@nx/s3-cache": "5.0.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.6",
     "@swc/helpers": "0.5.17",
     "@types/node": "24.10.4",
-    "nx": "22.2.7",
+    "nx": "22.3.1",
     "prettier": "3.7.4",
     "syncpack": "14.0.0-alpha.32"
   },
