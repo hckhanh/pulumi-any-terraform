@@ -20,10 +20,25 @@ export type AppConnectionAws = import("./appConnectionAws").AppConnectionAws;
 export const AppConnectionAws: typeof import("./appConnectionAws").AppConnectionAws = null as any;
 utilities.lazyLoad(exports, ["AppConnectionAws"], () => require("./appConnectionAws"));
 
+export { AppConnectionAzureAppConfigurationArgs, AppConnectionAzureAppConfigurationState } from "./appConnectionAzureAppConfiguration";
+export type AppConnectionAzureAppConfiguration = import("./appConnectionAzureAppConfiguration").AppConnectionAzureAppConfiguration;
+export const AppConnectionAzureAppConfiguration: typeof import("./appConnectionAzureAppConfiguration").AppConnectionAzureAppConfiguration = null as any;
+utilities.lazyLoad(exports, ["AppConnectionAzureAppConfiguration"], () => require("./appConnectionAzureAppConfiguration"));
+
 export { AppConnectionAzureClientSecretsArgs, AppConnectionAzureClientSecretsState } from "./appConnectionAzureClientSecrets";
 export type AppConnectionAzureClientSecrets = import("./appConnectionAzureClientSecrets").AppConnectionAzureClientSecrets;
 export const AppConnectionAzureClientSecrets: typeof import("./appConnectionAzureClientSecrets").AppConnectionAzureClientSecrets = null as any;
 utilities.lazyLoad(exports, ["AppConnectionAzureClientSecrets"], () => require("./appConnectionAzureClientSecrets"));
+
+export { AppConnectionAzureDevopsArgs, AppConnectionAzureDevopsState } from "./appConnectionAzureDevops";
+export type AppConnectionAzureDevops = import("./appConnectionAzureDevops").AppConnectionAzureDevops;
+export const AppConnectionAzureDevops: typeof import("./appConnectionAzureDevops").AppConnectionAzureDevops = null as any;
+utilities.lazyLoad(exports, ["AppConnectionAzureDevops"], () => require("./appConnectionAzureDevops"));
+
+export { AppConnectionAzureKeyVaultArgs, AppConnectionAzureKeyVaultState } from "./appConnectionAzureKeyVault";
+export type AppConnectionAzureKeyVault = import("./appConnectionAzureKeyVault").AppConnectionAzureKeyVault;
+export const AppConnectionAzureKeyVault: typeof import("./appConnectionAzureKeyVault").AppConnectionAzureKeyVault = null as any;
+utilities.lazyLoad(exports, ["AppConnectionAzureKeyVault"], () => require("./appConnectionAzureKeyVault"));
 
 export { AppConnectionBitbucketArgs, AppConnectionBitbucketState } from "./appConnectionBitbucket";
 export type AppConnectionBitbucket = import("./appConnectionBitbucket").AppConnectionBitbucket;
@@ -443,8 +458,14 @@ const _module = {
                 return new AppConnection1password(name, <any>undefined, { urn })
             case "infisical:index/appConnectionAws:AppConnectionAws":
                 return new AppConnectionAws(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionAzureAppConfiguration:AppConnectionAzureAppConfiguration":
+                return new AppConnectionAzureAppConfiguration(name, <any>undefined, { urn })
             case "infisical:index/appConnectionAzureClientSecrets:AppConnectionAzureClientSecrets":
                 return new AppConnectionAzureClientSecrets(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionAzureDevops:AppConnectionAzureDevops":
+                return new AppConnectionAzureDevops(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionAzureKeyVault:AppConnectionAzureKeyVault":
+                return new AppConnectionAzureKeyVault(name, <any>undefined, { urn })
             case "infisical:index/appConnectionBitbucket:AppConnectionBitbucket":
                 return new AppConnectionBitbucket(name, <any>undefined, { urn })
             case "infisical:index/appConnectionCloudflare:AppConnectionCloudflare":
@@ -597,7 +618,10 @@ const _module = {
 pulumi.runtime.registerResourceModule("infisical", "index/accessApprovalPolicy", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnection1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAws", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureAppConfiguration", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClientSecrets", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureDevops", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureKeyVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionBitbucket", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflare", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)

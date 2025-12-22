@@ -44,6 +44,10 @@ export class Secret extends pulumi.CustomResource {
     declare public readonly folderPath: pulumi.Output<string>;
     declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
+     * Metadata associated with the secret as key-value pairs.
+     */
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The name of the secret
      */
     declare public readonly name: pulumi.Output<string>;
@@ -82,6 +86,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["envSlug"] = state?.envSlug;
             resourceInputs["folderPath"] = state?.folderPath;
             resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
             resourceInputs["secretReminder"] = state?.secretReminder;
             resourceInputs["tagIds"] = state?.tagIds;
@@ -99,6 +104,7 @@ export class Secret extends pulumi.CustomResource {
             }
             resourceInputs["envSlug"] = args?.envSlug;
             resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
             resourceInputs["secretReminder"] = args?.secretReminder;
             resourceInputs["tagIds"] = args?.tagIds;
@@ -128,6 +134,10 @@ export interface SecretState {
      */
     folderPath?: pulumi.Input<string>;
     lastUpdated?: pulumi.Input<string>;
+    /**
+     * Metadata associated with the secret as key-value pairs.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret
      */
@@ -164,6 +174,10 @@ export interface SecretArgs {
      * The path to the folder where the given secret resides
      */
     folderPath: pulumi.Input<string>;
+    /**
+     * Metadata associated with the secret as key-value pairs.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the secret
      */

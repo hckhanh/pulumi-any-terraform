@@ -39,7 +39,7 @@ export class SecretSyncAzureDevops extends pulumi.CustomResource {
      */
     declare public readonly autoSyncEnabled: pulumi.Output<boolean>;
     /**
-     * The ID of the azure Connection to use for syncing.
+     * The ID of the azure-devops Connection to use for syncing.
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export interface SecretSyncAzureDevopsState {
      */
     autoSyncEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the azure Connection to use for syncing.
+     * The ID of the azure-devops Connection to use for syncing.
      */
     connectionId?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface SecretSyncAzureDevopsArgs {
      */
     autoSyncEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the azure Connection to use for syncing.
+     * The ID of the azure-devops Connection to use for syncing.
      */
     connectionId: pulumi.Input<string>;
     /**

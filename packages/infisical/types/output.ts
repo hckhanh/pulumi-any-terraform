@@ -46,6 +46,21 @@ export interface AppConnectionAwsCredentials {
     secretAccessKey?: string;
 }
 
+export interface AppConnectionAzureAppConfigurationCredentials {
+    /**
+     * The Azure application (client) ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-app-configuration
+     */
+    clientId: string;
+    /**
+     * The Azure client secret. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-app-configuration
+     */
+    clientSecret: string;
+    /**
+     * The Azure Active Directory (AAD) tenant ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-app-configuration
+     */
+    tenantId: string;
+}
+
 export interface AppConnectionAzureClientSecretsCredentials {
     /**
      * The Azure application (client) ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
@@ -57,6 +72,44 @@ export interface AppConnectionAzureClientSecretsCredentials {
     clientSecret: string;
     /**
      * The Azure Active Directory (AAD) tenant ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    tenantId: string;
+}
+
+export interface AppConnectionAzureDevopsCredentials {
+    /**
+     * The Azure DevOps access token. Required for access-token method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-devops
+     */
+    accessToken?: string;
+    /**
+     * The Azure application (client) ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    clientId?: string;
+    /**
+     * The Azure client secret. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    clientSecret?: string;
+    /**
+     * The name of the Azure DevOps organization. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-devops
+     */
+    organizationName: string;
+    /**
+     * The Azure Active Directory (AAD) tenant ID. Required for client-secret method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-client-secrets
+     */
+    tenantId?: string;
+}
+
+export interface AppConnectionAzureKeyVaultCredentials {
+    /**
+     * The Azure application (client) ID. Required for key-vault method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-key-vault
+     */
+    clientId: string;
+    /**
+     * The Azure client secret. Required for key-vault method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-key-vault
+     */
+    clientSecret: string;
+    /**
+     * The Azure Active Directory (AAD) tenant ID. Required for key-vault method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/azure-key-vault
      */
     tenantId: string;
 }
