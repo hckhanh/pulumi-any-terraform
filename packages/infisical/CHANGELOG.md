@@ -1,5 +1,11 @@
 ## 0.16.0-0 (2025-10-28)
 
+## 0.16.6
+
+### Patch Changes
+
+- ec7ad1e: Update pulumi-infisical from 0.15.56 to 0.15.57
+
 ## 0.16.5
 
 ### Patch Changes
