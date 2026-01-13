@@ -21,17 +21,17 @@ A collection of dynamically bridged Pulumi providers that enable you to use any 
 
 ## 📦 Available Providers
 
-| Provider          | Package                | Description                        |
-| ----------------- | ---------------------- | ---------------------------------- |
-| **Better Uptime** | `pulumi-better-uptime` | Monitoring and incident management |
-| **Bunnynet**      | `pulumi-bunnynet`      | CDN and edge computing             |
-| **Infisical**     | `pulumi-infisical`     | Secrets management                 |
-| **Logtail**       | `pulumi-logtail`       | Log management and analytics       |
-| **Namecheap**     | `pulumi-namecheap`     | Domain and DNS management          |
-| **Portainer**     | `pulumi-portainer`     | Container management               |
-| **PostHog**       | `pulumi-posthog`       | Product analytics and feature flags|
-| **TeamCity**      | `pulumi-teamcity`      | CI/CD platform                     |
-| **Time**          | `pulumi-time`          | Time-based resources               |
+| Provider          | Package                | Description                         |
+| ----------------- | ---------------------- | ----------------------------------- |
+| **Better Uptime** | `pulumi-better-uptime` | Monitoring and incident management  |
+| **Bunnynet**      | `pulumi-bunnynet`      | CDN and edge computing              |
+| **Infisical**     | `pulumi-infisical`     | Secrets management                  |
+| **Logtail**       | `pulumi-logtail`       | Log management and analytics        |
+| **Namecheap**     | `pulumi-namecheap`     | Domain and DNS management           |
+| **Portainer**     | `pulumi-portainer`     | Container management                |
+| **PostHog**       | `pulumi-posthog`       | Product analytics and feature flags |
+| **TeamCity**      | `pulumi-teamcity`      | CI/CD platform                      |
+| **Time**          | `pulumi-time`          | Time-based resources                |
 
 ## ⚡ Quick Start
 
