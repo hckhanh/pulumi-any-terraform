@@ -24,12 +24,10 @@ jobs:
           filter: tree:0
       - name: Setup toolchains
         uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
-      - name: Setup Socket Firewall
-        uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
-        with:
-          mode: firewall
+      - name: Setup Aikido Safe Chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
-        run: sfw pnpm install
+        run: pnpm install
       - name: Setup Pulumi backend
         run: pulumi login --local
       - name: Check for updates

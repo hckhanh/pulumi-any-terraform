@@ -32,14 +32,12 @@ jobs:
           filter: tree:0
       - name: Setup toolchains
         uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
-      - name: Setup Socket Firewall
-        uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
-        with:
-          mode: firewall
+      - name: Setup Aikido Safe Chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
-        run: sfw pnpm install
+        run: pnpm install
       - name: Update npm
-        run: sfw npm install -g npm@latest
+        run: npm install -g npm@latest
       - name: Publish to npm
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
         with:
