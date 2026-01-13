@@ -67,6 +67,14 @@ export class Stack extends pulumi.CustomResource {
      * Whether to force pull latest images during stack update (default: true)
      */
     declare public readonly pullImage: pulumi.Output<boolean | undefined>;
+    /**
+     * List of registry IDs allowed for this stack.
+     */
+    declare public readonly registries: pulumi.Output<number[] | undefined>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
     declare public readonly repositoryPasswordWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
@@ -130,6 +138,8 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["namespace"] = state?.namespace;
             resourceInputs["prune"] = state?.prune;
             resourceInputs["pullImage"] = state?.pullImage;
+            resourceInputs["registries"] = state?.registries;
+            resourceInputs["repositoryGitCredentialId"] = state?.repositoryGitCredentialId;
             resourceInputs["repositoryPassword"] = state?.repositoryPassword;
             resourceInputs["repositoryPasswordWo"] = state?.repositoryPasswordWo;
             resourceInputs["repositoryReferenceName"] = state?.repositoryReferenceName;
@@ -175,6 +185,8 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["prune"] = args?.prune;
             resourceInputs["pullImage"] = args?.pullImage;
+            resourceInputs["registries"] = args?.registries;
+            resourceInputs["repositoryGitCredentialId"] = args?.repositoryGitCredentialId;
             resourceInputs["repositoryPassword"] = args?.repositoryPassword ? pulumi.secret(args.repositoryPassword) : undefined;
             resourceInputs["repositoryPasswordWo"] = args?.repositoryPasswordWo ? pulumi.secret(args.repositoryPasswordWo) : undefined;
             resourceInputs["repositoryReferenceName"] = args?.repositoryReferenceName;
@@ -239,6 +251,14 @@ export interface StackState {
      * Whether to force pull latest images during stack update (default: true)
      */
     pullImage?: pulumi.Input<boolean>;
+    /**
+     * List of registry IDs allowed for this stack.
+     */
+    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
@@ -312,6 +332,14 @@ export interface StackArgs {
      * Whether to force pull latest images during stack update (default: true)
      */
     pullImage?: pulumi.Input<boolean>;
+    /**
+     * List of registry IDs allowed for this stack.
+     */
+    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;

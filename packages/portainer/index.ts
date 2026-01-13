@@ -160,6 +160,106 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { GetCloudCredentialsArgs, GetCloudCredentialsResult, GetCloudCredentialsOutputArgs } from "./getCloudCredentials";
+export const getCloudCredentials: typeof import("./getCloudCredentials").getCloudCredentials = null as any;
+export const getCloudCredentialsOutput: typeof import("./getCloudCredentials").getCloudCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudCredentials","getCloudCredentialsOutput"], () => require("./getCloudCredentials"));
+
+export { GetCustomTemplateArgs, GetCustomTemplateResult, GetCustomTemplateOutputArgs } from "./getCustomTemplate";
+export const getCustomTemplate: typeof import("./getCustomTemplate").getCustomTemplate = null as any;
+export const getCustomTemplateOutput: typeof import("./getCustomTemplate").getCustomTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomTemplate","getCustomTemplateOutput"], () => require("./getCustomTemplate"));
+
+export { GetDockerConfigArgs, GetDockerConfigResult, GetDockerConfigOutputArgs } from "./getDockerConfig";
+export const getDockerConfig: typeof import("./getDockerConfig").getDockerConfig = null as any;
+export const getDockerConfigOutput: typeof import("./getDockerConfig").getDockerConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerConfig","getDockerConfigOutput"], () => require("./getDockerConfig"));
+
+export { GetDockerImageArgs, GetDockerImageResult, GetDockerImageOutputArgs } from "./getDockerImage";
+export const getDockerImage: typeof import("./getDockerImage").getDockerImage = null as any;
+export const getDockerImageOutput: typeof import("./getDockerImage").getDockerImageOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerImage","getDockerImageOutput"], () => require("./getDockerImage"));
+
+export { GetDockerNetworkArgs, GetDockerNetworkResult, GetDockerNetworkOutputArgs } from "./getDockerNetwork";
+export const getDockerNetwork: typeof import("./getDockerNetwork").getDockerNetwork = null as any;
+export const getDockerNetworkOutput: typeof import("./getDockerNetwork").getDockerNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerNetwork","getDockerNetworkOutput"], () => require("./getDockerNetwork"));
+
+export { GetDockerNodeArgs, GetDockerNodeResult, GetDockerNodeOutputArgs } from "./getDockerNode";
+export const getDockerNode: typeof import("./getDockerNode").getDockerNode = null as any;
+export const getDockerNodeOutput: typeof import("./getDockerNode").getDockerNodeOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerNode","getDockerNodeOutput"], () => require("./getDockerNode"));
+
+export { GetDockerSecretArgs, GetDockerSecretResult, GetDockerSecretOutputArgs } from "./getDockerSecret";
+export const getDockerSecret: typeof import("./getDockerSecret").getDockerSecret = null as any;
+export const getDockerSecretOutput: typeof import("./getDockerSecret").getDockerSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerSecret","getDockerSecretOutput"], () => require("./getDockerSecret"));
+
+export { GetDockerVolumeArgs, GetDockerVolumeResult, GetDockerVolumeOutputArgs } from "./getDockerVolume";
+export const getDockerVolume: typeof import("./getDockerVolume").getDockerVolume = null as any;
+export const getDockerVolumeOutput: typeof import("./getDockerVolume").getDockerVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerVolume","getDockerVolumeOutput"], () => require("./getDockerVolume"));
+
+export { GetEdgeConfigurationArgs, GetEdgeConfigurationResult, GetEdgeConfigurationOutputArgs } from "./getEdgeConfiguration";
+export const getEdgeConfiguration: typeof import("./getEdgeConfiguration").getEdgeConfiguration = null as any;
+export const getEdgeConfigurationOutput: typeof import("./getEdgeConfiguration").getEdgeConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeConfiguration","getEdgeConfigurationOutput"], () => require("./getEdgeConfiguration"));
+
+export { GetEdgeGroupArgs, GetEdgeGroupResult, GetEdgeGroupOutputArgs } from "./getEdgeGroup";
+export const getEdgeGroup: typeof import("./getEdgeGroup").getEdgeGroup = null as any;
+export const getEdgeGroupOutput: typeof import("./getEdgeGroup").getEdgeGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeGroup","getEdgeGroupOutput"], () => require("./getEdgeGroup"));
+
+export { GetEdgeJobArgs, GetEdgeJobResult, GetEdgeJobOutputArgs } from "./getEdgeJob";
+export const getEdgeJob: typeof import("./getEdgeJob").getEdgeJob = null as any;
+export const getEdgeJobOutput: typeof import("./getEdgeJob").getEdgeJobOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeJob","getEdgeJobOutput"], () => require("./getEdgeJob"));
+
+export { GetEdgeStackArgs, GetEdgeStackResult, GetEdgeStackOutputArgs } from "./getEdgeStack";
+export const getEdgeStack: typeof import("./getEdgeStack").getEdgeStack = null as any;
+export const getEdgeStackOutput: typeof import("./getEdgeStack").getEdgeStackOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeStack","getEdgeStackOutput"], () => require("./getEdgeStack"));
+
+export { GetEndpointGroupArgs, GetEndpointGroupResult, GetEndpointGroupOutputArgs } from "./getEndpointGroup";
+export const getEndpointGroup: typeof import("./getEndpointGroup").getEndpointGroup = null as any;
+export const getEndpointGroupOutput: typeof import("./getEndpointGroup").getEndpointGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointGroup","getEndpointGroupOutput"], () => require("./getEndpointGroup"));
+
+export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
+export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
+export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
+
+export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
+export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
+export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
+
+export { GetStackArgs, GetStackResult, GetStackOutputArgs } from "./getStack";
+export const getStack: typeof import("./getStack").getStack = null as any;
+export const getStackOutput: typeof import("./getStack").getStackOutput = null as any;
+utilities.lazyLoad(exports, ["getStack","getStackOutput"], () => require("./getStack"));
+
+export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
+export const getTag: typeof import("./getTag").getTag = null as any;
+export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
+utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
+
+export { GetTeamArgs, GetTeamResult, GetTeamOutputArgs } from "./getTeam";
+export const getTeam: typeof import("./getTeam").getTeam = null as any;
+export const getTeamOutput: typeof import("./getTeam").getTeamOutput = null as any;
+utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
+export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
+export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
+utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
+
 export { KubernetesApplicationArgs, KubernetesApplicationState } from "./kubernetesApplication";
 export type KubernetesApplication = import("./kubernetesApplication").KubernetesApplication;
 export const KubernetesApplication: typeof import("./kubernetesApplication").KubernetesApplication = null as any;
