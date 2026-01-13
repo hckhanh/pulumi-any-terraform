@@ -29,6 +29,7 @@ A collection of dynamically bridged Pulumi providers that enable you to use any 
 | **Logtail**       | `pulumi-logtail`       | Log management and analytics       |
 | **Namecheap**     | `pulumi-namecheap`     | Domain and DNS management          |
 | **Portainer**     | `pulumi-portainer`     | Container management               |
+| **PostHog**       | `pulumi-posthog`       | Product analytics and feature flags|
 | **TeamCity**      | `pulumi-teamcity`      | CI/CD platform                     |
 | **Time**          | `pulumi-time`          | Time-based resources               |
 
@@ -233,7 +234,7 @@ This project integrates with:
 
 ## 📊 Project Stats
 
-- **8 Providers** available
+- **9 Providers** available
 - **MIT Licensed** - Free and open source
 - **Active Development** - Regular updates
 - **Production Ready** - Used in real projects

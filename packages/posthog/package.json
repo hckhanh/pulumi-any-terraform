@@ -1,0 +1,63 @@
+{
+  "name": "pulumi-posthog",
+  "description": "A Pulumi provider for managing PostHog analytics, feature flags, and product insights resources, dynamically bridged from the Terraform PostHog provider with support for projects, feature flags, actions, annotations, and dashboards.",
+  "version": "1.0.1",
+  "homepage": "https://pulumi.khanh.id",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/posthog"
+  },
+  "private": false,
+  "sideEffects": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.215.0",
+    "@types/node": "24.10.4",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "posthog",
+    "analytics",
+    "feature-flags",
+    "product-analytics",
+    "event-tracking",
+    "session-recording",
+    "experiments",
+    "insights",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "1.0.0",
+    "parameterization": {
+      "name": "posthog",
+      "version": "1.0.1",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL1Bvc3RIb2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMSJ9fQ=="
+    }
+  }
+}
