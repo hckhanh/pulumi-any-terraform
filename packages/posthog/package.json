@@ -1,7 +1,7 @@
 {
   "name": "pulumi-posthog",
   "description": "A Pulumi provider for managing PostHog analytics, feature flags, and product insights resources, dynamically bridged from the Terraform PostHog provider with support for projects, feature flags, actions, annotations, and dashboards.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://pulumi.khanh.id",
   "repository": {
     "type": "git",
