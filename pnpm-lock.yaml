@@ -211,6 +211,22 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  packages/posthog:
+    dependencies:
+      async-mutex:
+        specifier: 0.5.0
+        version: 0.5.0
+    devDependencies:
+      '@pulumi/pulumi':
+        specifier: 3.215.0
+        version: 3.215.0(typescript@5.9.3)
+      '@types/node':
+        specifier: 24.10.4
+        version: 24.10.4
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
   packages/teamcity:
     dependencies:
       async-mutex:
