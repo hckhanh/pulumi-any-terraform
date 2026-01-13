@@ -12,5 +12,7 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true
     },
-    "files": []
+    "files": [
+        "index.ts"
+    ]
 }

@@ -213,7 +213,7 @@ const signupAction = new posthog.Action(
       },
     ],
   },
-  { dependsOn: [project] }
+  { dependsOn: [project] },
 )
 
 // Create a cohort of users who signed up
@@ -234,7 +234,7 @@ const signupCohort = new posthog.Cohort(
       },
     },
   },
-  { dependsOn: [signupAction] }
+  { dependsOn: [signupAction] },
 )
 
 export const projectName = project.name
