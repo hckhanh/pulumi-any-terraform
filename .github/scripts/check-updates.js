@@ -193,13 +193,7 @@ function updatePackage(
     )
     const addResult = spawnSync(
       'pulumi',
-      [
-        'package',
-        'add',
-        'terraform-provider',
-        `${namespace}/${providerName}`,
-        newVersion,
-      ],
+      ['package', 'add', 'terraform-provider', currentProvider.url, newVersion],
       {
         cwd: tempDir,
         stdio: 'pipe',
