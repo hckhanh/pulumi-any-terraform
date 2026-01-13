@@ -56,7 +56,7 @@ export interface GetPullzoneResult {
     readonly errorpageStatuspageCode: string;
     readonly errorpageStatuspageEnabled: boolean;
     readonly errorpageWhitelabel: boolean;
-    readonly id?: number;
+    readonly id: number;
     readonly limitAfter: number;
     readonly limitBandwidth: number;
     readonly limitBurst: number;
@@ -74,7 +74,7 @@ export interface GetPullzoneResult {
     readonly logForwardToken: string;
     readonly logStorageEnabled: boolean;
     readonly logStorageZone: number;
-    readonly name?: string;
+    readonly name: string;
     readonly optimizerBurrow: boolean;
     readonly optimizerClassesForce: boolean;
     readonly optimizerDynamicImageApi: boolean;
