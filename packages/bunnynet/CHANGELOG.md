@@ -1,5 +1,11 @@
 ## 0.11.0 (2025-10-28)
 
+## 0.11.4
+
+### Patch Changes
+
+- e98f561: Update pulumi-bunnynet from 0.11.4 to 0.11.5
+
 ## 0.11.3
 
 ### Patch Changes
