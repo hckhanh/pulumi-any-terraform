@@ -47,8 +47,7 @@
     "./tools/audit.ts",
     "./tools/build.ts",
     "./tools/linter.ts",
-    "./tools/prettier.ts",
-    "./tools/syncpack.ts"
+    "./tools/prettier.ts"
   ],
   "s3": {
     "region": "auto",

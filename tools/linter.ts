@@ -21,7 +21,7 @@ class LinterPlugin extends Plugin {
                 'build',
                 'prettier:check',
                 'root:syncpack:lint',
-                'syncpack:format:check',
+                'root:syncpack:format:check',
               ],
               metadata: {
                 description: 'Run all linters and checks for the project.',
@@ -29,7 +29,7 @@ class LinterPlugin extends Plugin {
               },
             },
             fix: {
-              dependsOn: ['syncpack:format', 'prettier:write'],
+              dependsOn: ['root:syncpack:format', 'prettier:write'],
               metadata: {
                 description: 'Run all auto-fixable linters for the project.',
                 technologies: ['node', 'prettier', 'typescript'],

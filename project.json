@@ -25,7 +25,7 @@
       "dependsOn": ["syncpack:format", "prettier:write"]
     },
     "syncpack:fix": {
-      "command": "pnpm syncpack fix",
+      "command": "syncpack fix",
       "inputs": ["syncpack"],
       "cache": true,
       "metadata": {
@@ -33,8 +33,30 @@
         "technologies": ["node"]
       }
     },
+    "syncpack:format": {
+      "command": "syncpack format",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "dependsOn": ["syncpack:fix"],
+      "metadata": {
+        "description": "Sort package.json fields into a predictable order and nested fields alphabetically.",
+        "technologies": ["node"]
+      }
+    },
+    "syncpack:format:check": {
+      "command": "syncpack format --check",
+      "inputs": ["syncpack"],
+      "cache": true,
+      "options": {
+        "source": "{projectRoot}/package.json"
+      },
+      "metadata": {
+        "description": "Lint formatting instead of fixing it and exit with a status code of 1 if issues are found.",
+        "technologies": ["node"]
+      }
+    },
     "syncpack:lint": {
-      "command": "pnpm syncpack lint",
+      "command": "syncpack lint",
       "inputs": ["syncpack"],
       "cache": true,
       "metadata": {
