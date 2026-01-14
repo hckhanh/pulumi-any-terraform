@@ -320,18 +320,18 @@ const conversion = new posthog.Insight("conversion", {
 
 **Solution**:
 - Ensure `queryJson` is a valid JSON string
-- Use `JSON.stringify()` to convert objects to JSON
+- Use `JSON.stringify()` to convert objects to JSON strings
 - Validate query structure matches PostHog's query schema
 
 ```typescript
-// ✅ Correct
+// ✅ Correct - use JSON.stringify()
 queryJson: JSON.stringify({
     kind: "TrendsQuery",
     series: [{ kind: "EventsNode", event: "$pageview" }],
 })
 
-// ❌ Incorrect
-queryJson: { kind: "TrendsQuery" } // Must be a string
+// ❌ Incorrect - queryJson must be a string, not an object
+queryJson: { kind: "TrendsQuery" } // This will fail
 ```
 
 ### Insight Not Showing Data

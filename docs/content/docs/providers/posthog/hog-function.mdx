@@ -349,13 +349,21 @@ const sanitize = new posthog.HogFunction("pii-removal", {
     executionOrder: 1, // Run first
     hog: `
         fun transform(event) {
-            // Remove sensitive fields
-            delete event.properties.email
-            delete event.properties.phone
-            delete event.properties.ssn
+            // Remove sensitive fields (check if they exist first)
+            if has(event.properties, 'email') {
+                delete event.properties.email
+            }
+            if has(event.properties, 'phone') {
+                delete event.properties.phone
+            }
+            if has(event.properties, 'ssn') {
+                delete event.properties.ssn
+            }
             
-            // Hash user identifiers
-            event.properties.user_id = sha256(event.properties.user_id)
+            // Hash user identifiers if present
+            if has(event.properties, 'user_id') {
+                event.properties.user_id = sha256(event.properties.user_id)
+            }
             
             return event
         }

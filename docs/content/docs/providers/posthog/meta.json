@@ -2,7 +2,7 @@
   "title": "PostHog",
   "description": "Product analytics and feature flags",
   "root": true,
-  "icon": "BarChart",
+  "icon": "Hedgehog",
   "pages": [
     "index",
     "configuration",
