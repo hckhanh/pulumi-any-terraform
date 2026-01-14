@@ -13,6 +13,15 @@
         "strict": true
     },
     "files": [
-        "index.ts"
+        "alert.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "dashboard.ts",
+        "featureFlag.ts",
+        "hogFunction.ts",
+        "index.ts",
+        "insight.ts",
+        "provider.ts",
+        "utilities.ts"
     ]
 }
