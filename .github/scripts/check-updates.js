@@ -105,7 +105,11 @@ async function getLatestGitHubRelease(repoUrl) {
 
     return {
       version: version || null,
-      changelog: data.body?.trim().replace(/#\d+/g, `${repoPath}$&`) || null,
+      changelog:
+        data.body
+          ?.trim()
+          .replace(/#\d+/g, `${repoPath}$&`)
+          .replace(/[a-f0-9]{40}/g, `${repoPath}@$&`) || null,
     }
   } catch (error) {
     console.error(`Error fetching GitHub release from ${repoUrl}:`, error)
