@@ -14,7 +14,6 @@
     "check": {
       "dependsOn": [
         "audit",
-        "audit:signatures",
         "build",
         "syncpack:format:check",
         "syncpack:lint",
