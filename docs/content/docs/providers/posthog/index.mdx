@@ -74,12 +74,12 @@ const betaFeature = new posthog.FeatureFlag("beta-feature", {
     key: "new-dashboard",
     name: "New Dashboard Beta",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: 25,
         }],
-    },
+    }),
 });
 
 // Export the feature flag key
@@ -98,12 +98,12 @@ const gradualRollout = new posthog.FeatureFlag("gradual-rollout", {
     key: "new-feature",
     name: "New Feature",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: 10, // 10% of users
         }],
-    },
+    }),
 });
 
 // Targeted rollout with properties
@@ -111,7 +111,7 @@ const targetedFlag = new posthog.FeatureFlag("premium-feature", {
     key: "premium-features",
     name: "Premium Features",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [{
                 key: "plan",
@@ -121,8 +121,7 @@ const targetedFlag = new posthog.FeatureFlag("premium-feature", {
             }],
             rolloutPercentage: 100,
         }],
-    },
-    ensureExperienceContinuity: true,
+    }),
 });
 ```
 
@@ -145,14 +144,17 @@ Configure analytics insights and queries:
 ```typescript
 const pageviewInsight = new posthog.Insight("pageviews", {
     name: "Pageview Trends",
-    filters: {
-        events: [{
-            id: "$pageview",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "$pageview",
             name: "$pageview",
-            type: "events",
         }],
-        dateFrom: "-30d",
-    },
+        dateRange: {
+            date_from: "-30d",
+        },
+    }),
 });
 ```
 
@@ -163,12 +165,11 @@ Set up alerts for important metrics:
 ```typescript
 const errorAlert = new posthog.Alert("error-alert", {
     name: "High Error Rate",
-    insight: errorInsight.id,
+    insight: 12345, // Numeric insight ID from PostHog
     enabled: true,
-    threshold: {
-        type: "absolute",
-        value: 100,
-    },
+    thresholdType: "absolute",
+    thresholdUpper: 100,
+    subscribedUsers: [67890], // User IDs to notify
 });
 ```
 
@@ -180,12 +181,16 @@ Configure custom Hog functions for data transformation:
 const customTransform = new posthog.HogFunction("transform", {
     name: "Custom Event Transform",
     enabled: true,
-    hogSource: `
+    type: "transformation",
+    hog: `
         fun transform(event) {
             event.properties.processed = true
             return event
         }
     `,
+    filtersJson: JSON.stringify({
+        events: [{ id: "$pageview" }],
+    }),
 });
 ```
 
@@ -202,7 +207,7 @@ const betaFeature = new posthog.FeatureFlag("beta-feature", {
     key: "new-checkout",
     name: "New Checkout Experience",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [
             {
                 // 100% for beta testers
@@ -220,8 +225,7 @@ const betaFeature = new posthog.FeatureFlag("beta-feature", {
                 rolloutPercentage: 5,
             },
         ],
-    },
-    ensureExperienceContinuity: true,
+    }),
 });
 
 // Create an experiment
@@ -229,7 +233,7 @@ const checkoutExperiment = new posthog.FeatureFlag("checkout-experiment", {
     key: "checkout-variant",
     name: "Checkout A/B Test",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: 100,
@@ -248,7 +252,7 @@ const checkoutExperiment = new posthog.FeatureFlag("checkout-experiment", {
                 },
             ],
         },
-    },
+    }),
 });
 
 export const betaFlagKey = betaFeature.key;
@@ -264,26 +268,37 @@ import * as posthog from "pulumi-posthog";
 // Create insights
 const signupInsight = new posthog.Insight("signups", {
     name: "User Signups",
-    filters: {
-        events: [{
-            id: "user_signed_up",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "user_signed_up",
             name: "User Signed Up",
-            type: "events",
         }],
-        dateFrom: "-30d",
-    },
+        dateRange: {
+            date_from: "-30d",
+        },
+    }),
 });
 
 const retentionInsight = new posthog.Insight("retention", {
     name: "User Retention",
-    filters: {
-        insight: "RETENTION",
-        events: [{
-            id: "user_signed_up",
-            type: "events",
-        }],
-        dateFrom: "-90d",
-    },
+    queryJson: JSON.stringify({
+        kind: "RetentionQuery",
+        retentionFilter: {
+            targetEntity: {
+                id: "user_signed_up",
+                type: "events",
+            },
+            returningEntity: {
+                id: "$pageview",
+                type: "events",
+            },
+        },
+        dateRange: {
+            date_from: "-90d",
+        },
+    }),
 });
 
 // Create dashboard with insights
@@ -293,15 +308,14 @@ const dashboard = new posthog.Dashboard("product-dashboard", {
     pinned: true,
 });
 
-// Set up alerts
+// Set up alerts (requires numeric insight ID from PostHog)
 const signupAlert = new posthog.Alert("signup-alert", {
     name: "Low Signup Alert",
-    insight: signupInsight.id,
+    insight: 12345, // Use the numeric ID from PostHog
     enabled: true,
-    threshold: {
-        type: "absolute",
-        value: 10,
-    },
+    thresholdType: "absolute",
+    thresholdLower: 10,
+    subscribedUsers: [67890], // User IDs to notify
 });
 
 export const dashboardId = dashboard.id;
@@ -318,12 +332,14 @@ Use clear, descriptive keys for feature flags:
 const flag = new posthog.FeatureFlag("payment-redesign", {
     key: "payment-redesign-2024",
     name: "Payment Flow Redesign (2024)",
+    active: true,
 });
 
 // Avoid
 const flag = new posthog.FeatureFlag("flag1", {
     key: "flag1",
     name: "Flag 1",
+    active: true,
 });
 ```
 
@@ -336,31 +352,30 @@ const rollout = new posthog.FeatureFlag("major-feature", {
     key: "major-feature",
     name: "Major Feature",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: 5, // Start with 5%
         }],
-    },
+    }),
 });
 ```
 
-### 3. Use Experience Continuity
+### 3. Use Consistent Rollouts
 
-Prevent users from seeing different variants:
+Ensure stable user experience with proper rollout configuration:
 
 ```typescript
 const stableFlag = new posthog.FeatureFlag("ui-change", {
     key: "ui-change",
     name: "UI Change",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: 50,
         }],
-    },
-    ensureExperienceContinuity: true, // Keep user experience consistent
+    }),
 });
 ```
 
@@ -373,7 +388,7 @@ const enterpriseFlag = new posthog.FeatureFlag("enterprise-features", {
     key: "enterprise-features",
     name: "Enterprise Features",
     active: true,
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [
                 {
@@ -391,7 +406,7 @@ const enterpriseFlag = new posthog.FeatureFlag("enterprise-features", {
             ],
             rolloutPercentage: 100,
         }],
-    },
+    }),
 });
 ```
 
@@ -446,6 +461,7 @@ Error: Resource already exists
 const flag = new posthog.FeatureFlag("my-flag", {
     key: "unique-feature-key", // Must be unique
     name: "My Feature",
+    active: true,
 });
 ```
 
@@ -472,12 +488,12 @@ const envFlag = new posthog.FeatureFlag(`${environment}-feature`, {
     key: `${environment}-feature`,
     name: `${environment} Feature`,
     active: environment === "production",
-    filters: {
+    filters: JSON.stringify({
         groups: [{
             properties: [],
             rolloutPercentage: environment === "production" ? 100 : 0,
         }],
-    },
+    }),
 });
 ```
 
@@ -489,17 +505,7 @@ const ciFlag = new posthog.FeatureFlag("ci-deployment", {
     key: "new-feature",
     name: "New Feature",
     active: true,
-    filters: {
-        groups: [{
-            properties: [{
-                key: "environment",
-                value: pulumi.getStack(),
-                type: "person",
-                operator: "exact",
-            }],
-            rolloutPercentage: 100,
-        }],
-    },
+    rolloutPercentage: pulumi.getStack() === "production" ? 100 : 50,
 });
 ```
 
@@ -509,15 +515,16 @@ const ciFlag = new posthog.FeatureFlag("ci-deployment", {
 
 **Required Arguments:**
 - `key` (string): Unique identifier for the feature flag
-- `name` (string): Display name for the feature flag
 
 **Optional Arguments:**
+- `name` (string): Display name for the feature flag
 - `active` (boolean): Whether the flag is active (default: true)
-- `filters` (object): Targeting and rollout configuration
-- `ensureExperienceContinuity` (boolean): Maintain consistent user experience
+- `filters` (string): JSON string containing targeting and rollout configuration
+- `rolloutPercentage` (number): Overall rollout percentage (0-100)
+- `tags` (string[]): Set of tags for the feature flag
 
 **Attributes:**
-- `id`: Feature flag ID
+- `featureFlagId`: Numeric feature flag ID
 - `key`: Feature flag key
 - `active`: Current active status
 
@@ -537,26 +544,61 @@ const ciFlag = new posthog.FeatureFlag("ci-deployment", {
 ### Insight
 
 **Required Arguments:**
+- `queryJson` (string): Raw JSON serialized query payload accepted by PostHog (e.g., `InsightVizNode` with a `TrendsQuery`)
+
+**Optional Arguments:**
 - `name` (string): Insight name
-- `filters` (object): Query configuration
+- `description` (string): Insight description
+- `dashboardIds` (number[]): List of dashboard IDs to add the insight to
+- `createInFolder` (string): Folder where the insight is created
+- `tags` (string[]): List of tags to apply to the insight
+- `deleted` (boolean): Whether the insight is deleted (soft delete)
+- `derivedName` (string): Insight derived name (auto-generated by PostHog when name is not set)
 
 **Attributes:**
-- `id`: Insight ID
+- `insightId`: Numeric insight ID
 - `name`: Insight name
+- `derivedName`: Auto-generated insight name
 
 ### Alert
 
 **Required Arguments:**
-- `name` (string): Alert name
-- `insight` (string): Associated insight ID
-- `threshold` (object): Alert threshold configuration
+- `insight` (number): Numeric ID of the insight this alert monitors
+- `thresholdType` (string): Type of threshold - `"absolute"` for fixed values or `"percentage"` for relative changes
+- `subscribedUsers` (number[]): List of user IDs to notify when the alert fires
 
 **Optional Arguments:**
+- `name` (string): Alert name
 - `enabled` (boolean): Whether alert is enabled (default: true)
+- `thresholdLower` (number): Lower bound of the threshold - alert fires when value goes below this
+- `thresholdUpper` (number): Upper bound of the threshold - alert fires when value goes above this
+- `calculationInterval` (string): How often to check - `"hourly"`, `"daily"`, `"weekly"`, or `"monthly"`
+- `conditionType` (string): Condition type - `"absoluteValue"`, `"relativeIncrease"`, or `"relativeDecrease"`
+- `seriesIndex` (number): Index of the trend series to monitor (0-based)
+- `checkOngoingInterval` (boolean): Whether to check the ongoing (incomplete) interval
+- `skipWeekend` (boolean): Whether to skip checking the alert on weekends
 
 **Attributes:**
-- `id`: Alert ID
-- `enabled`: Current enabled status
+- All configured properties
+
+### HogFunction
+
+**Optional Arguments (all optional):**
+- `name` (string): Name of the Hog function
+- `description` (string): Description of the Hog function
+- `enabled` (boolean): Whether the Hog function is enabled (default: true)
+- `hog` (string): The Hog code to execute (not required when using a template)
+- `type` (string): Type of Hog function - `"destination"`, `"siteDestination"`, `"internalDestination"`, `"sourceWebhook"`, `"siteApp"`, or `"transformation"`
+- `filtersJson` (string): JSON string defining filters for when the Hog function should execute
+- `inputsJson` (string): JSON string containing the input values for the Hog function
+- `mappingsJson` (string): JSON array of mapping configurations
+- `maskingJson` (string): JSON object configuring PII masking
+- `templateId` (string): ID of a template to use as the basis for this Hog function
+- `executionOrder` (number): Order in which this Hog function executes (0-32767)
+- `iconUrl` (string): URL of the icon for this Hog function
+
+**Attributes:**
+- All configured properties
 
 ## Additional Resources
 
