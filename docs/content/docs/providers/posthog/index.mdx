@@ -74,6 +74,7 @@ const betaFeature = new posthog.FeatureFlag("beta-feature", {
     key: "new-dashboard",
     name: "New Dashboard Beta",
     active: true,
+    // filters must be a JSON string, not an object
     filters: JSON.stringify({
         groups: [{
             properties: [],
@@ -165,11 +166,13 @@ Set up alerts for important metrics:
 ```typescript
 const errorAlert = new posthog.Alert("error-alert", {
     name: "High Error Rate",
-    insight: 12345, // Numeric insight ID from PostHog
+    // Use the numeric insight ID from PostHog (find in insight URL or API)
+    insight: 12345,
     enabled: true,
     thresholdType: "absolute",
     thresholdUpper: 100,
-    subscribedUsers: [67890], // User IDs to notify
+    // Array of PostHog user IDs to notify (find in user settings)
+    subscribedUsers: [67890],
 });
 ```
 
@@ -311,11 +314,13 @@ const dashboard = new posthog.Dashboard("product-dashboard", {
 // Set up alerts (requires numeric insight ID from PostHog)
 const signupAlert = new posthog.Alert("signup-alert", {
     name: "Low Signup Alert",
-    insight: 12345, // Use the numeric ID from PostHog
+    // Get insight ID from PostHog insight URL or API
+    insight: 12345,
     enabled: true,
     thresholdType: "absolute",
     thresholdLower: 10,
-    subscribedUsers: [67890], // User IDs to notify
+    // Get user IDs from PostHog user settings or API
+    subscribedUsers: [67890],
 });
 
 export const dashboardId = dashboard.id;
