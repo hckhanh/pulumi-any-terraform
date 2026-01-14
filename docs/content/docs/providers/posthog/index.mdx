@@ -1,0 +1,567 @@
+---
+title: PostHog Provider
+description: Manage PostHog analytics, feature flags, and product insights with Pulumi
+---
+
+The PostHog provider enables you to manage product analytics, feature flags, and event tracking resources in PostHog using Pulumi. This provider is dynamically bridged from the [Terraform PostHog Provider](https://registry.terraform.io/providers/PostHog/posthog).
+
+## Installation
+
+Install the PostHog provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install pulumi-posthog
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+### Getting API Key
+
+1. Log in to your PostHog instance at [app.posthog.com](https://app.posthog.com) (or your self-hosted URL)
+2. Navigate to Settings → User → Personal API Keys
+3. Click "Create Personal API Key"
+4. Copy the generated API key (starts with `phx_`)
+
+### Provider Setup
+
+```bash
+pulumi config set posthog:apiKey YOUR_API_KEY --secret
+pulumi config set posthog:host https://app.posthog.com
+```
+
+Or using environment variables:
+
+```bash
+export POSTHOG_API_KEY="phx_your_api_key_here"
+export POSTHOG_HOST="https://app.posthog.com"
+```
+
+### Self-Hosted PostHog
+
+If you're using a self-hosted PostHog instance:
+
+```bash
+pulumi config set posthog:host https://posthog.yourcompany.com
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Create a feature flag
+const betaFeature = new posthog.FeatureFlag("beta-feature", {
+    key: "new-dashboard",
+    name: "New Dashboard Beta",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: 25,
+        }],
+    },
+});
+
+// Export the feature flag key
+export const featureFlagKey = betaFeature.key;
+```
+
+## Key Features
+
+### Feature Flags
+
+Manage feature flags with advanced targeting and rollout strategies:
+
+```typescript
+// Simple percentage rollout
+const gradualRollout = new posthog.FeatureFlag("gradual-rollout", {
+    key: "new-feature",
+    name: "New Feature",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: 10, // 10% of users
+        }],
+    },
+});
+
+// Targeted rollout with properties
+const targetedFlag = new posthog.FeatureFlag("premium-feature", {
+    key: "premium-features",
+    name: "Premium Features",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [{
+                key: "plan",
+                value: "premium",
+                type: "person",
+                operator: "exact",
+            }],
+            rolloutPercentage: 100,
+        }],
+    },
+    ensureExperienceContinuity: true,
+});
+```
+
+### Dashboards
+
+Create and manage analytics dashboards:
+
+```typescript
+const analyticsDashboard = new posthog.Dashboard("analytics", {
+    name: "Product Analytics",
+    description: "Key metrics for product performance",
+    pinned: true,
+});
+```
+
+### Insights
+
+Configure analytics insights and queries:
+
+```typescript
+const pageviewInsight = new posthog.Insight("pageviews", {
+    name: "Pageview Trends",
+    filters: {
+        events: [{
+            id: "$pageview",
+            name: "$pageview",
+            type: "events",
+        }],
+        dateFrom: "-30d",
+    },
+});
+```
+
+### Alerts
+
+Set up alerts for important metrics:
+
+```typescript
+const errorAlert = new posthog.Alert("error-alert", {
+    name: "High Error Rate",
+    insight: errorInsight.id,
+    enabled: true,
+    threshold: {
+        type: "absolute",
+        value: 100,
+    },
+});
+```
+
+### Hog Functions
+
+Configure custom Hog functions for data transformation:
+
+```typescript
+const customTransform = new posthog.HogFunction("transform", {
+    name: "Custom Event Transform",
+    enabled: true,
+    hogSource: `
+        fun transform(event) {
+            event.properties.processed = true
+            return event
+        }
+    `,
+});
+```
+
+## Common Use Cases
+
+### Complete Feature Flag Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Create a beta feature with gradual rollout
+const betaFeature = new posthog.FeatureFlag("beta-feature", {
+    key: "new-checkout",
+    name: "New Checkout Experience",
+    active: true,
+    filters: {
+        groups: [
+            {
+                // 100% for beta testers
+                properties: [{
+                    key: "is_beta_tester",
+                    value: true,
+                    type: "person",
+                    operator: "exact",
+                }],
+                rolloutPercentage: 100,
+            },
+            {
+                // 5% for everyone else
+                properties: [],
+                rolloutPercentage: 5,
+            },
+        ],
+    },
+    ensureExperienceContinuity: true,
+});
+
+// Create an experiment
+const checkoutExperiment = new posthog.FeatureFlag("checkout-experiment", {
+    key: "checkout-variant",
+    name: "Checkout A/B Test",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: 100,
+        }],
+        multivariate: {
+            variants: [
+                {
+                    key: "control",
+                    name: "Control",
+                    rolloutPercentage: 50,
+                },
+                {
+                    key: "variant-a",
+                    name: "Variant A",
+                    rolloutPercentage: 50,
+                },
+            ],
+        },
+    },
+});
+
+export const betaFlagKey = betaFeature.key;
+export const experimentKey = checkoutExperiment.key;
+```
+
+### Analytics Dashboard Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Create insights
+const signupInsight = new posthog.Insight("signups", {
+    name: "User Signups",
+    filters: {
+        events: [{
+            id: "user_signed_up",
+            name: "User Signed Up",
+            type: "events",
+        }],
+        dateFrom: "-30d",
+    },
+});
+
+const retentionInsight = new posthog.Insight("retention", {
+    name: "User Retention",
+    filters: {
+        insight: "RETENTION",
+        events: [{
+            id: "user_signed_up",
+            type: "events",
+        }],
+        dateFrom: "-90d",
+    },
+});
+
+// Create dashboard with insights
+const dashboard = new posthog.Dashboard("product-dashboard", {
+    name: "Product Metrics",
+    description: "Key product performance metrics",
+    pinned: true,
+});
+
+// Set up alerts
+const signupAlert = new posthog.Alert("signup-alert", {
+    name: "Low Signup Alert",
+    insight: signupInsight.id,
+    enabled: true,
+    threshold: {
+        type: "absolute",
+        value: 10,
+    },
+});
+
+export const dashboardId = dashboard.id;
+```
+
+## Best Practices
+
+### 1. Feature Flag Naming
+
+Use clear, descriptive keys for feature flags:
+
+```typescript
+// Good
+const flag = new posthog.FeatureFlag("payment-redesign", {
+    key: "payment-redesign-2024",
+    name: "Payment Flow Redesign (2024)",
+});
+
+// Avoid
+const flag = new posthog.FeatureFlag("flag1", {
+    key: "flag1",
+    name: "Flag 1",
+});
+```
+
+### 2. Gradual Rollouts
+
+Start with small percentages and increase gradually:
+
+```typescript
+const rollout = new posthog.FeatureFlag("major-feature", {
+    key: "major-feature",
+    name: "Major Feature",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: 5, // Start with 5%
+        }],
+    },
+});
+```
+
+### 3. Use Experience Continuity
+
+Prevent users from seeing different variants:
+
+```typescript
+const stableFlag = new posthog.FeatureFlag("ui-change", {
+    key: "ui-change",
+    name: "UI Change",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: 50,
+        }],
+    },
+    ensureExperienceContinuity: true, // Keep user experience consistent
+});
+```
+
+### 4. Target Specific User Segments
+
+Use properties for precise targeting:
+
+```typescript
+const enterpriseFlag = new posthog.FeatureFlag("enterprise-features", {
+    key: "enterprise-features",
+    name: "Enterprise Features",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [
+                {
+                    key: "plan",
+                    value: ["enterprise", "business"],
+                    type: "person",
+                    operator: "in",
+                },
+                {
+                    key: "company_size",
+                    value: 100,
+                    type: "person",
+                    operator: "gte",
+                },
+            ],
+            rolloutPercentage: 100,
+        }],
+    },
+});
+```
+
+## Resource Types
+
+| Resource | Description | Common Use Cases |
+|----------|-------------|------------------|
+| `FeatureFlag` | Feature flag management | A/B testing, gradual rollouts, targeted features |
+| `Dashboard` | Analytics dashboard | Monitoring, reporting, data visualization |
+| `Insight` | Analytics query/insight | Event analysis, funnels, retention, trends |
+| `Alert` | Metric alerts | Anomaly detection, threshold monitoring |
+| `HogFunction` | Custom data processing | Event transformation, custom logic |
+
+## Troubleshooting
+
+### Common Issues
+
+#### API Authentication Error
+```
+Error: 401 Unauthorized
+```
+
+**Solution**: Verify your API key is correct and starts with `phx_`. Check that it hasn't expired.
+
+```bash
+pulumi config set posthog:apiKey phx_your_key_here --secret
+```
+
+#### Invalid Host Configuration
+```
+Error: Connection refused
+```
+
+**Solution**: Ensure your host URL is correct and includes the protocol:
+
+```bash
+# Correct
+pulumi config set posthog:host https://app.posthog.com
+
+# Incorrect (missing protocol)
+pulumi config set posthog:host app.posthog.com
+```
+
+#### Feature Flag Not Updating
+```
+Error: Resource already exists
+```
+
+**Solution**: Use unique keys for feature flags. If updating, ensure the key matches:
+
+```typescript
+const flag = new posthog.FeatureFlag("my-flag", {
+    key: "unique-feature-key", // Must be unique
+    name: "My Feature",
+});
+```
+
+#### Permission Denied
+```
+Error: 403 Forbidden
+```
+
+**Solution**: Ensure your API key has the necessary permissions. Personal API keys need appropriate project access.
+
+## Advanced Configuration
+
+### Multi-Environment Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+const config = new pulumi.Config();
+const environment = config.require("environment");
+
+// Environment-specific feature flag
+const envFlag = new posthog.FeatureFlag(`${environment}-feature`, {
+    key: `${environment}-feature`,
+    name: `${environment} Feature`,
+    active: environment === "production",
+    filters: {
+        groups: [{
+            properties: [],
+            rolloutPercentage: environment === "production" ? 100 : 0,
+        }],
+    },
+});
+```
+
+### Integration with CI/CD
+
+```typescript
+// Automated feature flag deployment
+const ciFlag = new posthog.FeatureFlag("ci-deployment", {
+    key: "new-feature",
+    name: "New Feature",
+    active: true,
+    filters: {
+        groups: [{
+            properties: [{
+                key: "environment",
+                value: pulumi.getStack(),
+                type: "person",
+                operator: "exact",
+            }],
+            rolloutPercentage: 100,
+        }],
+    },
+});
+```
+
+## Resource Reference
+
+### FeatureFlag
+
+**Required Arguments:**
+- `key` (string): Unique identifier for the feature flag
+- `name` (string): Display name for the feature flag
+
+**Optional Arguments:**
+- `active` (boolean): Whether the flag is active (default: true)
+- `filters` (object): Targeting and rollout configuration
+- `ensureExperienceContinuity` (boolean): Maintain consistent user experience
+
+**Attributes:**
+- `id`: Feature flag ID
+- `key`: Feature flag key
+- `active`: Current active status
+
+### Dashboard
+
+**Required Arguments:**
+- `name` (string): Dashboard name
+
+**Optional Arguments:**
+- `description` (string): Dashboard description
+- `pinned` (boolean): Pin to top of dashboard list
+
+**Attributes:**
+- `id`: Dashboard ID
+- `name`: Dashboard name
+
+### Insight
+
+**Required Arguments:**
+- `name` (string): Insight name
+- `filters` (object): Query configuration
+
+**Attributes:**
+- `id`: Insight ID
+- `name`: Insight name
+
+### Alert
+
+**Required Arguments:**
+- `name` (string): Alert name
+- `insight` (string): Associated insight ID
+- `threshold` (object): Alert threshold configuration
+
+**Optional Arguments:**
+- `enabled` (boolean): Whether alert is enabled (default: true)
+
+**Attributes:**
+- `id`: Alert ID
+- `enabled`: Current enabled status
+
+## Additional Resources
+
+- [PostHog Documentation](https://posthog.com/docs)
+- [PostHog API Reference](https://posthog.com/docs/api)
+- [Terraform PostHog Provider](https://registry.terraform.io/providers/PostHog/posthog/latest/docs)
+- [Feature Flags Guide](https://posthog.com/docs/feature-flags)
+- [Product Analytics Guide](https://posthog.com/docs/product-analytics)

@@ -1,0 +1,7 @@
+{
+  "title": "PostHog",
+  "description": "Product analytics and feature flags",
+  "root": true,
+  "icon": "BarChart",
+  "pages": ["index"]
+}
