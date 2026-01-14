@@ -14,7 +14,7 @@ The Better Uptime provider requires an API token for authentication. You can man
 ### Basic Setup
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 // Configure the provider with API token
 const config = new pulumi.Config("better-uptime");
@@ -26,7 +26,7 @@ const apiToken = config.requireSecret("apiToken");
 #### 1. Provider Block (Recommended)
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 import * as pulumi from "@pulumi/pulumi";
 
 const config = new pulumi.Config("better-uptime");
@@ -113,7 +113,7 @@ const stagingProvider = new betteruptime.Provider("staging", {
 ### With Better Uptime Monitor
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 import * as pulumi from "@pulumi/pulumi";
 
 const config = new pulumi.Config("better-uptime");
