@@ -1,0 +1,210 @@
+---
+title: Configuration
+description: Set up and configure the PostHog provider for product analytics
+---
+
+This guide covers how to configure the PostHog provider for Pulumi.
+
+## Overview
+
+The PostHog provider enables management of product analytics, feature flags, and event tracking resources. It requires an API key for authentication and supports both PostHog Cloud and self-hosted instances.
+
+## Provider Configuration
+
+### Basic Setup
+
+```typescript
+import * as posthog from "pulumi-posthog";
+import * as pulumi from "@pulumi/pulumi";
+
+const config = new pulumi.Config("posthog");
+const apiKey = config.requireSecret("apiKey");
+const host = config.get("host") || "https://us.posthog.com";
+```
+
+### Configuration Methods
+
+#### 1. Pulumi Configuration (Recommended)
+
+```bash
+# Set API key (encrypted)
+pulumi config set posthog:apiKey YOUR_API_KEY --secret
+
+# Set host (optional, defaults to https://us.posthog.com)
+pulumi config set posthog:host https://us.posthog.com
+```
+
+#### 2. Environment Variables
+
+```bash
+export POSTHOG_API_KEY="phx_your_api_key_here"
+export POSTHOG_HOST="https://us.posthog.com"
+```
+
+#### 3. Provider Block
+
+```typescript
+const provider = new posthog.Provider("posthog", {
+    apiKey: config.requireSecret("apiKey"),
+    host: "https://us.posthog.com",
+});
+```
+
+## Getting API Credentials
+
+### Create Personal API Key
+
+1. Log in to your PostHog instance at [app.posthog.com](https://app.posthog.com) (or your self-hosted URL)
+2. Navigate to **Settings** → **User** → **Personal API Keys**
+3. Click **Create Personal API Key**
+4. Copy the generated API key (starts with `phx_`)
+
+### Required Permissions
+
+The API key should have access to:
+- Feature flags (read/write)
+- Insights (read/write)
+- Dashboards (read/write)
+- Alerts (read/write)
+- Hog functions (read/write)
+
+## Self-Hosted PostHog
+
+If you're using a self-hosted PostHog instance, configure the custom host URL:
+
+```bash
+pulumi config set posthog:host https://posthog.yourcompany.com
+```
+
+Or using environment variables:
+
+```bash
+export POSTHOG_HOST="https://posthog.yourcompany.com"
+```
+
+### Example with Self-Hosted Instance
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+const config = new pulumi.Config("posthog");
+
+// Configure provider for self-hosted instance
+const provider = new posthog.Provider("self-hosted", {
+    host: "https://posthog.yourcompany.com",
+    apiKey: config.requireSecret("apiKey"),
+});
+
+// Use the provider
+const flag = new posthog.FeatureFlag("beta-feature", {
+    key: "new-feature",
+    name: "New Feature",
+    active: true,
+}, { provider });
+```
+
+## Configuration Options
+
+| Property | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `apiKey` | string | Yes | - | PostHog Personal API Key (starts with `phx_`) |
+| `host` | string | No | `https://us.posthog.com` | PostHog instance URL |
+
+## Best Practices
+
+### Security
+
+```typescript
+// ✅ DO: Use Pulumi secrets for API keys
+const config = new pulumi.Config("posthog");
+const apiKey = config.requireSecret("apiKey");
+
+// ❌ DON'T: Hardcode API keys
+const flag = new posthog.FeatureFlag("bad", {
+    key: "feature",
+    name: "Feature",
+    // Never include secrets in code!
+});
+```
+
+### Multi-Environment Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+const stack = pulumi.getStack();
+const config = new pulumi.Config("posthog");
+
+// Different API keys per environment
+const apiKey = config.requireSecret(`${stack}-apiKey`);
+
+// Environment-specific feature flag
+const flag = new posthog.FeatureFlag(`${stack}-feature`, {
+    key: `${stack}-new-feature`,
+    name: `${stack} New Feature`,
+    active: stack === "production",
+});
+```
+
+### Multi-Project Setup
+
+```typescript
+// Project A
+const projectAConfig = new pulumi.Config("posthog-project-a");
+const projectAProvider = new posthog.Provider("project-a", {
+    apiKey: projectAConfig.requireSecret("apiKey"),
+    host: "https://us.posthog.com",
+});
+
+// Project B
+const projectBConfig = new pulumi.Config("posthog-project-b");
+const projectBProvider = new posthog.Provider("project-b", {
+    apiKey: projectBConfig.requireSecret("apiKey"),
+    host: "https://eu.posthog.com",
+});
+```
+
+## Troubleshooting
+
+### Authentication Errors
+
+**Error**: `401 Unauthorized`
+
+**Solution**:
+1. Verify your API key is correct and starts with `phx_`
+2. Check that the API key hasn't expired
+3. Ensure the API key has necessary permissions
+
+```bash
+# Test API key
+curl -H "Authorization: Bearer phx_your_key_here" \
+     https://us.posthog.com/api/projects/@current/feature_flags/
+```
+
+### Invalid Host Configuration
+
+**Error**: `Connection refused`
+
+**Solution**:
+- Ensure your host URL is correct and includes the protocol (https://)
+- For PostHog Cloud, use `https://us.posthog.com` or `https://eu.posthog.com`
+- For self-hosted, use your instance URL
+
+### Permission Denied
+
+**Error**: `403 Forbidden`
+
+**Solution**:
+- Ensure your API key has appropriate project access
+- Personal API keys need appropriate permissions
+- Check that you're accessing resources in the correct project
+
+## Additional Resources
+
+- [PostHog API Documentation](https://posthog.com/docs/api)
+- [Feature Flag Resource](/docs/providers/posthog/feature-flag)
+- [Insight Resource](/docs/providers/posthog/insight)
+- [Dashboard Resource](/docs/providers/posthog/dashboard)
+- [Alert Resource](/docs/providers/posthog/alert)

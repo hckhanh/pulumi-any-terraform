@@ -2,6 +2,15 @@
   "title": "PostHog",
   "description": "Product analytics and feature flags",
   "root": true,
-  "icon": "Hedgehog",
-  "pages": ["index"]
+  "icon": "BarChart",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "feature-flag",
+    "dashboard",
+    "insight",
+    "alert",
+    "hog-function"
+  ]
 }

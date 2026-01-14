@@ -1,0 +1,400 @@
+---
+title: Hog Function
+description: Create and manage custom Hog functions for data transformation
+---
+
+The HogFunction resource allows you to create and manage custom Hog functions for transforming events, routing data, and executing custom logic in PostHog.
+
+## Example Usage
+
+### Basic Transformation Function
+
+```typescript
+import * as posthog from "pulumi-posthog";
+
+const transform = new posthog.HogFunction("event-transform", {
+    name: "Add Processed Flag",
+    enabled: true,
+    type: "transformation",
+    hog: `
+        fun transform(event) {
+            event.properties.processed = true
+            event.properties.processed_at = now()
+            return event
+        }
+    `,
+});
+```
+
+### Function with Filters
+
+```typescript
+const filteredTransform = new posthog.HogFunction("pageview-transform", {
+    name: "Enhance Pageviews",
+    enabled: true,
+    type: "transformation",
+    hog: `
+        fun transform(event) {
+            event.properties.enhanced = true
+            return event
+        }
+    `,
+    filtersJson: JSON.stringify({
+        events: [{ id: "$pageview" }],
+    }),
+});
+```
+
+### Destination Function
+
+```typescript
+const webhook = new posthog.HogFunction("webhook-destination", {
+    name: "Send to Webhook",
+    enabled: true,
+    type: "destination",
+    hog: `
+        fun send(event) {
+            fetch('https://api.example.com/webhook', {
+                method: 'POST',
+                body: event
+            })
+        }
+    `,
+    filtersJson: JSON.stringify({
+        events: [{ id: "purchase_completed" }],
+    }),
+});
+```
+
+### Function with Inputs
+
+```typescript
+const configurable = new posthog.HogFunction("configurable-transform", {
+    name: "Configurable Transform",
+    enabled: true,
+    type: "transformation",
+    hog: `
+        fun transform(event, inputs) {
+            event.properties.custom_field = inputs.fieldValue
+            return event
+        }
+    `,
+    inputsJson: JSON.stringify({
+        fieldValue: {
+            value: "default_value",
+        },
+    }),
+});
+```
+
+### Function with Execution Order
+
+```typescript
+const orderedFunction = new posthog.HogFunction("first-transform", {
+    name: "First Transformation",
+    enabled: true,
+    type: "transformation",
+    executionOrder: 1, // Runs first
+    hog: `
+        fun transform(event) {
+            event.properties.step = 1
+            return event
+        }
+    `,
+});
+
+const secondFunction = new posthog.HogFunction("second-transform", {
+    name: "Second Transformation",
+    enabled: true,
+    type: "transformation",
+    executionOrder: 2, // Runs second
+    hog: `
+        fun transform(event) {
+            event.properties.step = 2
+            return event
+        }
+    `,
+});
+```
+
+## Resource Properties
+
+### Optional Arguments (all optional)
+
+- `name` (string): Name of the Hog function
+- `description` (string): Description of the Hog function
+- `enabled` (boolean): Whether the Hog function is enabled (default: true)
+- `hog` (string): The Hog code to execute (not required when using a template)
+- `type` (string): Type of Hog function - `"destination"`, `"siteDestination"`, `"internalDestination"`, `"sourceWebhook"`, `"siteApp"`, or `"transformation"`
+- `filtersJson` (string): JSON string defining filters for when the Hog function should execute
+- `inputsJson` (string): JSON string containing the input values for the Hog function
+- `mappingsJson` (string): JSON array of mapping configurations
+- `maskingJson` (string): JSON object configuring PII masking
+- `templateId` (string): ID of a template to use as the basis for this Hog function
+- `executionOrder` (number): Order in which this Hog function executes (0-32767)
+- `iconUrl` (string): URL of the icon for this Hog function
+
+### Attributes
+
+- All configured properties
+
+## Function Types
+
+### Transformation
+
+Transform events before they're stored:
+
+```typescript
+type: "transformation"
+```
+
+### Destination
+
+Send events to external systems:
+
+```typescript
+type: "destination"
+```
+
+### Site Destination
+
+Browser-side destinations:
+
+```typescript
+type: "siteDestination"
+```
+
+### Site App
+
+Browser-side applications:
+
+```typescript
+type: "siteApp"
+```
+
+## Hog Language Basics
+
+### Event Transformation
+
+```typescript
+hog: `
+    fun transform(event) {
+        // Add properties
+        event.properties.new_field = "value"
+        
+        // Modify properties
+        event.properties.user_id = upper(event.properties.user_id)
+        
+        // Return modified event
+        return event
+    }
+`
+```
+
+### Conditional Logic
+
+```typescript
+hog: `
+    fun transform(event) {
+        if event.event == '$pageview' {
+            event.properties.is_pageview = true
+        } else {
+            event.properties.is_pageview = false
+        }
+        return event
+    }
+`
+```
+
+### Using Inputs
+
+```typescript
+hog: `
+    fun transform(event, inputs) {
+        event.properties.custom = inputs.customValue.value
+        return event
+    }
+`
+```
+
+## Best Practices
+
+### 1. Use Descriptive Names
+
+```typescript
+// ✅ Good
+const fn = new posthog.HogFunction("add-user-segment", {
+    name: "Add User Segment Classification",
+    description: "Classify users into segments based on behavior",
+});
+
+// ❌ Avoid
+const fn = new posthog.HogFunction("fn1", {
+    name: "Function 1",
+});
+```
+
+### 2. Filter Appropriately
+
+Only process events that need transformation:
+
+```typescript
+const fn = new posthog.HogFunction("purchase-enrichment", {
+    name: "Enrich Purchase Events",
+    filtersJson: JSON.stringify({
+        events: [{ id: "purchase_completed" }], // Only purchases
+    }),
+    hog: `
+        fun transform(event) {
+            // Expensive enrichment only for purchases
+            return event
+        }
+    `,
+});
+```
+
+### 3. Set Execution Order
+
+Control the order of transformations:
+
+```typescript
+// First: Clean data
+const cleaner = new posthog.HogFunction("clean", {
+    name: "Clean Event Data",
+    executionOrder: 1,
+});
+
+// Second: Enrich data
+const enricher = new posthog.HogFunction("enrich", {
+    name: "Enrich Event Data",
+    executionOrder: 2,
+});
+
+// Third: Format data
+const formatter = new posthog.HogFunction("format", {
+    name: "Format Event Data",
+    executionOrder: 3,
+});
+```
+
+## Common Use Cases
+
+### Add Timestamp
+
+```typescript
+const timestamp = new posthog.HogFunction("add-timestamp", {
+    name: "Add Processing Timestamp",
+    type: "transformation",
+    hog: `
+        fun transform(event) {
+            event.properties.processed_timestamp = now()
+            return event
+        }
+    `,
+});
+```
+
+### User Classification
+
+```typescript
+const classify = new posthog.HogFunction("user-classification", {
+    name: "Classify User Type",
+    type: "transformation",
+    hog: `
+        fun transform(event) {
+            let revenue = event.properties.total_revenue || 0
+            if revenue > 1000 {
+                event.properties.user_segment = 'premium'
+            } else if revenue > 100 {
+                event.properties.user_segment = 'standard'
+            } else {
+                event.properties.user_segment = 'free'
+            }
+            return event
+        }
+    `,
+});
+```
+
+### Webhook Integration
+
+```typescript
+const webhookFn = new posthog.HogFunction("slack-notification", {
+    name: "Notify Slack on High-Value Purchase",
+    type: "destination",
+    filtersJson: JSON.stringify({
+        events: [{ id: "purchase_completed" }],
+    }),
+    hog: `
+        fun send(event) {
+            if event.properties.amount > 1000 {
+                fetch('https://hooks.slack.com/your-webhook', {
+                    method: 'POST',
+                    body: {
+                        text: 'High-value purchase: $' + event.properties.amount
+                    }
+                })
+            }
+        }
+    `,
+});
+```
+
+### Data Sanitization
+
+```typescript
+const sanitize = new posthog.HogFunction("pii-removal", {
+    name: "Remove PII from Events",
+    type: "transformation",
+    executionOrder: 1, // Run first
+    hog: `
+        fun transform(event) {
+            // Remove sensitive fields
+            delete event.properties.email
+            delete event.properties.phone
+            delete event.properties.ssn
+            
+            // Hash user identifiers
+            event.properties.user_id = sha256(event.properties.user_id)
+            
+            return event
+        }
+    `,
+});
+```
+
+## Troubleshooting
+
+### Function Not Executing
+
+**Issue**: Hog function doesn't run
+
+**Solution**:
+- Verify `enabled` is true
+- Check `filtersJson` matches your events
+- Ensure `executionOrder` doesn't conflict
+- Review Hog syntax for errors
+
+### Syntax Errors
+
+**Issue**: Hog code has syntax errors
+
+**Solution**:
+- Test Hog code in PostHog's Hog debugger
+- Check for missing brackets, quotes, or semicolons
+- Verify function signature matches type (e.g., `transform(event)`)
+
+### Performance Issues
+
+**Issue**: Functions slow down event processing
+
+**Solution**:
+- Use filters to process only necessary events
+- Avoid expensive operations in hot paths
+- Consider using `executionOrder` to optimize
+
+## Additional Resources
+
+- [PostHog Hog Functions Documentation](https://posthog.com/docs/cdp)
+- [Hog Language Reference](https://posthog.com/docs/hogql)
+- [Configuration](/docs/providers/posthog/configuration)

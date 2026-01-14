@@ -1,0 +1,331 @@
+---
+title: Alert
+description: Create and manage metric alerts for monitoring
+---
+
+The Alert resource allows you to create and manage alerts that notify you when metrics exceed or fall below specified thresholds in PostHog.
+
+## Example Usage
+
+### Basic Alert
+
+```typescript
+import * as posthog from "pulumi-posthog";
+
+const errorAlert = new posthog.Alert("high-errors", {
+    name: "High Error Rate",
+    // Use the numeric insight ID from PostHog (find in insight URL or API)
+    insight: 12345,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdUpper: 100,
+    // Array of PostHog user IDs to notify (find in user settings)
+    subscribedUsers: [67890],
+});
+```
+
+### Low Signup Alert
+
+```typescript
+const signupAlert = new posthog.Alert("low-signups", {
+    name: "Low Signup Alert",
+    // Get insight ID from PostHog insight URL or API
+    insight: 12345,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdLower: 10, // Alert when below 10 signups
+    // Get user IDs from PostHog user settings or API
+    subscribedUsers: [67890, 67891],
+});
+```
+
+### Percentage Change Alert
+
+```typescript
+const growthAlert = new posthog.Alert("growth-alert", {
+    name: "Revenue Growth Alert",
+    insight: 23456,
+    enabled: true,
+    thresholdType: "percentage",
+    thresholdLower: -10, // Alert on 10% decrease
+    thresholdUpper: 50, // Alert on 50% increase
+    subscribedUsers: [67890],
+});
+```
+
+### Daily Check Alert
+
+```typescript
+const dailyAlert = new posthog.Alert("daily-check", {
+    name: "Daily Active Users Check",
+    insight: 34567,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdLower: 1000,
+    calculationInterval: "daily",
+    subscribedUsers: [67890],
+});
+```
+
+### Weekend-Skipping Alert
+
+```typescript
+const weekdayAlert = new posthog.Alert("weekday-only", {
+    name: "Weekday Metrics Alert",
+    insight: 45678,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdUpper: 500,
+    skipWeekend: true, // Don't check on weekends
+    subscribedUsers: [67890],
+});
+```
+
+### Series-Specific Alert
+
+```typescript
+const seriesAlert = new posthog.Alert("series-alert", {
+    name: "Specific Metric Alert",
+    insight: 56789,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdUpper: 200,
+    seriesIndex: 0, // Monitor first series in multi-series insight
+    subscribedUsers: [67890],
+});
+```
+
+## Resource Properties
+
+### Required Arguments
+
+- `insight` (number): Numeric ID of the insight this alert monitors
+- `thresholdType` (string): Type of threshold - `"absolute"` for fixed values or `"percentage"` for relative changes
+- `subscribedUsers` (number[]): List of user IDs to notify when the alert fires
+
+### Optional Arguments
+
+- `name` (string): Alert name
+- `enabled` (boolean): Whether alert is enabled (default: true)
+- `thresholdLower` (number): Lower bound of the threshold - alert fires when value goes below this
+- `thresholdUpper` (number): Upper bound of the threshold - alert fires when value goes above this
+- `calculationInterval` (string): How often to check - `"hourly"`, `"daily"`, `"weekly"`, or `"monthly"`
+- `conditionType` (string): Condition type - `"absoluteValue"`, `"relativeIncrease"`, or `"relativeDecrease"`
+- `seriesIndex` (number): Index of the trend series to monitor (0-based)
+- `checkOngoingInterval` (boolean): Whether to check the ongoing (incomplete) interval
+- `skipWeekend` (boolean): Whether to skip checking the alert on weekends
+
+### Attributes
+
+- All configured properties
+
+## Threshold Types
+
+### Absolute Value
+
+Fixed numeric thresholds:
+
+```typescript
+const alert = new posthog.Alert("absolute-alert", {
+    name: "Absolute Threshold",
+    insight: 12345,
+    thresholdType: "absolute",
+    thresholdLower: 50,  // Alert when below 50
+    thresholdUpper: 200, // Alert when above 200
+    subscribedUsers: [67890],
+});
+```
+
+### Percentage Change
+
+Relative change thresholds:
+
+```typescript
+const alert = new posthog.Alert("percentage-alert", {
+    name: "Percentage Change",
+    insight: 12345,
+    thresholdType: "percentage",
+    thresholdLower: -20, // Alert on 20% decrease
+    thresholdUpper: 50,  // Alert on 50% increase
+    subscribedUsers: [67890],
+});
+```
+
+## Calculation Intervals
+
+### Hourly
+
+Check metrics every hour:
+
+```typescript
+calculationInterval: "hourly"
+```
+
+### Daily
+
+Check once per day:
+
+```typescript
+calculationInterval: "daily"
+```
+
+### Weekly
+
+Check once per week:
+
+```typescript
+calculationInterval: "weekly"
+```
+
+### Monthly
+
+Check once per month:
+
+```typescript
+calculationInterval: "monthly"
+```
+
+## Best Practices
+
+### 1. Use Descriptive Names
+
+```typescript
+// ✅ Good
+const alert = new posthog.Alert("critical-error-spike", {
+    name: "Critical: Error Rate Spike (>100/hour)",
+});
+
+// ❌ Avoid
+const alert = new posthog.Alert("alert1", {
+    name: "Alert 1",
+});
+```
+
+### 2. Set Appropriate Thresholds
+
+```typescript
+// Start with conservative thresholds
+const alert = new posthog.Alert("signup-alert", {
+    name: "Low Signup Rate",
+    insight: 12345,
+    thresholdType: "absolute",
+    thresholdLower: 50, // Alert if below normal baseline
+    subscribedUsers: [67890],
+});
+```
+
+### 3. Notify the Right People
+
+```typescript
+// Production alerts - notify on-call team
+const prodAlert = new posthog.Alert("prod-critical", {
+    name: "Production Critical Alert",
+    insight: 12345,
+    thresholdType: "absolute",
+    thresholdUpper: 1000,
+    subscribedUsers: [111, 222, 333], // On-call team
+});
+
+// Business alerts - notify stakeholders
+const bizAlert = new posthog.Alert("revenue-drop", {
+    name: "Revenue Drop Alert",
+    insight: 23456,
+    thresholdType: "percentage",
+    thresholdLower: -10,
+    subscribedUsers: [444, 555], // Business team
+});
+```
+
+## Common Use Cases
+
+### Error Rate Monitoring
+
+```typescript
+const errorMonitor = new posthog.Alert("error-monitor", {
+    name: "High Error Rate Detection",
+    insight: 12345,
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdUpper: 50, // Alert when errors exceed 50
+    calculationInterval: "hourly",
+    subscribedUsers: [67890],
+});
+```
+
+### Conversion Drop Detection
+
+```typescript
+const conversionAlert = new posthog.Alert("conversion-drop", {
+    name: "Conversion Rate Drop",
+    insight: 23456,
+    enabled: true,
+    thresholdType: "percentage",
+    thresholdLower: -15, // Alert on 15% drop
+    calculationInterval: "daily",
+    subscribedUsers: [67890, 67891],
+});
+```
+
+### Traffic Spike Alert
+
+```typescript
+const trafficSpike = new posthog.Alert("traffic-spike", {
+    name: "Unusual Traffic Spike",
+    insight: 34567,
+    enabled: true,
+    thresholdType: "percentage",
+    thresholdUpper: 100, // Alert on 100% increase
+    calculationInterval: "hourly",
+    subscribedUsers: [67890],
+});
+```
+
+## Troubleshooting
+
+### Alert Not Firing
+
+**Issue**: Alert doesn't trigger when threshold is exceeded
+
+**Solution**:
+- Verify the alert is enabled
+- Check calculation interval matches expectation
+- Confirm insight ID is correct
+- Ensure threshold values are set appropriately
+
+### Wrong Users Notified
+
+**Issue**: Incorrect users receiving alerts
+
+**Solution**:
+- Verify user IDs are correct numeric values
+- Check user IDs in PostHog user settings
+- Update `subscribedUsers` array with correct IDs
+
+### Getting User IDs
+
+To find PostHog user IDs:
+
+1. Go to PostHog Settings → Team
+2. View team members list
+3. Note the numeric user ID (visible in URLs or API responses)
+
+Or use the PostHog API:
+
+```bash
+curl -H "Authorization: Bearer phx_your_key" \
+     https://us.posthog.com/api/users/
+```
+
+### Getting Insight IDs
+
+To find insight IDs:
+
+1. Open the insight in PostHog
+2. Check the URL: `/insights/12345` - the number is the ID
+3. Or use the PostHog API to list insights
+
+## Additional Resources
+
+- [Insight Resource](/docs/providers/posthog/insight)
+- [PostHog Alerts Documentation](https://posthog.com/docs/user-guides/alerts)
+- [Configuration](/docs/providers/posthog/configuration)

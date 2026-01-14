@@ -1,0 +1,369 @@
+---
+title: Feature Flag
+description: Create and manage feature flags with targeting and rollout strategies
+---
+
+The FeatureFlag resource allows you to create and manage feature flags for gradual rollouts, A/B testing, and targeted feature releases in PostHog.
+
+## Example Usage
+
+### Basic Feature Flag
+
+```typescript
+import * as posthog from "pulumi-posthog";
+
+const betaFeature = new posthog.FeatureFlag("beta-feature", {
+    key: "new-dashboard",
+    name: "New Dashboard Beta",
+    active: true,
+});
+```
+
+### Percentage Rollout
+
+```typescript
+const gradualRollout = new posthog.FeatureFlag("gradual-rollout", {
+    key: "new-feature",
+    name: "New Feature",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 10, // 10% of users
+        }],
+    }),
+});
+```
+
+### Targeted Feature Flag
+
+```typescript
+const premiumFeature = new posthog.FeatureFlag("premium-feature", {
+    key: "premium-features",
+    name: "Premium Features",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [{
+                key: "plan",
+                value: "premium",
+                type: "person",
+                operator: "exact",
+            }],
+            rolloutPercentage: 100,
+        }],
+    }),
+});
+```
+
+### Multi-Group Targeting
+
+```typescript
+const betaRollout = new posthog.FeatureFlag("beta-rollout", {
+    key: "new-checkout",
+    name: "New Checkout Experience",
+    active: true,
+    filters: JSON.stringify({
+        groups: [
+            {
+                // 100% for beta testers
+                properties: [{
+                    key: "is_beta_tester",
+                    value: true,
+                    type: "person",
+                    operator: "exact",
+                }],
+                rolloutPercentage: 100,
+            },
+            {
+                // 5% for everyone else
+                properties: [],
+                rolloutPercentage: 5,
+            },
+        ],
+    }),
+});
+```
+
+### A/B Test Experiment
+
+```typescript
+const experiment = new posthog.FeatureFlag("checkout-experiment", {
+    key: "checkout-variant",
+    name: "Checkout A/B Test",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 100,
+        }],
+        multivariate: {
+            variants: [
+                {
+                    key: "control",
+                    name: "Control",
+                    rolloutPercentage: 50,
+                },
+                {
+                    key: "variant-a",
+                    name: "Variant A",
+                    rolloutPercentage: 50,
+                },
+            ],
+        },
+    }),
+});
+```
+
+### Feature Flag with Tags
+
+```typescript
+const taggedFlag = new posthog.FeatureFlag("tagged-feature", {
+    key: "tagged-feature",
+    name: "Tagged Feature",
+    active: true,
+    tags: ["frontend", "ui-refresh", "q1-2024"],
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 25,
+        }],
+    }),
+});
+```
+
+### Complex User Targeting
+
+```typescript
+const enterpriseFlag = new posthog.FeatureFlag("enterprise-features", {
+    key: "enterprise-features",
+    name: "Enterprise Features",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [
+                {
+                    key: "plan",
+                    value: ["enterprise", "business"],
+                    type: "person",
+                    operator: "in",
+                },
+                {
+                    key: "company_size",
+                    value: 100,
+                    type: "person",
+                    operator: "gte",
+                },
+            ],
+            rolloutPercentage: 100,
+        }],
+    }),
+});
+```
+
+## Resource Properties
+
+### Required Arguments
+
+- `key` (string): Unique identifier for the feature flag
+
+### Optional Arguments
+
+- `name` (string): Display name for the feature flag
+- `active` (boolean): Whether the flag is active (default: true)
+- `filters` (string): JSON string containing targeting and rollout configuration with groups, properties, and conditions
+- `rolloutPercentage` (number): Simple overall rollout percentage (0-100) - use this for basic rollouts or `filters` for advanced targeting
+- `tags` (string[]): Set of tags for the feature flag
+
+**Note**: For advanced targeting with user properties and multiple groups, use the `filters` property. For simple percentage-based rollouts, you can use either `rolloutPercentage` or configure it within `filters`.
+
+### Attributes
+
+- `featureFlagId`: Numeric feature flag ID
+- `key`: Feature flag key
+- `active`: Current active status
+
+## Filter Structure
+
+The `filters` property accepts a JSON string with the following structure:
+
+```typescript
+{
+  groups: [
+    {
+      properties: [
+        {
+          key: "property_name",      // Person or event property
+          value: "value" | ["values"], // Single value or array
+          type: "person" | "event",   // Property type
+          operator: "exact" | "in" | "gte" | "lte" | "contains", // Comparison operator
+        }
+      ],
+      rolloutPercentage: 0-100,    // Percentage for this group
+    }
+  ],
+  multivariate?: {                 // Optional for A/B tests
+    variants: [
+      {
+        key: "variant_key",
+        name: "Variant Name",
+        rolloutPercentage: 0-100,
+      }
+    ]
+  }
+}
+```
+
+## Best Practices
+
+### 1. Use Clear Naming
+
+```typescript
+// ✅ Good
+const flag = new posthog.FeatureFlag("payment-redesign", {
+    key: "payment-redesign-2024",
+    name: "Payment Flow Redesign (2024)",
+    active: true,
+});
+
+// ❌ Avoid
+const flag = new posthog.FeatureFlag("flag1", {
+    key: "flag1",
+    name: "Flag 1",
+    active: true,
+});
+```
+
+### 2. Start with Small Rollouts
+
+```typescript
+const rollout = new posthog.FeatureFlag("major-feature", {
+    key: "major-feature",
+    name: "Major Feature",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 5, // Start with 5%
+        }],
+    }),
+});
+```
+
+### 3. Use Tags for Organization
+
+```typescript
+const organizedFlag = new posthog.FeatureFlag("feature", {
+    key: "q1-2024-mobile-redesign",
+    name: "Mobile Redesign",
+    active: true,
+    tags: ["mobile", "ui", "q1-2024", "high-priority"],
+});
+```
+
+## Common Use Cases
+
+### Gradual Feature Rollout
+
+Start with a small percentage and gradually increase:
+
+```typescript
+const gradualFeature = new posthog.FeatureFlag("gradual", {
+    key: "new-ui",
+    name: "New UI",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 10, // Start at 10%, increase over time
+        }],
+    }),
+});
+```
+
+### Beta Testing Program
+
+Target specific users for beta testing:
+
+```typescript
+const betaFlag = new posthog.FeatureFlag("beta", {
+    key: "beta-feature",
+    name: "Beta Feature",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [{
+                key: "beta_tester",
+                value: true,
+                type: "person",
+                operator: "exact",
+            }],
+            rolloutPercentage: 100,
+        }],
+    }),
+});
+```
+
+### Premium Feature Gating
+
+Restrict features to premium users:
+
+```typescript
+const premiumFlag = new posthog.FeatureFlag("premium", {
+    key: "premium-analytics",
+    name: "Premium Analytics",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [{
+                key: "subscription_tier",
+                value: ["premium", "enterprise"],
+                type: "person",
+                operator: "in",
+            }],
+            rolloutPercentage: 100,
+        }],
+    }),
+});
+```
+
+## Troubleshooting
+
+### Flag Not Updating
+
+**Issue**: Changes to feature flags don't take effect
+
+**Solution**:
+- Feature flags are cached client-side
+- Wait for cache expiration or force refresh
+- Verify the flag key is unique
+
+### Targeting Not Working
+
+**Issue**: Users aren't being targeted correctly
+
+**Solution**:
+- Check property names match exactly (case-sensitive)
+- Verify property values are set on user profiles
+- Use the PostHog debugger to test targeting
+
+### Invalid JSON in Filters
+
+**Issue**: Error when creating feature flag
+
+**Solution**:
+```typescript
+// ✅ Always use JSON.stringify() for filters
+filters: JSON.stringify({
+    groups: [{ properties: [], rolloutPercentage: 50 }]
+})
+
+// ❌ Don't use object literals
+filters: { groups: [...] } // This will fail
+```
+
+## Additional Resources
+
+- [PostHog Feature Flags Documentation](https://posthog.com/docs/feature-flags)
+- [Configuration](/docs/providers/posthog/configuration)
+- [PostHog Provider](/docs/providers/posthog)
