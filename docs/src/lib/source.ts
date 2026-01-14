@@ -1,12 +1,26 @@
 import { docs } from 'fumadocs-mdx:collections/server'
+import { hedgehog } from '@lucide/lab'
 import { type InferPageType, loader } from 'fumadocs-core/source'
-import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons'
+import { Icon, icons } from 'lucide-react'
+import { createElement } from 'react'
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
   baseUrl: '/docs',
   source: docs.toFumadocsSource(),
-  plugins: [lucideIconsPlugin()],
+  icon(icon) {
+    const LucideIcon = icons[icon as keyof typeof icons]
+    if (LucideIcon) {
+      return createElement(LucideIcon)
+    }
+
+    if (icon === 'Hedgehog') {
+      return createElement(Icon, { iconNode: hedgehog })
+    }
+
+    // Return null or a default icon if not found
+    return null
+  },
 })
 
 export function getPageImage(page: InferPageType<typeof source>) {
