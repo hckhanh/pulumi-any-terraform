@@ -505,7 +505,12 @@ const ciFlag = new posthog.FeatureFlag("ci-deployment", {
     key: "new-feature",
     name: "New Feature",
     active: true,
-    rolloutPercentage: pulumi.getStack() === "production" ? 100 : 50,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: pulumi.getStack() === "production" ? 100 : 50,
+        }],
+    }),
 });
 ```
 
@@ -519,9 +524,11 @@ const ciFlag = new posthog.FeatureFlag("ci-deployment", {
 **Optional Arguments:**
 - `name` (string): Display name for the feature flag
 - `active` (boolean): Whether the flag is active (default: true)
-- `filters` (string): JSON string containing targeting and rollout configuration
-- `rolloutPercentage` (number): Overall rollout percentage (0-100)
+- `filters` (string): JSON string containing targeting and rollout configuration with groups, properties, and conditions
+- `rolloutPercentage` (number): Simple overall rollout percentage (0-100) - use this for basic rollouts or `filters` for advanced targeting
 - `tags` (string[]): Set of tags for the feature flag
+
+**Note**: For advanced targeting with user properties and multiple groups, use the `filters` property. For simple percentage-based rollouts, you can use either `rolloutPercentage` or configure it within `filters`.
 
 **Attributes:**
 - `featureFlagId`: Numeric feature flag ID
