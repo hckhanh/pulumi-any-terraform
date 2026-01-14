@@ -10,7 +10,7 @@ The Status Page resource creates public-facing status pages to communicate servi
 ### Basic Status Page
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const statusPage = new betteruptime.StatusPage("service-status", {
     companyName: "Example Inc",
@@ -140,7 +140,7 @@ const privateStatus = new betteruptime.StatusPage("internal-status", {
 ### Status Page Resources
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const statusPage = new betteruptime.StatusPage("services", {
     companyName: "Example Inc",
@@ -279,7 +279,7 @@ const infoStatus = new betteruptime.StatusPage("info", {
 ### Complete Status Page Setup
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 // Create status page
 const statusPage = new betteruptime.StatusPage("company-status", {

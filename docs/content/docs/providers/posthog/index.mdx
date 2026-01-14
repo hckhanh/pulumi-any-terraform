@@ -1,0 +1,255 @@
+---
+title: PostHog Provider
+description: Manage PostHog analytics, feature flags, and product insights with Pulumi
+---
+
+The PostHog provider enables you to manage product analytics, feature flags, and event tracking resources in PostHog using Pulumi. This provider is dynamically bridged from the [Terraform PostHog Provider](https://registry.terraform.io/providers/PostHog/posthog).
+
+## Installation
+
+Install the PostHog provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add pulumi-posthog
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install pulumi-posthog
+    ```
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Create a feature flag
+const betaFeature = new posthog.FeatureFlag("beta-feature", {
+    key: "new-dashboard",
+    name: "New Dashboard Beta",
+    active: true,
+    // filters must be a JSON string, not an object
+    filters: JSON.stringify({
+        groups: [{
+            properties: [],
+            rolloutPercentage: 25,
+        }],
+    }),
+});
+
+// Export the feature flag key
+export const featureFlagKey = betaFeature.key;
+```
+
+## Key Features
+
+The PostHog provider supports the following resources for managing your product analytics infrastructure:
+
+### [Feature Flags](/docs/providers/posthog/feature-flag)
+
+Create and manage feature flags with advanced targeting and rollout strategies. Perfect for gradual rollouts, A/B testing, and targeted feature releases.
+
+```typescript
+const flag = new posthog.FeatureFlag("premium-feature", {
+    key: "premium-features",
+    name: "Premium Features",
+    active: true,
+    filters: JSON.stringify({
+        groups: [{
+            properties: [{
+                key: "plan",
+                value: "premium",
+                type: "person",
+                operator: "exact",
+            }],
+            rolloutPercentage: 100,
+        }],
+    }),
+});
+```
+
+### [Dashboards](/docs/providers/posthog/dashboard)
+
+Build custom dashboards for visualizing your analytics data.
+
+```typescript
+const dashboard = new posthog.Dashboard("analytics", {
+    name: "Product Analytics",
+    description: "Key metrics for product performance",
+    pinned: true,
+});
+```
+
+### [Insights](/docs/providers/posthog/insight)
+
+Configure analytics insights for tracking events, funnels, retention, and other metrics.
+
+```typescript
+const pageviews = new posthog.Insight("pageviews", {
+    name: "Pageview Trends",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "$pageview",
+            name: "Pageviews",
+        }],
+        dateRange: {
+            date_from: "-30d",
+        },
+    }),
+});
+```
+
+### [Alerts](/docs/providers/posthog/alert)
+
+Set up alerts to monitor metrics and get notified when thresholds are exceeded.
+
+```typescript
+const errorAlert = new posthog.Alert("high-errors", {
+    name: "High Error Rate",
+    insight: 12345, // Numeric insight ID from PostHog
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdUpper: 100,
+    subscribedUsers: [67890], // User IDs to notify
+});
+```
+
+### [Hog Functions](/docs/providers/posthog/hog-function)
+
+Create custom Hog functions for data transformation and routing.
+
+```typescript
+const transform = new posthog.HogFunction("transform", {
+    name: "Custom Event Transform",
+    enabled: true,
+    type: "transformation",
+    hog: `
+        fun transform(event) {
+            event.properties.processed = true
+            return event
+        }
+    `,
+    filtersJson: JSON.stringify({
+        events: [{ id: "$pageview" }],
+    }),
+});
+```
+
+## Configuration
+
+See the [Configuration](/docs/providers/posthog/configuration) guide for detailed setup instructions, including:
+
+- Getting your PostHog API key
+- Setting up Pulumi configuration
+- Configuring self-hosted PostHog instances
+- Multi-environment and multi-project setups
+
+## Common Use Cases
+
+### Feature Rollout Strategy
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Beta feature with gradual rollout
+const betaFeature = new posthog.FeatureFlag("beta-checkout", {
+    key: "new-checkout",
+    name: "New Checkout Experience",
+    active: true,
+    filters: JSON.stringify({
+        groups: [
+            {
+                // 100% for beta testers
+                properties: [{
+                    key: "is_beta_tester",
+                    value: true,
+                    type: "person",
+                    operator: "exact",
+                }],
+                rolloutPercentage: 100,
+            },
+            {
+                // 5% for everyone else
+                properties: [],
+                rolloutPercentage: 5,
+            },
+        ],
+    }),
+});
+
+export const betaFlagKey = betaFeature.key;
+```
+
+### Analytics Dashboard
+
+```typescript
+// Create insights
+const signupInsight = new posthog.Insight("signups", {
+    name: "User Signups",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "user_signed_up",
+            name: "User Signed Up",
+        }],
+        dateRange: {
+            date_from: "-30d",
+        },
+    }),
+});
+
+// Create dashboard
+const dashboard = new posthog.Dashboard("product-dashboard", {
+    name: "Product Metrics",
+    description: "Key product performance metrics",
+    pinned: true,
+});
+
+// Set up alert
+const signupAlert = new posthog.Alert("signup-alert", {
+    name: "Low Signup Alert",
+    insight: 12345, // Get insight ID from PostHog
+    enabled: true,
+    thresholdType: "absolute",
+    thresholdLower: 10,
+    subscribedUsers: [67890], // Get user IDs from PostHog
+});
+
+export const dashboardId = dashboard.dashboardId;
+```
+
+## Resource Types
+
+| Resource | Description |
+|----------|-------------|
+| [FeatureFlag](/docs/providers/posthog/feature-flag) | Feature flag management for gradual rollouts and A/B testing |
+| [Dashboard](/docs/providers/posthog/dashboard) | Custom dashboards for data visualization |
+| [Insight](/docs/providers/posthog/insight) | Analytics queries and insights |
+| [Alert](/docs/providers/posthog/alert) | Metric alerts and notifications |
+| [HogFunction](/docs/providers/posthog/hog-function) | Custom data transformation functions |
+
+## Getting Help
+
+- [PostHog Documentation](https://posthog.com/docs)
+- [PostHog API Reference](https://posthog.com/docs/api)
+- [Terraform PostHog Provider](https://registry.terraform.io/providers/PostHog/posthog/latest/docs)
+- [Configuration Guide](/docs/providers/posthog/configuration)

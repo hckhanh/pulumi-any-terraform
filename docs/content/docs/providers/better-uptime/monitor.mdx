@@ -10,7 +10,7 @@ The Monitor resource allows you to create and manage uptime monitoring checks in
 ### Basic HTTP Monitor
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const monitor = new betteruptime.Monitor("website-monitor", {
     url: "https://www.example.com",
@@ -86,7 +86,7 @@ const sslMonitor = new betteruptime.Monitor("ssl-check", {
 ### Monitor with Policy
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const policy = new betteruptime.Policy("oncall-policy", {
     name: "24/7 On-Call",
@@ -182,13 +182,13 @@ const monitor = new betteruptime.Monitor("maintenance-aware", {
 
 **status** - Checks if URL returns 2xx status code
 ```typescript
-{ monitorType: "status", url: "https://example.com" }
+{ "status", url: "https://example.com" }
 ```
 
 **expected_status_code** - Checks for specific status codes
 ```typescript
 {
-    monitorType: "expected_status_code",
+    "expected_status_code",
     expectedStatusCodes: [200, 201, 204]
 }
 ```
@@ -196,7 +196,7 @@ const monitor = new betteruptime.Monitor("maintenance-aware", {
 **keyword** - Checks if response contains keyword
 ```typescript
 {
-    monitorType: "keyword",
+    "keyword",
     requiredKeyword: "success"
 }
 ```
@@ -204,7 +204,7 @@ const monitor = new betteruptime.Monitor("maintenance-aware", {
 **keyword_absence** - Checks if response doesn't contain keyword
 ```typescript
 {
-    monitorType: "keyword_absence",
+    "keyword_absence",
     requiredKeyword: "error"
 }
 ```
@@ -213,41 +213,41 @@ const monitor = new betteruptime.Monitor("maintenance-aware", {
 
 **ping** - ICMP ping check
 ```typescript
-{ monitorType: "ping", url: "192.168.1.1" }
+{ "ping", url: "192.168.1.1" }
 ```
 
 **tcp** - TCP port check
 ```typescript
-{ monitorType: "tcp", url: "example.com", port: 443 }
+{ "tcp", url: "example.com", port: 443 }
 ```
 
 **udp** - UDP port check
 ```typescript
-{ monitorType: "udp", url: "example.com", port: 53 }
+{ "udp", url: "example.com", port: 53 }
 ```
 
 ### Email Monitors
 
 **smtp** - SMTP server check
 ```typescript
-{ monitorType: "smtp", url: "mail.example.com", port: 587 }
+{ "smtp", url: "mail.example.com", port: 587 }
 ```
 
 **pop** - POP3 server check
 ```typescript
-{ monitorType: "pop", url: "mail.example.com", port: 110 }
+{ "pop", url: "mail.example.com", port: 110 }
 ```
 
 **imap** - IMAP server check
 ```typescript
-{ monitorType: "imap", url: "mail.example.com", port: 993 }
+{ "imap", url: "mail.example.com", port: 993 }
 ```
 
 ### SSL Monitor
 
 **ssl** - SSL certificate expiration check
 ```typescript
-{ monitorType: "ssl", url: "https://example.com" }
+{ "ssl", url: "https://example.com" }
 ```
 
 ## Best Practices

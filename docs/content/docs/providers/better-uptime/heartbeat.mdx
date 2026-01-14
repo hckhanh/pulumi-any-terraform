@@ -10,7 +10,7 @@ The Heartbeat resource creates monitors that expect regular "pings" from your jo
 ### Basic Heartbeat
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const heartbeat = new betteruptime.Heartbeat("backup-job", {
     name: "Database Backup",
@@ -48,7 +48,7 @@ const frequentJob = new betteruptime.Heartbeat("health-check-job", {
 ### Heartbeat with Policy
 
 ```typescript
-import * as betteruptime from "@pulumi-contrib/better-uptime";
+import * as betteruptime from "pulumi-better-uptime";
 
 const policy = new betteruptime.Policy("ops-team", {
     name: "Operations Team",

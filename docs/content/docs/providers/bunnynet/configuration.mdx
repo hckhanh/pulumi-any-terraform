@@ -14,7 +14,7 @@ The Bunny provider requires an API key for authentication. You can manage CDN pu
 ### Basic Setup
 
 ```typescript
-import * as bunnynet from "@pulumi-contrib/bunnynet";
+import * as bunnynet from "pulumi-bunnynet";
 
 // Configure the provider with API key
 const config = new pulumi.Config("bunnynet");
@@ -26,7 +26,7 @@ const apiKey = config.requireSecret("apiKey");
 #### 1. Provider Block (Recommended)
 
 ```typescript
-import * as bunnynet from "@pulumi-contrib/bunnynet";
+import * as bunnynet from "pulumi-bunnynet";
 import * as pulumi from "@pulumi/pulumi";
 
 const config = new pulumi.Config("bunnynet");
@@ -112,7 +112,7 @@ const devProvider = new bunnynet.Provider("dev", {
 ### With Pull Zone
 
 ```typescript
-import * as bunnynet from "@pulumi-contrib/bunnynet";
+import * as bunnynet from "pulumi-bunnynet";
 import * as pulumi from "@pulumi/pulumi";
 
 const config = new pulumi.Config("bunnynet");

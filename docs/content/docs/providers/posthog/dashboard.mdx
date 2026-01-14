@@ -1,0 +1,228 @@
+---
+title: Dashboard
+description: Create and manage analytics dashboards for data visualization
+---
+
+The Dashboard resource allows you to create and manage custom dashboards for visualizing analytics data in PostHog.
+
+## Example Usage
+
+### Basic Dashboard
+
+```typescript
+import * as posthog from "pulumi-posthog";
+
+const dashboard = new posthog.Dashboard("analytics", {
+    name: "Product Analytics",
+    description: "Key metrics for product performance",
+});
+```
+
+### Pinned Dashboard
+
+```typescript
+const pinnedDashboard = new posthog.Dashboard("main-dashboard", {
+    name: "Main Metrics Dashboard",
+    description: "Primary dashboard for daily monitoring",
+    pinned: true,
+});
+```
+
+### Dashboard with Multiple Insights
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as posthog from "pulumi-posthog";
+
+// Create insights
+const signupInsight = new posthog.Insight("signups", {
+    name: "User Signups",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "user_signed_up",
+            name: "User Signed Up",
+        }],
+        dateRange: {
+            date_from: "-30d",
+        },
+    }),
+});
+
+const pageviewInsight = new posthog.Insight("pageviews", {
+    name: "Pageviews",
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "$pageview",
+            name: "Pageviews",
+        }],
+        dateRange: {
+            date_from: "-7d",
+        },
+    }),
+});
+
+// Create dashboard
+const dashboard = new posthog.Dashboard("overview", {
+    name: "Weekly Overview",
+    description: "Weekly metrics overview",
+    pinned: true,
+});
+
+// Add insights to dashboard (done via Insight resource)
+const signupWithDash = new posthog.Insight("signup-on-dash", {
+    name: "Signups",
+    dashboardIds: [12345], // Reference dashboard ID
+    queryJson: JSON.stringify({
+        kind: "TrendsQuery",
+        series: [{
+            kind: "EventsNode",
+            event: "user_signed_up",
+        }],
+        dateRange: { date_from: "-30d" },
+    }),
+});
+```
+
+### Team Dashboard
+
+```typescript
+const teamDashboard = new posthog.Dashboard("team-metrics", {
+    name: "Engineering Team Metrics",
+    description: "Performance and adoption metrics for the engineering team",
+});
+```
+
+## Resource Properties
+
+### Optional Arguments
+
+- `name` (string): Dashboard name
+- `description` (string): Dashboard description
+- `pinned` (boolean): Pin to top of dashboard list
+
+### Attributes
+
+- `dashboardId`: Dashboard ID
+- `name`: Dashboard name
+- `description`: Dashboard description
+- `pinned`: Whether the dashboard is pinned
+
+## Best Practices
+
+### 1. Descriptive Names
+
+Use clear, descriptive names for dashboards:
+
+```typescript
+// ✅ Good
+const dashboard = new posthog.Dashboard("customer-health", {
+    name: "Customer Health Metrics",
+    description: "Track user engagement and retention",
+});
+
+// ❌ Avoid
+const dashboard = new posthog.Dashboard("dash1", {
+    name: "Dashboard 1",
+});
+```
+
+### 2. Pin Important Dashboards
+
+Pin frequently accessed dashboards for quick access:
+
+```typescript
+const mainDashboard = new posthog.Dashboard("main", {
+    name: "Main Dashboard",
+    pinned: true, // Shows at top
+});
+```
+
+### 3. Organize by Theme
+
+Group related metrics in themed dashboards:
+
+```typescript
+// User engagement dashboard
+const engagement = new posthog.Dashboard("engagement", {
+    name: "User Engagement",
+    description: "Daily active users, session length, feature usage",
+});
+
+// Business metrics dashboard
+const business = new posthog.Dashboard("business", {
+    name: "Business Metrics",
+    description: "Signups, conversions, revenue tracking",
+});
+
+// Product health dashboard
+const health = new posthog.Dashboard("health", {
+    name: "Product Health",
+    description: "Error rates, performance, uptime",
+});
+```
+
+## Common Use Cases
+
+### Executive Dashboard
+
+High-level metrics for leadership:
+
+```typescript
+const executive = new posthog.Dashboard("executive", {
+    name: "Executive Summary",
+    description: "Key business metrics and growth indicators",
+    pinned: true,
+});
+```
+
+### Product Team Dashboard
+
+Metrics for product development:
+
+```typescript
+const product = new posthog.Dashboard("product-metrics", {
+    name: "Product Team Metrics",
+    description: "Feature adoption, user feedback, A/B test results",
+});
+```
+
+### Operations Dashboard
+
+Operational and technical metrics:
+
+```typescript
+const ops = new posthog.Dashboard("operations", {
+    name: "Operations Dashboard",
+    description: "System health, error rates, performance metrics",
+});
+```
+
+## Troubleshooting
+
+### Dashboard Not Visible
+
+**Issue**: Dashboard doesn't appear in PostHog UI
+
+**Solution**:
+- Check that the dashboard was created successfully
+- Verify you're logged into the correct PostHog project
+- Refresh the PostHog UI
+
+### Cannot Add Insights
+
+**Issue**: Insights don't appear on dashboard
+
+**Solution**:
+- Insights are added via the Insight resource's `dashboardIds` property
+- Use the dashboard's numeric ID (from PostHog) when creating insights
+- Ensure the insight and dashboard are in the same project
+
+## Additional Resources
+
+- [Insight Resource](/docs/providers/posthog/insight)
+- [PostHog Dashboards Documentation](https://posthog.com/docs/user-guides/dashboards)
+- [Configuration](/docs/providers/posthog/configuration)
