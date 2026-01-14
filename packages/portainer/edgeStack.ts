@@ -60,6 +60,10 @@ export class EdgeStack extends pulumi.CustomResource {
      * Enable relative path volumes – also used as value for 'filesystemPath'.
      */
     declare public readonly relativePath: pulumi.Output<string | undefined>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
@@ -108,6 +112,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["pullImage"] = state?.pullImage;
             resourceInputs["registries"] = state?.registries;
             resourceInputs["relativePath"] = state?.relativePath;
+            resourceInputs["repositoryGitCredentialId"] = state?.repositoryGitCredentialId;
             resourceInputs["repositoryPassword"] = state?.repositoryPassword;
             resourceInputs["repositoryReferenceName"] = state?.repositoryReferenceName;
             resourceInputs["repositoryUrl"] = state?.repositoryUrl;
@@ -141,6 +146,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["pullImage"] = args?.pullImage;
             resourceInputs["registries"] = args?.registries;
             resourceInputs["relativePath"] = args?.relativePath;
+            resourceInputs["repositoryGitCredentialId"] = args?.repositoryGitCredentialId;
             resourceInputs["repositoryPassword"] = args?.repositoryPassword ? pulumi.secret(args.repositoryPassword) : undefined;
             resourceInputs["repositoryReferenceName"] = args?.repositoryReferenceName;
             resourceInputs["repositoryUrl"] = args?.repositoryUrl;
@@ -193,6 +199,10 @@ export interface EdgeStackState {
      * Enable relative path volumes – also used as value for 'filesystemPath'.
      */
     relativePath?: pulumi.Input<string>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
@@ -248,6 +258,10 @@ export interface EdgeStackArgs {
      * Enable relative path volumes – also used as value for 'filesystemPath'.
      */
     relativePath?: pulumi.Input<string>;
+    /**
+     * ID of the Git credentials to use for authentication.
+     */
+    repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;

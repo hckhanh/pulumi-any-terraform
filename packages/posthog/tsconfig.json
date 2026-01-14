@@ -21,6 +21,7 @@
         "hogFunction.ts",
         "index.ts",
         "insight.ts",
+        "project.ts",
         "provider.ts",
         "utilities.ts"
     ]

@@ -73,6 +73,7 @@ export class Source extends pulumi.CustomResource {
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span>
      *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
      *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
      *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
@@ -285,6 +286,7 @@ export interface SourceState {
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span>
      *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
      *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
      *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
@@ -420,6 +422,7 @@ export interface SourceArgs {
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
+     *     - <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span>
      *     - <span pulumi-lang-nodejs="`awsCloudwatch`" pulumi-lang-dotnet="`AwsCloudwatch`" pulumi-lang-go="`awsCloudwatch`" pulumi-lang-python="`aws_cloudwatch`" pulumi-lang-yaml="`awsCloudwatch`" pulumi-lang-java="`awsCloudwatch`">`aws_cloudwatch`</span>
      *     - <span pulumi-lang-nodejs="`awsEcs`" pulumi-lang-dotnet="`AwsEcs`" pulumi-lang-go="`awsEcs`" pulumi-lang-python="`aws_ecs`" pulumi-lang-yaml="`awsEcs`" pulumi-lang-java="`awsEcs`">`aws_ecs`</span>
      *     - <span pulumi-lang-nodejs="`awsElb`" pulumi-lang-dotnet="`AwsElb`" pulumi-lang-go="`awsElb`" pulumi-lang-python="`aws_elb`" pulumi-lang-yaml="`awsElb`" pulumi-lang-java="`awsElb`">`aws_elb`</span>
