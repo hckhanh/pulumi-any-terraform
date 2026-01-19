@@ -1,5 +1,15 @@
 # pulumi-posthog
 
+## 1.0.2
+
+### Patch Changes
+
+- 775bdd1: ## Changelog
+
+  ### Other Changes
+  - PostHog/terraform-provider-posthog@67c5e7e8d0efc332b39ffd1eae34ea976e707304: Merge remote-tracking branch 'origin/vdekrijger-make-project-id-otional' into vdekrijger-make-project-id-otional (@vdekrijger)
+  - PostHog/terraform-provider-posthog@55c327f8911c7569aabb12b62fb67c99f749ea34: doc: Update to include the new env var for the acceptance tests (@vdekrijger)
+
 ## 1.0.1
 
 ### Patch Changes
