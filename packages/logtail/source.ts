@@ -122,6 +122,7 @@ export class Source extends pulumi.CustomResource {
      *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
      *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
      *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
+     *     - <span pulumi-lang-nodejs="`winlogbeat`" pulumi-lang-dotnet="`Winlogbeat`" pulumi-lang-go="`winlogbeat`" pulumi-lang-python="`winlogbeat`" pulumi-lang-yaml="`winlogbeat`" pulumi-lang-java="`winlogbeat`">`winlogbeat`</span>
      */
     declare public readonly platform: pulumi.Output<string>;
     /**
@@ -335,6 +336,7 @@ export interface SourceState {
      *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
      *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
      *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
+     *     - <span pulumi-lang-nodejs="`winlogbeat`" pulumi-lang-dotnet="`Winlogbeat`" pulumi-lang-go="`winlogbeat`" pulumi-lang-python="`winlogbeat`" pulumi-lang-yaml="`winlogbeat`" pulumi-lang-java="`winlogbeat`">`winlogbeat`</span>
      */
     platform?: pulumi.Input<string>;
     /**
@@ -471,6 +473,7 @@ export interface SourceArgs {
      *     - <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
      *     - <span pulumi-lang-nodejs="`vector`" pulumi-lang-dotnet="`Vector`" pulumi-lang-go="`vector`" pulumi-lang-python="`vector`" pulumi-lang-yaml="`vector`" pulumi-lang-java="`vector`">`vector`</span>
      *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
+     *     - <span pulumi-lang-nodejs="`winlogbeat`" pulumi-lang-dotnet="`Winlogbeat`" pulumi-lang-go="`winlogbeat`" pulumi-lang-python="`winlogbeat`" pulumi-lang-yaml="`winlogbeat`" pulumi-lang-java="`winlogbeat`">`winlogbeat`</span>
      */
     platform: pulumi.Input<string>;
     /**

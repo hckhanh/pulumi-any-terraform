@@ -53,6 +53,10 @@ export class Dashboard extends pulumi.CustomResource {
      */
     declare public readonly pinned: pulumi.Output<boolean>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * Set of tags for the dashboard
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
@@ -75,6 +79,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["pinned"] = state?.pinned;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
@@ -82,6 +87,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["pinned"] = args?.pinned;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["dashboardId"] = undefined /*out*/;
         }
@@ -115,6 +121,10 @@ export interface DashboardState {
      */
     pinned?: pulumi.Input<boolean>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * Set of tags for the dashboard
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -140,6 +150,10 @@ export interface DashboardArgs {
      * Whether the dashboard is pinned
      */
     pinned?: pulumi.Input<boolean>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Set of tags for the dashboard
      */

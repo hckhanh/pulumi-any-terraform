@@ -73,6 +73,10 @@ export class HogFunction extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */
     declare public readonly templateId: pulumi.Output<string | undefined>;
@@ -104,6 +108,7 @@ export class HogFunction extends pulumi.CustomResource {
             resourceInputs["mappingsJson"] = state?.mappingsJson;
             resourceInputs["maskingJson"] = state?.maskingJson;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["templateId"] = state?.templateId;
             resourceInputs["type"] = state?.type;
         } else {
@@ -118,6 +123,7 @@ export class HogFunction extends pulumi.CustomResource {
             resourceInputs["mappingsJson"] = args?.mappingsJson;
             resourceInputs["maskingJson"] = args?.maskingJson;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["templateId"] = args?.templateId;
             resourceInputs["type"] = args?.type;
         }
@@ -170,6 +176,10 @@ export interface HogFunctionState {
      * Name of the Hog function.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */
@@ -224,6 +234,10 @@ export interface HogFunctionArgs {
      * Name of the Hog function.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */

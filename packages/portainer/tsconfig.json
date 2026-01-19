@@ -95,6 +95,7 @@
         "openAmtDevicesFeatures.ts",
         "provider.ts",
         "registry.ts",
+        "registryAccess.ts",
         "resourceControl.ts",
         "settings.ts",
         "settingsExperimental.ts",

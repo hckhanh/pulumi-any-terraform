@@ -58,8 +58,8 @@
     "version": "1.0.2",
     "parameterization": {
       "name": "infisical",
-      "version": "0.15.58",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS41OCJ9fQ=="
+      "version": "0.15.59",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xNS41OSJ9fQ=="
     }
   }
 }

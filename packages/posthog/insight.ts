@@ -61,6 +61,10 @@ export class Insight extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
      */
     declare public readonly queryJson: pulumi.Output<string>;
@@ -89,6 +93,7 @@ export class Insight extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["insightId"] = state?.insightId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["queryJson"] = state?.queryJson;
             resourceInputs["tags"] = state?.tags;
         } else {
@@ -102,6 +107,7 @@ export class Insight extends pulumi.CustomResource {
             resourceInputs["derivedName"] = args?.derivedName;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["queryJson"] = args?.queryJson;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["insightId"] = undefined /*out*/;
@@ -144,6 +150,10 @@ export interface InsightState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
      */
     queryJson?: pulumi.Input<string>;
@@ -181,6 +191,10 @@ export interface InsightArgs {
      * Insight name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
      */

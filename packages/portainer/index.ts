@@ -398,6 +398,11 @@ export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
 utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 
+export { RegistryAccessArgs, RegistryAccessState } from "./registryAccess";
+export type RegistryAccess = import("./registryAccess").RegistryAccess;
+export const RegistryAccess: typeof import("./registryAccess").RegistryAccess = null as any;
+utilities.lazyLoad(exports, ["RegistryAccess"], () => require("./registryAccess"));
+
 export { ResourceControlArgs, ResourceControlState } from "./resourceControl";
 export type ResourceControl = import("./resourceControl").ResourceControl;
 export const ResourceControl: typeof import("./resourceControl").ResourceControl = null as any;
@@ -613,6 +618,8 @@ const _module = {
                 return new OpenAmtDevicesFeatures(name, <any>undefined, { urn })
             case "portainer:index/registry:Registry":
                 return new Registry(name, <any>undefined, { urn })
+            case "portainer:index/registryAccess:RegistryAccess":
+                return new RegistryAccess(name, <any>undefined, { urn })
             case "portainer:index/resourceControl:ResourceControl":
                 return new ResourceControl(name, <any>undefined, { urn })
             case "portainer:index/settings:Settings":
@@ -710,6 +717,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/openAmtActivate", _mod
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesAction", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesFeatures", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/registry", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/registryAccess", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/resourceControl", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settingsExperimental", _module)

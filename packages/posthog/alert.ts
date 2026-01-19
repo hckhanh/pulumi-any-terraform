@@ -57,6 +57,10 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
     declare public readonly seriesIndex: pulumi.Output<number>;
@@ -100,6 +104,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["insight"] = state?.insight;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["seriesIndex"] = state?.seriesIndex;
             resourceInputs["skipWeekend"] = state?.skipWeekend;
             resourceInputs["subscribedUsers"] = state?.subscribedUsers;
@@ -123,6 +128,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["insight"] = args?.insight;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["seriesIndex"] = args?.seriesIndex;
             resourceInputs["skipWeekend"] = args?.skipWeekend;
             resourceInputs["subscribedUsers"] = args?.subscribedUsers;
@@ -163,6 +169,10 @@ export interface AlertState {
      * Name of the alert.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
@@ -217,6 +227,10 @@ export interface AlertArgs {
      * Name of the alert.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */

@@ -53,6 +53,10 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * Rollout percentage (0-100)
      */
     declare public readonly rolloutPercentage: pulumi.Output<number>;
@@ -79,6 +83,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["filters"] = state?.filters;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["rolloutPercentage"] = state?.rolloutPercentage;
             resourceInputs["tags"] = state?.tags;
         } else {
@@ -90,6 +95,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["filters"] = args?.filters;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["rolloutPercentage"] = args?.rolloutPercentage;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["featureFlagId"] = undefined /*out*/;
@@ -124,6 +130,10 @@ export interface FeatureFlagState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * Rollout percentage (0-100)
      */
     rolloutPercentage?: pulumi.Input<number>;
@@ -153,6 +163,10 @@ export interface FeatureFlagArgs {
      * Feature flag name/description
      */
     name?: pulumi.Input<string>;
+    /**
+     * Project ID (environment) for this resource. Overrides the provider-level project_id.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Rollout percentage (0-100)
      */

@@ -568,7 +568,7 @@ export interface PullzoneRouting {
 
 export interface PullzoneShieldAccessList {
     /**
-     * Options: `Allow`, `Block`, `Challenge`, `Log`
+     * Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
     action: pulumi.Input<string>;
     /**
@@ -701,7 +701,7 @@ export interface PullzoneWafRuleCondition {
 
 export interface PullzoneWafRuleResponse {
     /**
-     * The action to take if the WAF rule is triggered. Options: `Block`, `Challenge`, `Log`
+     * The action to take if the WAF rule is triggered. Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
     action: pulumi.Input<string>;
 }

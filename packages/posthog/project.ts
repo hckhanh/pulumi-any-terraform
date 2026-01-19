@@ -41,7 +41,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The identifier of the organization this project belongs to.
+     * The identifier of the organization this resource belongs to.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -102,7 +102,7 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier of the organization this project belongs to.
+     * The identifier of the organization this resource belongs to.
      */
     organizationId?: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface ProjectArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier of the organization this project belongs to.
+     * The identifier of the organization this resource belongs to.
      */
     organizationId: pulumi.Input<string>;
     /**

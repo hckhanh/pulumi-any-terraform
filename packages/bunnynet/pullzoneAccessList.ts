@@ -33,7 +33,7 @@ export class PullzoneAccessList extends pulumi.CustomResource {
     }
 
     /**
-     * Options: `Allow`, `Block`, `Challenge`, `Log`
+     * Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
     declare public readonly action: pulumi.Output<string>;
     /**
@@ -113,7 +113,7 @@ export class PullzoneAccessList extends pulumi.CustomResource {
  */
 export interface PullzoneAccessListState {
     /**
-     * Options: `Allow`, `Block`, `Challenge`, `Log`
+     * Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
     action?: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface PullzoneAccessListState {
  */
 export interface PullzoneAccessListArgs {
     /**
-     * Options: `Allow`, `Block`, `Challenge`, `Log`
+     * Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
     action: pulumi.Input<string>;
     /**

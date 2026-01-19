@@ -54,6 +54,10 @@ export class AppConnectionLdap extends pulumi.CustomResource {
      * The name of the LDAP App Connection to create. Must be slug-friendly
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
+     */
+    declare public readonly projectId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppConnectionLdap resource with the given unique name, arguments, and options.
@@ -73,6 +77,7 @@ export class AppConnectionLdap extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["method"] = state?.method;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as AppConnectionLdapArgs | undefined;
             if (args?.credentials === undefined && !opts.urn) {
@@ -85,6 +90,7 @@ export class AppConnectionLdap extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["method"] = args?.method;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["credentialsHash"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -116,6 +122,10 @@ export interface AppConnectionLdapState {
      * The name of the LDAP App Connection to create. Must be slug-friendly
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
+     */
+    projectId?: pulumi.Input<string>;
 }
 
 /**
@@ -138,4 +148,8 @@ export interface AppConnectionLdapArgs {
      * The name of the LDAP App Connection to create. Must be slug-friendly
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
+     */
+    projectId?: pulumi.Input<string>;
 }
