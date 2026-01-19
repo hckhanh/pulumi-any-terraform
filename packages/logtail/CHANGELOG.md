@@ -1,5 +1,14 @@
 ## 0.6.8 (2025-10-08)
 
+## 0.7.3
+
+### Patch Changes
+
+- 775bdd1: ## What's Changed
+  - T-9946 Add Winlogbeat telemetry source platform by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/49
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v0.7.4...v0.7.5
+
 ## 0.7.2
 
 ### Patch Changes
