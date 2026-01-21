@@ -57,6 +57,8 @@ jobs:
         run: |
           pnpm nx run-many -t fix
           git add .
+        env:
+          NX_KEY: ${{ secrets.NX_KEY }}
       - name: Update lockfile
         run: |
           pnpm install --no-frozen-lockfile

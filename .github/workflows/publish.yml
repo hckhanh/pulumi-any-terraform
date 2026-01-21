@@ -66,3 +66,4 @@ jobs:
           commitMode: 'github-api'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NX_KEY: ${{ secrets.NX_KEY }}
