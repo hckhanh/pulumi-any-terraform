@@ -29,14 +29,14 @@ jobs:
         id: pnpm-cache
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
       - name: Setup pnpm cache
-        uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.2.0
+        uses: actions/cache@c96891b832a4cdc5c563f96dfb1dd95c69b18613 # v4.2.0
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Setup Nx cache
-        uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.2.0
+        uses: actions/cache@c96891b832a4cdc5c563f96dfb1dd95c69b18613 # v4.2.0
         with:
           path: .nx/cache
           key: ${{ runner.os }}-nx-${{ github.sha }}
