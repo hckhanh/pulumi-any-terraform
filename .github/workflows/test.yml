@@ -28,20 +28,15 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-      - name: Setup pnpm cache
+      - name: Setup cache
         uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            .nx/cache
+          key: ${{ runner.os }}-pnpm-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - name: Setup Nx cache
-        uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
-        with:
-          path: .nx/cache
-          key: ${{ runner.os }}-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-nx-
+            ${{ runner.os }}-pnpm-nx-
       - name: Setup Aikido Safe Chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
