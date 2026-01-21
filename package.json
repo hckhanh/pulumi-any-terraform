@@ -48,7 +48,9 @@
       "path-parse": "npm:@socketregistry/path-parse@^1",
       "safe-buffer": "npm:@socketregistry/safe-buffer@^1",
       "safer-buffer": "npm:@socketregistry/safer-buffer@^1",
-      "glob@>=10.2.0 <10.5.0": "10.5.0"
+      "glob@>=10.2.0 <10.5.0": "10.5.0",
+      "tar@<=7.5.2": ">=7.5.3",
+      "tar@<=7.5.3": ">=7.5.4"
     }
   }
 }
