@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         with:
           path: .nx/cache
-          key: ${{ runner.os }}-nx-${{ github.sha }}
+          key: ${{ runner.os }}-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-nx-
       - name: Setup Aikido Safe Chain
