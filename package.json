@@ -20,7 +20,7 @@
     "@swc/helpers": "0.5.18",
     "@types/node": "24.10.9",
     "nx": "22.3.3",
-    "prettier": "3.7.4",
+    "prettier": "3.8.1",
     "syncpack": "14.0.0-alpha.34"
   },
   "keywords": [
