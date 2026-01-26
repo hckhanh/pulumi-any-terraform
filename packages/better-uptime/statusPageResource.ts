@@ -49,6 +49,22 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly history: pulumi.Output<boolean>;
     /**
+     * How to mark this resource as degraded. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    declare public readonly markAsDegradedFor: pulumi.Output<string>;
+    /**
+     * Metadata rule for marking resource as degraded. Only applicable when<span pulumi-lang-nodejs=" markAsDegradedFor " pulumi-lang-dotnet=" MarkAsDegradedFor " pulumi-lang-go=" markAsDegradedFor " pulumi-lang-python=" mark_as_degraded_for " pulumi-lang-yaml=" markAsDegradedFor " pulumi-lang-java=" markAsDegradedFor "> mark_as_degraded_for </span>is 'incident_matching_metadata'.
+     */
+    declare public readonly markAsDegradedMetadataRule: pulumi.Output<outputs.StatusPageResourceMarkAsDegradedMetadataRule | undefined>;
+    /**
+     * How to mark this resource as down. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    declare public readonly markAsDownFor: pulumi.Output<string>;
+    /**
+     * Metadata rule for marking resource as down. Only applicable when<span pulumi-lang-nodejs=" markAsDownFor " pulumi-lang-dotnet=" MarkAsDownFor " pulumi-lang-go=" markAsDownFor " pulumi-lang-python=" mark_as_down_for " pulumi-lang-yaml=" markAsDownFor " pulumi-lang-java=" markAsDownFor "> mark_as_down_for </span>is 'incident_matching_metadata'.
+     */
+    declare public readonly markAsDownMetadataRule: pulumi.Output<outputs.StatusPageResourceMarkAsDownMetadataRule | undefined>;
+    /**
      * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
     declare public readonly position: pulumi.Output<number>;
@@ -101,6 +117,10 @@ export class StatusPageResource extends pulumi.CustomResource {
             resourceInputs["availability"] = state?.availability;
             resourceInputs["explanation"] = state?.explanation;
             resourceInputs["history"] = state?.history;
+            resourceInputs["markAsDegradedFor"] = state?.markAsDegradedFor;
+            resourceInputs["markAsDegradedMetadataRule"] = state?.markAsDegradedMetadataRule;
+            resourceInputs["markAsDownFor"] = state?.markAsDownFor;
+            resourceInputs["markAsDownMetadataRule"] = state?.markAsDownMetadataRule;
             resourceInputs["position"] = state?.position;
             resourceInputs["publicName"] = state?.publicName;
             resourceInputs["resourceId"] = state?.resourceId;
@@ -126,6 +146,10 @@ export class StatusPageResource extends pulumi.CustomResource {
             }
             resourceInputs["explanation"] = args?.explanation;
             resourceInputs["history"] = args?.history;
+            resourceInputs["markAsDegradedFor"] = args?.markAsDegradedFor;
+            resourceInputs["markAsDegradedMetadataRule"] = args?.markAsDegradedMetadataRule;
+            resourceInputs["markAsDownFor"] = args?.markAsDownFor;
+            resourceInputs["markAsDownMetadataRule"] = args?.markAsDownMetadataRule;
             resourceInputs["position"] = args?.position;
             resourceInputs["publicName"] = args?.publicName;
             resourceInputs["resourceId"] = args?.resourceId;
@@ -160,6 +184,22 @@ export interface StatusPageResourceState {
      * @deprecated Deprecated
      */
     history?: pulumi.Input<boolean>;
+    /**
+     * How to mark this resource as degraded. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    markAsDegradedFor?: pulumi.Input<string>;
+    /**
+     * Metadata rule for marking resource as degraded. Only applicable when<span pulumi-lang-nodejs=" markAsDegradedFor " pulumi-lang-dotnet=" MarkAsDegradedFor " pulumi-lang-go=" markAsDegradedFor " pulumi-lang-python=" mark_as_degraded_for " pulumi-lang-yaml=" markAsDegradedFor " pulumi-lang-java=" markAsDegradedFor "> mark_as_degraded_for </span>is 'incident_matching_metadata'.
+     */
+    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule>;
+    /**
+     * How to mark this resource as down. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    markAsDownFor?: pulumi.Input<string>;
+    /**
+     * Metadata rule for marking resource as down. Only applicable when<span pulumi-lang-nodejs=" markAsDownFor " pulumi-lang-dotnet=" MarkAsDownFor " pulumi-lang-go=" markAsDownFor " pulumi-lang-python=" mark_as_down_for " pulumi-lang-yaml=" markAsDownFor " pulumi-lang-java=" markAsDownFor "> mark_as_down_for </span>is 'incident_matching_metadata'.
+     */
+    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule>;
     /**
      * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
@@ -212,6 +252,22 @@ export interface StatusPageResourceArgs {
      * @deprecated Deprecated
      */
     history?: pulumi.Input<boolean>;
+    /**
+     * How to mark this resource as degraded. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    markAsDegradedFor?: pulumi.Input<string>;
+    /**
+     * Metadata rule for marking resource as degraded. Only applicable when<span pulumi-lang-nodejs=" markAsDegradedFor " pulumi-lang-dotnet=" MarkAsDegradedFor " pulumi-lang-go=" markAsDegradedFor " pulumi-lang-python=" mark_as_degraded_for " pulumi-lang-yaml=" markAsDegradedFor " pulumi-lang-java=" markAsDegradedFor "> mark_as_degraded_for </span>is 'incident_matching_metadata'.
+     */
+    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule>;
+    /**
+     * How to mark this resource as down. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
+     */
+    markAsDownFor?: pulumi.Input<string>;
+    /**
+     * Metadata rule for marking resource as down. Only applicable when<span pulumi-lang-nodejs=" markAsDownFor " pulumi-lang-dotnet=" MarkAsDownFor " pulumi-lang-go=" markAsDownFor " pulumi-lang-python=" mark_as_down_for " pulumi-lang-yaml=" markAsDownFor " pulumi-lang-java=" markAsDownFor "> mark_as_down_for </span>is 'incident_matching_metadata'.
+     */
+    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule>;
     /**
      * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */

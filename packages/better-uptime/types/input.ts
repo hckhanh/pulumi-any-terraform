@@ -923,6 +923,96 @@ export interface StatusPageNavigationLink {
     text: pulumi.Input<string>;
 }
 
+export interface StatusPageResourceMarkAsDegradedMetadataRule {
+    /**
+     * The metadata key to match against.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * List of metadata values that should trigger the degraded status.
+     */
+    metadataValues: pulumi.Input<pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRuleMetadataValue>[]>;
+}
+
+export interface StatusPageResourceMarkAsDegradedMetadataRuleMetadataValue {
+    /**
+     * Email of the referenced user when type is `User`.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * ID of the referenced item when type is different than `String`.
+     */
+    itemId?: pulumi.Input<string>;
+    /**
+     * Name of the referenced item when type is different than `String`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Value types can be grouped into 2 main categories:
+     *   - **Scalar**: `String`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   
+     *   The value of a **Scalar** type is defined using the value field.
+     *   
+     *   The value of a **Reference** type is defined using one of the following fields:
+     *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`">`item_id`</span> - great choice when you know the ID of the target item.
+     *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span> - your go-to choice when you're referencing users.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   
+     *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`">`item_id`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span>.**
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Value when type is String.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface StatusPageResourceMarkAsDownMetadataRule {
+    /**
+     * The metadata key to match against.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * List of metadata values that should trigger the down status.
+     */
+    metadataValues: pulumi.Input<pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRuleMetadataValue>[]>;
+}
+
+export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
+    /**
+     * Email of the referenced user when type is `User`.
+     */
+    email?: pulumi.Input<string>;
+    /**
+     * ID of the referenced item when type is different than `String`.
+     */
+    itemId?: pulumi.Input<string>;
+    /**
+     * Name of the referenced item when type is different than `String`.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Value types can be grouped into 2 main categories:
+     *   - **Scalar**: `String`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   
+     *   The value of a **Scalar** type is defined using the value field.
+     *   
+     *   The value of a **Reference** type is defined using one of the following fields:
+     *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`">`item_id`</span> - great choice when you know the ID of the target item.
+     *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span> - your go-to choice when you're referencing users.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   
+     *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`">`item_id`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span>.**
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Value when type is String.
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface StatusPageResourceStatusHistory {
     day: pulumi.Input<string>;
     downtimeDuration: pulumi.Input<number>;
