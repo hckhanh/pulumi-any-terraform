@@ -1,5 +1,14 @@
 ## 0.20.9 (2025-10-08)
 
+## 0.20.11
+
+### Patch Changes
+
+- dd4326f: ## What's Changed
+  - T-16031 [monitor][docs] Allow longer playwright timeouts by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-better-uptime/pull/175
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-better-uptime/compare/v0.20.5...v0.20.6
+
 ## 0.20.10
 
 ### Patch Changes
