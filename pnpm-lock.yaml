@@ -127,8 +127,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -143,8 +143,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -159,8 +159,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -175,8 +175,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -191,8 +191,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -207,8 +207,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -223,8 +223,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -239,8 +239,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -255,8 +255,8 @@ importers:
         version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.217.0
-        version: 3.217.0(typescript@5.9.3)
+        specifier: 3.217.1
+        version: 3.217.1(typescript@5.9.3)
       '@types/node':
         specifier: 24.10.9
         version: 24.10.9
@@ -1849,8 +1849,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@pulumi/pulumi@3.217.0':
-    resolution: {integrity: sha512-2kbXBow6v4ou2M1J9narT9i6vlZzpp06H4Qmpgi7dA0XZFOhh/yl4eoYQTM0nde859k1B2sUc4iIofGOWbQDSA==}
+  '@pulumi/pulumi@3.217.1':
+    resolution: {integrity: sha512-D2ywcnzADLE8oNmRLD7Fh+RnZ/+/yID2c/eG3B8LxP7JuHL6MBS29qR46NMa7j5Jg0viwU0D7q+F4OxWKHPoqA==}
     engines: {node: '>=20'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -4567,54 +4567,6 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  syncpack-darwin-arm64@14.0.0-canary.1:
-    resolution: {integrity: sha512-tKxNtRWLXyfM3BHzYC4lJTbv5I0cz9rh12hHGCO5zclGj2+pcZGKDG6frZmFrBEhEkHyzdYBxv75PsYi8+NoNg==}
-    cpu: [arm64]
-    os: [darwin]
-    hasBin: true
-
-  syncpack-darwin-x64@14.0.0-canary.1:
-    resolution: {integrity: sha512-yUzrgmM30og8nUjrVE/ARnZgBbVpnLSpZHc1cV4O8Dgv9X2tMe1KNcIC2zWS1P8mwaD+rejr5E1nMMUFmQnj2w==}
-    cpu: [x64]
-    os: [darwin]
-    hasBin: true
-
-  syncpack-linux-arm64-musl@14.0.0-canary.1:
-    resolution: {integrity: sha512-VbHlZGLkib3MgO57T1xoge/AupEsnmaZsT8K2PnX43PsFTaO1+3T1MFlrY+E7tg1C5FBMrFkIKLUOFe9uZaAZg==}
-    cpu: [arm64]
-    os: [linux]
-    hasBin: true
-
-  syncpack-linux-arm64@14.0.0-canary.1:
-    resolution: {integrity: sha512-zKZOdWGR4dKyhJ81q/VkdHe8vdrTXAnQGT2M66f2VM50ORWzrT0+f5wd5IN0p3VcshK9tIwWgbn3YsG67biGWw==}
-    cpu: [arm64]
-    os: [linux]
-    hasBin: true
-
-  syncpack-linux-x64-musl@14.0.0-canary.1:
-    resolution: {integrity: sha512-Ut7NgEVqaCrARt5GD2b1mSEywlAMrSNfEjqestQcjKZ/l8HjK7kXIEIcX+mgdKCZd3sLMZq0xThlrjjGRhq3Sg==}
-    cpu: [x64]
-    os: [linux]
-    hasBin: true
-
-  syncpack-linux-x64@14.0.0-canary.1:
-    resolution: {integrity: sha512-GfST2ALUZmaxifihKn+zMKxVIhcrbiw3ZfAZEvvSz8IveyZjukULSy9dnF8npzXP5vnTmoBKhO0yqN4dR1WbgA==}
-    cpu: [x64]
-    os: [linux]
-    hasBin: true
-
-  syncpack-windows-arm64@14.0.0-canary.1:
-    resolution: {integrity: sha512-WLzNLToHWZ0vvf2AY7orQUWTB+zsH+mWeD+638UhBmwQ5DQKpMjLc+YcpKIdEet6v/VvlPSiLT8DGe9qZATh8w==}
-    cpu: [arm64]
-    os: [win32]
-    hasBin: true
-
-  syncpack-windows-x64@14.0.0-canary.1:
-    resolution: {integrity: sha512-t27cVIdZpQ/IIpsiB2nIF5bo7vCjGJulpcazg3jKAEa9PShSh+A4uRWtHNZzm7fn4MQIaSABUdLDbsqVfRgKRA==}
-    cpu: [x64]
-    os: [win32]
-    hasBin: true
-
   syncpack@14.0.0-canary.1:
     resolution: {integrity: sha512-ckUeoGpxG2jweY0MOn1pLKcu8huNYSAuhlUGkiUpPis1vkRMEM7Fo0bay4DyUU4dMtv+ryPcW/DfNvnq9yNm1A==}
     engines: {node: '>=14.17.0'}
@@ -6597,7 +6549,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/pulumi@3.217.0(typescript@5.9.3)':
+  '@pulumi/pulumi@3.217.1(typescript@5.9.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.3
       '@logdna/tail-file': 2.2.0
@@ -9734,42 +9686,9 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  syncpack-darwin-arm64@14.0.0-canary.1:
-    optional: true
-
-  syncpack-darwin-x64@14.0.0-canary.1:
-    optional: true
-
-  syncpack-linux-arm64-musl@14.0.0-canary.1:
-    optional: true
-
-  syncpack-linux-arm64@14.0.0-canary.1:
-    optional: true
-
-  syncpack-linux-x64-musl@14.0.0-canary.1:
-    optional: true
-
-  syncpack-linux-x64@14.0.0-canary.1:
-    optional: true
-
-  syncpack-windows-arm64@14.0.0-canary.1:
-    optional: true
-
-  syncpack-windows-x64@14.0.0-canary.1:
-    optional: true
-
   syncpack@14.0.0-canary.1:
     dependencies:
       tsx: 4.21.0
-    optionalDependencies:
-      syncpack-darwin-arm64: 14.0.0-canary.1
-      syncpack-darwin-x64: 14.0.0-canary.1
-      syncpack-linux-arm64: 14.0.0-canary.1
-      syncpack-linux-arm64-musl: 14.0.0-canary.1
-      syncpack-linux-x64: 14.0.0-canary.1
-      syncpack-linux-x64-musl: 14.0.0-canary.1
-      syncpack-windows-arm64: 14.0.0-canary.1
-      syncpack-windows-x64: 14.0.0-canary.1
 
   tailwind-merge@3.4.0: {}
 
