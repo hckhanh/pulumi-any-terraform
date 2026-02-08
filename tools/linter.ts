@@ -28,7 +28,11 @@ class LinterPlugin extends Plugin {
               },
             },
             fix: {
-              dependsOn: ['root:syncpack:format', 'prettier:write'],
+              dependsOn: [
+                'biome:check:fix',
+                'prettier:write',
+                'root:syncpack:format',
+              ],
               metadata: {
                 description: 'Run all auto-fixable linters for the project.',
                 technologies: ['node', 'prettier', 'typescript'],

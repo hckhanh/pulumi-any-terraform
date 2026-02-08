@@ -29,7 +29,12 @@
       "!{projectRoot}/package.json",
       { "externalDependencies": ["prettier"] }
     ],
-    "prettier:root": ["prettier", "!{workspaceRoot}/packages/**"]
+    "prettier:root": ["prettier", "!{workspaceRoot}/packages/**"],
+    "biome": [
+      "sources:all",
+      "{projectRoot}/biome.json",
+      { "externalDependencies": ["@biomejs/biome"] }
+    ]
   },
   "plugins": [
     {
@@ -44,6 +49,7 @@
         "typecheck": false
       }
     },
+    "./tools/biome.ts",
     "./tools/build.ts",
     "./tools/linter.ts",
     "./tools/prettier.ts"

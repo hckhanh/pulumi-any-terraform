@@ -59,8 +59,8 @@ importers:
         specifier: 3.8.1
         version: 3.8.1
       syncpack:
-        specifier: 14.0.0-canary.1
-        version: 14.0.0-canary.1
+        specifier: 14.0.0-alpha.40
+        version: 14.0.0-alpha.40
 
   docs:
     dependencies:
@@ -3158,11 +3158,6 @@ packages:
     resolution: {integrity: sha512-XUBA9XClHbnJWSfBzjkm6RvPsyg3sryZt06BEQoXcF7EK/xpGaQYJgQKDJSUH5SGZ76Y7pFx1QBnXz09rU5Fbw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  fsevents@2.3.3:
-    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-
   fumadocs-core@16.4.8:
     resolution: {integrity: sha512-DAxldO6Wc6CEgl7NQgqqVD5T2/xnhcg+8X+t107Ug/viQ/ozb6YA7+kzcCDMDKpiqZ5Gjovyy0QYSA8uMdWwsA==}
     peerDependencies:
@@ -3265,9 +3260,6 @@ packages:
   get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
-
-  get-tsconfig@4.13.0:
-    resolution: {integrity: sha512-1VKTZJCwBrvbd+Wn3AOgQP/2Av+TfTCOlE4AcRJE72W1ksZXbAx8PPBR9RzgTeSPzlPMHrbANMH3LbltH73wxQ==}
 
   github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
@@ -4380,9 +4372,6 @@ packages:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
 
-  resolve-pkg-maps@1.0.0:
-    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
-
   resolve.exports@2.0.3:
     resolution: {integrity: sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==}
     engines: {node: '>=10'}
@@ -4567,10 +4556,50 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  syncpack@14.0.0-canary.1:
-    resolution: {integrity: sha512-ckUeoGpxG2jweY0MOn1pLKcu8huNYSAuhlUGkiUpPis1vkRMEM7Fo0bay4DyUU4dMtv+ryPcW/DfNvnq9yNm1A==}
+  syncpack-darwin-arm64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-mlxjJ9M9W35o/gL+1F1ojP96wL8TarZ7TXZV15H0nS/M3O/LmtF+Qym21Z7HK7K+0wbsdxhKGaNFEB6Cyl/quQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  syncpack-darwin-x64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-JMGKwBgAE8/IxwhojIDDz1p1ponpjv/DkRSr1MaAlzLgqhRgVyAjHMOLtdODL0yJ6Xscd2614BZw5b86CFaveQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  syncpack-linux-arm64-musl@14.0.0-alpha.40:
+    resolution: {integrity: sha512-5rkbGObrr//nSlw2sMmhFkZ2FGK3cOh/fUzvfaTAajwbAMF6AKvRe3hlV9+PGrEOvXxbAZkd3seKhrQOODhmpg==}
+    cpu: [arm64]
+    os: [linux]
+
+  syncpack-linux-arm64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-ArywM6z452T+Jal0TeRy1I9F3fQ8dY02DCxY85xP3n6IxTexMUtUXeIjnHTM/IL6nqTs7osaea6KpsNcCmpGZw==}
+    cpu: [arm64]
+    os: [linux]
+
+  syncpack-linux-x64-musl@14.0.0-alpha.40:
+    resolution: {integrity: sha512-cUCdD63h/4CGwtvZhfZaSMyLaijod0rX7HEziLW0d4JjNzJmyYipSoIsTpX+Gsx3G1/shnTn2CVzMfu9im0/Vw==}
+    cpu: [x64]
+    os: [linux]
+
+  syncpack-linux-x64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-2avgGXwZOxDhiYO5JIbynWgxAZN20xZAlGTGdDHsHu7gwbDf1WlI54RIuyIJhlV37zwGH13rXwnBITdmCykefQ==}
+    cpu: [x64]
+    os: [linux]
+
+  syncpack-windows-arm64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-Qojg5rhKVnqK4d1OKtYGnC2m5gut01ZdDO34f6oih8IrSWTiVGXyLZxG/XMhl3YxmKyrvk3ViSU4XukfEaRTVg==}
+    cpu: [arm64]
+    os: [win32]
+
+  syncpack-windows-x64@14.0.0-alpha.40:
+    resolution: {integrity: sha512-PdFGTD4cZlpS3TSxOpqeZSeV/1Gt9HOOWoqQVv9qoqXo6/EaMso6cWRodFzW4SZ6gyykSKwX5+OjR5XYi9FbYQ==}
+    cpu: [x64]
+    os: [win32]
+
+  syncpack@14.0.0-alpha.40:
+    resolution: {integrity: sha512-WH2rXC/281kNDSfC0iriqBIGrpcg56EtQAuGd/NZNXBZN2/uhidd16RPo5P3Kds9XHymDwsH2tWWbrSUTdeElg==}
     engines: {node: '>=14.17.0'}
-    deprecated: 'DO NOT USE: canary channel is for internal testing'
+    hasBin: true
 
   tailwind-merge@3.4.0:
     resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
@@ -4631,11 +4660,6 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-
-  tsx@4.21.0:
-    resolution: {integrity: sha512-5C1sg4USs1lfG0GFb2RLXsdpXqBSEhAaA/0kPL01wxzpMqLILNxIxIOKiILz+cdg/pLnOUxFYOR5yhHU666wbw==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
 
   tuf-js@4.1.0:
     resolution: {integrity: sha512-50QV99kCKH5P/Vs4E2Gzp7BopNV+KzTXqWeaxrfu5IQJBOULRsTIS9seSsOVT8ZnGXzCyx55nYWAi4qJzpZKEQ==}
@@ -7862,9 +7886,6 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
-  fsevents@2.3.3:
-    optional: true
-
   fumadocs-core@16.4.8(@types/react@19.2.9)(lucide-react@0.562.0(react@19.2.3))(next@16.1.5(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.5):
     dependencies:
       '@formatjs/intl-localematcher': 0.8.0
@@ -7962,10 +7983,6 @@ snapshots:
       pump: 3.0.3
 
   get-stream@6.0.1: {}
-
-  get-tsconfig@4.13.0:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
 
   github-slugger@2.0.0: {}
 
@@ -9475,8 +9492,6 @@ snapshots:
 
   resolve-from@5.0.0: {}
 
-  resolve-pkg-maps@1.0.0: {}
-
   resolve.exports@2.0.3: {}
 
   resolve@1.22.11:
@@ -9686,9 +9701,40 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  syncpack@14.0.0-canary.1:
-    dependencies:
-      tsx: 4.21.0
+  syncpack-darwin-arm64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-darwin-x64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-linux-arm64-musl@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-linux-arm64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-linux-x64-musl@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-linux-x64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-windows-arm64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack-windows-x64@14.0.0-alpha.40:
+    optional: true
+
+  syncpack@14.0.0-alpha.40:
+    optionalDependencies:
+      syncpack-darwin-arm64: 14.0.0-alpha.40
+      syncpack-darwin-x64: 14.0.0-alpha.40
+      syncpack-linux-arm64: 14.0.0-alpha.40
+      syncpack-linux-arm64-musl: 14.0.0-alpha.40
+      syncpack-linux-x64: 14.0.0-alpha.40
+      syncpack-linux-x64-musl: 14.0.0-alpha.40
+      syncpack-windows-arm64: 14.0.0-alpha.40
+      syncpack-windows-x64: 14.0.0-alpha.40
 
   tailwind-merge@3.4.0: {}
 
@@ -9742,13 +9788,6 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.1: {}
-
-  tsx@4.21.0:
-    dependencies:
-      esbuild: 0.27.2
-      get-tsconfig: 4.13.0
-    optionalDependencies:
-      fsevents: 2.3.3
 
   tuf-js@4.1.0:
     dependencies:
