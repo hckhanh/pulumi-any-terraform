@@ -1,9 +1,19 @@
 'use client'
 
 import { buttonVariants } from 'fumadocs-ui/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from 'fumadocs-ui/components/ui/popover'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from 'fumadocs-ui/components/ui/popover'
 import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button'
-import { Check, ChevronDown, Copy, ExternalLinkIcon, MessageCircleIcon } from 'lucide-react'
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  ExternalLinkIcon,
+  MessageCircleIcon,
+} from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { cn } from '@/lib/cn'
 
