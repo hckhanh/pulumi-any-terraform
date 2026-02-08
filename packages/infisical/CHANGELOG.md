@@ -1,5 +1,14 @@
 ## 0.16.0-0 (2025-10-28)
 
+## 0.16.9
+
+### Patch Changes
+
+- dd4326f: ## What's Changed
+  - improvement(secret-sync): update warning for overwrite destination in secret sync resources by @victorvhs017 in https://github.com/Infisical/terraform-provider-infisical/pull/234
+
+  **Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.15.59...v0.15.60
+
 ## 0.16.8
 
 ### Patch Changes
