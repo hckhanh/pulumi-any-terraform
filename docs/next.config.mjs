@@ -15,6 +15,14 @@ const config = {
       },
     ]
   },
+  rewrites() {
+    return [
+      {
+        source: '/docs/:path*.mdx',
+        destination: '/llms.mdx/docs/:path*',
+      },
+    ]
+  },
 }
 
 export default withMDX(config)
