@@ -52,6 +52,8 @@ jobs:
         env:
           NX_KEY: ${{ secrets.NX_KEY }}
       - name: Update lock file
-        run: pnpm install --no-frozen-lockfile
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm update baseline-browser-mapping
       - name: Submit autofix
         uses: autofix-ci/action@7a166d7532b277f34e16238930461bf77f9d7ed8 # v1.3.3
