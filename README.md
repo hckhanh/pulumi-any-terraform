@@ -229,7 +229,7 @@ This project integrates with:
 - **[Pulumi Service](https://www.pulumi.com/)** - State management (optional)
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD automation
 - **[Nx Cloud](https://nx.app/)** - Distributed caching
-- **[Aikido Security](https://www.aikido.dev/)** - Dependency security
+- **[Aikido Safe Chain](https://www.aikido.dev/)** - Dependency security
 - **[Autofix.ci](https://autofix.ci/)** - Automated code fixes
 
 ## 📊 Project Stats
