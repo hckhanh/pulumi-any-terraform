@@ -60,3 +60,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NX_KEY: ${{ secrets.NX_KEY }}
+          SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0
