@@ -179,14 +179,13 @@ pnpm changeset
 
 ## Security Measures
 
-### 1. Socket Security
+### 1. Aikido Safe Chain
 
-Scans dependencies for security issues:
+Protects against supply chain attacks:
 
 ```yaml
-- uses: SocketDev/action@v1
-  with:
-    mode: firewall
+- name: Setup Aikido Safe Chain
+  run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
 ```
 
 **Features**:
