@@ -189,7 +189,7 @@ Automated workflows handle:
 - **Auto-fixing**: Prettier and Biome fixes
 - **Dependency Updates**: Automated PRs for updates
 - **Publishing**: Automatic releases to NPM
-- **Security**: Socket Security and vulnerability scanning
+- **Security**: Aikido Safe Chain and vulnerability scanning
 
 ## 🤝 Contributing
 
@@ -229,7 +229,7 @@ This project integrates with:
 - **[Pulumi Service](https://www.pulumi.com/)** - State management (optional)
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD automation
 - **[Nx Cloud](https://nx.app/)** - Distributed caching
-- **[Socket Security](https://socket.dev/)** - Dependency security
+- **[Aikido Safe Chain](https://www.aikido.dev/)** - Dependency security
 - **[Autofix.ci](https://autofix.ci/)** - Automated code fixes
 
 ## 📊 Project Stats

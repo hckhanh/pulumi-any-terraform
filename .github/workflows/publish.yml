@@ -44,14 +44,12 @@ jobs:
           key: ${{ runner.os }}-pnpm-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-nx-
-      - name: Setup Socket Firewall
-        uses: SocketDev/action@4337a545deecc20f19a909e52db7a2f6ba292f42 # v1.2.0
-        with:
-          mode: firewall
+      - name: Setup Aikido Safe Chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
-        run: sfw pnpm install
+        run: pnpm install
       - name: Update npm
-        run: sfw npm install -g npm@latest
+        run: npm install -g npm@latest
       - name: Publish to npm
         uses: changesets/action@c48e67d110a68bc90ccf1098e9646092baacaa87 # v1.6.0
         with:

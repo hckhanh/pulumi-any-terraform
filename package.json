@@ -33,21 +33,6 @@
   "license": "MIT",
   "pnpm": {
     "overrides": {
-      "aggregate-error": "npm:@socketregistry/aggregate-error@^1",
-      "es-define-property": "npm:@socketregistry/es-define-property@^1",
-      "es-set-tostringtag": "npm:@socketregistry/es-set-tostringtag@^1",
-      "function-bind": "npm:@socketregistry/function-bind@^1",
-      "gopd": "npm:@socketregistry/gopd@^1",
-      "has-symbols": "npm:@socketregistry/has-symbols@^1",
-      "has-tostringtag": "npm:@socketregistry/has-tostringtag@^1",
-      "hasown": "npm:@socketregistry/hasown@^1",
-      "indent-string": "npm:@socketregistry/indent-string@^1",
-      "is-core-module": "npm:@socketregistry/is-core-module@^1",
-      "is-interactive": "npm:@socketregistry/is-interactive@^1",
-      "is-unicode-supported": "npm:@socketregistry/is-unicode-supported@^1",
-      "path-parse": "npm:@socketregistry/path-parse@^1",
-      "safe-buffer": "npm:@socketregistry/safe-buffer@^1",
-      "safer-buffer": "npm:@socketregistry/safer-buffer@^1",
       "glob@>=10.2.0 <10.5.0": "10.5.0",
       "tar@<=7.5.2": ">=7.5.3",
       "tar@<=7.5.3": ">=7.5.4"
