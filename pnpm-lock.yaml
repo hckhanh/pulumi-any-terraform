@@ -2643,8 +2643,8 @@ packages:
     peerDependencies:
       axios: 0.x || 1.x
 
-  axios@1.13.5:
-    resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
+  axios@1.13.4:
+    resolution: {integrity: sha512-1wVkUaAO6WyaYtCkcYCOx12ZgpGf9Zif+qXa4n+oYzK558YryKqiL6UWwd5DqiH3VRW0GYhTZQ/vlgJrCoNQlg==}
 
   babel-plugin-const-enum@1.2.0:
     resolution: {integrity: sha512-o1m/6iyyFnp9MRsK1dHF3bneqyf3AlM2q3A/YbgQr2pCat6B6XJVDv2TXqzfY2RYUi4mak6WAksSBPlyYGx9dg==}
@@ -3483,8 +3483,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isexe@3.1.4:
-    resolution: {integrity: sha512-jCErc4h4RnTPjFq53G4whhjAMbUAqinGrCrTT4dmMNyi4zTthK+wphqbRLJtL4BN/Mq7Zzltr0m/b1X0m7PGFQ==}
+  isexe@3.1.2:
+    resolution: {integrity: sha512-mIcis6w+JiQf3P7t7mg/35GKB4T1FQsBOtMIvuKw4YErj5RjtbhcTd5/I30fmkmGMwvI0WlzSNN+27K0QCMkAw==}
     engines: {node: '>=20'}
 
   jake@10.9.4:
@@ -6373,8 +6373,8 @@ snapshots:
   '@nx/key@5.0.0':
     dependencies:
       '@napi-rs/wasm-runtime': 0.2.12
-      axios: 1.13.5
-      axios-retry: 4.5.0(axios@1.13.5)
+      axios: 1.13.4
+      axios-retry: 4.5.0(axios@1.13.4)
       chalk: 4.1.2
       enquirer: 2.4.1
       ora: 5.4.1
@@ -7391,12 +7391,12 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios-retry@4.5.0(axios@1.13.5):
+  axios-retry@4.5.0(axios@1.13.4):
     dependencies:
-      axios: 1.13.5
+      axios: 1.13.4
       is-retry-allowed: 2.2.0
 
-  axios@1.13.5:
+  axios@1.13.4:
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.5
@@ -8309,7 +8309,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isexe@3.1.4: {}
+  isexe@3.1.2: {}
 
   jake@10.9.4:
     dependencies:
@@ -9111,7 +9111,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.13.5
+      axios: 1.13.4
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -10028,7 +10028,7 @@ snapshots:
 
   which@6.0.0:
     dependencies:
-      isexe: 3.1.4
+      isexe: 3.1.2
 
   wrap-ansi@7.0.0:
     dependencies:
