@@ -3478,8 +3478,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isexe@3.1.2:
-    resolution: {integrity: sha512-mIcis6w+JiQf3P7t7mg/35GKB4T1FQsBOtMIvuKw4YErj5RjtbhcTd5/I30fmkmGMwvI0WlzSNN+27K0QCMkAw==}
+  isexe@3.1.3:
+    resolution: {integrity: sha512-+DAwQUtT9h86RsYHuBuSf583mEx34Z8ZTf8BXVrDDvHkUN/0e9c+UX3SHUUxSsZ3ZDfKY6sK7VdCJ96269O5+A==}
     engines: {node: '>=20'}
 
   jake@10.9.4:
@@ -8299,7 +8299,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isexe@3.1.2: {}
+  isexe@3.1.3: {}
 
   jake@10.9.4:
     dependencies:
@@ -10014,7 +10014,7 @@ snapshots:
 
   which@6.0.0:
     dependencies:
-      isexe: 3.1.2
+      isexe: 3.1.3
 
   wrap-ansi@7.0.0:
     dependencies:
