@@ -34,6 +34,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
+     * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+     */
+    declare public readonly organizationId: pulumi.Output<string | undefined>;
+    /**
      * Default project ID (environment) to target. Can be set via `POSTHOG_PROJECT_ID` environment variable.
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
@@ -51,6 +55,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["host"] = args?.host;
+            resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["projectId"] = args?.projectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -82,6 +87,10 @@ export interface ProviderArgs {
      * Base URL for the PostHog API. Defaults to `https://us.posthog.com`. Can be set via `POSTHOG_HOST`
      */
     host?: pulumi.Input<string>;
+    /**
+     * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+     */
+    organizationId?: pulumi.Input<string>;
     /**
      * Default project ID (environment) to target. Can be set via `POSTHOG_PROJECT_ID` environment variable.
      */

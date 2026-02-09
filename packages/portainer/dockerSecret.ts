@@ -33,6 +33,9 @@ export class DockerSecret extends pulumi.CustomResource {
     }
 
     declare public readonly data: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     declare public readonly dataWo: pulumi.Output<string | undefined>;
     /**
      * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
@@ -97,6 +100,9 @@ export class DockerSecret extends pulumi.CustomResource {
  */
 export interface DockerSecretState {
     data?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     dataWo?: pulumi.Input<string>;
     /**
      * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
@@ -116,6 +122,9 @@ export interface DockerSecretState {
  */
 export interface DockerSecretArgs {
     data?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     dataWo?: pulumi.Input<string>;
     /**
      * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.

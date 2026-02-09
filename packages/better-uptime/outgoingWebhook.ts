@@ -47,6 +47,10 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly onIncidentAcknowledged: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to trigger webhook when incident is reopened. Only when `trigger_type=incident_change`.
+     */
+    declare public readonly onIncidentReopened: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */
     declare public readonly onIncidentResolved: pulumi.Output<boolean | undefined>;
@@ -83,6 +87,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplateAttributes"] = state?.customWebhookTemplateAttributes;
             resourceInputs["name"] = state?.name;
             resourceInputs["onIncidentAcknowledged"] = state?.onIncidentAcknowledged;
+            resourceInputs["onIncidentReopened"] = state?.onIncidentReopened;
             resourceInputs["onIncidentResolved"] = state?.onIncidentResolved;
             resourceInputs["onIncidentStarted"] = state?.onIncidentStarted;
             resourceInputs["teamName"] = state?.teamName;
@@ -99,6 +104,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplateAttributes"] = args?.customWebhookTemplateAttributes;
             resourceInputs["name"] = args?.name;
             resourceInputs["onIncidentAcknowledged"] = args?.onIncidentAcknowledged;
+            resourceInputs["onIncidentReopened"] = args?.onIncidentReopened;
             resourceInputs["onIncidentResolved"] = args?.onIncidentResolved;
             resourceInputs["onIncidentStarted"] = args?.onIncidentStarted;
             resourceInputs["teamName"] = args?.teamName;
@@ -126,6 +132,10 @@ export interface OutgoingWebhookState {
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
     onIncidentAcknowledged?: pulumi.Input<boolean>;
+    /**
+     * Whether to trigger webhook when incident is reopened. Only when `trigger_type=incident_change`.
+     */
+    onIncidentReopened?: pulumi.Input<boolean>;
     /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */
@@ -164,6 +174,10 @@ export interface OutgoingWebhookArgs {
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
     onIncidentAcknowledged?: pulumi.Input<boolean>;
+    /**
+     * Whether to trigger webhook when incident is reopened. Only when `trigger_type=incident_change`.
+     */
+    onIncidentReopened?: pulumi.Input<boolean>;
     /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */

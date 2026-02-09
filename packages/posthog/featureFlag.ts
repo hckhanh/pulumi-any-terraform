@@ -36,6 +36,7 @@ export class FeatureFlag extends pulumi.CustomResource {
      * Whether the feature flag is active
      */
     declare public readonly active: pulumi.Output<boolean>;
+    declare public readonly deleted: pulumi.Output<boolean>;
     /**
      * Feature Flag ID
      */
@@ -79,6 +80,7 @@ export class FeatureFlag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["active"] = state?.active;
+            resourceInputs["deleted"] = state?.deleted;
             resourceInputs["featureFlagId"] = state?.featureFlagId;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["key"] = state?.key;
@@ -92,6 +94,7 @@ export class FeatureFlag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'key'");
             }
             resourceInputs["active"] = args?.active;
+            resourceInputs["deleted"] = args?.deleted;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
@@ -113,6 +116,7 @@ export interface FeatureFlagState {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean>;
     /**
      * Feature Flag ID
      */
@@ -151,6 +155,7 @@ export interface FeatureFlagArgs {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean>;
     /**
      * Feature flag filters as JSON
      */

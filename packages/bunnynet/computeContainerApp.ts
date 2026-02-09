@@ -63,6 +63,10 @@ export class ComputeContainerApp extends pulumi.CustomResource {
      */
     declare public readonly regionsRequireds: pulumi.Output<string[]>;
     declare public readonly version: pulumi.Output<number>;
+    /**
+     * Defines a persistent volume to be used by the application.
+     */
+    declare public readonly volumes: pulumi.Output<outputs.ComputeContainerAppVolume[] | undefined>;
 
     /**
      * Create a ComputeContainerApp resource with the given unique name, arguments, and options.
@@ -85,6 +89,7 @@ export class ComputeContainerApp extends pulumi.CustomResource {
             resourceInputs["regionsMaxAllowed"] = state?.regionsMaxAllowed;
             resourceInputs["regionsRequireds"] = state?.regionsRequireds;
             resourceInputs["version"] = state?.version;
+            resourceInputs["volumes"] = state?.volumes;
         } else {
             const args = argsOrState as ComputeContainerAppArgs | undefined;
             if (args?.regionsAlloweds === undefined && !opts.urn) {
@@ -101,6 +106,7 @@ export class ComputeContainerApp extends pulumi.CustomResource {
             resourceInputs["regionsMaxAllowed"] = args?.regionsMaxAllowed;
             resourceInputs["regionsRequireds"] = args?.regionsRequireds;
             resourceInputs["version"] = args?.version;
+            resourceInputs["volumes"] = args?.volumes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComputeContainerApp.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -140,6 +146,10 @@ export interface ComputeContainerAppState {
      */
     regionsRequireds?: pulumi.Input<pulumi.Input<string>[]>;
     version?: pulumi.Input<number>;
+    /**
+     * Defines a persistent volume to be used by the application.
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[]>;
 }
 
 /**
@@ -175,4 +185,8 @@ export interface ComputeContainerAppArgs {
      */
     regionsRequireds: pulumi.Input<pulumi.Input<string>[]>;
     version?: pulumi.Input<number>;
+    /**
+     * Defines a persistent volume to be used by the application.
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[]>;
 }

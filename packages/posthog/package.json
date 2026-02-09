@@ -53,11 +53,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "parameterization": {
       "name": "posthog",
-      "version": "1.0.2",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMiJ9fQ=="
+      "version": "1.0.4",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuNCJ9fQ=="
     }
   }
 }

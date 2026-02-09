@@ -54,11 +54,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "parameterization": {
       "name": "better-uptime",
-      "version": "0.20.6",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIwLjYifX0="
+      "version": "0.20.8",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIwLjgifX0="
     }
   }
 }

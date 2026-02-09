@@ -60,7 +60,7 @@ export class Environment extends pulumi.CustomResource {
     declare public readonly tlsSkipClientVerify: pulumi.Output<boolean | undefined>;
     declare public readonly tlsSkipVerify: pulumi.Output<boolean | undefined>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent, 7 = Kubernetes Edge Agent
      */
     declare public readonly type: pulumi.Output<number>;
     /**
@@ -163,7 +163,7 @@ export interface EnvironmentState {
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent, 7 = Kubernetes Edge Agent
      */
     type?: pulumi.Input<number>;
     /**
@@ -202,7 +202,7 @@ export interface EnvironmentArgs {
     tlsSkipClientVerify?: pulumi.Input<boolean>;
     tlsSkipVerify?: pulumi.Input<boolean>;
     /**
-     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent
+     * Environment type: 1 = Docker, 2 = Agent, 3 = Azure, 4 = Edge Agent, 5 = Kubernetes, 6 = Kubernetes via agent, 7 = Kubernetes Edge Agent
      */
     type: pulumi.Input<number>;
     /**

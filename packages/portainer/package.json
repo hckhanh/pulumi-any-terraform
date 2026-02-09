@@ -54,11 +54,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "parameterization": {
       "name": "portainer",
-      "version": "1.22.0",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4yMi4wIn19"
+      "version": "1.24.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4yNC4wIn19"
     }
   }
 }

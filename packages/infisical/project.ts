@@ -66,7 +66,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly templateName: pulumi.Output<string | undefined>;
     /**
-     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     * The type of the project. Supported values: secret-manager, cert-manager, kms. Defaults to 'secret-manager'.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -152,7 +152,7 @@ export interface ProjectState {
      */
     templateName?: pulumi.Input<string>;
     /**
-     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     * The type of the project. Supported values: secret-manager, cert-manager, kms. Defaults to 'secret-manager'.
      */
     type?: pulumi.Input<string>;
 }
@@ -194,7 +194,7 @@ export interface ProjectArgs {
      */
     templateName?: pulumi.Input<string>;
     /**
-     * The type of the project. Supported values: secret-manager, kms. Defaults to 'secret-manager'.
+     * The type of the project. Supported values: secret-manager, cert-manager, kms. Defaults to 'secret-manager'.
      */
     type?: pulumi.Input<string>;
 }

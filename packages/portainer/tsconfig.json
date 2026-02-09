@@ -41,6 +41,7 @@
         "edgeUpdateSchedules.ts",
         "endpointAssociation.ts",
         "endpointGroup.ts",
+        "endpointGroupAccess.ts",
         "endpointServiceUpdate.ts",
         "endpointSettings.ts",
         "endpointSnapshot.ts",

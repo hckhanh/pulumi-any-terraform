@@ -59,6 +59,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["apiPassword"] = args?.apiPassword ? pulumi.secret(args.apiPassword) : undefined;
             resourceInputs["apiUser"] = args?.apiUser ? pulumi.secret(args.apiUser) : undefined;
+            resourceInputs["customHeaders"] = pulumi.output(args?.customHeaders).apply(JSON.stringify);
             resourceInputs["endpoint"] = args?.endpoint;
             resourceInputs["skipSslVerify"] = pulumi.output(args?.skipSslVerify).apply(JSON.stringify);
         }
@@ -95,6 +96,10 @@ export interface ProviderArgs {
      * Username for authentication. Must be used together with 'password'.
      */
     apiUser?: pulumi.Input<string>;
+    /**
+     * Custom headers to add to all requests (e.g. for Cloudflare Access or other security proxies).
+     */
+    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * URL of the Portainer instance (e.g. https://portainer.example.com). '/api' will be appended automatically if missing.
      */

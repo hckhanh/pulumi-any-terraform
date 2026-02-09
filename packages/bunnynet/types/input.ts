@@ -63,6 +63,10 @@ export interface ComputeContainerAppContainer {
      */
     startupProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbe>[]>;
     /**
+     * Mounts a volume within a container
+     */
+    volumemounts?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerVolumemount>[]>;
+    /**
      * The working directory of the container runtime.
      */
     workingDir?: pulumi.Input<string>;
@@ -306,6 +310,28 @@ export interface ComputeContainerAppContainerStartupProbeHttp {
     path: pulumi.Input<string>;
 }
 
+export interface ComputeContainerAppContainerVolumemount {
+    /**
+     * The name of the volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The path within the container where the volume will be mounted.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface ComputeContainerAppVolume {
+    /**
+     * The name of the volume.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The size of the volume, in Gigabytes (10^9 bytes).
+     */
+    size: pulumi.Input<number>;
+}
+
 export interface GetPullzoneOrigin {
     /**
      * The ID if the compute container app.
@@ -513,10 +539,6 @@ export interface PullzoneRatelimitRuleCondition {
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: pulumi.Input<string>;
-    /**
-     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
-     */
-    transformations?: pulumi.Input<pulumi.Input<string>[]>;
     value: pulumi.Input<string>;
     /**
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
@@ -687,10 +709,6 @@ export interface PullzoneWafRuleCondition {
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: pulumi.Input<string>;
-    /**
-     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
-     */
-    transformations?: pulumi.Input<pulumi.Input<string>[]>;
     value: pulumi.Input<string>;
     /**
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`

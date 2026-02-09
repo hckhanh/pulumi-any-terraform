@@ -13,16 +13,23 @@
         "strict": true
     },
     "files": [
+        "accessControl.ts",
         "alert.ts",
         "config/index.ts",
         "config/vars.ts",
         "dashboard.ts",
         "featureFlag.ts",
+        "getUser.ts",
         "hogFunction.ts",
         "index.ts",
         "insight.ts",
+        "organizationMember.ts",
         "project.ts",
+        "projectDefaultAccess.ts",
+        "projectMember.ts",
         "provider.ts",
+        "role.ts",
+        "roleMembership.ts",
         "utilities.ts"
     ]
 }

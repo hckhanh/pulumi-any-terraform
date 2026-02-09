@@ -37,7 +37,7 @@ export class PullzoneRatelimitRule extends pulumi.CustomResource {
     /**
      * The condition to trigger the rate limit rule.
      */
-    declare public readonly condition: pulumi.Output<outputs.PullzoneRatelimitRuleCondition | undefined>;
+    declare public readonly conditions: pulumi.Output<outputs.PullzoneRatelimitRuleCondition[] | undefined>;
     /**
      * The rate limit rule description.
      */
@@ -59,6 +59,10 @@ export class PullzoneRatelimitRule extends pulumi.CustomResource {
      * The response once the rate limit rule is triggered.
      */
     declare public readonly response: pulumi.Output<outputs.PullzoneRatelimitRuleResponse | undefined>;
+    /**
+     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
+     */
+    declare public readonly transformations: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a PullzoneRatelimitRule resource with the given unique name, arguments, and options.
@@ -73,24 +77,26 @@ export class PullzoneRatelimitRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PullzoneRatelimitRuleState | undefined;
-            resourceInputs["condition"] = state?.condition;
+            resourceInputs["conditions"] = state?.conditions;
             resourceInputs["description"] = state?.description;
             resourceInputs["limit"] = state?.limit;
             resourceInputs["name"] = state?.name;
             resourceInputs["pullzone"] = state?.pullzone;
             resourceInputs["pullzoneRatelimitRuleId"] = state?.pullzoneRatelimitRuleId;
             resourceInputs["response"] = state?.response;
+            resourceInputs["transformations"] = state?.transformations;
         } else {
             const args = argsOrState as PullzoneRatelimitRuleArgs | undefined;
             if (args?.pullzone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pullzone'");
             }
-            resourceInputs["condition"] = args?.condition;
+            resourceInputs["conditions"] = args?.conditions;
             resourceInputs["description"] = args?.description;
             resourceInputs["limit"] = args?.limit;
             resourceInputs["name"] = args?.name;
             resourceInputs["pullzone"] = args?.pullzone;
             resourceInputs["response"] = args?.response;
+            resourceInputs["transformations"] = args?.transformations;
             resourceInputs["pullzoneRatelimitRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -105,7 +111,7 @@ export interface PullzoneRatelimitRuleState {
     /**
      * The condition to trigger the rate limit rule.
      */
-    condition?: pulumi.Input<inputs.PullzoneRatelimitRuleCondition>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneRatelimitRuleCondition>[]>;
     /**
      * The rate limit rule description.
      */
@@ -127,6 +133,10 @@ export interface PullzoneRatelimitRuleState {
      * The response once the rate limit rule is triggered.
      */
     response?: pulumi.Input<inputs.PullzoneRatelimitRuleResponse>;
+    /**
+     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
+     */
+    transformations?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -136,7 +146,7 @@ export interface PullzoneRatelimitRuleArgs {
     /**
      * The condition to trigger the rate limit rule.
      */
-    condition?: pulumi.Input<inputs.PullzoneRatelimitRuleCondition>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneRatelimitRuleCondition>[]>;
     /**
      * The rate limit rule description.
      */
@@ -154,4 +164,8 @@ export interface PullzoneRatelimitRuleArgs {
      * The response once the rate limit rule is triggered.
      */
     response?: pulumi.Input<inputs.PullzoneRatelimitRuleResponse>;
+    /**
+     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
+     */
+    transformations?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -10,6 +10,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { DashboardArgs, DashboardState } from "./dashboard";
+export type Dashboard = import("./dashboard").Dashboard;
+export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
+utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
+
 export { ErrorsApplicationArgs, ErrorsApplicationState } from "./errorsApplication";
 export type ErrorsApplication = import("./errorsApplication").ErrorsApplication;
 export const ErrorsApplication: typeof import("./errorsApplication").ErrorsApplication = null as any;
@@ -24,6 +29,16 @@ export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from 
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetDashboardArgs, GetDashboardResult, GetDashboardOutputArgs } from "./getDashboard";
+export const getDashboard: typeof import("./getDashboard").getDashboard = null as any;
+export const getDashboardOutput: typeof import("./getDashboard").getDashboardOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboard","getDashboardOutput"], () => require("./getDashboard"));
+
+export { GetDashboardTemplateArgs, GetDashboardTemplateResult, GetDashboardTemplateOutputArgs } from "./getDashboardTemplate";
+export const getDashboardTemplate: typeof import("./getDashboardTemplate").getDashboardTemplate = null as any;
+export const getDashboardTemplateOutput: typeof import("./getDashboardTemplate").getDashboardTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardTemplate","getDashboardTemplateOutput"], () => require("./getDashboardTemplate"));
 
 export { GetErrorsApplicationArgs, GetErrorsApplicationResult, GetErrorsApplicationOutputArgs } from "./getErrorsApplication";
 export const getErrorsApplication: typeof import("./getErrorsApplication").getErrorsApplication = null as any;
@@ -119,6 +134,8 @@ const _module = {
         switch (type) {
             case "logtail:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "logtail:index/dashboard:Dashboard":
+                return new Dashboard(name, <any>undefined, { urn })
             case "logtail:index/errorsApplication:ErrorsApplication":
                 return new ErrorsApplication(name, <any>undefined, { urn })
             case "logtail:index/errorsApplicationGroup:ErrorsApplicationGroup":
@@ -143,6 +160,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("logtail", "index/connection", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplication", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplicationGroup", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/metric", _module)

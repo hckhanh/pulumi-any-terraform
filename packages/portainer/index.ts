@@ -135,6 +135,11 @@ export type EndpointGroup = import("./endpointGroup").EndpointGroup;
 export const EndpointGroup: typeof import("./endpointGroup").EndpointGroup = null as any;
 utilities.lazyLoad(exports, ["EndpointGroup"], () => require("./endpointGroup"));
 
+export { EndpointGroupAccessArgs, EndpointGroupAccessState } from "./endpointGroupAccess";
+export type EndpointGroupAccess = import("./endpointGroupAccess").EndpointGroupAccess;
+export const EndpointGroupAccess: typeof import("./endpointGroupAccess").EndpointGroupAccess = null as any;
+utilities.lazyLoad(exports, ["EndpointGroupAccess"], () => require("./endpointGroupAccess"));
+
 export { EndpointServiceUpdateArgs, EndpointServiceUpdateState } from "./endpointServiceUpdate";
 export type EndpointServiceUpdate = import("./endpointServiceUpdate").EndpointServiceUpdate;
 export const EndpointServiceUpdate: typeof import("./endpointServiceUpdate").EndpointServiceUpdate = null as any;
@@ -554,6 +559,8 @@ const _module = {
                 return new EndpointAssociation(name, <any>undefined, { urn })
             case "portainer:index/endpointGroup:EndpointGroup":
                 return new EndpointGroup(name, <any>undefined, { urn })
+            case "portainer:index/endpointGroupAccess:EndpointGroupAccess":
+                return new EndpointGroupAccess(name, <any>undefined, { urn })
             case "portainer:index/endpointServiceUpdate:EndpointServiceUpdate":
                 return new EndpointServiceUpdate(name, <any>undefined, { urn })
             case "portainer:index/endpointSettings:EndpointSettings":
@@ -685,6 +692,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/edgeStackWebhook", _mo
 pulumi.runtime.registerResourceModule("portainer", "index/edgeUpdateSchedules", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointAssociation", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointGroup", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/endpointGroupAccess", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointServiceUpdate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSnapshot", _module)

@@ -38,6 +38,14 @@ export class Stack extends pulumi.CustomResource {
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     declare public readonly additionalFiles: pulumi.Output<string[] | undefined>;
+    /**
+     * List of team IDs authorized to access this stack (only if ownership is restricted).
+     */
+    declare public readonly authorizedTeams: pulumi.Output<number[] | undefined>;
+    /**
+     * List of user IDs authorized to access this stack (only if ownership is restricted).
+     */
+    declare public readonly authorizedUsers: pulumi.Output<number[] | undefined>;
     declare public readonly composeFormat: pulumi.Output<boolean | undefined>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
@@ -60,6 +68,10 @@ export class Stack extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
+     * Ownership level: 'public', 'administrators' or 'restricted'.
+     */
+    declare public readonly ownership: pulumi.Output<string>;
+    /**
      * Whether to prune unused services/networks during stack update (default: false)
      */
     declare public readonly prune: pulumi.Output<boolean | undefined>;
@@ -76,12 +88,19 @@ export class Stack extends pulumi.CustomResource {
      */
     declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     declare public readonly repositoryPasswordWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     declare public readonly repositoryUrlWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository username (supports ephemeral values).
      */
     declare public readonly repositoryUsernameWo: pulumi.Output<string | undefined>;
@@ -124,6 +143,8 @@ export class Stack extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StackState | undefined;
             resourceInputs["additionalFiles"] = state?.additionalFiles;
+            resourceInputs["authorizedTeams"] = state?.authorizedTeams;
+            resourceInputs["authorizedUsers"] = state?.authorizedUsers;
             resourceInputs["composeFormat"] = state?.composeFormat;
             resourceInputs["deploymentType"] = state?.deploymentType;
             resourceInputs["endpointId"] = state?.endpointId;
@@ -136,6 +157,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["method"] = state?.method;
             resourceInputs["name"] = state?.name;
             resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["ownership"] = state?.ownership;
             resourceInputs["prune"] = state?.prune;
             resourceInputs["pullImage"] = state?.pullImage;
             resourceInputs["registries"] = state?.registries;
@@ -171,6 +193,8 @@ export class Stack extends pulumi.CustomResource {
                 throw new Error("Missing required property 'method'");
             }
             resourceInputs["additionalFiles"] = args?.additionalFiles;
+            resourceInputs["authorizedTeams"] = args?.authorizedTeams;
+            resourceInputs["authorizedUsers"] = args?.authorizedUsers;
             resourceInputs["composeFormat"] = args?.composeFormat;
             resourceInputs["deploymentType"] = args?.deploymentType;
             resourceInputs["endpointId"] = args?.endpointId;
@@ -183,6 +207,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["method"] = args?.method;
             resourceInputs["name"] = args?.name;
             resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["ownership"] = args?.ownership;
             resourceInputs["prune"] = args?.prune;
             resourceInputs["pullImage"] = args?.pullImage;
             resourceInputs["registries"] = args?.registries;
@@ -191,7 +216,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["repositoryPasswordWo"] = args?.repositoryPasswordWo ? pulumi.secret(args.repositoryPasswordWo) : undefined;
             resourceInputs["repositoryReferenceName"] = args?.repositoryReferenceName;
             resourceInputs["repositoryUrl"] = args?.repositoryUrl;
-            resourceInputs["repositoryUrlWo"] = args?.repositoryUrlWo;
+            resourceInputs["repositoryUrlWo"] = args?.repositoryUrlWo ? pulumi.secret(args.repositoryUrlWo) : undefined;
             resourceInputs["repositoryUsername"] = args?.repositoryUsername;
             resourceInputs["repositoryUsernameWo"] = args?.repositoryUsernameWo ? pulumi.secret(args.repositoryUsernameWo) : undefined;
             resourceInputs["repositoryWoVersion"] = args?.repositoryWoVersion;
@@ -208,7 +233,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["webhookUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["repositoryPassword", "repositoryPasswordWo", "repositoryUsernameWo"] };
+        const secretOpts = { additionalSecretOutputs: ["repositoryPassword", "repositoryPasswordWo", "repositoryUrlWo", "repositoryUsernameWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Stack.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
@@ -222,6 +247,14 @@ export interface StackState {
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of team IDs authorized to access this stack (only if ownership is restricted).
+     */
+    authorizedTeams?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of user IDs authorized to access this stack (only if ownership is restricted).
+     */
+    authorizedUsers?: pulumi.Input<pulumi.Input<number>[]>;
     composeFormat?: pulumi.Input<boolean>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
@@ -244,6 +277,10 @@ export interface StackState {
     name?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
     /**
+     * Ownership level: 'public', 'administrators' or 'restricted'.
+     */
+    ownership?: pulumi.Input<string>;
+    /**
      * Whether to prune unused services/networks during stack update (default: false)
      */
     prune?: pulumi.Input<boolean>;
@@ -260,12 +297,19 @@ export interface StackState {
      */
     repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository username (supports ephemeral values).
      */
     repositoryUsernameWo?: pulumi.Input<string>;
@@ -303,6 +347,14 @@ export interface StackArgs {
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of team IDs authorized to access this stack (only if ownership is restricted).
+     */
+    authorizedTeams?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of user IDs authorized to access this stack (only if ownership is restricted).
+     */
+    authorizedUsers?: pulumi.Input<pulumi.Input<number>[]>;
     composeFormat?: pulumi.Input<boolean>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
@@ -325,6 +377,10 @@ export interface StackArgs {
     name?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
     /**
+     * Ownership level: 'public', 'administrators' or 'restricted'.
+     */
+    ownership?: pulumi.Input<string>;
+    /**
      * Whether to prune unused services/networks during stack update (default: false)
      */
     prune?: pulumi.Input<boolean>;
@@ -341,12 +397,19 @@ export interface StackArgs {
      */
     repositoryGitCredentialId?: pulumi.Input<number>;
     repositoryPassword?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
     repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository username (supports ephemeral values).
      */
     repositoryUsernameWo?: pulumi.Input<string>;

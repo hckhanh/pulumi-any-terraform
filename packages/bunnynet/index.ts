@@ -30,6 +30,11 @@ export type ComputeScriptVariable = import("./computeScriptVariable").ComputeScr
 export const ComputeScriptVariable: typeof import("./computeScriptVariable").ComputeScriptVariable = null as any;
 utilities.lazyLoad(exports, ["ComputeScriptVariable"], () => require("./computeScriptVariable"));
 
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
 export { DnsRecordArgs, DnsRecordState } from "./dnsRecord";
 export type DnsRecord = import("./dnsRecord").DnsRecord;
 export const DnsRecord: typeof import("./dnsRecord").DnsRecord = null as any;
@@ -187,6 +192,8 @@ const _module = {
                 return new ComputeScriptSecret(name, <any>undefined, { urn })
             case "bunnynet:index/computeScriptVariable:ComputeScriptVariable":
                 return new ComputeScriptVariable(name, <any>undefined, { urn })
+            case "bunnynet:index/database:Database":
+                return new Database(name, <any>undefined, { urn })
             case "bunnynet:index/dnsRecord:DnsRecord":
                 return new DnsRecord(name, <any>undefined, { urn })
             case "bunnynet:index/dnsScript:DnsScript":
@@ -231,6 +238,7 @@ pulumi.runtime.registerResourceModule("bunnynet", "index/computeContainerImagere
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScript", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScriptSecret", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScriptVariable", _module)
+pulumi.runtime.registerResourceModule("bunnynet", "index/database", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsScript", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/dnsScriptVariable", _module)

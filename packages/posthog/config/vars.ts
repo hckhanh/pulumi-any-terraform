@@ -30,6 +30,17 @@ Object.defineProperty(exports, "host", {
 });
 
 /**
+ * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+ */
+export declare const organizationId: string | undefined;
+Object.defineProperty(exports, "organizationId", {
+    get() {
+        return __config.get("organizationId");
+    },
+    enumerable: true,
+});
+
+/**
  * Default project ID (environment) to target. Can be set via `POSTHOG_PROJECT_ID` environment variable.
  */
 export declare const projectId: string | undefined;

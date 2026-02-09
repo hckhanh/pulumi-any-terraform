@@ -105,6 +105,41 @@ export type AppConnectionSupabase = import("./appConnectionSupabase").AppConnect
 export const AppConnectionSupabase: typeof import("./appConnectionSupabase").AppConnectionSupabase = null as any;
 utilities.lazyLoad(exports, ["AppConnectionSupabase"], () => require("./appConnectionSupabase"));
 
+export { CertManagerCaCertificateArgs, CertManagerCaCertificateState } from "./certManagerCaCertificate";
+export type CertManagerCaCertificate = import("./certManagerCaCertificate").CertManagerCaCertificate;
+export const CertManagerCaCertificate: typeof import("./certManagerCaCertificate").CertManagerCaCertificate = null as any;
+utilities.lazyLoad(exports, ["CertManagerCaCertificate"], () => require("./certManagerCaCertificate"));
+
+export { CertManagerCertificateArgs, CertManagerCertificateState } from "./certManagerCertificate";
+export type CertManagerCertificate = import("./certManagerCertificate").CertManagerCertificate;
+export const CertManagerCertificate: typeof import("./certManagerCertificate").CertManagerCertificate = null as any;
+utilities.lazyLoad(exports, ["CertManagerCertificate"], () => require("./certManagerCertificate"));
+
+export { CertManagerCertificatePolicyArgs, CertManagerCertificatePolicyState } from "./certManagerCertificatePolicy";
+export type CertManagerCertificatePolicy = import("./certManagerCertificatePolicy").CertManagerCertificatePolicy;
+export const CertManagerCertificatePolicy: typeof import("./certManagerCertificatePolicy").CertManagerCertificatePolicy = null as any;
+utilities.lazyLoad(exports, ["CertManagerCertificatePolicy"], () => require("./certManagerCertificatePolicy"));
+
+export { CertManagerCertificateProfileArgs, CertManagerCertificateProfileState } from "./certManagerCertificateProfile";
+export type CertManagerCertificateProfile = import("./certManagerCertificateProfile").CertManagerCertificateProfile;
+export const CertManagerCertificateProfile: typeof import("./certManagerCertificateProfile").CertManagerCertificateProfile = null as any;
+utilities.lazyLoad(exports, ["CertManagerCertificateProfile"], () => require("./certManagerCertificateProfile"));
+
+export { CertManagerExternalCaAcmeArgs, CertManagerExternalCaAcmeState } from "./certManagerExternalCaAcme";
+export type CertManagerExternalCaAcme = import("./certManagerExternalCaAcme").CertManagerExternalCaAcme;
+export const CertManagerExternalCaAcme: typeof import("./certManagerExternalCaAcme").CertManagerExternalCaAcme = null as any;
+utilities.lazyLoad(exports, ["CertManagerExternalCaAcme"], () => require("./certManagerExternalCaAcme"));
+
+export { CertManagerExternalCaAdcsArgs, CertManagerExternalCaAdcsState } from "./certManagerExternalCaAdcs";
+export type CertManagerExternalCaAdcs = import("./certManagerExternalCaAdcs").CertManagerExternalCaAdcs;
+export const CertManagerExternalCaAdcs: typeof import("./certManagerExternalCaAdcs").CertManagerExternalCaAdcs = null as any;
+utilities.lazyLoad(exports, ["CertManagerExternalCaAdcs"], () => require("./certManagerExternalCaAdcs"));
+
+export { CertManagerInternalCaArgs, CertManagerInternalCaState } from "./certManagerInternalCa";
+export type CertManagerInternalCa = import("./certManagerInternalCa").CertManagerInternalCa;
+export const CertManagerInternalCa: typeof import("./certManagerInternalCa").CertManagerInternalCa = null as any;
+utilities.lazyLoad(exports, ["CertManagerInternalCa"], () => require("./certManagerInternalCa"));
+
 export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
 export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
 export const DynamicSecretAwsIam: typeof import("./dynamicSecretAwsIam").DynamicSecretAwsIam = null as any;
@@ -254,6 +289,11 @@ export { KmsKeyArgs, KmsKeyState } from "./kmsKey";
 export type KmsKey = import("./kmsKey").KmsKey;
 export const KmsKey: typeof import("./kmsKey").KmsKey = null as any;
 utilities.lazyLoad(exports, ["KmsKey"], () => require("./kmsKey"));
+
+export { OrgRoleArgs, OrgRoleState } from "./orgRole";
+export type OrgRole = import("./orgRole").OrgRole;
+export const OrgRole: typeof import("./orgRole").OrgRole = null as any;
+utilities.lazyLoad(exports, ["OrgRole"], () => require("./orgRole"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -492,6 +532,20 @@ const _module = {
                 return new AppConnectionRender(name, <any>undefined, { urn })
             case "infisical:index/appConnectionSupabase:AppConnectionSupabase":
                 return new AppConnectionSupabase(name, <any>undefined, { urn })
+            case "infisical:index/certManagerCaCertificate:CertManagerCaCertificate":
+                return new CertManagerCaCertificate(name, <any>undefined, { urn })
+            case "infisical:index/certManagerCertificate:CertManagerCertificate":
+                return new CertManagerCertificate(name, <any>undefined, { urn })
+            case "infisical:index/certManagerCertificatePolicy:CertManagerCertificatePolicy":
+                return new CertManagerCertificatePolicy(name, <any>undefined, { urn })
+            case "infisical:index/certManagerCertificateProfile:CertManagerCertificateProfile":
+                return new CertManagerCertificateProfile(name, <any>undefined, { urn })
+            case "infisical:index/certManagerExternalCaAcme:CertManagerExternalCaAcme":
+                return new CertManagerExternalCaAcme(name, <any>undefined, { urn })
+            case "infisical:index/certManagerExternalCaAdcs:CertManagerExternalCaAdcs":
+                return new CertManagerExternalCaAdcs(name, <any>undefined, { urn })
+            case "infisical:index/certManagerInternalCa:CertManagerInternalCa":
+                return new CertManagerInternalCa(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
@@ -538,6 +592,8 @@ const _module = {
                 return new IntegrationGcpSecretManager(name, <any>undefined, { urn })
             case "infisical:index/kmsKey:KmsKey":
                 return new KmsKey(name, <any>undefined, { urn })
+            case "infisical:index/orgRole:OrgRole":
+                return new OrgRole(name, <any>undefined, { urn })
             case "infisical:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "infisical:index/projectEnvironment:ProjectEnvironment":
@@ -635,6 +691,13 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb"
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerCaCertificate", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificate", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificatePolicy", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificateProfile", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAcme", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAdcs", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerInternalCa", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
@@ -658,6 +721,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/integrationCircleci", 
 pulumi.runtime.registerResourceModule("infisical", "index/integrationDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/integrationGcpSecretManager", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/kmsKey", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/orgRole", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/project", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectGroup", _module)

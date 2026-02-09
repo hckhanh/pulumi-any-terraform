@@ -41,7 +41,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The identifier of the organization this resource belongs to.
+     * Organization ID for this resource. Overrides the provider-level organization_id.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -60,7 +60,7 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -73,9 +73,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["timezone"] = state?.timezone;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (args?.organizationId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'organizationId'");
-            }
             resourceInputs["name"] = args?.name;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["timezone"] = args?.timezone;
@@ -102,7 +99,7 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier of the organization this resource belongs to.
+     * Organization ID for this resource. Overrides the provider-level organization_id.
      */
     organizationId?: pulumi.Input<string>;
     /**
@@ -124,9 +121,9 @@ export interface ProjectArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The identifier of the organization this resource belongs to.
+     * Organization ID for this resource. Overrides the provider-level organization_id.
      */
-    organizationId: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string>;
     /**
      * The timezone for this project (e.g., 'UTC', 'America/New_York', 'Europe/London'). Defaults to 'UTC'.
      */

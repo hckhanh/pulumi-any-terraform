@@ -63,6 +63,10 @@ export interface ComputeContainerAppContainer {
      */
     startupProbes?: outputs.ComputeContainerAppContainerStartupProbe[];
     /**
+     * Mounts a volume within a container
+     */
+    volumemounts?: outputs.ComputeContainerAppContainerVolumemount[];
+    /**
      * The working directory of the container runtime.
      */
     workingDir?: string;
@@ -306,6 +310,28 @@ export interface ComputeContainerAppContainerStartupProbeHttp {
     path: string;
 }
 
+export interface ComputeContainerAppContainerVolumemount {
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The path within the container where the volume will be mounted.
+     */
+    path: string;
+}
+
+export interface ComputeContainerAppVolume {
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The size of the volume, in Gigabytes (10^9 bytes).
+     */
+    size: number;
+}
+
 export interface GetComputeContainerAppContainerEndpointCdn {
     originSsl: boolean;
     pullzoneId: number;
@@ -459,10 +485,6 @@ export interface PullzoneRatelimitRuleCondition {
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: string;
-    /**
-     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
-     */
-    transformations?: string[];
     value: string;
     /**
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
@@ -633,10 +655,6 @@ export interface PullzoneWafRuleCondition {
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: string;
-    /**
-     * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
-     */
-    transformations?: string[];
     value: string;
     /**
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`

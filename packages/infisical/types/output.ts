@@ -365,6 +365,125 @@ export interface AppConnectionSupabaseCredentials {
     instanceUrl?: string;
 }
 
+export interface CertManagerCertificatePolicyAlgorithms {
+    /**
+     * List of allowed key algorithms (at least one required). Supported values: RSA-2048, RSA-3072, RSA-4096, ECDSA-P256, ECDSA-P521, ECDSA-P384
+     */
+    keyAlgorithms: string[];
+    /**
+     * List of allowed signature algorithms (at least one required). Supported values: SHA256-RSA, SHA512-RSA, SHA384-ECDSA, SHA384-RSA, SHA256-ECDSA, SHA512-ECDSA
+     */
+    signatures: string[];
+}
+
+export interface CertManagerCertificatePolicyExtendedKeyUsages {
+    /**
+     * List of allowed extended key usages. Possible values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
+     */
+    alloweds?: string[];
+    /**
+     * List of denied extended key usages. Possible values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
+     */
+    denieds?: string[];
+    /**
+     * List of required extended key usages. Possible values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
+     */
+    requireds?: string[];
+}
+
+export interface CertManagerCertificatePolicyKeyUsages {
+    /**
+     * List of allowed key usages. Possible values: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
+     */
+    alloweds?: string[];
+    /**
+     * List of denied key usages. Possible values: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
+     */
+    denieds?: string[];
+    /**
+     * List of required key usages. Possible values: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
+     */
+    requireds?: string[];
+}
+
+export interface CertManagerCertificatePolicySan {
+    /**
+     * List of allowed values for this SAN type
+     */
+    alloweds?: string[];
+    /**
+     * List of denied values for this SAN type
+     */
+    denieds?: string[];
+    /**
+     * List of required values for this SAN type
+     */
+    requireds?: string[];
+    /**
+     * The SAN type. Possible values: dns_name, ip_address, email, uri
+     */
+    type: string;
+}
+
+export interface CertManagerCertificatePolicySubject {
+    /**
+     * List of allowed values for this subject attribute
+     */
+    alloweds?: string[];
+    /**
+     * List of denied values for this subject attribute
+     */
+    denieds?: string[];
+    /**
+     * List of required values for this subject attribute
+     */
+    requireds?: string[];
+    /**
+     * The subject attribute type. Possible values: common_name, organization, country
+     */
+    type: string;
+}
+
+export interface CertManagerCertificatePolicyValidity {
+    /**
+     * Maximum validity period (e.g., '90d', '2y', '6m')
+     */
+    max?: string;
+}
+
+export interface CertManagerCertificateProfileApiConfig {
+    /**
+     * Whether to automatically renew certificates
+     */
+    autoRenew: boolean;
+    /**
+     * Number of days before expiration to renew certificates (1-30)
+     */
+    renewBeforeDays: number;
+}
+
+export interface CertManagerCertificateProfileEstConfig {
+    /**
+     * The CA certificate chain for EST enrollment
+     */
+    caChain?: string;
+    /**
+     * Whether to disable bootstrap CA validation
+     */
+    disableBootstrapCaValidation: boolean;
+    /**
+     * The passphrase for EST enrollment
+     */
+    passphrase?: string;
+}
+
+export interface CertManagerCertificateProfileExternalConfigs {
+    /**
+     * Certificate template name for Azure AD CS
+     */
+    template?: string;
+}
+
 export interface DynamicSecretAwsIamConfiguration {
     /**
      * Configuration for the 'access_key' authentication method.
@@ -931,6 +1050,25 @@ export interface IntegrationGcpSecretManagerOptions {
     secretSuffix?: string;
 }
 
+export interface OrgRolePermission {
+    /**
+     * Describe what actions an entity can take.
+     */
+    actions: string[];
+    /**
+     * When specified, only matching conditions will be allowed to access given resource. Refer to the documentation in https://infisical.com/docs/internals/permissions#conditions for the complete list of supported properties and operators.
+     */
+    conditions?: string;
+    /**
+     * Whether rule forbids. Set this to true if permission forbids.
+     */
+    inverted: boolean;
+    /**
+     * Describe the entity the permission pertains to.
+     */
+    subject: string;
+}
+
 export interface ProjectGroupRole {
     /**
      * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
@@ -1010,7 +1148,7 @@ export interface ProjectIdentitySpecificPrivilegePermission {
      */
     conditions: outputs.ProjectIdentitySpecificPrivilegePermissionConditions;
     /**
-     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-templates,kms,pki-alerts,pki-collections
+     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
      */
     subject: string;
 }
@@ -1055,7 +1193,7 @@ export interface ProjectRolePermission {
      */
     conditions?: outputs.ProjectRolePermissionConditions;
     /**
-     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-templates,kms,pki-alerts,pki-collections
+     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
      */
     subject: string;
 }
@@ -2021,6 +2159,10 @@ export namespace config {
          * The configuration values for OIDC Auth
          */
         oidc?: outputs.config.AuthOidc;
+        /**
+         * When set, this will scope the login session to the specified organization the machine identity has access to. If left empty, the session defaults to the organization where the machine identity was created in.
+         */
+        organizationSlug?: string;
         /**
          * The authentication token for Machine Identity Token Auth. This attribute can also be set using the `INFISICAL_TOKEN` environment variable
          */

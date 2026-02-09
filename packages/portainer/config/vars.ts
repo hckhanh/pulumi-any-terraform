@@ -41,6 +41,17 @@ Object.defineProperty(exports, "apiUser", {
 });
 
 /**
+ * Custom headers to add to all requests (e.g. for Cloudflare Access or other security proxies).
+ */
+export declare const customHeaders: {[key: string]: string} | undefined;
+Object.defineProperty(exports, "customHeaders", {
+    get() {
+        return __config.getObject<{[key: string]: string}>("customHeaders");
+    },
+    enumerable: true,
+});
+
+/**
  * URL of the Portainer instance (e.g. https://portainer.example.com). '/api' will be appended automatically if missing.
  */
 export declare const endpoint: string | undefined;
