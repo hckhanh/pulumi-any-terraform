@@ -1,7 +1,7 @@
 {
   "name": "pulumi-bunnynet",
   "description": "A Pulumi provider for managing Bunny.net CDN and edge computing resources, dynamically bridged from the Terraform Bunnynet provider with support for pull zones, storage, DNS, compute containers, and video streaming.",
-  "version": "0.11.5",
+  "version": "0.12.0",
   "homepage": "https://pulumi.khanh.id/docs/providers/bunnynet",
   "repository": {
     "type": "git",
