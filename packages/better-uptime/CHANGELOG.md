@@ -1,5 +1,14 @@
 ## 0.20.9 (2025-10-08)
 
+## 0.20.12
+
+### Patch Changes
+
+- 2e53a01: ## What's Changed
+  - [U-1434] Add on_incident_reopened field to outgoing webhook resource by @CharliePapworth in https://github.com/BetterStackHQ/terraform-provider-better-uptime/pull/177
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-better-uptime/compare/v0.20.7...v0.20.8
+
 ## 0.20.11
 
 ### Patch Changes

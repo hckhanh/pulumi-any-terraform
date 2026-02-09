@@ -1,5 +1,14 @@
 ## 0.6.8 (2025-10-08)
 
+## 0.7.4
+
+### Patch Changes
+
+- 2e53a01: ## What's Changed
+  - T-8046 Add resources for dashboards (JSON import/export) by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/51
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v0.7.6...v0.7.7
+
 ## 0.7.3
 
 ### Patch Changes
