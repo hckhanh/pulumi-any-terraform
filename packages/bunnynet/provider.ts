@@ -34,10 +34,6 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly apiUrl: pulumi.Output<string | undefined>;
     /**
-     * Optional. The Container API URL. Defaults to `https://api-mc.opsbunny.net`.
-     */
-    declare public readonly containerApiUrl: pulumi.Output<string | undefined>;
-    /**
      * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
      */
     declare public readonly streamApiUrl: pulumi.Output<string | undefined>;
@@ -55,7 +51,6 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["apiKey"] = args?.apiKey;
             resourceInputs["apiUrl"] = args?.apiUrl;
-            resourceInputs["containerApiUrl"] = args?.containerApiUrl;
             resourceInputs["streamApiUrl"] = args?.streamApiUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -85,10 +80,6 @@ export interface ProviderArgs {
      * Optional. The API URL. Defaults to `https://api.bunny.net`.
      */
     apiUrl?: pulumi.Input<string>;
-    /**
-     * Optional. The Container API URL. Defaults to `https://api-mc.opsbunny.net`.
-     */
-    containerApiUrl?: pulumi.Input<string>;
     /**
      * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
      */

@@ -30,17 +30,6 @@ Object.defineProperty(exports, "apiUrl", {
 });
 
 /**
- * Optional. The Container API URL. Defaults to `https://api-mc.opsbunny.net`.
- */
-export declare const containerApiUrl: string | undefined;
-Object.defineProperty(exports, "containerApiUrl", {
-    get() {
-        return __config.get("containerApiUrl");
-    },
-    enumerable: true,
-});
-
-/**
  * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
  */
 export declare const streamApiUrl: string | undefined;

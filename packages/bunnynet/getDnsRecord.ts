@@ -42,6 +42,7 @@ export interface GetDnsRecordResult {
     readonly name: string;
     readonly port: number;
     readonly priority: number;
+    readonly pullzoneId: number;
     readonly smartRoutingType: string;
     readonly tag: string;
     readonly ttl: number;

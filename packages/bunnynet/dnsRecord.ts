@@ -105,7 +105,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     declare public readonly ttl: pulumi.Output<number>;
     /**
-     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `Script`, `TXT`
+     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `HTTPS`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `SVCB`, `Script`, `TLSA`, `TXT`
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -272,7 +272,7 @@ export interface DnsRecordState {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `Script`, `TXT`
+     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `HTTPS`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `SVCB`, `Script`, `TLSA`, `TXT`
      */
     type?: pulumi.Input<string>;
     /**
@@ -354,7 +354,7 @@ export interface DnsRecordArgs {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `Script`, `TXT`
+     * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `HTTPS`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `SVCB`, `Script`, `TLSA`, `TXT`
      */
     type: pulumi.Input<string>;
     /**
