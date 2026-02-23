@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CollectorArgs, CollectorState } from "./collector";
+export type Collector = import("./collector").Collector;
+export const Collector: typeof import("./collector").Collector = null as any;
+utilities.lazyLoad(exports, ["Collector"], () => require("./collector"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -24,6 +29,11 @@ export { ErrorsApplicationGroupArgs, ErrorsApplicationGroupState } from "./error
 export type ErrorsApplicationGroup = import("./errorsApplicationGroup").ErrorsApplicationGroup;
 export const ErrorsApplicationGroup: typeof import("./errorsApplicationGroup").ErrorsApplicationGroup = null as any;
 utilities.lazyLoad(exports, ["ErrorsApplicationGroup"], () => require("./errorsApplicationGroup"));
+
+export { GetCollectorArgs, GetCollectorResult, GetCollectorOutputArgs } from "./getCollector";
+export const getCollector: typeof import("./getCollector").getCollector = null as any;
+export const getCollectorOutput: typeof import("./getCollector").getCollectorOutput = null as any;
+utilities.lazyLoad(exports, ["getCollector","getCollectorOutput"], () => require("./getCollector"));
 
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
@@ -132,6 +142,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "logtail:index/collector:Collector":
+                return new Collector(name, <any>undefined, { urn })
             case "logtail:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "logtail:index/dashboard:Dashboard":
@@ -159,6 +171,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("logtail", "index/collector", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/connection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplication", _module)

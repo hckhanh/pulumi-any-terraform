@@ -14,6 +14,7 @@
     },
     "files": [
         "accessControl.ts",
+        "action.ts",
         "alert.ts",
         "config/index.ts",
         "config/vars.ts",

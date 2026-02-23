@@ -230,6 +230,11 @@ export const getEndpointGroup: typeof import("./getEndpointGroup").getEndpointGr
 export const getEndpointGroupOutput: typeof import("./getEndpointGroup").getEndpointGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpointGroup","getEndpointGroupOutput"], () => require("./getEndpointGroup"));
 
+export { GetEndpointGroupAccessArgs, GetEndpointGroupAccessResult, GetEndpointGroupAccessOutputArgs } from "./getEndpointGroupAccess";
+export const getEndpointGroupAccess: typeof import("./getEndpointGroupAccess").getEndpointGroupAccess = null as any;
+export const getEndpointGroupAccessOutput: typeof import("./getEndpointGroupAccess").getEndpointGroupAccessOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointGroupAccess","getEndpointGroupAccessOutput"], () => require("./getEndpointGroupAccess"));
+
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
@@ -239,6 +244,11 @@ export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./get
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
+
+export { GetRegistryAccessArgs, GetRegistryAccessResult, GetRegistryAccessOutputArgs } from "./getRegistryAccess";
+export const getRegistryAccess: typeof import("./getRegistryAccess").getRegistryAccess = null as any;
+export const getRegistryAccessOutput: typeof import("./getRegistryAccess").getRegistryAccessOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryAccess","getRegistryAccessOutput"], () => require("./getRegistryAccess"));
 
 export { GetStackArgs, GetStackResult, GetStackOutputArgs } from "./getStack";
 export const getStack: typeof import("./getStack").getStack = null as any;
@@ -254,6 +264,11 @@ export { GetTeamArgs, GetTeamResult, GetTeamOutputArgs } from "./getTeam";
 export const getTeam: typeof import("./getTeam").getTeam = null as any;
 export const getTeamOutput: typeof import("./getTeam").getTeamOutput = null as any;
 utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
+
+export { GetTeamMembershipArgs, GetTeamMembershipResult, GetTeamMembershipOutputArgs } from "./getTeamMembership";
+export const getTeamMembership: typeof import("./getTeamMembership").getTeamMembership = null as any;
+export const getTeamMembershipOutput: typeof import("./getTeamMembership").getTeamMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamMembership","getTeamMembershipOutput"], () => require("./getTeamMembership"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;

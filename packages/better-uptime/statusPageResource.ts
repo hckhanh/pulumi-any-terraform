@@ -97,7 +97,7 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly statusPageSectionId: pulumi.Output<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Available values: plain - only display status, history - display historical status,<span pulumi-lang-nodejs=" intradayHistory " pulumi-lang-dotnet=" IntradayHistory " pulumi-lang-go=" intradayHistory " pulumi-lang-python=" intraday_history " pulumi-lang-yaml=" intradayHistory " pulumi-lang-java=" intradayHistory "> intraday_history </span>- display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     declare public readonly widgetType: pulumi.Output<string>;
 
@@ -233,7 +233,7 @@ export interface StatusPageResourceState {
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Available values: plain - only display status, history - display historical status,<span pulumi-lang-nodejs=" intradayHistory " pulumi-lang-dotnet=" IntradayHistory " pulumi-lang-go=" intradayHistory " pulumi-lang-python=" intraday_history " pulumi-lang-yaml=" intradayHistory " pulumi-lang-java=" intradayHistory "> intraday_history </span>- display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }
@@ -293,7 +293,7 @@ export interface StatusPageResourceArgs {
      */
     statusPageSectionId?: pulumi.Input<number>;
     /**
-     * What widget to display for this resource. Expects one of three values: plain - only display status, history - display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
+     * What widget to display for this resource. Available values: plain - only display status, history - display historical status,<span pulumi-lang-nodejs=" intradayHistory " pulumi-lang-dotnet=" IntradayHistory " pulumi-lang-go=" intradayHistory " pulumi-lang-python=" intraday_history " pulumi-lang-yaml=" intradayHistory " pulumi-lang-java=" intradayHistory "> intraday_history </span>- display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
     widgetType?: pulumi.Input<string>;
 }

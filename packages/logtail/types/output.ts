@@ -5,6 +5,211 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CollectorConfiguration {
+    /**
+     * Enable or disable specific collector components. Maps to the Logs, Metrics, and eBPF tabs in the collector settings UI.
+     */
+    components?: outputs.CollectorConfigurationComponents;
+    /**
+     * Disk buffer size in MB for outgoing requests. Minimum 256 MB.
+     */
+    diskBatchSizeMb: number;
+    /**
+     * Sample rate for logs (0-100).
+     */
+    logsSampleRate: number;
+    /**
+     * Memory batch size in MB for outgoing requests. Maximum 40 MB.
+     */
+    memoryBatchSizeMb: number;
+    /**
+     * Per-namespace overrides for log sampling rate and trace ingestion (Kubernetes only). Order-independent; entries are identified by name.
+     */
+    namespaceOptions?: outputs.CollectorConfigurationNamespaceOption[];
+    /**
+     * Per-service overrides for log sampling rate and trace ingestion. Only includes user-managed services; internal collector services (`better-stack-beyla`, `better-stack-collector`) are excluded. Use the <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`">`logtail.Collector`</span> data source to see all discovered services.
+     */
+    serviceOptions?: outputs.CollectorConfigurationServiceOption[];
+    /**
+     * Sample rate for traces (0-100).
+     */
+    tracesSampleRate: number;
+    /**
+     * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`">`source_vrl_transformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformation: string;
+}
+
+export interface CollectorConfigurationComponents {
+    /**
+     * Enable eBPF-based metrics collection.
+     */
+    ebpfMetrics: boolean;
+    /**
+     * Enable service map and RED (Requests, Error rate, Duration) metrics via eBPF.
+     */
+    ebpfRedMetrics: boolean;
+    /**
+     * Enable basic eBPF tracing.
+     */
+    ebpfTracingBasic: boolean;
+    /**
+     * Enable full eBPF tracing.
+     */
+    ebpfTracingFull: boolean;
+    /**
+     * Collect internal collector logs.
+     */
+    logsCollectorInternals: boolean;
+    /**
+     * Collect Docker container logs.
+     */
+    logsDocker: boolean;
+    /**
+     * Collect host-level logs.
+     */
+    logsHost: boolean;
+    /**
+     * Collect Kubernetes logs.
+     */
+    logsKubernetes: boolean;
+    /**
+     * Collect Apache metrics.
+     */
+    metricsApache: boolean;
+    /**
+     * Collect database metrics via the cluster agent.
+     */
+    metricsDatabases: boolean;
+    /**
+     * Collect Nginx metrics.
+     */
+    metricsNginx: boolean;
+    /**
+     * Accept OpenTelemetry SDK traces on ports 4317 (gRPC) and 4318 (HTTP).
+     */
+    tracesOpentelemetry: boolean;
+}
+
+export interface CollectorConfigurationNamespaceOption {
+    /**
+     * Whether to ingest traces for this namespace.
+     */
+    ingestTraces?: boolean;
+    /**
+     * Log sampling rate (0-100).
+     */
+    logSampling?: number;
+    /**
+     * Namespace name.
+     */
+    name: string;
+}
+
+export interface CollectorConfigurationServiceOption {
+    /**
+     * Whether to ingest traces for this service.
+     */
+    ingestTraces?: boolean;
+    /**
+     * Log sampling rate (0-100).
+     */
+    logSampling?: number;
+    /**
+     * Service name.
+     */
+    name: string;
+}
+
+export interface CollectorCustomBucket {
+    /**
+     * Access key ID for the bucket.
+     */
+    accessKeyId: string;
+    /**
+     * Bucket endpoint URL.
+     */
+    endpoint: string;
+    /**
+     * Whether to keep data in the bucket after the retention period.
+     */
+    keepDataAfterRetention?: boolean;
+    /**
+     * Bucket name.
+     */
+    name: string;
+    /**
+     * Secret access key for the bucket.
+     */
+    secretAccessKey: string;
+}
+
+export interface CollectorDatabase {
+    /**
+     * The database host.
+     */
+    host: string;
+    /**
+     * The ID of this database connection (assigned by the API).
+     */
+    id: number;
+    /**
+     * The database password.
+     */
+    password?: string;
+    /**
+     * The database port.
+     */
+    port: number;
+    /**
+     * The type of database service.
+     */
+    serviceType: string;
+    /**
+     * SSL mode for PostgreSQL connections. Valid values: <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>, <span pulumi-lang-nodejs="`require`" pulumi-lang-dotnet="`Require`" pulumi-lang-go="`require`" pulumi-lang-python="`require`" pulumi-lang-yaml="`require`" pulumi-lang-java="`require`">`require`</span>, `verify-ca`.
+     */
+    sslMode?: string;
+    /**
+     * TLS mode for MySQL connections. Valid values: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, `skip-verify`, <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span>.
+     */
+    tls?: string;
+    /**
+     * The database username.
+     */
+    username?: string;
+}
+
+export interface CollectorProxyConfig {
+    /**
+     * Address and port for the buffering proxy to listen on.
+     */
+    bufferingProxyListenOn?: string;
+    /**
+     * Enable the HTTP buffering proxy for the collector.
+     */
+    enableBufferingProxy?: boolean;
+    /**
+     * Enable HTTP Basic Authentication for the collector proxy.
+     */
+    enableHttpBasicAuth?: boolean;
+    /**
+     * Enable custom SSL/TLS certificate for the collector.
+     */
+    enableSslCertificate?: boolean;
+    /**
+     * Password for HTTP Basic Authentication. This value is write-only and never returned by the API.
+     */
+    httpBasicAuthPassword?: string;
+    /**
+     * Username for HTTP Basic Authentication.
+     */
+    httpBasicAuthUsername?: string;
+    /**
+     * Hostname for the SSL certificate.
+     */
+    sslCertificateHost?: string;
+}
+
 export interface ConnectionDataSource {
     dataSources: string[];
     sourceId: number;
@@ -33,6 +238,73 @@ export interface ErrorsApplicationCustomBucket {
      * Secret access key
      */
     secretAccessKey: string;
+}
+
+export interface GetCollectorConfiguration {
+    components: outputs.GetCollectorConfigurationComponent[];
+    diskBatchSizeMb: number;
+    logsSampleRate: number;
+    memoryBatchSizeMb: number;
+    namespaceOptions: outputs.GetCollectorConfigurationNamespaceOption[];
+    serviceOptions: outputs.GetCollectorConfigurationServiceOption[];
+    tracesSampleRate: number;
+    vrlTransformation: string;
+}
+
+export interface GetCollectorConfigurationComponent {
+    ebpfMetrics: boolean;
+    ebpfRedMetrics: boolean;
+    ebpfTracingBasic: boolean;
+    ebpfTracingFull: boolean;
+    logsCollectorInternals: boolean;
+    logsDocker: boolean;
+    logsHost: boolean;
+    logsKubernetes: boolean;
+    metricsApache: boolean;
+    metricsDatabases: boolean;
+    metricsNginx: boolean;
+    tracesOpentelemetry: boolean;
+}
+
+export interface GetCollectorConfigurationNamespaceOption {
+    ingestTraces: boolean;
+    logSampling: number;
+    name: string;
+}
+
+export interface GetCollectorConfigurationServiceOption {
+    ingestTraces: boolean;
+    logSampling: number;
+    name: string;
+}
+
+export interface GetCollectorCustomBucket {
+    accessKeyId: string;
+    endpoint: string;
+    keepDataAfterRetention: boolean;
+    name: string;
+    secretAccessKey: string;
+}
+
+export interface GetCollectorDatabase {
+    host: string;
+    id: number;
+    password: string;
+    port: number;
+    serviceType: string;
+    sslMode: string;
+    tls: string;
+    username: string;
+}
+
+export interface GetCollectorProxyConfig {
+    bufferingProxyListenOn: string;
+    enableBufferingProxy: boolean;
+    enableHttpBasicAuth: boolean;
+    enableSslCertificate: boolean;
+    httpBasicAuthPassword: string;
+    httpBasicAuthUsername: string;
+    sslCertificateHost: string;
 }
 
 export interface GetConnectionDataSource {

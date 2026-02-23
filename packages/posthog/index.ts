@@ -10,6 +10,11 @@ export type AccessControl = import("./accessControl").AccessControl;
 export const AccessControl: typeof import("./accessControl").AccessControl = null as any;
 utilities.lazyLoad(exports, ["AccessControl"], () => require("./accessControl"));
 
+export { ActionArgs, ActionState } from "./action";
+export type Action = import("./action").Action;
+export const Action: typeof import("./action").Action = null as any;
+utilities.lazyLoad(exports, ["Action"], () => require("./action"));
+
 export { AlertArgs, AlertState } from "./alert";
 export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
@@ -87,6 +92,8 @@ const _module = {
         switch (type) {
             case "posthog:index/accessControl:AccessControl":
                 return new AccessControl(name, <any>undefined, { urn })
+            case "posthog:index/action:Action":
+                return new Action(name, <any>undefined, { urn })
             case "posthog:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
             case "posthog:index/dashboard:Dashboard":
@@ -115,6 +122,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("posthog", "index/accessControl", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/action", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/alert", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)
