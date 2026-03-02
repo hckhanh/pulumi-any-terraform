@@ -1,5 +1,11 @@
 ## 0.11.0 (2025-10-28)
 
+## 0.13.0
+
+### Minor Changes
+
+- c5d9bbd: Update pulumi-bunnynet from 0.12.1 to 0.13.0
+
 ## 0.12.0
 
 ### Minor Changes

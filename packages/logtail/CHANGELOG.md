@@ -1,5 +1,16 @@
 ## 0.6.8 (2025-10-08)
 
+## 0.8.0
+
+### Minor Changes
+
+- f8a576f: Update pulumi-logtail from 0.7.7 to 0.8.1
+- 365e6c3: ## What's Changed
+  - T-16530 Add Exploration and Alert resources by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/57
+    - Also fixes behavior of groups when un-assigning from explorations, sources, and other resources.
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v0.9.0...v0.9.1
+
 ## 0.7.4
 
 ### Patch Changes
