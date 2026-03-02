@@ -19,6 +19,7 @@
         "config/index.ts",
         "config/vars.ts",
         "dashboard.ts",
+        "dashboardLayout.ts",
         "featureFlag.ts",
         "getUser.ts",
         "hogFunction.ts",
@@ -31,6 +32,9 @@
         "provider.ts",
         "role.ts",
         "roleMembership.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "utilities.ts"
     ]
 }

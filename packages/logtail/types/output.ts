@@ -240,6 +240,98 @@ export interface ErrorsApplicationCustomBucket {
     secretAccessKey: string;
 }
 
+export interface ExplorationAlertEscalationTarget {
+    /**
+     * The Better Stack escalation policy ID.
+     */
+    policyId?: number;
+    /**
+     * The Better Stack escalation policy name.
+     */
+    policyName?: string;
+    /**
+     * The Better Stack team ID to escalate to.
+     */
+    teamId?: number;
+    /**
+     * The Better Stack team name to escalate to.
+     */
+    teamName?: string;
+}
+
+export interface ExplorationChart {
+    /**
+     * The type of chart (e.g., 'line_chart', 'bar_chart', 'pie_chart', 'number_chart', 'table_chart', 'tail_chart', 'static_text_chart').
+     */
+    chartType: string;
+    /**
+     * The description of the chart.
+     */
+    description: string;
+    /**
+     * The name of the chart. Automatically set to the exploration name by the API.
+     */
+    name: string;
+    /**
+     * Chart settings as a JSON string. Settings vary by chart type and include options like unit, decimal_places, legend, stacking, etc.
+     */
+    settings: string;
+}
+
+export interface ExplorationQuery {
+    /**
+     * The ID of this query (read-only).
+     */
+    id: number;
+    /**
+     * The name of the query.
+     */
+    name?: string;
+    /**
+     * The type of query: 'sql_expression', 'tail_query', or 'static_text'. Note: 'pql_expression', 'query_builder', and 'funnel_query' are read-only.
+     */
+    queryType: string;
+    /**
+     * The source variable reference (default: 'source').
+     */
+    sourceVariable: string;
+    /**
+     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
+     */
+    sqlQuery?: string;
+    /**
+     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
+     */
+    staticText?: string;
+    /**
+     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
+     */
+    whereCondition?: string;
+}
+
+export interface ExplorationVariable {
+    /**
+     * Default selected values for the variable.
+     */
+    defaultValues?: string[];
+    /**
+     * The name of the variable (used as {{name}} in queries).
+     */
+    name: string;
+    /**
+     * SQL definition for 'sql_expression' or 'select_with_sql' type variables.
+     */
+    sqlDefinition?: string;
+    /**
+     * Predefined values for 'select_value' type variables.
+     */
+    values?: string[];
+    /**
+     * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', or 'select_with_sql'.
+     */
+    variableType: string;
+}
+
 export interface GetCollectorConfiguration {
     components: outputs.GetCollectorConfigurationComponent[];
     diskBatchSizeMb: number;
@@ -320,6 +412,38 @@ export interface GetErrorsApplicationCustomBucket {
     keepDataAfterRetention: boolean;
     name: string;
     secretAccessKey: string;
+}
+
+export interface GetExplorationAlertEscalationTarget {
+    policyId: number;
+    policyName: string;
+    teamId: number;
+    teamName: string;
+}
+
+export interface GetExplorationChart {
+    chartType: string;
+    description: string;
+    name: string;
+    settings: string;
+}
+
+export interface GetExplorationQuery {
+    id: number;
+    name: string;
+    queryType: string;
+    sourceVariable: string;
+    sqlQuery: string;
+    staticText: string;
+    whereCondition: string;
+}
+
+export interface GetExplorationVariable {
+    defaultValues: string[];
+    name: string;
+    sqlDefinition: string;
+    values: string[];
+    variableType: string;
 }
 
 export interface GetSourceCustomBucket {

@@ -35,7 +35,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the application group this application belongs to.
+     * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     declare public readonly applicationGroupId: pulumi.Output<number | undefined>;
     /**
@@ -237,7 +237,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
  */
 export interface ErrorsApplicationState {
     /**
-     * ID of the application group this application belongs to.
+     * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     applicationGroupId?: pulumi.Input<number>;
     /**
@@ -390,7 +390,7 @@ export interface ErrorsApplicationState {
  */
 export interface ErrorsApplicationArgs {
     /**
-     * ID of the application group this application belongs to.
+     * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     applicationGroupId?: pulumi.Input<number>;
     /**

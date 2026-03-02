@@ -44,6 +44,12 @@ export class Provider extends pulumi.ProviderResource {
             if (args?.apiToken === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiToken'");
             }
+            resourceInputs["apiRateBurst"] = pulumi.output(args?.apiRateBurst).apply(JSON.stringify);
+            resourceInputs["apiRateLimit"] = pulumi.output(args?.apiRateLimit).apply(JSON.stringify);
+            resourceInputs["apiRetryMax"] = pulumi.output(args?.apiRetryMax).apply(JSON.stringify);
+            resourceInputs["apiRetryWaitMax"] = pulumi.output(args?.apiRetryWaitMax).apply(JSON.stringify);
+            resourceInputs["apiRetryWaitMin"] = pulumi.output(args?.apiRetryWaitMin).apply(JSON.stringify);
+            resourceInputs["apiTimeout"] = pulumi.output(args?.apiTimeout).apply(JSON.stringify);
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -67,6 +73,30 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit, minimum 10).
+     */
+    apiRateBurst?: pulumi.Input<number>;
+    /**
+     * Maximum number of API requests per second. 0 means no limit.
+     */
+    apiRateLimit?: pulumi.Input<number>;
+    /**
+     * Maximum number of retries for API requests.
+     */
+    apiRetryMax?: pulumi.Input<number>;
+    /**
+     * Maximum time to wait between retries in seconds.
+     */
+    apiRetryWaitMax?: pulumi.Input<number>;
+    /**
+     * Minimum time to wait between retries in seconds.
+     */
+    apiRetryWaitMin?: pulumi.Input<number>;
+    /**
+     * Timeout for individual HTTP requests in seconds.
+     */
+    apiTimeout?: pulumi.Input<number>;
     /**
      * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your team.
      */

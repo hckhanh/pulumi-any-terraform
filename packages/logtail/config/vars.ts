@@ -8,6 +8,72 @@ declare var exports: any;
 const __config = new pulumi.Config("logtail");
 
 /**
+ * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit, minimum 10).
+ */
+export declare const apiRateBurst: number | undefined;
+Object.defineProperty(exports, "apiRateBurst", {
+    get() {
+        return __config.getObject<number>("apiRateBurst");
+    },
+    enumerable: true,
+});
+
+/**
+ * Maximum number of API requests per second. 0 means no limit.
+ */
+export declare const apiRateLimit: number | undefined;
+Object.defineProperty(exports, "apiRateLimit", {
+    get() {
+        return __config.getObject<number>("apiRateLimit");
+    },
+    enumerable: true,
+});
+
+/**
+ * Maximum number of retries for API requests.
+ */
+export declare const apiRetryMax: number | undefined;
+Object.defineProperty(exports, "apiRetryMax", {
+    get() {
+        return __config.getObject<number>("apiRetryMax");
+    },
+    enumerable: true,
+});
+
+/**
+ * Maximum time to wait between retries in seconds.
+ */
+export declare const apiRetryWaitMax: number | undefined;
+Object.defineProperty(exports, "apiRetryWaitMax", {
+    get() {
+        return __config.getObject<number>("apiRetryWaitMax");
+    },
+    enumerable: true,
+});
+
+/**
+ * Minimum time to wait between retries in seconds.
+ */
+export declare const apiRetryWaitMin: number | undefined;
+Object.defineProperty(exports, "apiRetryWaitMin", {
+    get() {
+        return __config.getObject<number>("apiRetryWaitMin");
+    },
+    enumerable: true,
+});
+
+/**
+ * Timeout for individual HTTP requests in seconds.
+ */
+export declare const apiTimeout: number | undefined;
+Object.defineProperty(exports, "apiTimeout", {
+    get() {
+        return __config.getObject<number>("apiTimeout");
+    },
+    enumerable: true,
+});
+
+/**
  * Better Stack Telemetry API token. The value can be omitted if `LOGTAIL_API_TOKEN` environment variable is set. See https://betterstack.com/docs/logs/api/getting-started/#get-an-logs-api-token on how to obtain the API token for your team.
  */
 export declare const apiToken: string | undefined;

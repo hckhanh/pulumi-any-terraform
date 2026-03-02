@@ -25,6 +25,11 @@ export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
 utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
 
+export { DashboardLayoutArgs, DashboardLayoutState } from "./dashboardLayout";
+export type DashboardLayout = import("./dashboardLayout").DashboardLayout;
+export const DashboardLayout: typeof import("./dashboardLayout").DashboardLayout = null as any;
+utilities.lazyLoad(exports, ["DashboardLayout"], () => require("./dashboardLayout"));
+
 export { FeatureFlagArgs, FeatureFlagState } from "./featureFlag";
 export type FeatureFlag = import("./featureFlag").FeatureFlag;
 export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
@@ -81,9 +86,11 @@ utilities.lazyLoad(exports, ["RoleMembership"], () => require("./roleMembership"
 
 // Export sub-modules:
 import * as config from "./config";
+import * as types from "./types";
 
 export {
     config,
+    types,
 };
 
 const _module = {
@@ -98,6 +105,8 @@ const _module = {
                 return new Alert(name, <any>undefined, { urn })
             case "posthog:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "posthog:index/dashboardLayout:DashboardLayout":
+                return new DashboardLayout(name, <any>undefined, { urn })
             case "posthog:index/featureFlag:FeatureFlag":
                 return new FeatureFlag(name, <any>undefined, { urn })
             case "posthog:index/hogFunction:HogFunction":
@@ -125,6 +134,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/accessControl", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/action", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/alert", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/dashboardLayout", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/hogFunction", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/insight", _module)

@@ -93,9 +93,9 @@ export class WarehouseSource extends pulumi.CustomResource {
      */
     declare public readonly vrlTransformation: pulumi.Output<string | undefined>;
     /**
-     * The ID of the warehouse source group this source belongs to.
+     * The ID of the warehouse source group this source belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    declare public readonly warehouseSourceGroupId: pulumi.Output<number>;
+    declare public readonly warehouseSourceGroupId: pulumi.Output<number | undefined>;
 
     /**
      * Create a WarehouseSource resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ export class WarehouseSource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WarehouseSourceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: WarehouseSourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WarehouseSourceArgs | WarehouseSourceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -127,9 +127,6 @@ export class WarehouseSource extends pulumi.CustomResource {
             resourceInputs["warehouseSourceGroupId"] = state?.warehouseSourceGroupId;
         } else {
             const args = argsOrState as WarehouseSourceArgs | undefined;
-            if (args?.warehouseSourceGroupId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'warehouseSourceGroupId'");
-            }
             resourceInputs["customBucket"] = args?.customBucket;
             resourceInputs["dataRegion"] = args?.dataRegion;
             resourceInputs["eventsRetention"] = args?.eventsRetention;
@@ -214,7 +211,7 @@ export interface WarehouseSourceState {
      */
     vrlTransformation?: pulumi.Input<string>;
     /**
-     * The ID of the warehouse source group this source belongs to.
+     * The ID of the warehouse source group this source belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     warehouseSourceGroupId?: pulumi.Input<number>;
 }
@@ -262,7 +259,7 @@ export interface WarehouseSourceArgs {
      */
     vrlTransformation?: pulumi.Input<string>;
     /**
-     * The ID of the warehouse source group this source belongs to.
+     * The ID of the warehouse source group this source belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    warehouseSourceGroupId: pulumi.Input<number>;
+    warehouseSourceGroupId?: pulumi.Input<number>;
 }

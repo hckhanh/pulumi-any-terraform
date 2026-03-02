@@ -56,8 +56,8 @@
     "version": "1.1.0",
     "parameterization": {
       "name": "posthog",
-      "version": "1.0.5",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuNSJ9fQ=="
+      "version": "1.0.6",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuNiJ9fQ=="
     }
   }
 }

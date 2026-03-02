@@ -240,6 +240,98 @@ export interface ErrorsApplicationCustomBucket {
     secretAccessKey: pulumi.Input<string>;
 }
 
+export interface ExplorationAlertEscalationTarget {
+    /**
+     * The Better Stack escalation policy ID.
+     */
+    policyId?: pulumi.Input<number>;
+    /**
+     * The Better Stack escalation policy name.
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * The Better Stack team ID to escalate to.
+     */
+    teamId?: pulumi.Input<number>;
+    /**
+     * The Better Stack team name to escalate to.
+     */
+    teamName?: pulumi.Input<string>;
+}
+
+export interface ExplorationChart {
+    /**
+     * The type of chart (e.g., 'line_chart', 'bar_chart', 'pie_chart', 'number_chart', 'table_chart', 'tail_chart', 'static_text_chart').
+     */
+    chartType: pulumi.Input<string>;
+    /**
+     * The description of the chart.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the chart. Automatically set to the exploration name by the API.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Chart settings as a JSON string. Settings vary by chart type and include options like unit, decimal_places, legend, stacking, etc.
+     */
+    settings?: pulumi.Input<string>;
+}
+
+export interface ExplorationQuery {
+    /**
+     * The ID of this query (read-only).
+     */
+    id?: pulumi.Input<number>;
+    /**
+     * The name of the query.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The type of query: 'sql_expression', 'tail_query', or 'static_text'. Note: 'pql_expression', 'query_builder', and 'funnel_query' are read-only.
+     */
+    queryType: pulumi.Input<string>;
+    /**
+     * The source variable reference (default: 'source').
+     */
+    sourceVariable?: pulumi.Input<string>;
+    /**
+     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
+     */
+    sqlQuery?: pulumi.Input<string>;
+    /**
+     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
+     */
+    staticText?: pulumi.Input<string>;
+    /**
+     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
+     */
+    whereCondition?: pulumi.Input<string>;
+}
+
+export interface ExplorationVariable {
+    /**
+     * Default selected values for the variable.
+     */
+    defaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the variable (used as {{name}} in queries).
+     */
+    name: pulumi.Input<string>;
+    /**
+     * SQL definition for 'sql_expression' or 'select_with_sql' type variables.
+     */
+    sqlDefinition?: pulumi.Input<string>;
+    /**
+     * Predefined values for 'select_value' type variables.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', or 'select_with_sql'.
+     */
+    variableType: pulumi.Input<string>;
+}
+
 export interface SourceCustomBucket {
     /**
      * Access key ID

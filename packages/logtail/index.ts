@@ -30,6 +30,21 @@ export type ErrorsApplicationGroup = import("./errorsApplicationGroup").ErrorsAp
 export const ErrorsApplicationGroup: typeof import("./errorsApplicationGroup").ErrorsApplicationGroup = null as any;
 utilities.lazyLoad(exports, ["ErrorsApplicationGroup"], () => require("./errorsApplicationGroup"));
 
+export { ExplorationArgs, ExplorationState } from "./exploration";
+export type Exploration = import("./exploration").Exploration;
+export const Exploration: typeof import("./exploration").Exploration = null as any;
+utilities.lazyLoad(exports, ["Exploration"], () => require("./exploration"));
+
+export { ExplorationAlertArgs, ExplorationAlertState } from "./explorationAlert";
+export type ExplorationAlert = import("./explorationAlert").ExplorationAlert;
+export const ExplorationAlert: typeof import("./explorationAlert").ExplorationAlert = null as any;
+utilities.lazyLoad(exports, ["ExplorationAlert"], () => require("./explorationAlert"));
+
+export { ExplorationGroupArgs, ExplorationGroupState } from "./explorationGroup";
+export type ExplorationGroup = import("./explorationGroup").ExplorationGroup;
+export const ExplorationGroup: typeof import("./explorationGroup").ExplorationGroup = null as any;
+utilities.lazyLoad(exports, ["ExplorationGroup"], () => require("./explorationGroup"));
+
 export { GetCollectorArgs, GetCollectorResult, GetCollectorOutputArgs } from "./getCollector";
 export const getCollector: typeof import("./getCollector").getCollector = null as any;
 export const getCollectorOutput: typeof import("./getCollector").getCollectorOutput = null as any;
@@ -59,6 +74,21 @@ export { GetErrorsApplicationGroupArgs, GetErrorsApplicationGroupResult, GetErro
 export const getErrorsApplicationGroup: typeof import("./getErrorsApplicationGroup").getErrorsApplicationGroup = null as any;
 export const getErrorsApplicationGroupOutput: typeof import("./getErrorsApplicationGroup").getErrorsApplicationGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getErrorsApplicationGroup","getErrorsApplicationGroupOutput"], () => require("./getErrorsApplicationGroup"));
+
+export { GetExplorationArgs, GetExplorationResult, GetExplorationOutputArgs } from "./getExploration";
+export const getExploration: typeof import("./getExploration").getExploration = null as any;
+export const getExplorationOutput: typeof import("./getExploration").getExplorationOutput = null as any;
+utilities.lazyLoad(exports, ["getExploration","getExplorationOutput"], () => require("./getExploration"));
+
+export { GetExplorationAlertArgs, GetExplorationAlertResult, GetExplorationAlertOutputArgs } from "./getExplorationAlert";
+export const getExplorationAlert: typeof import("./getExplorationAlert").getExplorationAlert = null as any;
+export const getExplorationAlertOutput: typeof import("./getExplorationAlert").getExplorationAlertOutput = null as any;
+utilities.lazyLoad(exports, ["getExplorationAlert","getExplorationAlertOutput"], () => require("./getExplorationAlert"));
+
+export { GetExplorationGroupArgs, GetExplorationGroupResult, GetExplorationGroupOutputArgs } from "./getExplorationGroup";
+export const getExplorationGroup: typeof import("./getExplorationGroup").getExplorationGroup = null as any;
+export const getExplorationGroupOutput: typeof import("./getExplorationGroup").getExplorationGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getExplorationGroup","getExplorationGroupOutput"], () => require("./getExplorationGroup"));
 
 export { GetMetricArgs, GetMetricResult, GetMetricOutputArgs } from "./getMetric";
 export const getMetric: typeof import("./getMetric").getMetric = null as any;
@@ -152,6 +182,12 @@ const _module = {
                 return new ErrorsApplication(name, <any>undefined, { urn })
             case "logtail:index/errorsApplicationGroup:ErrorsApplicationGroup":
                 return new ErrorsApplicationGroup(name, <any>undefined, { urn })
+            case "logtail:index/exploration:Exploration":
+                return new Exploration(name, <any>undefined, { urn })
+            case "logtail:index/explorationAlert:ExplorationAlert":
+                return new ExplorationAlert(name, <any>undefined, { urn })
+            case "logtail:index/explorationGroup:ExplorationGroup":
+                return new ExplorationGroup(name, <any>undefined, { urn })
             case "logtail:index/metric:Metric":
                 return new Metric(name, <any>undefined, { urn })
             case "logtail:index/source:Source":
@@ -176,6 +212,9 @@ pulumi.runtime.registerResourceModule("logtail", "index/connection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplication", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplicationGroup", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/exploration", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/explorationAlert", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/explorationGroup", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/metric", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/source", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceGroup", _module)
