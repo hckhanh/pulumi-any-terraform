@@ -9,3 +9,7 @@ onlyBuiltDependencies:
   - oxc-resolver
   - protobufjs
   - sharp
+overrides:
+  axios@>=1.0.0 <=1.13.4: '>=1.13.5'
+  minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
+  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
