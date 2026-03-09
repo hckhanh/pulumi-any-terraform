@@ -1,5 +1,23 @@
 # pulumi-posthog
 
+## 1.0.4
+
+### Patch Changes
+
+- f8a576f: ## Changelog
+
+  ### New Features
+  - PostHog/terraform-provider-posthog@93b81d344ccca4b9a0b0ff4475826bf2c052477e: feat: add support for actions (@adrianlyjak)
+
+  ### Other Changes
+  - PostHog/terraform-provider-posthog@bb31eba7b8ace3d34451b49f7332e37cae3ecea2: chore(deps): bump github.com/hashicorp/copywrite in /tools (@dependabot[bot])
+  - PostHog/terraform-provider-posthog@103f157ad9463537f2d7fb8c684ad4e93080722b: chore(deps): bump securego/gosec in the github-actions group (@dependabot[bot])
+
+- 365e6c3: ## Changelog
+
+  ### Other Changes
+  - PostHog/terraform-provider-posthog@eb8ea7cdcb8446767284e26386585c055eb52ebe: chore(deps): bump the github-actions group with 2 updates (@dependabot[bot])
+
 ## 1.0.3
 
 ### Patch Changes
