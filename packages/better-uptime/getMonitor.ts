@@ -51,6 +51,8 @@ export interface GetMonitorResult {
     readonly policyId: string;
     readonly port: string;
     readonly pronounceableName: string;
+    readonly proxyHost: string;
+    readonly proxyPort: number;
     readonly push: boolean;
     readonly recoveryPeriod: number;
     readonly regions: string[];

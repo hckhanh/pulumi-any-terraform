@@ -32,9 +32,13 @@ export class DockerSecret extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerSecret.__pulumiType;
     }
 
+    /**
+     * Base64-encoded secret data (stored in Terraform state).
+     */
     declare public readonly data: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret data (supports ephemeral values; not stored in Terraform state).
      */
     declare public readonly dataWo: pulumi.Output<string | undefined>;
     /**
@@ -99,9 +103,13 @@ export class DockerSecret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerSecret resources.
  */
 export interface DockerSecretState {
+    /**
+     * Base64-encoded secret data (stored in Terraform state).
+     */
     data?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret data (supports ephemeral values; not stored in Terraform state).
      */
     dataWo?: pulumi.Input<string>;
     /**
@@ -121,9 +129,13 @@ export interface DockerSecretState {
  * The set of arguments for constructing a DockerSecret resource.
  */
 export interface DockerSecretArgs {
+    /**
+     * Base64-encoded secret data (stored in Terraform state).
+     */
     data?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret data (supports ephemeral values; not stored in Terraform state).
      */
     dataWo?: pulumi.Input<string>;
     /**

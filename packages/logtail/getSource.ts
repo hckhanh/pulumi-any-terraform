@@ -24,6 +24,8 @@ export interface GetSourceArgs {
  * A collection of values returned by getSource.
  */
 export interface GetSourceResult {
+    readonly codeMappingSourceRoot: string;
+    readonly codeMappingStackRoot: string;
     readonly createdAt: string;
     readonly customBuckets: outputs.GetSourceCustomBucket[];
     readonly dataRegion: string;

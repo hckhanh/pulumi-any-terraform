@@ -60,6 +60,10 @@ export class Stack extends pulumi.CustomResource {
      */
     declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
     declare public readonly gitRepositoryAuthentication: pulumi.Output<boolean | undefined>;
+    /**
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     */
+    declare public readonly helmChartPath: pulumi.Output<string | undefined>;
     declare public readonly manifestUrl: pulumi.Output<string | undefined>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
@@ -90,12 +94,14 @@ export class Stack extends pulumi.CustomResource {
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
     declare public readonly repositoryPasswordWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
     declare public readonly repositoryUrlWo: pulumi.Output<string | undefined>;
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
@@ -153,6 +159,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["filesystemPath"] = state?.filesystemPath;
             resourceInputs["forceUpdate"] = state?.forceUpdate;
             resourceInputs["gitRepositoryAuthentication"] = state?.gitRepositoryAuthentication;
+            resourceInputs["helmChartPath"] = state?.helmChartPath;
             resourceInputs["manifestUrl"] = state?.manifestUrl;
             resourceInputs["method"] = state?.method;
             resourceInputs["name"] = state?.name;
@@ -203,6 +210,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["filesystemPath"] = args?.filesystemPath;
             resourceInputs["forceUpdate"] = args?.forceUpdate;
             resourceInputs["gitRepositoryAuthentication"] = args?.gitRepositoryAuthentication;
+            resourceInputs["helmChartPath"] = args?.helmChartPath;
             resourceInputs["manifestUrl"] = args?.manifestUrl;
             resourceInputs["method"] = args?.method;
             resourceInputs["name"] = args?.name;
@@ -269,6 +277,10 @@ export interface StackState {
      */
     forceUpdate?: pulumi.Input<boolean>;
     gitRepositoryAuthentication?: pulumi.Input<boolean>;
+    /**
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     */
+    helmChartPath?: pulumi.Input<string>;
     manifestUrl?: pulumi.Input<string>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
@@ -299,12 +311,14 @@ export interface StackState {
     repositoryPassword?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
     repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;
@@ -369,6 +383,10 @@ export interface StackArgs {
      */
     forceUpdate?: pulumi.Input<boolean>;
     gitRepositoryAuthentication?: pulumi.Input<boolean>;
+    /**
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     */
+    helmChartPath?: pulumi.Input<string>;
     manifestUrl?: pulumi.Input<string>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
@@ -399,12 +417,14 @@ export interface StackArgs {
     repositoryPassword?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
     repositoryPasswordWo?: pulumi.Input<string>;
     repositoryReferenceName?: pulumi.Input<string>;
     repositoryUrl?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
     repositoryUrlWo?: pulumi.Input<string>;
     repositoryUsername?: pulumi.Input<string>;

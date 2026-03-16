@@ -35,6 +35,14 @@ export class Source extends pulumi.CustomResource {
     }
 
     /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    declare public readonly codeMappingSourceRoot: pulumi.Output<string | undefined>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    declare public readonly codeMappingStackRoot: pulumi.Output<string | undefined>;
+    /**
      * The time when this monitor group was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -187,6 +195,8 @@ export class Source extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceState | undefined;
+            resourceInputs["codeMappingSourceRoot"] = state?.codeMappingSourceRoot;
+            resourceInputs["codeMappingStackRoot"] = state?.codeMappingStackRoot;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["customBucket"] = state?.customBucket;
             resourceInputs["dataRegion"] = state?.dataRegion;
@@ -214,6 +224,8 @@ export class Source extends pulumi.CustomResource {
             if (args?.platform === undefined && !opts.urn) {
                 throw new Error("Missing required property 'platform'");
             }
+            resourceInputs["codeMappingSourceRoot"] = args?.codeMappingSourceRoot;
+            resourceInputs["codeMappingStackRoot"] = args?.codeMappingStackRoot;
             resourceInputs["customBucket"] = args?.customBucket;
             resourceInputs["dataRegion"] = args?.dataRegion;
             resourceInputs["ingestingPaused"] = args?.ingestingPaused;
@@ -248,6 +260,14 @@ export class Source extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Source resources.
  */
 export interface SourceState {
+    /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    codeMappingSourceRoot?: pulumi.Input<string>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    codeMappingStackRoot?: pulumi.Input<string>;
     /**
      * The time when this monitor group was created.
      */
@@ -393,6 +413,14 @@ export interface SourceState {
  * The set of arguments for constructing a Source resource.
  */
 export interface SourceArgs {
+    /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    codeMappingSourceRoot?: pulumi.Input<string>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    codeMappingStackRoot?: pulumi.Input<string>;
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */

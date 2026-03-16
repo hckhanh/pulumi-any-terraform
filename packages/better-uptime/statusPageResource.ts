@@ -73,11 +73,11 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly publicName: pulumi.Output<string>;
     /**
-     * The ID of the resource you are adding.
+     * The ID of the resource you are adding. Omit when<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType "> resource_type </span>is ManuallyTrackedItem.
      */
     declare public readonly resourceId: pulumi.Output<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -134,9 +134,6 @@ export class StatusPageResource extends pulumi.CustomResource {
             const args = argsOrState as StatusPageResourceArgs | undefined;
             if (args?.publicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicName'");
-            }
-            if (args?.resourceId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
@@ -209,11 +206,11 @@ export interface StatusPageResourceState {
      */
     publicName?: pulumi.Input<string>;
     /**
-     * The ID of the resource you are adding.
+     * The ID of the resource you are adding. Omit when<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType "> resource_type </span>is ManuallyTrackedItem.
      */
     resourceId?: pulumi.Input<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -277,11 +274,11 @@ export interface StatusPageResourceArgs {
      */
     publicName: pulumi.Input<string>;
     /**
-     * The ID of the resource you are adding.
+     * The ID of the resource you are adding. Omit when<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType "> resource_type </span>is ManuallyTrackedItem.
      */
-    resourceId: pulumi.Input<number>;
+    resourceId?: pulumi.Input<number>;
     /**
-     * The type of the resource you are adding. Available values: Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType: pulumi.Input<string>;
     /**

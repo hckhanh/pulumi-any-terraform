@@ -40,6 +40,9 @@ export class Action extends pulumi.CustomResource {
      * Timestamp when the action was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Whether the action is soft-deleted. Terraform will restore soft-deleted actions on apply.
+     */
     declare public readonly deleted: pulumi.Output<boolean>;
     /**
      * Action description
@@ -123,6 +126,9 @@ export interface ActionState {
      * Timestamp when the action was created.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Whether the action is soft-deleted. Terraform will restore soft-deleted actions on apply.
+     */
     deleted?: pulumi.Input<boolean>;
     /**
      * Action description
@@ -158,6 +164,9 @@ export interface ActionState {
  * The set of arguments for constructing a Action resource.
  */
 export interface ActionArgs {
+    /**
+     * Whether the action is soft-deleted. Terraform will restore soft-deleted actions on apply.
+     */
     deleted?: pulumi.Input<boolean>;
     /**
      * Action description

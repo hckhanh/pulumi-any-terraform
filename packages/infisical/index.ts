@@ -65,6 +65,11 @@ export type AppConnectionGcp = import("./appConnectionGcp").AppConnectionGcp;
 export const AppConnectionGcp: typeof import("./appConnectionGcp").AppConnectionGcp = null as any;
 utilities.lazyLoad(exports, ["AppConnectionGcp"], () => require("./appConnectionGcp"));
 
+export { AppConnectionGithubArgs, AppConnectionGithubState } from "./appConnectionGithub";
+export type AppConnectionGithub = import("./appConnectionGithub").AppConnectionGithub;
+export const AppConnectionGithub: typeof import("./appConnectionGithub").AppConnectionGithub = null as any;
+utilities.lazyLoad(exports, ["AppConnectionGithub"], () => require("./appConnectionGithub"));
+
 export { AppConnectionGitlabArgs, AppConnectionGitlabState } from "./appConnectionGitlab";
 export type AppConnectionGitlab = import("./appConnectionGitlab").AppConnectionGitlab;
 export const AppConnectionGitlab: typeof import("./appConnectionGitlab").AppConnectionGitlab = null as any;
@@ -209,6 +214,11 @@ export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupMachineIdentityArgs, GroupMachineIdentityState } from "./groupMachineIdentity";
+export type GroupMachineIdentity = import("./groupMachineIdentity").GroupMachineIdentity;
+export const GroupMachineIdentity: typeof import("./groupMachineIdentity").GroupMachineIdentity = null as any;
+utilities.lazyLoad(exports, ["GroupMachineIdentity"], () => require("./groupMachineIdentity"));
 
 export { IdentityArgs, IdentityState } from "./identity";
 export type Identity = import("./identity").Identity;
@@ -516,6 +526,8 @@ const _module = {
                 return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
                 return new AppConnectionGcp(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionGithub:AppConnectionGithub":
+                return new AppConnectionGithub(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGitlab:AppConnectionGitlab":
                 return new AppConnectionGitlab(name, <any>undefined, { urn })
             case "infisical:index/appConnectionLdap:AppConnectionLdap":
@@ -560,6 +572,8 @@ const _module = {
                 return new ExternalKmsAws(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "infisical:index/groupMachineIdentity:GroupMachineIdentity":
+                return new GroupMachineIdentity(name, <any>undefined, { urn })
             case "infisical:index/identity:Identity":
                 return new Identity(name, <any>undefined, { urn })
             case "infisical:index/identityAwsAuth:IdentityAwsAuth":
@@ -683,6 +697,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflar
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGitlab", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLdap", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
@@ -705,6 +720,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb",
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/externalKmsAws", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/groupMachineIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAwsAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAzureAuth", _module)

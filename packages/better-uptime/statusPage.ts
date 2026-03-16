@@ -87,6 +87,10 @@ export class StatusPage extends pulumi.CustomResource {
      */
     declare public readonly customJavascript: pulumi.Output<string>;
     /**
+     * A direct link to a dark version of your company's logo. The image should be under 20MB in size.
+     */
+    declare public readonly darkLogoUrl: pulumi.Output<string>;
+    /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
     declare public readonly design: pulumi.Output<string>;
@@ -154,6 +158,10 @@ export class StatusPage extends pulumi.CustomResource {
      * The time when this status page was updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    /**
+     * Whether the 'Powered by Better Stack' footer should be removed.
+     */
+    declare public readonly whitelabeled: pulumi.Output<boolean>;
 
     /**
      * Create a StatusPage resource with the given unique name, arguments, and options.
@@ -181,6 +189,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["customCss"] = state?.customCss;
             resourceInputs["customDomain"] = state?.customDomain;
             resourceInputs["customJavascript"] = state?.customJavascript;
+            resourceInputs["darkLogoUrl"] = state?.darkLogoUrl;
             resourceInputs["design"] = state?.design;
             resourceInputs["googleAnalyticsId"] = state?.googleAnalyticsId;
             resourceInputs["hideFromSearchEngines"] = state?.hideFromSearchEngines;
@@ -198,6 +207,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["theme"] = state?.theme;
             resourceInputs["timezone"] = state?.timezone;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["whitelabeled"] = state?.whitelabeled;
         } else {
             const args = argsOrState as StatusPageArgs | undefined;
             if (args?.companyName === undefined && !opts.urn) {
@@ -223,6 +233,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["customCss"] = args?.customCss;
             resourceInputs["customDomain"] = args?.customDomain;
             resourceInputs["customJavascript"] = args?.customJavascript;
+            resourceInputs["darkLogoUrl"] = args?.darkLogoUrl;
             resourceInputs["design"] = args?.design;
             resourceInputs["googleAnalyticsId"] = args?.googleAnalyticsId;
             resourceInputs["hideFromSearchEngines"] = args?.hideFromSearchEngines;
@@ -239,6 +250,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["subscribable"] = args?.subscribable;
             resourceInputs["theme"] = args?.theme;
             resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["whitelabeled"] = args?.whitelabeled;
             resourceInputs["aggregateState"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -307,6 +319,10 @@ export interface StatusPageState {
      */
     customJavascript?: pulumi.Input<string>;
     /**
+     * A direct link to a dark version of your company's logo. The image should be under 20MB in size.
+     */
+    darkLogoUrl?: pulumi.Input<string>;
+    /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
     design?: pulumi.Input<string>;
@@ -374,6 +390,10 @@ export interface StatusPageState {
      * The time when this status page was updated.
      */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * Whether the 'Powered by Better Stack' footer should be removed.
+     */
+    whitelabeled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -424,6 +444,10 @@ export interface StatusPageArgs {
      * Add custom behavior to your status page. It is only allowed for status pages with a custom domain name.
      */
     customJavascript?: pulumi.Input<string>;
+    /**
+     * A direct link to a dark version of your company's logo. The image should be under 20MB in size.
+     */
+    darkLogoUrl?: pulumi.Input<string>;
     /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
@@ -488,4 +512,8 @@ export interface StatusPageArgs {
      * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
     timezone: pulumi.Input<string>;
+    /**
+     * Whether the 'Powered by Better Stack' footer should be removed.
+     */
+    whitelabeled?: pulumi.Input<boolean>;
 }

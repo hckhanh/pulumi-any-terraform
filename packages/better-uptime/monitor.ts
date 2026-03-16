@@ -179,6 +179,14 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly pronounceableName: pulumi.Output<string>;
     /**
+     * A proxy to be used for routing HTTP checks. Use user:pass@hostname format for proxy authentication.
+     */
+    declare public readonly proxyHost: pulumi.Output<string | undefined>;
+    /**
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     */
+    declare public readonly proxyPort: pulumi.Output<number | undefined>;
+    /**
      * Whether to send a push notification when a new incident is created.
      */
     declare public readonly push: pulumi.Output<boolean>;
@@ -291,6 +299,8 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["policyId"] = state?.policyId;
             resourceInputs["port"] = state?.port;
             resourceInputs["pronounceableName"] = state?.pronounceableName;
+            resourceInputs["proxyHost"] = state?.proxyHost;
+            resourceInputs["proxyPort"] = state?.proxyPort;
             resourceInputs["push"] = state?.push;
             resourceInputs["recoveryPeriod"] = state?.recoveryPeriod;
             resourceInputs["regions"] = state?.regions;
@@ -338,6 +348,8 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["policyId"] = args?.policyId;
             resourceInputs["port"] = args?.port;
             resourceInputs["pronounceableName"] = args?.pronounceableName;
+            resourceInputs["proxyHost"] = args?.proxyHost;
+            resourceInputs["proxyPort"] = args?.proxyPort;
             resourceInputs["push"] = args?.push;
             resourceInputs["recoveryPeriod"] = args?.recoveryPeriod;
             resourceInputs["regions"] = args?.regions;
@@ -516,6 +528,14 @@ export interface MonitorState {
      * Pronounceable name of the monitor. We will use this when we call you. Try to make it tongue-friendly, please?
      */
     pronounceableName?: pulumi.Input<string>;
+    /**
+     * A proxy to be used for routing HTTP checks. Use user:pass@hostname format for proxy authentication.
+     */
+    proxyHost?: pulumi.Input<string>;
+    /**
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     */
+    proxyPort?: pulumi.Input<number>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
@@ -727,6 +747,14 @@ export interface MonitorArgs {
      * Pronounceable name of the monitor. We will use this when we call you. Try to make it tongue-friendly, please?
      */
     pronounceableName?: pulumi.Input<string>;
+    /**
+     * A proxy to be used for routing HTTP checks. Use user:pass@hostname format for proxy authentication.
+     */
+    proxyHost?: pulumi.Input<string>;
+    /**
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     */
+    proxyPort?: pulumi.Input<number>;
     /**
      * Whether to send a push notification when a new incident is created.
      */

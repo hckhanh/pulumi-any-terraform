@@ -39,6 +39,14 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public readonly applicationGroupId: pulumi.Output<number | undefined>;
     /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    declare public readonly codeMappingSourceRoot: pulumi.Output<string | undefined>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    declare public readonly codeMappingStackRoot: pulumi.Output<string | undefined>;
+    /**
      * The time when this application was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -196,6 +204,8 @@ export class ErrorsApplication extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ErrorsApplicationState | undefined;
             resourceInputs["applicationGroupId"] = state?.applicationGroupId;
+            resourceInputs["codeMappingSourceRoot"] = state?.codeMappingSourceRoot;
+            resourceInputs["codeMappingStackRoot"] = state?.codeMappingStackRoot;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["customBucket"] = state?.customBucket;
             resourceInputs["dataRegion"] = state?.dataRegion;
@@ -214,6 +224,8 @@ export class ErrorsApplication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'platform'");
             }
             resourceInputs["applicationGroupId"] = args?.applicationGroupId;
+            resourceInputs["codeMappingSourceRoot"] = args?.codeMappingSourceRoot;
+            resourceInputs["codeMappingStackRoot"] = args?.codeMappingStackRoot;
             resourceInputs["customBucket"] = args?.customBucket;
             resourceInputs["dataRegion"] = args?.dataRegion;
             resourceInputs["errorsRetention"] = args?.errorsRetention;
@@ -240,6 +252,14 @@ export interface ErrorsApplicationState {
      * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     applicationGroupId?: pulumi.Input<number>;
+    /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    codeMappingSourceRoot?: pulumi.Input<string>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    codeMappingStackRoot?: pulumi.Input<string>;
     /**
      * The time when this application was created.
      */
@@ -393,6 +413,14 @@ export interface ErrorsApplicationArgs {
      * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
     applicationGroupId?: pulumi.Input<number>;
+    /**
+     * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
+     */
+    codeMappingSourceRoot?: pulumi.Input<string>;
+    /**
+     * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
+     */
+    codeMappingStackRoot?: pulumi.Input<string>;
     /**
      * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */

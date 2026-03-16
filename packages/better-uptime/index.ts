@@ -80,6 +80,11 @@ export const getSlackIntegration: typeof import("./getSlackIntegration").getSlac
 export const getSlackIntegrationOutput: typeof import("./getSlackIntegration").getSlackIntegrationOutput = null as any;
 utilities.lazyLoad(exports, ["getSlackIntegration","getSlackIntegrationOutput"], () => require("./getSlackIntegration"));
 
+export { GetTeamMemberArgs, GetTeamMemberResult, GetTeamMemberOutputArgs } from "./getTeamMember";
+export const getTeamMember: typeof import("./getTeamMember").getTeamMember = null as any;
+export const getTeamMemberOutput: typeof import("./getTeamMember").getTeamMemberOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamMember","getTeamMemberOutput"], () => require("./getTeamMember"));
+
 export { GoogleMonitoringIntegrationArgs, GoogleMonitoringIntegrationState } from "./googleMonitoringIntegration";
 export type GoogleMonitoringIntegration = import("./googleMonitoringIntegration").GoogleMonitoringIntegration;
 export const GoogleMonitoringIntegration: typeof import("./googleMonitoringIntegration").GoogleMonitoringIntegration = null as any;
@@ -198,6 +203,11 @@ export type StatusPageSection = import("./statusPageSection").StatusPageSection;
 export const StatusPageSection: typeof import("./statusPageSection").StatusPageSection = null as any;
 utilities.lazyLoad(exports, ["StatusPageSection"], () => require("./statusPageSection"));
 
+export { TeamMemberArgs, TeamMemberState } from "./teamMember";
+export type TeamMember = import("./teamMember").TeamMember;
+export const TeamMember: typeof import("./teamMember").TeamMember = null as any;
+utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -274,6 +284,8 @@ const _module = {
                 return new StatusPageResource(name, <any>undefined, { urn })
             case "better-uptime:index/statusPageSection:StatusPageSection":
                 return new StatusPageSection(name, <any>undefined, { urn })
+            case "better-uptime:index/teamMember:TeamMember":
+                return new TeamMember(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -310,6 +322,7 @@ pulumi.runtime.registerResourceModule("better-uptime", "index/statusPage", _modu
 pulumi.runtime.registerResourceModule("better-uptime", "index/statusPageGroup", _module)
 pulumi.runtime.registerResourceModule("better-uptime", "index/statusPageResource", _module)
 pulumi.runtime.registerResourceModule("better-uptime", "index/statusPageSection", _module)
+pulumi.runtime.registerResourceModule("better-uptime", "index/teamMember", _module)
 pulumi.runtime.registerResourcePackage("better-uptime", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

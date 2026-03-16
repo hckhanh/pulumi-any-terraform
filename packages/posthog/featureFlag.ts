@@ -36,6 +36,9 @@ export class FeatureFlag extends pulumi.CustomResource {
      * Whether the feature flag is active
      */
     declare public readonly active: pulumi.Output<boolean>;
+    /**
+     * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
+     */
     declare public readonly deleted: pulumi.Output<boolean>;
     /**
      * Feature Flag ID
@@ -116,6 +119,9 @@ export interface FeatureFlagState {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
+     */
     deleted?: pulumi.Input<boolean>;
     /**
      * Feature Flag ID
@@ -155,6 +161,9 @@ export interface FeatureFlagArgs {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
+     */
     deleted?: pulumi.Input<boolean>;
     /**
      * Feature flag filters as JSON

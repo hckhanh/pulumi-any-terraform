@@ -56,6 +56,9 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      * The country (C) for the certificate (2-letter code)
      */
     declare public readonly country: pulumi.Output<string | undefined>;
+    /**
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     */
     declare public readonly csr: pulumi.Output<string | undefined>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
@@ -222,6 +225,9 @@ export interface CertManagerCertificateState {
      * The country (C) for the certificate (2-letter code)
      */
     country?: pulumi.Input<string>;
+    /**
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     */
     csr?: pulumi.Input<string>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
@@ -305,6 +311,9 @@ export interface CertManagerCertificateArgs {
      * The country (C) for the certificate (2-letter code)
      */
     country?: pulumi.Input<string>;
+    /**
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     */
     csr?: pulumi.Input<string>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping

@@ -165,6 +165,21 @@ export interface AppConnectionGcpCredentials {
     serviceAccountEmail?: pulumi.Input<string>;
 }
 
+export interface AppConnectionGithubCredentials {
+    /**
+     * The hostname of your GitHub Enterprise instance. Required when<span pulumi-lang-nodejs=" instanceType " pulumi-lang-dotnet=" InstanceType " pulumi-lang-go=" instanceType " pulumi-lang-python=" instance_type " pulumi-lang-yaml=" instanceType " pulumi-lang-java=" instanceType "> instance_type </span>is 'server'.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The type of GitHub instance. Use 'cloud' for GitHub.com (default) or 'server' for GitHub Enterprise. When 'server', host is required.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * The Personal Access Token used to access GitHub.
+     */
+    personalAccessToken: pulumi.Input<string>;
+}
+
 export interface AppConnectionGitlabCredentials {
     /**
      * The Access Token used to access GitLab.

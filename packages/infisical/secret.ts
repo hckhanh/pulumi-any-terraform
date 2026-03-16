@@ -62,6 +62,7 @@ export class Secret extends pulumi.CustomResource {
     declare public readonly value: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     declare public readonly valueWo: pulumi.Output<string | undefined>;
     /**
@@ -156,6 +157,7 @@ export interface SecretState {
     value?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     valueWo?: pulumi.Input<string>;
     /**
@@ -199,6 +201,7 @@ export interface SecretArgs {
     value?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     valueWo?: pulumi.Input<string>;
     /**

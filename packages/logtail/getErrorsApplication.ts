@@ -25,6 +25,8 @@ export interface GetErrorsApplicationArgs {
  */
 export interface GetErrorsApplicationResult {
     readonly applicationGroupId: number;
+    readonly codeMappingSourceRoot: string;
+    readonly codeMappingStackRoot: string;
     readonly createdAt: string;
     readonly customBuckets: outputs.GetErrorsApplicationCustomBucket[];
     readonly dataRegion: string;
