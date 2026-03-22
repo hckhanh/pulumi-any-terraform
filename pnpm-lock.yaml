@@ -76,8 +76,8 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
       tailwind-merge:
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.5.0
+        version: 3.5.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.4.8
@@ -4737,9 +4737,6 @@ packages:
     resolution: {integrity: sha512-f21N5TpE7tpyoobmkrWZo5+YpFmqcDXrBUZMYcJ6F0V8pciuWslPBgpcIHeVDv1qqrcyjP1i3ovauif2ya7Clw==}
     engines: {node: '>=14.17.0'}
     hasBin: true
-
-  tailwind-merge@3.4.0:
-    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
 
   tailwind-merge@3.5.0:
     resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
@@ -10063,8 +10060,6 @@ snapshots:
       syncpack-linux-x64-musl: 14.0.0-alpha.41
       syncpack-windows-arm64: 14.0.0-alpha.41
       syncpack-windows-x64: 14.0.0-alpha.41
-
-  tailwind-merge@3.4.0: {}
 
   tailwind-merge@3.5.0: {}
 
