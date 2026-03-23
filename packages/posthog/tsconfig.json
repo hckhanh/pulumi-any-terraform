@@ -21,6 +21,7 @@
         "dashboard.ts",
         "dashboardLayout.ts",
         "featureFlag.ts",
+        "getRole.ts",
         "getUser.ts",
         "hogFunction.ts",
         "index.ts",

@@ -154,6 +154,10 @@ export class Source extends pulumi.CustomResource {
      */
     declare public readonly scrapeUrls: pulumi.Output<string[] | undefined>;
     /**
+     * Should the scraper skip SSL certificate verification? Enable for endpoints with self-signed or invalid certificates.
+     */
+    declare public readonly skipSslVerify: pulumi.Output<boolean>;
+    /**
      * The ID of the source group this source belongs to.
      */
     declare public readonly sourceGroupId: pulumi.Output<number | undefined>;
@@ -212,6 +216,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["scrapeRequestBasicAuthUser"] = state?.scrapeRequestBasicAuthUser;
             resourceInputs["scrapeRequestHeaders"] = state?.scrapeRequestHeaders;
             resourceInputs["scrapeUrls"] = state?.scrapeUrls;
+            resourceInputs["skipSslVerify"] = state?.skipSslVerify;
             resourceInputs["sourceGroupId"] = state?.sourceGroupId;
             resourceInputs["tableName"] = state?.tableName;
             resourceInputs["teamId"] = state?.teamId;
@@ -239,6 +244,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["scrapeRequestBasicAuthUser"] = args?.scrapeRequestBasicAuthUser;
             resourceInputs["scrapeRequestHeaders"] = args?.scrapeRequestHeaders;
             resourceInputs["scrapeUrls"] = args?.scrapeUrls;
+            resourceInputs["skipSslVerify"] = args?.skipSslVerify;
             resourceInputs["sourceGroupId"] = args?.sourceGroupId;
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["vrlTransformation"] = args?.vrlTransformation;
@@ -379,6 +385,10 @@ export interface SourceState {
      * For scrape platform types, the set of urls to scrape.
      */
     scrapeUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Should the scraper skip SSL certificate verification? Enable for endpoints with self-signed or invalid certificates.
+     */
+    skipSslVerify?: pulumi.Input<boolean>;
     /**
      * The ID of the source group this source belongs to.
      */
@@ -524,6 +534,10 @@ export interface SourceArgs {
      * For scrape platform types, the set of urls to scrape.
      */
     scrapeUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Should the scraper skip SSL certificate verification? Enable for endpoints with self-signed or invalid certificates.
+     */
+    skipSslVerify?: pulumi.Input<boolean>;
     /**
      * The ID of the source group this source belongs to.
      */

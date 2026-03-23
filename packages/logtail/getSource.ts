@@ -42,6 +42,7 @@ export interface GetSourceResult {
     readonly scrapeRequestBasicAuthUser: string;
     readonly scrapeRequestHeaders: {[key: string]: string}[];
     readonly scrapeUrls: string[];
+    readonly skipSslVerify: boolean;
     readonly sourceGroupId: number;
     readonly tableName: string;
     readonly teamId: string;
