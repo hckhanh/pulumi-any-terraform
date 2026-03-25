@@ -1,3 +1,10 @@
+## 0.13.1
+
+### Patch Changes
+
+- cdab503: Update pulumi-bunnynet from 0.13.0 to 0.13.2
+- b0cf75b: Update pulumi-bunnynet from 0.13.2 to 0.13.4
+
 ## 0.13.0
 
 ### Minor Changes

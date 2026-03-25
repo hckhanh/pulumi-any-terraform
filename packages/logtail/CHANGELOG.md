@@ -1,3 +1,17 @@
+## 1.0.0
+
+### Major Changes
+
+- b0cf75b: Update pulumi-logtail from 0.9.2 to 10.9.3
+
+### Patch Changes
+
+- cdab503: ## What's Changed
+  - T-16530 examples/advanced: update alerts to check both sources in multi_query_alerts by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/59
+  - T-16259 add support for code mapping by @tmladek in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/58
+
+  **Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v0.9.1...v0.9.2
+
 ## 0.8.0
 
 ### Minor Changes
