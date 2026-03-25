@@ -1,5 +1,32 @@
 # pulumi-posthog
 
+## 1.0.5
+
+### Patch Changes
+
+- cdab503: ## Changelog
+
+  ### Bug Fixes
+  - PostHog/terraform-provider-posthog@ed8d8975a423034d81647c62e37e8fcc9e77d9ff: fix(insight): handle null name in insight update to avoid inconsistent result error (@vdekrijger)
+
+  ### Other Changes
+  - PostHog/terraform-provider-posthog@fbff930002f951dd0ad4f3e6f626091910adfe59: chore(deps): bump github.com/hashicorp/copywrite in /tools (@dependabot[bot])
+  - PostHog/terraform-provider-posthog@201cc6b9680901c4cc8f5331dd07ef90929e1399: chore(deps): bump github.com/hashicorp/terraform-plugin-framework (@dependabot[bot])
+  - PostHog/terraform-provider-posthog@e9072e539ec12db0e2cddb2d2c41cf9af8eab579: chore(deps): bump github.com/hashicorp/terraform-plugin-go (@dependabot[bot])
+  - PostHog/terraform-provider-posthog@891ffc838a17fb1e2ab55d123b5c11c2824f2682: chore(deps): bump the github-actions group with 3 updates (@dependabot[bot])
+
+- b0cf75b: ## Changelog
+
+  ### New Features
+  - PostHog/terraform-provider-posthog@e1454d01fa86df4cbb9d1aba33cf9a29cb53cfab: feat: Add role data source (@vdekrijger)
+
+  ### Bug Fixes
+  - PostHog/terraform-provider-posthog@7ab239ad35e97111ae25b03c6c27959f2d39c92f: fix: Add example (@vdekrijger)
+
+  ### Other Changes
+  - PostHog/terraform-provider-posthog@fc502cf0a6ae447e545b62c55d53b597e1bca8e4: chore(deps): bump the github-actions group with 2 updates (@dependabot[bot])
+  - PostHog/terraform-provider-posthog@7669683becdd0c2d16ecd7141395e23f4c6f99d3: chore(deps): bump the terraform-plugin group with 3 updates (@dependabot[bot])
+
 ## 1.0.4
 
 ### Patch Changes
