@@ -95,13 +95,9 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pingedAt: pulumi.Output<string>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>, <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
      */
     declare public readonly platform: pulumi.Output<string>;
-    /**
-     * Proxy settings including buffering proxy, SSL/TLS, and HTTP Basic Authentication. Only applicable to <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span> platform collectors.
-     */
-    declare public readonly proxyConfig: pulumi.Output<outputs.CollectorProxyConfig | undefined>;
     /**
      * The secret token used to authenticate collector hosts.
      */
@@ -168,7 +164,6 @@ export class Collector extends pulumi.CustomResource {
             resourceInputs["note"] = state?.note;
             resourceInputs["pingedAt"] = state?.pingedAt;
             resourceInputs["platform"] = state?.platform;
-            resourceInputs["proxyConfig"] = state?.proxyConfig;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["sourceGroupId"] = state?.sourceGroupId;
             resourceInputs["sourceId"] = state?.sourceId;
@@ -194,7 +189,6 @@ export class Collector extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["note"] = args?.note;
             resourceInputs["platform"] = args?.platform;
-            resourceInputs["proxyConfig"] = args?.proxyConfig;
             resourceInputs["sourceGroupId"] = args?.sourceGroupId;
             resourceInputs["sourceVrlTransformation"] = args?.sourceVrlTransformation;
             resourceInputs["teamName"] = args?.teamName;
@@ -282,13 +276,9 @@ export interface CollectorState {
      */
     pingedAt?: pulumi.Input<string>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>, <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
      */
     platform?: pulumi.Input<string>;
-    /**
-     * Proxy settings including buffering proxy, SSL/TLS, and HTTP Basic Authentication. Only applicable to <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span> platform collectors.
-     */
-    proxyConfig?: pulumi.Input<inputs.CollectorProxyConfig>;
     /**
      * The secret token used to authenticate collector hosts.
      */
@@ -372,13 +362,9 @@ export interface CollectorArgs {
      */
     note?: pulumi.Input<string>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>, <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
      */
     platform: pulumi.Input<string>;
-    /**
-     * Proxy settings including buffering proxy, SSL/TLS, and HTTP Basic Authentication. Only applicable to <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span> platform collectors.
-     */
-    proxyConfig?: pulumi.Input<inputs.CollectorProxyConfig>;
     /**
      * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */

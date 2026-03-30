@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export class ExplorationAlert extends pulumi.CustomResource {
+export class DashboardAlert extends pulumi.CustomResource {
     /**
-     * Get an existing ExplorationAlert resource's state with the given name, ID, and optional extra
+     * Get an existing DashboardAlert resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,22 +16,22 @@ export class ExplorationAlert extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ExplorationAlertState, opts?: pulumi.CustomResourceOptions): ExplorationAlert {
-        return new ExplorationAlert(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DashboardAlertState, opts?: pulumi.CustomResourceOptions): DashboardAlert {
+        return new DashboardAlert(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'logtail:index/explorationAlert:ExplorationAlert';
+    public static readonly __pulumiType = 'logtail:index/dashboardAlert:DashboardAlert';
 
     /**
-     * Returns true if the given object is an instance of ExplorationAlert.  This is designed to work even
+     * Returns true if the given object is an instance of DashboardAlert.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ExplorationAlert {
+    public static isInstance(obj: any): obj is DashboardAlert {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ExplorationAlert.__pulumiType;
+        return obj['__pulumiType'] === DashboardAlert.__pulumiType;
     }
 
     /**
@@ -55,6 +55,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly call: pulumi.Output<boolean>;
     /**
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     */
+    declare public readonly chartId: pulumi.Output<string>;
+    /**
      * How often to check the alert condition in seconds.
      */
     declare public readonly checkPeriod: pulumi.Output<number>;
@@ -71,17 +75,17 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly criticalAlert: pulumi.Output<boolean>;
     /**
+     * The ID of the dashboard this alert belongs to.
+     */
+    declare public readonly dashboardId: pulumi.Output<string>;
+    /**
      * Enable email notifications.
      */
     declare public readonly email: pulumi.Output<boolean>;
     /**
      * The escalation target for this alert. Specify either team_id/team_name OR policy_id/policy_name.
      */
-    declare public readonly escalationTarget: pulumi.Output<outputs.ExplorationAlertEscalationTarget | undefined>;
-    /**
-     * The ID of the exploration this alert belongs to.
-     */
-    declare public readonly explorationId: pulumi.Output<string>;
+    declare public readonly escalationTarget: pulumi.Output<outputs.DashboardAlertEscalationTarget | undefined>;
     /**
      * Incident description template (supports {{variable}} interpolation).
      */
@@ -156,30 +160,31 @@ export class ExplorationAlert extends pulumi.CustomResource {
     declare public readonly value: pulumi.Output<number>;
 
     /**
-     * Create a ExplorationAlert resource with the given unique name, arguments, and options.
+     * Create a DashboardAlert resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ExplorationAlertArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ExplorationAlertArgs | ExplorationAlertState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DashboardAlertArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DashboardAlertArgs | DashboardAlertState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ExplorationAlertState | undefined;
+            const state = argsOrState as DashboardAlertState | undefined;
             resourceInputs["aggregationInterval"] = state?.aggregationInterval;
             resourceInputs["alertType"] = state?.alertType;
             resourceInputs["anomalySensitivity"] = state?.anomalySensitivity;
             resourceInputs["anomalyTrigger"] = state?.anomalyTrigger;
             resourceInputs["call"] = state?.call;
+            resourceInputs["chartId"] = state?.chartId;
             resourceInputs["checkPeriod"] = state?.checkPeriod;
             resourceInputs["confirmationPeriod"] = state?.confirmationPeriod;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["criticalAlert"] = state?.criticalAlert;
+            resourceInputs["dashboardId"] = state?.dashboardId;
             resourceInputs["email"] = state?.email;
             resourceInputs["escalationTarget"] = state?.escalationTarget;
-            resourceInputs["explorationId"] = state?.explorationId;
             resourceInputs["incidentCause"] = state?.incidentCause;
             resourceInputs["incidentPerSeries"] = state?.incidentPerSeries;
             resourceInputs["metadata"] = state?.metadata;
@@ -199,24 +204,28 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["value"] = state?.value;
         } else {
-            const args = argsOrState as ExplorationAlertArgs | undefined;
+            const args = argsOrState as DashboardAlertArgs | undefined;
             if (args?.alertType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertType'");
             }
-            if (args?.explorationId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'explorationId'");
+            if (args?.chartId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'chartId'");
+            }
+            if (args?.dashboardId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'dashboardId'");
             }
             resourceInputs["aggregationInterval"] = args?.aggregationInterval;
             resourceInputs["alertType"] = args?.alertType;
             resourceInputs["anomalySensitivity"] = args?.anomalySensitivity;
             resourceInputs["anomalyTrigger"] = args?.anomalyTrigger;
             resourceInputs["call"] = args?.call;
+            resourceInputs["chartId"] = args?.chartId;
             resourceInputs["checkPeriod"] = args?.checkPeriod;
             resourceInputs["confirmationPeriod"] = args?.confirmationPeriod;
             resourceInputs["criticalAlert"] = args?.criticalAlert;
+            resourceInputs["dashboardId"] = args?.dashboardId;
             resourceInputs["email"] = args?.email;
             resourceInputs["escalationTarget"] = args?.escalationTarget;
-            resourceInputs["explorationId"] = args?.explorationId;
             resourceInputs["incidentCause"] = args?.incidentCause;
             resourceInputs["incidentPerSeries"] = args?.incidentPerSeries;
             resourceInputs["metadata"] = args?.metadata;
@@ -238,14 +247,14 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ExplorationAlert.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
+        super(DashboardAlert.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
 
 /**
- * Input properties used for looking up and filtering ExplorationAlert resources.
+ * Input properties used for looking up and filtering DashboardAlert resources.
  */
-export interface ExplorationAlertState {
+export interface DashboardAlertState {
     /**
      * The data aggregation interval in seconds.
      */
@@ -267,6 +276,10 @@ export interface ExplorationAlertState {
      */
     call?: pulumi.Input<boolean>;
     /**
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     */
+    chartId?: pulumi.Input<string>;
+    /**
      * How often to check the alert condition in seconds.
      */
     checkPeriod?: pulumi.Input<number>;
@@ -283,17 +296,17 @@ export interface ExplorationAlertState {
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
+     * The ID of the dashboard this alert belongs to.
+     */
+    dashboardId?: pulumi.Input<string>;
+    /**
      * Enable email notifications.
      */
     email?: pulumi.Input<boolean>;
     /**
      * The escalation target for this alert. Specify either team_id/team_name OR policy_id/policy_name.
      */
-    escalationTarget?: pulumi.Input<inputs.ExplorationAlertEscalationTarget>;
-    /**
-     * The ID of the exploration this alert belongs to.
-     */
-    explorationId?: pulumi.Input<string>;
+    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget>;
     /**
      * Incident description template (supports {{variable}} interpolation).
      */
@@ -369,9 +382,9 @@ export interface ExplorationAlertState {
 }
 
 /**
- * The set of arguments for constructing a ExplorationAlert resource.
+ * The set of arguments for constructing a DashboardAlert resource.
  */
-export interface ExplorationAlertArgs {
+export interface DashboardAlertArgs {
     /**
      * The data aggregation interval in seconds.
      */
@@ -393,6 +406,10 @@ export interface ExplorationAlertArgs {
      */
     call?: pulumi.Input<boolean>;
     /**
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     */
+    chartId: pulumi.Input<string>;
+    /**
      * How often to check the alert condition in seconds.
      */
     checkPeriod?: pulumi.Input<number>;
@@ -405,17 +422,17 @@ export interface ExplorationAlertArgs {
      */
     criticalAlert?: pulumi.Input<boolean>;
     /**
+     * The ID of the dashboard this alert belongs to.
+     */
+    dashboardId: pulumi.Input<string>;
+    /**
      * Enable email notifications.
      */
     email?: pulumi.Input<boolean>;
     /**
      * The escalation target for this alert. Specify either team_id/team_name OR policy_id/policy_name.
      */
-    escalationTarget?: pulumi.Input<inputs.ExplorationAlertEscalationTarget>;
-    /**
-     * The ID of the exploration this alert belongs to.
-     */
-    explorationId: pulumi.Input<string>;
+    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget>;
     /**
      * Incident description template (supports {{variable}} interpolation).
      */

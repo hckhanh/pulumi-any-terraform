@@ -20,6 +20,26 @@ export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
 utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
 
+export { DashboardAlertArgs, DashboardAlertState } from "./dashboardAlert";
+export type DashboardAlert = import("./dashboardAlert").DashboardAlert;
+export const DashboardAlert: typeof import("./dashboardAlert").DashboardAlert = null as any;
+utilities.lazyLoad(exports, ["DashboardAlert"], () => require("./dashboardAlert"));
+
+export { DashboardChartArgs, DashboardChartState } from "./dashboardChart";
+export type DashboardChart = import("./dashboardChart").DashboardChart;
+export const DashboardChart: typeof import("./dashboardChart").DashboardChart = null as any;
+utilities.lazyLoad(exports, ["DashboardChart"], () => require("./dashboardChart"));
+
+export { DashboardGroupArgs, DashboardGroupState } from "./dashboardGroup";
+export type DashboardGroup = import("./dashboardGroup").DashboardGroup;
+export const DashboardGroup: typeof import("./dashboardGroup").DashboardGroup = null as any;
+utilities.lazyLoad(exports, ["DashboardGroup"], () => require("./dashboardGroup"));
+
+export { DashboardSectionArgs, DashboardSectionState } from "./dashboardSection";
+export type DashboardSection = import("./dashboardSection").DashboardSection;
+export const DashboardSection: typeof import("./dashboardSection").DashboardSection = null as any;
+utilities.lazyLoad(exports, ["DashboardSection"], () => require("./dashboardSection"));
+
 export { ErrorsApplicationArgs, ErrorsApplicationState } from "./errorsApplication";
 export type ErrorsApplication = import("./errorsApplication").ErrorsApplication;
 export const ErrorsApplication: typeof import("./errorsApplication").ErrorsApplication = null as any;
@@ -59,6 +79,26 @@ export { GetDashboardArgs, GetDashboardResult, GetDashboardOutputArgs } from "./
 export const getDashboard: typeof import("./getDashboard").getDashboard = null as any;
 export const getDashboardOutput: typeof import("./getDashboard").getDashboardOutput = null as any;
 utilities.lazyLoad(exports, ["getDashboard","getDashboardOutput"], () => require("./getDashboard"));
+
+export { GetDashboardAlertArgs, GetDashboardAlertResult, GetDashboardAlertOutputArgs } from "./getDashboardAlert";
+export const getDashboardAlert: typeof import("./getDashboardAlert").getDashboardAlert = null as any;
+export const getDashboardAlertOutput: typeof import("./getDashboardAlert").getDashboardAlertOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardAlert","getDashboardAlertOutput"], () => require("./getDashboardAlert"));
+
+export { GetDashboardChartArgs, GetDashboardChartResult, GetDashboardChartOutputArgs } from "./getDashboardChart";
+export const getDashboardChart: typeof import("./getDashboardChart").getDashboardChart = null as any;
+export const getDashboardChartOutput: typeof import("./getDashboardChart").getDashboardChartOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardChart","getDashboardChartOutput"], () => require("./getDashboardChart"));
+
+export { GetDashboardGroupArgs, GetDashboardGroupResult, GetDashboardGroupOutputArgs } from "./getDashboardGroup";
+export const getDashboardGroup: typeof import("./getDashboardGroup").getDashboardGroup = null as any;
+export const getDashboardGroupOutput: typeof import("./getDashboardGroup").getDashboardGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardGroup","getDashboardGroupOutput"], () => require("./getDashboardGroup"));
+
+export { GetDashboardSectionArgs, GetDashboardSectionResult, GetDashboardSectionOutputArgs } from "./getDashboardSection";
+export const getDashboardSection: typeof import("./getDashboardSection").getDashboardSection = null as any;
+export const getDashboardSectionOutput: typeof import("./getDashboardSection").getDashboardSectionOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardSection","getDashboardSectionOutput"], () => require("./getDashboardSection"));
 
 export { GetDashboardTemplateArgs, GetDashboardTemplateResult, GetDashboardTemplateOutputArgs } from "./getDashboardTemplate";
 export const getDashboardTemplate: typeof import("./getDashboardTemplate").getDashboardTemplate = null as any;
@@ -178,6 +218,14 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "logtail:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "logtail:index/dashboardAlert:DashboardAlert":
+                return new DashboardAlert(name, <any>undefined, { urn })
+            case "logtail:index/dashboardChart:DashboardChart":
+                return new DashboardChart(name, <any>undefined, { urn })
+            case "logtail:index/dashboardGroup:DashboardGroup":
+                return new DashboardGroup(name, <any>undefined, { urn })
+            case "logtail:index/dashboardSection:DashboardSection":
+                return new DashboardSection(name, <any>undefined, { urn })
             case "logtail:index/errorsApplication:ErrorsApplication":
                 return new ErrorsApplication(name, <any>undefined, { urn })
             case "logtail:index/errorsApplicationGroup:ErrorsApplicationGroup":
@@ -210,6 +258,10 @@ const _module = {
 pulumi.runtime.registerResourceModule("logtail", "index/collector", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/connection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/dashboardAlert", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/dashboardChart", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/dashboardGroup", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/dashboardSection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplication", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplicationGroup", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/exploration", _module)

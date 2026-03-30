@@ -51,9 +51,13 @@ export class ProjectRole extends pulumi.CustomResource {
      */
     declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectRolePermissionsV2[] | undefined>;
     /**
-     * The slug of the project to create role
+     * The ID of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>or project_slug, but not both.
      */
-    declare public readonly projectSlug: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
+    /**
+     * The slug of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectSlug " pulumi-lang-dotnet=" ProjectSlug " pulumi-lang-go=" projectSlug " pulumi-lang-python=" project_slug " pulumi-lang-yaml=" projectSlug " pulumi-lang-java=" projectSlug "> project_slug </span>or project_id, but not both.
+     */
+    declare public readonly projectSlug: pulumi.Output<string | undefined>;
     /**
      * The slug for the new role
      */
@@ -76,13 +80,11 @@ export class ProjectRole extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["permissions"] = state?.permissions;
             resourceInputs["permissionsV2s"] = state?.permissionsV2s;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as ProjectRoleArgs | undefined;
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
             if (args?.slug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slug'");
             }
@@ -90,6 +92,7 @@ export class ProjectRole extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["permissions"] = args?.permissions;
             resourceInputs["permissionsV2s"] = args?.permissionsV2s;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["projectSlug"] = args?.projectSlug;
             resourceInputs["slug"] = args?.slug;
         }
@@ -119,7 +122,11 @@ export interface ProjectRoleState {
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
     /**
-     * The slug of the project to create role
+     * The ID of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>or project_slug, but not both.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * The slug of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectSlug " pulumi-lang-dotnet=" ProjectSlug " pulumi-lang-go=" projectSlug " pulumi-lang-python=" project_slug " pulumi-lang-yaml=" projectSlug " pulumi-lang-java=" projectSlug "> project_slug </span>or project_id, but not both.
      */
     projectSlug?: pulumi.Input<string>;
     /**
@@ -149,9 +156,13 @@ export interface ProjectRoleArgs {
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
     /**
-     * The slug of the project to create role
+     * The ID of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>or project_slug, but not both.
      */
-    projectSlug: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    /**
+     * The slug of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectSlug " pulumi-lang-dotnet=" ProjectSlug " pulumi-lang-go=" projectSlug " pulumi-lang-python=" project_slug " pulumi-lang-yaml=" projectSlug " pulumi-lang-java=" projectSlug "> project_slug </span>or project_id, but not both.
+     */
+    projectSlug?: pulumi.Input<string>;
     /**
      * The slug for the new role
      */

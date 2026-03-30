@@ -37,6 +37,7 @@ export interface GetErrorsApplicationResult {
     readonly name: string;
     readonly platform: string;
     readonly tableName: string;
+    readonly teamId: string;
     readonly teamName: string;
     readonly token: string;
     readonly updatedAt: string;

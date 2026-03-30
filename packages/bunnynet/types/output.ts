@@ -358,6 +358,14 @@ export interface GetPullzoneOrigin {
      */
     containerEndpointId: string;
     /**
+     * The port for DNS Accelerated endpoints.
+     */
+    dnsPort: number;
+    /**
+     * The scheme for DNS Accelerated endpoints.
+     */
+    dnsScheme: string;
+    /**
      * Indicates whether the zone will follow origin redirects.
      */
     followRedirects: boolean;
@@ -437,11 +445,19 @@ export interface PullzoneOrigin {
     /**
      * The ID if the compute container app.
      */
-    containerAppId: string;
+    containerAppId?: string;
     /**
      * The ID if the compute container app endpoint.
      */
-    containerEndpointId: string;
+    containerEndpointId?: string;
+    /**
+     * The port for DNS Accelerated endpoints.
+     */
+    dnsPort?: number;
+    /**
+     * The scheme for DNS Accelerated endpoints.
+     */
+    dnsScheme?: string;
     /**
      * Indicates whether the zone will follow origin redirects.
      */
@@ -487,7 +503,7 @@ export interface PullzoneRatelimitRuleCondition {
     operator: string;
     value: string;
     /**
-     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: string;
     variableValue?: string;
@@ -657,7 +673,7 @@ export interface PullzoneWafRuleCondition {
     operator: string;
     value: string;
     /**
-     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: string;
     variableValue?: string;

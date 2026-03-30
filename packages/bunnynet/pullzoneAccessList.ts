@@ -57,7 +57,7 @@ export class PullzoneAccessList extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pullzoneAccessListId: pulumi.Output<number>;
     /**
-     * Options: `ASN`, `CIDR`, `Country`, `IP`
+     * Options: `ASN`, `CIDR`, `Country`, `IP`, `JA4`, `Organization`
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -137,7 +137,7 @@ export interface PullzoneAccessListState {
      */
     pullzoneAccessListId?: pulumi.Input<number>;
     /**
-     * Options: `ASN`, `CIDR`, `Country`, `IP`
+     * Options: `ASN`, `CIDR`, `Country`, `IP`, `JA4`, `Organization`
      */
     type?: pulumi.Input<string>;
 }
@@ -167,7 +167,7 @@ export interface PullzoneAccessListArgs {
      */
     pullzone: pulumi.Input<number>;
     /**
-     * Options: `ASN`, `CIDR`, `Country`, `IP`
+     * Options: `ASN`, `CIDR`, `Country`, `IP`, `JA4`, `Organization`
      */
     type: pulumi.Input<string>;
 }

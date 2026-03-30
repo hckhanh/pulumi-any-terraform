@@ -896,6 +896,10 @@ export interface IdentityGcpAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string>;
 }
 
+export interface IdentityJwtAuthAccessTokenTrustedIp {
+    ipAddress?: pulumi.Input<string>;
+}
+
 export interface IdentityKubernetesAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string>;
 }

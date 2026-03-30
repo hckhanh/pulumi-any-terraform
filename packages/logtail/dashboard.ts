@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Dashboard extends pulumi.CustomResource {
@@ -37,13 +39,33 @@ export class Dashboard extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The dashboard configuration data as a JSON string. Any change will re-create the dashboard. See [Dashboard Import API docs](https://betterstack.com/docs/logs/api/dashboards/import/) for details.
+     * The ID of the dashboard group this dashboard belongs to. Use 0 to remove from group.
      */
-    declare public readonly data: pulumi.Output<string>;
+    declare public readonly dashboardGroupId: pulumi.Output<number | undefined>;
+    /**
+     * The dashboard configuration data as a JSON string. When set, the dashboard is created via the import API and any change forces re-creation. Cannot be combined with individual fields like refresh_interval, date_range_from, chart and variable blocks, etc.
+     */
+    declare public readonly data: pulumi.Output<string | undefined>;
+    /**
+     * The start of the date range (e.g., 'now-3h', 'now-24h').
+     */
+    declare public readonly dateRangeFrom: pulumi.Output<string>;
+    /**
+     * The end of the date range (e.g., 'now').
+     */
+    declare public readonly dateRangeTo: pulumi.Output<string>;
     /**
      * The name of the dashboard.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The auto-refresh interval in seconds.
+     */
+    declare public readonly refreshInterval: pulumi.Output<number>;
+    /**
+     * SQL expression to filter eligible sources.
+     */
+    declare public readonly sourceEligibilitySql: pulumi.Output<string>;
     /**
      * The team ID of the dashboard.
      */
@@ -56,6 +78,10 @@ export class Dashboard extends pulumi.CustomResource {
      * The time when this dashboard was last updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    /**
+     * Variables for this dashboard. Default variables (time, start_time, end_time, source) are auto-created.
+     */
+    declare public readonly variables: pulumi.Output<outputs.DashboardVariable[] | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -64,26 +90,35 @@ export class Dashboard extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dashboardGroupId"] = state?.dashboardGroupId;
             resourceInputs["data"] = state?.data;
+            resourceInputs["dateRangeFrom"] = state?.dateRangeFrom;
+            resourceInputs["dateRangeTo"] = state?.dateRangeTo;
             resourceInputs["name"] = state?.name;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
+            resourceInputs["sourceEligibilitySql"] = state?.sourceEligibilitySql;
             resourceInputs["teamId"] = state?.teamId;
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if (args?.data === undefined && !opts.urn) {
-                throw new Error("Missing required property 'data'");
-            }
+            resourceInputs["dashboardGroupId"] = args?.dashboardGroupId;
             resourceInputs["data"] = args?.data;
+            resourceInputs["dateRangeFrom"] = args?.dateRangeFrom;
+            resourceInputs["dateRangeTo"] = args?.dateRangeTo;
             resourceInputs["name"] = args?.name;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
+            resourceInputs["sourceEligibilitySql"] = args?.sourceEligibilitySql;
             resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["variables"] = args?.variables;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -102,13 +137,33 @@ export interface DashboardState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The dashboard configuration data as a JSON string. Any change will re-create the dashboard. See [Dashboard Import API docs](https://betterstack.com/docs/logs/api/dashboards/import/) for details.
+     * The ID of the dashboard group this dashboard belongs to. Use 0 to remove from group.
+     */
+    dashboardGroupId?: pulumi.Input<number>;
+    /**
+     * The dashboard configuration data as a JSON string. When set, the dashboard is created via the import API and any change forces re-creation. Cannot be combined with individual fields like refresh_interval, date_range_from, chart and variable blocks, etc.
      */
     data?: pulumi.Input<string>;
+    /**
+     * The start of the date range (e.g., 'now-3h', 'now-24h').
+     */
+    dateRangeFrom?: pulumi.Input<string>;
+    /**
+     * The end of the date range (e.g., 'now').
+     */
+    dateRangeTo?: pulumi.Input<string>;
     /**
      * The name of the dashboard.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The auto-refresh interval in seconds.
+     */
+    refreshInterval?: pulumi.Input<number>;
+    /**
+     * SQL expression to filter eligible sources.
+     */
+    sourceEligibilitySql?: pulumi.Input<string>;
     /**
      * The team ID of the dashboard.
      */
@@ -121,6 +176,10 @@ export interface DashboardState {
      * The time when this dashboard was last updated.
      */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * Variables for this dashboard. Default variables (time, start_time, end_time, source) are auto-created.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }
 
 /**
@@ -128,15 +187,39 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * The dashboard configuration data as a JSON string. Any change will re-create the dashboard. See [Dashboard Import API docs](https://betterstack.com/docs/logs/api/dashboards/import/) for details.
+     * The ID of the dashboard group this dashboard belongs to. Use 0 to remove from group.
      */
-    data: pulumi.Input<string>;
+    dashboardGroupId?: pulumi.Input<number>;
+    /**
+     * The dashboard configuration data as a JSON string. When set, the dashboard is created via the import API and any change forces re-creation. Cannot be combined with individual fields like refresh_interval, date_range_from, chart and variable blocks, etc.
+     */
+    data?: pulumi.Input<string>;
+    /**
+     * The start of the date range (e.g., 'now-3h', 'now-24h').
+     */
+    dateRangeFrom?: pulumi.Input<string>;
+    /**
+     * The end of the date range (e.g., 'now').
+     */
+    dateRangeTo?: pulumi.Input<string>;
     /**
      * The name of the dashboard.
      */
     name?: pulumi.Input<string>;
     /**
+     * The auto-refresh interval in seconds.
+     */
+    refreshInterval?: pulumi.Input<number>;
+    /**
+     * SQL expression to filter eligible sources.
+     */
+    sourceEligibilitySql?: pulumi.Input<string>;
+    /**
      * The team name to associate with the dashboard when using a global API token.
      */
     teamName?: pulumi.Input<string>;
+    /**
+     * Variables for this dashboard. Default variables (time, start_time, end_time, source) are auto-created.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }

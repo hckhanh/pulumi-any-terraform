@@ -342,6 +342,14 @@ export interface GetPullzoneOrigin {
      */
     containerEndpointId?: string;
     /**
+     * The port for DNS Accelerated endpoints.
+     */
+    dnsPort?: number;
+    /**
+     * The scheme for DNS Accelerated endpoints.
+     */
+    dnsScheme?: string;
+    /**
      * Indicates whether the zone will follow origin redirects.
      */
     followRedirects?: boolean;
@@ -388,6 +396,14 @@ export interface GetPullzoneOriginArgs {
      * The ID if the compute container app endpoint.
      */
     containerEndpointId?: pulumi.Input<string>;
+    /**
+     * The port for DNS Accelerated endpoints.
+     */
+    dnsPort?: pulumi.Input<number>;
+    /**
+     * The scheme for DNS Accelerated endpoints.
+     */
+    dnsScheme?: pulumi.Input<string>;
     /**
      * Indicates whether the zone will follow origin redirects.
      */
@@ -497,6 +513,14 @@ export interface PullzoneOrigin {
      */
     containerEndpointId?: pulumi.Input<string>;
     /**
+     * The port for DNS Accelerated endpoints.
+     */
+    dnsPort?: pulumi.Input<number>;
+    /**
+     * The scheme for DNS Accelerated endpoints.
+     */
+    dnsScheme?: pulumi.Input<string>;
+    /**
      * Indicates whether the zone will follow origin redirects.
      */
     followRedirects?: pulumi.Input<boolean>;
@@ -541,7 +565,7 @@ export interface PullzoneRatelimitRuleCondition {
     operator: pulumi.Input<string>;
     value: pulumi.Input<string>;
     /**
-     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: pulumi.Input<string>;
     variableValue?: pulumi.Input<string>;
@@ -711,7 +735,7 @@ export interface PullzoneWafRuleCondition {
     operator: pulumi.Input<string>;
     value: pulumi.Input<string>;
     /**
-     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
+     * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: pulumi.Input<string>;
     variableValue?: pulumi.Input<string>;

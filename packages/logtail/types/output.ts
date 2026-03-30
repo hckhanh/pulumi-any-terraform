@@ -179,42 +179,84 @@ export interface CollectorDatabase {
     username?: string;
 }
 
-export interface CollectorProxyConfig {
-    /**
-     * Address and port for the buffering proxy to listen on.
-     */
-    bufferingProxyListenOn?: string;
-    /**
-     * Enable the HTTP buffering proxy for the collector.
-     */
-    enableBufferingProxy?: boolean;
-    /**
-     * Enable HTTP Basic Authentication for the collector proxy.
-     */
-    enableHttpBasicAuth?: boolean;
-    /**
-     * Enable custom SSL/TLS certificate for the collector.
-     */
-    enableSslCertificate?: boolean;
-    /**
-     * Password for HTTP Basic Authentication. This value is write-only and never returned by the API.
-     */
-    httpBasicAuthPassword?: string;
-    /**
-     * Username for HTTP Basic Authentication.
-     */
-    httpBasicAuthUsername?: string;
-    /**
-     * Hostname for the SSL certificate.
-     */
-    sslCertificateHost?: string;
-}
-
 export interface ConnectionDataSource {
     dataSources: string[];
     sourceId: number;
     sourceName: string;
     teamName: string;
+}
+
+export interface DashboardAlertEscalationTarget {
+    /**
+     * The Better Stack escalation policy ID.
+     */
+    policyId?: number;
+    /**
+     * The Better Stack escalation policy name.
+     */
+    policyName?: string;
+    /**
+     * The Better Stack team ID to escalate to.
+     */
+    teamId?: number;
+    /**
+     * The Better Stack team name to escalate to.
+     */
+    teamName?: string;
+}
+
+export interface DashboardChartQuery {
+    /**
+     * The ID of this query (read-only).
+     */
+    id: number;
+    /**
+     * The name of the query.
+     */
+    name: string;
+    /**
+     * The type of query: 'sql_expression', 'tail_query', or 'static_text'. Note: 'pql_expression', 'query_builder', and 'funnel_query' are read-only.
+     */
+    queryType: string;
+    /**
+     * The source variable reference (default: 'source').
+     */
+    sourceVariable: string;
+    /**
+     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
+     */
+    sqlQuery: string;
+    /**
+     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
+     */
+    staticText: string;
+    /**
+     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
+     */
+    whereCondition: string;
+}
+
+export interface DashboardVariable {
+    /**
+     * Default selected values for the variable.
+     */
+    defaultValues: string[];
+    /**
+     * The name of the variable (used as {{name}} in queries).
+     */
+    name: string;
+    /**
+     * SQL definition for 'select_with_sql' or 'multi_select_with_sql' type variables.
+     */
+    sqlDefinition: string;
+    /**
+     * Predefined values for 'select_value' type variables.
+     */
+    values: string[];
+    /**
+     * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', 'select_with_sql', or 'multi_select_with_sql'.
+     */
+    variableType: string;
 }
 
 export interface ErrorsApplicationCustomBucket {
@@ -261,7 +303,7 @@ export interface ExplorationAlertEscalationTarget {
 
 export interface ExplorationChart {
     /**
-     * The type of chart (e.g., 'line_chart', 'bar_chart', 'pie_chart', 'number_chart', 'table_chart', 'tail_chart', 'static_text_chart').
+     * The type of chart: 'line_chart', 'bar_chart', 'pie_chart', 'number_chart', 'table_chart', 'tail_chart', 'static_text_chart', 'scatter_chart', 'gauge_chart', 'heatmap_chart', 'map_chart', 'text_chart', 'funnel_chart', or 'anomalies_chart'.
      */
     chartType: string;
     /**
@@ -319,7 +361,7 @@ export interface ExplorationVariable {
      */
     name: string;
     /**
-     * SQL definition for 'sql_expression' or 'select_with_sql' type variables.
+     * SQL definition for 'select_with_sql' or 'multi_select_with_sql' type variables.
      */
     sqlDefinition?: string;
     /**
@@ -327,7 +369,7 @@ export interface ExplorationVariable {
      */
     values?: string[];
     /**
-     * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', or 'select_with_sql'.
+     * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', 'select_with_sql', or 'multi_select_with_sql'.
      */
     variableType: string;
 }
@@ -389,21 +431,28 @@ export interface GetCollectorDatabase {
     username: string;
 }
 
-export interface GetCollectorProxyConfig {
-    bufferingProxyListenOn: string;
-    enableBufferingProxy: boolean;
-    enableHttpBasicAuth: boolean;
-    enableSslCertificate: boolean;
-    httpBasicAuthPassword: string;
-    httpBasicAuthUsername: string;
-    sslCertificateHost: string;
-}
-
 export interface GetConnectionDataSource {
     dataSources: string[];
     sourceId: number;
     sourceName: string;
     teamName: string;
+}
+
+export interface GetDashboardAlertEscalationTarget {
+    policyId: number;
+    policyName: string;
+    teamId: number;
+    teamName: string;
+}
+
+export interface GetDashboardChartQuery {
+    id: number;
+    name: string;
+    queryType: string;
+    sourceVariable: string;
+    sqlQuery: string;
+    staticText: string;
+    whereCondition: string;
 }
 
 export interface GetErrorsApplicationCustomBucket {

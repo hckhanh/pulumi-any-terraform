@@ -240,6 +240,11 @@ export type IdentityGcpAuth = import("./identityGcpAuth").IdentityGcpAuth;
 export const IdentityGcpAuth: typeof import("./identityGcpAuth").IdentityGcpAuth = null as any;
 utilities.lazyLoad(exports, ["IdentityGcpAuth"], () => require("./identityGcpAuth"));
 
+export { IdentityJwtAuthArgs, IdentityJwtAuthState } from "./identityJwtAuth";
+export type IdentityJwtAuth = import("./identityJwtAuth").IdentityJwtAuth;
+export const IdentityJwtAuth: typeof import("./identityJwtAuth").IdentityJwtAuth = null as any;
+utilities.lazyLoad(exports, ["IdentityJwtAuth"], () => require("./identityJwtAuth"));
+
 export { IdentityKubernetesAuthArgs, IdentityKubernetesAuthState } from "./identityKubernetesAuth";
 export type IdentityKubernetesAuth = import("./identityKubernetesAuth").IdentityKubernetesAuth;
 export const IdentityKubernetesAuth: typeof import("./identityKubernetesAuth").IdentityKubernetesAuth = null as any;
@@ -582,6 +587,8 @@ const _module = {
                 return new IdentityAzureAuth(name, <any>undefined, { urn })
             case "infisical:index/identityGcpAuth:IdentityGcpAuth":
                 return new IdentityGcpAuth(name, <any>undefined, { urn })
+            case "infisical:index/identityJwtAuth:IdentityJwtAuth":
+                return new IdentityJwtAuth(name, <any>undefined, { urn })
             case "infisical:index/identityKubernetesAuth:IdentityKubernetesAuth":
                 return new IdentityKubernetesAuth(name, <any>undefined, { urn })
             case "infisical:index/identityOidcAuth:IdentityOidcAuth":
@@ -725,6 +732,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAwsAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityAzureAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityGcpAuth", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/identityJwtAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityKubernetesAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityOidcAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuth", _module)

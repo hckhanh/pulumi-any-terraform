@@ -178,6 +178,10 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly tableName: pulumi.Output<string>;
     /**
+     * The team ID for this resource.
+     */
+    declare public /*out*/ readonly teamId: pulumi.Output<string>;
+    /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
@@ -215,6 +219,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["platform"] = state?.platform;
             resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["teamId"] = state?.teamId;
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["token"] = state?.token;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -236,6 +241,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
+            resourceInputs["teamId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -391,6 +397,10 @@ export interface ErrorsApplicationState {
      * The table name generated for this application.
      */
     tableName?: pulumi.Input<string>;
+    /**
+     * The team ID for this resource.
+     */
+    teamId?: pulumi.Input<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */

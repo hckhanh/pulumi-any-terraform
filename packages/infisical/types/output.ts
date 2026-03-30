@@ -975,6 +975,10 @@ export interface IdentityGcpAuthAccessTokenTrustedIp {
     ipAddress: string;
 }
 
+export interface IdentityJwtAuthAccessTokenTrustedIp {
+    ipAddress: string;
+}
+
 export interface IdentityKubernetesAuthAccessTokenTrustedIp {
     ipAddress: string;
 }

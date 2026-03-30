@@ -57,7 +57,7 @@ export class HogFunction extends pulumi.CustomResource {
      */
     declare public readonly iconUrl: pulumi.Output<string>;
     /**
-     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties.
+     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties. For inputs containing secrets, use <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> instead.
      */
     declare public readonly inputsJson: pulumi.Output<string | undefined>;
     /**
@@ -76,6 +76,10 @@ export class HogFunction extends pulumi.CustomResource {
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * JSON object containing sensitive input values (e.g. API keys, tokens, credentials) for the Hog function. Same format as <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span>. Values are merged with <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span> at apply time and redacted from plan/apply output. If the same key appears in both, <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> takes precedence.
+     */
+    declare public readonly sensitiveInputsJson: pulumi.Output<string | undefined>;
     /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */
@@ -109,6 +113,7 @@ export class HogFunction extends pulumi.CustomResource {
             resourceInputs["maskingJson"] = state?.maskingJson;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["sensitiveInputsJson"] = state?.sensitiveInputsJson;
             resourceInputs["templateId"] = state?.templateId;
             resourceInputs["type"] = state?.type;
         } else {
@@ -124,10 +129,13 @@ export class HogFunction extends pulumi.CustomResource {
             resourceInputs["maskingJson"] = args?.maskingJson;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["sensitiveInputsJson"] = args?.sensitiveInputsJson ? pulumi.secret(args.sensitiveInputsJson) : undefined;
             resourceInputs["templateId"] = args?.templateId;
             resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["sensitiveInputsJson"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HogFunction.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
@@ -161,7 +169,7 @@ export interface HogFunctionState {
      */
     iconUrl?: pulumi.Input<string>;
     /**
-     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties.
+     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties. For inputs containing secrets, use <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> instead.
      */
     inputsJson?: pulumi.Input<string>;
     /**
@@ -180,6 +188,10 @@ export interface HogFunctionState {
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * JSON object containing sensitive input values (e.g. API keys, tokens, credentials) for the Hog function. Same format as <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span>. Values are merged with <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span> at apply time and redacted from plan/apply output. If the same key appears in both, <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> takes precedence.
+     */
+    sensitiveInputsJson?: pulumi.Input<string>;
     /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */
@@ -219,7 +231,7 @@ export interface HogFunctionArgs {
      */
     iconUrl?: pulumi.Input<string>;
     /**
-     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties.
+     * JSON object containing the input values for the Hog function. Keys correspond to the input schema, values contain <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and optional <span pulumi-lang-nodejs="`templating`" pulumi-lang-dotnet="`Templating`" pulumi-lang-go="`templating`" pulumi-lang-python="`templating`" pulumi-lang-yaml="`templating`" pulumi-lang-java="`templating`">`templating`</span> properties. For inputs containing secrets, use <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> instead.
      */
     inputsJson?: pulumi.Input<string>;
     /**
@@ -238,6 +250,10 @@ export interface HogFunctionArgs {
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * JSON object containing sensitive input values (e.g. API keys, tokens, credentials) for the Hog function. Same format as <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span>. Values are merged with <span pulumi-lang-nodejs="`inputsJson`" pulumi-lang-dotnet="`InputsJson`" pulumi-lang-go="`inputsJson`" pulumi-lang-python="`inputs_json`" pulumi-lang-yaml="`inputsJson`" pulumi-lang-java="`inputsJson`">`inputs_json`</span> at apply time and redacted from plan/apply output. If the same key appears in both, <span pulumi-lang-nodejs="`sensitiveInputsJson`" pulumi-lang-dotnet="`SensitiveInputsJson`" pulumi-lang-go="`sensitiveInputsJson`" pulumi-lang-python="`sensitive_inputs_json`" pulumi-lang-yaml="`sensitiveInputsJson`" pulumi-lang-java="`sensitiveInputsJson`">`sensitive_inputs_json`</span> takes precedence.
+     */
+    sensitiveInputsJson?: pulumi.Input<string>;
     /**
      * ID of a template to use as the basis for this Hog function. The template provides default code, inputs schema, and configuration.
      */

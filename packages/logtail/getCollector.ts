@@ -41,7 +41,6 @@ export interface GetCollectorResult {
     readonly note: string;
     readonly pingedAt: string;
     readonly platform: string;
-    readonly proxyConfigs: outputs.GetCollectorProxyConfig[];
     readonly secret: string;
     readonly sourceGroupId: number;
     readonly sourceId: number;

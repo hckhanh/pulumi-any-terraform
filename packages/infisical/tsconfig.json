@@ -62,6 +62,7 @@
         "identityAwsAuth.ts",
         "identityAzureAuth.ts",
         "identityGcpAuth.ts",
+        "identityJwtAuth.ts",
         "identityKubernetesAuth.ts",
         "identityOidcAuth.ts",
         "identityTokenAuth.ts",
