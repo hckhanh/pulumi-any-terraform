@@ -11,9 +11,33 @@
         "technologies": ["node"]
       }
     },
+    "test:scripts": {
+      "command": "node --test .github/scripts/__tests__/check-updates.test.ts",
+      "cache": true,
+      "inputs": ["{workspaceRoot}/.github/scripts/**/*.ts"],
+      "metadata": {
+        "description": "Run CI script tests",
+        "technologies": ["node"]
+      }
+    },
+    "typecheck": {
+      "command": "tsc --noEmit",
+      "cache": true,
+      "inputs": [
+        "{workspaceRoot}/tools/**/*.ts",
+        "{workspaceRoot}/.github/scripts/**/*.ts",
+        "{workspaceRoot}/tsconfig.json"
+      ],
+      "metadata": {
+        "description": "Typecheck hand-written TypeScript",
+        "technologies": ["typescript"]
+      }
+    },
     "check": {
       "dependsOn": [
         "build",
+        "test:scripts",
+        "typecheck",
         "syncpack:format:check",
         "syncpack:lint",
         "prettier:check"

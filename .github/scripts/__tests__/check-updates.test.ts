@@ -1,17 +1,49 @@
-const { describe, it, beforeEach, afterEach, mock } = require('node:test')
-const assert = require('node:assert/strict')
-const fs = require('node:fs')
-const path = require('node:path')
-const os = require('node:os')
-
-const {
+import type { MockFunctionContext } from 'node:test'
+import { afterEach, beforeEach, describe, it, mock } from 'node:test'
+import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import path from 'node:path'
+import os from 'node:os'
+import childProcess from 'node:child_process'
+import {
+  copyDirectory,
   determineBumpType,
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,
-  copyDirectory,
-  updatePackage,
   main,
-} = require('../check-updates.js')
+  updatePackage,
+} from '../check-updates.ts'
+
+// ---------------------------------------------------------------------------
+// Test helpers: centralize type-unsafe mocking of global/module properties
+// ---------------------------------------------------------------------------
+
+interface MockedFetch {
+  mock: MockFunctionContext<typeof fetch>;
+
+  (...args: Parameters<typeof fetch>): ReturnType<typeof fetch>
+}
+
+/**
+ * Replace globalThis.fetch with a mock. Returns the mock for call assertions.
+ * The mock doesn't implement the full Response interface -- only the properties
+ * actually used by the functions under test (ok, status, json, body).
+ */
+function mockFetch(impl: (...args: any[]) => Promise<unknown>): MockedFetch {
+  const fn = mock.fn(impl)
+  // @ts-expect-error -- partial Response mock; only tested properties are used
+  globalThis.fetch = fn
+  return globalThis.fetch as unknown as MockedFetch
+}
+
+/**
+ * Replace childProcess.spawnSync on the ESM module namespace.
+ * Node 24 allows mutation of built-in module namespace properties at runtime.
+ */
+function setSpawnSync(fn: unknown): void {
+  // @ts-expect-error -- mutating ESM namespace property for test mocking
+  childProcess.spawnSync = fn
+}
 
 // ---------------------------------------------------------------------------
 // determineBumpType
@@ -72,7 +104,7 @@ describe('determineBumpType', () => {
 // ---------------------------------------------------------------------------
 
 describe('getGitHubRepoFromRegistry', () => {
-  let originalFetch
+  let originalFetch: typeof globalThis.fetch
 
   beforeEach(() => {
     originalFetch = globalThis.fetch
@@ -83,7 +115,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns source URL on success', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({
         source: 'https://github.com/BunnyWay/terraform-provider-bunnynet',
@@ -96,7 +128,7 @@ describe('getGitHubRepoFromRegistry', () => {
       'https://github.com/BunnyWay/terraform-provider-bunnynet',
     )
 
-    const [url] = globalThis.fetch.mock.calls[0].arguments
+    const [url] = fn.mock.calls[0].arguments
     assert.equal(
       url,
       'https://registry.terraform.io/v1/providers/bunnyway/bunnynet',
@@ -104,7 +136,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns null when source field is missing', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({}),
     }))
@@ -114,7 +146,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns null on HTTP 404', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: false,
       status: 404,
     }))
@@ -124,7 +156,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns null on HTTP 500', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: false,
       status: 500,
     }))
@@ -134,7 +166,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns null on network error', async () => {
-    globalThis.fetch = mock.fn(async () => {
+    mockFetch(async () => {
       throw new Error('Network error')
     })
 
@@ -143,7 +175,7 @@ describe('getGitHubRepoFromRegistry', () => {
   })
 
   it('returns null on JSON parse error', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => {
         throw new SyntaxError('Unexpected token')
@@ -160,8 +192,8 @@ describe('getGitHubRepoFromRegistry', () => {
 // ---------------------------------------------------------------------------
 
 describe('getLatestGitHubRelease', () => {
-  let originalFetch
-  let originalToken
+  let originalFetch: typeof globalThis.fetch
+  let originalToken: string | undefined
 
   beforeEach(() => {
     originalFetch = globalThis.fetch
@@ -180,35 +212,35 @@ describe('getLatestGitHubRelease', () => {
   // --- URL parsing ---
 
   it('parses standard GitHub URL', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
     await getLatestGitHubRelease('https://github.com/owner/repo')
-    const [url] = globalThis.fetch.mock.calls[0].arguments
+    const [url] = fn.mock.calls[0].arguments
     assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
   })
 
   it('handles URL with .git suffix', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
     await getLatestGitHubRelease('https://github.com/owner/repo.git')
-    const [url] = globalThis.fetch.mock.calls[0].arguments
+    const [url] = fn.mock.calls[0].arguments
     assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
   })
 
   it('handles URL with trailing path', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
     await getLatestGitHubRelease('https://github.com/owner/repo/tree/main')
-    const [url] = globalThis.fetch.mock.calls[0].arguments
+    const [url] = fn.mock.calls[0].arguments
     assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
   })
 
@@ -230,55 +262,47 @@ describe('getLatestGitHubRelease', () => {
   // --- Response handling ---
 
   it('strips v-prefix from tag_name', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.2.3', body: 'changes' }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.version, '1.2.3')
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.version, '1.2.3')
   })
 
   it('preserves tag_name without v-prefix', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: '1.2.3', body: 'changes' }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.version, '1.2.3')
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.version, '1.2.3')
   })
 
   it('returns null changelog for null body', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.changelog, null)
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.changelog, null)
   })
 
   it('returns null changelog for whitespace-only body', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: '   ' }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.changelog, null)
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.changelog, null)
   })
 
   it('rewrites issue references with repo path', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({
         tag_name: 'v1.0.0',
@@ -286,15 +310,13 @@ describe('getLatestGitHubRelease', () => {
       }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.changelog, 'Fixed owner/repo#123 and owner/repo#456')
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.changelog, 'Fixed owner/repo#123 and owner/repo#456')
   })
 
   it('rewrites 40-char commit hashes with repo path', async () => {
     const hash = 'a'.repeat(40)
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
       json: async () => ({
         tag_name: 'v1.0.0',
@@ -302,58 +324,54 @@ describe('getLatestGitHubRelease', () => {
       }),
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
-    assert.equal(result.changelog, `See owner/repo@${hash}`)
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
+    assert.equal(result!.changelog, `See owner/repo@${hash}`)
   })
 
   // --- Auth and errors ---
 
   it('sends Authorization header when GITHUB_TOKEN is set', async () => {
     process.env.GITHUB_TOKEN = 'test-token-123'
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
     await getLatestGitHubRelease('https://github.com/owner/repo')
-    const [, options] = globalThis.fetch.mock.calls[0].arguments
-    assert.equal(options.headers.Authorization, 'Bearer test-token-123')
+    const [, options] = fn.mock.calls[0].arguments
+    const headers = options!.headers as Record<string, string>
+    assert.equal(headers.Authorization, 'Bearer test-token-123')
   })
 
   it('omits Authorization header when GITHUB_TOKEN is not set', async () => {
     delete process.env.GITHUB_TOKEN
-    globalThis.fetch = mock.fn(async () => ({
+    const fn = mockFetch(async () => ({
       ok: true,
       json: async () => ({ tag_name: 'v1.0.0', body: null }),
     }))
 
     await getLatestGitHubRelease('https://github.com/owner/repo')
-    const [, options] = globalThis.fetch.mock.calls[0].arguments
-    assert.equal(options.headers.Authorization, undefined)
+    const [, options] = fn.mock.calls[0].arguments
+    const headers = options!.headers as Record<string, string>
+    assert.equal(headers.Authorization, undefined)
   })
 
   it('returns null on HTTP error', async () => {
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: false,
       status: 404,
     }))
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
     assert.equal(result, null)
   })
 
   it('returns null on network error', async () => {
-    globalThis.fetch = mock.fn(async () => {
+    mockFetch(async () => {
       throw new Error('Network error')
     })
 
-    const result = await getLatestGitHubRelease(
-      'https://github.com/owner/repo',
-    )
+    const result = await getLatestGitHubRelease('https://github.com/owner/repo')
     assert.equal(result, null)
   })
 })
@@ -363,9 +381,9 @@ describe('getLatestGitHubRelease', () => {
 // ---------------------------------------------------------------------------
 
 describe('copyDirectory', () => {
-  let tempBase
-  let srcDir
-  let destDir
+  let tempBase: string
+  let srcDir: string
+  let destDir: string
 
   beforeEach(() => {
     tempBase = fs.mkdtempSync(path.join(os.tmpdir(), 'copy-test-'))
@@ -462,16 +480,15 @@ describe('copyDirectory', () => {
 // ---------------------------------------------------------------------------
 
 describe('updatePackage', () => {
-  let tempBase
-  let packagePath
-  let originalSpawnSync
+  let tempBase: string
+  let packagePath: string
+  let originalSpawnSync: typeof childProcess.spawnSync
 
   beforeEach(() => {
     tempBase = fs.mkdtempSync(path.join(os.tmpdir(), 'update-pkg-test-'))
     packagePath = path.join(tempBase, 'test-package')
     fs.mkdirSync(packagePath, { recursive: true })
 
-    // Write a base package.json
     fs.writeFileSync(
       path.join(packagePath, 'package.json'),
       JSON.stringify({
@@ -485,56 +502,52 @@ describe('updatePackage', () => {
       }),
     )
 
-    // Save original spawnSync
-    originalSpawnSync = require('node:child_process').spawnSync
+    originalSpawnSync = childProcess.spawnSync
   })
 
   afterEach(() => {
-    // Restore spawnSync
-    require('node:child_process').spawnSync = originalSpawnSync
+    setSpawnSync(originalSpawnSync)
     fs.rmSync(tempBase, { recursive: true, force: true })
   })
 
-  /**
-   * Helper: set up spawnSync mock that creates a fake SDK output directory
-   * simulating what `pulumi package add` would produce
-   */
-  function mockSpawnSyncWithSDK(opts = {}) {
+  function mockSpawnSyncWithSDK(
+    opts: { matchingName?: string; pulumiProperty?: any } = {},
+  ) {
     const { matchingName = 'testprovider', pulumiProperty = null } = opts
 
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'new') {
-        return { status: 0 }
-      }
-
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        // Create the sdks directory structure that pulumi package add produces
-        const sdksDir = path.join(options.cwd, 'sdks')
-        const pkgDir = path.join(sdksDir, 'nodejs')
-        fs.mkdirSync(pkgDir, { recursive: true })
-
-        // Write generated files
-        fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// generated')
-        fs.writeFileSync(path.join(pkgDir, 'README.md'), '# Generated')
-        fs.writeFileSync(path.join(pkgDir, '.gitignore'), 'node_modules')
-
-        const pkgJson = {
-          name: `@pulumi/${matchingName}`,
-          pulumi: pulumiProperty || {
-            name: matchingName,
-            version: '2.0.0',
-          },
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'new') {
+          return { status: 0 }
         }
-        fs.writeFileSync(
-          path.join(pkgDir, 'package.json'),
-          JSON.stringify(pkgJson),
-        )
+
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
+          const pkgDir = path.join(sdksDir, 'nodejs')
+          fs.mkdirSync(pkgDir, { recursive: true })
+
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// generated')
+          fs.writeFileSync(path.join(pkgDir, 'README.md'), '# Generated')
+          fs.writeFileSync(path.join(pkgDir, '.gitignore'), 'node_modules')
+
+          const pkgJson = {
+            name: `@pulumi/${matchingName}`,
+            pulumi: pulumiProperty || {
+              name: matchingName,
+              version: '2.0.0',
+            },
+          }
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify(pkgJson),
+          )
+
+          return { status: 0 }
+        }
 
         return { status: 0 }
-      }
-
-      return { status: 0 }
-    })
+      }),
+    )
   }
 
   it('copies generated SDK files to package directory', () => {
@@ -587,96 +600,97 @@ describe('updatePackage', () => {
     const updatedPkg = JSON.parse(
       fs.readFileSync(path.join(packagePath, 'package.json'), 'utf8'),
     )
-    // Name should be preserved from original
     assert.equal(updatedPkg.name, 'pulumi-testprovider')
-    // Pulumi property should be updated
     assert.equal(updatedPkg.pulumi.version, '2.0.0')
   })
 
   it('throws when pulumi init fails', () => {
-    require('node:child_process').spawnSync = mock.fn(() => ({
-      status: 1,
-      stderr: Buffer.from('init failed'),
-    }))
+    setSpawnSync(
+      mock.fn(() => ({
+        status: 1,
+        stderr: Buffer.from('init failed'),
+      })),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
       version: '1.0.0',
     }
     assert.throws(
-      () =>
-        updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
+      () => updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
       /Failed to initialize Pulumi project/,
     )
   })
 
   it('throws when pulumi package add fails', () => {
     let callCount = 0
-    require('node:child_process').spawnSync = mock.fn(() => {
-      callCount++
-      if (callCount === 1) return { status: 0 } // pulumi new
-      return { status: 1, stderr: Buffer.from('add failed') } // pulumi package add
-    })
+    setSpawnSync(
+      mock.fn(() => {
+        callCount++
+        if (callCount === 1) return { status: 0 }
+        return { status: 1, stderr: Buffer.from('add failed') }
+      }),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
       version: '1.0.0',
     }
     assert.throws(
-      () =>
-        updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
+      () => updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
       /Failed to add provider/,
     )
   })
 
   it('throws when SDKs directory is missing', () => {
-    require('node:child_process').spawnSync = mock.fn(() => ({ status: 0 }))
+    setSpawnSync(mock.fn(() => ({ status: 0 })))
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
       version: '1.0.0',
     }
     assert.throws(
-      () =>
-        updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
+      () => updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
       /SDKs directory not found/,
     )
   })
 
   it('throws when SDKs directory has no subdirectories', () => {
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        fs.mkdirSync(path.join(options.cwd, 'sdks'), { recursive: true })
-        // No subdirectories created
-      }
-      return { status: 0 }
-    })
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          fs.mkdirSync(path.join(options.cwd, 'sdks'), { recursive: true })
+        }
+        return { status: 0 }
+      }),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
       version: '1.0.0',
     }
     assert.throws(
-      () =>
-        updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
+      () => updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider'),
       /No package directories found/,
     )
   })
 
   it('uses first directory when no package name matches', () => {
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        const sdksDir = path.join(options.cwd, 'sdks')
-        const pkgDir = path.join(sdksDir, 'first-pkg')
-        fs.mkdirSync(pkgDir, { recursive: true })
-        fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// fallback')
-        fs.writeFileSync(
-          path.join(pkgDir, 'package.json'),
-          JSON.stringify({ name: 'unrelated-name' }),
-        )
-      }
-      return { status: 0 }
-    })
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
+          const pkgDir = path.join(sdksDir, 'first-pkg')
+          fs.mkdirSync(pkgDir, { recursive: true })
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// fallback')
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify({ name: 'unrelated-name' }),
+          )
+        }
+        return { status: 0 }
+      }),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
@@ -688,33 +702,33 @@ describe('updatePackage', () => {
   })
 
   it('selects matching package among multiple directories', () => {
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        const sdksDir = path.join(options.cwd, 'sdks')
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
 
-        // Create non-matching package first
-        const wrongDir = path.join(sdksDir, 'aaa-wrong')
-        fs.mkdirSync(wrongDir, { recursive: true })
-        fs.writeFileSync(path.join(wrongDir, 'index.ts'), '// wrong')
-        fs.writeFileSync(
-          path.join(wrongDir, 'package.json'),
-          JSON.stringify({ name: 'wrong-name' }),
-        )
+          const wrongDir = path.join(sdksDir, 'aaa-wrong')
+          fs.mkdirSync(wrongDir, { recursive: true })
+          fs.writeFileSync(path.join(wrongDir, 'index.ts'), '// wrong')
+          fs.writeFileSync(
+            path.join(wrongDir, 'package.json'),
+            JSON.stringify({ name: 'wrong-name' }),
+          )
 
-        // Create matching package
-        const rightDir = path.join(sdksDir, 'zzz-right')
-        fs.mkdirSync(rightDir, { recursive: true })
-        fs.writeFileSync(path.join(rightDir, 'index.ts'), '// correct')
-        fs.writeFileSync(
-          path.join(rightDir, 'package.json'),
-          JSON.stringify({
-            name: 'pulumi-testprovider',
-            pulumi: { name: 'testprovider' },
-          }),
-        )
-      }
-      return { status: 0 }
-    })
+          const rightDir = path.join(sdksDir, 'zzz-right')
+          fs.mkdirSync(rightDir, { recursive: true })
+          fs.writeFileSync(path.join(rightDir, 'index.ts'), '// correct')
+          fs.writeFileSync(
+            path.join(rightDir, 'package.json'),
+            JSON.stringify({
+              name: 'pulumi-testprovider',
+              pulumi: { name: 'testprovider' },
+            }),
+          )
+        }
+        return { status: 0 }
+      }),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
@@ -722,7 +736,6 @@ describe('updatePackage', () => {
     }
     updatePackage(packagePath, provider, '2.0.0', 'ns', 'testprovider')
 
-    // Should have content from the matching package
     assert.equal(
       fs.readFileSync(path.join(packagePath, 'index.ts'), 'utf8'),
       '// correct',
@@ -730,19 +743,20 @@ describe('updatePackage', () => {
   })
 
   it('cleans up temp directory even when an error occurs', () => {
-    // Track temp dirs created
-    const tempDirs = []
+    const tempDirs: string[] = []
     const origMkdtemp = fs.mkdtempSync
-    fs.mkdtempSync = function (...args) {
-      const dir = origMkdtemp.apply(this, args)
+    // @ts-expect-error -- wrapping fs.mkdtempSync to track created dirs
+    fs.mkdtempSync = function (...args: Parameters<typeof fs.mkdtempSync>) {
+      const dir = origMkdtemp.apply(this, args) as string
       tempDirs.push(dir)
       return dir
     }
-
-    require('node:child_process').spawnSync = mock.fn(() => ({
-      status: 1,
-      stderr: Buffer.from('fail'),
-    }))
+    setSpawnSync(
+      mock.fn(() => ({
+        status: 1,
+        stderr: Buffer.from('fail'),
+      })),
+    )
 
     const provider = {
       url: 'registry.opentofu.org/ns/testprovider',
@@ -757,7 +771,6 @@ describe('updatePackage', () => {
 
     fs.mkdtempSync = origMkdtemp
 
-    // Verify temp directory was cleaned up
     for (const dir of tempDirs) {
       assert.ok(!fs.existsSync(dir), `Temp dir ${dir} should be cleaned up`)
     }
@@ -769,27 +782,24 @@ describe('updatePackage', () => {
 // ---------------------------------------------------------------------------
 
 describe('main', () => {
-  let tempBase
-  let originalCwd
-  let originalFetch
-  let originalSpawnSync
-  let originalExit
-  let originalGithubOutput
+  let tempBase: string
+  let originalCwd: typeof process.cwd
+  let originalFetch: typeof globalThis.fetch
+  let originalSpawnSync: typeof childProcess.spawnSync
+  let originalExit: typeof process.exit
+  let originalGithubOutput: string | undefined
 
   beforeEach(() => {
     tempBase = fs.mkdtempSync(path.join(os.tmpdir(), 'main-test-'))
 
-    // Create packages directory
     fs.mkdirSync(path.join(tempBase, 'packages'), { recursive: true })
-
-    // Create .changeset directory
     fs.mkdirSync(path.join(tempBase, '.changeset'), { recursive: true })
 
     originalCwd = process.cwd
     process.cwd = () => tempBase
 
     originalFetch = globalThis.fetch
-    originalSpawnSync = require('node:child_process').spawnSync
+    originalSpawnSync = childProcess.spawnSync
     originalExit = process.exit
     originalGithubOutput = process.env.GITHUB_OUTPUT
     delete process.env.GITHUB_OUTPUT
@@ -798,7 +808,7 @@ describe('main', () => {
   afterEach(() => {
     process.cwd = originalCwd
     globalThis.fetch = originalFetch
-    require('node:child_process').spawnSync = originalSpawnSync
+    setSpawnSync(originalSpawnSync)
     process.exit = originalExit
     if (originalGithubOutput !== undefined) {
       process.env.GITHUB_OUTPUT = originalGithubOutput
@@ -808,10 +818,10 @@ describe('main', () => {
     fs.rmSync(tempBase, { recursive: true, force: true })
   })
 
-  /**
-   * Helper: create a package directory with a parameterized package.json
-   */
-  function createPackage(name, { version = '1.0.0', namespace = 'ns' } = {}) {
+  function createPackage(
+    name: string,
+    { version = '1.0.0', namespace = 'ns' } = {},
+  ): string {
     const pkgDir = path.join(tempBase, 'packages', name)
     fs.mkdirSync(pkgDir, { recursive: true })
 
@@ -852,7 +862,6 @@ describe('main', () => {
   })
 
   it('skips packages without package.json', async () => {
-    // Create a directory without package.json
     fs.mkdirSync(path.join(tempBase, 'packages', 'empty-pkg'), {
       recursive: true,
     })
@@ -938,7 +947,7 @@ describe('main', () => {
   it('skips when version is already up to date', async () => {
     createPackage('myprovider', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async (url) => {
+    mockFetch(async (url: string) => {
       if (url.includes('registry.terraform.io')) {
         return {
           ok: true,
@@ -947,7 +956,6 @@ describe('main', () => {
           }),
         }
       }
-      // GitHub releases API
       return {
         ok: true,
         json: async () => ({ tag_name: 'v1.0.0', body: null }),
@@ -967,9 +975,9 @@ describe('main', () => {
   it('skips when registry returns no GitHub repo', async () => {
     createPackage('noreg', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async () => ({
+    mockFetch(async () => ({
       ok: true,
-      json: async () => ({}), // no source field
+      json: async () => ({}),
     }))
 
     const outputFile = path.join(tempBase, 'github-output')
@@ -985,7 +993,7 @@ describe('main', () => {
   it('skips when GitHub returns no release', async () => {
     createPackage('norel', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async (url) => {
+    mockFetch(async (url: string) => {
       if (url.includes('registry.terraform.io')) {
         return {
           ok: true,
@@ -1010,7 +1018,7 @@ describe('main', () => {
   it('creates changeset and sets has_updates=true when update found', async () => {
     createPackage('updatable', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async (url) => {
+    mockFetch(async (url: string) => {
       if (url.includes('registry.terraform.io')) {
         return {
           ok: true,
@@ -1024,31 +1032,31 @@ describe('main', () => {
         json: async () => ({ tag_name: 'v2.0.0', body: 'Fixed #42 and #99' }),
       }
     })
-
-    // Mock spawnSync for both updatePackage internals and git add
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'new') {
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'new') {
+          return { status: 0 }
+        }
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
+          const pkgDir = path.join(sdksDir, 'nodejs')
+          fs.mkdirSync(pkgDir, { recursive: true })
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify({
+              name: 'pulumi-updatable',
+              pulumi: { name: 'updatable', version: '2.0.0' },
+            }),
+          )
+          return { status: 0 }
+        }
+        if (cmd === 'git') {
+          return { status: 0 }
+        }
         return { status: 0 }
-      }
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        const sdksDir = path.join(options.cwd, 'sdks')
-        const pkgDir = path.join(sdksDir, 'nodejs')
-        fs.mkdirSync(pkgDir, { recursive: true })
-        fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-        fs.writeFileSync(
-          path.join(pkgDir, 'package.json'),
-          JSON.stringify({
-            name: 'pulumi-updatable',
-            pulumi: { name: 'updatable', version: '2.0.0' },
-          }),
-        )
-        return { status: 0 }
-      }
-      if (cmd === 'git') {
-        return { status: 0 }
-      }
-      return { status: 0 }
-    })
+      }),
+    )
 
     const outputFile = path.join(tempBase, 'github-output')
     fs.writeFileSync(outputFile, '')
@@ -1056,18 +1064,15 @@ describe('main', () => {
 
     await main()
 
-    // Check output
     const output = fs.readFileSync(outputFile, 'utf8')
     assert.ok(output.includes('has_updates=true'))
 
-    // Check changeset was created
     const changesetDir = path.join(tempBase, '.changeset')
     const changesetFiles = fs
       .readdirSync(changesetDir)
       .filter((f) => f.endsWith('.md'))
     assert.ok(changesetFiles.length > 0, 'Should have created a changeset file')
 
-    // Validate changeset content
     const changesetContent = fs.readFileSync(
       path.join(changesetDir, changesetFiles[0]),
       'utf8',
@@ -1082,7 +1087,7 @@ describe('main', () => {
   it('uses default message when changelog is null', async () => {
     createPackage('nolog', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async (url) => {
+    mockFetch(async (url: string) => {
       if (url.includes('registry.terraform.io')) {
         return {
           ok: true,
@@ -1096,22 +1101,23 @@ describe('main', () => {
         json: async () => ({ tag_name: 'v1.0.1', body: null }),
       }
     })
-
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        const sdksDir = path.join(options.cwd, 'sdks')
-        const pkgDir = path.join(sdksDir, 'nodejs')
-        fs.mkdirSync(pkgDir, { recursive: true })
-        fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-        fs.writeFileSync(
-          path.join(pkgDir, 'package.json'),
-          JSON.stringify({ name: 'pulumi-nolog', pulumi: { name: 'nolog' } }),
-        )
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
+          const pkgDir = path.join(sdksDir, 'nodejs')
+          fs.mkdirSync(pkgDir, { recursive: true })
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify({ name: 'pulumi-nolog', pulumi: { name: 'nolog' } }),
+          )
+          return { status: 0 }
+        }
         return { status: 0 }
-      }
-      return { status: 0 }
-    })
+      }),
+    )
 
     const outputFile = path.join(tempBase, 'github-output')
     fs.writeFileSync(outputFile, '')
@@ -1133,14 +1139,13 @@ describe('main', () => {
   it('does not throw when GITHUB_OUTPUT is not set', async () => {
     delete process.env.GITHUB_OUTPUT
 
-    // No packages, so no updates
     await assert.doesNotReject(() => main())
   })
 
   it('calls process.exit(1) when git add fails', async () => {
     createPackage('gitfail', { version: '1.0.0' })
 
-    globalThis.fetch = mock.fn(async (url) => {
+    mockFetch(async (url: string) => {
       if (url.includes('registry.terraform.io')) {
         return {
           ok: true,
@@ -1154,28 +1159,32 @@ describe('main', () => {
         json: async () => ({ tag_name: 'v2.0.0', body: null }),
       }
     })
-
-    require('node:child_process').spawnSync = mock.fn((cmd, args, options) => {
-      if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
-      if (cmd === 'pulumi' && args[0] === 'package') {
-        const sdksDir = path.join(options.cwd, 'sdks')
-        const pkgDir = path.join(sdksDir, 'nodejs')
-        fs.mkdirSync(pkgDir, { recursive: true })
-        fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-        fs.writeFileSync(
-          path.join(pkgDir, 'package.json'),
-          JSON.stringify({ name: 'pulumi-gitfail', pulumi: { name: 'gitfail' } }),
-        )
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
+        if (cmd === 'pulumi' && args[0] === 'package') {
+          const sdksDir = path.join(options.cwd, 'sdks')
+          const pkgDir = path.join(sdksDir, 'nodejs')
+          fs.mkdirSync(pkgDir, { recursive: true })
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify({
+              name: 'pulumi-gitfail',
+              pulumi: { name: 'gitfail' },
+            }),
+          )
+          return { status: 0 }
+        }
+        if (cmd === 'git') {
+          return { status: 1 }
+        }
         return { status: 0 }
-      }
-      if (cmd === 'git') {
-        return { status: 1 } // git add fails
-      }
-      return { status: 0 }
-    })
+      }),
+    )
 
-    let exitCode = null
-    process.exit = mock.fn((code) => {
+    let exitCode: number | null = null
+    process.exit = mock.fn((code: number) => {
       exitCode = code
       throw new Error('process.exit called')
     })

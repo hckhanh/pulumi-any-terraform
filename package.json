@@ -7,6 +7,7 @@
     "url": "https://khanh.id"
   },
   "private": true,
+  "type": "module",
   "scripts": {
     "release": "nx run-many -t build && changeset publish"
   },

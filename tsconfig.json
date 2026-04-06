@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "target": "ES2022",
     "strict": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["tools"]
+  "include": ["tools", ".github/scripts"]
 }

@@ -1,6 +1,6 @@
 import { dirname } from 'node:path'
 import type { CreateNodesResult } from '@nx/devkit'
-import { Plugin } from './utils/plugin'
+import { Plugin } from './utils/plugin.ts'
 
 class BiomePlugin extends Plugin {
   constructor() {

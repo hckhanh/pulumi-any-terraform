@@ -1,18 +1,35 @@
 #!/usr/bin/env node
 
-const fs = require('node:fs')
-const path = require('node:path')
-const childProcess = require('node:child_process')
-const os = require('node:os')
+import fs from 'node:fs'
+import path from 'node:path'
+import childProcess from 'node:child_process'
+import os from 'node:os'
 
-/**
- * Determines the semver bump type based on version comparison
- * @param {string} oldVersion - Current version (e.g., "1.2.3")
- * @param {string} newVersion - New version (e.g., "2.0.0")
- * @returns {string} Bump type: "major", "minor", or "patch"
- */
-function determineBumpType(oldVersion, newVersion) {
-  const parseVersion = (v) => {
+interface ProviderInfo {
+  url: string
+  version: string
+}
+
+interface ReleaseInfo {
+  version: string | null
+  changelog: string | null
+}
+
+type BumpType = 'major' | 'minor' | 'patch'
+
+interface UpdateInfo {
+  name: string
+  projectName: string
+  oldVersion: string
+  newVersion: string
+  bumpType: BumpType
+  changelog: string | null
+  namespace: string
+  providerName: string
+}
+
+function determineBumpType(oldVersion: string, newVersion: string): BumpType {
+  const parseVersion = (v: string) => {
     const parts = v.replace(/^v/, '').split('.').map(Number)
     return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 }
   }
@@ -25,13 +42,10 @@ function determineBumpType(oldVersion, newVersion) {
   return 'patch'
 }
 
-/**
- * Fetches the GitHub repository URL from Terraform registry
- * @param {string} namespace - Provider namespace
- * @param {string} name - Provider name
- * @returns {Promise<string|null>} GitHub repository URL or null
- */
-async function getGitHubRepoFromRegistry(namespace, name) {
+async function getGitHubRepoFromRegistry(
+  namespace: string,
+  name: string,
+): Promise<string | null> {
   try {
     const registryUrl = `https://registry.terraform.io/v1/providers/${namespace}/${name}`
     const response = await fetch(registryUrl)
@@ -45,7 +59,6 @@ async function getGitHubRepoFromRegistry(namespace, name) {
 
     const data = await response.json()
 
-    // The source field contains the GitHub repository URL
     if (data.source) {
       return data.source
     }
@@ -57,14 +70,10 @@ async function getGitHubRepoFromRegistry(namespace, name) {
   }
 }
 
-/**
- * Fetches the latest release from GitHub repository
- * @param {string} repoUrl - GitHub repository URL (e.g., "https://github.com/BunnyWay/terraform-provider-bunnynet")
- * @returns {Promise<{version: string, changelog: string|null}|null>} Latest release info or null
- */
-async function getLatestGitHubRelease(repoUrl) {
+async function getLatestGitHubRelease(
+  repoUrl: string,
+): Promise<ReleaseInfo | null> {
   try {
-    // Extract owner/repo from URL (handle .git suffix and trailing paths)
     const match = repoUrl.match(
       /github\.com\/([^\/]+\/[^\/]+?)(?:\.git|\/.*)?$/,
     )
@@ -76,12 +85,11 @@ async function getLatestGitHubRelease(repoUrl) {
     const repoPath = match[1]
     const apiUrl = `https://api.github.com/repos/${repoPath}/releases/latest`
 
-    const headers = {
+    const headers: Record<string, string> = {
       Accept: 'application/vnd.github+json',
       'User-Agent': 'pulumi-any-terraform-updater',
     }
 
-    // Add authentication if GITHUB_TOKEN is available
     if (process.env.GITHUB_TOKEN) {
       headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
     }
@@ -97,8 +105,7 @@ async function getLatestGitHubRelease(repoUrl) {
 
     const data = await response.json()
 
-    // Extract version (remove 'v' prefix if present)
-    let version = data.tag_name
+    let version: string | undefined = data.tag_name
     if (version && version.startsWith('v')) {
       version = version.substring(1)
     }
@@ -117,13 +124,11 @@ async function getLatestGitHubRelease(repoUrl) {
   }
 }
 
-/**
- * Recursively copy directory contents
- * @param {string} src - Source directory
- * @param {string} dest - Destination directory
- * @param {string[]} excludeFiles - Files to exclude (e.g., ['README.md'])
- */
-function copyDirectory(src, dest, excludeFiles = []) {
+function copyDirectory(
+  src: string,
+  dest: string,
+  excludeFiles: string[] = [],
+): void {
   if (!fs.existsSync(dest)) {
     fs.mkdirSync(dest, { recursive: true })
   }
@@ -146,32 +151,21 @@ function copyDirectory(src, dest, excludeFiles = []) {
   }
 }
 
-/**
- * Updates a package's provider version using pulumi package add
- * @param {string} packagePath - Path to the package
- * @param {object} currentProvider - Current provider information
- * @param {string} newVersion - New version to update to
- * @param {string} namespace - Provider namespace
- * @param {string} providerName - Provider name
- */
 function updatePackage(
-  packagePath,
-  currentProvider,
-  newVersion,
-  namespace,
-  providerName,
-) {
+  packagePath: string,
+  currentProvider: ProviderInfo,
+  newVersion: string,
+  namespace: string,
+  providerName: string,
+): void {
   const packageJsonPath = path.join(packagePath, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 
-  // Create a temporary directory for the Pulumi project
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pulumi-update-'))
 
   try {
     console.log(`  Creating temporary Pulumi project in ${tempDir}`)
 
-    // Initialize Pulumi project with TypeScript template
-    // Set a passphrase for the temporary project (not used for secrets)
     const initResult = childProcess.spawnSync(
       'pulumi',
       ['new', 'typescript', '--yes', '--force'],
@@ -191,7 +185,6 @@ function updatePackage(
       )
     }
 
-    // Run pulumi package add command
     console.log(
       `  Running: pulumi package add terraform-provider ${namespace}/${providerName} ${newVersion}`,
     )
@@ -212,14 +205,11 @@ function updatePackage(
       throw new Error(`Failed to add provider: ${addResult.stderr?.toString()}`)
     }
 
-    // Find the generated SDK directory
     const sdksDir = path.join(tempDir, 'sdks')
     if (!fs.existsSync(sdksDir)) {
       throw new Error(`SDKs directory not found at ${sdksDir}`)
     }
 
-    // Find the generated package directory that matches the provider name
-    // The sdks folder contains multiple packages (package1, package2, etc.)
     const sdkPackages = fs
       .readdirSync(sdksDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
@@ -228,15 +218,13 @@ function updatePackage(
       throw new Error(`No package directories found in ${sdksDir}`)
     }
 
-    // Try to find the package by checking package.json name or use the first one
-    let sdkDir = null
+    let sdkDir: string | null = null
     for (const pkgDir of sdkPackages) {
       const pkgPath = path.join(sdksDir, pkgDir.name)
       const pkgJsonPath = path.join(pkgPath, 'package.json')
 
       if (fs.existsSync(pkgJsonPath)) {
         const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
-        // Check if this package matches the provider name
         if (
           pkgJson.name.includes(providerName) ||
           pkgJson.pulumi?.name === providerName
@@ -248,7 +236,6 @@ function updatePackage(
       }
     }
 
-    // If no match found, use the first package directory
     if (!sdkDir) {
       sdkDir = path.join(sdksDir, sdkPackages[0].name)
       console.log(`  Using first package directory at ${sdkDir}`)
@@ -256,14 +243,12 @@ function updatePackage(
 
     console.log(`  Copying files from generated SDK to ${packagePath}`)
 
-    // Copy all TypeScript files and other files (excluding README.md and package.json)
     const entries = fs.readdirSync(sdkDir, { withFileTypes: true })
 
     for (const entry of entries) {
       const srcPath = path.join(sdkDir, entry.name)
       const destPath = path.join(packagePath, entry.name)
 
-      // Skip README.md, package.json, and .gitignore (we'll handle package.json separately)
       if (
         entry.name === 'README.md' ||
         entry.name === 'package.json' ||
@@ -273,15 +258,12 @@ function updatePackage(
       }
 
       if (entry.isDirectory()) {
-        // Copy entire directory
         copyDirectory(srcPath, destPath)
       } else {
-        // Copy file
         fs.copyFileSync(srcPath, destPath)
       }
     }
 
-    // Update package.json: only copy the pulumi property
     const generatedPackageJsonPath = path.join(sdkDir, 'package.json')
     if (fs.existsSync(generatedPackageJsonPath)) {
       const generatedPackageJson = JSON.parse(
@@ -300,23 +282,19 @@ function updatePackage(
 
     console.log(`Updated ${packageJson.name} to version ${newVersion}`)
   } finally {
-    // Clean up temporary directory
     fs.rmSync(tempDir, { recursive: true, force: true })
     console.log(`  Cleaned up temporary directory`)
   }
 }
 
-/**
- * Main function to check and update packages
- */
-async function main() {
+async function main(): Promise<void> {
   const packagesDir = path.join(process.cwd(), 'packages')
   const packages = fs.readdirSync(packagesDir).filter((f) => {
     const stat = fs.statSync(path.join(packagesDir, f))
     return stat.isDirectory()
   })
 
-  const updates = []
+  const updates: UpdateInfo[] = []
   let updateSummary = ''
 
   for (const pkg of packages) {
@@ -334,13 +312,12 @@ async function main() {
       continue
     }
 
-    // Decode current provider info
     const decodedParam = Buffer.from(
       packageJson.pulumi.parameterization.value,
       'base64',
     ).toString('utf8')
 
-    let currentProvider
+    let currentProvider: ProviderInfo
     try {
       const parsed = JSON.parse(decodedParam)
       if (!parsed.remote || typeof parsed.remote !== 'object') {
@@ -349,11 +326,12 @@ async function main() {
       }
       currentProvider = parsed.remote
     } catch (error) {
-      console.log(`  Failed to parse parameterization: ${error.message}`)
+      console.log(
+        `  Failed to parse parameterization: ${(error as Error).message}`,
+      )
       continue
     }
 
-    // Parse namespace and name from URL
     if (!currentProvider.url || typeof currentProvider.url !== 'string') {
       console.log(`  Invalid provider URL`)
       continue
@@ -371,7 +349,6 @@ async function main() {
     console.log(`Checking ${pkg} (${namespace}/${name})...`)
     console.log(`  Current version: ${currentProvider.version}`)
 
-    // Get GitHub repository URL from registry
     const githubRepoUrl = await getGitHubRepoFromRegistry(namespace, name)
 
     if (!githubRepoUrl) {
@@ -381,7 +358,6 @@ async function main() {
 
     console.log(`  GitHub repository: ${githubRepoUrl}`)
 
-    // Fetch latest release from GitHub
     const releaseInfo = await getLatestGitHubRelease(githubRepoUrl)
 
     if (!releaseInfo || !releaseInfo.version) {
@@ -399,18 +375,17 @@ async function main() {
       continue
     }
 
-    // Update package
     updatePackage(packagePath, currentProvider, latestVersion, namespace, name)
 
     const bumpType = determineBumpType(currentProvider.version, latestVersion)
 
     updates.push({
       name: packageJson.name,
-      projectName: pkg, // The directory name which is the nx project name
+      projectName: pkg,
       oldVersion: currentProvider.version,
       newVersion: latestVersion,
       bumpType,
-      changelog, // Include changelog for potential use in release message
+      changelog,
       namespace,
       providerName: name,
     })
@@ -421,15 +396,13 @@ async function main() {
   if (updates.length > 0) {
     console.log(`\nUpdated ${updates.length} package(s)`)
 
-    // Create changeset files for each project
     try {
       const changesetsDir = path.join(process.cwd(), '.changeset')
 
       for (const update of updates) {
         console.log('changelog', `"${update.changelog}"`)
 
-        // Create changeset message
-        let changesetMessage = update.changelog
+        const changesetMessage = update.changelog
           ? update.changelog
           : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
 
@@ -437,13 +410,11 @@ async function main() {
           `\nCreating changeset for ${update.name} (${update.bumpType})...`,
         )
 
-        // Generate a unique filename using timestamp and package name
         const timestamp = Date.now()
         const sanitizedName = update.name.replace(/[^a-z0-9]/gi, '-')
         const changesetFilename = `${sanitizedName}-${timestamp}.md`
         const changesetPath = path.join(changesetsDir, changesetFilename)
 
-        // Create changeset content
         const changesetContent = `---
 '${update.name}': ${update.bumpType}
 ---
@@ -455,7 +426,6 @@ ${changesetMessage}
         console.log(`  Created changeset: ${changesetFilename}`)
       }
 
-      // Stage all changes
       const gitResult = childProcess.spawnSync('git', ['add', '.'], {
         stdio: 'inherit',
         cwd: process.cwd(),
@@ -471,7 +441,6 @@ ${changesetMessage}
       process.exit(1)
     }
 
-    // Set outputs for GitHub Actions
     if (process.env.GITHUB_OUTPUT) {
       fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_updates=true\n`)
     }
@@ -483,14 +452,14 @@ ${changesetMessage}
   }
 }
 
-if (require.main === module) {
+if (import.meta.filename === process.argv[1]) {
   main().catch((error) => {
     console.error('Error:', error)
     process.exit(1)
   })
 }
 
-module.exports = {
+export {
   determineBumpType,
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,

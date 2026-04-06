@@ -1,5 +1,5 @@
 import type { CreateNodesResult } from '@nx/devkit'
-import { Plugin } from './utils/plugin'
+import { Plugin } from './utils/plugin.ts'
 import { dirname } from 'node:path'
 
 class BuildPlugin extends Plugin {
