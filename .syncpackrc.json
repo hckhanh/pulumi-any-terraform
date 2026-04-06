@@ -35,6 +35,7 @@
   ],
   "versionGroups": [
     {
+      "label": "Peer dependencies can be ignored",
       "dependencies": ["**"],
       "dependencyTypes": ["peer"],
       "packages": ["**"],
