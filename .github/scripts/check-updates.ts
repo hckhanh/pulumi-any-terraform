@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-import fs from 'node:fs'
-import path from 'node:path'
 import childProcess from 'node:child_process'
+import fs from 'node:fs'
 import os from 'node:os'
+import path from 'node:path'
+import * as prettier from 'prettier'
 
 interface ProviderInfo {
   url: string
@@ -12,6 +13,7 @@ interface ProviderInfo {
 
 interface ReleaseInfo {
   version: string | null
+  tagName: string | null
   changelog: string | null
 }
 
@@ -26,6 +28,76 @@ interface UpdateInfo {
   changelog: string | null
   namespace: string
   providerName: string
+  githubRepoUrl: string
+  newTagName: string
+}
+
+async function normalizeChangelog(content: string): Promise<string> {
+  const lines = content.split('\n')
+
+  let startIndex = 0
+
+  // Skip leading blank lines
+  while (startIndex < lines.length && lines[startIndex].trim() === '') {
+    startIndex++
+  }
+
+  // Strip first line if it's a title heading matching known patterns
+  if (startIndex < lines.length) {
+    const firstLine = lines[startIndex].trim()
+    if (/^#{1,3}\s+(Release\s|v\d|Changelog|What's Changed)/i.test(firstLine)) {
+      startIndex++
+      // Also skip blank line immediately after the stripped heading
+      if (startIndex < lines.length && lines[startIndex].trim() === '') {
+        startIndex++
+      }
+    }
+  }
+
+  // Demote headings so they nest under changesets' ### Minor/Patch Changes.
+  // Track fenced code blocks to avoid mutating content inside them.
+  let inCodeFence = false
+  const demoted: string[] = []
+
+  for (const line of lines.slice(startIndex)) {
+    if (/^(`{3,}|~{3,})/.test(line.trim())) {
+      inCodeFence = !inCodeFence
+      demoted.push(line)
+      continue
+    }
+
+    if (inCodeFence) {
+      demoted.push(line)
+      continue
+    }
+
+    // Levels 1-3 become 4, level 4 becomes 5, level 5+ becomes 6 (max)
+    const headingMatch = line.match(/^(#{1,6})\s/)
+    if (headingMatch) {
+      const currentLevel = headingMatch[1].length
+      const newLevel = Math.min(
+        currentLevel + (4 - Math.min(currentLevel, 3)),
+        6,
+      )
+      demoted.push('#'.repeat(newLevel) + line.slice(headingMatch[1].length))
+    } else {
+      demoted.push(line)
+    }
+  }
+
+  let normalized = demoted.join('\n').trim()
+
+  // Shorten 40-char SHAs to 7-char in repo@sha format for readability
+  normalized = normalized.replace(
+    /([A-Za-z0-9._-]+\/[A-Za-z0-9._-]+)@([a-f0-9]{40})/g,
+    (_, repo, sha) => `${repo}@${sha.slice(0, 7)}`,
+  )
+
+  // Use prettier to format markdown (handles blank lines around headings,
+  // preserves code fences, and ensures consistent formatting)
+  normalized = await prettier.format(normalized, { parser: 'markdown' })
+
+  return normalized.trim()
 }
 
 function determineBumpType(oldVersion: string, newVersion: string): BumpType {
@@ -74,9 +146,7 @@ async function getLatestGitHubRelease(
   repoUrl: string,
 ): Promise<ReleaseInfo | null> {
   try {
-    const match = repoUrl.match(
-      /github\.com\/([^\/]+\/[^\/]+?)(?:\.git|\/.*)?$/,
-    )
+    const match = repoUrl.match(/github\.com\/([^/]+\/[^/]+?)(?:\.git|\/.*)?$/)
     if (!match) {
       console.error(`Invalid GitHub URL: ${repoUrl}`)
       return null
@@ -105,13 +175,15 @@ async function getLatestGitHubRelease(
 
     const data = await response.json()
 
-    let version: string | undefined = data.tag_name
+    const tagName: string | undefined = data.tag_name
+    let version = tagName
     if (version && version.startsWith('v')) {
       version = version.substring(1)
     }
 
     return {
       version: version || null,
+      tagName: tagName || null,
       changelog:
         data.body
           ?.trim()
@@ -366,6 +438,7 @@ async function main(): Promise<void> {
     }
 
     const latestVersion = releaseInfo.version
+    const newTagName = releaseInfo.tagName || latestVersion
     const changelog = releaseInfo.changelog
 
     console.log(`  Latest version: ${latestVersion}`)
@@ -388,6 +461,8 @@ async function main(): Promise<void> {
       changelog,
       namespace,
       providerName: name,
+      githubRepoUrl,
+      newTagName,
     })
 
     updateSummary += `- **${packageJson.name}**: ${currentProvider.version} → ${latestVersion}\n`
@@ -403,8 +478,8 @@ async function main(): Promise<void> {
         console.log('changelog', `"${update.changelog}"`)
 
         const changesetMessage = update.changelog
-          ? update.changelog
-          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
+          ? await normalizeChangelog(update.changelog)
+          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}\n\n**Full Changelog**: ${update.githubRepoUrl}/compare/${update.newTagName.startsWith('v') ? 'v' : ''}${update.oldVersion}...${update.newTagName}`
 
         console.log(
           `\nCreating changeset for ${update.name} (${update.bumpType})...`,
@@ -460,10 +535,11 @@ if (import.meta.filename === process.argv[1]) {
 }
 
 export {
+  copyDirectory,
   determineBumpType,
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,
-  copyDirectory,
-  updatePackage,
   main,
+  normalizeChangelog,
+  updatePackage,
 }

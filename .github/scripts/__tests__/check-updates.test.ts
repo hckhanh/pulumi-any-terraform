@@ -1,16 +1,17 @@
+import assert from 'node:assert/strict'
+import childProcess from 'node:child_process'
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 import type { MockFunctionContext } from 'node:test'
 import { afterEach, beforeEach, describe, it, mock } from 'node:test'
-import assert from 'node:assert/strict'
-import fs from 'node:fs'
-import path from 'node:path'
-import os from 'node:os'
-import childProcess from 'node:child_process'
 import {
   copyDirectory,
   determineBumpType,
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,
   main,
+  normalizeChangelog,
   updatePackage,
 } from '../check-updates.ts'
 
@@ -96,6 +97,100 @@ describe('determineBumpType', () => {
 
   it('returns major when both major and minor change', () => {
     assert.equal(determineBumpType('1.2.3', '2.1.0'), 'major')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// normalizeChangelog
+// ---------------------------------------------------------------------------
+
+describe('normalizeChangelog', () => {
+  it('strips "## Changelog" title heading', async () => {
+    const input = '## Changelog\n\n### Bug Fixes\n- fix something'
+    const result = await normalizeChangelog(input)
+    assert.equal(result, '#### Bug Fixes\n\n- fix something')
+  })
+
+  it('strips "## What\'s Changed" title heading', async () => {
+    const input = "## What's Changed\n\n- feat: add feature by @user"
+    const result = await normalizeChangelog(input)
+    assert.equal(result, '- feat: add feature by @user')
+  })
+
+  it('strips "# Release vX.Y.Z" title heading', async () => {
+    const input = '# Release v1.27.0\n\n### Resource Timeouts\n- Added timeouts'
+    const result = await normalizeChangelog(input)
+    assert.equal(result, '#### Resource Timeouts\n\n- Added timeouts')
+  })
+
+  it('demotes ### headings to ####', async () => {
+    const input =
+      '### Bug Fixes\n- fix something\n### Features\n- add something'
+    const result = await normalizeChangelog(input)
+    assert.ok(result.includes('#### Bug Fixes'))
+    assert.ok(result.includes('#### Features'))
+  })
+
+  it('demotes #### headings to #####', async () => {
+    const input = '#### Sub-section\n- detail'
+    const result = await normalizeChangelog(input)
+    assert.ok(result.startsWith('##### Sub-section'))
+  })
+
+  it('caps heading demotion at level 6', async () => {
+    const input = '###### Deep heading\n- detail'
+    const result = await normalizeChangelog(input)
+    assert.ok(result.startsWith('###### Deep heading'))
+  })
+
+  it('shortens 40-char SHAs to 7-char in repo@sha format', async () => {
+    const sha = 'abcdef1234567890abcdef1234567890abcdef12'
+    const input = `- Owner/repo@${sha}: fix something`
+    const result = await normalizeChangelog(input)
+    assert.equal(result, `- Owner/repo@${sha.slice(0, 7)}: fix something`)
+  })
+
+  it('ensures blank lines around headings', async () => {
+    const input =
+      '### Bug Fixes\n- fix something\n### Features\n- add something'
+    const result = await normalizeChangelog(input)
+    assert.equal(
+      result,
+      '#### Bug Fixes\n\n- fix something\n\n#### Features\n\n- add something',
+    )
+  })
+
+  it('passes through content with no headings', async () => {
+    const input = '- fix something\n- add something'
+    const result = await normalizeChangelog(input)
+    assert.equal(result, '- fix something\n- add something')
+  })
+
+  it('handles empty content', async () => {
+    const result = await normalizeChangelog('')
+    assert.equal(result, '')
+  })
+
+  it('skips leading blank lines', async () => {
+    const input = '\n\n### Bug Fixes\n- fix something'
+    const result = await normalizeChangelog(input)
+    assert.equal(result, '#### Bug Fixes\n\n- fix something')
+  })
+
+  it('does not modify headings inside fenced code blocks', async () => {
+    const input =
+      '### Bug Fixes\n\n```yaml\n### comment in code\nkey: value\n```\n\n### Features\n- new feature'
+    const result = await normalizeChangelog(input)
+    assert.ok(result.includes('#### Bug Fixes'))
+    assert.ok(result.includes('### comment in code'))
+    assert.ok(result.includes('#### Features'))
+  })
+
+  it('does not insert blank lines inside fenced code blocks', async () => {
+    const input = '```\n### heading\ncontent\n```'
+    const result = await normalizeChangelog(input)
+    assert.ok(!result.includes('### heading\n\ncontent'))
+    assert.ok(result.includes('### heading\ncontent'))
   })
 })
 
@@ -1134,6 +1229,14 @@ describe('main', () => {
       'utf8',
     )
     assert.ok(content.includes('Update pulumi-nolog from 1.0.0 to 1.0.1'))
+    assert.ok(
+      content.includes('**Full Changelog**:'),
+      'Should include Full Changelog link',
+    )
+    assert.ok(
+      content.includes('/compare/v1.0.0...v1.0.1'),
+      'Compare link should use correct tag format',
+    )
   })
 
   it('does not throw when GITHUB_OUTPUT is not set', async () => {
