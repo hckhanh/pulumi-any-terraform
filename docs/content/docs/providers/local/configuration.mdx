@@ -1,0 +1,177 @@
+---
+title: Configuration
+description: Configure the Local provider for filesystem resource management
+---
+
+The Local provider allows you to manage local filesystem resources in your infrastructure, useful for generating configuration files, storing deployment artifacts, and managing sensitive credentials.
+
+## Provider Configuration
+
+The Local provider doesn't require authentication or API credentials. It's a utility provider that operates on the local filesystem.
+
+### Basic Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as local from "pulumi-local";
+
+// No provider configuration needed
+// Resources can be used directly
+const file = new local.File("example", {
+    filename: "/tmp/example.txt",
+    content: "Hello, world!",
+});
+```
+
+### Provider Instance (Optional)
+
+While not required, you can explicitly create a provider instance:
+
+```typescript
+const provider = new local.Provider("local-provider", {
+    // No configuration options required
+});
+
+const file = new local.File("with-provider", {
+    filename: "/tmp/example.txt",
+    content: "Hello, world!",
+}, { provider });
+```
+
+## Configuration Reference
+
+The Local provider has no required configuration options. All functionality is available without setup.
+
+### Resource Options
+
+Individual resources support the following common options:
+
+- **filename**: Path to the file to create or read (required)
+- **content**: Content to write to the file
+- **contentBase64**: Base64-encoded content to write
+- **filePermission**: File permissions (e.g., `"0644"`)
+- **directoryPermission**: Directory permissions for parent directories (e.g., `"0755"`)
+
+## Use Cases
+
+The Local provider is commonly used for:
+
+1. **Configuration Generation**: Generate config files from Pulumi outputs
+2. **Deployment Artifacts**: Write deployment metadata and artifacts
+3. **Credential Management**: Store credentials from other providers locally
+4. **Template Rendering**: Generate files from templates with dynamic values
+5. **Command Execution**: Run local commands to gather information
+
+## File Permissions
+
+### Standard Files
+
+```typescript
+const configFile = new local.File("config", {
+    filename: "/tmp/app.conf",
+    content: "key=value",
+    filePermission: "0644",
+    directoryPermission: "0755",
+});
+```
+
+### Sensitive Files
+
+Sensitive files automatically use restrictive permissions:
+
+```typescript
+const secretFile = new local.SensitiveFile("secret", {
+    filename: "/tmp/secret.key",
+    content: "sensitive-data",
+    filePermission: "0600", // Owner read/write only
+});
+```
+
+## Integration Examples
+
+### With Cloud Providers
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as local from "pulumi-local";
+
+// Write cloud provider outputs to local files
+const outputs = new local.File("stack-outputs", {
+    filename: "./outputs.json",
+    content: pulumi.interpolate`{
+    "stack": "${pulumi.getStack()}",
+    "project": "${pulumi.getProject()}"
+}`,
+});
+```
+
+### With CI/CD Pipelines
+
+```typescript
+import * as local from "pulumi-local";
+
+// Generate CI configuration
+const ciConfig = new local.File("ci-config", {
+    filename: "./.generated/ci-vars.env",
+    content: `DEPLOY_ENV=production
+VERSION=1.0.0
+REGION=us-east-1`,
+});
+```
+
+## Best Practices
+
+### Use Absolute Paths
+
+```typescript
+// Good: Absolute path
+const file = new local.File("config", {
+    filename: "/opt/app/config.json",
+    content: "{}",
+});
+
+// Caution: Relative paths depend on working directory
+const relative = new local.File("relative", {
+    filename: "./config.json",
+    content: "{}",
+});
+```
+
+### Protect Sensitive Data
+
+```typescript
+// Use SensitiveFile for credentials
+const creds = new local.SensitiveFile("creds", {
+    filename: "/etc/app/credentials.json",
+    content: sensitiveContent,
+    filePermission: "0600",
+});
+```
+
+### Clean Up Generated Files
+
+Generated files are managed by Pulumi state. When a resource is destroyed, the corresponding file is removed.
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue: Permission denied**
+```
+Error: EACCES: permission denied
+```
+Solution: Ensure the Pulumi process has write permissions to the target directory.
+
+**Issue: Directory not found**
+```
+Error: ENOENT: no such file or directory
+```
+Solution: The parent directory must exist. Use `directoryPermission` to create parent directories automatically.
+
+**Issue: File not updating**
+Solution: Verify the `content` input has actually changed. Pulumi only updates resources when inputs differ.
+
+## Next Steps
+
+- [File Resource](/docs/providers/local/file) - Create and manage local files
+- [Sensitive File Resource](/docs/providers/local/sensitive-file) - Handle sensitive file content

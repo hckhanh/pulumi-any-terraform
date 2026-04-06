@@ -1,0 +1,15 @@
+{
+  "title": "Buildkite",
+  "description": "CI/CD pipeline and agent management",
+  "root": true,
+  "icon": "Hammer",
+  "pages": [
+    "index",
+    "configuration",
+    "---Resources",
+    "pipeline",
+    "cluster",
+    "team",
+    "agent-token"
+  ]
+}
