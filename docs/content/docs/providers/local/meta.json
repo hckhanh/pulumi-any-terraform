@@ -3,11 +3,5 @@
   "description": "Local filesystem resource management",
   "root": true,
   "icon": "FileText",
-  "pages": [
-    "index",
-    "configuration",
-    "---Resources",
-    "file",
-    "sensitive-file"
-  ]
+  "pages": ["index", "configuration", "---Resources", "file", "sensitive-file"]
 }
