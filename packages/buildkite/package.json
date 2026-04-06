@@ -55,8 +55,8 @@
     "version": "1.1.1",
     "parameterization": {
       "name": "buildkite",
-      "version": "1.31.1",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zMS4xIn19"
+      "version": "1.32.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zMi4wIn19"
     }
   }
 }
