@@ -1229,6 +1229,14 @@ describe('main', () => {
       'utf8',
     )
     assert.ok(content.includes('Update pulumi-nolog from 1.0.0 to 1.0.1'))
+    assert.ok(
+      content.includes('**Full Changelog**:'),
+      'Should include Full Changelog link',
+    )
+    assert.ok(
+      content.includes('/compare/v1.0.0...v1.0.1'),
+      'Compare link should use correct tag format',
+    )
   })
 
   it('does not throw when GITHUB_OUTPUT is not set', async () => {

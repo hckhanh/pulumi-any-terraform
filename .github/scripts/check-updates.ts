@@ -13,6 +13,7 @@ interface ProviderInfo {
 
 interface ReleaseInfo {
   version: string | null
+  tagName: string | null
   changelog: string | null
 }
 
@@ -28,6 +29,7 @@ interface UpdateInfo {
   namespace: string
   providerName: string
   githubRepoUrl: string
+  newTagName: string
 }
 
 async function normalizeChangelog(content: string): Promise<string> {
@@ -173,13 +175,15 @@ async function getLatestGitHubRelease(
 
     const data = await response.json()
 
-    let version: string | undefined = data.tag_name
+    const tagName: string | undefined = data.tag_name
+    let version = tagName
     if (version && version.startsWith('v')) {
       version = version.substring(1)
     }
 
     return {
       version: version || null,
+      tagName: tagName || null,
       changelog:
         data.body
           ?.trim()
@@ -434,6 +438,7 @@ async function main(): Promise<void> {
     }
 
     const latestVersion = releaseInfo.version
+    const newTagName = releaseInfo.tagName || latestVersion
     const changelog = releaseInfo.changelog
 
     console.log(`  Latest version: ${latestVersion}`)
@@ -457,6 +462,7 @@ async function main(): Promise<void> {
       namespace,
       providerName: name,
       githubRepoUrl,
+      newTagName,
     })
 
     updateSummary += `- **${packageJson.name}**: ${currentProvider.version} → ${latestVersion}\n`
@@ -473,7 +479,7 @@ async function main(): Promise<void> {
 
         const changesetMessage = update.changelog
           ? await normalizeChangelog(update.changelog)
-          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}\n\n**Full Changelog**: ${update.githubRepoUrl}/compare/v${update.oldVersion}...v${update.newVersion}`
+          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}\n\n**Full Changelog**: ${update.githubRepoUrl}/compare/${update.newTagName.startsWith('v') ? 'v' : ''}${update.oldVersion}...${update.newTagName}`
 
         console.log(
           `\nCreating changeset for ${update.name} (${update.bumpType})...`,
