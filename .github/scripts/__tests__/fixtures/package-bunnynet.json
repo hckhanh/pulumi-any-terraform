@@ -1,0 +1,14 @@
+{
+  "name": "pulumi-bunnynet",
+  "version": "0.13.1",
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "1.1.1",
+    "parameterization": {
+      "name": "bunnynet",
+      "version": "0.14.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuMTQuMCJ9fQ=="
+    }
+  }
+}

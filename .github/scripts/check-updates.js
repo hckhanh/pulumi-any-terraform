@@ -2,7 +2,7 @@
 
 const fs = require('node:fs')
 const path = require('node:path')
-const { spawnSync } = require('node:child_process')
+const childProcess = require('node:child_process')
 const os = require('node:os')
 
 /**
@@ -172,7 +172,7 @@ function updatePackage(
 
     // Initialize Pulumi project with TypeScript template
     // Set a passphrase for the temporary project (not used for secrets)
-    const initResult = spawnSync(
+    const initResult = childProcess.spawnSync(
       'pulumi',
       ['new', 'typescript', '--yes', '--force'],
       {
@@ -195,7 +195,7 @@ function updatePackage(
     console.log(
       `  Running: pulumi package add terraform-provider ${namespace}/${providerName} ${newVersion}`,
     )
-    const addResult = spawnSync(
+    const addResult = childProcess.spawnSync(
       'pulumi',
       ['package', 'add', 'terraform-provider', currentProvider.url, newVersion],
       {
@@ -456,7 +456,7 @@ ${changesetMessage}
       }
 
       // Stage all changes
-      const gitResult = spawnSync('git', ['add', '.'], {
+      const gitResult = childProcess.spawnSync('git', ['add', '.'], {
         stdio: 'inherit',
         cwd: process.cwd(),
       })
@@ -483,7 +483,18 @@ ${changesetMessage}
   }
 }
 
-main().catch((error) => {
-  console.error('Error:', error)
-  process.exit(1)
-})
+if (require.main === module) {
+  main().catch((error) => {
+    console.error('Error:', error)
+    process.exit(1)
+  })
+}
+
+module.exports = {
+  determineBumpType,
+  getGitHubRepoFromRegistry,
+  getLatestGitHubRelease,
+  copyDirectory,
+  updatePackage,
+  main,
+}
