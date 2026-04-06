@@ -35,13 +35,13 @@ pnpm nx run root:syncpack:format
 
 ### Generated vs Hand-written Code
 
-| Location | Type | Editable? |
-|---|---|---|
-| `packages/*/` (`.ts` files) | Auto-generated Pulumi provider SDKs | No |
-| `packages/*/scripts/postinstall.js` | Build scripts (run `tsc`) | Template, rarely edit |
-| `tools/` | Hand-written Nx build plugins | Yes |
-| `.github/scripts/check-updates.js` | CI automation for upstream provider updates | Yes |
-| `docs/` | Fumadocs documentation site | Yes |
+| Location                            | Type                                        | Editable?             |
+| ----------------------------------- | ------------------------------------------- | --------------------- |
+| `packages/*/` (`.ts` files)         | Auto-generated Pulumi provider SDKs         | No                    |
+| `packages/*/scripts/postinstall.js` | Build scripts (run `tsc`)                   | Template, rarely edit |
+| `tools/`                            | Hand-written Nx build plugins               | Yes                   |
+| `.github/scripts/check-updates.js`  | CI automation for upstream provider updates | Yes                   |
+| `docs/`                             | Fumadocs documentation site                 | Yes                   |
 
 ### Nx Plugin System
 
@@ -84,6 +84,7 @@ All build orchestration is through custom Nx plugins in `tools/` that extend an 
 ### Commits
 
 Conventional commits: `type(scope): description`. Common patterns:
+
 - `chore(release): release packages`
 - `chore(release): update packages to match upstream terraform providers`
 - `chore(deps): update dependency X to vY`

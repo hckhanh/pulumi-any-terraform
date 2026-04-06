@@ -34,31 +34,31 @@ This document defines the coding standards, style conventions, and contribution 
 
 ## 3. Naming Conventions
 
-| Item | Convention | Example |
-|---|---|---|
-| Variables | `camelCase` | `packageJson`, `latestVersion` |
-| Functions | `camelCase` | `determineBumpType()`, `getEnv()` |
-| Classes | `PascalCase` | `Plugin`, `BiomePlugin`, `Provider` |
-| Constants | `camelCase` or `UPPER_SNAKE_CASE` | `_packageRef`, `MAX_RETRIES` |
-| Type imports | `import type` | `import type { CreateNodesResult } from '@nx/devkit'` |
-| File names | `camelCase.ts` (generated), `kebab-case` (packages) | `postinstall.js`, `check-updates.js` |
+| Item         | Convention                                          | Example                                               |
+| ------------ | --------------------------------------------------- | ----------------------------------------------------- |
+| Variables    | `camelCase`                                         | `packageJson`, `latestVersion`                        |
+| Functions    | `camelCase`                                         | `determineBumpType()`, `getEnv()`                     |
+| Classes      | `PascalCase`                                        | `Plugin`, `BiomePlugin`, `Provider`                   |
+| Constants    | `camelCase` or `UPPER_SNAKE_CASE`                   | `_packageRef`, `MAX_RETRIES`                          |
+| Type imports | `import type`                                       | `import type { CreateNodesResult } from '@nx/devkit'` |
+| File names   | `camelCase.ts` (generated), `kebab-case` (packages) | `postinstall.js`, `check-updates.js`                  |
 
 ## 4. Formatting Rules
 
 Formatting is enforced automatically by **Biome** (JS/TS/JSON/CSS) and **Prettier** (YAML, Markdown, HTML).
 
-| Rule | Value |
-|---|---|
-| Indentation | 2 spaces |
-| Semicolons | As needed (omitted where possible) |
-| Quotes | Single quotes (`'`) |
-| JSX quotes | Single quotes (`'`) |
-| Arrow parens | Always (`(x) => x`) |
-| End of line | LF |
-| Trailing commas | ES5 (Biome default) |
-| Line length | Biome/Prettier defaults |
-| File encoding | UTF-8 |
-| End files with | A newline |
+| Rule            | Value                              |
+| --------------- | ---------------------------------- |
+| Indentation     | 2 spaces                           |
+| Semicolons      | As needed (omitted where possible) |
+| Quotes          | Single quotes (`'`)                |
+| JSX quotes      | Single quotes (`'`)                |
+| Arrow parens    | Always (`(x) => x`)                |
+| End of line     | LF                                 |
+| Trailing commas | ES5 (Biome default)                |
+| Line length     | Biome/Prettier defaults            |
+| File encoding   | UTF-8                              |
+| End files with  | A newline                          |
 
 ### Editor Setup
 
@@ -129,12 +129,12 @@ Scripts in `.github/scripts/` and `packages/*/scripts/`:
 
 The project uses a multi-tool pipeline orchestrated by **Nx**:
 
-| Tool | Purpose | Scope |
-|---|---|---|
-| Biome | Linting + formatting (JS/TS/JSON/CSS) | `docs/` |
-| Prettier | Formatting (YAML, Markdown, HTML) | Workspace-wide (except generated packages) |
-| Syncpack | `package.json` consistency | Workspace-wide |
-| TypeScript (`tsc`) | Type checking | `tools/`, `packages/` (via postinstall) |
+| Tool               | Purpose                               | Scope                                      |
+| ------------------ | ------------------------------------- | ------------------------------------------ |
+| Biome              | Linting + formatting (JS/TS/JSON/CSS) | `docs/`                                    |
+| Prettier           | Formatting (YAML, Markdown, HTML)     | Workspace-wide (except generated packages) |
+| Syncpack           | `package.json` consistency            | Workspace-wide                             |
+| TypeScript (`tsc`) | Type checking                         | `tools/`, `packages/` (via postinstall)    |
 
 ### Running checks
 
@@ -169,12 +169,12 @@ npx nx run-many -t fix       # Auto-fix all fixable issues
 
 ## 10. CI/CD Workflows
 
-| Workflow | Trigger | Purpose |
-|---|---|---|
-| `test.yml` | Push to main, PRs | Lint, build, check affected projects |
-| `autofix.yml` | Push to main, PRs | Auto-fix formatting and dependencies |
-| `publish.yml` | Push to main, after Update | Build and publish packages to npm |
-| `update.yml` | Weekly (Monday 00:00 UTC) | Check upstream Terraform providers for updates |
+| Workflow      | Trigger                    | Purpose                                        |
+| ------------- | -------------------------- | ---------------------------------------------- |
+| `test.yml`    | Push to main, PRs          | Lint, build, check affected projects           |
+| `autofix.yml` | Push to main, PRs          | Auto-fix formatting and dependencies           |
+| `publish.yml` | Push to main, after Update | Build and publish packages to npm              |
+| `update.yml`  | Weekly (Monday 00:00 UTC)  | Check upstream Terraform providers for updates |
 
 ### Workflow conventions
 
