@@ -139,9 +139,9 @@ The project uses a multi-tool pipeline orchestrated by **Nx**:
 ### Running checks
 
 ```bash
-npx nx run-many -t check    # Run all checks
-npx nx affected -t check    # Check only affected projects
-npx nx run-many -t fix       # Auto-fix all fixable issues
+pnpm nx run-many -t check    # Run all checks
+pnpm nx affected -t check    # Check only affected projects
+pnpm nx run-many -t fix       # Auto-fix all fixable issues
 ```
 
 ## 9. Commit and Release Practices
