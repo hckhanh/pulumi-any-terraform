@@ -4,6 +4,7 @@ import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
+import * as prettier from 'prettier'
 
 interface ProviderInfo {
   url: string
@@ -26,9 +27,10 @@ interface UpdateInfo {
   changelog: string | null
   namespace: string
   providerName: string
+  githubRepoUrl: string
 }
 
-function normalizeChangelog(content: string): string {
+async function normalizeChangelog(content: string): Promise<string> {
   const lines = content.split('\n')
 
   let startIndex = 0
@@ -50,7 +52,7 @@ function normalizeChangelog(content: string): string {
     }
   }
 
-  // Demote headings and ensure blank lines around them.
+  // Demote headings so they nest under changesets' ### Minor/Patch Changes.
   // Track fenced code blocks to avoid mutating content inside them.
   let inCodeFence = false
   const demoted: string[] = []
@@ -67,7 +69,6 @@ function normalizeChangelog(content: string): string {
       continue
     }
 
-    // Demote headings so they nest under changesets' ### Minor/Patch Changes
     // Levels 1-3 become 4, level 4 becomes 5, level 5+ becomes 6 (max)
     const headingMatch = line.match(/^(#{1,6})\s/)
     if (headingMatch) {
@@ -82,40 +83,7 @@ function normalizeChangelog(content: string): string {
     }
   }
 
-  // Ensure blank lines before and after headings for proper markdown rendering
-  inCodeFence = false
-  const result: string[] = []
-  for (let i = 0; i < demoted.length; i++) {
-    const line = demoted[i]
-
-    if (/^(`{3,}|~{3,})/.test(line.trim())) {
-      inCodeFence = !inCodeFence
-      result.push(line)
-      continue
-    }
-
-    if (inCodeFence) {
-      result.push(line)
-      continue
-    }
-
-    const isHeading = /^#{1,6}\s/.test(line)
-    if (isHeading) {
-      // Ensure blank line before heading (if not at start or already blank)
-      if (result.length > 0 && result[result.length - 1].trim() !== '') {
-        result.push('')
-      }
-      result.push(line)
-      // Ensure blank line after heading (if next line is not blank)
-      if (i + 1 < demoted.length && demoted[i + 1].trim() !== '') {
-        result.push('')
-      }
-    } else {
-      result.push(line)
-    }
-  }
-
-  let normalized = result.join('\n').trim()
+  let normalized = demoted.join('\n').trim()
 
   // Shorten 40-char SHAs to 7-char in repo@sha format for readability
   normalized = normalized.replace(
@@ -123,7 +91,11 @@ function normalizeChangelog(content: string): string {
     (_, repo, sha) => `${repo}@${sha.slice(0, 7)}`,
   )
 
-  return normalized
+  // Use prettier to format markdown (handles blank lines around headings,
+  // preserves code fences, and ensures consistent formatting)
+  normalized = await prettier.format(normalized, { parser: 'markdown' })
+
+  return normalized.trim()
 }
 
 function determineBumpType(oldVersion: string, newVersion: string): BumpType {
@@ -484,6 +456,7 @@ async function main(): Promise<void> {
       changelog,
       namespace,
       providerName: name,
+      githubRepoUrl,
     })
 
     updateSummary += `- **${packageJson.name}**: ${currentProvider.version} → ${latestVersion}\n`
@@ -499,8 +472,8 @@ async function main(): Promise<void> {
         console.log('changelog', `"${update.changelog}"`)
 
         const changesetMessage = update.changelog
-          ? normalizeChangelog(update.changelog)
-          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
+          ? await normalizeChangelog(update.changelog)
+          : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}\n\n**Full Changelog**: ${update.githubRepoUrl}/compare/v${update.oldVersion}...v${update.newVersion}`
 
         console.log(
           `\nCreating changeset for ${update.name} (${update.bumpType})...`,

@@ -105,90 +105,90 @@ describe('determineBumpType', () => {
 // ---------------------------------------------------------------------------
 
 describe('normalizeChangelog', () => {
-  it('strips "## Changelog" title heading', () => {
+  it('strips "## Changelog" title heading', async () => {
     const input = '## Changelog\n\n### Bug Fixes\n- fix something'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, '#### Bug Fixes\n\n- fix something')
   })
 
-  it('strips "## What\'s Changed" title heading', () => {
+  it('strips "## What\'s Changed" title heading', async () => {
     const input = "## What's Changed\n\n- feat: add feature by @user"
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, '- feat: add feature by @user')
   })
 
-  it('strips "# Release vX.Y.Z" title heading', () => {
+  it('strips "# Release vX.Y.Z" title heading', async () => {
     const input = '# Release v1.27.0\n\n### Resource Timeouts\n- Added timeouts'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, '#### Resource Timeouts\n\n- Added timeouts')
   })
 
-  it('demotes ### headings to ####', () => {
+  it('demotes ### headings to ####', async () => {
     const input =
       '### Bug Fixes\n- fix something\n### Features\n- add something'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.ok(result.includes('#### Bug Fixes'))
     assert.ok(result.includes('#### Features'))
   })
 
-  it('demotes #### headings to #####', () => {
+  it('demotes #### headings to #####', async () => {
     const input = '#### Sub-section\n- detail'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.ok(result.startsWith('##### Sub-section'))
   })
 
-  it('caps heading demotion at level 6', () => {
+  it('caps heading demotion at level 6', async () => {
     const input = '###### Deep heading\n- detail'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.ok(result.startsWith('###### Deep heading'))
   })
 
-  it('shortens 40-char SHAs to 7-char in repo@sha format', () => {
+  it('shortens 40-char SHAs to 7-char in repo@sha format', async () => {
     const sha = 'abcdef1234567890abcdef1234567890abcdef12'
     const input = `- Owner/repo@${sha}: fix something`
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, `- Owner/repo@${sha.slice(0, 7)}: fix something`)
   })
 
-  it('ensures blank lines around headings', () => {
+  it('ensures blank lines around headings', async () => {
     const input =
       '### Bug Fixes\n- fix something\n### Features\n- add something'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(
       result,
       '#### Bug Fixes\n\n- fix something\n\n#### Features\n\n- add something',
     )
   })
 
-  it('passes through content with no headings', () => {
+  it('passes through content with no headings', async () => {
     const input = '- fix something\n- add something'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, '- fix something\n- add something')
   })
 
-  it('handles empty content', () => {
-    const result = normalizeChangelog('')
+  it('handles empty content', async () => {
+    const result = await normalizeChangelog('')
     assert.equal(result, '')
   })
 
-  it('skips leading blank lines', () => {
+  it('skips leading blank lines', async () => {
     const input = '\n\n### Bug Fixes\n- fix something'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.equal(result, '#### Bug Fixes\n\n- fix something')
   })
 
-  it('does not modify headings inside fenced code blocks', () => {
+  it('does not modify headings inside fenced code blocks', async () => {
     const input =
       '### Bug Fixes\n\n```yaml\n### comment in code\nkey: value\n```\n\n### Features\n- new feature'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.ok(result.includes('#### Bug Fixes'))
     assert.ok(result.includes('### comment in code'))
     assert.ok(result.includes('#### Features'))
   })
 
-  it('does not insert blank lines inside fenced code blocks', () => {
+  it('does not insert blank lines inside fenced code blocks', async () => {
     const input = '```\n### heading\ncontent\n```'
-    const result = normalizeChangelog(input)
+    const result = await normalizeChangelog(input)
     assert.ok(!result.includes('### heading\n\ncontent'))
     assert.ok(result.includes('### heading\ncontent'))
   })
