@@ -8,10 +8,3 @@ allowBuilds:
   protobufjs: true
   sharp: true
 minimumReleaseAge: 2880
-overrides:
-  axios@>=1.0.0 <=1.13.4: '>=1.13.5'
-  minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
-  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
-  next@>=16.0.0-beta.0 <16.1.7: '>=16.1.7'
-  next@>=16.0.1 <16.1.7: '>=16.1.7'
-  picomatch@>=4.0.0 <4.0.4: '>=4.0.4'
