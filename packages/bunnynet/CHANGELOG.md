@@ -1,3 +1,9 @@
+## 0.14.0
+
+### Minor Changes
+
+Update pulumi-bunnynet from 0.13.4 to 0.14.0
+
 ## 0.13.1
 
 ### Patch Changes
