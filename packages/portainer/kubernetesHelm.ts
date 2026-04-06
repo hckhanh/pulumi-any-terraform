@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class KubernetesHelm extends pulumi.CustomResource {
@@ -38,6 +40,7 @@ export class KubernetesHelm extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly namespace: pulumi.Output<string>;
     declare public readonly repo: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.KubernetesHelmTimeouts | undefined>;
     declare public readonly values: pulumi.Output<string | undefined>;
 
     /**
@@ -59,6 +62,7 @@ export class KubernetesHelm extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["namespace"] = state?.namespace;
             resourceInputs["repo"] = state?.repo;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["values"] = state?.values;
         } else {
             const args = argsOrState as KubernetesHelmArgs | undefined;
@@ -80,6 +84,7 @@ export class KubernetesHelm extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["repo"] = args?.repo;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["values"] = args?.values;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -97,6 +102,7 @@ export interface KubernetesHelmState {
     name?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts>;
     values?: pulumi.Input<string>;
 }
 
@@ -110,5 +116,6 @@ export interface KubernetesHelmArgs {
     name?: pulumi.Input<string>;
     namespace: pulumi.Input<string>;
     repo: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts>;
     values?: pulumi.Input<string>;
 }

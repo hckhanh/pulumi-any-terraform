@@ -81,6 +81,7 @@
         "projectEnvironment.ts",
         "projectGroup.ts",
         "projectIdentity.ts",
+        "projectIdentityProvisioning.ts",
         "projectIdentitySpecificPrivilege.ts",
         "projectRole.ts",
         "projectTemplate.ts",

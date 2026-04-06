@@ -1043,6 +1043,17 @@ export interface ProjectIdentityIdentity {
     name?: pulumi.Input<string>;
 }
 
+export interface ProjectIdentityProvisioningMetadata {
+    /**
+     * The key of the metadata entry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value of the metadata entry.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ProjectIdentityRole {
     /**
      * The id of the custom role slug

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class EdgeStack extends pulumi.CustomResource {
@@ -75,6 +77,7 @@ export class EdgeStack extends pulumi.CustomResource {
      * Enable autoUpdate webhook (GitOps).
      */
     declare public readonly stackWebhook: pulumi.Output<boolean | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.EdgeStackTimeouts | undefined>;
     declare public readonly updateInterval: pulumi.Output<string | undefined>;
     declare public readonly useManifestNamespaces: pulumi.Output<boolean | undefined>;
     /**
@@ -121,6 +124,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["stackFileContent"] = state?.stackFileContent;
             resourceInputs["stackFilePath"] = state?.stackFilePath;
             resourceInputs["stackWebhook"] = state?.stackWebhook;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updateInterval"] = state?.updateInterval;
             resourceInputs["useManifestNamespaces"] = state?.useManifestNamespaces;
             resourceInputs["webhookId"] = state?.webhookId;
@@ -155,6 +159,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["stackFileContent"] = args?.stackFileContent;
             resourceInputs["stackFilePath"] = args?.stackFilePath;
             resourceInputs["stackWebhook"] = args?.stackWebhook;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["updateInterval"] = args?.updateInterval;
             resourceInputs["useManifestNamespaces"] = args?.useManifestNamespaces;
             resourceInputs["webhookId"] = undefined /*out*/;
@@ -214,6 +219,7 @@ export interface EdgeStackState {
      * Enable autoUpdate webhook (GitOps).
      */
     stackWebhook?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts>;
     updateInterval?: pulumi.Input<string>;
     useManifestNamespaces?: pulumi.Input<boolean>;
     /**
@@ -273,6 +279,7 @@ export interface EdgeStackArgs {
      * Enable autoUpdate webhook (GitOps).
      */
     stackWebhook?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts>;
     updateInterval?: pulumi.Input<string>;
     useManifestNamespaces?: pulumi.Input<boolean>;
 }

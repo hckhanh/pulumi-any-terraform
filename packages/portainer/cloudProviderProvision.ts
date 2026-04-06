@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class CloudProviderProvision extends pulumi.CustomResource {
@@ -41,6 +43,7 @@ export class CloudProviderProvision extends pulumi.CustomResource {
      * Raw payload with provisioning parameters.
      */
     declare public readonly payload: pulumi.Output<{[key: string]: string}>;
+    declare public readonly timeouts: pulumi.Output<outputs.CloudProviderProvisionTimeouts | undefined>;
 
     /**
      * Create a CloudProviderProvision resource with the given unique name, arguments, and options.
@@ -58,6 +61,7 @@ export class CloudProviderProvision extends pulumi.CustomResource {
             resourceInputs["cloudProvider"] = state?.cloudProvider;
             resourceInputs["cloudProviderProvisionId"] = state?.cloudProviderProvisionId;
             resourceInputs["payload"] = state?.payload;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as CloudProviderProvisionArgs | undefined;
             if (args?.cloudProvider === undefined && !opts.urn) {
@@ -69,6 +73,7 @@ export class CloudProviderProvision extends pulumi.CustomResource {
             resourceInputs["cloudProvider"] = args?.cloudProvider;
             resourceInputs["cloudProviderProvisionId"] = args?.cloudProviderProvisionId;
             resourceInputs["payload"] = args?.payload;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudProviderProvision.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -88,6 +93,7 @@ export interface CloudProviderProvisionState {
      * Raw payload with provisioning parameters.
      */
     payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts>;
 }
 
 /**
@@ -103,4 +109,5 @@ export interface CloudProviderProvisionArgs {
      * Raw payload with provisioning parameters.
      */
     payload: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts>;
 }

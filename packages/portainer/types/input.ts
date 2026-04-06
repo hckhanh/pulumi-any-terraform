@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudProviderProvisionTimeouts {
+    create?: pulumi.Input<string>;
+}
+
+export interface ContainerExecTimeouts {
+    create?: pulumi.Input<string>;
+}
+
+export interface DeployTimeouts {
+    create?: pulumi.Input<string>;
+}
+
+export interface DockerImageTimeouts {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
+}
+
 export interface DockerNetworkIpamConfig {
     auxiliaryAddresses?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     gateway?: pulumi.Input<string>;
@@ -58,6 +75,12 @@ export interface DockerVolumeClusterVolumeSpecSecret {
     secret: pulumi.Input<string>;
 }
 
+export interface EdgeStackTimeouts {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
+    update?: pulumi.Input<string>;
+}
+
 export interface EndpointSettingsChangeWindow {
     enabled?: pulumi.Input<boolean>;
     endTime?: pulumi.Input<string>;
@@ -86,6 +109,17 @@ export interface EndpointSettingsSecuritySettings {
     allowSysctlSetting?: pulumi.Input<boolean>;
     allowVolumeBrowser?: pulumi.Input<boolean>;
     enableHostManagement?: pulumi.Input<boolean>;
+}
+
+export interface KubernetesApplicationTimeouts {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
+    update?: pulumi.Input<string>;
+}
+
+export interface KubernetesHelmTimeouts {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
 }
 
 export interface KubernetesIngresscontrollersController {
@@ -200,4 +234,10 @@ export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
 export interface StackEnv {
     name: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface StackTimeouts {
+    create?: pulumi.Input<string>;
+    delete?: pulumi.Input<string>;
+    update?: pulumi.Input<string>;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class KubernetesApplication extends pulumi.CustomResource {
@@ -36,6 +38,7 @@ export class KubernetesApplication extends pulumi.CustomResource {
     declare public readonly kubernetesApplicationId: pulumi.Output<string>;
     declare public readonly manifest: pulumi.Output<string>;
     declare public readonly namespace: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.KubernetesApplicationTimeouts | undefined>;
 
     /**
      * Create a KubernetesApplication resource with the given unique name, arguments, and options.
@@ -54,6 +57,7 @@ export class KubernetesApplication extends pulumi.CustomResource {
             resourceInputs["kubernetesApplicationId"] = state?.kubernetesApplicationId;
             resourceInputs["manifest"] = state?.manifest;
             resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as KubernetesApplicationArgs | undefined;
             if (args?.endpointId === undefined && !opts.urn) {
@@ -69,6 +73,7 @@ export class KubernetesApplication extends pulumi.CustomResource {
             resourceInputs["kubernetesApplicationId"] = args?.kubernetesApplicationId;
             resourceInputs["manifest"] = args?.manifest;
             resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesApplication.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -83,6 +88,7 @@ export interface KubernetesApplicationState {
     kubernetesApplicationId?: pulumi.Input<string>;
     manifest?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts>;
 }
 
 /**
@@ -93,4 +99,5 @@ export interface KubernetesApplicationArgs {
     kubernetesApplicationId?: pulumi.Input<string>;
     manifest: pulumi.Input<string>;
     namespace: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts>;
 }

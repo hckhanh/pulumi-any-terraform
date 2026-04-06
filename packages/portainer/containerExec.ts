@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ContainerExec extends pulumi.CustomResource {
@@ -41,6 +43,7 @@ export class ContainerExec extends pulumi.CustomResource {
     declare public readonly mode: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly output: pulumi.Output<string>;
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.ContainerExecTimeouts | undefined>;
     declare public readonly user: pulumi.Output<string | undefined>;
     declare public readonly wait: pulumi.Output<number | undefined>;
 
@@ -63,6 +66,7 @@ export class ContainerExec extends pulumi.CustomResource {
             resourceInputs["mode"] = state?.mode;
             resourceInputs["output"] = state?.output;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["user"] = state?.user;
             resourceInputs["wait"] = state?.wait;
         } else {
@@ -81,6 +85,7 @@ export class ContainerExec extends pulumi.CustomResource {
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["mode"] = args?.mode;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["user"] = args?.user;
             resourceInputs["wait"] = args?.wait;
             resourceInputs["output"] = undefined /*out*/;
@@ -103,6 +108,7 @@ export interface ContainerExecState {
     mode?: pulumi.Input<string>;
     output?: pulumi.Input<string>;
     serviceName?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts>;
     user?: pulumi.Input<string>;
     wait?: pulumi.Input<number>;
 }
@@ -119,6 +125,7 @@ export interface ContainerExecArgs {
      */
     mode?: pulumi.Input<string>;
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts>;
     user?: pulumi.Input<string>;
     wait?: pulumi.Input<number>;
 }

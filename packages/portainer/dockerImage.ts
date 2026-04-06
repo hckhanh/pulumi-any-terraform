@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class DockerImage extends pulumi.CustomResource {
@@ -36,6 +38,7 @@ export class DockerImage extends pulumi.CustomResource {
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly image: pulumi.Output<string>;
     declare public readonly registryAuth: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.DockerImageTimeouts | undefined>;
 
     /**
      * Create a DockerImage resource with the given unique name, arguments, and options.
@@ -54,6 +57,7 @@ export class DockerImage extends pulumi.CustomResource {
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["image"] = state?.image;
             resourceInputs["registryAuth"] = state?.registryAuth;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as DockerImageArgs | undefined;
             if (args?.endpointId === undefined && !opts.urn) {
@@ -66,6 +70,7 @@ export class DockerImage extends pulumi.CustomResource {
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["image"] = args?.image;
             resourceInputs["registryAuth"] = args?.registryAuth ? pulumi.secret(args.registryAuth) : undefined;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["registryAuth"] };
@@ -82,6 +87,7 @@ export interface DockerImageState {
     endpointId?: pulumi.Input<number>;
     image?: pulumi.Input<string>;
     registryAuth?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DockerImageTimeouts>;
 }
 
 /**
@@ -92,4 +98,5 @@ export interface DockerImageArgs {
     endpointId: pulumi.Input<number>;
     image: pulumi.Input<string>;
     registryAuth?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DockerImageTimeouts>;
 }

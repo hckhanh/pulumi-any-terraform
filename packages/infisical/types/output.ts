@@ -1122,6 +1122,17 @@ export interface ProjectIdentityIdentity {
     name: string;
 }
 
+export interface ProjectIdentityProvisioningMetadata {
+    /**
+     * The key of the metadata entry.
+     */
+    key: string;
+    /**
+     * The value of the metadata entry.
+     */
+    value: string;
+}
+
 export interface ProjectIdentityRole {
     /**
      * The id of the custom role slug

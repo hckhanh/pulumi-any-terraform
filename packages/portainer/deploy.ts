@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Deploy extends pulumi.CustomResource {
@@ -52,6 +54,7 @@ export class Deploy extends pulumi.CustomResource {
      */
     declare public readonly stackEnvVar: pulumi.Output<string>;
     declare public readonly stackName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DeployTimeouts | undefined>;
     /**
      * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
      */
@@ -82,6 +85,7 @@ export class Deploy extends pulumi.CustomResource {
             resourceInputs["servicesList"] = state?.servicesList;
             resourceInputs["stackEnvVar"] = state?.stackEnvVar;
             resourceInputs["stackName"] = state?.stackName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updateRevision"] = state?.updateRevision;
             resourceInputs["wait"] = state?.wait;
         } else {
@@ -108,6 +112,7 @@ export class Deploy extends pulumi.CustomResource {
             resourceInputs["servicesList"] = args?.servicesList;
             resourceInputs["stackEnvVar"] = args?.stackEnvVar;
             resourceInputs["stackName"] = args?.stackName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["updateRevision"] = args?.updateRevision;
             resourceInputs["wait"] = args?.wait;
             resourceInputs["output"] = undefined /*out*/;
@@ -141,6 +146,7 @@ export interface DeployState {
      */
     stackEnvVar?: pulumi.Input<string>;
     stackName?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DeployTimeouts>;
     /**
      * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
      */
@@ -174,6 +180,7 @@ export interface DeployArgs {
      */
     stackEnvVar: pulumi.Input<string>;
     stackName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DeployTimeouts>;
     /**
      * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
      */

@@ -35,9 +35,17 @@ export class Stack extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the stack should be running. Set to false to stop the stack.
+     */
+    declare public readonly active: pulumi.Output<boolean | undefined>;
+    /**
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     declare public readonly additionalFiles: pulumi.Output<string[] | undefined>;
+    /**
+     * List of additional Helm values files (e.g. values-prod.yaml). Only used with helm_chart_path.
+     */
+    declare public readonly additionalHelmValuesFiles: pulumi.Output<string[] | undefined>;
     /**
      * List of team IDs authorized to access this stack (only if ownership is restricted).
      */
@@ -53,6 +61,9 @@ export class Stack extends pulumi.CustomResource {
     declare public readonly deploymentType: pulumi.Output<string>;
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly envs: pulumi.Output<outputs.StackEnv[] | undefined>;
+    /**
+     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     */
     declare public readonly filePathInRepository: pulumi.Output<string | undefined>;
     declare public readonly filesystemPath: pulumi.Output<string | undefined>;
     /**
@@ -124,6 +135,7 @@ export class Stack extends pulumi.CustomResource {
     declare public readonly stackWebhook: pulumi.Output<boolean | undefined>;
     declare public readonly supportRelativePath: pulumi.Output<boolean | undefined>;
     declare public readonly swarmId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.StackTimeouts | undefined>;
     declare public readonly tlsskipVerify: pulumi.Output<boolean>;
     declare public readonly updateInterval: pulumi.Output<string | undefined>;
     /**
@@ -148,7 +160,9 @@ export class Stack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackState | undefined;
+            resourceInputs["active"] = state?.active;
             resourceInputs["additionalFiles"] = state?.additionalFiles;
+            resourceInputs["additionalHelmValuesFiles"] = state?.additionalHelmValuesFiles;
             resourceInputs["authorizedTeams"] = state?.authorizedTeams;
             resourceInputs["authorizedUsers"] = state?.authorizedUsers;
             resourceInputs["composeFormat"] = state?.composeFormat;
@@ -184,6 +198,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["stackWebhook"] = state?.stackWebhook;
             resourceInputs["supportRelativePath"] = state?.supportRelativePath;
             resourceInputs["swarmId"] = state?.swarmId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["tlsskipVerify"] = state?.tlsskipVerify;
             resourceInputs["updateInterval"] = state?.updateInterval;
             resourceInputs["webhookId"] = state?.webhookId;
@@ -199,7 +214,9 @@ export class Stack extends pulumi.CustomResource {
             if (args?.method === undefined && !opts.urn) {
                 throw new Error("Missing required property 'method'");
             }
+            resourceInputs["active"] = args?.active;
             resourceInputs["additionalFiles"] = args?.additionalFiles;
+            resourceInputs["additionalHelmValuesFiles"] = args?.additionalHelmValuesFiles;
             resourceInputs["authorizedTeams"] = args?.authorizedTeams;
             resourceInputs["authorizedUsers"] = args?.authorizedUsers;
             resourceInputs["composeFormat"] = args?.composeFormat;
@@ -234,6 +251,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["stackWebhook"] = args?.stackWebhook;
             resourceInputs["supportRelativePath"] = args?.supportRelativePath;
             resourceInputs["swarmId"] = args?.swarmId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["tlsskipVerify"] = args?.tlsskipVerify;
             resourceInputs["updateInterval"] = args?.updateInterval;
             resourceInputs["resourceControlId"] = undefined /*out*/;
@@ -252,9 +270,17 @@ export class Stack extends pulumi.CustomResource {
  */
 export interface StackState {
     /**
+     * Whether the stack should be running. Set to false to stop the stack.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of additional Helm values files (e.g. values-prod.yaml). Only used with helm_chart_path.
+     */
+    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of team IDs authorized to access this stack (only if ownership is restricted).
      */
@@ -270,6 +296,9 @@ export interface StackState {
     deploymentType?: pulumi.Input<string>;
     endpointId?: pulumi.Input<number>;
     envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
+    /**
+     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     */
     filePathInRepository?: pulumi.Input<string>;
     filesystemPath?: pulumi.Input<string>;
     /**
@@ -341,6 +370,7 @@ export interface StackState {
     stackWebhook?: pulumi.Input<boolean>;
     supportRelativePath?: pulumi.Input<boolean>;
     swarmId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.StackTimeouts>;
     tlsskipVerify?: pulumi.Input<boolean>;
     updateInterval?: pulumi.Input<string>;
     /**
@@ -358,9 +388,17 @@ export interface StackState {
  */
 export interface StackArgs {
     /**
+     * Whether the stack should be running. Set to false to stop the stack.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
      * List of additional Compose file paths to use when deploying from Git repository.
      */
     additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of additional Helm values files (e.g. values-prod.yaml). Only used with helm_chart_path.
+     */
+    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of team IDs authorized to access this stack (only if ownership is restricted).
      */
@@ -376,6 +414,9 @@ export interface StackArgs {
     deploymentType: pulumi.Input<string>;
     endpointId: pulumi.Input<number>;
     envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
+    /**
+     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     */
     filePathInRepository?: pulumi.Input<string>;
     filesystemPath?: pulumi.Input<string>;
     /**
@@ -446,6 +487,7 @@ export interface StackArgs {
     stackWebhook?: pulumi.Input<boolean>;
     supportRelativePath?: pulumi.Input<boolean>;
     swarmId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.StackTimeouts>;
     tlsskipVerify?: pulumi.Input<boolean>;
     updateInterval?: pulumi.Input<string>;
 }

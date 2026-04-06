@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudProviderProvisionTimeouts {
+    create?: string;
+}
+
+export interface ContainerExecTimeouts {
+    create?: string;
+}
+
+export interface DeployTimeouts {
+    create?: string;
+}
+
+export interface DockerImageTimeouts {
+    create?: string;
+    delete?: string;
+}
+
 export interface DockerNetworkIpamConfig {
     auxiliaryAddresses?: {[key: string]: string};
     gateway?: string;
@@ -58,6 +75,12 @@ export interface DockerVolumeClusterVolumeSpecSecret {
     secret: string;
 }
 
+export interface EdgeStackTimeouts {
+    create?: string;
+    delete?: string;
+    update?: string;
+}
+
 export interface EndpointSettingsChangeWindow {
     enabled?: boolean;
     endTime?: string;
@@ -86,6 +109,17 @@ export interface EndpointSettingsSecuritySettings {
     allowSysctlSetting?: boolean;
     allowVolumeBrowser?: boolean;
     enableHostManagement?: boolean;
+}
+
+export interface KubernetesApplicationTimeouts {
+    create?: string;
+    delete?: string;
+    update?: string;
+}
+
+export interface KubernetesHelmTimeouts {
+    create?: string;
+    delete?: string;
 }
 
 export interface KubernetesIngresscontrollersController {
@@ -200,5 +234,11 @@ export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
 export interface StackEnv {
     name: string;
     value: string;
+}
+
+export interface StackTimeouts {
+    create?: string;
+    delete?: string;
+    update?: string;
 }
 
