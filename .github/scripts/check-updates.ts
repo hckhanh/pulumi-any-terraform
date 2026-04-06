@@ -28,6 +28,54 @@ interface UpdateInfo {
   providerName: string
 }
 
+function normalizeChangelog(content: string): string {
+  const lines = content.split('\n')
+
+  let startIndex = 0
+
+  // Skip leading blank lines
+  while (startIndex < lines.length && lines[startIndex].trim() === '') {
+    startIndex++
+  }
+
+  // Strip first line if it's a title heading matching known patterns
+  if (startIndex < lines.length) {
+    const firstLine = lines[startIndex].trim()
+    if (/^#{1,3}\s+(Release\s|v\d|Changelog|What's Changed)/i.test(firstLine)) {
+      startIndex++
+      // Also skip blank line immediately after the stripped heading
+      if (startIndex < lines.length && lines[startIndex].trim() === '') {
+        startIndex++
+      }
+    }
+  }
+
+  const result = lines.slice(startIndex).map((line) => {
+    // Demote headings so they nest under changesets' ### Minor/Patch Changes
+    // Levels 1-3 become 4, level 4 becomes 5, level 5+ becomes 6 (max)
+    const headingMatch = line.match(/^(#{1,6})\s/)
+    if (headingMatch) {
+      const currentLevel = headingMatch[1].length
+      const newLevel = Math.min(
+        currentLevel + (4 - Math.min(currentLevel, 3)),
+        6,
+      )
+      return '#'.repeat(newLevel) + line.slice(headingMatch[1].length)
+    }
+    return line
+  })
+
+  let normalized = result.join('\n').trim()
+
+  // Shorten 40-char SHAs to 7-char in repo@sha format for readability
+  normalized = normalized.replace(
+    /([A-Za-z0-9._-]+\/[A-Za-z0-9._-]+)@([a-f0-9]{40})/g,
+    (_, repo, sha) => `${repo}@${sha.slice(0, 7)}`,
+  )
+
+  return normalized
+}
+
 function determineBumpType(oldVersion: string, newVersion: string): BumpType {
   const parseVersion = (v: string) => {
     const parts = v.replace(/^v/, '').split('.').map(Number)
@@ -116,7 +164,10 @@ async function getLatestGitHubRelease(
         data.body
           ?.trim()
           .replace(/#\d+/g, `${repoPath}$&`)
-          .replace(/[a-f0-9]{40}/g, `${repoPath}@$&`) || null,
+          .replace(
+            /[a-f0-9]{40}/g,
+            (match) => `${repoPath}@${match.slice(0, 7)}`,
+          ) || null,
     }
   } catch (error) {
     console.error(`Error fetching GitHub release from ${repoUrl}:`, error)
@@ -403,7 +454,7 @@ async function main(): Promise<void> {
         console.log('changelog', `"${update.changelog}"`)
 
         const changesetMessage = update.changelog
-          ? update.changelog
+          ? normalizeChangelog(update.changelog)
           : `Update ${update.name} from ${update.oldVersion} to ${update.newVersion}`
 
         console.log(
@@ -460,6 +511,7 @@ if (import.meta.filename === process.argv[1]) {
 }
 
 export {
+  normalizeChangelog,
   determineBumpType,
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,
