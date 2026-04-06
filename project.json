@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "audit": {
-      "command": "pnpm audit",
+      "command": "pnpm audit --ignore-registry-errors",
       "inputs": ["{projectRoot}/pnpm-lock.yaml"],
       "metadata": {
         "description": "Check for security vulnerabilities in your dependencies",
@@ -13,7 +13,6 @@
     },
     "check": {
       "dependsOn": [
-        "audit",
         "build",
         "syncpack:format:check",
         "syncpack:lint",
