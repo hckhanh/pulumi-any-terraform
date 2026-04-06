@@ -11,6 +11,7 @@ import {
   getGitHubRepoFromRegistry,
   getLatestGitHubRelease,
   main,
+  normalizeChangelog,
   updatePackage,
 } from '../check-updates.ts'
 
@@ -96,6 +97,82 @@ describe('determineBumpType', () => {
 
   it('returns major when both major and minor change', () => {
     assert.equal(determineBumpType('1.2.3', '2.1.0'), 'major')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// normalizeChangelog
+// ---------------------------------------------------------------------------
+
+describe('normalizeChangelog', () => {
+  it('strips "## Changelog" title heading', () => {
+    const input = '## Changelog\n\n### Bug Fixes\n- fix something'
+    const result = normalizeChangelog(input)
+    assert.equal(result, '#### Bug Fixes\n\n- fix something')
+  })
+
+  it('strips "## What\'s Changed" title heading', () => {
+    const input = "## What's Changed\n\n- feat: add feature by @user"
+    const result = normalizeChangelog(input)
+    assert.equal(result, '- feat: add feature by @user')
+  })
+
+  it('strips "# Release vX.Y.Z" title heading', () => {
+    const input = '# Release v1.27.0\n\n### Resource Timeouts\n- Added timeouts'
+    const result = normalizeChangelog(input)
+    assert.equal(result, '#### Resource Timeouts\n\n- Added timeouts')
+  })
+
+  it('demotes ### headings to ####', () => {
+    const input = '### Bug Fixes\n- fix something\n### Features\n- add something'
+    const result = normalizeChangelog(input)
+    assert.ok(result.includes('#### Bug Fixes'))
+    assert.ok(result.includes('#### Features'))
+  })
+
+  it('demotes #### headings to #####', () => {
+    const input = '#### Sub-section\n- detail'
+    const result = normalizeChangelog(input)
+    assert.ok(result.startsWith('##### Sub-section'))
+  })
+
+  it('caps heading demotion at level 6', () => {
+    const input = '###### Deep heading\n- detail'
+    const result = normalizeChangelog(input)
+    assert.ok(result.startsWith('###### Deep heading'))
+  })
+
+  it('shortens 40-char SHAs to 7-char in repo@sha format', () => {
+    const sha = 'abcdef1234567890abcdef1234567890abcdef12'
+    const input = `- Owner/repo@${sha}: fix something`
+    const result = normalizeChangelog(input)
+    assert.equal(result, `- Owner/repo@${sha.slice(0, 7)}: fix something`)
+  })
+
+  it('ensures blank lines around headings', () => {
+    const input = '### Bug Fixes\n- fix something\n### Features\n- add something'
+    const result = normalizeChangelog(input)
+    assert.equal(
+      result,
+      '#### Bug Fixes\n\n- fix something\n\n#### Features\n\n- add something',
+    )
+  })
+
+  it('passes through content with no headings', () => {
+    const input = '- fix something\n- add something'
+    const result = normalizeChangelog(input)
+    assert.equal(result, '- fix something\n- add something')
+  })
+
+  it('handles empty content', () => {
+    const result = normalizeChangelog('')
+    assert.equal(result, '')
+  })
+
+  it('skips leading blank lines', () => {
+    const input = '\n\n### Bug Fixes\n- fix something'
+    const result = normalizeChangelog(input)
+    assert.equal(result, '#### Bug Fixes\n\n- fix something')
   })
 })
 
@@ -314,7 +391,7 @@ describe('getLatestGitHubRelease', () => {
     assert.equal(result!.changelog, 'Fixed owner/repo#123 and owner/repo#456')
   })
 
-  it('rewrites 40-char commit hashes with repo path', async () => {
+  it('rewrites 40-char commit hashes with repo path and shortens to 7 chars', async () => {
     const hash = 'a'.repeat(40)
     mockFetch(async () => ({
       ok: true,
@@ -325,7 +402,7 @@ describe('getLatestGitHubRelease', () => {
     }))
 
     const result = await getLatestGitHubRelease('https://github.com/owner/repo')
-    assert.equal(result!.changelog, `See owner/repo@${hash}`)
+    assert.equal(result!.changelog, `See owner/repo@${hash.slice(0, 7)}`)
   })
 
   // --- Auth and errors ---
