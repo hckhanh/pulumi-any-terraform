@@ -1,5 +1,39 @@
 # pulumi-posthog
 
+## 1.0.6
+
+### Patch Changes
+
+## Changelog
+
+### New Features
+
+- PostHog/terraform-provider-posthog@b8c865d5d2652433840c8fd4e3900c6881a93d27: feat: add sensitive_inputs_json for secret inputs (PostHog/terraform-provider-posthog#55) (@AlexaDeWit)
+
+### Bug Fixes
+
+- PostHog/terraform-provider-posthog@7981ae7fea929c5a459b2b0f3137c06792922ba2: fix: preserve import behavior when both input fields are null (@vdekrijger)
+- PostHog/terraform-provider-posthog@521b16fd4c2928e65fa51132fa01ab86c4a8fa71: fix: prevent sensitive inputs leaking into inputs_json state (@vdekrijger)
+
+### Other Changes
+
+- PostHog/terraform-provider-posthog@b80afaebcf8bfea3aab871ed1609a65b81f46a3e: chore(deps): bump securego/gosec in the github-actions group (@dependabot[bot])
+
+## Changelog
+
+### New Features
+
+- PostHog/terraform-provider-posthog@3621a32eff6b7e76dfb62b0c93ad0880abc8c7c5: feat: add inputs_schema_json to posthog_hog_function resource (@iliyanyotov)
+
+### Bug Fixes
+
+- PostHog/terraform-provider-posthog@12ff2a2ad1a323f5d0841229c9e71b3b3de6c29d: fix: preserve sensitive_inputs_json state across API round-trips (@AlexaDeWit)
+
+### Other Changes
+
+- PostHog/terraform-provider-posthog@85a3962fe12adb0d2214f26a45fb8128cb5b71e4: chore(deps): bump github.com/hashicorp/copywrite in /tools (@dependabot[bot])
+- PostHog/terraform-provider-posthog@d51df0dabbe2aae3e5f9616b3eb2f99467495c90: chore(deps): bump the github-actions group with 2 updates (@dependabot[bot])
+
 ## 1.0.5
 
 ### Patch Changes

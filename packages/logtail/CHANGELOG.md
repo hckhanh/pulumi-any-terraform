@@ -1,3 +1,13 @@
+## 1.1.0
+
+### Minor Changes
+
+## What's Changed
+
+- T-17203 Add multi_select_with_sql to variable types with sql_definition by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/68
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.10.1...v10.10.2
+
 ## 1.0.0
 
 ### Major Changes
