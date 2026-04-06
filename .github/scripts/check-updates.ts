@@ -50,7 +50,7 @@ function normalizeChangelog(content: string): string {
     }
   }
 
-  const result = lines.slice(startIndex).map((line) => {
+  const demoted = lines.slice(startIndex).map((line) => {
     // Demote headings so they nest under changesets' ### Minor/Patch Changes
     // Levels 1-3 become 4, level 4 becomes 5, level 5+ becomes 6 (max)
     const headingMatch = line.match(/^(#{1,6})\s/)
@@ -64,6 +64,27 @@ function normalizeChangelog(content: string): string {
     }
     return line
   })
+
+  // Ensure blank lines before and after headings for proper markdown rendering
+  const result: string[] = []
+  for (let i = 0; i < demoted.length; i++) {
+    const line = demoted[i]
+    const isHeading = /^#{1,6}\s/.test(line)
+
+    if (isHeading) {
+      // Ensure blank line before heading (if not at start or already blank)
+      if (result.length > 0 && result[result.length - 1].trim() !== '') {
+        result.push('')
+      }
+      result.push(line)
+      // Ensure blank line after heading (if next line is not blank)
+      if (i + 1 < demoted.length && demoted[i + 1].trim() !== '') {
+        result.push('')
+      }
+    } else {
+      result.push(line)
+    }
+  }
 
   let normalized = result.join('\n').trim()
 
