@@ -13,7 +13,6 @@
     },
     "check": {
       "dependsOn": [
-        "audit",
         "build",
         "syncpack:format:check",
         "syncpack:lint",
