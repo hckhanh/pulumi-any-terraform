@@ -1,0 +1,62 @@
+{
+  "name": "pulumi-buildkite",
+  "description": "A Pulumi provider for managing Buildkite CI/CD pipelines, agents, clusters, and team resources, dynamically bridged from the Terraform Buildkite provider with support for pipelines, schedules, agent tokens, clusters, and organization settings.",
+  "version": "1.31.1",
+  "homepage": "https://pulumi.khanh.id/docs/providers/buildkite",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/buildkite"
+  },
+  "private": false,
+  "sideEffects": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.229.0",
+    "@types/node": "24.12.0",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "buildkite",
+    "ci-cd",
+    "pipelines",
+    "continuous-integration",
+    "continuous-delivery",
+    "agents",
+    "clusters",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "1.1.1",
+    "parameterization": {
+      "name": "buildkite",
+      "version": "1.31.1",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zMS4xIn19"
+    }
+  }
+}

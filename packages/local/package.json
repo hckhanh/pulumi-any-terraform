@@ -1,0 +1,60 @@
+{
+  "name": "pulumi-local",
+  "description": "A Pulumi provider for managing local files, directories, and sensitive files, dynamically bridged from the Terraform Local provider with support for creating, reading, and managing local filesystem resources.",
+  "version": "2.7.0",
+  "homepage": "https://pulumi.khanh.id/docs/providers/local",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",
+    "directory": "packages/local"
+  },
+  "private": false,
+  "sideEffects": false,
+  "main": "./bin/index.js",
+  "module": "./bin/index.js",
+  "types": "./bin/index.d.ts",
+  "exports": {
+    ".": "./bin/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.229.0",
+    "@types/node": "24.12.0",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "keywords": [
+    "pulumi",
+    "local",
+    "filesystem",
+    "files",
+    "directories",
+    "local-files",
+    "terraform",
+    "provider",
+    "infrastructure"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pulumi": {
+    "resource": true,
+    "name": "terraform-provider",
+    "version": "1.1.1",
+    "parameterization": {
+      "name": "local",
+      "version": "2.7.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2hhc2hpY29ycC9sb2NhbCIsInZlcnNpb24iOiIyLjcuMCJ9fQ=="
+    }
+  }
+}
