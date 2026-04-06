@@ -1,6 +1,8 @@
----
-'pulumi-local': minor
----
+# pulumi-local
+
+## 2.8.0
+
+### Minor Changes
 
 #### 2.8.0 (April 02, 2026)
 

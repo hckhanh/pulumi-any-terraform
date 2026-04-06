@@ -1,7 +1,7 @@
 {
   "name": "pulumi-buildkite",
   "description": "A Pulumi provider for managing Buildkite CI/CD pipelines, agents, clusters, and team resources, dynamically bridged from the Terraform Buildkite provider with support for pipelines, schedules, agent tokens, clusters, and organization settings.",
-  "version": "1.31.1",
+  "version": "1.32.0",
   "homepage": "https://pulumi.khanh.id/docs/providers/buildkite",
   "repository": {
     "type": "git",

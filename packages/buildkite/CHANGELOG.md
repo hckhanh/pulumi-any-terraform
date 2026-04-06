@@ -1,6 +1,8 @@
----
-'pulumi-buildkite': minor
----
+# pulumi-buildkite
+
+## 1.32.0
+
+### Minor Changes
 
 #### Added
 
