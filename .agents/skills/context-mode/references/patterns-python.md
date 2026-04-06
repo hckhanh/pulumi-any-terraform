@@ -42,6 +42,7 @@ for field in fields:
     pct = (filled / len(users)) * 100 if users else 0
     print(f"  {field}: {filled}/{len(users)} ({pct:.1f}%)")
 ```
+
 > summary_prompt: "Report user distribution, data quality issues, and any anomalies found"
 
 ### Merge and compare two JSON configs
@@ -78,6 +79,7 @@ if diffs:
 else:
     print("No differences found — local matches defaults.")
 ```
+
 > summary_prompt: "List all local config overrides and flag any potentially dangerous changes"
 
 ---
@@ -117,6 +119,7 @@ if 'category' in rows[0]:
     for cat, vals in sorted(by_cat.items(), key=lambda x: -sum(x[1])):
         print(f"  {cat}: {len(vals)} txns, total ${sum(vals):,.2f}")
 ```
+
 > summary_prompt: "Summarize transaction patterns, highlight outliers, report category distribution"
 
 ### Parse application logs
@@ -158,6 +161,7 @@ for hour, count in sorted(hourly.items())[-24:]:
     bar = '#' * min(count // 10, 50)
     print(f"  {hour}: {count:>5} {bar}")
 ```
+
 > summary_prompt: "Report error rates, identify the most common failures, and note any traffic spikes"
 
 ---
@@ -202,11 +206,12 @@ print("\n=== All Items ===")
 for r in results:
     print(f"  [{r['type']}] {r['file']}:{r['line']} — {r['text'][:100]}")
 ```
+
 > summary_prompt: "Categorize TODOs by urgency, group by file area, suggest which to address first"
 
 ### Summarize a large text/markdown file
 
-```python
+````python
 with open('ARCHITECTURE.md') as f:
     content = f.read()
 
@@ -238,7 +243,8 @@ if code_blocks:
 print("\n=== Content Preview (first 50 lines) ===")
 for line in lines[:50]:
     print(line)
-```
+````
+
 > summary_prompt: "Summarize the document structure, key architectural decisions, and main components described"
 
 ---
@@ -269,6 +275,7 @@ if diff:
 else:
     print("Files are identical.")
 ```
+
 > summary_prompt: "Describe the functional changes between the old and new versions"
 
 ### Find duplicate content across files
@@ -301,4 +308,5 @@ if duplicates:
 else:
     print("No duplicate files found.")
 ```
+
 > summary_prompt: "List all duplicate files and suggest which copies to remove"

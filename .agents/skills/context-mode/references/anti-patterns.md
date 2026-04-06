@@ -22,6 +22,7 @@ GOOD — just use Bash:
 **Rule:** If the output fits comfortably in your context window (under ~20 lines), use Bash directly. Reserve `execute` for outputs that would bloat context or need intelligent summarization.
 
 More examples of "just use Bash":
+
 - `git status` — usually 5-10 lines
 - `ls -la` — directory listing
 - `cat .env.example` — small config file
@@ -36,17 +37,17 @@ More examples of "just use Bash":
 
 ```javascript
 // BAD — no output:
-const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-const deps = Object.keys(data.dependencies);
+const fs = require('fs')
+const data = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+const deps = Object.keys(data.dependencies)
 // Nothing printed! The LLM sees empty stdout.
 
 // GOOD — explicit output:
-const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-const deps = Object.keys(data.dependencies);
-console.log(`Dependencies (${deps.length}):`);
-deps.forEach(d => console.log(`  ${d}: ${data.dependencies[d]}`));
+const fs = require('fs')
+const data = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+const deps = Object.keys(data.dependencies)
+console.log(`Dependencies (${deps.length}):`)
+deps.forEach((d) => console.log(`  ${d}: ${data.dependencies[d]}`))
 ```
 
 ```python
@@ -88,14 +89,16 @@ for item in data:
 ```javascript
 // GOOD — use the right language for the job:
 // language: javascript
-const data = require('./data.json');
-data.filter(x => x.status === 'error')
-    .forEach(x => console.log(`${x.id}: ${x.message}`));
+const data = require('./data.json')
+data
+  .filter((x) => x.status === 'error')
+  .forEach((x) => console.log(`${x.id}: ${x.message}`))
 ```
 
 **Rule:** If your Bash script contains inline Python/Node or complex `jq`/`awk` chains, switch to `language: python` or `language: javascript` instead.
 
 Signs you should switch from shell:
+
 - Using `python3 -c` or `node -e` inside the shell script
 - More than 3 pipes chained together
 - Using `jq` for complex JSON transformations
@@ -158,29 +161,35 @@ GOOD workflow:
 
 ```javascript
 // BAD — prints [object Object]:
-const pkg = require('./package.json');
-console.log(pkg.dependencies);
+const pkg = require('./package.json')
+console.log(pkg.dependencies)
 // Output: [object Object]
 
 // GOOD — serialize properly:
-const pkg = require('./package.json');
-console.log(JSON.stringify(pkg.dependencies, null, 2));
+const pkg = require('./package.json')
+console.log(JSON.stringify(pkg.dependencies, null, 2))
 // Output: { "react": "^18.2.0", "next": "^14.0.0", ... }
 ```
 
 ```javascript
 // BAD — loses structure in arrays:
-const items = [{name: 'a', value: 1}, {name: 'b', value: 2}];
-console.log(items);
+const items = [
+  { name: 'a', value: 1 },
+  { name: 'b', value: 2 },
+]
+console.log(items)
 // May print unhelpfully
 
 // GOOD — format as table:
-const items = [{name: 'a', value: 1}, {name: 'b', value: 2}];
-console.log('Name  | Value');
-console.log('------|------');
-items.forEach(i => console.log(`${i.name.padEnd(5)} | ${i.value}`));
+const items = [
+  { name: 'a', value: 1 },
+  { name: 'b', value: 2 },
+]
+console.log('Name  | Value')
+console.log('------|------')
+items.forEach((i) => console.log(`${i.name.padEnd(5)} | ${i.value}`))
 // Or use JSON.stringify:
-console.log(JSON.stringify(items, null, 2));
+console.log(JSON.stringify(items, null, 2))
 ```
 
 **Rule:** Always use `JSON.stringify(data, null, 2)` for objects/arrays in JavaScript, or format as a readable table. In Python, use `json.dumps(data, indent=2)` or `pprint.pprint(data)`.
@@ -237,6 +246,7 @@ GOOD — specific and actionable:
 ```
 
 **Tips for effective summary_prompt:**
+
 - Be specific about what data points you need
 - Ask for counts and metrics, not just descriptions
 - Request actionable insights ("suggest fixes", "identify patterns")

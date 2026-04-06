@@ -25,12 +25,12 @@ git pull origin main
 
 Spawn these agents simultaneously:
 
-| Agent | Task |
-|-------|------|
-| **QA Engineer** | Run `npm test` + `npm run typecheck` — report full pass/fail |
-| **Security Engineer** | Check for any open security issues, audit recent changes |
-| **Release Engineer** | Check current version, changelog, unreleased commits |
-| **DX Engineer** | Verify README is current, install instructions work |
+| Agent                 | Task                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| **QA Engineer**       | Run `npm test` + `npm run typecheck` — report full pass/fail |
+| **Security Engineer** | Check for any open security issues, audit recent changes     |
+| **Release Engineer**  | Check current version, changelog, unreleased commits         |
+| **DX Engineer**       | Verify README is current, install instructions work          |
 
 All must report PASS before proceeding.
 
@@ -43,6 +43,7 @@ This is not optional. This is not skippable. Every release gets grilled.
 Interview the user relentlessly about every aspect of the changes until reaching shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer. Ask questions one at a time. If a question can be answered by exploring the codebase, explore the codebase instead of asking.
 
 **The release is BLOCKED until:**
+
 - [ ] All branches of the design tree are resolved
 - [ ] Zero unresolved questions remain
 - [ ] User explicitly approves the grill results
@@ -62,6 +63,7 @@ npm version patch
 ```
 
 This single command does ALL of the following automatically:
+
 1. Bumps `package.json` version (e.g., 1.0.56 → 1.0.57)
 2. Triggers `version` lifecycle hook → runs `scripts/version-sync.mjs`
 3. `version-sync.mjs` syncs version to ALL 6 manifest files:
@@ -118,6 +120,7 @@ npm publish
 ```
 
 Verify publication:
+
 ```bash
 npm view context-mode version  # should show new version
 ```
@@ -156,6 +159,7 @@ git branch -r | grep -v 'origin/main' | grep -v 'origin/next' | grep -v 'origin/
 ```
 
 For each branch, ask the user:
+
 ```
 Remote branch: origin/{branch-name}
 Last commit: {date} — {message}
@@ -165,6 +169,7 @@ Delete this branch? [y/n]
 ```
 
 Only delete after explicit approval:
+
 ```bash
 git push origin --delete {branch-name}
 ```
@@ -204,6 +209,7 @@ git push origin main
 After successful release:
 
 1. Comment on all issues fixed in this release:
+
    ```
    Released in v{VERSION}! Please update and test:
    npm update -g context-mode

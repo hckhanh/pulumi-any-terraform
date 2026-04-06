@@ -82,12 +82,12 @@ For every task:
 
 ## Workflow Detection
 
-| User says | Workflow | Reference |
-|-----------|----------|-----------|
-| "triage issue #N", "fix issue", "analyze issue" | Triage | [triage-issue.md](triage-issue.md) |
-| "review PR #N", "merge PR", "check PR" | Review | [review-pr.md](review-pr.md) |
-| "release", "version bump", "publish" | Release | [release.md](release.md) |
-| "linkedin", "marketing", "announce", "write post" | Marketing | [marketing.md](marketing.md) |
+| User says                                         | Workflow  | Reference                          |
+| ------------------------------------------------- | --------- | ---------------------------------- |
+| "triage issue #N", "fix issue", "analyze issue"   | Triage    | [triage-issue.md](triage-issue.md) |
+| "review PR #N", "merge PR", "check PR"            | Review    | [review-pr.md](review-pr.md)       |
+| "release", "version bump", "publish"              | Release   | [release.md](release.md)           |
+| "linkedin", "marketing", "announce", "write post" | Marketing | [marketing.md](marketing.md)       |
 
 ## GitHub CLI (`gh`) Is Mandatory
 
@@ -112,6 +112,7 @@ Never use curl/wget to GitHub API. `gh` handles auth, pagination, and rate limit
 ## Validation (Every Workflow)
 
 Before shipping ANY change, validate per [validation.md](validation.md):
+
 - [ ] **Problem verified** — claim reproduced or confirmed with hard evidence (CLAIM_VERDICT logged)
 - [ ] ENV vars verified against real platform source (not LLM hallucinations)
 - [ ] All 12 adapter tests pass: `npx vitest run tests/adapters/`
@@ -122,6 +123,7 @@ Before shipping ANY change, validate per [validation.md](validation.md):
 ## Docs Must Stay Current
 
 After ANY code change that affects adapters, features, or platform support:
+
 - [ ] Update `docs/platform-support.md` if adapter capabilities changed
 - [ ] Update `README.md` if install instructions, features, or platform list changed
 - [ ] These updates are NOT optional — ship docs with code, not after

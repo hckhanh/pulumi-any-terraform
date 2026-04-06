@@ -90,12 +90,12 @@ Refactor again. Repeat until all behaviors are covered.
 
 ```typescript
 // GOOD: Tests observable behavior
-test("user can checkout with valid cart", async () => {
-  const cart = createCart();
-  cart.add(product);
-  const result = await checkout(cart, paymentMethod);
-  expect(result.status).toBe("confirmed");
-});
+test('user can checkout with valid cart', async () => {
+  const cart = createCart()
+  cart.add(product)
+  const result = await checkout(cart, paymentMethod)
+  expect(result.status).toBe('confirmed')
+})
 ```
 
 Characteristics:
@@ -110,11 +110,11 @@ Characteristics:
 
 ```typescript
 // BAD: Tests implementation details
-test("checkout calls paymentService.process", async () => {
-  const mockPayment = jest.mock(paymentService);
-  await checkout(cart, payment);
-  expect(mockPayment.process).toHaveBeenCalledWith(cart.total);
-});
+test('checkout calls paymentService.process', async () => {
+  const mockPayment = jest.mock(paymentService)
+  await checkout(cart, payment)
+  expect(mockPayment.process).toHaveBeenCalledWith(cart.total)
+})
 ```
 
 Red flags:
@@ -128,18 +128,18 @@ Red flags:
 
 ```typescript
 // BAD: Bypasses interface to verify
-test("createUser saves to database", async () => {
-  await createUser({ name: "Alice" });
-  const row = await db.query("SELECT * FROM users WHERE name = ?", ["Alice"]);
-  expect(row).toBeDefined();
-});
+test('createUser saves to database', async () => {
+  await createUser({ name: 'Alice' })
+  const row = await db.query('SELECT * FROM users WHERE name = ?', ['Alice'])
+  expect(row).toBeDefined()
+})
 
 // GOOD: Verifies through interface
-test("createUser makes user retrievable", async () => {
-  const user = await createUser({ name: "Alice" });
-  const retrieved = await getUser(user.id);
-  expect(retrieved.name).toBe("Alice");
-});
+test('createUser makes user retrievable', async () => {
+  const user = await createUser({ name: 'Alice' })
+  const retrieved = await getUser(user.id)
+  expect(retrieved.name).toBe('Alice')
+})
 ```
 
 ---
@@ -168,13 +168,13 @@ Pass external dependencies in rather than creating them internally:
 ```typescript
 // Easy to mock
 function processPayment(order, paymentClient) {
-  return paymentClient.charge(order.total);
+  return paymentClient.charge(order.total)
 }
 
 // Hard to mock
 function processPayment(order) {
-  const client = new StripeClient(process.env.STRIPE_KEY);
-  return client.charge(order.total);
+  const client = new StripeClient(process.env.STRIPE_KEY)
+  return client.charge(order.total)
 }
 ```
 
@@ -188,15 +188,16 @@ const api = {
   getUser: (id) => fetch(`/users/${id}`),
   getOrders: (userId) => fetch(`/users/${userId}/orders`),
   createOrder: (data) => fetch('/orders', { method: 'POST', body: data }),
-};
+}
 
 // BAD: Mocking requires conditional logic inside the mock
 const api = {
   fetch: (endpoint, options) => fetch(endpoint, options),
-};
+}
 ```
 
 The SDK approach means:
+
 - Each mock returns one specific shape
 - No conditional logic in test setup
 - Easier to see which endpoints a test exercises
@@ -216,7 +217,7 @@ Good interfaces make testing natural:
 
    // Hard to test
    function processOrder(order) {
-     const gateway = new StripeGateway();
+     const gateway = new StripeGateway()
    }
    ```
 
@@ -228,7 +229,7 @@ Good interfaces make testing natural:
 
    // Hard to test
    function applyDiscount(cart): void {
-     cart.total -= discount;
+     cart.total -= discount
    }
    ```
 
@@ -292,6 +293,7 @@ After TDD cycle, look for:
 ### CONTRIBUTING.md Is the Authority
 
 **Read `CONTRIBUTING.md` before writing any test.** It defines:
+
 - Test file organization (which file to put your test in)
 - TDD workflow (Red-Green-Refactor)
 - Output quality comparison (before/after)

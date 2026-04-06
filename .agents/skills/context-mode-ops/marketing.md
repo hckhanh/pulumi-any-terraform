@@ -27,6 +27,7 @@ MANDATORY. Every word you write must pass these rules.
 14. NO emojis
 
 DO:
+
 - Start with a personal confession or specific frustration
 - Use "I" freely. You are one person, not a company.
 - Vary sentence length aggressively. Short. Then longer ones that breathe.
@@ -34,7 +35,7 @@ DO:
 - Acknowledge uncertainty and mixed feelings when they exist
 - Let some mess in. Rougher transitions are more human.
 - Close with a genuine belief, not a sales pitch
-</writing_rules>
+  </writing_rules>
 
 ## Data verification: MANDATORY
 
@@ -43,18 +44,18 @@ Every number in the post MUST come from a real source. Do NOT invent metrics.
 Before writing, read these files and use ONLY verified numbers:
 </data_enforcement>
 
-| Data point | Source |
-|-----------|--------|
-| Total users | `stats.json` field `message` |
-| npm installs | `stats.json` field `npm` |
-| Marketplace installs | `stats.json` field `marketplace` |
-| Current version | `package.json` field `version` |
-| Platform count | `src/adapters/detect.ts` (count platforms in validPlatforms array) |
-| Adapter count | `tests/adapters/` (count test files) |
-| GitHub stars | `gh api repos/mksglu/context-mode --jq '.stargazers_count'` |
-| GitHub forks | `gh api repos/mksglu/context-mode --jq '.forks_count'` |
-| Open issues | `gh issue list --state open --json number --jq 'length'` |
-| Recent release | `gh release list --limit 1` |
+| Data point           | Source                                                             |
+| -------------------- | ------------------------------------------------------------------ |
+| Total users          | `stats.json` field `message`                                       |
+| npm installs         | `stats.json` field `npm`                                           |
+| Marketplace installs | `stats.json` field `marketplace`                                   |
+| Current version      | `package.json` field `version`                                     |
+| Platform count       | `src/adapters/detect.ts` (count platforms in validPlatforms array) |
+| Adapter count        | `tests/adapters/` (count test files)                               |
+| GitHub stars         | `gh api repos/mksglu/context-mode --jq '.stargazers_count'`        |
+| GitHub forks         | `gh api repos/mksglu/context-mode --jq '.forks_count'`             |
+| Open issues          | `gh issue list --state open --json number --jq 'length'`           |
+| Recent release       | `gh release list --limit 1`                                        |
 
 If you cannot verify a number, do not use it.
 
@@ -85,6 +86,7 @@ Links (repo + install command)
 ### 4. Anti-AI audit
 
 After writing, ask yourself:
+
 - Would a real founder post this or would they cringe?
 - Is every number verified?
 - Are there any em dashes? (search for the character)
@@ -99,6 +101,7 @@ Fix every issue found.
 Write the final post to a file: `linkedin-post-v{VERSION}.md`
 
 Include three sections in the file:
+
 1. Final post text (ready to paste into LinkedIn)
 2. Data sources used (which files/commands provided which numbers)
 3. AI pattern audit results (what was caught and fixed)

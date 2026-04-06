@@ -13,6 +13,7 @@ ctx7 skills install /anthropics/skills --all      # Install everything without p
 ```
 
 Target a specific IDE with a flag:
+
 ```bash
 ctx7 skills install /anthropics/skills pdf --claude     # Claude Code only
 ctx7 skills install /anthropics/skills pdf --cursor     # Cursor only
@@ -59,6 +60,7 @@ ctx7 skills generate --global   # Install to global skills
 ```
 
 Interactive flow:
+
 1. Describe the expertise you want (e.g., "OAuth authentication with NextAuth.js")
 2. Select relevant libraries from search results
 3. Answer 3 clarifying questions to focus the skill
@@ -106,12 +108,12 @@ Output shows each skill name, description, and URL, plus quick install commands.
 
 All skills commands accept these flags to target a specific AI coding assistant:
 
-| Flag | Directory | Used by |
-|------|-----------|---------|
-| `--universal` | `.agents/skills/` | Amp, Codex, Gemini CLI, OpenCode, GitHub Copilot |
-| `--claude` | `.claude/skills/` | Claude Code |
-| `--cursor` | `.cursor/skills/` | Cursor |
-| `--antigravity` | `.agent/skills/` | Antigravity |
+| Flag            | Directory         | Used by                                          |
+| --------------- | ----------------- | ------------------------------------------------ |
+| `--universal`   | `.agents/skills/` | Amp, Codex, Gemini CLI, OpenCode, GitHub Copilot |
+| `--claude`      | `.claude/skills/` | Claude Code                                      |
+| `--cursor`      | `.cursor/skills/` | Cursor                                           |
+| `--antigravity` | `.agent/skills/`  | Antigravity                                      |
 
 Without a flag, the CLI prompts you to select one or more targets interactively.
 

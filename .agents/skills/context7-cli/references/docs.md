@@ -80,12 +80,12 @@ IMPORTANT: Do not call `ctx7 docs` more than 3 times per question. If you cannot
 
 The query directly affects the quality of results. Be specific and include relevant details. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query.
 
-| Quality | Example |
-|---------|---------|
-| Good | `"How to set up authentication with JWT in Express.js"` |
-| Good | `"React useEffect cleanup function with async operations"` |
-| Bad | `"auth"` |
-| Bad | `"hooks"` |
+| Quality | Example                                                    |
+| ------- | ---------------------------------------------------------- |
+| Good    | `"How to set up authentication with JWT in Express.js"`    |
+| Good    | `"React useEffect cleanup function with async operations"` |
+| Bad     | `"auth"`                                                   |
+| Bad     | `"hooks"`                                                  |
 
 Use the user's full question as the query when possible — vague one-word queries return generic results.
 

@@ -54,6 +54,7 @@ BASED ON CONTENT:
 **Critical addition for PRs — Validation Engineer:**
 
 This agent specifically validates claims made in the PR:
+
 - ENV variables actually exist in the target platform
 - Hook formats match the platform's actual API
 - Config paths are real, not LLM hallucinations
@@ -66,6 +67,7 @@ Uses WebSearch and Context7 to verify against official docs.
 All agents run simultaneously:
 
 **Context Mode Architect:**
+
 - Does the change align with project architecture?
 - Does it follow existing patterns?
 - Are there edge cases the author missed?
@@ -75,6 +77,7 @@ All agents run simultaneously:
   - If tests mock internal collaborators: flag — tests should use public interfaces per [tdd.md](tdd.md)
 
 **QA Engineer:**
+
 ```shell
 # Checkout PR locally
 gh pr checkout {N}
@@ -90,6 +93,7 @@ npm run typecheck
 ```
 
 **Validation Engineer:**
+
 ```javascript
 // For each ENV var mentioned in the PR:
 // 1. Grep for it in context-mode source
@@ -102,6 +106,7 @@ npm run typecheck
 ```
 
 **Platform Architects:**
+
 - Review changes specific to their platform
 - Validate against platform's actual hook/config format
 - Check backward compatibility
@@ -263,6 +268,7 @@ Verdict: HALLUCINATED — flag to EM, remove from PR
 ## Handling Stale PRs
 
 If a PR has been open >7 days with no activity:
+
 1. Check if it's still relevant
 2. If yes: merge it, fix on top
 3. If no: close with kind explanation

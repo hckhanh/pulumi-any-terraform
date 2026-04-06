@@ -35,6 +35,7 @@ echo "=== Output Size ==="
 wc -l < /tmp/build-output.txt | xargs -I{} echo "{} total lines of output"
 rm -f /tmp/build-output.txt
 ```
+
 > summary_prompt: "Report build success/failure, list all errors with file paths, and count warnings"
 > timeout_ms: 120000
 
@@ -66,6 +67,7 @@ fi
 
 rm -f /tmp/tsc-output.txt
 ```
+
 > summary_prompt: "Report type error count, most common error codes, and most affected files"
 > timeout_ms: 60000
 
@@ -96,6 +98,7 @@ grep -i 'slow' /tmp/test-output.txt | head -10
 
 rm -f /tmp/test-output.txt
 ```
+
 > summary_prompt: "Report pass/fail ratio, list all failing test names with suite, note any slow tests"
 > timeout_ms: 120000
 
@@ -118,6 +121,7 @@ grep -E '(FAILED|ERROR)' /tmp/pytest-output.txt | head -30
 
 rm -f /tmp/pytest-output.txt
 ```
+
 > summary_prompt: "Report test results, list all failures with file and test name"
 > timeout_ms: 120000
 
@@ -145,6 +149,7 @@ echo ""
 echo "=== Error Timeline (hourly) ==="
 grep -i 'ERROR' "$LOG_FILE" | grep -oE '\d{4}-\d{2}-\d{2} \d{2}' | sort | uniq -c | tail -24
 ```
+
 > summary_prompt: "Report error frequency, identify patterns, and note any error spikes"
 
 ### Analyze access logs
@@ -175,6 +180,7 @@ echo ""
 echo "=== Requests per Hour ==="
 awk '{print $4}' "$LOG_FILE" | cut -d: -f1-2 | sort | uniq -c | tail -24
 ```
+
 > summary_prompt: "Report traffic patterns, error rates, most hit endpoints, and suspicious IPs"
 
 ---
@@ -212,6 +218,7 @@ echo ""
 echo "=== Directory Sizes ==="
 du -sh */ 2>/dev/null | sort -rh | head -15
 ```
+
 > summary_prompt: "Describe the project structure, identify large files that may need attention, report file type distribution"
 
 ### Disk usage investigation
@@ -245,6 +252,7 @@ if [ -d ".git" ]; then
   du -sh .git
 fi
 ```
+
 > summary_prompt: "Report total project size, largest contributors, and recommend cleanup targets"
 
 ---
@@ -274,4 +282,5 @@ echo ""
 echo "=== Stale Branches (merged, excluding main/master) ==="
 git branch --merged main 2>/dev/null | grep -v 'main\|master\|\*' | head -10
 ```
+
 > summary_prompt: "Report development velocity, active contributors, hotspot files, and cleanup opportunities"

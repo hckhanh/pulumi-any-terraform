@@ -63,6 +63,7 @@ IF domain-specific:
 ```
 
 **Example: Issue #208 "CLI upgrade full support for Opencode/Kilocode"**
+
 ```
 Agents to spawn:
 1. Context Mode Architect
@@ -86,16 +87,17 @@ with hard evidence. We shipped inheritEnvKeys because an LLM said Claude Code st
 
 **Every issue makes a claim. Verify it BEFORE coding.**
 
-| Issue Type | Required Evidence | How to Get It |
-|------------|-------------------|---------------|
-| **Bug report** | Reproduce locally with a failing test or command | Run the exact steps from the report. If it doesn't fail, the bug may not exist. |
-| **Feature request claiming behavior X** | Prove behavior X actually happens | Check official docs, source code, or web search. NOT LLM knowledge — LLMs hallucinate platform behavior. |
-| **Feature request claiming perf issue** | Benchmark the actual impact | Measure before/after. No "it should be faster" — show numbers. |
-| **"Tool X sets env var Y"** | Find it in official source | `ctx_fetch_and_index` the platform's docs/source. Grep their repo. If you can't find it, it probably doesn't exist. |
+| Issue Type                              | Required Evidence                                | How to Get It                                                                                                       |
+| --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| **Bug report**                          | Reproduce locally with a failing test or command | Run the exact steps from the report. If it doesn't fail, the bug may not exist.                                     |
+| **Feature request claiming behavior X** | Prove behavior X actually happens                | Check official docs, source code, or web search. NOT LLM knowledge — LLMs hallucinate platform behavior.            |
+| **Feature request claiming perf issue** | Benchmark the actual impact                      | Measure before/after. No "it should be faster" — show numbers.                                                      |
+| **"Tool X sets env var Y"**             | Find it in official source                       | `ctx_fetch_and_index` the platform's docs/source. Grep their repo. If you can't find it, it probably doesn't exist. |
 
 **Verification Steps:**
 
 1. **Architect agents** must produce a `CLAIM_VERDICT` before any Staff Engineer writes code:
+
    ```
    CLAIM: "{exact claim from the issue}"
    EVIDENCE: {link to official doc, source file, or reproduction output}
@@ -103,6 +105,7 @@ with hard evidence. We shipped inheritEnvKeys because an LLM said Claude Code st
    ```
 
 2. If `VERDICT: UNCONFIRMED` — do NOT implement. Instead, comment on the issue:
+
    ```
    We couldn't reproduce/verify this claim. Could you provide:
    - Debug output from: npx context-mode doctor (or ctx-debug.sh)
@@ -123,6 +126,7 @@ with hard evidence. We shipped inheritEnvKeys because an LLM said Claude Code st
 All agents investigate simultaneously:
 
 **Architects** research:
+
 - Read relevant source files
 - Check if claimed behavior actually exists
 - Validate ENV vars against real platform docs (use WebSearch + Context7)
@@ -130,6 +134,7 @@ All agents investigate simultaneously:
 - Report: FINDINGS with specific file:line references
 
 **Staff Engineers** prepare (TDD-first per [tdd.md](tdd.md)):
+
 - Read the code that needs changing
 - **RED**: Write a failing test that reproduces the bug / specifies new behavior
 - Run test — verify it **FAILS** (if it passes, the test is useless)
@@ -257,10 +262,13 @@ Issue is clear and reproducible (no behavioral claim)?
 ## Edge Cases
 
 ### Issue references a feature that doesn't exist
+
 The issue author may have been told by an LLM that a feature exists when it doesn't. Use [validation.md](validation.md) ENV verification to catch this. Comment explaining the misunderstanding kindly.
 
 ### Issue is a duplicate
+
 Link to the original issue, close as duplicate, thank the reporter.
 
 ### Issue is actually a feature request
+
 Re-label, add to backlog discussion, don't close — let the community weigh in.

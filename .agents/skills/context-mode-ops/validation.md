@@ -49,6 +49,7 @@ When a claim cannot be verified, comment on the issue BEFORE implementing:
 ```markdown
 We want to address this but need to verify the underlying behavior first.
 Could you provide:
+
 1. Output from: `npx context-mode doctor` (or run `ctx-debug.sh`)
 2. Exact reproduction steps
 3. Platform version, adapter, and OS
@@ -108,17 +109,17 @@ Step 5: VERDICT
 
 ### Known Verified ENV Vars (Reference)
 
-| Platform | Verified ENV Vars | Source |
-|----------|------------------|--------|
-| Claude Code | `CLAUDE_PROJECT_DIR`, `CLAUDE_SESSION_ID` | src/adapters/detect.ts |
-| Gemini CLI | `GEMINI_PROJECT_DIR`, `GEMINI_CLI` | src/adapters/detect.ts |
-| OpenCode | `OPENCODE`, `OPENCODE_PID` | src/adapters/detect.ts |
-| OpenClaw | `OPENCLAW_HOME`, `OPENCLAW_CLI` | src/adapters/detect.ts |
-| Kilo | `KILO`, `KILO_PID` | src/adapters/detect.ts |
-| Codex | `CODEX_CI`, `CODEX_THREAD_ID` | src/adapters/detect.ts |
-| VS Code Copilot | `VSCODE_PID`, `VSCODE_CWD` | src/adapters/detect.ts |
-| Cursor | `CURSOR_TRACE_ID`, `CURSOR_CLI` | src/adapters/detect.ts |
-| Override | `CONTEXT_MODE_PLATFORM` | src/adapters/detect.ts |
+| Platform        | Verified ENV Vars                         | Source                 |
+| --------------- | ----------------------------------------- | ---------------------- |
+| Claude Code     | `CLAUDE_PROJECT_DIR`, `CLAUDE_SESSION_ID` | src/adapters/detect.ts |
+| Gemini CLI      | `GEMINI_PROJECT_DIR`, `GEMINI_CLI`        | src/adapters/detect.ts |
+| OpenCode        | `OPENCODE`, `OPENCODE_PID`                | src/adapters/detect.ts |
+| OpenClaw        | `OPENCLAW_HOME`, `OPENCLAW_CLI`           | src/adapters/detect.ts |
+| Kilo            | `KILO`, `KILO_PID`                        | src/adapters/detect.ts |
+| Codex           | `CODEX_CI`, `CODEX_THREAD_ID`             | src/adapters/detect.ts |
+| VS Code Copilot | `VSCODE_PID`, `VSCODE_CWD`                | src/adapters/detect.ts |
+| Cursor          | `CURSOR_TRACE_ID`, `CURSOR_CLI`           | src/adapters/detect.ts |
+| Override        | `CONTEXT_MODE_PLATFORM`                   | src/adapters/detect.ts |
 
 Any ENV var NOT in this table must go through the full verification protocol.
 
@@ -192,13 +193,14 @@ npm test
 
 ```javascript
 // WRONG — breaks on Windows
-const configPath = homedir + "/.config/opencode/config.json";
+const configPath = homedir + '/.config/opencode/config.json'
 
 // CORRECT — works everywhere
-const configPath = path.join(homedir(), ".config", "opencode", "config.json");
+const configPath = path.join(homedir(), '.config', 'opencode', 'config.json')
 ```
 
 Grep for potential issues:
+
 ```shell
 # String concatenation with path separators
 rg "homedir\(\)\s*\+" src/
@@ -213,13 +215,14 @@ rg 'path\s*=.*"/' src/ --type ts
 
 ```javascript
 // WRONG — hardcoded /tmp
-const tmpFile = "/tmp/context-mode-output.txt";
+const tmpFile = '/tmp/context-mode-output.txt'
 
 // CORRECT — uses OS temp dir
-const tmpFile = path.join(os.tmpdir(), "context-mode-output.txt");
+const tmpFile = path.join(os.tmpdir(), 'context-mode-output.txt')
 ```
 
 Grep for hardcoded temp:
+
 ```shell
 rg '"/tmp/' src/
 rg "'/tmp/" src/
@@ -238,24 +241,26 @@ rg "optionalDependencies" package.json
 
 ```javascript
 // WRONG — shell: true behaves differently on Windows
-spawn("command", { shell: true });
+spawn('command', { shell: true })
 
 // CORRECT — explicit shell selection
-spawn("command", { shell: process.platform === "win32" ? "cmd.exe" : "/bin/sh" });
+spawn('command', {
+  shell: process.platform === 'win32' ? 'cmd.exe' : '/bin/sh',
+})
 ```
 
 ## Hook Format Validation
 
 Each platform has different hook formats. Verify changes match:
 
-| Platform | Hook Format | Key Differences |
-|----------|------------|-----------------|
-| Claude Code | `hooks.json` in plugin dir | `PreToolUse`, `PostToolUse`, `PreCompact`, `SessionStart` |
-| Gemini CLI | `~/.gemini/settings.json` | `BeforeTool`, `AfterTool`, `PreCompress`, `SessionStart` + `matcher` |
-| VS Code Copilot | `.github/hooks/*.json` | Same as Claude Code but separate file |
-| Cursor | `.cursor/hooks.json` | No `SessionStart` (injects via file instead) |
-| OpenCode | `opencode.json` | Uses `agents` section, not traditional hooks |
-| OpenClaw | `openclaw.plugin.json` | Extension model, not hook-based |
+| Platform        | Hook Format                | Key Differences                                                      |
+| --------------- | -------------------------- | -------------------------------------------------------------------- |
+| Claude Code     | `hooks.json` in plugin dir | `PreToolUse`, `PostToolUse`, `PreCompact`, `SessionStart`            |
+| Gemini CLI      | `~/.gemini/settings.json`  | `BeforeTool`, `AfterTool`, `PreCompress`, `SessionStart` + `matcher` |
+| VS Code Copilot | `.github/hooks/*.json`     | Same as Claude Code but separate file                                |
+| Cursor          | `.cursor/hooks.json`       | No `SessionStart` (injects via file instead)                         |
+| OpenCode        | `opencode.json`            | Uses `agents` section, not traditional hooks                         |
+| OpenClaw        | `openclaw.plugin.json`     | Extension model, not hook-based                                      |
 
 ## Security Checks
 

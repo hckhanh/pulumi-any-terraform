@@ -18,11 +18,14 @@ We investigated this and pushed a fix in #{PR_NUMBER}.
 **Affected area:** `{adapter/module path}`
 
 This lands on the `next` branch and will ship in the next release. Once it's out, could you please test it in your setup and confirm it resolves the issue? 🙏
-
 ```
+
 npm update -g context-mode
+
 # or for plugin users:
+
 /context-mode:ctx-upgrade
+
 ```
 
 Thanks for reporting this — it helped improve context-mode for everyone!
@@ -34,6 +37,7 @@ Thanks for reporting this — it helped improve context-mode for everyone!
 Hey @{author}, thanks for opening this!
 
 To investigate further, could you share:
+
 - Your platform (Claude Code / Gemini CLI / OpenCode / etc.)
 - context-mode version (`ctx doctor` or `npm list -g context-mode`)
 - The exact command or action that triggers this
@@ -79,6 +83,7 @@ Hey @{author}, thanks for the detailed report!
 After investigation, it looks like `{CLAIMED_FEATURE/ENV}` doesn't actually exist in {PLATFORM}. This is a common issue where AI assistants sometimes reference features or environment variables that don't exist in the actual platform.
 
 Here's what we found:
+
 - {What we checked}
 - {Official docs reference showing it's not a real feature}
 
@@ -108,6 +113,7 @@ Thanks for making context-mode better!
 Thanks @{author}! Merged into `next`.
 
 I made a few small adjustments on top in {commit_sha}:
+
 - **{change 1}:** {reason — e.g., "aligned with existing pattern in other adapters"}
 - **{change 2}:** {reason — e.g., "added missing test for edge case"}
 
@@ -124,6 +130,7 @@ Hey @{author}, thanks for putting this together! I've merged it into `next`.
 I did need to make some adjustments though — the core idea is solid but a few things needed fixing:
 
 **Changes I made:**
+
 - {change 1}: {detailed reason}
 - {change 2}: {detailed reason}
 - {change 3}: {detailed reason}
@@ -141,11 +148,13 @@ Let me know if anything doesn't work as expected!
 Hey @{author}, thanks for taking the time to put this together — I appreciate the effort!
 
 Unfortunately we can't merge this as-is:
+
 - **{reason 1}:** {technical explanation}
 - **{reason 2}:** {technical explanation}
 
 {IF the work is salvageable:}
 If you'd like to take another pass, here's what would make this mergeable:
+
 1. {specific guidance}
 2. {specific guidance}
 
@@ -187,9 +196,13 @@ Let me know how you'd like to proceed!
 
 Please update and test:
 ```
+
 npm update -g context-mode
+
 # or for plugin users:
+
 /context-mode:ctx-upgrade
+
 ```
 
 Let us know if this resolves your issue!
@@ -198,6 +211,7 @@ Let us know if this resolves your issue!
 ### Release Announcement (GitHub Release Body)
 
 The `gh release create --generate-notes` handles this automatically. Only add a manual note if there are:
+
 - Breaking changes
 - Migration steps required
 - Notable new features

@@ -22,12 +22,13 @@ description: |
 ## MANDATORY RULE
 
 <context_mode_logic>
-  <mandatory_rule>
-    Default to context-mode for ALL commands. Only use Bash for guaranteed-small-output operations.
-  </mandatory_rule>
+<mandatory_rule>
+Default to context-mode for ALL commands. Only use Bash for guaranteed-small-output operations.
+</mandatory_rule>
 </context_mode_logic>
 
 Bash whitelist (safe to run directly):
+
 - **File mutations**: `mkdir`, `mv`, `cp`, `rm`, `touch`, `chmod`
 - **Git writes**: `git add`, `git commit`, `git push`, `git checkout`, `git branch`, `git merge`
 - **Navigation**: `cd`, `pwd`, `which`
@@ -84,23 +85,23 @@ About to run a command / read a file / call an API?
 
 ## When to Use Each Tool
 
-| Situation | Tool | Example |
-|-----------|------|---------|
-| Hit an API endpoint | `ctx_execute` | `fetch('http://localhost:3000/api/orders')` |
-| Run CLI that returns data | `ctx_execute` | `gh pr list`, `aws s3 ls`, `kubectl get pods` |
-| Run tests | `ctx_execute` | `npm test`, `pytest`, `go test ./...` |
-| Git operations | `ctx_execute` | `git log --oneline -50`, `git diff HEAD~5` |
-| Docker/K8s inspection | `ctx_execute` | `docker stats --no-stream`, `kubectl describe pod` |
-| Read a log file | `ctx_execute_file` | Parse access.log, error.log, build output |
-| Read a data file | `ctx_execute_file` | Analyze CSV, JSON, YAML, XML |
-| Read source code to analyze | `ctx_execute_file` | Count functions, find patterns, extract metrics |
-| Fetch web docs | `ctx_fetch_and_index` | Index React/Next.js/Zod docs, then search |
-| Playwright snapshot | `browser_snapshot(filename)` → `ctx_index(path)` → `ctx_search` | Save to file, index server-side, query |
-| Playwright snapshot (one-shot) | `browser_snapshot(filename)` → `ctx_execute_file(path)` | Save to file, extract in sandbox |
-| Playwright console/network | `browser_*(filename)` → `ctx_execute_file(path)` | Save to file, analyze in sandbox |
-| MCP output (already in context) | Use directly | Don't re-index — it's already loaded |
-| MCP output (need multi-query) | `ctx_execute` to save → `ctx_index(path)` → `ctx_search` | Save to file first, index server-side |
-| Wipe indexed KB content | `ctx_purge(confirm: true)` | Permanently deletes all indexed content |
+| Situation                       | Tool                                                            | Example                                            |
+| ------------------------------- | --------------------------------------------------------------- | -------------------------------------------------- |
+| Hit an API endpoint             | `ctx_execute`                                                   | `fetch('http://localhost:3000/api/orders')`        |
+| Run CLI that returns data       | `ctx_execute`                                                   | `gh pr list`, `aws s3 ls`, `kubectl get pods`      |
+| Run tests                       | `ctx_execute`                                                   | `npm test`, `pytest`, `go test ./...`              |
+| Git operations                  | `ctx_execute`                                                   | `git log --oneline -50`, `git diff HEAD~5`         |
+| Docker/K8s inspection           | `ctx_execute`                                                   | `docker stats --no-stream`, `kubectl describe pod` |
+| Read a log file                 | `ctx_execute_file`                                              | Parse access.log, error.log, build output          |
+| Read a data file                | `ctx_execute_file`                                              | Analyze CSV, JSON, YAML, XML                       |
+| Read source code to analyze     | `ctx_execute_file`                                              | Count functions, find patterns, extract metrics    |
+| Fetch web docs                  | `ctx_fetch_and_index`                                           | Index React/Next.js/Zod docs, then search          |
+| Playwright snapshot             | `browser_snapshot(filename)` → `ctx_index(path)` → `ctx_search` | Save to file, index server-side, query             |
+| Playwright snapshot (one-shot)  | `browser_snapshot(filename)` → `ctx_execute_file(path)`         | Save to file, extract in sandbox                   |
+| Playwright console/network      | `browser_*(filename)` → `ctx_execute_file(path)`                | Save to file, analyze in sandbox                   |
+| MCP output (already in context) | Use directly                                                    | Don't re-index — it's already loaded               |
+| MCP output (need multi-query)   | `ctx_execute` to save → `ctx_index(path)` → `ctx_search`        | Save to file first, index server-side              |
+| Wipe indexed KB content         | `ctx_purge(confirm: true)`                                      | Permanently deletes all indexed content            |
 
 ## Automatic Triggers
 
@@ -119,12 +120,12 @@ Use context-mode for ANY of these, without being asked:
 
 ## Language Selection
 
-| Situation | Language | Why |
-|-----------|----------|-----|
-| HTTP/API calls, JSON | `javascript` | Native fetch, JSON.parse, async/await |
-| Data analysis, CSV, stats | `python` | csv, statistics, collections, re |
-| Shell commands with pipes | `shell` | grep, awk, jq, native tools |
-| File pattern matching | `shell` | find, wc, sort, uniq |
+| Situation                 | Language     | Why                                   |
+| ------------------------- | ------------ | ------------------------------------- |
+| HTTP/API calls, JSON      | `javascript` | Native fetch, JSON.parse, async/await |
+| Data analysis, CSV, stats | `python`     | csv, statistics, collections, re      |
+| Shell commands with pipes | `shell`      | grep, awk, jq, native tools           |
+| File pattern matching     | `shell`      | find, wc, sort, uniq                  |
 
 ## Search Query Strategy
 
@@ -156,13 +157,13 @@ Use context-mode for ANY of these, without being asked:
 ## Sandboxed Data Workflow
 
 <sandboxed_data_workflow>
-  <critical_rule>
-    When using tools that support saving to a file: ALWAYS use the 'filename' parameter.
-    NEVER return large raw datasets directly to context.
-  </critical_rule>
-  <workflow>
-    LargeDataTool(filename: "path") → mcp__context-mode__ctx_index(path: "path") → ctx_search()
-  </workflow>
+<critical_rule>
+When using tools that support saving to a file: ALWAYS use the 'filename' parameter.
+NEVER return large raw datasets directly to context.
+</critical_rule>
+<workflow>
+LargeDataTool(filename: "path") → mcp**context-mode**ctx_index(path: "path") → ctx_search()
+</workflow>
 </sandboxed_data_workflow>
 
 This is the universal pattern for context preservation regardless of
@@ -171,33 +172,39 @@ the source tool (Playwright, GitHub API, AWS CLI, etc.).
 ## Examples
 
 ### Debug an API endpoint
+
 ```javascript
-const resp = await fetch('http://localhost:3000/api/orders');
-const { orders } = await resp.json();
+const resp = await fetch('http://localhost:3000/api/orders')
+const { orders } = await resp.json()
 
-const bugs = [];
-const negQty = orders.filter(o => o.quantity < 0);
-if (negQty.length) bugs.push(`Negative qty: ${negQty.map(o => o.id).join(', ')}`);
+const bugs = []
+const negQty = orders.filter((o) => o.quantity < 0)
+if (negQty.length)
+  bugs.push(`Negative qty: ${negQty.map((o) => o.id).join(', ')}`)
 
-const nullFields = orders.filter(o => !o.product || !o.customer);
-if (nullFields.length) bugs.push(`Null fields: ${nullFields.map(o => o.id).join(', ')}`);
+const nullFields = orders.filter((o) => !o.product || !o.customer)
+if (nullFields.length)
+  bugs.push(`Null fields: ${nullFields.map((o) => o.id).join(', ')}`)
 
-console.log(`${orders.length} orders, ${bugs.length} bugs found:`);
-bugs.forEach(b => console.log(`- ${b}`));
+console.log(`${orders.length} orders, ${bugs.length} bugs found:`)
+bugs.forEach((b) => console.log(`- ${b}`))
 ```
 
 ### Analyze test output
+
 ```shell
 npm test 2>&1
 echo "EXIT=$?"
 ```
 
 ### Check GitHub PRs
+
 ```shell
 gh pr list --json number,title,state,reviewDecision --jq '.[] | "\(.number) [\(.state)] \(.title) — \(.reviewDecision // "no review")"'
 ```
 
 ### Read and analyze a large file
+
 ```python
 # FILE_CONTENT is pre-loaded by ctx_execute_file
 import json
@@ -259,12 +266,12 @@ browser_network_requests(includeStatic: false, filename: "/tmp/network.md")
 
 ### CRITICAL: Why `filename` + `path` is mandatory
 
-| Approach | Context cost | Correct? |
-|----------|-------------|----------|
-| `browser_snapshot()` → raw into context | **135K tokens** | NO |
-| `browser_snapshot()` → `ctx_index(content: raw)` | **270K tokens** (doubled!) | NO |
-| `browser_snapshot(filename)` → `ctx_index(path)` → `ctx_search` | **~430B** | YES |
-| `browser_snapshot(filename)` → `ctx_execute_file(path)` | **~250B** | YES |
+| Approach                                                        | Context cost               | Correct? |
+| --------------------------------------------------------------- | -------------------------- | -------- |
+| `browser_snapshot()` → raw into context                         | **135K tokens**            | NO       |
+| `browser_snapshot()` → `ctx_index(content: raw)`                | **270K tokens** (doubled!) | NO       |
+| `browser_snapshot(filename)` → `ctx_index(path)` → `ctx_search` | **~430B**                  | YES      |
+| `browser_snapshot(filename)` → `ctx_execute_file(path)`         | **~250B**                  | YES      |
 
 ### Key Rule
 
