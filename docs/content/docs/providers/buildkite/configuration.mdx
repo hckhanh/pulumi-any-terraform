@@ -1,0 +1,116 @@
+---
+title: Configuration
+description: Configure the Buildkite provider for CI/CD pipeline management
+---
+
+The Buildkite provider allows you to manage CI/CD pipelines, clusters, teams, and agents in your Buildkite organization.
+
+## Provider Configuration
+
+### Required Settings
+
+| Parameter | Description | Environment Variable |
+|-----------|-------------|---------------------|
+| `apiToken` | Buildkite API access token | `BUILDKITE_API_TOKEN` |
+| `organization` | Buildkite organization slug | `BUILDKITE_ORGANIZATION_SLUG` |
+
+### Environment Variables
+
+```bash
+export BUILDKITE_API_TOKEN="bkua_your_api_token_here"
+export BUILDKITE_ORGANIZATION_SLUG="your-org-slug"
+```
+
+### Pulumi Configuration
+
+```bash
+pulumi config set buildkite:apiToken "bkua_your_api_token_here" --secret
+pulumi config set buildkite:organization "your-org-slug"
+```
+
+### Provider Instance
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as buildkite from "pulumi-buildkite";
+
+const provider = new buildkite.Provider("buildkite-provider", {
+    apiToken: "bkua_your_api_token_here",
+    organization: "your-org-slug",
+});
+
+const pipeline = new buildkite.Pipeline("example", {
+    name: "Example Pipeline",
+    repository: "https://github.com/myorg/myapp.git",
+    defaultBranch: "main",
+    steps: `steps:\n  - command: "echo hello"`,
+}, { provider });
+```
+
+## Getting Your API Token
+
+1. Log in to [Buildkite](https://buildkite.com)
+2. Go to **Personal Settings** → **API Access Tokens**
+3. Click **New API Access Token**
+4. Give it a descriptive name (e.g., "Pulumi Provider")
+5. Select the required scopes:
+   - `read_pipelines` and `write_pipelines` for pipeline management
+   - `read_builds` and `write_builds` for build management
+   - `read_agents` for agent information
+   - `read_teams` and `write_teams` for team management
+6. Click **Create API Access Token**
+7. Copy the token and store it securely
+
+## Required Scopes
+
+| Operation | Required Scopes |
+|-----------|----------------|
+| Manage pipelines | `read_pipelines`, `write_pipelines` |
+| Manage teams | `read_teams`, `write_teams` |
+| Manage agents | `read_agents` |
+| Manage clusters | `read_clusters`, `write_clusters` |
+| Read organization | `read_organizations` |
+| GraphQL API access | `graphql` |
+
+## Multi-Environment Setup
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as buildkite from "pulumi-buildkite";
+
+const stack = pulumi.getStack();
+const config = new pulumi.Config("buildkite");
+
+// Use stack-specific configuration
+const provider = new buildkite.Provider("buildkite", {
+    apiToken: config.requireSecret("apiToken"),
+    organization: config.require("organization"),
+});
+```
+
+## Best Practices
+
+### Store Tokens Securely
+
+```bash
+# Always use --secret for API tokens
+pulumi config set buildkite:apiToken "bkua_..." --secret
+```
+
+### Use Least Privilege
+
+Create API tokens with only the scopes needed for your use case. Avoid using tokens with full access when only pipeline management is needed.
+
+### Separate Tokens per Environment
+
+Use different API tokens for different Pulumi stacks to maintain environment isolation:
+
+```bash
+# Staging stack
+pulumi stack select staging
+pulumi config set buildkite:apiToken "bkua_staging_token" --secret
+
+# Production stack
+pulumi stack select production
+pulumi config set buildkite:apiToken "bkua_production_token" --secret
+```

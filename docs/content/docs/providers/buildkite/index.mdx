@@ -1,0 +1,236 @@
+---
+title: Buildkite Provider
+description: Manage Buildkite CI/CD pipelines, agents, clusters, and teams with Pulumi
+---
+
+The Buildkite provider enables you to manage CI/CD pipelines, agent clusters, teams, and organization resources in Buildkite using Pulumi. This provider is dynamically bridged from the [Terraform Buildkite Provider](https://registry.terraform.io/providers/buildkite/buildkite).
+
+## Installation
+
+Install the Buildkite provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add pulumi-buildkite
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add pulumi-buildkite
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add pulumi-buildkite
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install pulumi-buildkite
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+Set up your Buildkite API credentials:
+
+```bash
+pulumi config set buildkite:apiToken "your-api-token" --secret
+pulumi config set buildkite:organization "your-org-slug"
+```
+
+Or use environment variables:
+
+```bash
+export BUILDKITE_API_TOKEN="your-api-token"
+export BUILDKITE_ORGANIZATION_SLUG="your-org-slug"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as buildkite from "pulumi-buildkite";
+
+// Create a pipeline
+const pipeline = new buildkite.Pipeline("my-app", {
+    name: "My Application",
+    repository: "https://github.com/myorg/myapp.git",
+    defaultBranch: "main",
+    steps: `
+steps:
+  - label: ":hammer: Build"
+    command: "npm run build"
+  - label: ":test_tube: Test"
+    command: "npm test"
+`,
+});
+
+export const pipelineSlug = pipeline.slug;
+```
+
+## Key Features
+
+### Pipelines
+
+Create and manage CI/CD pipelines with build steps, schedules, and webhooks:
+
+```typescript
+const pipeline = new buildkite.Pipeline("deploy", {
+    name: "Deploy Pipeline",
+    repository: "https://github.com/myorg/myapp.git",
+    defaultBranch: "main",
+    steps: `
+steps:
+  - label: ":rocket: Deploy"
+    command: "./deploy.sh"
+    branches: "main"
+`,
+});
+
+// Add a nightly build schedule
+const schedule = new buildkite.PipelineSchedule("nightly", {
+    pipelineId: pipeline.id,
+    label: "Nightly Build",
+    cronline: "0 0 * * *",
+    branch: "main",
+    enabled: true,
+});
+```
+
+### Clusters
+
+Organize build agents into clusters with queues and secrets:
+
+```typescript
+const cluster = new buildkite.Cluster("production", {
+    name: "Production",
+    description: "Production build agents",
+});
+
+const queue = new buildkite.ClusterQueue("default", {
+    clusterId: cluster.id,
+    key: "default",
+    description: "Default build queue",
+});
+
+const secret = new buildkite.ClusterSecret("npm-token", {
+    clusterId: cluster.id,
+    key: "NPM_TOKEN",
+    value: "your-npm-token",
+});
+```
+
+### Teams
+
+Configure teams and manage access to pipelines:
+
+```typescript
+const team = new buildkite.Team("developers", {
+    name: "Developers",
+    privacy: "VISIBLE",
+    defaultMemberRole: "MEMBER",
+    isDefaultTeam: false,
+});
+
+const access = new buildkite.PipelineTeam("dev-access", {
+    pipelineId: pipeline.id,
+    teamId: team.id,
+    accessLevel: "BUILD_AND_READ",
+});
+```
+
+### Agent Tokens
+
+Manage agent registration tokens:
+
+```typescript
+const agentToken = new buildkite.AgentToken("ci-agents", {
+    description: "Token for CI build agents",
+});
+
+export const token = agentToken.token;
+```
+
+## Common Use Cases
+
+### CI/CD Pipeline with Testing
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as buildkite from "pulumi-buildkite";
+
+const testPipeline = new buildkite.Pipeline("test-pipeline", {
+    name: "Test & Deploy",
+    repository: "https://github.com/myorg/myapp.git",
+    defaultBranch: "main",
+    steps: `
+steps:
+  - group: ":test_tube: Tests"
+    steps:
+      - label: ":npm: Unit Tests"
+        command: "npm test"
+      - label: ":cypress: E2E Tests"
+        command: "npm run test:e2e"
+  - wait
+  - label: ":rocket: Deploy"
+    command: "./deploy.sh"
+    branches: "main"
+`,
+});
+```
+
+### Multi-Cluster Setup
+
+```typescript
+const stagingCluster = new buildkite.Cluster("staging", {
+    name: "Staging",
+    description: "Staging environment agents",
+});
+
+const prodCluster = new buildkite.Cluster("production", {
+    name: "Production",
+    description: "Production environment agents",
+});
+
+// Create agent tokens for each cluster
+const stagingToken = new buildkite.ClusterAgentToken("staging-token", {
+    clusterId: stagingCluster.id,
+    description: "Staging agent token",
+});
+
+const prodToken = new buildkite.ClusterAgentToken("prod-token", {
+    clusterId: prodCluster.id,
+    description: "Production agent token",
+});
+```
+
+## Resource Types
+
+| Resource | Description |
+|----------|-------------|
+| Pipeline | CI/CD pipeline management |
+| PipelineSchedule | Scheduled builds for pipelines |
+| PipelineTeam | Team access to pipelines |
+| PipelineTemplate | Reusable pipeline templates |
+| PipelineWebhook | Webhook integrations |
+| Cluster | Agent cluster management |
+| ClusterQueue | Queues within clusters |
+| ClusterSecret | Secrets stored in clusters |
+| ClusterAgentToken | Agent tokens for clusters |
+| Team | Team management |
+| TeamMember | Team membership |
+| AgentToken | Agent registration tokens |
+| Organization | Organization settings |
+| OrganizationRule | Organization rules |
+| TestSuite | Test analytics suites |
+| Registry | Package registries |
+
+## Getting Help
+
+- [Buildkite Documentation](https://buildkite.com/docs)
+- [Buildkite API Reference](https://buildkite.com/docs/apis)
+- [Terraform Buildkite Provider](https://registry.terraform.io/providers/buildkite/buildkite/latest/docs)
+- [Configuration Guide](/docs/providers/buildkite/configuration)
