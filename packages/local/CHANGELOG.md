@@ -1,5 +1,11 @@
 # pulumi-local
 
+## 2.8.1
+
+### Patch Changes
+
+Add README and documentation for the Local provider
+
 ## 2.8.0
 
 ### Minor Changes
