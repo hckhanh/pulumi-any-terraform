@@ -1,5 +1,11 @@
 # pulumi-buildkite
 
+## 1.32.1
+
+### Patch Changes
+
+Add README and documentation for the Buildkite provider
+
 ## 1.32.0
 
 ### Minor Changes
