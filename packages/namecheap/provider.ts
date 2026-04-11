@@ -28,11 +28,11 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The namecheap API key
      */
-    declare public readonly apiKey: pulumi.Output<string>;
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
     /**
      * A registered api user for namecheap
      */
-    declare public readonly apiUser: pulumi.Output<string>;
+    declare public readonly apiUser: pulumi.Output<string | undefined>;
     /**
      * Client IP address
      */
@@ -40,7 +40,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * A registered user name for namecheap
      */
-    declare public readonly userName: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -49,26 +49,19 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if (args?.apiKey === undefined && !opts.urn) {
-                throw new Error("Missing required property 'apiKey'");
-            }
-            if (args?.apiUser === undefined && !opts.urn) {
-                throw new Error("Missing required property 'apiUser'");
-            }
-            if (args?.userName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'userName'");
-            }
-            resourceInputs["apiKey"] = args?.apiKey;
-            resourceInputs["apiUser"] = args?.apiUser;
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
+            resourceInputs["apiUser"] = args?.apiUser ? pulumi.secret(args.apiUser) : undefined;
             resourceInputs["clientIp"] = args?.clientIp;
             resourceInputs["useSandbox"] = pulumi.output(args?.useSandbox).apply(JSON.stringify);
-            resourceInputs["userName"] = args?.userName;
+            resourceInputs["userName"] = args?.userName ? pulumi.secret(args.userName) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey", "apiUser", "userName"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 
@@ -90,11 +83,11 @@ export interface ProviderArgs {
     /**
      * The namecheap API key
      */
-    apiKey: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * A registered api user for namecheap
      */
-    apiUser: pulumi.Input<string>;
+    apiUser?: pulumi.Input<string>;
     /**
      * Client IP address
      */
@@ -106,7 +99,7 @@ export interface ProviderArgs {
     /**
      * A registered user name for namecheap
      */
-    userName: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export namespace Provider {

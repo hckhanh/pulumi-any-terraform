@@ -52,11 +52,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "0.14.0",
+    "version": "1.1.1",
     "parameterization": {
       "name": "namecheap",
-      "version": "2.2.0",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi4yLjAifX0="
+      "version": "2.3.2",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi4zLjIifX0="
     }
   }
 }
