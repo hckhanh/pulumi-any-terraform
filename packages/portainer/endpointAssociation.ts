@@ -33,6 +33,9 @@ export class EndpointAssociation extends pulumi.CustomResource {
     }
 
     declare public readonly endpointAssociationId: pulumi.Output<string>;
+    /**
+     * Environment (Endpoint) identifier to de-associate
+     */
     declare public readonly endpointId: pulumi.Output<number>;
 
     /**
@@ -68,6 +71,9 @@ export class EndpointAssociation extends pulumi.CustomResource {
  */
 export interface EndpointAssociationState {
     endpointAssociationId?: pulumi.Input<string>;
+    /**
+     * Environment (Endpoint) identifier to de-associate
+     */
     endpointId?: pulumi.Input<number>;
 }
 
@@ -76,5 +82,8 @@ export interface EndpointAssociationState {
  */
 export interface EndpointAssociationArgs {
     endpointAssociationId?: pulumi.Input<string>;
+    /**
+     * Environment (Endpoint) identifier to de-associate
+     */
     endpointId: pulumi.Input<number>;
 }

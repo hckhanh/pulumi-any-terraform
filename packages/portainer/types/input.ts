@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlertingSettingsNotificationChannel {
+    /**
+     * Notification channel identifier.
+     */
+    channelId?: pulumi.Input<number>;
+    /**
+     * Configuration key-value pairs for the notification channel.
+     */
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether the notification channel is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the notification channel.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Type of the notification channel.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface AlertingSilenceMatcher {
+    /**
+     * Whether to match for equality (true) or inequality (false).
+     */
+    isEqual?: pulumi.Input<boolean>;
+    /**
+     * Whether the value is a regular expression.
+     */
+    isRegex: pulumi.Input<boolean>;
+    /**
+     * Label name to match.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Label value to match.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface CloudProviderProvisionTimeouts {
     create?: pulumi.Input<string>;
 }
@@ -151,6 +193,65 @@ export interface KubernetesNamespaceIngresscontrollersController {
     new: pulumi.Input<boolean>;
     type: pulumi.Input<string>;
     used: pulumi.Input<boolean>;
+}
+
+export interface LdapSettingsAdminGroupSearchSetting {
+    groupAttribute?: pulumi.Input<string>;
+    groupBaseDn?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string>;
+}
+
+export interface LdapSettingsGroupSearchSetting {
+    /**
+     * LDAP group attribute
+     */
+    groupAttribute?: pulumi.Input<string>;
+    /**
+     * Base DN for group search
+     */
+    groupBaseDn?: pulumi.Input<string>;
+    /**
+     * LDAP group search filter
+     */
+    groupFilter?: pulumi.Input<string>;
+}
+
+export interface LdapSettingsSearchSetting {
+    /**
+     * Base DN for user search
+     */
+    baseDn?: pulumi.Input<string>;
+    /**
+     * LDAP search filter
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * Attribute used for username
+     */
+    userNameAttribute?: pulumi.Input<string>;
+}
+
+export interface LdapSettingsTlsConfig {
+    /**
+     * Whether TLS is enabled
+     */
+    tls?: pulumi.Input<boolean>;
+    /**
+     * TLS CA certificate
+     */
+    tlsCaCert?: pulumi.Input<string>;
+    /**
+     * TLS certificate
+     */
+    tlsCert?: pulumi.Input<string>;
+    /**
+     * TLS key
+     */
+    tlsKey?: pulumi.Input<string>;
+    /**
+     * Skip TLS verification
+     */
+    tlsSkipVerify?: pulumi.Input<boolean>;
 }
 
 export interface SettingsBlackListedLabel {

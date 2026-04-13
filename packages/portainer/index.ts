@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AlertingRuleArgs, AlertingRuleState } from "./alertingRule";
+export type AlertingRule = import("./alertingRule").AlertingRule;
+export const AlertingRule: typeof import("./alertingRule").AlertingRule = null as any;
+utilities.lazyLoad(exports, ["AlertingRule"], () => require("./alertingRule"));
+
+export { AlertingSettingsArgs, AlertingSettingsState } from "./alertingSettings";
+export type AlertingSettings = import("./alertingSettings").AlertingSettings;
+export const AlertingSettings: typeof import("./alertingSettings").AlertingSettings = null as any;
+utilities.lazyLoad(exports, ["AlertingSettings"], () => require("./alertingSettings"));
+
+export { AlertingSilenceArgs, AlertingSilenceState } from "./alertingSilence";
+export type AlertingSilence = import("./alertingSilence").AlertingSilence;
+export const AlertingSilence: typeof import("./alertingSilence").AlertingSilence = null as any;
+utilities.lazyLoad(exports, ["AlertingSilence"], () => require("./alertingSilence"));
+
 export { AuthArgs, AuthState } from "./auth";
 export type Auth = import("./auth").Auth;
 export const Auth: typeof import("./auth").Auth = null as any;
@@ -240,6 +255,41 @@ export const getEnvironment: typeof import("./getEnvironment").getEnvironment = 
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
+export { GetGitopsRepoFileArgs, GetGitopsRepoFileResult, GetGitopsRepoFileOutputArgs } from "./getGitopsRepoFile";
+export const getGitopsRepoFile: typeof import("./getGitopsRepoFile").getGitopsRepoFile = null as any;
+export const getGitopsRepoFileOutput: typeof import("./getGitopsRepoFile").getGitopsRepoFileOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsRepoFile","getGitopsRepoFileOutput"], () => require("./getGitopsRepoFile"));
+
+export { GetGitopsRepoRefsArgs, GetGitopsRepoRefsResult, GetGitopsRepoRefsOutputArgs } from "./getGitopsRepoRefs";
+export const getGitopsRepoRefs: typeof import("./getGitopsRepoRefs").getGitopsRepoRefs = null as any;
+export const getGitopsRepoRefsOutput: typeof import("./getGitopsRepoRefs").getGitopsRepoRefsOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsRepoRefs","getGitopsRepoRefsOutput"], () => require("./getGitopsRepoRefs"));
+
+export { GetHelmGitDryrunArgs, GetHelmGitDryrunResult, GetHelmGitDryrunOutputArgs } from "./getHelmGitDryrun";
+export const getHelmGitDryrun: typeof import("./getHelmGitDryrun").getHelmGitDryrun = null as any;
+export const getHelmGitDryrunOutput: typeof import("./getHelmGitDryrun").getHelmGitDryrunOutput = null as any;
+utilities.lazyLoad(exports, ["getHelmGitDryrun","getHelmGitDryrunOutput"], () => require("./getHelmGitDryrun"));
+
+export { GetHelmReleaseHistoryArgs, GetHelmReleaseHistoryResult, GetHelmReleaseHistoryOutputArgs } from "./getHelmReleaseHistory";
+export const getHelmReleaseHistory: typeof import("./getHelmReleaseHistory").getHelmReleaseHistory = null as any;
+export const getHelmReleaseHistoryOutput: typeof import("./getHelmReleaseHistory").getHelmReleaseHistoryOutput = null as any;
+utilities.lazyLoad(exports, ["getHelmReleaseHistory","getHelmReleaseHistoryOutput"], () => require("./getHelmReleaseHistory"));
+
+export { GetKubernetesCrdArgs, GetKubernetesCrdResult, GetKubernetesCrdOutputArgs } from "./getKubernetesCrd";
+export const getKubernetesCrd: typeof import("./getKubernetesCrd").getKubernetesCrd = null as any;
+export const getKubernetesCrdOutput: typeof import("./getKubernetesCrd").getKubernetesCrdOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCrd","getKubernetesCrdOutput"], () => require("./getKubernetesCrd"));
+
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
+export { GetPolicyTemplateArgs, GetPolicyTemplateResult, GetPolicyTemplateOutputArgs } from "./getPolicyTemplate";
+export const getPolicyTemplate: typeof import("./getPolicyTemplate").getPolicyTemplate = null as any;
+export const getPolicyTemplateOutput: typeof import("./getPolicyTemplate").getPolicyTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyTemplate","getPolicyTemplateOutput"], () => require("./getPolicyTemplate"));
+
 export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
@@ -249,6 +299,16 @@ export { GetRegistryAccessArgs, GetRegistryAccessResult, GetRegistryAccessOutput
 export const getRegistryAccess: typeof import("./getRegistryAccess").getRegistryAccess = null as any;
 export const getRegistryAccessOutput: typeof import("./getRegistryAccess").getRegistryAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistryAccess","getRegistryAccessOutput"], () => require("./getRegistryAccess"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetSharedGitCredentialArgs, GetSharedGitCredentialResult, GetSharedGitCredentialOutputArgs } from "./getSharedGitCredential";
+export const getSharedGitCredential: typeof import("./getSharedGitCredential").getSharedGitCredential = null as any;
+export const getSharedGitCredentialOutput: typeof import("./getSharedGitCredential").getSharedGitCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getSharedGitCredential","getSharedGitCredentialOutput"], () => require("./getSharedGitCredential"));
 
 export { GetStackArgs, GetStackResult, GetStackOutputArgs } from "./getStack";
 export const getStack: typeof import("./getStack").getStack = null as any;
@@ -275,10 +335,25 @@ export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
+export { GetUserActivityArgs, GetUserActivityResult, GetUserActivityOutputArgs } from "./getUserActivity";
+export const getUserActivity: typeof import("./getUserActivity").getUserActivity = null as any;
+export const getUserActivityOutput: typeof import("./getUserActivity").getUserActivityOutput = null as any;
+utilities.lazyLoad(exports, ["getUserActivity","getUserActivityOutput"], () => require("./getUserActivity"));
+
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
+
+export { HelmRollbackArgs, HelmRollbackState } from "./helmRollback";
+export type HelmRollback = import("./helmRollback").HelmRollback;
+export const HelmRollback: typeof import("./helmRollback").HelmRollback = null as any;
+utilities.lazyLoad(exports, ["HelmRollback"], () => require("./helmRollback"));
+
+export { HelmUserRepositoryArgs, HelmUserRepositoryState } from "./helmUserRepository";
+export type HelmUserRepository = import("./helmUserRepository").HelmUserRepository;
+export const HelmUserRepository: typeof import("./helmUserRepository").HelmUserRepository = null as any;
+utilities.lazyLoad(exports, ["HelmUserRepository"], () => require("./helmUserRepository"));
 
 export { KubernetesApplicationArgs, KubernetesApplicationState } from "./kubernetesApplication";
 export type KubernetesApplication = import("./kubernetesApplication").KubernetesApplication;
@@ -385,6 +460,11 @@ export type KubernetesVolume = import("./kubernetesVolume").KubernetesVolume;
 export const KubernetesVolume: typeof import("./kubernetesVolume").KubernetesVolume = null as any;
 utilities.lazyLoad(exports, ["KubernetesVolume"], () => require("./kubernetesVolume"));
 
+export { LdapSettingsArgs, LdapSettingsState } from "./ldapSettings";
+export type LdapSettings = import("./ldapSettings").LdapSettings;
+export const LdapSettings: typeof import("./ldapSettings").LdapSettings = null as any;
+utilities.lazyLoad(exports, ["LdapSettings"], () => require("./ldapSettings"));
+
 export { LicensesArgs, LicensesState } from "./licenses";
 export type Licenses = import("./licenses").Licenses;
 export const Licenses: typeof import("./licenses").Licenses = null as any;
@@ -409,6 +489,11 @@ export { OpenAmtDevicesFeaturesArgs, OpenAmtDevicesFeaturesState } from "./openA
 export type OpenAmtDevicesFeatures = import("./openAmtDevicesFeatures").OpenAmtDevicesFeatures;
 export const OpenAmtDevicesFeatures: typeof import("./openAmtDevicesFeatures").OpenAmtDevicesFeatures = null as any;
 utilities.lazyLoad(exports, ["OpenAmtDevicesFeatures"], () => require("./openAmtDevicesFeatures"));
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -438,6 +523,11 @@ export type SettingsExperimental = import("./settingsExperimental").SettingsExpe
 export const SettingsExperimental: typeof import("./settingsExperimental").SettingsExperimental = null as any;
 utilities.lazyLoad(exports, ["SettingsExperimental"], () => require("./settingsExperimental"));
 
+export { SharedGitCredentialArgs, SharedGitCredentialState } from "./sharedGitCredential";
+export type SharedGitCredential = import("./sharedGitCredential").SharedGitCredential;
+export const SharedGitCredential: typeof import("./sharedGitCredential").SharedGitCredential = null as any;
+utilities.lazyLoad(exports, ["SharedGitCredential"], () => require("./sharedGitCredential"));
+
 export { SshkeygenArgs, SshkeygenState } from "./sshkeygen";
 export type Sshkeygen = import("./sshkeygen").Sshkeygen;
 export const Sshkeygen: typeof import("./sshkeygen").Sshkeygen = null as any;
@@ -457,6 +547,11 @@ export { StackAssociateArgs, StackAssociateState } from "./stackAssociate";
 export type StackAssociate = import("./stackAssociate").StackAssociate;
 export const StackAssociate: typeof import("./stackAssociate").StackAssociate = null as any;
 utilities.lazyLoad(exports, ["StackAssociate"], () => require("./stackAssociate"));
+
+export { StackMigrateArgs, StackMigrateState } from "./stackMigrate";
+export type StackMigrate = import("./stackMigrate").StackMigrate;
+export const StackMigrate: typeof import("./stackMigrate").StackMigrate = null as any;
+utilities.lazyLoad(exports, ["StackMigrate"], () => require("./stackMigrate"));
 
 export { StackWebhookArgs, StackWebhookState } from "./stackWebhook";
 export type StackWebhook = import("./stackWebhook").StackWebhook;
@@ -498,6 +593,11 @@ export type UserAdmin = import("./userAdmin").UserAdmin;
 export const UserAdmin: typeof import("./userAdmin").UserAdmin = null as any;
 utilities.lazyLoad(exports, ["UserAdmin"], () => require("./userAdmin"));
 
+export { UserGitCredentialArgs, UserGitCredentialState } from "./userGitCredential";
+export type UserGitCredential = import("./userGitCredential").UserGitCredential;
+export const UserGitCredential: typeof import("./userGitCredential").UserGitCredential = null as any;
+utilities.lazyLoad(exports, ["UserGitCredential"], () => require("./userGitCredential"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -522,6 +622,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "portainer:index/alertingRule:AlertingRule":
+                return new AlertingRule(name, <any>undefined, { urn })
+            case "portainer:index/alertingSettings:AlertingSettings":
+                return new AlertingSettings(name, <any>undefined, { urn })
+            case "portainer:index/alertingSilence:AlertingSilence":
+                return new AlertingSilence(name, <any>undefined, { urn })
             case "portainer:index/auth:Auth":
                 return new Auth(name, <any>undefined, { urn })
             case "portainer:index/backup:Backup":
@@ -586,6 +692,10 @@ const _module = {
                 return new EndpointsEdgeGenerateKey(name, <any>undefined, { urn })
             case "portainer:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "portainer:index/helmRollback:HelmRollback":
+                return new HelmRollback(name, <any>undefined, { urn })
+            case "portainer:index/helmUserRepository:HelmUserRepository":
+                return new HelmUserRepository(name, <any>undefined, { urn })
             case "portainer:index/kubernetesApplication:KubernetesApplication":
                 return new KubernetesApplication(name, <any>undefined, { urn })
             case "portainer:index/kubernetesClusterrole:KubernetesClusterrole":
@@ -628,6 +738,8 @@ const _module = {
                 return new KubernetesStorage(name, <any>undefined, { urn })
             case "portainer:index/kubernetesVolume:KubernetesVolume":
                 return new KubernetesVolume(name, <any>undefined, { urn })
+            case "portainer:index/ldapSettings:LdapSettings":
+                return new LdapSettings(name, <any>undefined, { urn })
             case "portainer:index/licenses:Licenses":
                 return new Licenses(name, <any>undefined, { urn })
             case "portainer:index/openAmt:OpenAmt":
@@ -638,6 +750,8 @@ const _module = {
                 return new OpenAmtDevicesAction(name, <any>undefined, { urn })
             case "portainer:index/openAmtDevicesFeatures:OpenAmtDevicesFeatures":
                 return new OpenAmtDevicesFeatures(name, <any>undefined, { urn })
+            case "portainer:index/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
             case "portainer:index/registry:Registry":
                 return new Registry(name, <any>undefined, { urn })
             case "portainer:index/registryAccess:RegistryAccess":
@@ -648,6 +762,8 @@ const _module = {
                 return new Settings(name, <any>undefined, { urn })
             case "portainer:index/settingsExperimental:SettingsExperimental":
                 return new SettingsExperimental(name, <any>undefined, { urn })
+            case "portainer:index/sharedGitCredential:SharedGitCredential":
+                return new SharedGitCredential(name, <any>undefined, { urn })
             case "portainer:index/sshkeygen:Sshkeygen":
                 return new Sshkeygen(name, <any>undefined, { urn })
             case "portainer:index/ssl:Ssl":
@@ -656,6 +772,8 @@ const _module = {
                 return new Stack(name, <any>undefined, { urn })
             case "portainer:index/stackAssociate:StackAssociate":
                 return new StackAssociate(name, <any>undefined, { urn })
+            case "portainer:index/stackMigrate:StackMigrate":
+                return new StackMigrate(name, <any>undefined, { urn })
             case "portainer:index/stackWebhook:StackWebhook":
                 return new StackWebhook(name, <any>undefined, { urn })
             case "portainer:index/supportDebugLog:SupportDebugLog":
@@ -672,6 +790,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "portainer:index/userAdmin:UserAdmin":
                 return new UserAdmin(name, <any>undefined, { urn })
+            case "portainer:index/userGitCredential:UserGitCredential":
+                return new UserGitCredential(name, <any>undefined, { urn })
             case "portainer:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             case "portainer:index/webhookExecute:WebhookExecute":
@@ -681,6 +801,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("portainer", "index/alertingRule", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/alertingSettings", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/alertingSilence", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/auth", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backup", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backupS3", _module)
@@ -713,6 +836,8 @@ pulumi.runtime.registerResourceModule("portainer", "index/endpointSettings", _mo
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSnapshot", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointsEdgeGenerateKey", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/environment", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/helmRollback", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/helmUserRepository", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesApplication", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterrole", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterrolebinding", _module)
@@ -734,20 +859,24 @@ pulumi.runtime.registerResourceModule("portainer", "index/kubernetesService", _m
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesServiceaccounts", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesStorage", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesVolume", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/ldapSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/licenses", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmt", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtActivate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesAction", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesFeatures", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/policy", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/registry", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/registryAccess", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/resourceControl", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settingsExperimental", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/sharedGitCredential", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/sshkeygen", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/ssl", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stack", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackAssociate", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/stackMigrate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackWebhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/supportDebugLog", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/tag", _module)
@@ -756,6 +885,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/teamMembership", _modu
 pulumi.runtime.registerResourceModule("portainer", "index/tls", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/user", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userAdmin", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/userGitCredential", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhookExecute", _module)
 pulumi.runtime.registerResourcePackage("portainer", {

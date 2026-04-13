@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlertingSettingsNotificationChannel {
+    /**
+     * Notification channel identifier.
+     */
+    channelId: number;
+    /**
+     * Configuration key-value pairs for the notification channel.
+     */
+    config: {[key: string]: string};
+    /**
+     * Whether the notification channel is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Name of the notification channel.
+     */
+    name: string;
+    /**
+     * Type of the notification channel.
+     */
+    type: string;
+}
+
+export interface AlertingSilenceMatcher {
+    /**
+     * Whether to match for equality (true) or inequality (false).
+     */
+    isEqual?: boolean;
+    /**
+     * Whether the value is a regular expression.
+     */
+    isRegex: boolean;
+    /**
+     * Label name to match.
+     */
+    name: string;
+    /**
+     * Label value to match.
+     */
+    value: string;
+}
+
 export interface CloudProviderProvisionTimeouts {
     create?: string;
 }
@@ -111,6 +153,51 @@ export interface EndpointSettingsSecuritySettings {
     enableHostManagement?: boolean;
 }
 
+export interface GetHelmReleaseHistoryRevision {
+    appVersion: string;
+    chart: string;
+    description: string;
+    name: string;
+    namespace: string;
+    revision: number;
+    status: string;
+    updated: string;
+}
+
+export interface GetKubernetesCrdCrd {
+    creationDate: string;
+    group: string;
+    name: string;
+    releaseName: string;
+    releaseNamespace: string;
+    releaseVersion: string;
+    scope: string;
+}
+
+export interface GetRoleRole {
+    description: string;
+    id: number;
+    name: string;
+    priority: number;
+}
+
+export interface GetUserActivityActivityLog {
+    action: string;
+    context: string;
+    id: number;
+    timestamp: number;
+    username: string;
+}
+
+export interface GetUserActivityAuthLog {
+    context: number;
+    id: number;
+    origin: string;
+    timestamp: number;
+    type: number;
+    username: string;
+}
+
 export interface KubernetesApplicationTimeouts {
     create?: string;
     delete?: string;
@@ -151,6 +238,65 @@ export interface KubernetesNamespaceIngresscontrollersController {
     new: boolean;
     type: string;
     used: boolean;
+}
+
+export interface LdapSettingsAdminGroupSearchSetting {
+    groupAttribute: string;
+    groupBaseDn: string;
+    groupFilter: string;
+}
+
+export interface LdapSettingsGroupSearchSetting {
+    /**
+     * LDAP group attribute
+     */
+    groupAttribute: string;
+    /**
+     * Base DN for group search
+     */
+    groupBaseDn: string;
+    /**
+     * LDAP group search filter
+     */
+    groupFilter: string;
+}
+
+export interface LdapSettingsSearchSetting {
+    /**
+     * Base DN for user search
+     */
+    baseDn: string;
+    /**
+     * LDAP search filter
+     */
+    filter: string;
+    /**
+     * Attribute used for username
+     */
+    userNameAttribute: string;
+}
+
+export interface LdapSettingsTlsConfig {
+    /**
+     * Whether TLS is enabled
+     */
+    tls: boolean;
+    /**
+     * TLS CA certificate
+     */
+    tlsCaCert: string;
+    /**
+     * TLS certificate
+     */
+    tlsCert: string;
+    /**
+     * TLS key
+     */
+    tlsKey: string;
+    /**
+     * Skip TLS verification
+     */
+    tlsSkipVerify: boolean;
 }
 
 export interface SettingsBlackListedLabel {

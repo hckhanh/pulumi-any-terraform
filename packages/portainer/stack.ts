@@ -62,7 +62,7 @@ export class Stack extends pulumi.CustomResource {
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly envs: pulumi.Output<outputs.StackEnv[] | undefined>;
     /**
-     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
      */
     declare public readonly filePathInRepository: pulumi.Output<string | undefined>;
     declare public readonly filesystemPath: pulumi.Output<string | undefined>;
@@ -297,7 +297,7 @@ export interface StackState {
     endpointId?: pulumi.Input<number>;
     envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
     /**
-     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
      */
     filePathInRepository?: pulumi.Input<string>;
     filesystemPath?: pulumi.Input<string>;
@@ -415,7 +415,7 @@ export interface StackArgs {
     endpointId: pulumi.Input<number>;
     envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
     /**
-     * Path to Compose/manifest file in the repository. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
      */
     filePathInRepository?: pulumi.Input<string>;
     filesystemPath?: pulumi.Input<string>;

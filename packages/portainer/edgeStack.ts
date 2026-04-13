@@ -35,6 +35,10 @@ export class EdgeStack extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     */
+    declare public readonly alwaysClone: pulumi.Output<boolean | undefined>;
+    /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
     declare public readonly deploymentType: pulumi.Output<number>;
@@ -102,6 +106,7 @@ export class EdgeStack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeStackState | undefined;
+            resourceInputs["alwaysClone"] = state?.alwaysClone;
             resourceInputs["deploymentType"] = state?.deploymentType;
             resourceInputs["dryrun"] = state?.dryrun;
             resourceInputs["edgeGroups"] = state?.edgeGroups;
@@ -137,6 +142,7 @@ export class EdgeStack extends pulumi.CustomResource {
             if (args?.edgeGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'edgeGroups'");
             }
+            resourceInputs["alwaysClone"] = args?.alwaysClone;
             resourceInputs["deploymentType"] = args?.deploymentType;
             resourceInputs["dryrun"] = args?.dryrun;
             resourceInputs["edgeGroups"] = args?.edgeGroups;
@@ -176,6 +182,10 @@ export class EdgeStack extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeStack resources.
  */
 export interface EdgeStackState {
+    /**
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     */
+    alwaysClone?: pulumi.Input<boolean>;
     /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
@@ -236,6 +246,10 @@ export interface EdgeStackState {
  * The set of arguments for constructing a EdgeStack resource.
  */
 export interface EdgeStackArgs {
+    /**
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     */
+    alwaysClone?: pulumi.Input<boolean>;
     /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
