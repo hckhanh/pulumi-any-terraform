@@ -948,6 +948,19 @@ export interface GetSecretFoldersFolder {
     name: string;
 }
 
+export interface GetSecretMetadataSecretMetadata {
+    isEncrypted: boolean;
+    key: string;
+    value: string;
+}
+
+export interface GetSecretMetadataTag {
+    color: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
 export interface GetSecretsSecrets {
     /**
      * The secret comment

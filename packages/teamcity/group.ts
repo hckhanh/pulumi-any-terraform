@@ -35,9 +35,13 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * The description for the group. Changing this forces a new resource to be created.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */
-    declare public readonly key: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly parentGroups: pulumi.Output<string[] | undefined>;
     declare public readonly roles: pulumi.Output<outputs.GroupRole[] | undefined>;
@@ -55,12 +59,14 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["description"] = state?.description;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
             resourceInputs["parentGroups"] = state?.parentGroups;
             resourceInputs["roles"] = state?.roles;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            resourceInputs["description"] = args?.description;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
             resourceInputs["parentGroups"] = args?.parentGroups;
@@ -76,6 +82,10 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
+     * The description for the group. Changing this forces a new resource to be created.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */
     key?: pulumi.Input<string>;
@@ -88,6 +98,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The description for the group. Changing this forces a new resource to be created.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */

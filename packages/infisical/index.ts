@@ -200,6 +200,11 @@ export const getSecretFolders: typeof import("./getSecretFolders").getSecretFold
 export const getSecretFoldersOutput: typeof import("./getSecretFolders").getSecretFoldersOutput = null as any;
 utilities.lazyLoad(exports, ["getSecretFolders","getSecretFoldersOutput"], () => require("./getSecretFolders"));
 
+export { GetSecretMetadataArgs, GetSecretMetadataResult, GetSecretMetadataOutputArgs } from "./getSecretMetadata";
+export const getSecretMetadata: typeof import("./getSecretMetadata").getSecretMetadata = null as any;
+export const getSecretMetadataOutput: typeof import("./getSecretMetadata").getSecretMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretMetadata","getSecretMetadataOutput"], () => require("./getSecretMetadata"));
+
 export { GetSecretTagArgs, GetSecretTagResult, GetSecretTagOutputArgs } from "./getSecretTag";
 export const getSecretTag: typeof import("./getSecretTag").getSecretTag = null as any;
 export const getSecretTagOutput: typeof import("./getSecretTag").getSecretTagOutput = null as any;

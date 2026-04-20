@@ -27,6 +27,7 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
+    readonly description: string;
     readonly id: string;
     readonly key: string;
     readonly name: string;
