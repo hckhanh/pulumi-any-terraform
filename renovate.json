@@ -37,9 +37,9 @@
       "customType": "regex",
       "description": "Track pinned npm CLI version in workflow run blocks",
       "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s+run: npm install -g npm@(?<currentValue>\\S+)"
-      ]
+      "matchStrings": ["run: npm install -g npm@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "npm",
+      "depNameTemplate": "npm"
     }
   ]
 }
