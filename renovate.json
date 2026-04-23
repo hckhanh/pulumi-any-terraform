@@ -21,5 +21,25 @@
       "matchPackageNames": ["/^fumadocs-/"],
       "matchUpdateTypes": ["digest", "patch", "minor", "major"]
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track AikidoSec/safe-chain installer URL in workflows",
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
+      "matchStrings": [
+        "AikidoSec/safe-chain/releases/download/(?<currentValue>[^/]+)/install-safe-chain\\.sh"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "AikidoSec/safe-chain"
+    },
+    {
+      "customType": "regex",
+      "description": "Track pinned npm CLI version in workflow run blocks",
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
+      "matchStrings": ["run: npm install -g npm@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "npm",
+      "depNameTemplate": "npm"
+    }
   ]
 }
