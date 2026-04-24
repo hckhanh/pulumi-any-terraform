@@ -9,6 +9,6 @@ allowBuilds:
   sharp: true
 minimumReleaseAge: 2880
 overrides:
-  axios@>=1.0.0 <1.15.0: '>=1.15.0'
-  minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
-  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
+  axios@>=1.0.0 <1.15.0: '1.15.2'
+  minimatch@>=9.0.0 <9.0.6: '10.2.5'
+  minimatch@>=9.0.0 <9.0.7: '10.2.5'
