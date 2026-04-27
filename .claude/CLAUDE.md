@@ -189,12 +189,12 @@ Conventional commits: `type(scope): description`. Common automated patterns:
 
 ### CI workflows
 
-| Workflow      | Trigger                            | Purpose                                                                |
-| ------------- | ---------------------------------- | ---------------------------------------------------------------------- |
-| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)                 |
+| Workflow      | Trigger                            | Purpose                                                                                      |
+| ------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)                                       |
 | `autofix.yml` | PRs, push to `main`                | Regen lockfile, `pnpm audit --fix`, `nx affected -t fix`, `pnpm dedupe`, `autofix-ci/action` |
-| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (per-package `publishConfig.access: public`) |
-| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers                      |
+| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (per-package `publishConfig.access: public`)           |
+| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers                                            |
 
 Workflow conventions:
 
