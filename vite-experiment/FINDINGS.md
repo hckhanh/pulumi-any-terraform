@@ -98,6 +98,18 @@ typeof Provider : function
 The current `tsc`-based build produces a working CommonJS package with no
 post-processing beyond copying `package.json` into `bin/`.
 
+## Followup: is there a "tsc mode" in Rolldown / Vite?
+
+Three knobs were tried as a tsc-like fallback (see `vite.config.tsc-mode.ts`):
+
+| Knob | Result |
+|------|--------|
+| `output.preserveModules: true` | Crashes Rolldown harder — it tries to write the virtual `\0@oxc-project+runtime/...` module to disk, OS rejects "file name contained an unexpected NUL byte" |
+| `treeshake: false` | Build succeeds but `new null(...)` is **still** in the output. The inlining is not from tree-shaking; it's from oxc's transform pipeline folding `const Offset = null as any` into a literal and propagating it |
+| Switch alias from `rolldown-vite` to plain `vite@8` (Rollup-backed) | **Identical bugs** — `new null(...)` × 5 in `dist/index.js`, same `\0@oxc-project+runtime@.../helpers/defineProperty.js` unresolved specifier in the helper chunk |
+
+So the breakage is in **Vite's library mode + oxc transformer**, not in Rolldown specifically. There is no "tsc mode" that produces correct CJS for Pulumi's codegen pattern.
+
 ## Conclusion
 
 The Pulumi codegen output is fundamentally CommonJS-shaped (lazy
