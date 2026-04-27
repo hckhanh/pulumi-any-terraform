@@ -1,0 +1,7 @@
+{
+  "title": "OpenFGA",
+  "description": "Fine-grained authorization (ReBAC)",
+  "root": true,
+  "icon": "ShieldCheck",
+  "pages": ["index"]
+}

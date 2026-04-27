@@ -1,0 +1,190 @@
+---
+title: OpenFGA Provider
+description: Manage OpenFGA stores, authorization models, and relationship tuples with Pulumi
+---
+
+The OpenFGA provider enables you to manage [OpenFGA](https://openfga.dev) stores, authorization models, and relationship tuples with Pulumi. OpenFGA is a fine-grained, relationship-based authorization system inspired by [Google Zanzibar](https://research.google/pubs/pub48190/). This provider is dynamically bridged from the [Terraform OpenFGA Provider](https://registry.opentofu.org/openfga/openfga).
+
+## Installation
+
+Install the OpenFGA provider package using your preferred package manager:
+
+<Tabs items={['bun', 'pnpm', 'yarn', 'npm']}>
+  <Tab value="bun">
+    ```bash
+    bun add pulumi-openfga
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add pulumi-openfga
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add pulumi-openfga
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install pulumi-openfga
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+The provider supports two authentication modes: a pre-shared API token, or OAuth 2.0 client credentials.
+
+### API Token
+
+```bash
+pulumi config set openfga:apiUrl https://api.us1.fga.dev
+pulumi config set openfga:apiToken YOUR_API_TOKEN --secret
+```
+
+Or via environment variables:
+
+```bash
+export FGA_API_URL="https://api.us1.fga.dev"
+export FGA_API_TOKEN="your-api-token"
+```
+
+### OAuth Client Credentials
+
+```bash
+pulumi config set openfga:apiUrl https://api.us1.fga.dev
+pulumi config set openfga:clientId YOUR_CLIENT_ID
+pulumi config set openfga:clientSecret YOUR_CLIENT_SECRET --secret
+pulumi config set openfga:apiTokenIssuer https://fga.us.auth0.com
+pulumi config set openfga:apiAudience https://api.us1.fga.dev/
+```
+
+Equivalent environment variables: `FGA_CLIENT_ID`, `FGA_CLIENT_SECRET`, `FGA_API_TOKEN_ISSUER`, `FGA_API_AUDIENCE`, `FGA_API_SCOPES`.
+
+### Self-Hosted OpenFGA
+
+For a self-hosted OpenFGA server, point `apiUrl` at the deployment and supply the matching auth credentials:
+
+```typescript
+import * as openfga from "pulumi-openfga";
+
+const provider = new openfga.Provider("self-hosted", {
+    apiUrl: "https://openfga.your-domain.com",
+    apiToken: config.requireSecret("openfgaToken"),
+});
+
+const store = new openfga.Store("app", { name: "app" }, { provider });
+```
+
+## Quick Start
+
+```typescript
+import * as openfga from "pulumi-openfga";
+
+// 1. Create a store.
+const store = new openfga.Store("docs-app", {
+    name: "docs-app",
+});
+
+// 2. Define an authorization model from an OpenFGA DSL document.
+const modelDoc = openfga.getAuthorizationModelDocumentOutput({
+    dsl: `
+model
+  schema 1.1
+
+type user
+
+type document
+  relations
+    define viewer: [user]
+    define editor: [user]
+`,
+});
+
+const model = new openfga.AuthorizationModel("docs-app-model", {
+    storeId: store.id,
+    modelJson: modelDoc.result,
+});
+
+// 3. Write a relationship tuple: alice can view document:readme.
+const tuple = new openfga.RelationshipTuple("alice-can-view-readme", {
+    storeId: store.id,
+    authorizationModelId: model.id,
+    user: "user:alice",
+    relation: "viewer",
+    object: "document:readme",
+});
+
+export const storeId = store.id;
+export const modelId = model.id;
+```
+
+## Key Resources
+
+### Store
+
+A logical container for an authorization model and its relationship tuples.
+
+```typescript
+const store = new openfga.Store("billing", {
+    name: "billing-service",
+});
+```
+
+### Authorization Model
+
+The schema describing the object types, relations, and rewrite rules. Use `getAuthorizationModelDocument` to author the model in DSL form and convert it to canonical JSON.
+
+```typescript
+const model = new openfga.AuthorizationModel("billing-model", {
+    storeId: store.id,
+    modelJson: openfga.getAuthorizationModelDocumentOutput({
+        dsl: `
+model
+  schema 1.1
+
+type user
+type group
+  relations
+    define member: [user]
+type invoice
+  relations
+    define owner: [user]
+    define viewer: [user, group#member] or owner
+`,
+    }).result,
+});
+```
+
+### Relationship Tuple
+
+A single fact in the form `(user, relation, object)`. Optionally pinned to a specific authorization model.
+
+```typescript
+const tuple = new openfga.RelationshipTuple("finance-can-view-invoice-42", {
+    storeId: store.id,
+    authorizationModelId: model.id,
+    user: "group:finance#member",
+    relation: "viewer",
+    object: "invoice:42",
+});
+```
+
+## Read-Side Data Sources
+
+The provider exposes data sources for offline checks against an authorization model without writing to the store: `getCheckQuery`, `getListObjectsQuery`, `getListUsersQuery`, plus lookups for stores, models, and tuples (`getStore`, `getAuthorizationModel`, `getRelationshipTuple`, etc.).
+
+```typescript
+const canRead = openfga.getCheckQueryOutput({
+    storeId: store.id,
+    authorizationModelId: model.id,
+    tupleKey: {
+        user: "user:alice",
+        relation: "viewer",
+        object: "document:readme",
+    },
+});
+
+export const aliceCanRead = canRead.allowed;
+```

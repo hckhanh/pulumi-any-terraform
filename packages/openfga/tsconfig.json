@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        // Output
+        "outDir": "bin",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        // Environment
+        "target": "ES2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "moduleDetection": "force",
+        "types": ["node"],
+        // Type Checking
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true
+    },
+    "files": [
+        "authorizationModel.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "getAuthorizationModel.ts",
+        "getAuthorizationModelDocument.ts",
+        "getAuthorizationModels.ts",
+        "getCheckQuery.ts",
+        "getListObjectsQuery.ts",
+        "getListUsersQuery.ts",
+        "getRelationshipTuple.ts",
+        "getRelationshipTuples.ts",
+        "getStore.ts",
+        "getStores.ts",
+        "index.ts",
+        "provider.ts",
+        "relationshipTuple.ts",
+        "store.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "utilities.ts"
+    ]
+}
