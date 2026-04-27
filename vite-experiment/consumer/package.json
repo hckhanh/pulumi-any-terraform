@@ -1,0 +1,17 @@
+{
+  "name": "vite-consumer",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "smoke": "node smoke.cjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "3.232.0",
+    "pulumi-time-vite": "file:../time-pkg"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.2",
+    "typescript": "5.9.3"
+  }
+}

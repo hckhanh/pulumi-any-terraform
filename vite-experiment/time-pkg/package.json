@@ -1,0 +1,38 @@
+{
+  "name": "pulumi-time-vite",
+  "version": "0.13.6",
+  "description": "Vite/Rolldown experiment build of pulumi-time",
+  "private": true,
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build:vite": "vite build",
+    "build:dts": "tsc -p tsconfig.dts.json",
+    "build": "pnpm build:vite && pnpm build:dts && cp package.json dist/package.json"
+  },
+  "dependencies": {
+    "async-mutex": "0.5.0"
+  },
+  "devDependencies": {
+    "@pulumi/pulumi": "3.232.0",
+    "@types/node": "24.12.2",
+    "typescript": "5.9.3",
+    "vite": "npm:rolldown-vite@latest"
+  },
+  "peerDependencies": {
+    "@pulumi/pulumi": ">=3.190.0 <4"
+  }
+}
