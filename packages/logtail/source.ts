@@ -101,6 +101,7 @@ export class Source extends pulumi.CustomResource {
      *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
      *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
      *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`gcp`" pulumi-lang-dotnet="`Gcp`" pulumi-lang-go="`gcp`" pulumi-lang-python="`gcp`" pulumi-lang-yaml="`gcp`" pulumi-lang-java="`gcp`">`gcp`</span>
      *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
      *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
      *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
@@ -333,6 +334,7 @@ export interface SourceState {
      *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
      *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
      *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`gcp`" pulumi-lang-dotnet="`Gcp`" pulumi-lang-go="`gcp`" pulumi-lang-python="`gcp`" pulumi-lang-yaml="`gcp`" pulumi-lang-java="`gcp`">`gcp`</span>
      *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
      *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
      *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
@@ -482,6 +484,7 @@ export interface SourceArgs {
      *     - <span pulumi-lang-nodejs="`fluentbit`" pulumi-lang-dotnet="`Fluentbit`" pulumi-lang-go="`fluentbit`" pulumi-lang-python="`fluentbit`" pulumi-lang-yaml="`fluentbit`" pulumi-lang-java="`fluentbit`">`fluentbit`</span>
      *     - <span pulumi-lang-nodejs="`fluentd`" pulumi-lang-dotnet="`Fluentd`" pulumi-lang-go="`fluentd`" pulumi-lang-python="`fluentd`" pulumi-lang-yaml="`fluentd`" pulumi-lang-java="`fluentd`">`fluentd`</span>
      *     - <span pulumi-lang-nodejs="`flyIo`" pulumi-lang-dotnet="`FlyIo`" pulumi-lang-go="`flyIo`" pulumi-lang-python="`fly_io`" pulumi-lang-yaml="`flyIo`" pulumi-lang-java="`flyIo`">`fly_io`</span>
+     *     - <span pulumi-lang-nodejs="`gcp`" pulumi-lang-dotnet="`Gcp`" pulumi-lang-go="`gcp`" pulumi-lang-python="`gcp`" pulumi-lang-yaml="`gcp`" pulumi-lang-java="`gcp`">`gcp`</span>
      *     - <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span>
      *     - <span pulumi-lang-nodejs="`googleCloudPubsub`" pulumi-lang-dotnet="`GoogleCloudPubsub`" pulumi-lang-go="`googleCloudPubsub`" pulumi-lang-python="`google_cloud_pubsub`" pulumi-lang-yaml="`googleCloudPubsub`" pulumi-lang-java="`googleCloudPubsub`">`google_cloud_pubsub`</span>
      *     - <span pulumi-lang-nodejs="`haproxy`" pulumi-lang-dotnet="`Haproxy`" pulumi-lang-go="`haproxy`" pulumi-lang-python="`haproxy`" pulumi-lang-yaml="`haproxy`" pulumi-lang-java="`haproxy`">`haproxy`</span>
