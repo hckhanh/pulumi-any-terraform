@@ -91,25 +91,25 @@ pnpm release
 
 ### Generated vs hand-written code
 
-| Path                                | Type                                | Editable?                |
-| ----------------------------------- | ----------------------------------- | ------------------------ |
-| `packages/*/*.ts`                   | Auto-generated Pulumi SDK           | **No**                   |
-| `packages/*/package.json`           | Mostly managed; `pulumi.parameterization` is critical | Carefully |
-| `packages/*/scripts/postinstall.js` | Build template (`tsc` + copy json)  | Rare; keep all in sync   |
-| `tools/*.ts`                        | Hand-written Nx plugins             | Yes                      |
-| `.github/scripts/check-updates.ts`  | Weekly upstream sync automation     | Yes                      |
-| `docs/`                             | Fumadocs site                       | Yes                      |
+| Path                                | Type                                                  | Editable?              |
+| ----------------------------------- | ----------------------------------------------------- | ---------------------- |
+| `packages/*/*.ts`                   | Auto-generated Pulumi SDK                             | **No**                 |
+| `packages/*/package.json`           | Mostly managed; `pulumi.parameterization` is critical | Carefully              |
+| `packages/*/scripts/postinstall.js` | Build template (`tsc` + copy json)                    | Rare; keep all in sync |
+| `tools/*.ts`                        | Hand-written Nx plugins                               | Yes                    |
+| `.github/scripts/check-updates.ts`  | Weekly upstream sync automation                       | Yes                    |
+| `docs/`                             | Fumadocs site                                         | Yes                    |
 
 ### Nx plugin system
 
 All build orchestration runs through custom Nx plugins in `tools/` that extend the abstract `Plugin` base class (`tools/utils/plugin.ts`). Each plugin matches a file glob and contributes targets:
 
-| Plugin            | Glob                  | Targets contributed                            |
-| ----------------- | --------------------- | ---------------------------------------------- |
-| `tools/build.ts`  | `**/*/tsconfig.json`  | `build` (runs `node ./scripts/postinstall.js`) |
-| `tools/biome.ts`  | `**/biome.json`       | `biome:check`, `biome:check:fix`               |
-| `tools/linter.ts` | `**/project.json`     | aggregate `check`, `fix`                       |
-| `tools/prettier.ts` | `**/project.json`   | `prettier:check`, `prettier:write`             |
+| Plugin              | Glob                 | Targets contributed                            |
+| ------------------- | -------------------- | ---------------------------------------------- |
+| `tools/build.ts`    | `**/*/tsconfig.json` | `build` (runs `node ./scripts/postinstall.js`) |
+| `tools/biome.ts`    | `**/biome.json`      | `biome:check`, `biome:check:fix`               |
+| `tools/linter.ts`   | `**/project.json`    | aggregate `check`, `fix`                       |
+| `tools/prettier.ts` | `**/project.json`    | `prettier:check`, `prettier:write`             |
 
 `@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead).
 
@@ -139,14 +139,14 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 ### Formatting (Biome + Prettier, enforced in CI)
 
-| Rule          | Value                                            |
-| ------------- | ------------------------------------------------ |
-| Indentation   | 2 spaces                                         |
-| Semicolons    | `asNeeded` (Biome) / `false` (Prettier) -- omit  |
-| Quotes        | Single (`'`)                                     |
-| JSX quotes    | Single                                           |
-| Line endings  | LF                                               |
-| Encoding      | UTF-8, trailing newline                          |
+| Rule         | Value                                           |
+| ------------ | ----------------------------------------------- |
+| Indentation  | 2 spaces                                        |
+| Semicolons   | `asNeeded` (Biome) / `false` (Prettier) -- omit |
+| Quotes       | Single (`'`)                                    |
+| JSX quotes   | Single                                          |
+| Line endings | LF                                              |
+| Encoding     | UTF-8, trailing newline                         |
 
 - **Biome** formats and lints JS/TS/JSON/CSS (only where a `biome.json` exists -- currently `docs/`).
 - **Prettier** formats YAML/Markdown/HTML/CSS/JSON workspace-wide.
@@ -179,12 +179,12 @@ Conventional commits: `type(scope): description`. Common automated patterns:
 
 ### CI workflows
 
-| Workflow      | Trigger                            | Purpose                                              |
-| ------------- | ---------------------------------- | ---------------------------------------------------- |
-| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build) |
-| `autofix.yml` | PRs, push to `main`                | `pnpm nx affected -t fix` then `autofix-ci/action`   |
+| Workflow      | Trigger                            | Purpose                                                  |
+| ------------- | ---------------------------------- | -------------------------------------------------------- |
+| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)   |
+| `autofix.yml` | PRs, push to `main`                | `pnpm nx affected -t fix` then `autofix-ci/action`       |
 | `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (`access: public`) |
-| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers    |
+| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers        |
 
 Workflow conventions:
 
