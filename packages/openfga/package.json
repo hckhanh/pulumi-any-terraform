@@ -1,7 +1,7 @@
 {
   "name": "pulumi-openfga",
   "description": "A Pulumi provider for managing OpenFGA fine-grained authorization (ReBAC) with support for stores, authorization models, and relationship tuples, dynamically bridged from the Terraform OpenFGA provider.",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "homepage": "https://pulumi.khanh.id/docs/providers/openfga",
   "repository": {
     "type": "git",
