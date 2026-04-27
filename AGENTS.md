@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -41,18 +41,12 @@ Hand-written code lives only in:
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
 │   │   └── __tests__/              # node:test suite for check-updates.ts
 │   └── workflows/             # test.yml, autofix.yml, publish.yml, update.yml
-├── .changeset/                # Changesets state, config.json, and custom changelog.cjs
-├── .claude/                   # CLAUDE.md (this file) + bundled skills
-├── .agents/                   # Skills shared with non-Claude AI agents
-├── .junie/                    # JetBrains Junie guidelines
-├── .vscode/                   # Editor settings
+├── .changeset/                # Changesets state and configuration
 ├── nx.json                    # Nx workspace + custom plugin registration
 ├── pnpm-workspace.yaml        # Workspace, pnpm overrides, allowBuilds, minimumReleaseAge
 ├── .syncpackrc.json           # package.json field ordering + version pinning rules
-├── skills-lock.json           # Skill source pins (consumed by skills tooling)
-├── context7.json              # Context7 publishing config (docs URL + public key)
 ├── mise.toml                  # Toolchain pin (Node 24.15.0, pnpm 10.33.2)
-├── .prototools                # mise settings (auto-install, auto-clean, telemetry off)
+├── .prototools                # mise settings (auto-install, telemetry off)
 ├── tsconfig.json              # Hand-written TS config (covers tools/ + .github/scripts)
 └── project.json               # Root Nx project (root-level targets like syncpack, prettier:root)
 ```
@@ -117,7 +111,7 @@ All build orchestration runs through custom Nx plugins in `tools/` that extend t
 | `tools/linter.ts`   | `**/project.json`    | aggregate `check`, `fix`                       |
 | `tools/prettier.ts` | `**/project.json`    | `prettier:check`, `prettier:write`             |
 
-`@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead). `@nx/shared-fs-cache` is wired in for shared-cache parity with `NX_KEY` in CI.
+`@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead).
 
 When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implement `processFile(file)` returning a `CreateNodesResult`, then add the plugin path to the `plugins` array in `nx.json`.
 
@@ -132,18 +126,14 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 `.github/scripts/check-updates.ts` runs every Monday 00:00 UTC via `update.yml`:
 
-1. Sets up Pulumi local backend (`pulumi login --local`).
-2. Fetches latest versions from the Terraform / OpenTofu registry and GitHub releases for each provider in `packages/`.
-3. For any package that's outdated, runs `pulumi package add terraform-provider <registry-url> <version>` in a temp dir to regenerate the SDK.
-4. Copies regenerated files back over `packages/<name>/`.
-5. Normalizes the upstream changelog (demotes headings, shortens SHAs, prettier-formats markdown) and writes a Changesets entry.
-6. Runs `pnpm nx run-many -t fix` and refreshes `pnpm-lock.yaml` before commit.
-7. Commits **directly to `main`** as `chore(release): update packages to match upstream terraform providers`.
-8. The `publish.yml` workflow then triggers off the `Update` `workflow_run` and runs `changesets/action` to release the new package versions to npm.
+1. Fetches latest versions from the Terraform / OpenTofu registry and GitHub releases for each provider in `packages/`.
+2. For any package that's outdated, runs `pulumi package add terraform-provider <registry-url> <version>` in a temp dir to regenerate the SDK.
+3. Copies regenerated files back over `packages/<name>/`.
+4. Normalizes the upstream changelog (demotes headings, shortens SHAs, prettier-formats markdown) and writes a Changesets entry.
+5. Commits **directly to `main`** as `chore(release): update packages to match upstream terraform providers`.
+6. The `publish.yml` workflow then triggers off the `Update` `workflow_run` and runs `changesets/action` to release the new package versions to npm.
 
 `pulumi.parameterization` in each package's `package.json` is what tells the dynamic provider which Terraform provider/version to bridge -- it must stay in sync with the generated TypeScript.
-
-`.changeset/config.json` sets `access: restricted` and uses `./changelog.cjs`, a custom renderer that emits the changeset summary verbatim and suppresses dependency-bump lines. Each provider package overrides publishability via `publishConfig.access: public`, and is published under `homepage: https://pulumi.khanh.id/docs/providers/<name>` (the Fumadocs site in `docs/`).
 
 ## Code Conventions
 
@@ -189,12 +179,12 @@ Conventional commits: `type(scope): description`. Common automated patterns:
 
 ### CI workflows
 
-| Workflow      | Trigger                            | Purpose                                                                                      |
-| ------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
-| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)                                       |
-| `autofix.yml` | PRs, push to `main`                | Regen lockfile, `pnpm audit --fix`, `nx affected -t fix`, `pnpm dedupe`, `autofix-ci/action` |
-| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (per-package `publishConfig.access: public`)           |
-| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers                                            |
+| Workflow      | Trigger                            | Purpose                                                  |
+| ------------- | ---------------------------------- | -------------------------------------------------------- |
+| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)   |
+| `autofix.yml` | PRs, push to `main`                | `pnpm nx affected -t fix` then `autofix-ci/action`       |
+| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (`access: public`) |
+| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers        |
 
 Workflow conventions:
 
@@ -202,10 +192,9 @@ Workflow conventions:
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
 - `pnpm` store and `.nx/cache` are cached on `pnpm-lock.yaml` hash.
-- **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
-- `publish.yml` uses `commitMode: 'github-api'` for the changesets release commit so it's signed by GitHub.
-- `NX_DAEMON: 'false'` is set globally in CI; `NX_KEY` enables shared cache.
-- `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops; `autofix.yml` also skips Renovate-authored commits and its own `[autofix.ci]` commits.
+- **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection.
+- `NX_DAEMON: 'false'` is set globally in CI.
+- `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops.
 
 ## When working in this repo
 
