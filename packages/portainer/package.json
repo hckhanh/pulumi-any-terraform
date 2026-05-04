@@ -57,8 +57,8 @@
     "version": "1.1.1",
     "parameterization": {
       "name": "portainer",
-      "version": "1.28.0",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4yOC4wIn19"
+      "version": "1.29.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4yOS4wIn19"
     }
   }
 }

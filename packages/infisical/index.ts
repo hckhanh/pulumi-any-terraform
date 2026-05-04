@@ -75,6 +75,11 @@ export type AppConnectionGitlab = import("./appConnectionGitlab").AppConnectionG
 export const AppConnectionGitlab: typeof import("./appConnectionGitlab").AppConnectionGitlab = null as any;
 utilities.lazyLoad(exports, ["AppConnectionGitlab"], () => require("./appConnectionGitlab"));
 
+export { AppConnectionHashicorpVaultArgs, AppConnectionHashicorpVaultState } from "./appConnectionHashicorpVault";
+export type AppConnectionHashicorpVault = import("./appConnectionHashicorpVault").AppConnectionHashicorpVault;
+export const AppConnectionHashicorpVault: typeof import("./appConnectionHashicorpVault").AppConnectionHashicorpVault = null as any;
+utilities.lazyLoad(exports, ["AppConnectionHashicorpVault"], () => require("./appConnectionHashicorpVault"));
+
 export { AppConnectionLdapArgs, AppConnectionLdapState } from "./appConnectionLdap";
 export type AppConnectionLdap = import("./appConnectionLdap").AppConnectionLdap;
 export const AppConnectionLdap: typeof import("./appConnectionLdap").AppConnectionLdap = null as any;
@@ -545,6 +550,8 @@ const _module = {
                 return new AppConnectionGithub(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGitlab:AppConnectionGitlab":
                 return new AppConnectionGitlab(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionHashicorpVault:AppConnectionHashicorpVault":
+                return new AppConnectionHashicorpVault(name, <any>undefined, { urn })
             case "infisical:index/appConnectionLdap:AppConnectionLdap":
                 return new AppConnectionLdap(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMssql:AppConnectionMssql":
@@ -718,6 +725,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGitlab", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionHashicorpVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLdap", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)

@@ -195,6 +195,29 @@ export interface AppConnectionGitlabCredentials {
     instanceUrl?: string;
 }
 
+export interface AppConnectionHashicorpVaultCredentials {
+    /**
+     * The Vault access token. Required for the `access-token` method.
+     */
+    accessToken?: string;
+    /**
+     * The URL of the HashiCorp Vault instance, e.g. `https://vault.example.com`. Required for all methods.
+     */
+    instanceUrl?: string;
+    /**
+     * Optional Vault namespace. Only applicable to HCP Vault Dedicated and Enterprise deployments.
+     */
+    namespace?: string;
+    /**
+     * The AppRole role ID. Required for the `app-role` method.
+     */
+    roleId?: string;
+    /**
+     * The AppRole secret ID. Required for the `app-role` method.
+     */
+    secretId?: string;
+}
+
 export interface AppConnectionLdapCredentials {
     /**
      * The Distinguished Name (DN) or User Principal Name (UPN) of the principal to bind with (e.g., 'CN=John,CN=Users,DC=example,DC=com').

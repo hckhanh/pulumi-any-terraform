@@ -95,7 +95,7 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly incidentPerSeries: pulumi.Output<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -316,7 +316,7 @@ export interface DashboardAlertState {
      */
     incidentPerSeries?: pulumi.Input<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -442,7 +442,7 @@ export interface DashboardAlertArgs {
      */
     incidentPerSeries?: pulumi.Input<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

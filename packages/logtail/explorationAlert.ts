@@ -91,7 +91,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly incidentPerSeries: pulumi.Output<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -303,7 +303,7 @@ export interface ExplorationAlertState {
      */
     incidentPerSeries?: pulumi.Input<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -425,7 +425,7 @@ export interface ExplorationAlertArgs {
      */
     incidentPerSeries?: pulumi.Input<boolean>;
     /**
-     * Custom metadata key-value pairs included in incident notifications.
+     * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

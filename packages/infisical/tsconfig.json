@@ -33,6 +33,7 @@
         "appConnectionGcp.ts",
         "appConnectionGithub.ts",
         "appConnectionGitlab.ts",
+        "appConnectionHashicorpVault.ts",
         "appConnectionLdap.ts",
         "appConnectionMssql.ts",
         "appConnectionMysql.ts",

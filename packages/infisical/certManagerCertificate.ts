@@ -65,7 +65,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      */
     declare public readonly extendedKeyUsages: pulumi.Output<string[] | undefined>;
     /**
-     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, ECDSA_P256, ECDSA_P384, ECDSA_P521
+     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
     declare public readonly keyAlgorithm: pulumi.Output<string>;
     /**
@@ -234,7 +234,7 @@ export interface CertManagerCertificateState {
      */
     extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, ECDSA_P256, ECDSA_P384, ECDSA_P521
+     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
     keyAlgorithm?: pulumi.Input<string>;
     /**
@@ -320,7 +320,7 @@ export interface CertManagerCertificateArgs {
      */
     extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, ECDSA_P256, ECDSA_P384, ECDSA_P521
+     * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
     keyAlgorithm?: pulumi.Input<string>;
     /**

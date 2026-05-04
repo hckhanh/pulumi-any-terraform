@@ -37,6 +37,7 @@ export class EdgeConfigurations extends pulumi.CustomResource {
     declare public readonly edgeConfigurationsId: pulumi.Output<string>;
     declare public readonly edgeGroupIds: pulumi.Output<number[]>;
     declare public readonly filePath: pulumi.Output<string>;
+    declare public /*out*/ readonly fileSha256: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly type: pulumi.Output<string>;
 
@@ -58,6 +59,7 @@ export class EdgeConfigurations extends pulumi.CustomResource {
             resourceInputs["edgeConfigurationsId"] = state?.edgeConfigurationsId;
             resourceInputs["edgeGroupIds"] = state?.edgeGroupIds;
             resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["fileSha256"] = state?.fileSha256;
             resourceInputs["name"] = state?.name;
             resourceInputs["type"] = state?.type;
         } else {
@@ -78,6 +80,7 @@ export class EdgeConfigurations extends pulumi.CustomResource {
             resourceInputs["filePath"] = args?.filePath;
             resourceInputs["name"] = args?.name;
             resourceInputs["type"] = args?.type;
+            resourceInputs["fileSha256"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeConfigurations.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -93,6 +96,7 @@ export interface EdgeConfigurationsState {
     edgeConfigurationsId?: pulumi.Input<string>;
     edgeGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
     filePath?: pulumi.Input<string>;
+    fileSha256?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     type?: pulumi.Input<string>;
 }

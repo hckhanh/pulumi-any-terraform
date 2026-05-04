@@ -47,7 +47,7 @@ export class ProjectIdentitySpecificPrivilege extends pulumi.CustomResource {
      */
     declare public readonly permission: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
     declare public readonly permissionsV2s: pulumi.Output<outputs.ProjectIdentitySpecificPrivilegePermissionsV2[] | undefined>;
     /**
@@ -139,7 +139,7 @@ export interface ProjectIdentitySpecificPrivilegeState {
      */
     permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
     /**
@@ -185,7 +185,7 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
      */
     permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
     /**
-     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
+     * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
     permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
     /**
