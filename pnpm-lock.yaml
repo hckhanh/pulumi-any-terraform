@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  axios@>=1.0.0 <1.15.0: 1.15.2
+  axios@>=1.0.0 <1.15.0: 1.16.0
   minimatch@>=9.0.0 <9.0.6: 10.2.5
   minimatch@>=9.0.0 <9.0.7: 10.2.5
   postcss@<8.5.10: 8.5.13
@@ -2697,7 +2697,7 @@ packages:
   axios-retry@4.5.0:
     resolution: {integrity: sha512-aR99oXhpEDGo0UuAlYcn2iGRds30k366Zfa05XWScR9QaQD4JYiP3/1Qt1u7YlefUOK+cn0CcwoL1oefavQUlQ==}
     peerDependencies:
-      axios: 1.15.2
+      axios: 1.16.0
 
   axios@1.15.0:
     resolution: {integrity: sha512-wWyJDlAatxk30ZJer+GeCWS209sA42X+N5jU2jy6oHTp7ufw8uzUTVFBX9+wTfAlhiJXGS0Bq7X6efruWjuK9Q==}
