@@ -23,7 +23,7 @@
     "nx": "22.7.1",
     "prettier": "3.8.3",
     "syncpack": "14.3.1",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "keywords": [
     "pulumi",
