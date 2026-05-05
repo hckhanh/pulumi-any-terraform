@@ -1,3 +1,11 @@
+## 0.17.7
+
+### Patch Changes
+
+Update pulumi-infisical from 0.16.18 to 0.16.21
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.16.18...v0.16.21
+
 ## 0.17.6
 
 ### Patch Changes
