@@ -53,7 +53,7 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * Feature flag name/description
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface FeatureFlagState {
      */
     key?: pulumi.Input<string>;
     /**
-     * Feature flag name/description
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
      */
     name?: pulumi.Input<string>;
     /**
@@ -174,7 +174,7 @@ export interface FeatureFlagArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * Feature flag name/description
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
      */
     name?: pulumi.Input<string>;
     /**

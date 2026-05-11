@@ -113,8 +113,14 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["thresholdUpper"] = state?.thresholdUpper;
         } else {
             const args = argsOrState as AlertArgs | undefined;
+            if (args?.conditionType === undefined && !opts.urn) {
+                throw new Error("Missing required property 'conditionType'");
+            }
             if (args?.insight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insight'");
+            }
+            if (args?.seriesIndex === undefined && !opts.urn) {
+                throw new Error("Missing required property 'seriesIndex'");
             }
             if (args?.subscribedUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscribedUsers'");
@@ -214,7 +220,7 @@ export interface AlertArgs {
     /**
      * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`">`absolute_value`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`">`relative_increase`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`">`relative_decrease`</span>.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType: pulumi.Input<string>;
     /**
      * Whether the alert is enabled. Defaults to true.
      */
@@ -234,7 +240,7 @@ export interface AlertArgs {
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
-    seriesIndex?: pulumi.Input<number>;
+    seriesIndex: pulumi.Input<number>;
     /**
      * Whether to skip checking the alert on weekends.
      */

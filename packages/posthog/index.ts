@@ -30,6 +30,11 @@ export type DashboardLayout = import("./dashboardLayout").DashboardLayout;
 export const DashboardLayout: typeof import("./dashboardLayout").DashboardLayout = null as any;
 utilities.lazyLoad(exports, ["DashboardLayout"], () => require("./dashboardLayout"));
 
+export { ExternalDataSourceArgs, ExternalDataSourceState } from "./externalDataSource";
+export type ExternalDataSource = import("./externalDataSource").ExternalDataSource;
+export const ExternalDataSource: typeof import("./externalDataSource").ExternalDataSource = null as any;
+utilities.lazyLoad(exports, ["ExternalDataSource"], () => require("./externalDataSource"));
+
 export { FeatureFlagArgs, FeatureFlagState } from "./featureFlag";
 export type FeatureFlag = import("./featureFlag").FeatureFlag;
 export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
@@ -78,6 +83,11 @@ utilities.lazyLoad(exports, ["ProjectMember"], () => require("./projectMember"))
 export * from "./provider";
 import { Provider } from "./provider";
 
+export { ProxyRecordArgs, ProxyRecordState } from "./proxyRecord";
+export type ProxyRecord = import("./proxyRecord").ProxyRecord;
+export const ProxyRecord: typeof import("./proxyRecord").ProxyRecord = null as any;
+utilities.lazyLoad(exports, ["ProxyRecord"], () => require("./proxyRecord"));
+
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
@@ -87,6 +97,11 @@ export { RoleMembershipArgs, RoleMembershipState } from "./roleMembership";
 export type RoleMembership = import("./roleMembership").RoleMembership;
 export const RoleMembership: typeof import("./roleMembership").RoleMembership = null as any;
 utilities.lazyLoad(exports, ["RoleMembership"], () => require("./roleMembership"));
+
+export { SurveyArgs, SurveyState } from "./survey";
+export type Survey = import("./survey").Survey;
+export const Survey: typeof import("./survey").Survey = null as any;
+utilities.lazyLoad(exports, ["Survey"], () => require("./survey"));
 
 
 // Export sub-modules:
@@ -112,6 +127,8 @@ const _module = {
                 return new Dashboard(name, <any>undefined, { urn })
             case "posthog:index/dashboardLayout:DashboardLayout":
                 return new DashboardLayout(name, <any>undefined, { urn })
+            case "posthog:index/externalDataSource:ExternalDataSource":
+                return new ExternalDataSource(name, <any>undefined, { urn })
             case "posthog:index/featureFlag:FeatureFlag":
                 return new FeatureFlag(name, <any>undefined, { urn })
             case "posthog:index/hogFunction:HogFunction":
@@ -126,10 +143,14 @@ const _module = {
                 return new ProjectDefaultAccess(name, <any>undefined, { urn })
             case "posthog:index/projectMember:ProjectMember":
                 return new ProjectMember(name, <any>undefined, { urn })
+            case "posthog:index/proxyRecord:ProxyRecord":
+                return new ProxyRecord(name, <any>undefined, { urn })
             case "posthog:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "posthog:index/roleMembership:RoleMembership":
                 return new RoleMembership(name, <any>undefined, { urn })
+            case "posthog:index/survey:Survey":
+                return new Survey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -140,6 +161,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/action", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/alert", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboardLayout", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/externalDataSource", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/hogFunction", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/insight", _module)
@@ -147,8 +169,10 @@ pulumi.runtime.registerResourceModule("posthog", "index/organizationMember", _mo
 pulumi.runtime.registerResourceModule("posthog", "index/project", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectDefaultAccess", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectMember", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/proxyRecord", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/role", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/roleMembership", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/survey", _module)
 pulumi.runtime.registerResourcePackage("posthog", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

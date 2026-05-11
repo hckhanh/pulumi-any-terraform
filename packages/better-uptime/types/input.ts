@@ -893,7 +893,7 @@ export interface PolicyStepMetadataValue {
 
 export interface PolicyStepStepMember {
     /**
-     * The ID of the resource to notify during an incident. Required for user, webhook, slack_integration, microsoft_teams_integration,<span pulumi-lang-nodejs=" zapierWebhook " pulumi-lang-dotnet=" ZapierWebhook " pulumi-lang-go=" zapierWebhook " pulumi-lang-python=" zapier_webhook " pulumi-lang-yaml=" zapierWebhook " pulumi-lang-java=" zapierWebhook "> zapier_webhook </span>and<span pulumi-lang-nodejs=" pagerdutyIntegration " pulumi-lang-dotnet=" PagerdutyIntegration " pulumi-lang-go=" pagerdutyIntegration " pulumi-lang-python=" pagerduty_integration " pulumi-lang-yaml=" pagerdutyIntegration " pulumi-lang-java=" pagerdutyIntegration "> pagerduty_integration </span>member types. This is e.g. the ID of the user to notify when member type is user, or on-call calendar ID of when member type is current_on_call.
+     * The ID of the resource to notify during an incident. Required for user, webhook, slack_integration, microsoft_teams_integration, zapier_webhook,<span pulumi-lang-nodejs=" pagerdutyIntegration " pulumi-lang-dotnet=" PagerdutyIntegration " pulumi-lang-go=" pagerdutyIntegration " pulumi-lang-python=" pagerduty_integration " pulumi-lang-yaml=" pagerdutyIntegration " pulumi-lang-java=" pagerdutyIntegration "> pagerduty_integration </span>and policy member types. This is e.g. the ID of the user to notify when member type is user, the on-call calendar ID when member type is current_on_call, or the chained escalation policy ID when member type is policy.
      */
     id?: pulumi.Input<number>;
     /**
@@ -907,7 +907,7 @@ export interface PolicyStepStepMember {
      */
     teamId?: pulumi.Input<number>;
     /**
-     * Type type of the member to notify during an incident. Can be one of current_on_call, entire_team, all_slack_integrations, all_microsoft_teams_integrations, all_zapier_integrations, all_webhook_integrations, all_splunk_on_call_integrations, incident_metadata, user, webhook, slack_integration, microsoft_teams_integration,<span pulumi-lang-nodejs=" zapierWebhook " pulumi-lang-dotnet=" ZapierWebhook " pulumi-lang-go=" zapierWebhook " pulumi-lang-python=" zapier_webhook " pulumi-lang-yaml=" zapierWebhook " pulumi-lang-java=" zapierWebhook "> zapier_webhook </span>or pagerduty_integration.
+     * Type type of the member to notify during an incident. Can be one of current_on_call, entire_team, all_slack_integrations, all_microsoft_teams_integrations, all_zapier_integrations, all_webhook_integrations, all_splunk_on_call_integrations, incident_metadata, user, webhook, slack_integration, microsoft_teams_integration, zapier_webhook,<span pulumi-lang-nodejs=" pagerdutyIntegration " pulumi-lang-dotnet=" PagerdutyIntegration " pulumi-lang-go=" pagerdutyIntegration " pulumi-lang-python=" pagerduty_integration " pulumi-lang-yaml=" pagerdutyIntegration " pulumi-lang-java=" pagerdutyIntegration "> pagerduty_integration </span>or policy.
      */
     type: pulumi.Input<string>;
 }

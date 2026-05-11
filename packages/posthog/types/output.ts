@@ -19,6 +19,10 @@ export interface DashboardLayoutTile {
      */
     layoutsJson: string;
     /**
+     * Whether to show the insight description on the tile. Omit the field to clear it back to the PostHog API default (<span pulumi-lang-nodejs="`null`" pulumi-lang-dotnet="`Null`" pulumi-lang-go="`null`" pulumi-lang-python="`null`" pulumi-lang-yaml="`null`" pulumi-lang-java="`null`">`null`</span>).
+     */
+    showDescription?: boolean;
+    /**
      * Markdown body for a text tile (max 4000 characters). Exactly one of<span pulumi-lang-nodejs=" insightId " pulumi-lang-dotnet=" InsightId " pulumi-lang-go=" insightId " pulumi-lang-python=" insight_id " pulumi-lang-yaml=" insightId " pulumi-lang-java=" insightId "> insight_id </span>or<span pulumi-lang-nodejs=" textBody " pulumi-lang-dotnet=" TextBody " pulumi-lang-go=" textBody " pulumi-lang-python=" text_body " pulumi-lang-yaml=" textBody " pulumi-lang-java=" textBody "> text_body </span>must be set.
      */
     textBody?: string;

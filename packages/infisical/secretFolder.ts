@@ -33,6 +33,10 @@ export class SecretFolder extends pulumi.CustomResource {
     }
 
     /**
+     * The description of the folder. Defaults to an empty string.
+     */
+    declare public readonly description: pulumi.Output<string>;
+    /**
      * The ID of the environment
      */
     declare public /*out*/ readonly environmentId: pulumi.Output<string>;
@@ -74,6 +78,7 @@ export class SecretFolder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretFolderState | undefined;
+            resourceInputs["description"] = state?.description;
             resourceInputs["environmentId"] = state?.environmentId;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
             resourceInputs["folderPath"] = state?.folderPath;
@@ -92,6 +97,7 @@ export class SecretFolder extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["description"] = args?.description;
             resourceInputs["environmentSlug"] = args?.environmentSlug;
             resourceInputs["folderPath"] = args?.folderPath;
             resourceInputs["forceDelete"] = args?.forceDelete;
@@ -109,6 +115,10 @@ export class SecretFolder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretFolder resources.
  */
 export interface SecretFolderState {
+    /**
+     * The description of the folder. Defaults to an empty string.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The ID of the environment
      */
@@ -143,6 +153,10 @@ export interface SecretFolderState {
  * The set of arguments for constructing a SecretFolder resource.
  */
 export interface SecretFolderArgs {
+    /**
+     * The description of the folder. Defaults to an empty string.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The environment slug of the folder to modify/create
      */
