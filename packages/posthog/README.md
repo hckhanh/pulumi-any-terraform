@@ -8,13 +8,16 @@ This package provides a Pulumi provider that enables you to manage your PostHog 
 
 ### Features
 
-- **Product Analytics**: Configure projects, cohorts, and insights for analyzing user behavior
+- **Product Analytics**: Configure projects and insights for analyzing user behavior
 - **Feature Flags**: Create and manage feature flags with rollout strategies and targeting rules
 - **Event Actions**: Define custom actions to track specific user behaviors
-- **Annotations**: Add context to your analytics with time-based annotations
-- **Dashboards**: Build and maintain custom dashboards for data visualization
-- **Experiments**: Run A/B tests and multivariate experiments
-- **Session Recording**: Configure session recording settings and filters
+- **Dashboards**: Build and maintain custom dashboards (including dashboard layouts) for data visualization
+- **Alerts**: Configure metric alerts with thresholds and subscribers
+- **Hog Functions**: Author custom data transformation and routing functions
+- **Surveys**: Manage project-scoped surveys with targeting and appearance configuration
+- **Proxy Records**: Manage organization-scoped reverse proxy records for ingestion
+- **External Data Sources**: Configure external data warehouse and data lake connections
+- **Access Control & RBAC**: Manage roles, role memberships, organization/project members, and access controls
 - **TypeScript Support**: Full type safety with comprehensive TypeScript definitions
 
 ## Installation
@@ -89,14 +92,15 @@ const betaFeature = new posthog.FeatureFlag('beta-feature', {
   key: 'new-dashboard',
   name: 'New Dashboard Beta',
   active: true,
-  filters: {
+  // filters must be a JSON-encoded string, not an object literal
+  filters: JSON.stringify({
     groups: [
       {
         properties: [],
         rolloutPercentage: 25,
       },
     ],
-  },
+  }),
 })
 
 // Export the feature flag key
@@ -146,14 +150,17 @@ export const actionId = buttonClickAction.id
 
 This provider supports the following PostHog resources:
 
-- **Projects**: Manage PostHog projects
-- **Feature Flags**: Create and configure feature flags with targeting rules
-- **Actions**: Define custom event actions
-- **Cohorts**: Create user segments based on properties and behaviors
-- **Annotations**: Add contextual markers to your analytics timeline
-- **Dashboards**: Build custom dashboards
-- **Insights**: Configure analytics insights
-- **Webhooks**: Set up webhook integrations
+- **Project**: Manage PostHog projects
+- **FeatureFlag**: Create and configure feature flags with targeting rules
+- **Action**: Define custom event actions
+- **Dashboard / DashboardLayout**: Build custom dashboards and manage tile layouts
+- **Insight**: Configure analytics queries and insights
+- **Alert**: Set up insight-based alerts with thresholds and subscribers
+- **HogFunction**: Author custom Hog functions for transformation and routing
+- **Survey**: Define project-scoped surveys
+- **ProxyRecord**: Manage organization-scoped reverse proxy records
+- **ExternalDataSource**: Connect external data warehouses and lakes
+- **AccessControl / Role / RoleMembership / OrganizationMember / ProjectMember / ProjectDefaultAccess**: RBAC primitives
 
 ## Advanced Usage
 
@@ -166,7 +173,7 @@ const advancedFlag = new posthog.FeatureFlag('advanced-targeting', {
   key: 'premium-features',
   name: 'Premium Features',
   active: true,
-  filters: {
+  filters: JSON.stringify({
     groups: [
       {
         properties: [
@@ -184,7 +191,7 @@ const advancedFlag = new posthog.FeatureFlag('advanced-targeting', {
         rolloutPercentage: 10, // 10% rollout for non-premium users
       },
     ],
-  },
+  }),
   ensureExperienceContinuity: true,
 })
 ```
@@ -216,30 +223,28 @@ const signupAction = new posthog.Action(
   { dependsOn: [project] },
 )
 
-// Create a cohort of users who signed up
-const signupCohort = new posthog.Cohort(
-  'signup-cohort',
+// Create a project-scoped survey to collect feedback from new signups
+const onboardingSurvey = new posthog.Survey(
+  'onboarding-survey',
   {
-    name: 'Signed Up Users',
+    name: 'Onboarding Feedback',
     projectId: project.id,
-    filters: {
-      properties: {
-        type: 'AND',
-        values: [
-          {
-            type: 'action',
-            key: signupAction.id,
-          },
-        ],
+    type: 'popover',
+    description: 'How did your first day go?',
+    questionsJson: JSON.stringify([
+      {
+        type: 'rating',
+        question: 'How would you rate your onboarding experience?',
+        scale: 5,
       },
-    },
+    ]),
   },
   { dependsOn: [signupAction] },
 )
 
 export const projectName = project.name
 export const actionId = signupAction.id
-export const cohortId = signupCohort.id
+export const surveyId = onboardingSurvey.id
 ```
 
 ## Authentication
