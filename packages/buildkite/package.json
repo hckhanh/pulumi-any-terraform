@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@pulumi/pulumi": "3.236.0",
-    "@types/node": "24.12.3",
+    "@types/node": "24.12.4",
     "typescript": "5.9.3"
   },
   "peerDependencies": {
