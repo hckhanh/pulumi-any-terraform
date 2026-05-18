@@ -52,5 +52,5 @@ export function getSecretsOutput(args: GetSecretsOutputArgs, opts?: pulumi.Invok
 export interface GetSecretsOutputArgs {
     envSlug: pulumi.Input<string>;
     folderPath: pulumi.Input<string>;
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

@@ -124,43 +124,43 @@ export interface KmsKeyState {
     /**
      * The creation timestamp of the key.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the KMS key. Maximum 500 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm for the key. Options: aes-256-gcm, aes-128-gcm, RSA_4096, ECC_NIST_P256. Defaults to 'aes-256-gcm'.
      */
-    encryptionAlgorithm?: pulumi.Input<string>;
+    encryptionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Whether the key is disabled. Defaults to false.
      */
-    isDisabled?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The usage of the key. Options: encrypt-decrypt, sign-verify. Defaults to 'encrypt-decrypt'.
      */
-    keyUsage?: pulumi.Input<string>;
+    keyUsage?: pulumi.Input<string | undefined>;
     /**
      * The name of the KMS key. Must be 1-32 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project where the KMS key will be created.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The last update timestamp of the key.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The version of the key.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -170,23 +170,23 @@ export interface KmsKeyArgs {
     /**
      * The description of the KMS key. Maximum 500 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm for the key. Options: aes-256-gcm, aes-128-gcm, RSA_4096, ECC_NIST_P256. Defaults to 'aes-256-gcm'.
      */
-    encryptionAlgorithm?: pulumi.Input<string>;
+    encryptionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Whether the key is disabled. Defaults to false.
      */
-    isDisabled?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The usage of the key. Options: encrypt-decrypt, sign-verify. Defaults to 'encrypt-decrypt'.
      */
-    keyUsage?: pulumi.Input<string>;
+    keyUsage?: pulumi.Input<string | undefined>;
     /**
      * The name of the KMS key. Must be 1-32 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project where the KMS key will be created.
      */

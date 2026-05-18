@@ -105,27 +105,27 @@ export interface AppConnectionHashicorpVaultState {
     /**
      * The credentials for the HashiCorp Vault App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionHashicorpVaultCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionHashicorpVaultCredentials | undefined>;
     /**
      * The hash of the HashiCorp Vault App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the HashiCorp Vault App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with HashiCorp Vault. Possible values are: access-token, app-role
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the HashiCorp Vault App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionHashicorpVaultArgs {
     /**
      * An optional description for the HashiCorp Vault App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with HashiCorp Vault. Possible values are: access-token, app-role
      */
@@ -147,9 +147,9 @@ export interface AppConnectionHashicorpVaultArgs {
     /**
      * The name of the HashiCorp Vault App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

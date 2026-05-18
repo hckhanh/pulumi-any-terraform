@@ -165,55 +165,55 @@ export interface FileState {
      *  Conflicts with <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span>, <span pulumi-lang-nodejs="`contentBase64`" pulumi-lang-dotnet="`ContentBase64`" pulumi-lang-go="`contentBase64`" pulumi-lang-python="`content_base64`" pulumi-lang-yaml="`contentBase64`" pulumi-lang-java="`contentBase64`">`content_base64`</span> and <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Content to store in the file, expected to be binary encoded as base64 string.
      *  Conflicts with <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>, <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span> and <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded SHA256 checksum of file content.
      */
-    contentBase64sha256?: pulumi.Input<string>;
+    contentBase64sha256?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded SHA512 checksum of file content.
      */
-    contentBase64sha512?: pulumi.Input<string>;
+    contentBase64sha512?: pulumi.Input<string | undefined>;
     /**
      * MD5 checksum of file content.
      */
-    contentMd5?: pulumi.Input<string>;
+    contentMd5?: pulumi.Input<string | undefined>;
     /**
      * SHA1 checksum of file content.
      */
-    contentSha1?: pulumi.Input<string>;
+    contentSha1?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of file content.
      */
-    contentSha256?: pulumi.Input<string>;
+    contentSha256?: pulumi.Input<string | undefined>;
     /**
      * SHA512 checksum of file content.
      */
-    contentSha512?: pulumi.Input<string>;
+    contentSha512?: pulumi.Input<string | undefined>;
     /**
      * Permissions to set for directories created (before umask), expressed as string in
      *  [numeric notation](https://en.wikipedia.org/wiki/File-system_permissions#Numeric_notation).
      *  Default value is `"0777"`.
      */
-    directoryPermission?: pulumi.Input<string>;
+    directoryPermission?: pulumi.Input<string | undefined>;
     /**
      * Permissions to set for the output file (before umask), expressed as string in
      *  [numeric notation](https://en.wikipedia.org/wiki/File-system_permissions#Numeric_notation).
      *  Default value is `"0777"`.
      */
-    filePermission?: pulumi.Input<string>;
+    filePermission?: pulumi.Input<string | undefined>;
     /**
      * The path to the file that will be created.
      *  Missing parent directories will be created.
      *  If the file already exists, it will be overridden with the given content.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
     /**
      * Sensitive content to store in the file, expected to be an UTF-8 encoded string.
      *  Will not be displayed in diffs.
@@ -224,13 +224,13 @@ export interface FileState {
      *
      * @deprecated Deprecated
      */
-    sensitiveContent?: pulumi.Input<string>;
+    sensitiveContent?: pulumi.Input<string | undefined>;
     /**
      * Path to file to use as source for the one we are creating.
      *  Conflicts with <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>, <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span> and <span pulumi-lang-nodejs="`contentBase64`" pulumi-lang-dotnet="`ContentBase64`" pulumi-lang-go="`contentBase64`" pulumi-lang-python="`content_base64`" pulumi-lang-yaml="`contentBase64`" pulumi-lang-java="`contentBase64`">`content_base64`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,25 +242,25 @@ export interface FileArgs {
      *  Conflicts with <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span>, <span pulumi-lang-nodejs="`contentBase64`" pulumi-lang-dotnet="`ContentBase64`" pulumi-lang-go="`contentBase64`" pulumi-lang-python="`content_base64`" pulumi-lang-yaml="`contentBase64`" pulumi-lang-java="`contentBase64`">`content_base64`</span> and <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Content to store in the file, expected to be binary encoded as base64 string.
      *  Conflicts with <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>, <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span> and <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * Permissions to set for directories created (before umask), expressed as string in
      *  [numeric notation](https://en.wikipedia.org/wiki/File-system_permissions#Numeric_notation).
      *  Default value is `"0777"`.
      */
-    directoryPermission?: pulumi.Input<string>;
+    directoryPermission?: pulumi.Input<string | undefined>;
     /**
      * Permissions to set for the output file (before umask), expressed as string in
      *  [numeric notation](https://en.wikipedia.org/wiki/File-system_permissions#Numeric_notation).
      *  Default value is `"0777"`.
      */
-    filePermission?: pulumi.Input<string>;
+    filePermission?: pulumi.Input<string | undefined>;
     /**
      * The path to the file that will be created.
      *  Missing parent directories will be created.
@@ -277,11 +277,11 @@ export interface FileArgs {
      *
      * @deprecated Deprecated
      */
-    sensitiveContent?: pulumi.Input<string>;
+    sensitiveContent?: pulumi.Input<string | undefined>;
     /**
      * Path to file to use as source for the one we are creating.
      *  Conflicts with <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>, <span pulumi-lang-nodejs="`sensitiveContent`" pulumi-lang-dotnet="`SensitiveContent`" pulumi-lang-go="`sensitiveContent`" pulumi-lang-python="`sensitive_content`" pulumi-lang-yaml="`sensitiveContent`" pulumi-lang-java="`sensitiveContent`">`sensitive_content`</span> and <span pulumi-lang-nodejs="`contentBase64`" pulumi-lang-dotnet="`ContentBase64`" pulumi-lang-go="`contentBase64`" pulumi-lang-python="`content_base64`" pulumi-lang-yaml="`contentBase64`" pulumi-lang-java="`contentBase64`">`content_base64`</span>.
      *  Exactly one of these four arguments must be specified.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

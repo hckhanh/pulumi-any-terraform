@@ -146,47 +146,47 @@ export interface IntegrationAwsParameterStoreState {
     /**
      * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    assumeRoleArn?: pulumi.Input<string>;
+    assumeRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * The slug of the environment to sync to AWS Parameter Store (prod, dev, staging, etc).
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    integrationAuthId?: pulumi.Input<string>;
+    integrationAuthId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string | undefined>;
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationAwsParameterStoreOptions>;
+    options?: pulumi.Input<inputs.IntegrationAwsParameterStoreOptions | undefined>;
     /**
      * The path in AWS Parameter Store to sync secrets to.
      */
-    parameterStorePath?: pulumi.Input<string>;
+    parameterStorePath?: pulumi.Input<string | undefined>;
     /**
      * The ID of your Infisical project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,11 +196,11 @@ export interface IntegrationAwsParameterStoreArgs {
     /**
      * The AWS access key ID. Used to authenticate with AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    assumeRoleArn?: pulumi.Input<string>;
+    assumeRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
@@ -212,7 +212,7 @@ export interface IntegrationAwsParameterStoreArgs {
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationAwsParameterStoreOptions>;
+    options?: pulumi.Input<inputs.IntegrationAwsParameterStoreOptions | undefined>;
     /**
      * The path in AWS Parameter Store to sync secrets to.
      */
@@ -224,7 +224,7 @@ export interface IntegrationAwsParameterStoreArgs {
     /**
      * The AWS secret access key. Used to authenticate with AWS Parameter Store. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */

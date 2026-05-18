@@ -40,5 +40,5 @@ export function getIpListOutput(args?: GetIpListOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getIpList.
  */
 export interface GetIpListOutputArgs {
-    filterClusters?: pulumi.Input<pulumi.Input<string>[]>;
+    filterClusters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

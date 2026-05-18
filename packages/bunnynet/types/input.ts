@@ -9,23 +9,27 @@ export interface ComputeContainerAppContainer {
     /**
      * The arguments that will be added to the container entry point when starting the image.
      */
-    arguments?: pulumi.Input<string>;
+    arguments?: pulumi.Input<string | undefined>;
     /**
      * A custom startup command that will execute once the container is launched.
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * Defines a public endpoint for the application.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpoint>[] | undefined>;
     /**
      * Defines an environment variable for the container
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEnv>[] | undefined>;
     /**
      * The unique identifier for the container.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The image digest.
+     */
+    imageDigest?: pulumi.Input<string | undefined>;
     /**
      * The image name within the registry, without the domain prefix (i.e.: `my-app`).
      */
@@ -37,7 +41,7 @@ export interface ComputeContainerAppContainer {
     /**
      * Options: `Always`, `IfNotPresent`
      */
-    imagePullPolicy?: pulumi.Input<string>;
+    imagePullPolicy?: pulumi.Input<string | undefined>;
     /**
      * The image registry for the container.
      */
@@ -49,7 +53,7 @@ export interface ComputeContainerAppContainer {
     /**
      * Checks that the application is actively running without issues. It the check fails, the container will be automatically restarted
      */
-    livenessProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbe>[]>;
+    livenessProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbe>[] | undefined>;
     /**
      * The name of the container.
      */
@@ -57,26 +61,26 @@ export interface ComputeContainerAppContainer {
     /**
      * Checks if the application is fully prepared to handle incoming requests. No requests will be routed to the application until this check is successful.
      */
-    readinessProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbe>[]>;
+    readinessProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbe>[] | undefined>;
     /**
      * Checks if the application has successfully started. No requests will be routed to the application until this check is successful.
      */
-    startupProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbe>[]>;
+    startupProbes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbe>[] | undefined>;
     /**
      * Mounts a volume within a container
      */
-    volumemounts?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerVolumemount>[]>;
+    volumemounts?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerVolumemount>[] | undefined>;
     /**
      * The working directory of the container runtime.
      */
-    workingDir?: pulumi.Input<string>;
+    workingDir?: pulumi.Input<string | undefined>;
 }
 
 export interface ComputeContainerAppContainerEndpoint {
     /**
      * Configurations for CDN endpoint.
      */
-    cdns?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointCdn>[]>;
+    cdns?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointCdn>[] | undefined>;
     /**
      * The name of the endpoint.
      */
@@ -84,7 +88,7 @@ export interface ComputeContainerAppContainerEndpoint {
     /**
      * Endpoint port configuration.
      */
-    ports?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointPort>[]>;
+    ports?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointPort>[] | undefined>;
     /**
      * Options: `Anycast`, `CDN`, `InternalIP`
      */
@@ -95,15 +99,15 @@ export interface ComputeContainerAppContainerEndpointCdn {
     /**
      * Indicates whether the container will handle TLS termination.
      */
-    originSsl?: pulumi.Input<boolean>;
+    originSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the pullzone associated with the endpoint.
      */
-    pullzoneId?: pulumi.Input<number>;
+    pullzoneId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether sticky sessions is enabled.
      */
-    stickySessions?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointCdnStickySession>[]>;
+    stickySessions?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointCdnStickySession>[] | undefined>;
 }
 
 export interface ComputeContainerAppContainerEndpointCdnStickySession {
@@ -121,11 +125,11 @@ export interface ComputeContainerAppContainerEndpointPort {
     /**
      * The exposed port number.
      */
-    exposed?: pulumi.Input<number>;
+    exposed?: pulumi.Input<number | undefined>;
     /**
-     * Options: `Tcp`, `Udp`
+     * Options: `SCTP`, `TCP`, `UDP`
      */
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ComputeContainerAppContainerEnv {
@@ -143,23 +147,23 @@ export interface ComputeContainerAppContainerLivenessProbe {
     /**
      * The number of failed probes to consider the container unhealthy.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * gRPC-specific configurations.
      */
-    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbeGrpc>[]>;
+    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbeGrpc>[] | undefined>;
     /**
      * HTTP-specific configurations.
      */
-    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbeHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerLivenessProbeHttp>[] | undefined>;
     /**
      * The amount of time in seconds after the container is started to wait before the first probe is sent.
      */
-    initialDelay?: pulumi.Input<number>;
+    initialDelay?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds between each probe.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The port within the container the probe will connect to.
      */
@@ -167,11 +171,11 @@ export interface ComputeContainerAppContainerLivenessProbe {
     /**
      * The number of successful probes to consider the container healthy.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds the probe will wait for a response before considering it a failure.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
@@ -189,7 +193,7 @@ export interface ComputeContainerAppContainerLivenessProbeHttp {
     /**
      * The expected HTTP response status code.
      */
-    expectedStatus?: pulumi.Input<number>;
+    expectedStatus?: pulumi.Input<number | undefined>;
     /**
      * The HTTP path to be requested.
      */
@@ -200,23 +204,23 @@ export interface ComputeContainerAppContainerReadinessProbe {
     /**
      * The number of failed probes to consider the container unhealthy.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * gRPC-specific configurations.
      */
-    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbeGrpc>[]>;
+    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbeGrpc>[] | undefined>;
     /**
      * HTTP-specific configurations.
      */
-    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbeHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerReadinessProbeHttp>[] | undefined>;
     /**
      * The amount of time in seconds after the container is started to wait before the first probe is sent.
      */
-    initialDelay?: pulumi.Input<number>;
+    initialDelay?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds between each probe.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The port within the container the probe will connect to.
      */
@@ -224,11 +228,11 @@ export interface ComputeContainerAppContainerReadinessProbe {
     /**
      * The number of successful probes to consider the container healthy.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds the probe will wait for a response before considering it a failure.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
@@ -246,7 +250,7 @@ export interface ComputeContainerAppContainerReadinessProbeHttp {
     /**
      * The expected HTTP response status code.
      */
-    expectedStatus?: pulumi.Input<number>;
+    expectedStatus?: pulumi.Input<number | undefined>;
     /**
      * The HTTP path to be requested.
      */
@@ -257,23 +261,23 @@ export interface ComputeContainerAppContainerStartupProbe {
     /**
      * The number of failed probes to consider the container unhealthy.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * gRPC-specific configurations.
      */
-    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbeGrpc>[]>;
+    grpcs?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbeGrpc>[] | undefined>;
     /**
      * HTTP-specific configurations.
      */
-    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbeHttp>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerStartupProbeHttp>[] | undefined>;
     /**
      * The amount of time in seconds after the container is started to wait before the first probe is sent.
      */
-    initialDelay?: pulumi.Input<number>;
+    initialDelay?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds between each probe.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The port within the container the probe will connect to.
      */
@@ -281,11 +285,11 @@ export interface ComputeContainerAppContainerStartupProbe {
     /**
      * The number of successful probes to consider the container healthy.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The amount of time in seconds the probe will wait for a response before considering it a failure.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
      */
@@ -303,7 +307,7 @@ export interface ComputeContainerAppContainerStartupProbeHttp {
     /**
      * The expected HTTP response status code.
      */
-    expectedStatus?: pulumi.Input<number>;
+    expectedStatus?: pulumi.Input<number | undefined>;
     /**
      * The HTTP path to be requested.
      */
@@ -391,55 +395,55 @@ export interface GetPullzoneOriginArgs {
     /**
      * The ID if the compute container app.
      */
-    containerAppId?: pulumi.Input<string>;
+    containerAppId?: pulumi.Input<string | undefined>;
     /**
      * The ID if the compute container app endpoint.
      */
-    containerEndpointId?: pulumi.Input<string>;
+    containerEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The port for DNS Accelerated endpoints.
      */
-    dnsPort?: pulumi.Input<number>;
+    dnsPort?: pulumi.Input<number | undefined>;
     /**
      * The scheme for DNS Accelerated endpoints.
      */
-    dnsScheme?: pulumi.Input<string>;
+    dnsScheme?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the zone will follow origin redirects.
      */
-    followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the current hostname is forwarded to the origin.
      */
-    forwardHostHeader?: pulumi.Input<boolean>;
+    forwardHostHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The host header that will be sent to the origin.
      */
-    hostHeader?: pulumi.Input<string>;
+    hostHeader?: pulumi.Input<string | undefined>;
     /**
      * The ID of the compute script used as a middleware.
      */
-    middlewareScript?: pulumi.Input<number>;
+    middlewareScript?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked compute script.
      */
-    script?: pulumi.Input<number>;
+    script?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked storage zone.
      */
-    storagezone?: pulumi.Input<number>;
+    storagezone?: pulumi.Input<number | undefined>;
     /**
      * Options: `ComputeContainer`, `ComputeScript`, `DnsAccelerate`, `OriginUrl`, `StorageZone`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The origin URL from where the files are fetched.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the Origin's TLS certificate should be verified.
      */
-    verifySsl?: pulumi.Input<boolean>;
+    verifySsl?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetPullzoneRouting {
@@ -469,23 +473,23 @@ export interface GetPullzoneRoutingArgs {
     /**
      * The list of blocked countries with the two-letter Alpha2 ISO codes. Traffic connecting from a blocked country will be rejected on the DNS level.
      */
-    blockedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
      */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of budget redirected countries with the two-letter Alpha2 ISO codes. Traffic from a redirected country will connect to the cheapest possible node in North America or Europe.
      */
-    redirectedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: `Standard`, `Volume`
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * Options: `AF`, `ASIA`, `EU`, `SA`, `US`
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PullzoneEdgeruleAction {
@@ -507,43 +511,43 @@ export interface PullzoneOrigin {
     /**
      * The ID if the compute container app.
      */
-    containerAppId?: pulumi.Input<string>;
+    containerAppId?: pulumi.Input<string | undefined>;
     /**
      * The ID if the compute container app endpoint.
      */
-    containerEndpointId?: pulumi.Input<string>;
+    containerEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The port for DNS Accelerated endpoints.
      */
-    dnsPort?: pulumi.Input<number>;
+    dnsPort?: pulumi.Input<number | undefined>;
     /**
      * The scheme for DNS Accelerated endpoints.
      */
-    dnsScheme?: pulumi.Input<string>;
+    dnsScheme?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the zone will follow origin redirects.
      */
-    followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the current hostname is forwarded to the origin.
      */
-    forwardHostHeader?: pulumi.Input<boolean>;
+    forwardHostHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The host header that will be sent to the origin.
      */
-    hostHeader?: pulumi.Input<string>;
+    hostHeader?: pulumi.Input<string | undefined>;
     /**
      * The ID of the compute script used as a middleware.
      */
-    middlewareScript?: pulumi.Input<number>;
+    middlewareScript?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked compute script.
      */
-    script?: pulumi.Input<number>;
+    script?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked storage zone.
      */
-    storagezone?: pulumi.Input<number>;
+    storagezone?: pulumi.Input<number | undefined>;
     /**
      * Options: `ComputeContainer`, `ComputeScript`, `DnsAccelerate`, `OriginUrl`, `StorageZone`
      */
@@ -551,11 +555,11 @@ export interface PullzoneOrigin {
     /**
      * The origin URL from where the files are fetched.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the Origin's TLS certificate should be verified.
      */
-    verifySsl?: pulumi.Input<boolean>;
+    verifySsl?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PullzoneRatelimitRuleCondition {
@@ -568,7 +572,7 @@ export interface PullzoneRatelimitRuleCondition {
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: pulumi.Input<string>;
-    variableValue?: pulumi.Input<string>;
+    variableValue?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneRatelimitRuleLimit {
@@ -593,23 +597,23 @@ export interface PullzoneRouting {
     /**
      * The list of blocked countries with the two-letter Alpha2 ISO codes. Traffic connecting from a blocked country will be rejected on the DNS level.
      */
-    blockedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
      */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of budget redirected countries with the two-letter Alpha2 ISO codes. Traffic from a redirected country will connect to the cheapest possible node in North America or Europe.
      */
-    redirectedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: `Standard`, `Volume`
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * Options: `AF`, `ASIA`, `EU`, `SA`, `US`
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PullzoneShieldAccessList {
@@ -627,34 +631,34 @@ export interface PullzoneShieldBotDetection {
     /**
      * Combines advanced entropy analysis and cross-session consistency.
      */
-    complexFingerprinting?: pulumi.Input<boolean>;
+    complexFingerprinting?: pulumi.Input<boolean | undefined>;
     /**
      * Controls how assertively unusual fingerprints are treated as bots.
      */
-    fingerprintAggression?: pulumi.Input<number>;
+    fingerprintAggression?: pulumi.Input<number | undefined>;
     /**
      * Adjusts how precisely browsers are checked for signs of automation.
      */
-    fingerprintSensitivity?: pulumi.Input<number>;
+    fingerprintSensitivity?: pulumi.Input<number | undefined>;
     /**
      * Monitors IP behaviour, reputation, and rate patterns.
      */
-    ipSensitivity?: pulumi.Input<number>;
+    ipSensitivity?: pulumi.Input<number | undefined>;
     /**
      * Indicates the mode the Bot Detection engine is running. Options: `Challenge`, `Log`
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Analyzes request headers, query structure, and protocol anomalies.
      */
-    requestIntegrity?: pulumi.Input<number>;
+    requestIntegrity?: pulumi.Input<number | undefined>;
 }
 
 export interface PullzoneShieldDdos {
     /**
      * The window of time a visitor can access your website after passing a challenge. Once the timeout expires, they'll face a new challenge.
      */
-    challengeWindow?: pulumi.Input<number>;
+    challengeWindow?: pulumi.Input<number | undefined>;
     /**
      * Options: `Asleep`, `Extreme`, `High`, `Low`, `Medium`
      */
@@ -662,38 +666,38 @@ export interface PullzoneShieldDdos {
     /**
      * Indicates the mode the engine is running. Options: `Block`, `Log`
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneShieldWaf {
     /**
      * Indicates allowed HTTP methods.
      */
-    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates allowed HTTP versions.
      */
-    allowedHttpVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHttpVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates allowed values for request Content-Type.
      */
-    allowedRequestContentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRequestContentTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which severity level of rules will block requests.
      */
-    blockingSensitivity?: pulumi.Input<number>;
+    blockingSensitivity?: pulumi.Input<number | undefined>;
     /**
      * Determines the action to take when the request body length exceeds your plan limit. Options: `Block`, `Ignore`, `Log`
      */
-    bodyLimitRequest?: pulumi.Input<string>;
+    bodyLimitRequest?: pulumi.Input<string | undefined>;
     /**
      * Determines the action to take when the response body length exceeds your plan limit. Options: `Block`, `Ignore`, `Log`
      */
-    bodyLimitResponse?: pulumi.Input<string>;
+    bodyLimitResponse?: pulumi.Input<string | undefined>;
     /**
      * Determines which severity level of rules will trigger a detection log.
      */
-    detectionSensitivity?: pulumi.Input<number>;
+    detectionSensitivity?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the WAF (Web Application Firewall) is enabled.
      */
@@ -701,31 +705,31 @@ export interface PullzoneShieldWaf {
     /**
      * Determines which severity level of rules will trigger the rules and their action.
      */
-    executionSensitivity?: pulumi.Input<number>;
+    executionSensitivity?: pulumi.Input<number | undefined>;
     /**
      * When enabled, detected WAF audit logs will contain the full list of request headers sent during the request.
      */
-    logHeaders?: pulumi.Input<boolean>;
+    logHeaders?: pulumi.Input<boolean | undefined>;
     /**
      * The list of headers excluded from the logs. They will still be used for processing WAF rules.
      */
-    logHeadersExcludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    logHeadersExcludeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates the mode the engine is running. Options: `Block`, `Log`
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Real-time Threat Intelligence delivers zero-day protection by instantly detecting and blocking emerging threats.
      */
-    realtimeThreatIntelligence?: pulumi.Input<boolean>;
+    realtimeThreatIntelligence?: pulumi.Input<boolean | undefined>;
     /**
      * List of disabled WAF rules.
      */
-    rulesDisableds?: pulumi.Input<pulumi.Input<string>[]>;
+    rulesDisableds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WAF rules that will not be blocked, but will be logged when triggered.
      */
-    rulesLogonlies?: pulumi.Input<pulumi.Input<string>[]>;
+    rulesLogonlies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PullzoneWafRuleCondition {
@@ -738,7 +742,7 @@ export interface PullzoneWafRuleCondition {
      * Options: `ARGS`, `ARGS_COMBINED_SIZE`, `ARGS_GET`, `ARGS_GET_NAMES`, `ARGS_POST`, `ARGS_POST_NAMES`, `FILES_NAMES`, `FINGERPRINT`, `GEO`, `QUERY_STRING`, `REMOTE_ADDR`, `REQUEST_BASENAME`, `REQUEST_BODY`, `REQUEST_COOKIES`, `REQUEST_COOKIES_NAMES`, `REQUEST_FILENAME`, `REQUEST_HEADERS`, `REQUEST_HEADERS_NAMES`, `REQUEST_LINE`, `REQUEST_METHOD`, `REQUEST_PROTOCOL`, `REQUEST_URI`, `REQUEST_URI_RAW`, `RESPONSE_BODY`, `RESPONSE_HEADERS`, `RESPONSE_STATUS`
      */
     variable: pulumi.Input<string>;
-    variableValue?: pulumi.Input<string>;
+    variableValue?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneWafRuleResponse {

@@ -91,19 +91,19 @@ export interface ProjectEnvironmentState {
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The slug of the environment
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,11 +113,11 @@ export interface ProjectEnvironmentArgs {
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */

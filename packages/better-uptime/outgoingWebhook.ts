@@ -129,43 +129,43 @@ export interface OutgoingWebhookState {
     /**
      * Custom webhook template configuration.
      */
-    customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes>;
+    customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
     /**
      * The name of the outgoing webhook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
-    onIncidentAcknowledged?: pulumi.Input<boolean>;
+    onIncidentAcknowledged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when a comment is posted on an incident. Only when `trigger_type=incident_change`.
      */
-    onIncidentComment?: pulumi.Input<boolean>;
+    onIncidentComment?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident is reopened. Only when `trigger_type=incident_change`.
      */
-    onIncidentReopened?: pulumi.Input<boolean>;
+    onIncidentReopened?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */
-    onIncidentResolved?: pulumi.Input<boolean>;
+    onIncidentResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident starts. Only when `trigger_type=incident_change`.
      */
-    onIncidentStarted?: pulumi.Input<boolean>;
+    onIncidentStarted?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
      */
-    triggerType?: pulumi.Input<string>;
+    triggerType?: pulumi.Input<string | undefined>;
     /**
      * The URL to send webhooks to.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,35 +175,35 @@ export interface OutgoingWebhookArgs {
     /**
      * Custom webhook template configuration.
      */
-    customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes>;
+    customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
     /**
      * The name of the outgoing webhook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
-    onIncidentAcknowledged?: pulumi.Input<boolean>;
+    onIncidentAcknowledged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when a comment is posted on an incident. Only when `trigger_type=incident_change`.
      */
-    onIncidentComment?: pulumi.Input<boolean>;
+    onIncidentComment?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident is reopened. Only when `trigger_type=incident_change`.
      */
-    onIncidentReopened?: pulumi.Input<boolean>;
+    onIncidentReopened?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident is resolved. Only when `trigger_type=incident_change`.
      */
-    onIncidentResolved?: pulumi.Input<boolean>;
+    onIncidentResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to trigger webhook when incident starts. Only when `trigger_type=incident_change`.
      */
-    onIncidentStarted?: pulumi.Input<boolean>;
+    onIncidentStarted?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
      */

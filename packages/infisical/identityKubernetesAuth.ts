@@ -144,55 +144,55 @@ export interface IdentityKubernetesAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * An optional audience claim that the service account JWT token must have to authenticate with Infisical.
      */
-    allowedAudience?: pulumi.Input<string>;
+    allowedAudience?: pulumi.Input<string | undefined>;
     /**
      * List of trusted namespaces that service accounts must belong to authenticate with Infisical.
      */
-    allowedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedNamespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted service account names that are allowed to authenticate with Infisical.
      */
-    allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the Kubernetes API server.
      */
-    kubernetesCaCertificate?: pulumi.Input<string>;
+    kubernetesCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
-    kubernetesHost?: pulumi.Input<string>;
+    kubernetesHost?: pulumi.Input<string | undefined>;
     /**
      * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
-    tokenReviewerJwt?: pulumi.Input<string>;
+    tokenReviewerJwt?: pulumi.Input<string | undefined>;
     /**
      * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
      */
-    tokenReviewerMode?: pulumi.Input<string>;
+    tokenReviewerMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,35 +202,35 @@ export interface IdentityKubernetesAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityKubernetesAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * An optional audience claim that the service account JWT token must have to authenticate with Infisical.
      */
-    allowedAudience?: pulumi.Input<string>;
+    allowedAudience?: pulumi.Input<string | undefined>;
     /**
      * List of trusted namespaces that service accounts must belong to authenticate with Infisical.
      */
-    allowedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedNamespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted service account names that are allowed to authenticate with Infisical.
      */
-    allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServiceAccountNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Select a gateway for private cluster access. If not specified, the Internet Gateway will be used.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
@@ -238,17 +238,17 @@ export interface IdentityKubernetesAuthArgs {
     /**
      * The PEM-encoded CA cert for the Kubernetes API server. This is used by the TLS client for secure communication with the Kubernetes API server.
      */
-    kubernetesCaCertificate?: pulumi.Input<string>;
+    kubernetesCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The host string, host:port pair, or URL to the base of the Kubernetes API server. This can usually be obtained by running `kubectl cluster-info`.
      */
-    kubernetesHost?: pulumi.Input<string>;
+    kubernetesHost?: pulumi.Input<string | undefined>;
     /**
      * A long-lived service account JWT token for Infisical to access the [TokenReview API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/) to validate other service account JWT tokens submitted by applications/pods. This is the JWT token obtained from step 1.5.
      */
-    tokenReviewerJwt?: pulumi.Input<string>;
+    tokenReviewerJwt?: pulumi.Input<string | undefined>;
     /**
      * Choose between Token ('api') or 'gateway' authentication. If using Gateway, the Gateway must be deployed in your Kubernetes cluster.
      */
-    tokenReviewerMode?: pulumi.Input<string>;
+    tokenReviewerMode?: pulumi.Input<string | undefined>;
 }

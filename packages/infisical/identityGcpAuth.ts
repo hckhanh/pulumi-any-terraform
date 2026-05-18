@@ -120,39 +120,39 @@ export interface IdentityGcpAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation property will only work for GCE instances
      */
-    allowedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
-    allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this validation property will only work for GCE instances.
      */
-    allowedZones?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The Type of GCP Auth Method to use: Options are gce, iam. Default:gce
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,31 +162,31 @@ export interface IdentityGcpAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityGcpAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of trusted GCP projects that the GCE instance must belong to authenticate with Infisical. Note that this validation property will only work for GCE instances
      */
-    allowedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted service account emails corresponding to the GCE resource(s) allowed to authenticate with Infisical; this could be something like `test@project.iam.gserviceaccount.com`, `12345-compute@developer.gserviceaccount.com`, etc.
      */
-    allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServiceAccountEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted zones that the GCE instances must belong to authenticate with Infisical; this should be the fully-qualified zone name in the format `<region>-<zone>`like `us-central1-a`, `us-west1-b`, etc. Note that this validation property will only work for GCE instances.
      */
-    allowedZones?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
@@ -194,5 +194,5 @@ export interface IdentityGcpAuthArgs {
     /**
      * The Type of GCP Auth Method to use: Options are gce, iam. Default:gce
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

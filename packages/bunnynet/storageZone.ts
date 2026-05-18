@@ -73,6 +73,10 @@ export class StorageZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly storageZoneId: pulumi.Output<number>;
     /**
+     * Options: `S3`, `Standard`
+     */
+    declare public readonly type: pulumi.Output<string>;
+    /**
      * Options: `Edge`, `Standard`
      */
     declare public readonly zoneTier: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class StorageZone extends pulumi.CustomResource {
             resourceInputs["replicationRegions"] = state?.replicationRegions;
             resourceInputs["rewrite404To200"] = state?.rewrite404To200;
             resourceInputs["storageZoneId"] = state?.storageZoneId;
+            resourceInputs["type"] = state?.type;
             resourceInputs["zoneTier"] = state?.zoneTier;
         } else {
             const args = argsOrState as StorageZoneArgs | undefined;
@@ -114,6 +119,7 @@ export class StorageZone extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["replicationRegions"] = args?.replicationRegions;
             resourceInputs["rewrite404To200"] = args?.rewrite404To200;
+            resourceInputs["type"] = args?.type;
             resourceInputs["zoneTier"] = args?.zoneTier;
             resourceInputs["dateModified"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
@@ -135,47 +141,51 @@ export interface StorageZoneState {
     /**
      * The file path for a custom 404 error page.
      */
-    custom404FilePath?: pulumi.Input<string>;
+    custom404FilePath?: pulumi.Input<string | undefined>;
     /**
      * The date when the zone was last modified.
      */
-    dateModified?: pulumi.Input<string>;
+    dateModified?: pulumi.Input<string | undefined>;
     /**
      * The hostname for accessing the storage zone.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for accessing the storage zone.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The read-only password for accessing the storage zone.
      */
-    passwordReadonly?: pulumi.Input<string>;
+    passwordReadonly?: pulumi.Input<string | undefined>;
     /**
      * The region where the storage zone is located.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of regions for data replication.
      */
-    replicationRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicationRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether to rewrite 404 errors to 200 status.
      */
-    rewrite404To200?: pulumi.Input<boolean>;
+    rewrite404To200?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the storage zone.
      */
-    storageZoneId?: pulumi.Input<number>;
+    storageZoneId?: pulumi.Input<number | undefined>;
+    /**
+     * Options: `S3`, `Standard`
+     */
+    type?: pulumi.Input<string | undefined>;
     /**
      * Options: `Edge`, `Standard`
      */
-    zoneTier?: pulumi.Input<string>;
+    zoneTier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,11 +195,11 @@ export interface StorageZoneArgs {
     /**
      * The file path for a custom 404 error page.
      */
-    custom404FilePath?: pulumi.Input<string>;
+    custom404FilePath?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region where the storage zone is located.
      */
@@ -197,11 +207,15 @@ export interface StorageZoneArgs {
     /**
      * A set of regions for data replication.
      */
-    replicationRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicationRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether to rewrite 404 errors to 200 status.
      */
-    rewrite404To200?: pulumi.Input<boolean>;
+    rewrite404To200?: pulumi.Input<boolean | undefined>;
+    /**
+     * Options: `S3`, `Standard`
+     */
+    type?: pulumi.Input<string | undefined>;
     /**
      * Options: `Edge`, `Standard`
      */

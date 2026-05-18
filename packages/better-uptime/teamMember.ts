@@ -121,40 +121,40 @@ export interface TeamMemberState {
     /**
      * The creation timestamp of the team member account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The email address of the team member to invite.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The first name of the team member (available after invitation is accepted).
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the invitation was sent.
      */
-    invitedAt?: pulumi.Input<string>;
+    invitedAt?: pulumi.Input<string | undefined>;
     /**
      * The last name of the team member (available after invitation is accepted).
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The numeric ID of the team member. Empty for pending invitations.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
     /**
      * The mobile app platforms the team member has installed (e.g. ios, android).
      */
-    mobileAppPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    mobileAppPlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder.
      */
-    role?: pulumi.Input<string>;
-    teamMemberId?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
+    teamMemberId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,10 +168,10 @@ export interface TeamMemberArgs {
     /**
      * The role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder.
      */
-    role?: pulumi.Input<string>;
-    teamMemberId?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
+    teamMemberId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

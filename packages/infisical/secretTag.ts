@@ -94,19 +94,19 @@ export interface SecretTagState {
     /**
      * Color code for the tag.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The name for the new tag
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project id associated with the secret tag
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The slug for the new tag
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface SecretTagArgs {
     /**
      * The name for the new tag
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project id associated with the secret tag
      */

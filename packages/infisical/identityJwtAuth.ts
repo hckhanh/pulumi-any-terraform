@@ -147,55 +147,55 @@ export interface IdentityJwtAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address.
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityJwtAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityJwtAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The list of intended recipients.
      */
-    boundAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    boundAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The attributes that should be present in the JWT for it to be valid.
      */
-    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique identifier of the identity provider issuing the JWTs.
      */
-    boundIssuer?: pulumi.Input<string>;
+    boundIssuer?: pulumi.Input<string | undefined>;
     /**
      * The expected principal that is the subject of the JWT.
      */
-    boundSubject?: pulumi.Input<string>;
+    boundSubject?: pulumi.Input<string | undefined>;
     /**
      * The configuration type of the JWT auth. Must be 'jwks' or 'static'.
      */
-    configurationType?: pulumi.Input<string>;
+    configurationType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The PEM-encoded CA certificate for validating the TLS connection to the JWKS URL.
      */
-    jwksCaCert?: pulumi.Input<string>;
+    jwksCaCert?: pulumi.Input<string | undefined>;
     /**
      * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'jwks'.
      */
-    jwksUrl?: pulumi.Input<string>;
+    jwksUrl?: pulumi.Input<string | undefined>;
     /**
      * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'static'.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -205,35 +205,35 @@ export interface IdentityJwtAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address.
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityJwtAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityJwtAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The list of intended recipients.
      */
-    boundAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    boundAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The attributes that should be present in the JWT for it to be valid.
      */
-    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique identifier of the identity provider issuing the JWTs.
      */
-    boundIssuer?: pulumi.Input<string>;
+    boundIssuer?: pulumi.Input<string | undefined>;
     /**
      * The expected principal that is the subject of the JWT.
      */
-    boundSubject?: pulumi.Input<string>;
+    boundSubject?: pulumi.Input<string | undefined>;
     /**
      * The configuration type of the JWT auth. Must be 'jwks' or 'static'.
      */
@@ -245,13 +245,13 @@ export interface IdentityJwtAuthArgs {
     /**
      * The PEM-encoded CA certificate for validating the TLS connection to the JWKS URL.
      */
-    jwksCaCert?: pulumi.Input<string>;
+    jwksCaCert?: pulumi.Input<string | undefined>;
     /**
      * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'jwks'.
      */
-    jwksUrl?: pulumi.Input<string>;
+    jwksUrl?: pulumi.Input<string | undefined>;
     /**
      * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'static'.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

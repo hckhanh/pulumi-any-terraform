@@ -83,23 +83,23 @@ export interface ProviderArgs {
     /**
      * The namecheap API key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * A registered api user for namecheap
      */
-    apiUser?: pulumi.Input<string>;
+    apiUser?: pulumi.Input<string | undefined>;
     /**
      * Client IP address
      */
-    clientIp?: pulumi.Input<string>;
+    clientIp?: pulumi.Input<string | undefined>;
     /**
      * Use sandbox API endpoints
      */
-    useSandbox?: pulumi.Input<boolean>;
+    useSandbox?: pulumi.Input<boolean | undefined>;
     /**
      * A registered user name for namecheap
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

@@ -105,27 +105,27 @@ export interface StreamVideoState {
     /**
      * The list of chapters available in the video.
      */
-    chapters?: pulumi.Input<pulumi.Input<inputs.StreamVideoChapter>[]>;
+    chapters?: pulumi.Input<pulumi.Input<inputs.StreamVideoChapter>[] | undefined>;
     /**
      * The ID of the collection to which the video belongs.
      */
-    collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string | undefined>;
     /**
      * The description of the video.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the stream library to which the video belongs.
      */
-    library?: pulumi.Input<number>;
+    library?: pulumi.Input<number | undefined>;
     /**
      * The list of moments available in the video.
      */
-    moments?: pulumi.Input<pulumi.Input<inputs.StreamVideoMoment>[]>;
+    moments?: pulumi.Input<pulumi.Input<inputs.StreamVideoMoment>[] | undefined>;
     /**
      * The title of the video.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,15 +135,15 @@ export interface StreamVideoArgs {
     /**
      * The list of chapters available in the video.
      */
-    chapters?: pulumi.Input<pulumi.Input<inputs.StreamVideoChapter>[]>;
+    chapters?: pulumi.Input<pulumi.Input<inputs.StreamVideoChapter>[] | undefined>;
     /**
      * The ID of the collection to which the video belongs.
      */
-    collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string | undefined>;
     /**
      * The description of the video.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the stream library to which the video belongs.
      */
@@ -151,7 +151,7 @@ export interface StreamVideoArgs {
     /**
      * The list of moments available in the video.
      */
-    moments?: pulumi.Input<pulumi.Input<inputs.StreamVideoMoment>[]>;
+    moments?: pulumi.Input<pulumi.Input<inputs.StreamVideoMoment>[] | undefined>;
     /**
      * The title of the video.
      */

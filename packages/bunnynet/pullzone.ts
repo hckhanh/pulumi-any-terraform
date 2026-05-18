@@ -608,362 +608,362 @@ export interface PullzoneState {
     /**
      * Indicates whether the Canonical header is added to the responses.
      */
-    addCanonicalHeader?: pulumi.Input<boolean>;
+    addCanonicalHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    allowReferers?: pulumi.Input<pulumi.Input<string>[]>;
+    allowReferers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected. If empty, all the IPs will be allowed
      */
-    blockIps?: pulumi.Input<pulumi.Input<string>[]>;
+    blockIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether requests without a referer should be blocked.
      */
-    blockNoReferer?: pulumi.Input<boolean>;
+    blockNoReferer?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to block POST requests.
      */
-    blockPostRequests?: pulumi.Input<boolean>;
+    blockPostRequests?: pulumi.Input<boolean | undefined>;
     /**
      * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    blockReferers?: pulumi.Input<pulumi.Input<string>[]>;
+    blockReferers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This property indicates whether to block the root path.
      */
-    blockRootPath?: pulumi.Input<boolean>;
+    blockRootPath?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the cache slice (Optimize for large object delivery) feature is enabled for the Pull Zone
      */
-    cacheChunked?: pulumi.Input<boolean>;
+    cacheChunked?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether smart caching is enabled.
      */
-    cacheEnabled?: pulumi.Input<boolean>;
+    cacheEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether bunny.net should be caching error responses.
      */
-    cacheErrors?: pulumi.Input<boolean>;
+    cacheErrors?: pulumi.Input<boolean | undefined>;
     /**
      * The override cache time, in seconds.
      */
-    cacheExpirationTime?: pulumi.Input<number>;
+    cacheExpirationTime?: pulumi.Input<number | undefined>;
     /**
      * The override cache time for the end client, in seconds.
      */
-    cacheExpirationTimeBrowser?: pulumi.Input<number>;
+    cacheExpirationTimeBrowser?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`">`updating`</span>
      */
-    cacheStales?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheStales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`">`webp`</span>
      */
-    cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
-    cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
-    cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The CNAME domain of the pull zone for setting up custom hostnames
      */
-    cdnDomain?: pulumi.Input<string>;
+    cdnDomain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether CORS (Cross-Origin Resource Sharing) is enabled.
      */
-    corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of file extensions for which CORS is enabled.
      */
-    corsExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    corsExtensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the built-in let's encrypt is disabled and requests are passed to the origin.
      */
-    disableLetsencrypt?: pulumi.Input<boolean>;
+    disableLetsencrypt?: pulumi.Input<boolean | undefined>;
     /**
      * Contains the custom error page code that will be returned.
      */
-    errorpageCustomContent?: pulumi.Input<string>;
+    errorpageCustomContent?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether custom error page code should be enabled.
      */
-    errorpageCustomEnabled?: pulumi.Input<boolean>;
+    errorpageCustomEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The statuspage code that will be used to build the status widget.
      */
-    errorpageStatuspageCode?: pulumi.Input<string>;
+    errorpageStatuspageCode?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the statuspage widget should be displayed on the error pages.
      */
-    errorpageStatuspageEnabled?: pulumi.Input<boolean>;
+    errorpageStatuspageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the error pages should be white-labelled or not
      */
-    errorpageWhitelabel?: pulumi.Input<boolean>;
+    errorpageWhitelabel?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of data after the rate limit will be activated.
      */
-    limitAfter?: pulumi.Input<number>;
+    limitAfter?: pulumi.Input<number | undefined>;
     /**
      * The maximum bandwidth limit in bytes.
      */
-    limitBandwidth?: pulumi.Input<number>;
+    limitBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Excessive requests are delayed until their number exceeds the maximum burst size.
      */
-    limitBurst?: pulumi.Input<number>;
+    limitBurst?: pulumi.Input<number | undefined>;
     /**
      * The number of connections limited per IP.
      */
-    limitConnections?: pulumi.Input<number>;
+    limitConnections?: pulumi.Input<number | undefined>;
     /**
      * The maximum download speed, in kb/s. Use 0 for unlimited.
      */
-    limitDownloadSpeed?: pulumi.Input<number>;
+    limitDownloadSpeed?: pulumi.Input<number | undefined>;
     /**
      * The maximum amount of requests per IP per second.
      */
-    limitRequests?: pulumi.Input<number>;
+    limitRequests?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether logs are anonymized.
      */
-    logAnonymized?: pulumi.Input<boolean>;
+    logAnonymized?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    logAnonymizedStyle?: pulumi.Input<string>;
+    logAnonymizedStyle?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether logging is enabled.
      */
-    logEnabled?: pulumi.Input<boolean>;
+    logEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether log forwarding is enabled.
      */
-    logForwardEnabled?: pulumi.Input<boolean>;
+    logForwardEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `JSON`, `Plain`
      */
-    logForwardFormat?: pulumi.Input<string>;
+    logForwardFormat?: pulumi.Input<string | undefined>;
     /**
      * The port number for log forwarding.
      */
-    logForwardPort?: pulumi.Input<number>;
+    logForwardPort?: pulumi.Input<number | undefined>;
     /**
      * Options: `DataDog`, `TCP`, `TCPEncrypted`, `UDP`
      */
-    logForwardProtocol?: pulumi.Input<string>;
+    logForwardProtocol?: pulumi.Input<string | undefined>;
     /**
      * The server address for log forwarding.
      */
-    logForwardServer?: pulumi.Input<string>;
+    logForwardServer?: pulumi.Input<string | undefined>;
     /**
      * The token used for log forwarding authentication.
      */
-    logForwardToken?: pulumi.Input<string>;
+    logForwardToken?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether log storage is enabled.
      */
-    logStorageEnabled?: pulumi.Input<boolean>;
+    logStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The storage zone ID for log storage.
      */
-    logStorageZone?: pulumi.Input<number>;
+    logStorageZone?: pulumi.Input<number | undefined>;
     /**
      * The name of the pull zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether Burrow Smart Routing should be enabled.
      */
-    optimizerBurrow?: pulumi.Input<boolean>;
+    optimizerBurrow?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the optimizer class list should be enforced.
      */
-    optimizerClassesForce?: pulumi.Input<boolean>;
+    optimizerClassesForce?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the image manipulation should be enabled.
      */
-    optimizerDynamicImageApi?: pulumi.Input<boolean>;
+    optimizerDynamicImageApi?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether Bunny Optimizer should be enabled.
      */
-    optimizerEnabled?: pulumi.Input<boolean>;
+    optimizerEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether HTML Prerender should be enabled.
      */
-    optimizerHtmlPrerender?: pulumi.Input<boolean>;
+    optimizerHtmlPrerender?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the CSS minification should be enabled.
      */
-    optimizerMinifyCss?: pulumi.Input<boolean>;
+    optimizerMinifyCss?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the JavaScript minification should be enabled.
      */
-    optimizerMinifyJs?: pulumi.Input<boolean>;
+    optimizerMinifyJs?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the automatic image optimization should be enabled.
      */
-    optimizerSmartimage?: pulumi.Input<boolean>;
+    optimizerSmartimage?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum automatic image size for desktop clients.
      */
-    optimizerSmartimageDesktopMaxwidth?: pulumi.Input<number>;
+    optimizerSmartimageDesktopMaxwidth?: pulumi.Input<number | undefined>;
     /**
      * The image quality for desktop clients.
      */
-    optimizerSmartimageDesktopQuality?: pulumi.Input<number>;
+    optimizerSmartimageDesktopQuality?: pulumi.Input<number | undefined>;
     /**
      * The maximum automatic image size for mobile clients.
      */
-    optimizerSmartimageMobileMaxwidth?: pulumi.Input<number>;
+    optimizerSmartimageMobileMaxwidth?: pulumi.Input<number | undefined>;
     /**
      * Determines the image quality for mobile clients
      */
-    optimizerSmartimageMobileQuality?: pulumi.Input<number>;
+    optimizerSmartimageMobileQuality?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether image watermarking should be enabled.
      */
-    optimizerWatermark?: pulumi.Input<boolean>;
+    optimizerWatermark?: pulumi.Input<boolean | undefined>;
     /**
      * The offset of the watermark image.
      */
-    optimizerWatermarkBorderoffset?: pulumi.Input<number>;
+    optimizerWatermarkBorderoffset?: pulumi.Input<number | undefined>;
     /**
      * The minimum image size to which the watermark will be added.
      */
-    optimizerWatermarkMinsize?: pulumi.Input<number>;
+    optimizerWatermarkMinsize?: pulumi.Input<number | undefined>;
     /**
      * Options: `BottomLeft`, `BottomRight`, `Center`, `CenterStretch`, `TopLeft`, `TopRight`
      */
-    optimizerWatermarkPosition?: pulumi.Input<string>;
+    optimizerWatermarkPosition?: pulumi.Input<string | undefined>;
     /**
      * The URL of the watermark image.
      */
-    optimizerWatermarkUrl?: pulumi.Input<string>;
+    optimizerWatermarkUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the WebP optimization should be enabled.
      */
-    optimizerWebp?: pulumi.Input<boolean>;
-    origin?: pulumi.Input<inputs.PullzoneOrigin>;
+    optimizerWebp?: pulumi.Input<boolean | undefined>;
+    origin?: pulumi.Input<inputs.PullzoneOrigin | undefined>;
     /**
      * Indicates whether there is a concurrency limit for Origin Shield.
      */
-    originshieldConcurrencyLimit?: pulumi.Input<boolean>;
+    originshieldConcurrencyLimit?: pulumi.Input<boolean | undefined>;
     /**
      * The number of concurrent requests for Origin Shield.
      */
-    originshieldConcurrencyRequests?: pulumi.Input<number>;
+    originshieldConcurrencyRequests?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether Origin Shield is enabled.
      */
-    originshieldEnabled?: pulumi.Input<boolean>;
+    originshieldEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The number of queued requests for Origin Shield.
      */
-    originshieldQueueRequests?: pulumi.Input<number>;
+    originshieldQueueRequests?: pulumi.Input<number | undefined>;
     /**
      * The maximum wait time for queued requests in Origin Shield, in seconds.
      */
-    originshieldQueueWait?: pulumi.Input<number>;
+    originshieldQueueWait?: pulumi.Input<number | undefined>;
     /**
      * Options: `FR`, `IL`
      */
-    originshieldZone?: pulumi.Input<string>;
+    originshieldZone?: pulumi.Input<string | undefined>;
     /**
      * The storage zone ID for Perma-Cache.
      */
-    permacacheStoragezone?: pulumi.Input<number>;
+    permacacheStoragezone?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the pull zone.
      */
-    pullzoneId?: pulumi.Input<number>;
+    pullzoneId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether request coalescing is enabled.
      */
-    requestCoalescingEnabled?: pulumi.Input<boolean>;
+    requestCoalescingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined requests to the origin.
      */
-    requestCoalescingTimeout?: pulumi.Input<number>;
-    routing?: pulumi.Input<inputs.PullzoneRouting>;
+    requestCoalescingTimeout?: pulumi.Input<number | undefined>;
+    routing?: pulumi.Input<inputs.PullzoneRouting | undefined>;
     /**
      * Indicates whether requests to origin will be signed with AWS Signature Version 4.
      */
-    s3AuthEnabled?: pulumi.Input<boolean>;
+    s3AuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The access key used to authenticate the requests.
      */
-    s3AuthKey?: pulumi.Input<string>;
+    s3AuthKey?: pulumi.Input<string | undefined>;
     /**
      * The region name of the bucket used to authenticate the requests.
      */
-    s3AuthRegion?: pulumi.Input<string>;
+    s3AuthRegion?: pulumi.Input<string | undefined>;
     /**
      * The secret key used to authenticate the requests.
      */
-    s3AuthSecret?: pulumi.Input<string>;
+    s3AuthSecret?: pulumi.Input<string | undefined>;
     /**
      * The amount of seconds to wait when connecting to the origin. Otherwise the request will fail or retry.
      */
-    safehopConnectionTimeout?: pulumi.Input<number>;
-    safehopEnabled?: pulumi.Input<boolean>;
+    safehopConnectionTimeout?: pulumi.Input<number | undefined>;
+    safehopEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of seconds to wait when waiting for the origin reply. Otherwise the request will fail or retry.
      */
-    safehopResponseTimeout?: pulumi.Input<number>;
+    safehopResponseTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of retries to the origin server.
      */
-    safehopRetryCount?: pulumi.Input<number>;
+    safehopRetryCount?: pulumi.Input<number | undefined>;
     /**
      * The amount of time that the CDN should wait before retrying an origin request.
      */
-    safehopRetryDelay?: pulumi.Input<number>;
+    safehopRetryDelay?: pulumi.Input<number | undefined>;
     /**
      * Options: `5xxResponse`, `connectionTimeout`, `responseTimeout`
      */
-    safehopRetryReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    safehopRetryReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, the query parameters will be automatically sorted into a consistent order before checking the cache.
      */
-    sortQuerystring?: pulumi.Input<boolean>;
+    sortQuerystring?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, bunny.net will strip all the Set-Cookie headers from the HTTP responses.
      */
-    stripCookies?: pulumi.Input<boolean>;
+    stripCookies?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */
-    tlsSupports?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsSupports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether requests without a valid token and expiry timestamp will be rejected.
      */
-    tokenAuthEnabled?: pulumi.Input<boolean>;
+    tokenAuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the secure hash generated by the server will also include an IP address.
      */
-    tokenAuthIpValidation?: pulumi.Input<boolean>;
+    tokenAuthIpValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The auth key used for secure URL token authentication.
      */
-    tokenAuthKey?: pulumi.Input<string>;
+    tokenAuthKey?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether cache update is performed in the background.
      */
-    useBackgroundUpdate?: pulumi.Input<boolean>;
+    useBackgroundUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the WebSocket support is enabled.
      */
-    websocketsEnabled?: pulumi.Input<boolean>;
+    websocketsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum allowed concurrent WebSocket connections.
      */
-    websocketsMaxConnections?: pulumi.Input<number>;
+    websocketsMaxConnections?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -973,348 +973,348 @@ export interface PullzoneArgs {
     /**
      * Indicates whether the Canonical header is added to the responses.
      */
-    addCanonicalHeader?: pulumi.Input<boolean>;
+    addCanonicalHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The list of referrer hostnames that are allowed to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    allowReferers?: pulumi.Input<pulumi.Input<string>[]>;
+    allowReferers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of IPs that are blocked from accessing the pull zone. Requests coming from the following IPs will be rejected. If empty, all the IPs will be allowed
      */
-    blockIps?: pulumi.Input<pulumi.Input<string>[]>;
+    blockIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether requests without a referer should be blocked.
      */
-    blockNoReferer?: pulumi.Input<boolean>;
+    blockNoReferer?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to block POST requests.
      */
-    blockPostRequests?: pulumi.Input<boolean>;
+    blockPostRequests?: pulumi.Input<boolean | undefined>;
     /**
      * The list of referrer hostnames that are blocked to access the pull zone. Requests containing the header "Referer: hostname" that is not on the list will be rejected. If empty, all the referrers are allowed.
      */
-    blockReferers?: pulumi.Input<pulumi.Input<string>[]>;
+    blockReferers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This property indicates whether to block the root path.
      */
-    blockRootPath?: pulumi.Input<boolean>;
+    blockRootPath?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the cache slice (Optimize for large object delivery) feature is enabled for the Pull Zone
      */
-    cacheChunked?: pulumi.Input<boolean>;
+    cacheChunked?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether smart caching is enabled.
      */
-    cacheEnabled?: pulumi.Input<boolean>;
+    cacheEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether bunny.net should be caching error responses.
      */
-    cacheErrors?: pulumi.Input<boolean>;
+    cacheErrors?: pulumi.Input<boolean | undefined>;
     /**
      * The override cache time, in seconds.
      */
-    cacheExpirationTime?: pulumi.Input<number>;
+    cacheExpirationTime?: pulumi.Input<number | undefined>;
     /**
      * The override cache time for the end client, in seconds.
      */
-    cacheExpirationTimeBrowser?: pulumi.Input<number>;
+    cacheExpirationTimeBrowser?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`">`updating`</span>
      */
-    cacheStales?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheStales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`">`webp`</span>
      */
-    cacheVaries?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
-    cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
-    cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheVaryQuerystrings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether CORS (Cross-Origin Resource Sharing) is enabled.
      */
-    corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of file extensions for which CORS is enabled.
      */
-    corsExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    corsExtensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the built-in let's encrypt is disabled and requests are passed to the origin.
      */
-    disableLetsencrypt?: pulumi.Input<boolean>;
+    disableLetsencrypt?: pulumi.Input<boolean | undefined>;
     /**
      * Contains the custom error page code that will be returned.
      */
-    errorpageCustomContent?: pulumi.Input<string>;
+    errorpageCustomContent?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether custom error page code should be enabled.
      */
-    errorpageCustomEnabled?: pulumi.Input<boolean>;
+    errorpageCustomEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The statuspage code that will be used to build the status widget.
      */
-    errorpageStatuspageCode?: pulumi.Input<string>;
+    errorpageStatuspageCode?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the statuspage widget should be displayed on the error pages.
      */
-    errorpageStatuspageEnabled?: pulumi.Input<boolean>;
+    errorpageStatuspageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the error pages should be white-labelled or not
      */
-    errorpageWhitelabel?: pulumi.Input<boolean>;
+    errorpageWhitelabel?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of data after the rate limit will be activated.
      */
-    limitAfter?: pulumi.Input<number>;
+    limitAfter?: pulumi.Input<number | undefined>;
     /**
      * The maximum bandwidth limit in bytes.
      */
-    limitBandwidth?: pulumi.Input<number>;
+    limitBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Excessive requests are delayed until their number exceeds the maximum burst size.
      */
-    limitBurst?: pulumi.Input<number>;
+    limitBurst?: pulumi.Input<number | undefined>;
     /**
      * The number of connections limited per IP.
      */
-    limitConnections?: pulumi.Input<number>;
+    limitConnections?: pulumi.Input<number | undefined>;
     /**
      * The maximum download speed, in kb/s. Use 0 for unlimited.
      */
-    limitDownloadSpeed?: pulumi.Input<number>;
+    limitDownloadSpeed?: pulumi.Input<number | undefined>;
     /**
      * The maximum amount of requests per IP per second.
      */
-    limitRequests?: pulumi.Input<number>;
+    limitRequests?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether logs are anonymized.
      */
-    logAnonymized?: pulumi.Input<boolean>;
+    logAnonymized?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    logAnonymizedStyle?: pulumi.Input<string>;
+    logAnonymizedStyle?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether logging is enabled.
      */
-    logEnabled?: pulumi.Input<boolean>;
+    logEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether log forwarding is enabled.
      */
-    logForwardEnabled?: pulumi.Input<boolean>;
+    logForwardEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `JSON`, `Plain`
      */
-    logForwardFormat?: pulumi.Input<string>;
+    logForwardFormat?: pulumi.Input<string | undefined>;
     /**
      * The port number for log forwarding.
      */
-    logForwardPort?: pulumi.Input<number>;
+    logForwardPort?: pulumi.Input<number | undefined>;
     /**
      * Options: `DataDog`, `TCP`, `TCPEncrypted`, `UDP`
      */
-    logForwardProtocol?: pulumi.Input<string>;
+    logForwardProtocol?: pulumi.Input<string | undefined>;
     /**
      * The server address for log forwarding.
      */
-    logForwardServer?: pulumi.Input<string>;
+    logForwardServer?: pulumi.Input<string | undefined>;
     /**
      * The token used for log forwarding authentication.
      */
-    logForwardToken?: pulumi.Input<string>;
+    logForwardToken?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether log storage is enabled.
      */
-    logStorageEnabled?: pulumi.Input<boolean>;
+    logStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The storage zone ID for log storage.
      */
-    logStorageZone?: pulumi.Input<number>;
+    logStorageZone?: pulumi.Input<number | undefined>;
     /**
      * The name of the pull zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether Burrow Smart Routing should be enabled.
      */
-    optimizerBurrow?: pulumi.Input<boolean>;
+    optimizerBurrow?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the optimizer class list should be enforced.
      */
-    optimizerClassesForce?: pulumi.Input<boolean>;
+    optimizerClassesForce?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the image manipulation should be enabled.
      */
-    optimizerDynamicImageApi?: pulumi.Input<boolean>;
+    optimizerDynamicImageApi?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether Bunny Optimizer should be enabled.
      */
-    optimizerEnabled?: pulumi.Input<boolean>;
+    optimizerEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether HTML Prerender should be enabled.
      */
-    optimizerHtmlPrerender?: pulumi.Input<boolean>;
+    optimizerHtmlPrerender?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the CSS minification should be enabled.
      */
-    optimizerMinifyCss?: pulumi.Input<boolean>;
+    optimizerMinifyCss?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the JavaScript minification should be enabled.
      */
-    optimizerMinifyJs?: pulumi.Input<boolean>;
+    optimizerMinifyJs?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the automatic image optimization should be enabled.
      */
-    optimizerSmartimage?: pulumi.Input<boolean>;
+    optimizerSmartimage?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum automatic image size for desktop clients.
      */
-    optimizerSmartimageDesktopMaxwidth?: pulumi.Input<number>;
+    optimizerSmartimageDesktopMaxwidth?: pulumi.Input<number | undefined>;
     /**
      * The image quality for desktop clients.
      */
-    optimizerSmartimageDesktopQuality?: pulumi.Input<number>;
+    optimizerSmartimageDesktopQuality?: pulumi.Input<number | undefined>;
     /**
      * The maximum automatic image size for mobile clients.
      */
-    optimizerSmartimageMobileMaxwidth?: pulumi.Input<number>;
+    optimizerSmartimageMobileMaxwidth?: pulumi.Input<number | undefined>;
     /**
      * Determines the image quality for mobile clients
      */
-    optimizerSmartimageMobileQuality?: pulumi.Input<number>;
+    optimizerSmartimageMobileQuality?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether image watermarking should be enabled.
      */
-    optimizerWatermark?: pulumi.Input<boolean>;
+    optimizerWatermark?: pulumi.Input<boolean | undefined>;
     /**
      * The offset of the watermark image.
      */
-    optimizerWatermarkBorderoffset?: pulumi.Input<number>;
+    optimizerWatermarkBorderoffset?: pulumi.Input<number | undefined>;
     /**
      * The minimum image size to which the watermark will be added.
      */
-    optimizerWatermarkMinsize?: pulumi.Input<number>;
+    optimizerWatermarkMinsize?: pulumi.Input<number | undefined>;
     /**
      * Options: `BottomLeft`, `BottomRight`, `Center`, `CenterStretch`, `TopLeft`, `TopRight`
      */
-    optimizerWatermarkPosition?: pulumi.Input<string>;
+    optimizerWatermarkPosition?: pulumi.Input<string | undefined>;
     /**
      * The URL of the watermark image.
      */
-    optimizerWatermarkUrl?: pulumi.Input<string>;
+    optimizerWatermarkUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the WebP optimization should be enabled.
      */
-    optimizerWebp?: pulumi.Input<boolean>;
-    origin?: pulumi.Input<inputs.PullzoneOrigin>;
+    optimizerWebp?: pulumi.Input<boolean | undefined>;
+    origin?: pulumi.Input<inputs.PullzoneOrigin | undefined>;
     /**
      * Indicates whether there is a concurrency limit for Origin Shield.
      */
-    originshieldConcurrencyLimit?: pulumi.Input<boolean>;
+    originshieldConcurrencyLimit?: pulumi.Input<boolean | undefined>;
     /**
      * The number of concurrent requests for Origin Shield.
      */
-    originshieldConcurrencyRequests?: pulumi.Input<number>;
+    originshieldConcurrencyRequests?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether Origin Shield is enabled.
      */
-    originshieldEnabled?: pulumi.Input<boolean>;
+    originshieldEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The number of queued requests for Origin Shield.
      */
-    originshieldQueueRequests?: pulumi.Input<number>;
+    originshieldQueueRequests?: pulumi.Input<number | undefined>;
     /**
      * The maximum wait time for queued requests in Origin Shield, in seconds.
      */
-    originshieldQueueWait?: pulumi.Input<number>;
+    originshieldQueueWait?: pulumi.Input<number | undefined>;
     /**
      * Options: `FR`, `IL`
      */
-    originshieldZone?: pulumi.Input<string>;
+    originshieldZone?: pulumi.Input<string | undefined>;
     /**
      * The storage zone ID for Perma-Cache.
      */
-    permacacheStoragezone?: pulumi.Input<number>;
+    permacacheStoragezone?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether request coalescing is enabled.
      */
-    requestCoalescingEnabled?: pulumi.Input<boolean>;
+    requestCoalescingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the timeout period, in seconds, for request coalescing, determining how long to wait before sending combined requests to the origin.
      */
-    requestCoalescingTimeout?: pulumi.Input<number>;
-    routing?: pulumi.Input<inputs.PullzoneRouting>;
+    requestCoalescingTimeout?: pulumi.Input<number | undefined>;
+    routing?: pulumi.Input<inputs.PullzoneRouting | undefined>;
     /**
      * Indicates whether requests to origin will be signed with AWS Signature Version 4.
      */
-    s3AuthEnabled?: pulumi.Input<boolean>;
+    s3AuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The access key used to authenticate the requests.
      */
-    s3AuthKey?: pulumi.Input<string>;
+    s3AuthKey?: pulumi.Input<string | undefined>;
     /**
      * The region name of the bucket used to authenticate the requests.
      */
-    s3AuthRegion?: pulumi.Input<string>;
+    s3AuthRegion?: pulumi.Input<string | undefined>;
     /**
      * The secret key used to authenticate the requests.
      */
-    s3AuthSecret?: pulumi.Input<string>;
+    s3AuthSecret?: pulumi.Input<string | undefined>;
     /**
      * The amount of seconds to wait when connecting to the origin. Otherwise the request will fail or retry.
      */
-    safehopConnectionTimeout?: pulumi.Input<number>;
-    safehopEnabled?: pulumi.Input<boolean>;
+    safehopConnectionTimeout?: pulumi.Input<number | undefined>;
+    safehopEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of seconds to wait when waiting for the origin reply. Otherwise the request will fail or retry.
      */
-    safehopResponseTimeout?: pulumi.Input<number>;
+    safehopResponseTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of retries to the origin server.
      */
-    safehopRetryCount?: pulumi.Input<number>;
+    safehopRetryCount?: pulumi.Input<number | undefined>;
     /**
      * The amount of time that the CDN should wait before retrying an origin request.
      */
-    safehopRetryDelay?: pulumi.Input<number>;
+    safehopRetryDelay?: pulumi.Input<number | undefined>;
     /**
      * Options: `5xxResponse`, `connectionTimeout`, `responseTimeout`
      */
-    safehopRetryReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    safehopRetryReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, the query parameters will be automatically sorted into a consistent order before checking the cache.
      */
-    sortQuerystring?: pulumi.Input<boolean>;
+    sortQuerystring?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, bunny.net will strip all the Set-Cookie headers from the HTTP responses.
      */
-    stripCookies?: pulumi.Input<boolean>;
+    stripCookies?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */
-    tlsSupports?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsSupports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether requests without a valid token and expiry timestamp will be rejected.
      */
-    tokenAuthEnabled?: pulumi.Input<boolean>;
+    tokenAuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the secure hash generated by the server will also include an IP address.
      */
-    tokenAuthIpValidation?: pulumi.Input<boolean>;
+    tokenAuthIpValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether cache update is performed in the background.
      */
-    useBackgroundUpdate?: pulumi.Input<boolean>;
+    useBackgroundUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the WebSocket support is enabled.
      */
-    websocketsEnabled?: pulumi.Input<boolean>;
+    websocketsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum allowed concurrent WebSocket connections.
      */
-    websocketsMaxConnections?: pulumi.Input<number>;
+    websocketsMaxConnections?: pulumi.Input<number | undefined>;
 }

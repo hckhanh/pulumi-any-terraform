@@ -96,23 +96,23 @@ export interface IdentityTokenAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityTokenAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityTokenAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,19 +122,19 @@ export interface IdentityTokenAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityTokenAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityTokenAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */

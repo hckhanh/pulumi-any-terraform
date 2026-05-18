@@ -123,35 +123,35 @@ export interface AccessApprovalPolicyState {
     /**
      * The required approvers
      */
-    approvers?: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyApprover>[]>;
+    approvers?: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyApprover>[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
-    enforcementLevel?: pulumi.Input<string>;
+    enforcementLevel?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the access approval policy to
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * The environments to apply the access approval policy to
      */
-    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the access approval policy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to add the access approval policy
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The number of required approvers
      */
-    requiredApprovals?: pulumi.Input<number>;
+    requiredApprovals?: pulumi.Input<number | undefined>;
     /**
      * The secret path to apply the access approval policy to
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,19 +165,19 @@ export interface AccessApprovalPolicyArgs {
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
-    enforcementLevel?: pulumi.Input<string>;
+    enforcementLevel?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, Use<span pulumi-lang-nodejs=" environmentSlugs " pulumi-lang-dotnet=" EnvironmentSlugs " pulumi-lang-go=" environmentSlugs " pulumi-lang-python=" environment_slugs " pulumi-lang-yaml=" environmentSlugs " pulumi-lang-java=" environmentSlugs "> environment_slugs </span>instead) The environment to apply the access approval policy to
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * The environments to apply the access approval policy to
      */
-    environmentSlugs?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentSlugs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the access approval policy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to add the access approval policy
      */

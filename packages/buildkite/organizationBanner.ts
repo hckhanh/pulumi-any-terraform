@@ -76,11 +76,11 @@ export interface OrganizationBannerState {
     /**
      * The organization banner's message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the organization banner.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**

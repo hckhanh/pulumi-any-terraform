@@ -129,35 +129,35 @@ export interface IntegrationCircleciState {
     /**
      * The organization slug of your CircleCI organization.
      */
-    circleciOrgSlug?: pulumi.Input<string>;
+    circleciOrgSlug?: pulumi.Input<string | undefined>;
     /**
      * The project ID of your CircleCI project.
      */
-    circleciProjectId?: pulumi.Input<string>;
+    circleciProjectId?: pulumi.Input<string | undefined>;
     /**
      * Your personal CircleCI token to authenticate with.
      */
-    circleciToken?: pulumi.Input<string>;
+    circleciToken?: pulumi.Input<string | undefined>;
     /**
      * The slug of the environment to sync to CircleCI (prod, dev, staging, etc).
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    integrationAuthId?: pulumi.Input<string>;
+    integrationAuthId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of your Infisical project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
 }
 
 /**

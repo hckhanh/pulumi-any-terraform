@@ -51,6 +51,6 @@ export function getTeamMemberOutput(args: GetTeamMemberOutputArgs, opts?: pulumi
  */
 export interface GetTeamMemberOutputArgs {
     email: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
-    teamName?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    teamName?: pulumi.Input<string | undefined>;
 }

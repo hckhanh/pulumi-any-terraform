@@ -129,43 +129,43 @@ export interface ProjectIdentitySpecificPrivilegeState {
     /**
      * The identity id to create identity specific privilege
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * Flag to indicate the assigned specific privilege is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
-    isTemporary?: pulumi.Input<boolean>;
+    isTemporary?: pulumi.Input<boolean | undefined>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project identity specific privilege
      */
-    permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
+    permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
     /**
      * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
-    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
+    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[] | undefined>;
     /**
      * The slug of the project to create identity specific privilege
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The slug for the new privilege
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
-    temporaryAccessEndTime?: pulumi.Input<string>;
+    temporaryAccessEndTime?: pulumi.Input<string | undefined>;
     /**
      * ISO time for which temporary access should begin. The current time is used by default.
      */
-    temporaryAccessStartTime?: pulumi.Input<string>;
+    temporaryAccessStartTime?: pulumi.Input<string | undefined>;
     /**
      * Type of temporary access given. Types: relative. Default: relative
      */
-    temporaryMode?: pulumi.Input<string>;
+    temporaryMode?: pulumi.Input<string | undefined>;
     /**
      * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
      */
-    temporaryRange?: pulumi.Input<string>;
+    temporaryRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,15 +179,15 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
     /**
      * Flag to indicate the assigned specific privilege is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
      */
-    isTemporary?: pulumi.Input<boolean>;
+    isTemporary?: pulumi.Input<boolean | undefined>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project identity specific privilege
      */
-    permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission>;
+    permission?: pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermission | undefined>;
     /**
      * The permissions assigned to the project identity specific privilege. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
-    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[]>;
+    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectIdentitySpecificPrivilegePermissionsV2>[] | undefined>;
     /**
      * The slug of the project to create identity specific privilege
      */
@@ -195,21 +195,21 @@ export interface ProjectIdentitySpecificPrivilegeArgs {
     /**
      * The slug for the new privilege
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
      */
-    temporaryAccessEndTime?: pulumi.Input<string>;
+    temporaryAccessEndTime?: pulumi.Input<string | undefined>;
     /**
      * ISO time for which temporary access should begin. The current time is used by default.
      */
-    temporaryAccessStartTime?: pulumi.Input<string>;
+    temporaryAccessStartTime?: pulumi.Input<string | undefined>;
     /**
      * Type of temporary access given. Types: relative. Default: relative
      */
-    temporaryMode?: pulumi.Input<string>;
+    temporaryMode?: pulumi.Input<string | undefined>;
     /**
      * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
      */
-    temporaryRange?: pulumi.Input<string>;
+    temporaryRange?: pulumi.Input<string | undefined>;
 }

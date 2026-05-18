@@ -105,27 +105,27 @@ export interface AppConnectionLdapState {
     /**
      * The credentials for the LDAP App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionLdapCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionLdapCredentials | undefined>;
     /**
      * The hash of the LDAP App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the LDAP App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with LDAP. Possible values are: simple-bind
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the LDAP App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionLdapArgs {
     /**
      * An optional description for the LDAP App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with LDAP. Possible values are: simple-bind
      */
@@ -147,9 +147,9 @@ export interface AppConnectionLdapArgs {
     /**
      * The name of the LDAP App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

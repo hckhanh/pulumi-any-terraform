@@ -105,27 +105,27 @@ export interface AppConnection1passwordState {
     /**
      * The credentials for the 1Password App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnection1passwordCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnection1passwordCredentials | undefined>;
     /**
      * The hash of the 1Password App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the 1Password App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with 1Password. Possible values are: api-token
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the 1Password App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnection1passwordArgs {
     /**
      * An optional description for the 1Password App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with 1Password. Possible values are: api-token
      */
@@ -147,9 +147,9 @@ export interface AppConnection1passwordArgs {
     /**
      * The name of the 1Password App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

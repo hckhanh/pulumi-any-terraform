@@ -117,35 +117,35 @@ export interface IdentityAzureAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of Azure AD service principal IDs that are allowed to authenticate with Infisical
      */
-    allowedServicePrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServicePrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The resource URL for the application registered in Azure AD. The value is expected to match the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * The [tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for the Azure AD organization.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,23 +155,23 @@ export interface IdentityAzureAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAzureAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of Azure AD service principal IDs that are allowed to authenticate with Infisical
      */
-    allowedServicePrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedServicePrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
@@ -179,7 +179,7 @@ export interface IdentityAzureAuthArgs {
     /**
      * The resource URL for the application registered in Azure AD. The value is expected to match the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> claim of the access token JWT later used in the login operation against Infisical. See the [resource](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) parameter for how the audience is set when requesting a JWT access token from the Azure Instance Metadata Service (IMDS) endpoint. In most cases, this value should be `https://management.azure.com/` which is the default
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * The [tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for the Azure AD organization.
      */

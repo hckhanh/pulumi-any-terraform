@@ -93,23 +93,23 @@ export interface OnCallCalendarState {
     /**
      * Whether the on-call calendar is the default on-call calendar.
      */
-    defaultCalendar?: pulumi.Input<boolean>;
+    defaultCalendar?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the on-call calendar.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for the on-call rotation schedule. Ignored when omitted - on-call can be controlled in Better Stack.
      */
-    onCallRotation?: pulumi.Input<inputs.OnCallCalendarOnCallRotation>;
+    onCallRotation?: pulumi.Input<inputs.OnCallCalendarOnCallRotation | undefined>;
     /**
      * Array of on-call persons.
      */
-    onCallUsers?: pulumi.Input<pulumi.Input<inputs.OnCallCalendarOnCallUser>[]>;
+    onCallUsers?: pulumi.Input<pulumi.Input<inputs.OnCallCalendarOnCallUser>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -119,13 +119,13 @@ export interface OnCallCalendarArgs {
     /**
      * Name of the on-call calendar.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for the on-call rotation schedule. Ignored when omitted - on-call can be controlled in Better Stack.
      */
-    onCallRotation?: pulumi.Input<inputs.OnCallCalendarOnCallRotation>;
+    onCallRotation?: pulumi.Input<inputs.OnCallCalendarOnCallRotation | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

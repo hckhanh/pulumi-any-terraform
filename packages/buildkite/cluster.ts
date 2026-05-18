@@ -93,25 +93,25 @@ export interface ClusterState {
     /**
      * A color representation of the Cluster. Accepts hex codes, eg #BADA55.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * This is a description for the cluster, this may describe the usage for it, the region, or something else
      * which would help identify the Cluster's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An emoji to use with the Cluster, this can either be set using :buildkite: notation, or with the
      * emoji itself, such as 🚀.
      */
-    emoji?: pulumi.Input<string>;
+    emoji?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cluster. Can only contain numbers and letters, no spaces or special characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the cluster.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -121,19 +121,19 @@ export interface ClusterArgs {
     /**
      * A color representation of the Cluster. Accepts hex codes, eg #BADA55.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * This is a description for the cluster, this may describe the usage for it, the region, or something else
      * which would help identify the Cluster's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An emoji to use with the Cluster, this can either be set using :buildkite: notation, or with the
      * emoji itself, such as 🚀.
      */
-    emoji?: pulumi.Input<string>;
+    emoji?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cluster. Can only contain numbers and letters, no spaces or special characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

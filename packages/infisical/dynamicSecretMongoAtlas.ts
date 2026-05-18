@@ -132,39 +132,39 @@ export interface DynamicSecretMongoAtlasState {
     /**
      * The configuration of the dynamic secret
      */
-    configuration?: pulumi.Input<inputs.DynamicSecretMongoAtlasConfiguration>;
+    configuration?: pulumi.Input<inputs.DynamicSecretMongoAtlasConfiguration | undefined>;
     /**
      * The default TTL that will be applied for all the leases.
      */
-    defaultTtl?: pulumi.Input<string>;
+    defaultTtl?: pulumi.Input<string | undefined>;
     /**
      * The slug of the environment to create the dynamic secret in.
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * The maximum limit a TTL can be leased or renewed for.
      */
-    maxTtl?: pulumi.Input<string>;
+    maxTtl?: pulumi.Input<string | undefined>;
     /**
      * The metadata associated with this dynamic secret
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoAtlasMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoAtlasMetadata>[] | undefined>;
     /**
      * The name of the dynamic secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path to create the dynamic secret in.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project to create dynamic secret in.
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The username template of the dynamic secret
      */
-    usernameTemplate?: pulumi.Input<string>;
+    usernameTemplate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,15 +186,15 @@ export interface DynamicSecretMongoAtlasArgs {
     /**
      * The maximum limit a TTL can be leased or renewed for.
      */
-    maxTtl?: pulumi.Input<string>;
+    maxTtl?: pulumi.Input<string | undefined>;
     /**
      * The metadata associated with this dynamic secret
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoAtlasMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.DynamicSecretMongoAtlasMetadata>[] | undefined>;
     /**
      * The name of the dynamic secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path to create the dynamic secret in.
      */
@@ -206,5 +206,5 @@ export interface DynamicSecretMongoAtlasArgs {
     /**
      * The username template of the dynamic secret
      */
-    usernameTemplate?: pulumi.Input<string>;
+    usernameTemplate?: pulumi.Input<string | undefined>;
 }

@@ -149,51 +149,51 @@ export interface IntegrationAwsSecretsManagerState {
     /**
      * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    assumeRoleArn?: pulumi.Input<string>;
+    assumeRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * The slug of the environment to sync to AWS Secrets Manager (prod, dev, staging, etc).
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    integrationAuthId?: pulumi.Input<string>;
+    integrationAuthId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string | undefined>;
     /**
      * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
-    mappingBehavior?: pulumi.Input<string>;
+    mappingBehavior?: pulumi.Input<string | undefined>;
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationAwsSecretsManagerOptions>;
+    options?: pulumi.Input<inputs.IntegrationAwsSecretsManagerOptions | undefined>;
     /**
      * The ID of your Infisical project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * The path in AWS Secrets Manager to sync secrets to. This is required if<span pulumi-lang-nodejs=" mappingBehavior " pulumi-lang-dotnet=" MappingBehavior " pulumi-lang-go=" mappingBehavior " pulumi-lang-python=" mapping_behavior " pulumi-lang-yaml=" mappingBehavior " pulumi-lang-java=" mappingBehavior "> mapping_behavior </span>is 'many-to-one'.
      */
-    secretsManagerPath?: pulumi.Input<string>;
+    secretsManagerPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,11 +203,11 @@ export interface IntegrationAwsSecretsManagerArgs {
     /**
      * The AWS access key ID. Used to authenticate with AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the role to assume when syncing secrets to AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    assumeRoleArn?: pulumi.Input<string>;
+    assumeRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The AWS region to sync secrets to. (us-east-1, us-east-2, etc)
      */
@@ -219,11 +219,11 @@ export interface IntegrationAwsSecretsManagerArgs {
     /**
      * The behavior of the mapping. Can be 'many-to-one' or 'one-to-one'. Many to One: All Infisical secrets will be mapped to a single AWS secret. One to One: Each Infisical secret will be mapped to its own AWS secret.
      */
-    mappingBehavior?: pulumi.Input<string>;
+    mappingBehavior?: pulumi.Input<string | undefined>;
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationAwsSecretsManagerOptions>;
+    options?: pulumi.Input<inputs.IntegrationAwsSecretsManagerOptions | undefined>;
     /**
      * The ID of your Infisical project.
      */
@@ -231,7 +231,7 @@ export interface IntegrationAwsSecretsManagerArgs {
     /**
      * The AWS secret access key. Used to authenticate with AWS Secrets Manager. You must either set<span pulumi-lang-nodejs=" secretAccessKey " pulumi-lang-dotnet=" SecretAccessKey " pulumi-lang-go=" secretAccessKey " pulumi-lang-python=" secret_access_key " pulumi-lang-yaml=" secretAccessKey " pulumi-lang-java=" secretAccessKey "> secret_access_key </span>and access_key_id, or set<span pulumi-lang-nodejs=" assumeRoleArn " pulumi-lang-dotnet=" AssumeRoleArn " pulumi-lang-go=" assumeRoleArn " pulumi-lang-python=" assume_role_arn " pulumi-lang-yaml=" assumeRoleArn " pulumi-lang-java=" assumeRoleArn "> assume_role_arn </span>to assume a role.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
@@ -239,5 +239,5 @@ export interface IntegrationAwsSecretsManagerArgs {
     /**
      * The path in AWS Secrets Manager to sync secrets to. This is required if<span pulumi-lang-nodejs=" mappingBehavior " pulumi-lang-dotnet=" MappingBehavior " pulumi-lang-go=" mappingBehavior " pulumi-lang-python=" mapping_behavior " pulumi-lang-yaml=" mappingBehavior " pulumi-lang-java=" mappingBehavior "> mapping_behavior </span>is 'many-to-one'.
      */
-    secretsManagerPath?: pulumi.Input<string>;
+    secretsManagerPath?: pulumi.Input<string | undefined>;
 }

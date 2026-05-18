@@ -172,75 +172,75 @@ export interface PullzoneOptimizerClassState {
     /**
      * The aspect ratio for image optimization.
      */
-    aspectRatio?: pulumi.Input<string>;
+    aspectRatio?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether automatic optimization for images is enabled.
      */
-    autoOptimize?: pulumi.Input<string>;
+    autoOptimize?: pulumi.Input<string | undefined>;
     /**
      * The level of blur to apply to images.
      */
-    blur?: pulumi.Input<number>;
+    blur?: pulumi.Input<number | undefined>;
     /**
      * The brightness adjustment for images.
      */
-    brightness?: pulumi.Input<number>;
+    brightness?: pulumi.Input<number | undefined>;
     /**
      * The contrast adjustment for images.
      */
-    contrast?: pulumi.Input<number>;
+    contrast?: pulumi.Input<number | undefined>;
     /**
      * The cropping settings for images.
      */
-    crop?: pulumi.Input<string>;
+    crop?: pulumi.Input<string | undefined>;
     /**
      * The gravity setting for cropping.
      */
-    cropGravity?: pulumi.Input<string>;
+    cropGravity?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to flip images horizontally.
      */
-    flip?: pulumi.Input<boolean>;
+    flip?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to flip images vertically.
      */
-    flop?: pulumi.Input<boolean>;
+    flop?: pulumi.Input<boolean | undefined>;
     /**
      * The height to which images should be resized.
      */
-    height?: pulumi.Input<number>;
+    height?: pulumi.Input<number | undefined>;
     /**
      * The hue adjustment for images.
      */
-    hue?: pulumi.Input<number>;
+    hue?: pulumi.Input<number | undefined>;
     /**
      * The name of the optimizer class.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pull zone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The quality setting for image optimization.
      */
-    quality?: pulumi.Input<number>;
+    quality?: pulumi.Input<number | undefined>;
     /**
      * The saturation adjustment for images.
      */
-    saturation?: pulumi.Input<number>;
+    saturation?: pulumi.Input<number | undefined>;
     /**
      * The level of sepia tone to apply to images.
      */
-    sepia?: pulumi.Input<number>;
+    sepia?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether to sharpen images.
      */
-    sharpen?: pulumi.Input<boolean>;
+    sharpen?: pulumi.Input<boolean | undefined>;
     /**
      * The width to which images should be resized.
      */
-    width?: pulumi.Input<number>;
+    width?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -250,51 +250,51 @@ export interface PullzoneOptimizerClassArgs {
     /**
      * The aspect ratio for image optimization.
      */
-    aspectRatio?: pulumi.Input<string>;
+    aspectRatio?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether automatic optimization for images is enabled.
      */
-    autoOptimize?: pulumi.Input<string>;
+    autoOptimize?: pulumi.Input<string | undefined>;
     /**
      * The level of blur to apply to images.
      */
-    blur?: pulumi.Input<number>;
+    blur?: pulumi.Input<number | undefined>;
     /**
      * The brightness adjustment for images.
      */
-    brightness?: pulumi.Input<number>;
+    brightness?: pulumi.Input<number | undefined>;
     /**
      * The contrast adjustment for images.
      */
-    contrast?: pulumi.Input<number>;
+    contrast?: pulumi.Input<number | undefined>;
     /**
      * The cropping settings for images.
      */
-    crop?: pulumi.Input<string>;
+    crop?: pulumi.Input<string | undefined>;
     /**
      * The gravity setting for cropping.
      */
-    cropGravity?: pulumi.Input<string>;
+    cropGravity?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to flip images horizontally.
      */
-    flip?: pulumi.Input<boolean>;
+    flip?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to flip images vertically.
      */
-    flop?: pulumi.Input<boolean>;
+    flop?: pulumi.Input<boolean | undefined>;
     /**
      * The height to which images should be resized.
      */
-    height?: pulumi.Input<number>;
+    height?: pulumi.Input<number | undefined>;
     /**
      * The hue adjustment for images.
      */
-    hue?: pulumi.Input<number>;
+    hue?: pulumi.Input<number | undefined>;
     /**
      * The name of the optimizer class.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pull zone.
      */
@@ -302,21 +302,21 @@ export interface PullzoneOptimizerClassArgs {
     /**
      * The quality setting for image optimization.
      */
-    quality?: pulumi.Input<number>;
+    quality?: pulumi.Input<number | undefined>;
     /**
      * The saturation adjustment for images.
      */
-    saturation?: pulumi.Input<number>;
+    saturation?: pulumi.Input<number | undefined>;
     /**
      * The level of sepia tone to apply to images.
      */
-    sepia?: pulumi.Input<number>;
+    sepia?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether to sharpen images.
      */
-    sharpen?: pulumi.Input<boolean>;
+    sharpen?: pulumi.Input<boolean | undefined>;
     /**
      * The width to which images should be resized.
      */
-    width?: pulumi.Input<number>;
+    width?: pulumi.Input<number | undefined>;
 }

@@ -144,51 +144,51 @@ export interface IdentityOidcAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The comma-separated list of intended recipients.
      */
-    boundAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    boundAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The attributes that should be present in the JWT for it to be valid. The provided values can be a glob pattern.
      */
-    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique identifier of the identity provider issuing the OIDC tokens.
      */
-    boundIssuer?: pulumi.Input<string>;
+    boundIssuer?: pulumi.Input<string | undefined>;
     /**
      * The expected principal that is the subject of the JWT.
      */
-    boundSubject?: pulumi.Input<string>;
+    boundSubject?: pulumi.Input<string | undefined>;
     /**
      * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become identity.metadata.oidc.claims.role
      */
-    claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The PEM-encoded CA cert for establishing secure communication with the Identity Provider endpoints
      */
-    oidcCaCertificate?: pulumi.Input<string>;
+    oidcCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The URL used to retrieve the OpenID Connect configuration from the identity provider.
      */
-    oidcDiscoveryUrl?: pulumi.Input<string>;
+    oidcDiscoveryUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,27 +198,27 @@ export interface IdentityOidcAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address...
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityOidcAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * The comma-separated list of intended recipients.
      */
-    boundAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    boundAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The attributes that should be present in the JWT for it to be valid. The provided values can be a glob pattern.
      */
-    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique identifier of the identity provider issuing the OIDC tokens.
      */
@@ -226,11 +226,11 @@ export interface IdentityOidcAuthArgs {
     /**
      * The expected principal that is the subject of the JWT.
      */
-    boundSubject?: pulumi.Input<string>;
+    boundSubject?: pulumi.Input<string | undefined>;
     /**
      * Map OIDC token claims to metadata fields. Example: {"role": "token.groups"}, this would become identity.metadata.oidc.claims.role
      */
-    claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    claimMetadataMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
@@ -238,7 +238,7 @@ export interface IdentityOidcAuthArgs {
     /**
      * The PEM-encoded CA cert for establishing secure communication with the Identity Provider endpoints
      */
-    oidcCaCertificate?: pulumi.Input<string>;
+    oidcCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The URL used to retrieve the OpenID Connect configuration from the identity provider.
      */

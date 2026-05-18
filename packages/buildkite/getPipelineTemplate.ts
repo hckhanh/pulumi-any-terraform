@@ -45,6 +45,6 @@ export function getPipelineTemplateOutput(args?: GetPipelineTemplateOutputArgs, 
  * A collection of arguments for invoking getPipelineTemplate.
  */
 export interface GetPipelineTemplateOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

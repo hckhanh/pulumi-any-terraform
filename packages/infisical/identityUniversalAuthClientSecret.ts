@@ -120,39 +120,39 @@ export interface IdentityUniversalAuthClientSecretState {
     /**
      * The client ID of the secret.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The client secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * The UTC timestamp of the created at date.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the client secret.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to create a client secret for
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating token has been revoked
      */
-    isRevoked?: pulumi.Input<boolean>;
+    isRevoked?: pulumi.Input<boolean | undefined>;
     /**
      * The number of times that the client secret is used
      */
-    numberOfUses?: pulumi.Input<number>;
+    numberOfUses?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that the client secret can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    numberOfUsesLimit?: pulumi.Input<number>;
+    numberOfUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * The lifetime for the client secret in seconds. Default: 0 - not expiring
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface IdentityUniversalAuthClientSecretArgs {
     /**
      * The description of the client secret.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to create a client secret for
      */
@@ -170,9 +170,9 @@ export interface IdentityUniversalAuthClientSecretArgs {
     /**
      * The maximum number of times that the client secret can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    numberOfUsesLimit?: pulumi.Input<number>;
+    numberOfUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * The lifetime for the client secret in seconds. Default: 0 - not expiring
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }

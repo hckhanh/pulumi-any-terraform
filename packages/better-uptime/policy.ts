@@ -108,31 +108,31 @@ export interface PolicyState {
     /**
      * Incident token that can be used for manually reporting incidents.
      */
-    incidentToken?: pulumi.Input<string>;
+    incidentToken?: pulumi.Input<string | undefined>;
     /**
      * The name of this Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set this attribute if you want to add this policy to a policy group.
      */
-    policyGroupId?: pulumi.Input<number>;
+    policyGroupId?: pulumi.Input<number | undefined>;
     /**
      * How many times should the entire policy be repeated if no one acknowledges the incident.
      */
-    repeatCount?: pulumi.Input<number>;
+    repeatCount?: pulumi.Input<number | undefined>;
     /**
      * How long in seconds to wait before each repetition.
      */
-    repeatDelay?: pulumi.Input<number>;
+    repeatDelay?: pulumi.Input<number | undefined>;
     /**
      * An array of escalation policy steps
      */
-    steps?: pulumi.Input<pulumi.Input<inputs.PolicyStep>[]>;
+    steps?: pulumi.Input<pulumi.Input<inputs.PolicyStep>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,19 +142,19 @@ export interface PolicyArgs {
     /**
      * The name of this Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set this attribute if you want to add this policy to a policy group.
      */
-    policyGroupId?: pulumi.Input<number>;
+    policyGroupId?: pulumi.Input<number | undefined>;
     /**
      * How many times should the entire policy be repeated if no one acknowledges the incident.
      */
-    repeatCount?: pulumi.Input<number>;
+    repeatCount?: pulumi.Input<number | undefined>;
     /**
      * How long in seconds to wait before each repetition.
      */
-    repeatDelay?: pulumi.Input<number>;
+    repeatDelay?: pulumi.Input<number | undefined>;
     /**
      * An array of escalation policy steps
      */
@@ -162,5 +162,5 @@ export interface PolicyArgs {
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

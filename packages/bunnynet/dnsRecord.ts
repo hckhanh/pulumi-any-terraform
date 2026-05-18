@@ -202,91 +202,91 @@ export interface DnsRecordState {
     /**
      * Indicates whether the DNS record should utilize bunny.net’s acceleration services.
      */
-    accelerated?: pulumi.Input<boolean>;
+    accelerated?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the accelerated pull zone.
      */
-    acceleratedPullzone?: pulumi.Input<number>;
+    acceleratedPullzone?: pulumi.Input<number | undefined>;
     /**
      * This property allows users to add descriptive notes for documentation and management purposes.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the DNS record.
      */
-    dnsRecordId?: pulumi.Input<number>;
+    dnsRecordId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the DNS record is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Flags for advanced DNS settings.
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * The latitude for geolocation-based routing.
      */
-    geolocationLat?: pulumi.Input<number>;
+    geolocationLat?: pulumi.Input<number | undefined>;
     /**
      * The longitude for geolocation-based routing.
      */
-    geolocationLong?: pulumi.Input<number>;
+    geolocationLong?: pulumi.Input<number | undefined>;
     /**
      * The latency zone for latency-based routing.
      */
-    latencyZone?: pulumi.Input<string>;
+    latencyZone?: pulumi.Input<string | undefined>;
     /**
      * The name of the linked resource.
      */
-    linkName?: pulumi.Input<string>;
+    linkName?: pulumi.Input<string | undefined>;
     /**
      * Options: `Http`, `Monitor`, `None`, `Ping`
      */
-    monitorType?: pulumi.Input<string>;
+    monitorType?: pulumi.Input<string | undefined>;
     /**
      * The name of the DNS record. Use <code>name = ""</code> for apex domain records.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number for services that require a specific port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The priority of the DNS record.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzoneId?: pulumi.Input<number>;
+    pullzoneId?: pulumi.Input<number | undefined>;
     /**
      * Options: `Geolocation`, `Latency`, `None`
      */
-    smartRoutingType?: pulumi.Input<string>;
+    smartRoutingType?: pulumi.Input<string | undefined>;
     /**
      * A tag for the DNS record.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The time-to-live value for the DNS record.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `HTTPS`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `SVCB`, `Script`, `TLSA`, `TXT`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the DNS record.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified weight.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
     /**
      * ID of the related DNS zone.
      */
-    zone?: pulumi.Input<number>;
+    zone?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -296,63 +296,63 @@ export interface DnsRecordArgs {
     /**
      * Indicates whether the DNS record should utilize bunny.net’s acceleration services.
      */
-    accelerated?: pulumi.Input<boolean>;
+    accelerated?: pulumi.Input<boolean | undefined>;
     /**
      * This property allows users to add descriptive notes for documentation and management purposes.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the DNS record is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Flags for advanced DNS settings.
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * The latitude for geolocation-based routing.
      */
-    geolocationLat?: pulumi.Input<number>;
+    geolocationLat?: pulumi.Input<number | undefined>;
     /**
      * The longitude for geolocation-based routing.
      */
-    geolocationLong?: pulumi.Input<number>;
+    geolocationLong?: pulumi.Input<number | undefined>;
     /**
      * The latency zone for latency-based routing.
      */
-    latencyZone?: pulumi.Input<string>;
+    latencyZone?: pulumi.Input<string | undefined>;
     /**
      * Options: `Http`, `Monitor`, `None`, `Ping`
      */
-    monitorType?: pulumi.Input<string>;
+    monitorType?: pulumi.Input<string | undefined>;
     /**
      * The name of the DNS record. Use <code>name = ""</code> for apex domain records.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number for services that require a specific port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The priority of the DNS record.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzoneId?: pulumi.Input<number>;
+    pullzoneId?: pulumi.Input<number | undefined>;
     /**
      * Options: `Geolocation`, `Latency`, `None`
      */
-    smartRoutingType?: pulumi.Input<string>;
+    smartRoutingType?: pulumi.Input<string | undefined>;
     /**
      * A tag for the DNS record.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The time-to-live value for the DNS record.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * Options: `A`, `AAAA`, `CAA`, `CNAME`, `Flatten`, `HTTPS`, `MX`, `NS`, `PTR`, `PullZone`, `Redirect`, `SRV`, `SVCB`, `Script`, `TLSA`, `TXT`
      */
@@ -364,7 +364,7 @@ export interface DnsRecordArgs {
     /**
      * The weight of the DNS record. It is used in load balancing scenarios to distribute traffic based on the specified weight.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
     /**
      * ID of the related DNS zone.
      */

@@ -50,6 +50,6 @@ export function getOrganizationRuleOutput(args?: GetOrganizationRuleOutputArgs, 
  * A collection of arguments for invoking getOrganizationRule.
  */
 export interface GetOrganizationRuleOutputArgs {
-    id?: pulumi.Input<string>;
-    uuid?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    uuid?: pulumi.Input<string | undefined>;
 }

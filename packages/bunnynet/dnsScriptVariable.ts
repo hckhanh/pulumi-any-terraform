@@ -91,19 +91,19 @@ export interface DnsScriptVariableState {
     /**
      * The ID of the environment variable.
      */
-    dnsScriptVariableId?: pulumi.Input<number>;
+    dnsScriptVariableId?: pulumi.Input<number | undefined>;
     /**
      * The name of the environment variable.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated DNS script.
      */
-    script?: pulumi.Input<number>;
+    script?: pulumi.Input<number | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,7 +113,7 @@ export interface DnsScriptVariableArgs {
     /**
      * The name of the environment variable.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated DNS script.
      */

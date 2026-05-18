@@ -103,27 +103,27 @@ export interface ComputeScriptState {
     /**
      * The ID of the script.
      */
-    computeScriptId?: pulumi.Input<number>;
+    computeScriptId?: pulumi.Input<number | undefined>;
     /**
      * The code of the script.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The deployment key for the script.
      */
-    deploymentKey?: pulumi.Input<string>;
+    deploymentKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the script.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The current release identifier for the script.
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`">`standalone`</span>
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -137,7 +137,7 @@ export interface ComputeScriptArgs {
     /**
      * The name of the script.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`">`standalone`</span>
      */

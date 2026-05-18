@@ -120,39 +120,39 @@ export interface CertManagerCertificatePolicyState {
     /**
      * Algorithm constraints for the certificate policy. At least one signature algorithm and one key algorithm must be specified.
      */
-    algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms>;
+    algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
      * The description of the certificate policy
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Extended key usage policies for the certificate policy
      */
-    extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages>;
+    extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages | undefined>;
     /**
      * Key usage policies for the certificate policy
      */
-    keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages>;
+    keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages | undefined>;
     /**
      * The name of the certificate policy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * Subject alternative name (SAN) policies for the certificate policy
      */
-    sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[]>;
+    sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
      * Subject attribute policies for the certificate policy
      */
-    subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[]>;
+    subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**
      * Validity constraints for the certificate policy
      */
-    validity?: pulumi.Input<inputs.CertManagerCertificatePolicyValidity>;
+    validity?: pulumi.Input<inputs.CertManagerCertificatePolicyValidity | undefined>;
 }
 
 /**
@@ -162,23 +162,23 @@ export interface CertManagerCertificatePolicyArgs {
     /**
      * Algorithm constraints for the certificate policy. At least one signature algorithm and one key algorithm must be specified.
      */
-    algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms>;
+    algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
      * The description of the certificate policy
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Extended key usage policies for the certificate policy
      */
-    extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages>;
+    extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages | undefined>;
     /**
      * Key usage policies for the certificate policy
      */
-    keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages>;
+    keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages | undefined>;
     /**
      * The name of the certificate policy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
@@ -186,13 +186,13 @@ export interface CertManagerCertificatePolicyArgs {
     /**
      * Subject alternative name (SAN) policies for the certificate policy
      */
-    sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[]>;
+    sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
      * Subject attribute policies for the certificate policy
      */
-    subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[]>;
+    subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**
      * Validity constraints for the certificate policy
      */
-    validity?: pulumi.Input<inputs.CertManagerCertificatePolicyValidity>;
+    validity?: pulumi.Input<inputs.CertManagerCertificatePolicyValidity | undefined>;
 }

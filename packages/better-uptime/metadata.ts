@@ -124,39 +124,39 @@ export interface MetadataState {
     /**
      * The time when this metadata was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The key of this Metadata.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * An array of typed metadata values of this Metadata.
      */
-    metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[]>;
+    metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[] | undefined>;
     /**
      * The ID of the owner of this Metadata.
      */
-    ownerId?: pulumi.Input<string>;
+    ownerId?: pulumi.Input<string | undefined>;
     /**
      * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
      */
-    ownerType?: pulumi.Input<string>;
+    ownerType?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
      *
      * @deprecated Deprecated
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this metadata was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue "> metadata_value </span>to define values with types instead.
      *
      * @deprecated Deprecated
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface MetadataArgs {
     /**
      * An array of typed metadata values of this Metadata.
      */
-    metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[]>;
+    metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[] | undefined>;
     /**
      * The ID of the owner of this Metadata.
      */
@@ -184,11 +184,11 @@ export interface MetadataArgs {
      *
      * @deprecated Deprecated
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue "> metadata_value </span>to define values with types instead.
      *
      * @deprecated Deprecated
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

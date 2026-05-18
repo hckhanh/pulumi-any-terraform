@@ -81,15 +81,15 @@ export interface AgentTokenState {
     /**
      * The description of the agent token. Used to help identify its use.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The token value used by an agent to register with the API.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the agent token.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,5 +99,5 @@ export interface AgentTokenArgs {
     /**
      * The description of the agent token. Used to help identify its use.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }

@@ -204,95 +204,95 @@ export interface CertManagerCertificateState {
     /**
      * Subject alternative names (SANs) for the certificate
      */
-    altNames?: pulumi.Input<pulumi.Input<string>[]>;
+    altNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The issued certificate in PEM format
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate chain in PEM format
      */
-    certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the certificate request
      */
-    certificateRequestId?: pulumi.Input<string>;
+    certificateRequestId?: pulumi.Input<string | undefined>;
     /**
      * The common name (CN) for the certificate. Required when not using CSR
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The country (C) for the certificate (2-letter code)
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
-    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Key usages for the certificate. Supported: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
      */
-    keyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    keyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The locality (L) for the certificate
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The not-after (expiration) date of the certificate (RFC3339 format)
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The not-before date of the certificate (RFC3339 format)
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * The organization (O) for the certificate
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The organizational unit (OU) for the certificate
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The private key in PEM format (only available for direct field requests, not CSR-based)
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the certificate profile to use for issuance
      */
-    profileId?: pulumi.Input<string>;
+    profileId?: pulumi.Input<string | undefined>;
     /**
      * The state/province (ST) for the certificate
      */
-    province?: pulumi.Input<string>;
+    province?: pulumi.Input<string | undefined>;
     /**
      * The serial number of the issued certificate
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
     /**
      * The signature algorithm for the certificate. Supported: RSA-SHA256, RSA-SHA384, RSA-SHA512, ECDSA-SHA256, ECDSA-SHA384, ECDSA-SHA512
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The status of the certificate (pending, issued, failed)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Maximum time to wait for certificate issuance in seconds. Defaults to 3600 (1 hour)
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * Time to live for the certificate (e.g., '30d', '90d', '1y')
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,43 +302,43 @@ export interface CertManagerCertificateArgs {
     /**
      * Subject alternative names (SANs) for the certificate
      */
-    altNames?: pulumi.Input<pulumi.Input<string>[]>;
+    altNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The common name (CN) for the certificate. Required when not using CSR
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The country (C) for the certificate (2-letter code)
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
-    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Key usages for the certificate. Supported: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
      */
-    keyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    keyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The locality (L) for the certificate
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The organization (O) for the certificate
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The organizational unit (OU) for the certificate
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The ID of the certificate profile to use for issuance
      */
@@ -346,17 +346,17 @@ export interface CertManagerCertificateArgs {
     /**
      * The state/province (ST) for the certificate
      */
-    province?: pulumi.Input<string>;
+    province?: pulumi.Input<string | undefined>;
     /**
      * The signature algorithm for the certificate. Supported: RSA-SHA256, RSA-SHA384, RSA-SHA512, ECDSA-SHA256, ECDSA-SHA384, ECDSA-SHA512
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Maximum time to wait for certificate issuance in seconds. Defaults to 3600 (1 hour)
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * Time to live for the certificate (e.g., '30d', '90d', '1y')
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }

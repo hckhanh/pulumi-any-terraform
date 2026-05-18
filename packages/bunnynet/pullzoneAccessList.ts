@@ -115,31 +115,31 @@ export interface PullzoneAccessListState {
     /**
      * Options: `Allow`, `Block`, `Bypass`, `Challenge`, `Log`
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Indicated whether the Access List is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Access List entries.
      */
-    entries?: pulumi.Input<pulumi.Input<string>[]>;
+    entries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Access List name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Access List.
      */
-    pullzoneAccessListId?: pulumi.Input<number>;
+    pullzoneAccessListId?: pulumi.Input<number | undefined>;
     /**
      * Options: `ASN`, `CIDR`, `Country`, `IP`, `JA4`, `Organization`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,7 +153,7 @@ export interface PullzoneAccessListArgs {
     /**
      * Indicated whether the Access List is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Access List entries.
      */
@@ -161,7 +161,7 @@ export interface PullzoneAccessListArgs {
     /**
      * The Access List name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pullzone.
      */

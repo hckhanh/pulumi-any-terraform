@@ -83,15 +83,15 @@ export interface OrganizationState {
      *
      * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`">`allowed_api_ip_addresses`</span> attribute.
      */
-    allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Sets whether the organization requires two-factor authentication for all members.
      */
-    enforce2fa?: pulumi.Input<boolean>;
+    enforce2fa?: pulumi.Input<boolean | undefined>;
     /**
      * The UUID of the organization.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -103,9 +103,9 @@ export interface OrganizationArgs {
      *
      * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`">`allowed_api_ip_addresses`</span> attribute.
      */
-    allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Sets whether the organization requires two-factor authentication for all members.
      */
-    enforce2fa?: pulumi.Input<boolean>;
+    enforce2fa?: pulumi.Input<boolean | undefined>;
 }

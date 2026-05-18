@@ -170,69 +170,69 @@ export interface StatusPageResourceState {
     /**
      * The availability of this resource (from 0.0 to 1.0).
      */
-    availability?: pulumi.Input<number>;
+    availability?: pulumi.Input<number | undefined>;
     /**
      * A detailed text displayed as a help icon.
      */
-    explanation?: pulumi.Input<string>;
+    explanation?: pulumi.Input<string | undefined>;
     /**
      * Do you want to display detailed historical status for this item? This field is deprecated, use<span pulumi-lang-nodejs=" widgetType " pulumi-lang-dotnet=" WidgetType " pulumi-lang-go=" widgetType " pulumi-lang-python=" widget_type " pulumi-lang-yaml=" widgetType " pulumi-lang-java=" widgetType "> widget_type </span>instead.
      *
      * @deprecated Deprecated
      */
-    history?: pulumi.Input<boolean>;
+    history?: pulumi.Input<boolean | undefined>;
     /**
      * How to mark this resource as degraded. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
      */
-    markAsDegradedFor?: pulumi.Input<string>;
+    markAsDegradedFor?: pulumi.Input<string | undefined>;
     /**
      * Metadata rule for marking resource as degraded. Only applicable when<span pulumi-lang-nodejs=" markAsDegradedFor " pulumi-lang-dotnet=" MarkAsDegradedFor " pulumi-lang-go=" markAsDegradedFor " pulumi-lang-python=" mark_as_degraded_for " pulumi-lang-yaml=" markAsDegradedFor " pulumi-lang-java=" markAsDegradedFor "> mark_as_degraded_for </span>is 'incident_matching_metadata'.
      */
-    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule>;
+    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule | undefined>;
     /**
      * How to mark this resource as down. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
      */
-    markAsDownFor?: pulumi.Input<string>;
+    markAsDownFor?: pulumi.Input<string | undefined>;
     /**
      * Metadata rule for marking resource as down. Only applicable when<span pulumi-lang-nodejs=" markAsDownFor " pulumi-lang-dotnet=" MarkAsDownFor " pulumi-lang-go=" markAsDownFor " pulumi-lang-python=" mark_as_down_for " pulumi-lang-yaml=" markAsDownFor " pulumi-lang-java=" markAsDownFor "> mark_as_down_for </span>is 'incident_matching_metadata'.
      */
-    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule>;
+    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule | undefined>;
     /**
      * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The resource name displayed publicly on your status page.
      */
-    publicName?: pulumi.Input<string>;
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource you are adding. Omit when<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType "> resource_type </span>is ManuallyTrackedItem.
      */
-    resourceId?: pulumi.Input<number>;
+    resourceId?: pulumi.Input<number | undefined>;
     /**
      * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The current status of the resource. Can be one of <span pulumi-lang-nodejs="`notMonitored`" pulumi-lang-dotnet="`NotMonitored`" pulumi-lang-go="`notMonitored`" pulumi-lang-python="`not_monitored`" pulumi-lang-yaml="`notMonitored`" pulumi-lang-java="`notMonitored`">`not_monitored`</span> (when the underlying monitor is paused), <span pulumi-lang-nodejs="`operational`" pulumi-lang-dotnet="`Operational`" pulumi-lang-go="`operational`" pulumi-lang-python="`operational`" pulumi-lang-yaml="`operational`" pulumi-lang-java="`operational`">`operational`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`">`degraded`</span>, or <span pulumi-lang-nodejs="`downtime`" pulumi-lang-dotnet="`Downtime`" pulumi-lang-go="`downtime`" pulumi-lang-python="`downtime`" pulumi-lang-yaml="`downtime`" pulumi-lang-java="`downtime`">`downtime`</span>
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * History of a single status page resource history
      */
-    statusHistories?: pulumi.Input<pulumi.Input<inputs.StatusPageResourceStatusHistory>[]>;
+    statusHistories?: pulumi.Input<pulumi.Input<inputs.StatusPageResourceStatusHistory>[] | undefined>;
     /**
      * The ID of the Status Page.
      */
-    statusPageId?: pulumi.Input<string>;
+    statusPageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first section. If there are no sections in the status page yet, one will be automatically created for you.
      */
-    statusPageSectionId?: pulumi.Input<number>;
+    statusPageSectionId?: pulumi.Input<number | undefined>;
     /**
      * What widget to display for this resource. Available values: plain - only display status, history - display historical status,<span pulumi-lang-nodejs=" intradayHistory " pulumi-lang-dotnet=" IntradayHistory " pulumi-lang-go=" intradayHistory " pulumi-lang-python=" intraday_history " pulumi-lang-yaml=" intradayHistory " pulumi-lang-java=" intradayHistory "> intraday_history </span>- display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
-    widgetType?: pulumi.Input<string>;
+    widgetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,33 +242,33 @@ export interface StatusPageResourceArgs {
     /**
      * A detailed text displayed as a help icon.
      */
-    explanation?: pulumi.Input<string>;
+    explanation?: pulumi.Input<string | undefined>;
     /**
      * Do you want to display detailed historical status for this item? This field is deprecated, use<span pulumi-lang-nodejs=" widgetType " pulumi-lang-dotnet=" WidgetType " pulumi-lang-go=" widgetType " pulumi-lang-python=" widget_type " pulumi-lang-yaml=" widgetType " pulumi-lang-java=" widgetType "> widget_type </span>instead.
      *
      * @deprecated Deprecated
      */
-    history?: pulumi.Input<boolean>;
+    history?: pulumi.Input<boolean | undefined>;
     /**
      * How to mark this resource as degraded. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
      */
-    markAsDegradedFor?: pulumi.Input<string>;
+    markAsDegradedFor?: pulumi.Input<string | undefined>;
     /**
      * Metadata rule for marking resource as degraded. Only applicable when<span pulumi-lang-nodejs=" markAsDegradedFor " pulumi-lang-dotnet=" MarkAsDegradedFor " pulumi-lang-go=" markAsDegradedFor " pulumi-lang-python=" mark_as_degraded_for " pulumi-lang-yaml=" markAsDegradedFor " pulumi-lang-java=" markAsDegradedFor "> mark_as_degraded_for </span>is 'incident_matching_metadata'.
      */
-    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule>;
+    markAsDegradedMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDegradedMetadataRule | undefined>;
     /**
      * How to mark this resource as down. Can be one of <span pulumi-lang-nodejs="`noIncident`" pulumi-lang-dotnet="`NoIncident`" pulumi-lang-go="`noIncident`" pulumi-lang-python="`no_incident`" pulumi-lang-yaml="`noIncident`" pulumi-lang-java="`noIncident`">`no_incident`</span>, <span pulumi-lang-nodejs="`anyIncident`" pulumi-lang-dotnet="`AnyIncident`" pulumi-lang-go="`anyIncident`" pulumi-lang-python="`any_incident`" pulumi-lang-yaml="`anyIncident`" pulumi-lang-java="`anyIncident`">`any_incident`</span>, or <span pulumi-lang-nodejs="`incidentMatchingMetadata`" pulumi-lang-dotnet="`IncidentMatchingMetadata`" pulumi-lang-go="`incidentMatchingMetadata`" pulumi-lang-python="`incident_matching_metadata`" pulumi-lang-yaml="`incidentMatchingMetadata`" pulumi-lang-java="`incidentMatchingMetadata`">`incident_matching_metadata`</span>.
      */
-    markAsDownFor?: pulumi.Input<string>;
+    markAsDownFor?: pulumi.Input<string | undefined>;
     /**
      * Metadata rule for marking resource as down. Only applicable when<span pulumi-lang-nodejs=" markAsDownFor " pulumi-lang-dotnet=" MarkAsDownFor " pulumi-lang-go=" markAsDownFor " pulumi-lang-python=" mark_as_down_for " pulumi-lang-yaml=" markAsDownFor " pulumi-lang-java=" markAsDownFor "> mark_as_down_for </span>is 'incident_matching_metadata'.
      */
-    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule>;
+    markAsDownMetadataRule?: pulumi.Input<inputs.StatusPageResourceMarkAsDownMetadataRule | undefined>;
     /**
      * The position of this resource on your status page, indexed from zero. If you don't specify a position, we add the resource to the end of the status page. When you specify a position of an existing resource, we add the resource to this position and shift resources below to accommodate.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The resource name displayed publicly on your status page.
      */
@@ -276,7 +276,7 @@ export interface StatusPageResourceArgs {
     /**
      * The ID of the resource you are adding. Omit when<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType "> resource_type </span>is ManuallyTrackedItem.
      */
-    resourceId?: pulumi.Input<number>;
+    resourceId?: pulumi.Input<number | undefined>;
     /**
      * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
      */
@@ -288,9 +288,9 @@ export interface StatusPageResourceArgs {
     /**
      * The ID of the Status Page Section. If you don't specify a status_page_section_id, we add the resource to the first section. If there are no sections in the status page yet, one will be automatically created for you.
      */
-    statusPageSectionId?: pulumi.Input<number>;
+    statusPageSectionId?: pulumi.Input<number | undefined>;
     /**
      * What widget to display for this resource. Available values: plain - only display status, history - display historical status,<span pulumi-lang-nodejs=" intradayHistory " pulumi-lang-dotnet=" IntradayHistory " pulumi-lang-go=" intradayHistory " pulumi-lang-python=" intraday_history " pulumi-lang-yaml=" intradayHistory " pulumi-lang-java=" intradayHistory "> intraday_history </span>- display detailed historical status,<span pulumi-lang-nodejs=" responseTimes " pulumi-lang-dotnet=" ResponseTimes " pulumi-lang-go=" responseTimes " pulumi-lang-python=" response_times " pulumi-lang-yaml=" responseTimes " pulumi-lang-java=" responseTimes "> response_times </span>- add a response times chart (only for Monitor resource type). This takes preference over history when both parameters are present.
      */
-    widgetType?: pulumi.Input<string>;
+    widgetType?: pulumi.Input<string | undefined>;
 }

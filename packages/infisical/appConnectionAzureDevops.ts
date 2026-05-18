@@ -105,27 +105,27 @@ export interface AppConnectionAzureDevopsState {
     /**
      * The credentials for the Azure DevOps App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionAzureDevopsCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionAzureDevopsCredentials | undefined>;
     /**
      * The hash of the Azure DevOps App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the Azure DevOps App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Azure DevOps. Possible values are: access-token, client-secret
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure DevOps App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionAzureDevopsArgs {
     /**
      * An optional description for the Azure DevOps App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Azure DevOps. Possible values are: access-token, client-secret
      */
@@ -147,9 +147,9 @@ export interface AppConnectionAzureDevopsArgs {
     /**
      * The name of the Azure DevOps App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

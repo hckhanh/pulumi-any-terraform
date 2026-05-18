@@ -105,27 +105,27 @@ export interface AppConnectionFlyioState {
     /**
      * The credentials for the Fly.io App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionFlyioCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionFlyioCredentials | undefined>;
     /**
      * The hash of the Fly.io App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the Fly.io App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Fly.io. Possible values are: access-token
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the Fly.io App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionFlyioArgs {
     /**
      * An optional description for the Fly.io App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Fly.io. Possible values are: access-token
      */
@@ -147,9 +147,9 @@ export interface AppConnectionFlyioArgs {
     /**
      * The name of the Fly.io App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

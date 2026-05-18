@@ -85,23 +85,23 @@ export interface ProviderArgs {
     /**
      * The configuration values for authentication
      */
-    auth?: pulumi.Input<inputs.ProviderAuth>;
+    auth?: pulumi.Input<inputs.ProviderAuth | undefined>;
     /**
      * (DEPRECATED, Use the <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client ID. Used to fetch/modify secrets for a given project.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, use <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> attribute), Machine identity client secret. Used to fetch/modify secrets for a given project
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Used to point the client to fetch secrets from your self hosted instance of Infisical. If not host is provided, https://app.infisical.com is the default host. This attribute can also be set using the `INFISICAL_HOST` environment variable
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, Use machine identity auth), Used to fetch/modify secrets for a given project
      */
-    serviceToken?: pulumi.Input<string>;
+    serviceToken?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

@@ -10,10 +10,8 @@ export type Offset = import("./offset").Offset;
 export const Offset: typeof import("./offset").Offset = null as any;
 utilities.lazyLoad(exports, ["Offset"], () => require("./offset"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RotatingArgs, RotatingState } from "./rotating";
 export type Rotating = import("./rotating").Rotating;

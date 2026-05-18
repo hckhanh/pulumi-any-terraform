@@ -88,19 +88,19 @@ export interface CatalogAttributeState {
     /**
      * The name of the Catalog attribute.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the attribute in the Catalog relation.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Whether this attribute is one of the primary attributes.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Catalog relation this attribute belongs to.
      */
-    relationId?: pulumi.Input<string>;
+    relationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -110,15 +110,15 @@ export interface CatalogAttributeArgs {
     /**
      * The name of the Catalog attribute.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the attribute in the Catalog relation.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Whether this attribute is one of the primary attributes.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Catalog relation this attribute belongs to.
      */

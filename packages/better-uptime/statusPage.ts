@@ -275,135 +275,135 @@ export interface StatusPageState {
     /**
      * The overall status of this status page.
      */
-    aggregateState?: pulumi.Input<string>;
+    aggregateState?: pulumi.Input<string | undefined>;
     /**
      * Add an announcement to your status page.
      */
-    announcement?: pulumi.Input<string>;
+    announcement?: pulumi.Input<string | undefined>;
     /**
      * Modify the design of the announcement embed.
      */
-    announcementEmbedCss?: pulumi.Input<string>;
+    announcementEmbedCss?: pulumi.Input<string | undefined>;
     /**
      * Point your embedded announcement to a specified URL.
      */
-    announcementEmbedLink?: pulumi.Input<string>;
+    announcementEmbedLink?: pulumi.Input<string | undefined>;
     /**
      * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet: `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async" type="text/javascript"></script>`
      */
-    announcementEmbedVisible?: pulumi.Input<boolean>;
+    announcementEmbedVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Generate automatic reports when your services go down
      */
-    automaticReports?: pulumi.Input<boolean>;
+    automaticReports?: pulumi.Input<boolean | undefined>;
     /**
      * Name of your company.
      */
-    companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string | undefined>;
     /**
      * URL of your company's website.
      */
-    companyUrl?: pulumi.Input<string>;
+    companyUrl?: pulumi.Input<string | undefined>;
     /**
      * URL that should be used for contacting you in case of an emergency.
      */
-    contactUrl?: pulumi.Input<string>;
+    contactUrl?: pulumi.Input<string | undefined>;
     /**
      * The time when this status page was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Unleash your inner designer and tweak our status page design to fit your branding.
      */
-    customCss?: pulumi.Input<string>;
+    customCss?: pulumi.Input<string | undefined>;
     /**
      * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
      */
-    customDomain?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string | undefined>;
     /**
      * Add custom behavior to your status page. It is only allowed for status pages with a custom domain name.
      */
-    customJavascript?: pulumi.Input<string>;
+    customJavascript?: pulumi.Input<string | undefined>;
     /**
      * A direct link to a dark version of your company's logo. The image should be under 20MB in size.
      */
-    darkLogoUrl?: pulumi.Input<string>;
+    darkLogoUrl?: pulumi.Input<string | undefined>;
     /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
-    design?: pulumi.Input<string>;
+    design?: pulumi.Input<string | undefined>;
     /**
      * Specify your own Google Analytics ID if you want to receive hits on your status page.
      */
-    googleAnalyticsId?: pulumi.Input<string>;
+    googleAnalyticsId?: pulumi.Input<string | undefined>;
     /**
      * Hide your status page from search engines.
      */
-    hideFromSearchEngines?: pulumi.Input<boolean>;
+    hideFromSearchEngines?: pulumi.Input<boolean | undefined>;
     /**
      * Number of days to display on the status page. Between 7 and 365 days.
      */
-    history?: pulumi.Input<number>;
+    history?: pulumi.Input<number | undefined>;
     /**
      * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable feature](https://betterstack.com/pricing#status-pages).
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values: 'vertical', 'horizontal'.
      */
-    layout?: pulumi.Input<string>;
+    layout?: pulumi.Input<string | undefined>;
     /**
      * A direct link to your company's logo. The image should be under 20MB in size.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * If you don't want to display short incidents on your status page, this attribute is for you.
      */
-    minIncidentLength?: pulumi.Input<number>;
+    minIncidentLength?: pulumi.Input<number | undefined>;
     /**
      * Adjust the navigation links on your status page. Only applicable when design: v2. Only first 4 links considered.
      */
-    navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[]>;
+    navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[] | undefined>;
     /**
      * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We will set password_enabled: false automatically when you send us an empty password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Do you want to enable password protection on your status page?
      */
-    passwordEnabled?: pulumi.Input<boolean>;
+    passwordEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Require SSO sign-in to access your status page. Requires SSO to be configured for your organization and is mutually exclusive with password protection.
      */
-    requireSso?: pulumi.Input<boolean>;
+    requireSso?: pulumi.Input<boolean | undefined>;
     /**
      * Set this attribute if you want to add this status page to a status page group.
      */
-    statusPageGroupId?: pulumi.Input<number>;
+    statusPageGroupId?: pulumi.Input<number | undefined>;
     /**
      * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose carefully
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Do you want to allow users to subscribe to your status page changes?
      */
-    subscribable?: pulumi.Input<boolean>;
+    subscribable?: pulumi.Input<boolean | undefined>;
     /**
      * Choose theme of your status page. Only applicable when design: v2. Possible values: 'light', 'dark'.
      */
-    theme?: pulumi.Input<string>;
+    theme?: pulumi.Input<string | undefined>;
     /**
      * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * The time when this status page was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Whether the 'Powered by Better Stack' footer should be removed.
      */
-    whitelabeled?: pulumi.Input<boolean>;
+    whitelabeled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -413,23 +413,23 @@ export interface StatusPageArgs {
     /**
      * Add an announcement to your status page.
      */
-    announcement?: pulumi.Input<string>;
+    announcement?: pulumi.Input<string | undefined>;
     /**
      * Modify the design of the announcement embed.
      */
-    announcementEmbedCss?: pulumi.Input<string>;
+    announcementEmbedCss?: pulumi.Input<string | undefined>;
     /**
      * Point your embedded announcement to a specified URL.
      */
-    announcementEmbedLink?: pulumi.Input<string>;
+    announcementEmbedLink?: pulumi.Input<string | undefined>;
     /**
      * Toggle this field if you want to show an announcement in your embed. You can embed the announcement using this snippet: `<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="<SET STATUS_PAGE_ID>" async="async" type="text/javascript"></script>`
      */
-    announcementEmbedVisible?: pulumi.Input<boolean>;
+    announcementEmbedVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Generate automatic reports when your services go down
      */
-    automaticReports?: pulumi.Input<boolean>;
+    automaticReports?: pulumi.Input<boolean | undefined>;
     /**
      * Name of your company.
      */
@@ -441,75 +441,75 @@ export interface StatusPageArgs {
     /**
      * URL that should be used for contacting you in case of an emergency.
      */
-    contactUrl?: pulumi.Input<string>;
+    contactUrl?: pulumi.Input<string | undefined>;
     /**
      * Unleash your inner designer and tweak our status page design to fit your branding.
      */
-    customCss?: pulumi.Input<string>;
+    customCss?: pulumi.Input<string | undefined>;
     /**
      * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
      */
-    customDomain?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string | undefined>;
     /**
      * Add custom behavior to your status page. It is only allowed for status pages with a custom domain name.
      */
-    customJavascript?: pulumi.Input<string>;
+    customJavascript?: pulumi.Input<string | undefined>;
     /**
      * A direct link to a dark version of your company's logo. The image should be under 20MB in size.
      */
-    darkLogoUrl?: pulumi.Input<string>;
+    darkLogoUrl?: pulumi.Input<string | undefined>;
     /**
      * Choose between classic and modern status page design. Possible values: 'v1', 'v2'.
      */
-    design?: pulumi.Input<string>;
+    design?: pulumi.Input<string | undefined>;
     /**
      * Specify your own Google Analytics ID if you want to receive hits on your status page.
      */
-    googleAnalyticsId?: pulumi.Input<string>;
+    googleAnalyticsId?: pulumi.Input<string | undefined>;
     /**
      * Hide your status page from search engines.
      */
-    hideFromSearchEngines?: pulumi.Input<boolean>;
+    hideFromSearchEngines?: pulumi.Input<boolean | undefined>;
     /**
      * Number of days to display on the status page. Between 7 and 365 days.
      */
-    history?: pulumi.Input<number>;
+    history?: pulumi.Input<number | undefined>;
     /**
      * List of IP addresses or CIDR ranges that are allowed to access the status page. Accepts IPv4, IPv6, CIDR ranges, and comments starting with `#`. To remove all IP restrictions, set to an empty list `[]`. This is a [billable feature](https://betterstack.com/pricing#status-pages).
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Choose usual vertical layout or space-saving horizontal layout. Only applicable when design: v2. Possible values: 'vertical', 'horizontal'.
      */
-    layout?: pulumi.Input<string>;
+    layout?: pulumi.Input<string | undefined>;
     /**
      * A direct link to your company's logo. The image should be under 20MB in size.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * If you don't want to display short incidents on your status page, this attribute is for you.
      */
-    minIncidentLength?: pulumi.Input<number>;
+    minIncidentLength?: pulumi.Input<number | undefined>;
     /**
      * Adjust the navigation links on your status page. Only applicable when design: v2. Only first 4 links considered.
      */
-    navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[]>;
+    navigationLinks?: pulumi.Input<pulumi.Input<inputs.StatusPageNavigationLink>[] | undefined>;
     /**
      * Set a password of your status page (we won't store it as plaintext, promise). Required when password_enabled: true. We will set password_enabled: false automatically when you send us an empty password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Do you want to enable password protection on your status page?
      */
-    passwordEnabled?: pulumi.Input<boolean>;
+    passwordEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Require SSO sign-in to access your status page. Requires SSO to be configured for your organization and is mutually exclusive with password protection.
      */
-    requireSso?: pulumi.Input<boolean>;
+    requireSso?: pulumi.Input<boolean | undefined>;
     /**
      * Set this attribute if you want to add this status page to a status page group.
      */
-    statusPageGroupId?: pulumi.Input<number>;
+    statusPageGroupId?: pulumi.Input<number | undefined>;
     /**
      * What subdomain should we use for your status page? This needs to be unique across our entire application, so choose carefully
      */
@@ -517,11 +517,11 @@ export interface StatusPageArgs {
     /**
      * Do you want to allow users to subscribe to your status page changes?
      */
-    subscribable?: pulumi.Input<boolean>;
+    subscribable?: pulumi.Input<boolean | undefined>;
     /**
      * Choose theme of your status page. Only applicable when design: v2. Possible values: 'light', 'dark'.
      */
-    theme?: pulumi.Input<string>;
+    theme?: pulumi.Input<string | undefined>;
     /**
      * What timezone should we display your status page in? The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
@@ -529,5 +529,5 @@ export interface StatusPageArgs {
     /**
      * Whether the 'Powered by Better Stack' footer should be removed.
      */
-    whitelabeled?: pulumi.Input<boolean>;
+    whitelabeled?: pulumi.Input<boolean | undefined>;
 }

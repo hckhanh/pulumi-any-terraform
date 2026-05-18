@@ -64,5 +64,5 @@ export interface GetSecretMetadataOutputArgs {
     folderPath: pulumi.Input<string>;
     name: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
-    secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string | undefined>;
 }

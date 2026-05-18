@@ -96,23 +96,23 @@ export interface ProjectTemplateState {
     /**
      * The description of the project template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The environments for the project template
      */
-    environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[]>;
+    environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[] | undefined>;
     /**
      * The name of the project template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The roles for the project template
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[] | undefined>;
     /**
      * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,19 +122,19 @@ export interface ProjectTemplateArgs {
     /**
      * The description of the project template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The environments for the project template
      */
-    environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[]>;
+    environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[] | undefined>;
     /**
      * The name of the project template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The roles for the project template
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateRole>[] | undefined>;
     /**
      * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */

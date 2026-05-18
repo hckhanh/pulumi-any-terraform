@@ -27,6 +27,10 @@ export interface ComputeContainerAppContainer {
      */
     id: string;
     /**
+     * The image digest.
+     */
+    imageDigest: string;
+    /**
      * The image name within the registry, without the domain prefix (i.e.: `my-app`).
      */
     imageName: string;
@@ -123,7 +127,7 @@ export interface ComputeContainerAppContainerEndpointPort {
      */
     exposed?: number;
     /**
-     * Options: `Tcp`, `Udp`
+     * Options: `SCTP`, `TCP`, `UDP`
      */
     protocols?: string[];
 }

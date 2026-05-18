@@ -133,47 +133,47 @@ export interface CertManagerInternalCaState {
     /**
      * The common name (CN) of the CA certificate
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The country (C) of the CA certificate
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * The key algorithm for the CA. Supported values: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1. Defaults to 'RSA_2048'.
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The locality (L) of the CA certificate
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The name of the CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization (O) of the CA certificate
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The organizational unit (OU) of the CA certificate
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The state/province (ST) of the CA certificate
      */
-    province?: pulumi.Input<string>;
+    province?: pulumi.Input<string | undefined>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of the CA. Supported values: root, intermediate
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,31 +183,31 @@ export interface CertManagerInternalCaArgs {
     /**
      * The common name (CN) of the CA certificate
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The country (C) of the CA certificate
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * The key algorithm for the CA. Supported values: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1. Defaults to 'RSA_2048'.
      */
-    keyAlgorithm?: pulumi.Input<string>;
+    keyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The locality (L) of the CA certificate
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The name of the CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization (O) of the CA certificate
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The organizational unit (OU) of the CA certificate
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
@@ -215,11 +215,11 @@ export interface CertManagerInternalCaArgs {
     /**
      * The state/province (ST) of the CA certificate
      */
-    province?: pulumi.Input<string>;
+    province?: pulumi.Input<string | undefined>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of the CA. Supported values: root, intermediate
      */

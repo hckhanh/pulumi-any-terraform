@@ -81,11 +81,11 @@ export interface CatalogRecordState {
     /**
      * List of attribute values for the Catalog record. You can have multiple blocks with same <span pulumi-lang-nodejs="`attributeId`" pulumi-lang-dotnet="`AttributeId`" pulumi-lang-go="`attributeId`" pulumi-lang-python="`attribute_id`" pulumi-lang-yaml="`attributeId`" pulumi-lang-java="`attributeId`">`attribute_id`</span> for multiple values.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.CatalogRecordAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.CatalogRecordAttribute>[] | undefined>;
     /**
      * The ID of the Catalog relation this record belongs to.
      */
-    relationId?: pulumi.Input<string>;
+    relationId?: pulumi.Input<string | undefined>;
 }
 
 /**

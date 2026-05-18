@@ -97,27 +97,27 @@ export interface JiraIntegrationState {
     /**
      * Whether to automatically create issues in Jira on incident start.
      */
-    automaticIssueCreation?: pulumi.Input<boolean>;
+    automaticIssueCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
      */
-    betterStackId?: pulumi.Input<string>;
+    betterStackId?: pulumi.Input<string | undefined>;
     /**
      * JSON object representing Jira fields.
      */
-    jiraFieldsJson?: pulumi.Input<string>;
+    jiraFieldsJson?: pulumi.Input<string | undefined>;
     /**
      * The Jira issue type ID.
      */
-    jiraIssueTypeId?: pulumi.Input<string>;
+    jiraIssueTypeId?: pulumi.Input<string | undefined>;
     /**
      * The Jira project key.
      */
-    jiraProjectKey?: pulumi.Input<string>;
+    jiraProjectKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Jira Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -127,25 +127,25 @@ export interface JiraIntegrationArgs {
     /**
      * Whether to automatically create issues in Jira on incident start.
      */
-    automaticIssueCreation?: pulumi.Input<boolean>;
+    automaticIssueCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Due to required authentication in Jira, the integration has to be created and removed in Better Stack web UI. You can set the ID of the Jira Integration to control in Better Stack, and it will be auto-imported during resource creation.
      */
-    betterStackId?: pulumi.Input<string>;
+    betterStackId?: pulumi.Input<string | undefined>;
     /**
      * JSON object representing Jira fields.
      */
-    jiraFieldsJson?: pulumi.Input<string>;
+    jiraFieldsJson?: pulumi.Input<string | undefined>;
     /**
      * The Jira issue type ID.
      */
-    jiraIssueTypeId?: pulumi.Input<string>;
+    jiraIssueTypeId?: pulumi.Input<string | undefined>;
     /**
      * The Jira project key.
      */
-    jiraProjectKey?: pulumi.Input<string>;
+    jiraProjectKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Jira Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

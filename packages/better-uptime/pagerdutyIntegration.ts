@@ -91,19 +91,19 @@ export interface PagerdutyIntegrationState {
     /**
      * The PagerDuty routing key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name of the PagerDuty Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,7 +117,7 @@ export interface PagerdutyIntegrationArgs {
     /**
      * The name of the PagerDuty Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */
@@ -125,5 +125,5 @@ export interface PagerdutyIntegrationArgs {
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

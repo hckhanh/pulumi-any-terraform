@@ -123,32 +123,32 @@ export interface PullzoneEdgeruleState {
     /**
      * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableRequestCoalescing`, `DisableShield`, `DisableShieldAccessLists`, `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableShieldRateLimiting`, `DisableTokenAuthentication`, `DisableWAF`, `EnableRequestCoalescing`, `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`, `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`, `SetStatusCode`
      */
-    action?: pulumi.Input<string>;
-    actionParameter1?: pulumi.Input<string>;
-    actionParameter2?: pulumi.Input<string>;
-    actionParameter3?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
+    actionParameter1?: pulumi.Input<string | undefined>;
+    actionParameter2?: pulumi.Input<string | undefined>;
+    actionParameter3?: pulumi.Input<string | undefined>;
     /**
      * List of actions for the edge rule.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleAction>[] | undefined>;
     /**
      * The description of the edge rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the edge rule is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
-    matchType?: pulumi.Input<string>;
+    matchType?: pulumi.Input<string | undefined>;
     /**
      * The priority of the edge rule. The lower number is executed first.
      */
-    priority?: pulumi.Input<number>;
-    pullzone?: pulumi.Input<number>;
-    triggers?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleTrigger>[]>;
+    priority?: pulumi.Input<number | undefined>;
+    pullzone?: pulumi.Input<number | undefined>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleTrigger>[] | undefined>;
 }
 
 /**
@@ -158,18 +158,18 @@ export interface PullzoneEdgeruleArgs {
     /**
      * Options: `BlockRequest`, `BypassAwsS3Authentication`, `BypassPermaCache`, `DisableOptimizer`, `DisableRequestCoalescing`, `DisableShield`, `DisableShieldAccessLists`, `DisableShieldBotDetection`, `DisableShieldChallenge`, `DisableShieldRateLimiting`, `DisableTokenAuthentication`, `DisableWAF`, `EnableRequestCoalescing`, `EnableTokenAuthentication`, `ForceCompression`, `ForceDownload`, `ForceSSL`, `IgnoreQueryString`, `OriginMagicContainers`, `OriginStorage`, `OriginUrl`, `OverrideBrowserCacheResponseHeader`, `OverrideBrowserCacheTime`, `OverrideCacheTime`, `OverrideCacheTimePublic`, `Redirect`, `RemoveBrowserCacheResponseHeader`, `RetryOrigin`, `RunEdgeScript`, `SetConnectionLimit`, `SetNetworkRateLimit`, `SetRequestHeader`, `SetRequestsPerSecondLimit`, `SetResponseHeader`, `SetStatusCode`
      */
-    action?: pulumi.Input<string>;
-    actionParameter1?: pulumi.Input<string>;
-    actionParameter2?: pulumi.Input<string>;
-    actionParameter3?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
+    actionParameter1?: pulumi.Input<string | undefined>;
+    actionParameter2?: pulumi.Input<string | undefined>;
+    actionParameter3?: pulumi.Input<string | undefined>;
     /**
      * List of actions for the edge rule.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleAction>[] | undefined>;
     /**
      * The description of the edge rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the edge rule is enabled.
      */
@@ -177,11 +177,11 @@ export interface PullzoneEdgeruleArgs {
     /**
      * Options: `MatchAll`, `MatchAny`, `MatchNone`
      */
-    matchType?: pulumi.Input<string>;
+    matchType?: pulumi.Input<string | undefined>;
     /**
      * The priority of the edge rule. The lower number is executed first.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     pullzone: pulumi.Input<number>;
     triggers: pulumi.Input<pulumi.Input<inputs.PullzoneEdgeruleTrigger>[]>;
 }

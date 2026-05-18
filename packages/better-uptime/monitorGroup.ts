@@ -97,27 +97,27 @@ export interface MonitorGroupState {
     /**
      * The time when this monitor group was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A name of the group that you can see in the dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set to true to pause monitoring for any existing monitors in the group - we won't notify you about downtime. Set to false to resume monitoring for any existing monitors in the group.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your monitor groups.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this monitor group was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -127,17 +127,17 @@ export interface MonitorGroupArgs {
     /**
      * A name of the group that you can see in the dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set to true to pause monitoring for any existing monitors in the group - we won't notify you about downtime. Set to false to resume monitoring for any existing monitors in the group.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your monitor groups.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

@@ -153,51 +153,51 @@ export interface SecretRotationOracledbCredentialsState {
     /**
      * Whether secrets should be automatically rotated.
      */
-    autoRotationEnabled?: pulumi.Input<boolean>;
+    autoRotationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to use for the secret rotation.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * The description of the secret rotation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project environment to rotate secrets from.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret rotation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are rotated.
      */
-    parameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsParameters>;
+    parameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsParameters | undefined>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationOracledbCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationOracledbCredentialsRotateAtUtc | undefined>;
     /**
      * How many days to wait between each rotation.
      */
-    rotationInterval?: pulumi.Input<number>;
+    rotationInterval?: pulumi.Input<number | undefined>;
     /**
      * The folder path to rotate secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    secretsMapping?: pulumi.Input<inputs.SecretRotationOracledbCredentialsSecretsMapping>;
+    secretsMapping?: pulumi.Input<inputs.SecretRotationOracledbCredentialsSecretsMapping | undefined>;
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsTemporaryParameters | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface SecretRotationOracledbCredentialsArgs {
     /**
      * Whether secrets should be automatically rotated.
      */
-    autoRotationEnabled?: pulumi.Input<boolean>;
+    autoRotationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to use for the secret rotation.
      */
@@ -215,7 +215,7 @@ export interface SecretRotationOracledbCredentialsArgs {
     /**
      * The description of the secret rotation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project environment to rotate secrets from.
      */
@@ -223,7 +223,7 @@ export interface SecretRotationOracledbCredentialsArgs {
     /**
      * The name of the secret rotation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are rotated.
      */
@@ -235,11 +235,11 @@ export interface SecretRotationOracledbCredentialsArgs {
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationOracledbCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationOracledbCredentialsRotateAtUtc | undefined>;
     /**
      * How many days to wait between each rotation.
      */
-    rotationInterval?: pulumi.Input<number>;
+    rotationInterval?: pulumi.Input<number | undefined>;
     /**
      * The folder path to rotate secrets from.
      */
@@ -251,5 +251,5 @@ export interface SecretRotationOracledbCredentialsArgs {
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationOracledbCredentialsTemporaryParameters | undefined>;
 }

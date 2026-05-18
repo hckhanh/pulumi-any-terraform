@@ -114,35 +114,35 @@ export interface IdentityAwsAuthState {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of trusted AWS account IDs that are allowed to authenticate with Infisical.
      */
-    allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAccountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span> to authenticate with Infisical under the identity
      */
-    allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g. `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
-    stsEndpoint?: pulumi.Input<string>;
+    stsEndpoint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,27 +152,27 @@ export interface IdentityAwsAuthArgs {
     /**
      * The maximum lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenMaxTtl?: pulumi.Input<number>;
+    accessTokenMaxTtl?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that an access token can be used; a value of 0 implies infinite number of uses. Default:0
      */
-    accessTokenNumUsesLimit?: pulumi.Input<number>;
+    accessTokenNumUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IPs or CIDR ranges that access tokens can be used from. You can use 0.0.0.0/0, to allow usage from any network address..
      */
-    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[]>;
+    accessTokenTrustedIps?: pulumi.Input<pulumi.Input<inputs.IdentityAwsAuthAccessTokenTrustedIp>[] | undefined>;
     /**
      * The lifetime for an access token in seconds. This value will be referenced at renewal time. Default: 2592000
      */
-    accessTokenTtl?: pulumi.Input<number>;
+    accessTokenTtl?: pulumi.Input<number | undefined>;
     /**
      * List of trusted AWS account IDs that are allowed to authenticate with Infisical.
      */
-    allowedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAccountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of trusted IAM principal ARNs that are allowed to authenticate with Infisical. The values should take one of three forms: `arn:aws:iam::123456789012:user/MyUserName`, `arn:aws:iam::123456789012:role/MyRoleName`, or `arn:aws:iam::123456789012:*`. Using a wildcard in this case allows any IAM principal in the account <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span> to authenticate with Infisical under the identity
      */
-    allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the identity to attach the configuration onto.
      */
@@ -180,5 +180,5 @@ export interface IdentityAwsAuthArgs {
     /**
      * The endpoint URL for the AWS STS API. This value should be adjusted based on the AWS region you are operating in (e.g. `https://sts.us-east-1.amazonaws.com/`); refer to the list of regional STS endpoints [here](https://docs.aws.amazon.com/general/latest/gr/sts.html).
      */
-    stsEndpoint?: pulumi.Input<string>;
+    stsEndpoint?: pulumi.Input<string | undefined>;
 }

@@ -53,6 +53,6 @@ export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getDnsZone.
  */
 export interface GetDnsZoneOutputArgs {
-    dnssecEnabled?: pulumi.Input<boolean>;
+    dnssecEnabled?: pulumi.Input<boolean | undefined>;
     domain: pulumi.Input<string>;
 }

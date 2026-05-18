@@ -90,19 +90,19 @@ export interface ExternalKmsAwsState {
     /**
      * The configuration for the AWS External KMS
      */
-    configuration?: pulumi.Input<inputs.ExternalKmsAwsConfiguration>;
+    configuration?: pulumi.Input<inputs.ExternalKmsAwsConfiguration | undefined>;
     /**
      * The hash of the AWS External KMS credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the KMS.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the KMS to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -116,9 +116,9 @@ export interface ExternalKmsAwsArgs {
     /**
      * An optional description for the KMS.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the KMS to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

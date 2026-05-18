@@ -132,42 +132,42 @@ export interface SecretState {
     /**
      * The environment slug of the secret to modify/create
      */
-    envSlug?: pulumi.Input<string>;
+    envSlug?: pulumi.Input<string | undefined>;
     /**
      * The path to the folder where the given secret resides
      */
-    folderPath?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the secret as key-value pairs.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the secret
      */
-    name?: pulumi.Input<string>;
-    secretReminder?: pulumi.Input<inputs.SecretSecretReminder>;
+    name?: pulumi.Input<string | undefined>;
+    secretReminder?: pulumi.Input<inputs.SecretSecretReminder | undefined>;
     /**
      * Tag ids to be attached for the secrets.
      */
-    tagIds?: pulumi.Input<pulumi.Input<string>[]>;
+    tagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
-    valueWo?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string | undefined>;
     /**
      * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
      */
-    valueWoVersion?: pulumi.Input<number>;
+    valueWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,31 +185,31 @@ export interface SecretArgs {
     /**
      * Metadata associated with the secret as key-value pairs.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the secret
      */
-    name?: pulumi.Input<string>;
-    secretReminder?: pulumi.Input<inputs.SecretSecretReminder>;
+    name?: pulumi.Input<string | undefined>;
+    secretReminder?: pulumi.Input<inputs.SecretSecretReminder | undefined>;
     /**
      * Tag ids to be attached for the secrets.
      */
-    tagIds?: pulumi.Input<pulumi.Input<string>[]>;
+    tagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
-    valueWo?: pulumi.Input<string>;
+    valueWo?: pulumi.Input<string | undefined>;
     /**
      * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
      */
-    valueWoVersion?: pulumi.Input<number>;
+    valueWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The Infisical project ID (Required for Machine Identity auth, and service tokens with multiple scopes)
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

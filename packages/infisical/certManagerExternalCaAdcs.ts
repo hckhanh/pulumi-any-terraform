@@ -91,19 +91,19 @@ export interface CertManagerExternalCaAdcsState {
     /**
      * The ID of the Azure ADCS app connection for certificate issuance
      */
-    azureAdcsConnectionId?: pulumi.Input<string>;
+    azureAdcsConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the ADCS CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,7 +117,7 @@ export interface CertManagerExternalCaAdcsArgs {
     /**
      * The name of the ADCS CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
@@ -125,5 +125,5 @@ export interface CertManagerExternalCaAdcsArgs {
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

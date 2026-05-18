@@ -93,18 +93,18 @@ export interface DomainRecordsState {
     /**
      * Purchased available domain name on your account
      */
-    domain?: pulumi.Input<string>;
-    domainRecordsId?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
+    domainRecordsId?: pulumi.Input<string | undefined>;
     /**
      * Possible values: NONE, MXE, MX, FWD, OX, GMAIL
      */
-    emailType?: pulumi.Input<string>;
+    emailType?: pulumi.Input<string | undefined>;
     /**
      * Possible values: MERGE (default), OVERWRITE
      */
-    mode?: pulumi.Input<string>;
-    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
-    records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[]>;
+    mode?: pulumi.Input<string | undefined>;
+    nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[] | undefined>;
 }
 
 /**
@@ -115,15 +115,15 @@ export interface DomainRecordsArgs {
      * Purchased available domain name on your account
      */
     domain: pulumi.Input<string>;
-    domainRecordsId?: pulumi.Input<string>;
+    domainRecordsId?: pulumi.Input<string | undefined>;
     /**
      * Possible values: NONE, MXE, MX, FWD, OX, GMAIL
      */
-    emailType?: pulumi.Input<string>;
+    emailType?: pulumi.Input<string | undefined>;
     /**
      * Possible values: MERGE (default), OVERWRITE
      */
-    mode?: pulumi.Input<string>;
-    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
-    records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[]>;
+    mode?: pulumi.Input<string | undefined>;
+    nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[] | undefined>;
 }

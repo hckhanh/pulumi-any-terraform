@@ -108,50 +108,50 @@ export class PullzoneShield extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PullzoneShield resources.
  */
 export interface PullzoneShieldState {
-    accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[]>;
+    accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[] | undefined>;
     /**
      * Configures Bot Detection settings.
      */
-    botDetection?: pulumi.Input<inputs.PullzoneShieldBotDetection>;
+    botDetection?: pulumi.Input<inputs.PullzoneShieldBotDetection | undefined>;
     /**
      * Configures DDoS settings.
      */
-    ddos?: pulumi.Input<inputs.PullzoneShieldDdos>;
+    ddos?: pulumi.Input<inputs.PullzoneShieldDdos | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Bunny Shield.
      */
-    pullzoneShieldId?: pulumi.Input<number>;
+    pullzoneShieldId?: pulumi.Input<number | undefined>;
     /**
      * Options: `Advanced`, `Basic`, `Business`, `Enterprise`
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * Configures WAF settings.
      */
-    waf?: pulumi.Input<inputs.PullzoneShieldWaf>;
+    waf?: pulumi.Input<inputs.PullzoneShieldWaf | undefined>;
     /**
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
-    whitelabel?: pulumi.Input<boolean>;
+    whitelabel?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PullzoneShield resource.
  */
 export interface PullzoneShieldArgs {
-    accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[]>;
+    accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[] | undefined>;
     /**
      * Configures Bot Detection settings.
      */
-    botDetection?: pulumi.Input<inputs.PullzoneShieldBotDetection>;
+    botDetection?: pulumi.Input<inputs.PullzoneShieldBotDetection | undefined>;
     /**
      * Configures DDoS settings.
      */
-    ddos?: pulumi.Input<inputs.PullzoneShieldDdos>;
+    ddos?: pulumi.Input<inputs.PullzoneShieldDdos | undefined>;
     /**
      * The ID of the linked pullzone.
      */
@@ -159,13 +159,13 @@ export interface PullzoneShieldArgs {
     /**
      * Options: `Advanced`, `Basic`, `Business`, `Enterprise`
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * Configures WAF settings.
      */
-    waf?: pulumi.Input<inputs.PullzoneShieldWaf>;
+    waf?: pulumi.Input<inputs.PullzoneShieldWaf | undefined>;
     /**
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
-    whitelabel?: pulumi.Input<boolean>;
+    whitelabel?: pulumi.Input<boolean | undefined>;
 }

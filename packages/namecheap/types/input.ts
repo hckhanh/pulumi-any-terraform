@@ -17,11 +17,11 @@ export interface DomainRecordsRecord {
     /**
      * MX preference for host. Applicable for MX records only
      */
-    mxPref?: pulumi.Input<number>;
+    mxPref?: pulumi.Input<number | undefined>;
     /**
      * Time to live for all record types. Possible values: any value between 60 to 60000
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * Possible values: A, AAAA, ALIAS, CAA, CNAME, MX, MXE, NS, TXT, URL, URL301, FRAME
      */

@@ -346,192 +346,192 @@ export interface StreamLibraryState {
     /**
      * The API key for accessing the stream library.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * The bitrate used for encoding 1080p videos, in kilobits per second.
      */
-    bitrate1080p?: pulumi.Input<number>;
+    bitrate1080p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 1440p videos, in kilobits per second.
      */
-    bitrate1440p?: pulumi.Input<number>;
+    bitrate1440p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 2160p videos, in kilobits per second.
      */
-    bitrate2160p?: pulumi.Input<number>;
+    bitrate2160p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 240p videos, in kilobits per second.
      */
-    bitrate240p?: pulumi.Input<number>;
+    bitrate240p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 360p videos, in kilobits per second.
      */
-    bitrate360p?: pulumi.Input<number>;
+    bitrate360p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 480p videos, in kilobits per second.
      */
-    bitrate480p?: pulumi.Input<number>;
+    bitrate480p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 720p videos, in kilobits per second.
      */
-    bitrate720p?: pulumi.Input<number>;
+    bitrate720p?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether CDN token authentication is required.
      */
-    cdnTokenAuthenticationRequired?: pulumi.Input<boolean>;
+    cdnTokenAuthenticationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether content tagging is enabled.
      */
-    contentTaggingEnabled?: pulumi.Input<boolean>;
+    contentTaggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines direct play URLs are enabled.
      */
-    directPlayEnabled?: pulumi.Input<boolean>;
+    directPlayEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the requests without a referrer are blocked.
      */
-    directUrlFileAccessBlocked?: pulumi.Input<boolean>;
+    directUrlFileAccessBlocked?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the MediaCage basic DRM is enabled
      */
-    drmMediacageBasicEnabled?: pulumi.Input<boolean>;
+    drmMediacageBasicEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the Early-Play feature is enabled.
      */
-    earlyPlayEnabled?: pulumi.Input<boolean>;
+    earlyPlayEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Free`, `Premium`
      */
-    encodingTier?: pulumi.Input<string>;
+    encodingTier?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether Just-In-Time Encoding is enabled
      */
-    jitEncoding?: pulumi.Input<boolean>;
+    jitEncoding?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the MP4 fallback feature is enabled.
      */
-    mp4FallbackEnabled?: pulumi.Input<boolean>;
+    mp4FallbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether multiple output audio track support is enabled.
      */
-    multiAudioTrackSupportEnabled?: pulumi.Input<boolean>;
+    multiAudioTrackSupportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the stream library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to keep original files after encoding.
      */
-    originalFilesKeep?: pulumi.Input<boolean>;
+    originalFilesKeep?: pulumi.Input<boolean | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`av1`" pulumi-lang-dotnet="`Av1`" pulumi-lang-go="`av1`" pulumi-lang-python="`av1`" pulumi-lang-yaml="`av1`" pulumi-lang-java="`av1`">`av1`</span>, <span pulumi-lang-nodejs="`hevc`" pulumi-lang-dotnet="`Hevc`" pulumi-lang-go="`hevc`" pulumi-lang-python="`hevc`" pulumi-lang-yaml="`hevc`" pulumi-lang-java="`hevc`">`hevc`</span>, <span pulumi-lang-nodejs="`vp9`" pulumi-lang-dotnet="`Vp9`" pulumi-lang-go="`vp9`" pulumi-lang-python="`vp9`" pulumi-lang-yaml="`vp9`" pulumi-lang-java="`vp9`">`vp9`</span>, <span pulumi-lang-nodejs="`x264`" pulumi-lang-dotnet="`X264`" pulumi-lang-go="`x264`" pulumi-lang-python="`x264`" pulumi-lang-yaml="`x264`" pulumi-lang-java="`x264`">`x264`</span>
      */
-    outputCodecs?: pulumi.Input<pulumi.Input<string>[]>;
+    outputCodecs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The background color of the captions in the video player.
      */
-    playerCaptionsBackgroundColor?: pulumi.Input<string>;
+    playerCaptionsBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * The font color of the captions in the video player.
      */
-    playerCaptionsFontColor?: pulumi.Input<string>;
+    playerCaptionsFontColor?: pulumi.Input<string | undefined>;
     /**
      * The font size of the captions in the video player.
      */
-    playerCaptionsFontSize?: pulumi.Input<number>;
+    playerCaptionsFontSize?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`airplay`" pulumi-lang-dotnet="`Airplay`" pulumi-lang-go="`airplay`" pulumi-lang-python="`airplay`" pulumi-lang-yaml="`airplay`" pulumi-lang-java="`airplay`">`airplay`</span>, <span pulumi-lang-nodejs="`captions`" pulumi-lang-dotnet="`Captions`" pulumi-lang-go="`captions`" pulumi-lang-python="`captions`" pulumi-lang-yaml="`captions`" pulumi-lang-java="`captions`">`captions`</span>, <span pulumi-lang-nodejs="`chromecast`" pulumi-lang-dotnet="`Chromecast`" pulumi-lang-go="`chromecast`" pulumi-lang-python="`chromecast`" pulumi-lang-yaml="`chromecast`" pulumi-lang-java="`chromecast`">`chromecast`</span>, `current-time`, <span pulumi-lang-nodejs="`duration`" pulumi-lang-dotnet="`Duration`" pulumi-lang-go="`duration`" pulumi-lang-python="`duration`" pulumi-lang-yaml="`duration`" pulumi-lang-java="`duration`">`duration`</span>, `fast-forward`, <span pulumi-lang-nodejs="`fullscreen`" pulumi-lang-dotnet="`Fullscreen`" pulumi-lang-go="`fullscreen`" pulumi-lang-python="`fullscreen`" pulumi-lang-yaml="`fullscreen`" pulumi-lang-java="`fullscreen`">`fullscreen`</span>, <span pulumi-lang-nodejs="`mute`" pulumi-lang-dotnet="`Mute`" pulumi-lang-go="`mute`" pulumi-lang-python="`mute`" pulumi-lang-yaml="`mute`" pulumi-lang-java="`mute`">`mute`</span>, <span pulumi-lang-nodejs="`pip`" pulumi-lang-dotnet="`Pip`" pulumi-lang-go="`pip`" pulumi-lang-python="`pip`" pulumi-lang-yaml="`pip`" pulumi-lang-java="`pip`">`pip`</span>, <span pulumi-lang-nodejs="`play`" pulumi-lang-dotnet="`Play`" pulumi-lang-go="`play`" pulumi-lang-python="`play`" pulumi-lang-yaml="`play`" pulumi-lang-java="`play`">`play`</span>, `play-large`, <span pulumi-lang-nodejs="`progress`" pulumi-lang-dotnet="`Progress`" pulumi-lang-go="`progress`" pulumi-lang-python="`progress`" pulumi-lang-yaml="`progress`" pulumi-lang-java="`progress`">`progress`</span>, <span pulumi-lang-nodejs="`rewind`" pulumi-lang-dotnet="`Rewind`" pulumi-lang-go="`rewind`" pulumi-lang-python="`rewind`" pulumi-lang-yaml="`rewind`" pulumi-lang-java="`rewind`">`rewind`</span>, <span pulumi-lang-nodejs="`settings`" pulumi-lang-dotnet="`Settings`" pulumi-lang-go="`settings`" pulumi-lang-python="`settings`" pulumi-lang-yaml="`settings`" pulumi-lang-java="`settings`">`settings`</span>, <span pulumi-lang-nodejs="`volume`" pulumi-lang-dotnet="`Volume`" pulumi-lang-go="`volume`" pulumi-lang-python="`volume`" pulumi-lang-yaml="`volume`" pulumi-lang-java="`volume`">`volume`</span>
      */
-    playerControls?: pulumi.Input<pulumi.Input<string>[]>;
+    playerControls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Custom HTML to be included in the head of the video player.
      */
-    playerCustomHead?: pulumi.Input<string>;
+    playerCustomHead?: pulumi.Input<string | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`arial`" pulumi-lang-dotnet="`Arial`" pulumi-lang-go="`arial`" pulumi-lang-python="`arial`" pulumi-lang-yaml="`arial`" pulumi-lang-java="`arial`">`arial`</span>, <span pulumi-lang-nodejs="`inter`" pulumi-lang-dotnet="`Inter`" pulumi-lang-go="`inter`" pulumi-lang-python="`inter`" pulumi-lang-yaml="`inter`" pulumi-lang-java="`inter`">`inter`</span>, <span pulumi-lang-nodejs="`lato`" pulumi-lang-dotnet="`Lato`" pulumi-lang-go="`lato`" pulumi-lang-python="`lato`" pulumi-lang-yaml="`lato`" pulumi-lang-java="`lato`">`lato`</span>, <span pulumi-lang-nodejs="`oswald`" pulumi-lang-dotnet="`Oswald`" pulumi-lang-go="`oswald`" pulumi-lang-python="`oswald`" pulumi-lang-yaml="`oswald`" pulumi-lang-java="`oswald`">`oswald`</span>, <span pulumi-lang-nodejs="`raleway`" pulumi-lang-dotnet="`Raleway`" pulumi-lang-go="`raleway`" pulumi-lang-python="`raleway`" pulumi-lang-yaml="`raleway`" pulumi-lang-java="`raleway`">`raleway`</span>, <span pulumi-lang-nodejs="`roboto`" pulumi-lang-dotnet="`Roboto`" pulumi-lang-go="`roboto`" pulumi-lang-python="`roboto`" pulumi-lang-yaml="`roboto`" pulumi-lang-java="`roboto`">`roboto`</span>, <span pulumi-lang-nodejs="`rubik`" pulumi-lang-dotnet="`Rubik`" pulumi-lang-go="`rubik`" pulumi-lang-python="`rubik`" pulumi-lang-yaml="`rubik`" pulumi-lang-java="`rubik`">`rubik`</span>, <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
      */
-    playerFontFamily?: pulumi.Input<string>;
+    playerFontFamily?: pulumi.Input<string | undefined>;
     /**
      * Specifies the language for the video player interface.
      */
-    playerLanguage?: pulumi.Input<string>;
+    playerLanguage?: pulumi.Input<string | undefined>;
     /**
      * Customizes the appearance of the video player.
      */
-    playerPrimaryColor?: pulumi.Input<string>;
+    playerPrimaryColor?: pulumi.Input<string | undefined>;
     /**
      * Specifies the video player version.
      */
-    playerVersion?: pulumi.Input<number>;
+    playerVersion?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */
-    playerWatchtimeHeatmapEnabled?: pulumi.Input<boolean>;
+    playerWatchtimeHeatmapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The list of allowed referrer domains allowed to access videos in this library.
      */
-    referersAlloweds?: pulumi.Input<pulumi.Input<string>[]>;
+    referersAlloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of blocked referrer domains blocked from accessing videos in this library.
      */
-    referersBlockeds?: pulumi.Input<pulumi.Input<string>[]>;
+    referersBlockeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of resolutions available for the videos.
      */
-    resolutions?: pulumi.Input<pulumi.Input<string>[]>;
+    resolutions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the linked storage zone.
      */
-    storageZone?: pulumi.Input<number>;
-    streamLibraryId?: pulumi.Input<number>;
+    storageZone?: pulumi.Input<number | undefined>;
+    streamLibraryId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the automatic audio transcribing is currently enabled for this zone.
      */
-    transcribingEnabled?: pulumi.Input<boolean>;
+    transcribingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of languages that the captions will be automatically transcribed to.
      */
-    transcribingLanguages?: pulumi.Input<pulumi.Input<string>[]>;
+    transcribingLanguages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether automatic transcribing description generation is currently enabled.
      */
-    transcribingSmartDescriptionEnabled?: pulumi.Input<boolean>;
+    transcribingSmartDescriptionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether automatic transcribing title generation is currently enabled.
      */
-    transcribingSmartTitleEnabled?: pulumi.Input<boolean>;
+    transcribingSmartTitleEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of the VAST tag for ad integration.
      */
-    vastTagUrl?: pulumi.Input<string>;
+    vastTagUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the player token authentication is enabled
      */
-    viewTokenAuthenticationRequired?: pulumi.Input<boolean>;
+    viewTokenAuthenticationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The height of the watermark (in %).
      */
-    watermarkHeight?: pulumi.Input<number>;
+    watermarkHeight?: pulumi.Input<number | undefined>;
     /**
      * The left offset of the watermark position (in %).
      */
-    watermarkPositionLeft?: pulumi.Input<number>;
+    watermarkPositionLeft?: pulumi.Input<number | undefined>;
     /**
      * The top offset of the watermark position (in %).
      */
-    watermarkPositionTop?: pulumi.Input<number>;
+    watermarkPositionTop?: pulumi.Input<number | undefined>;
     /**
      * The width of the watermark (in %).
      */
-    watermarkWidth?: pulumi.Input<number>;
+    watermarkWidth?: pulumi.Input<number | undefined>;
     /**
      * The URL for webhook notifications.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -541,177 +541,177 @@ export interface StreamLibraryArgs {
     /**
      * The bitrate used for encoding 1080p videos, in kilobits per second.
      */
-    bitrate1080p?: pulumi.Input<number>;
+    bitrate1080p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 1440p videos, in kilobits per second.
      */
-    bitrate1440p?: pulumi.Input<number>;
+    bitrate1440p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 2160p videos, in kilobits per second.
      */
-    bitrate2160p?: pulumi.Input<number>;
+    bitrate2160p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 240p videos, in kilobits per second.
      */
-    bitrate240p?: pulumi.Input<number>;
+    bitrate240p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 360p videos, in kilobits per second.
      */
-    bitrate360p?: pulumi.Input<number>;
+    bitrate360p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 480p videos, in kilobits per second.
      */
-    bitrate480p?: pulumi.Input<number>;
+    bitrate480p?: pulumi.Input<number | undefined>;
     /**
      * The bitrate used for encoding 720p videos, in kilobits per second.
      */
-    bitrate720p?: pulumi.Input<number>;
+    bitrate720p?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether CDN token authentication is required.
      */
-    cdnTokenAuthenticationRequired?: pulumi.Input<boolean>;
+    cdnTokenAuthenticationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether content tagging is enabled.
      */
-    contentTaggingEnabled?: pulumi.Input<boolean>;
+    contentTaggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines direct play URLs are enabled.
      */
-    directPlayEnabled?: pulumi.Input<boolean>;
+    directPlayEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the requests without a referrer are blocked.
      */
-    directUrlFileAccessBlocked?: pulumi.Input<boolean>;
+    directUrlFileAccessBlocked?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the MediaCage basic DRM is enabled
      */
-    drmMediacageBasicEnabled?: pulumi.Input<boolean>;
+    drmMediacageBasicEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the Early-Play feature is enabled.
      */
-    earlyPlayEnabled?: pulumi.Input<boolean>;
+    earlyPlayEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Free`, `Premium`
      */
-    encodingTier?: pulumi.Input<string>;
+    encodingTier?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether Just-In-Time Encoding is enabled
      */
-    jitEncoding?: pulumi.Input<boolean>;
+    jitEncoding?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the MP4 fallback feature is enabled.
      */
-    mp4FallbackEnabled?: pulumi.Input<boolean>;
+    mp4FallbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether multiple output audio track support is enabled.
      */
-    multiAudioTrackSupportEnabled?: pulumi.Input<boolean>;
+    multiAudioTrackSupportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the stream library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to keep original files after encoding.
      */
-    originalFilesKeep?: pulumi.Input<boolean>;
+    originalFilesKeep?: pulumi.Input<boolean | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`av1`" pulumi-lang-dotnet="`Av1`" pulumi-lang-go="`av1`" pulumi-lang-python="`av1`" pulumi-lang-yaml="`av1`" pulumi-lang-java="`av1`">`av1`</span>, <span pulumi-lang-nodejs="`hevc`" pulumi-lang-dotnet="`Hevc`" pulumi-lang-go="`hevc`" pulumi-lang-python="`hevc`" pulumi-lang-yaml="`hevc`" pulumi-lang-java="`hevc`">`hevc`</span>, <span pulumi-lang-nodejs="`vp9`" pulumi-lang-dotnet="`Vp9`" pulumi-lang-go="`vp9`" pulumi-lang-python="`vp9`" pulumi-lang-yaml="`vp9`" pulumi-lang-java="`vp9`">`vp9`</span>, <span pulumi-lang-nodejs="`x264`" pulumi-lang-dotnet="`X264`" pulumi-lang-go="`x264`" pulumi-lang-python="`x264`" pulumi-lang-yaml="`x264`" pulumi-lang-java="`x264`">`x264`</span>
      */
-    outputCodecs?: pulumi.Input<pulumi.Input<string>[]>;
+    outputCodecs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The background color of the captions in the video player.
      */
-    playerCaptionsBackgroundColor?: pulumi.Input<string>;
+    playerCaptionsBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * The font color of the captions in the video player.
      */
-    playerCaptionsFontColor?: pulumi.Input<string>;
+    playerCaptionsFontColor?: pulumi.Input<string | undefined>;
     /**
      * The font size of the captions in the video player.
      */
-    playerCaptionsFontSize?: pulumi.Input<number>;
+    playerCaptionsFontSize?: pulumi.Input<number | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`airplay`" pulumi-lang-dotnet="`Airplay`" pulumi-lang-go="`airplay`" pulumi-lang-python="`airplay`" pulumi-lang-yaml="`airplay`" pulumi-lang-java="`airplay`">`airplay`</span>, <span pulumi-lang-nodejs="`captions`" pulumi-lang-dotnet="`Captions`" pulumi-lang-go="`captions`" pulumi-lang-python="`captions`" pulumi-lang-yaml="`captions`" pulumi-lang-java="`captions`">`captions`</span>, <span pulumi-lang-nodejs="`chromecast`" pulumi-lang-dotnet="`Chromecast`" pulumi-lang-go="`chromecast`" pulumi-lang-python="`chromecast`" pulumi-lang-yaml="`chromecast`" pulumi-lang-java="`chromecast`">`chromecast`</span>, `current-time`, <span pulumi-lang-nodejs="`duration`" pulumi-lang-dotnet="`Duration`" pulumi-lang-go="`duration`" pulumi-lang-python="`duration`" pulumi-lang-yaml="`duration`" pulumi-lang-java="`duration`">`duration`</span>, `fast-forward`, <span pulumi-lang-nodejs="`fullscreen`" pulumi-lang-dotnet="`Fullscreen`" pulumi-lang-go="`fullscreen`" pulumi-lang-python="`fullscreen`" pulumi-lang-yaml="`fullscreen`" pulumi-lang-java="`fullscreen`">`fullscreen`</span>, <span pulumi-lang-nodejs="`mute`" pulumi-lang-dotnet="`Mute`" pulumi-lang-go="`mute`" pulumi-lang-python="`mute`" pulumi-lang-yaml="`mute`" pulumi-lang-java="`mute`">`mute`</span>, <span pulumi-lang-nodejs="`pip`" pulumi-lang-dotnet="`Pip`" pulumi-lang-go="`pip`" pulumi-lang-python="`pip`" pulumi-lang-yaml="`pip`" pulumi-lang-java="`pip`">`pip`</span>, <span pulumi-lang-nodejs="`play`" pulumi-lang-dotnet="`Play`" pulumi-lang-go="`play`" pulumi-lang-python="`play`" pulumi-lang-yaml="`play`" pulumi-lang-java="`play`">`play`</span>, `play-large`, <span pulumi-lang-nodejs="`progress`" pulumi-lang-dotnet="`Progress`" pulumi-lang-go="`progress`" pulumi-lang-python="`progress`" pulumi-lang-yaml="`progress`" pulumi-lang-java="`progress`">`progress`</span>, <span pulumi-lang-nodejs="`rewind`" pulumi-lang-dotnet="`Rewind`" pulumi-lang-go="`rewind`" pulumi-lang-python="`rewind`" pulumi-lang-yaml="`rewind`" pulumi-lang-java="`rewind`">`rewind`</span>, <span pulumi-lang-nodejs="`settings`" pulumi-lang-dotnet="`Settings`" pulumi-lang-go="`settings`" pulumi-lang-python="`settings`" pulumi-lang-yaml="`settings`" pulumi-lang-java="`settings`">`settings`</span>, <span pulumi-lang-nodejs="`volume`" pulumi-lang-dotnet="`Volume`" pulumi-lang-go="`volume`" pulumi-lang-python="`volume`" pulumi-lang-yaml="`volume`" pulumi-lang-java="`volume`">`volume`</span>
      */
-    playerControls?: pulumi.Input<pulumi.Input<string>[]>;
+    playerControls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Custom HTML to be included in the head of the video player.
      */
-    playerCustomHead?: pulumi.Input<string>;
+    playerCustomHead?: pulumi.Input<string | undefined>;
     /**
      * Options: <span pulumi-lang-nodejs="`arial`" pulumi-lang-dotnet="`Arial`" pulumi-lang-go="`arial`" pulumi-lang-python="`arial`" pulumi-lang-yaml="`arial`" pulumi-lang-java="`arial`">`arial`</span>, <span pulumi-lang-nodejs="`inter`" pulumi-lang-dotnet="`Inter`" pulumi-lang-go="`inter`" pulumi-lang-python="`inter`" pulumi-lang-yaml="`inter`" pulumi-lang-java="`inter`">`inter`</span>, <span pulumi-lang-nodejs="`lato`" pulumi-lang-dotnet="`Lato`" pulumi-lang-go="`lato`" pulumi-lang-python="`lato`" pulumi-lang-yaml="`lato`" pulumi-lang-java="`lato`">`lato`</span>, <span pulumi-lang-nodejs="`oswald`" pulumi-lang-dotnet="`Oswald`" pulumi-lang-go="`oswald`" pulumi-lang-python="`oswald`" pulumi-lang-yaml="`oswald`" pulumi-lang-java="`oswald`">`oswald`</span>, <span pulumi-lang-nodejs="`raleway`" pulumi-lang-dotnet="`Raleway`" pulumi-lang-go="`raleway`" pulumi-lang-python="`raleway`" pulumi-lang-yaml="`raleway`" pulumi-lang-java="`raleway`">`raleway`</span>, <span pulumi-lang-nodejs="`roboto`" pulumi-lang-dotnet="`Roboto`" pulumi-lang-go="`roboto`" pulumi-lang-python="`roboto`" pulumi-lang-yaml="`roboto`" pulumi-lang-java="`roboto`">`roboto`</span>, <span pulumi-lang-nodejs="`rubik`" pulumi-lang-dotnet="`Rubik`" pulumi-lang-go="`rubik`" pulumi-lang-python="`rubik`" pulumi-lang-yaml="`rubik`" pulumi-lang-java="`rubik`">`rubik`</span>, <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>
      */
-    playerFontFamily?: pulumi.Input<string>;
+    playerFontFamily?: pulumi.Input<string | undefined>;
     /**
      * Specifies the language for the video player interface.
      */
-    playerLanguage?: pulumi.Input<string>;
+    playerLanguage?: pulumi.Input<string | undefined>;
     /**
      * Customizes the appearance of the video player.
      */
-    playerPrimaryColor?: pulumi.Input<string>;
+    playerPrimaryColor?: pulumi.Input<string | undefined>;
     /**
      * Specifies the video player version.
      */
-    playerVersion?: pulumi.Input<number>;
+    playerVersion?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the video watch heatmap should be displayed in the player.
      */
-    playerWatchtimeHeatmapEnabled?: pulumi.Input<boolean>;
+    playerWatchtimeHeatmapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of allowed referrer domains allowed to access videos in this library.
      */
-    referersAlloweds?: pulumi.Input<pulumi.Input<string>[]>;
+    referersAlloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of blocked referrer domains blocked from accessing videos in this library.
      */
-    referersBlockeds?: pulumi.Input<pulumi.Input<string>[]>;
+    referersBlockeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of resolutions available for the videos.
      */
-    resolutions?: pulumi.Input<pulumi.Input<string>[]>;
+    resolutions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the automatic audio transcribing is currently enabled for this zone.
      */
-    transcribingEnabled?: pulumi.Input<boolean>;
+    transcribingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of languages that the captions will be automatically transcribed to.
      */
-    transcribingLanguages?: pulumi.Input<pulumi.Input<string>[]>;
+    transcribingLanguages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether automatic transcribing description generation is currently enabled.
      */
-    transcribingSmartDescriptionEnabled?: pulumi.Input<boolean>;
+    transcribingSmartDescriptionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether automatic transcribing title generation is currently enabled.
      */
-    transcribingSmartTitleEnabled?: pulumi.Input<boolean>;
+    transcribingSmartTitleEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URL of the VAST tag for ad integration.
      */
-    vastTagUrl?: pulumi.Input<string>;
+    vastTagUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the player token authentication is enabled
      */
-    viewTokenAuthenticationRequired?: pulumi.Input<boolean>;
+    viewTokenAuthenticationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The height of the watermark (in %).
      */
-    watermarkHeight?: pulumi.Input<number>;
+    watermarkHeight?: pulumi.Input<number | undefined>;
     /**
      * The left offset of the watermark position (in %).
      */
-    watermarkPositionLeft?: pulumi.Input<number>;
+    watermarkPositionLeft?: pulumi.Input<number | undefined>;
     /**
      * The top offset of the watermark position (in %).
      */
-    watermarkPositionTop?: pulumi.Input<number>;
+    watermarkPositionTop?: pulumi.Input<number | undefined>;
     /**
      * The width of the watermark (in %).
      */
-    watermarkWidth?: pulumi.Input<number>;
+    watermarkWidth?: pulumi.Input<number | undefined>;
     /**
      * The URL for webhook notifications.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }

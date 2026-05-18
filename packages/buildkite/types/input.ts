@@ -21,8 +21,8 @@ export interface ClusterQueueHostedAgents {
      * - LINUX_ARM64_16X64
      */
     instanceShape: pulumi.Input<string>;
-    linux?: pulumi.Input<inputs.ClusterQueueHostedAgentsLinux>;
-    mac?: pulumi.Input<inputs.ClusterQueueHostedAgentsMac>;
+    linux?: pulumi.Input<inputs.ClusterQueueHostedAgentsLinux | undefined>;
+    mac?: pulumi.Input<inputs.ClusterQueueHostedAgentsMac | undefined>;
 }
 
 export interface ClusterQueueHostedAgentsLinux {
@@ -36,7 +36,7 @@ export interface ClusterQueueHostedAgentsMac {
     /**
      * Optional selection of a specific macOS version to be selected for jobs in the queue to have available. Please note that this value is currently experimental and may not function as expected.
      */
-    macosVersion?: pulumi.Input<string>;
+    macosVersion?: pulumi.Input<string | undefined>;
     /**
      * Required selection of a specific XCode version to be selected for jobs in the queue to have available. Please note that this value is currently experimental and may not function as expected.
      */
@@ -47,95 +47,107 @@ export interface PipelineProviderSettings {
     /**
      * Whether to create builds when branches are pushed.
      */
-    buildBranches?: pulumi.Input<boolean>;
+    buildBranches?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to create builds when an issue comment is created on a pull request.
+     */
+    buildIssueCommentCreated?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create merge queue builds for a merge queue enabled GitHub repository with required status checks
      */
-    buildMergeGroupChecksRequested?: pulumi.Input<boolean>;
+    buildMergeGroupChecksRequested?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create builds for pull requests when its base branch changes.
      */
-    buildPullRequestBaseBranchChanged?: pulumi.Input<boolean>;
+    buildPullRequestBaseBranchChanged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create builds for pull requests from third-party forks.
      */
-    buildPullRequestForks?: pulumi.Input<boolean>;
+    buildPullRequestForks?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create builds for pull requests when labels are added or removed.
      */
-    buildPullRequestLabelsChanged?: pulumi.Input<boolean>;
+    buildPullRequestLabelsChanged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to build the test merge commit (the merged result of a pull request with its base branch).
      */
-    buildPullRequestMergeCommits?: pulumi.Input<boolean>;
+    buildPullRequestMergeCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a build when a pull request changes to "Ready for review".
      */
-    buildPullRequestReadyForReview?: pulumi.Input<boolean>;
+    buildPullRequestReadyForReview?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create builds for commits that are part of a pull request.
      */
-    buildPullRequests?: pulumi.Input<boolean>;
+    buildPullRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create builds when tags are pushed.
      */
-    buildTags?: pulumi.Input<boolean>;
+    buildTags?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically cancel running builds for a branch if the branch is deleted.
      */
-    cancelDeletedBranchBuilds?: pulumi.Input<boolean>;
+    cancelDeletedBranchBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to cancel any running builds belonging to a removed merge group.
      */
-    cancelWhenMergeGroupDestroyed?: pulumi.Input<boolean>;
+    cancelWhenMergeGroupDestroyed?: pulumi.Input<boolean | undefined>;
     /**
      * The condition to evaluate when deciding if a build should run. This is only valid when <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`">`trigger_mode`</span> is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span>. More details available in [the documentation](https://buildkite.com/docs/pipelines/conditionals).
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * Whether to filter builds to only run when the condition in <span pulumi-lang-nodejs="`filterCondition`" pulumi-lang-dotnet="`FilterCondition`" pulumi-lang-go="`filterCondition`" pulumi-lang-python="`filter_condition`" pulumi-lang-yaml="`filterCondition`" pulumi-lang-java="`filterCondition`">`filter_condition`</span> is true.
      */
-    filterEnabled?: pulumi.Input<boolean>;
+    filterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to prevent caching pull requests with the source branch matching the default branch.
      */
-    ignoreDefaultBranchPullRequests?: pulumi.Input<boolean>;
+    ignoreDefaultBranchPullRequests?: pulumi.Input<boolean | undefined>;
+    /**
+     * The command word used to trigger builds from issue comments (e.g. "/bk"). Only comments starting with or containing this word will trigger builds. Defaults to "/bk".
+     */
+    issueCommentCommandWord?: pulumi.Input<string | undefined>;
+    /**
+     * The match mode for the issue comment command word. Valid values are "exact" and "contains". Defaults to "exact".
+     */
+    issueCommentMatchMode?: pulumi.Input<string | undefined>;
     /**
      * Prefix branch names for third-party fork builds to ensure they don't trigger branch conditions. For example, the main branch from some-user will become some-user:main.
      */
-    prefixPullRequestForkBranchNames?: pulumi.Input<boolean>;
+    prefixPullRequestForkBranchNames?: pulumi.Input<boolean | undefined>;
     /**
      * The status to use for blocked builds. Pending can be used with [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) to prevent merging pull requests with blocked builds.
      */
-    publishBlockedAsPending?: pulumi.Input<boolean>;
+    publishBlockedAsPending?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to update the status of commits in Bitbucket, GitHub, or GitLab.
      */
-    publishCommitStatus?: pulumi.Input<boolean>;
+    publishCommitStatus?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a separate status for each job in a build, allowing you to see the status of each job directly in Bitbucket or GitHub.
      */
-    publishCommitStatusPerStep?: pulumi.Input<boolean>;
+    publishCommitStatusPerStep?: pulumi.Input<boolean | undefined>;
     /**
      * Filter pull requests builds by the branch filter.
      */
-    pullRequestBranchFilterConfiguration?: pulumi.Input<string>;
+    pullRequestBranchFilterConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Filter pull request builds.
      */
-    pullRequestBranchFilterEnabled?: pulumi.Input<boolean>;
+    pullRequestBranchFilterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a separate status for pull request builds, allowing you to require a passing pull request build in your [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) in GitHub.
      */
-    separatePullRequestStatuses?: pulumi.Input<boolean>;
+    separatePullRequestStatuses?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to skip creating a new build if an existing build for the commit and branch already exists. This option is only valid if the pipeline uses a GitHub repository.
      */
-    skipBuildsForExistingCommits?: pulumi.Input<boolean>;
+    skipBuildsForExistingCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to skip creating a new build for a pull request if an existing build for the commit and branch already exists.
      */
-    skipPullRequestBuildsForExistingCommits?: pulumi.Input<boolean>;
+    skipPullRequestBuildsForExistingCommits?: pulumi.Input<boolean | undefined>;
     /**
      * What type of event to trigger builds on. Must be one of:
      * 	- <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span> will create builds when code is pushed to GitHub.
@@ -146,45 +158,45 @@ export interface PipelineProviderSettings {
      * 	> <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`">`trigger_mode`</span> is only valid if the pipeline uses a GitHub repository.
      * 	> If not set, the default value is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span> and other provider settings defaults are applied.
      */
-    triggerMode?: pulumi.Input<string>;
+    triggerMode?: pulumi.Input<string | undefined>;
     /**
      * When enabled, agents performing a git diff to determine steps to upload based on [<span pulumi-lang-nodejs="`ifChanged`" pulumi-lang-dotnet="`IfChanged`" pulumi-lang-go="`ifChanged`" pulumi-lang-python="`if_changed`" pulumi-lang-yaml="`ifChanged`" pulumi-lang-java="`ifChanged`">`if_changed`</span>](https://buildkite.com/docs/pipelines/configure/step-types/command-step#agent-applied-attributes)comparisons will use the base commit that points to the previous merge group rather than the base branch
      */
-    useMergeGroupBaseCommitForGitDiffBase?: pulumi.Input<boolean>;
+    useMergeGroupBaseCommitForGitDiffBase?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PortalCreatedBy {
     /**
      * The email of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the user.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface ProviderTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 export namespace config {
 }

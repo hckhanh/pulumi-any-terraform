@@ -79,11 +79,11 @@ export interface GroupMachineIdentityState {
     /**
      * The ID of the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the machine identity.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
 }
 
 /**

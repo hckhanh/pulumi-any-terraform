@@ -385,59 +385,59 @@ export interface MonitorState {
     /**
      * Basic HTTP authentication password to include with the request.
      */
-    authPassword?: pulumi.Input<string>;
+    authPassword?: pulumi.Input<string | undefined>;
     /**
      * Basic HTTP authentication username to include with the request.
      */
-    authUsername?: pulumi.Input<string>;
+    authUsername?: pulumi.Input<string | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * How often should we check your website? In seconds.
      */
-    checkFrequency?: pulumi.Input<number>;
+    checkFrequency?: pulumi.Input<number | undefined>;
     /**
      * How long should we wait after observing a failure before we start a new incident? In seconds.
      */
-    confirmationPeriod?: pulumi.Input<number>;
+    confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
      * The time when this monitor was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable domain expiration check.
      */
-    domainExpiration?: pulumi.Input<number>;
+    domainExpiration?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd" }`.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
-    expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When set to null, an e-mail is sent to the entire team.
      */
-    expirationPolicyId?: pulumi.Input<number>;
+    expirationPolicyId?: pulumi.Input<number | undefined>;
     /**
      * Set to true for the monitor to follow redirects.
      */
-    followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean | undefined>;
     /**
      * HTTP Method used to make a request. Valid options: GET, HEAD, POST, PUT, PATCH
      */
-    httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Valid values:
      *
@@ -445,31 +445,31 @@ export interface MonitorState {
      *
      *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * When the website was last checked.
      */
-    lastCheckedAt?: pulumi.Input<string>;
+    lastCheckedAt?: pulumi.Input<string | undefined>;
     /**
      * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
+    maintenanceDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Start of the maintenance window each day. We won't check your website during this window. Example: "01:00:00"
      */
-    maintenanceFrom?: pulumi.Input<string>;
+    maintenanceFrom?: pulumi.Input<string | undefined>;
     /**
      * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    maintenanceTimezone?: pulumi.Input<string>;
+    maintenanceTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    maintenanceTo?: pulumi.Input<string>;
+    maintenanceTo?: pulumi.Input<string | undefined>;
     /**
      * Set this attribute if you want to add this monitor to a monitor group.
      */
-    monitorGroupId?: pulumi.Input<number>;
+    monitorGroupId?: pulumi.Input<number | undefined>;
     /**
      * Valid values:
      *
@@ -503,110 +503,110 @@ export interface MonitorState {
      *
      *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
-    monitorType?: pulumi.Input<string>;
+    monitorType?: pulumi.Input<string | undefined>;
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The time when this monitor was paused.
      */
-    pausedAt?: pulumi.Input<string>;
+    pausedAt?: pulumi.Input<string | undefined>;
     /**
      * For Playwright monitors, the JavaScript source code of the scenario.
      */
-    playwrightScript?: pulumi.Input<string>;
+    playwrightScript?: pulumi.Input<string | undefined>;
     /**
      * Set the escalation policy for the monitor.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Pronounceable name of the monitor. We will use this when we call you. Try to make it tongue-friendly, please?
      */
-    pronounceableName?: pulumi.Input<string>;
+    pronounceableName?: pulumi.Input<string | undefined>;
     /**
      * A proxy to be used for routing HTTP checks. Use user:pass@hostname format for proxy authentication.
      */
-    proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string | undefined>;
     /**
      * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
      */
-    proxyPort?: pulumi.Input<number>;
+    proxyPort?: pulumi.Input<number | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the monitor must be up to automatically mark an incident as resolved after being down. In seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * An array of regions to set. Allowed values are ["us", "eu", "as", "au"] or any subset of these regions.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set to true to keep cookies when redirecting.
      */
-    rememberCookies?: pulumi.Input<boolean>;
+    rememberCookies?: pulumi.Input<boolean | undefined>;
     /**
      * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to dns (domain to query the DNS server with).
      */
-    requestBody?: pulumi.Input<string>;
+    requestBody?: pulumi.Input<string | undefined>;
     /**
      * An array of request headers, consisting of name and value pairs
      */
-    requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * How long to wait before timing out the request?
      *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
      *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
      *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
-    requiredKeyword?: pulumi.Input<string>;
+    requiredKeyword?: pulumi.Input<string | undefined>;
     /**
      * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
      */
-    scenarioName?: pulumi.Input<string>;
+    scenarioName?: pulumi.Input<string | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable SSL expiration check.
      */
-    sslExpiration?: pulumi.Input<number>;
+    sslExpiration?: pulumi.Input<number | undefined>;
     /**
      * The status of this website check.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team. In seconds.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
     /**
      * The time when this monitor was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Should we verify SSL certificate validity?
      */
-    verifySsl?: pulumi.Input<boolean>;
+    verifySsl?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -616,55 +616,55 @@ export interface MonitorArgs {
     /**
      * Basic HTTP authentication password to include with the request.
      */
-    authPassword?: pulumi.Input<string>;
+    authPassword?: pulumi.Input<string | undefined>;
     /**
      * Basic HTTP authentication username to include with the request.
      */
-    authUsername?: pulumi.Input<string>;
+    authUsername?: pulumi.Input<string | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * How often should we check your website? In seconds.
      */
-    checkFrequency?: pulumi.Input<number>;
+    checkFrequency?: pulumi.Input<number | undefined>;
     /**
      * How long should we wait after observing a failure before we start a new incident? In seconds.
      */
-    confirmationPeriod?: pulumi.Input<number>;
+    confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * How many days before the domain expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable domain expiration check.
      */
-    domainExpiration?: pulumi.Input<number>;
+    domainExpiration?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * For Playwright monitors, the environment variables that can be used in the scenario. Example: `{ "PASSWORD" = "passw0rd" }`.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
-    expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Set the expiration escalation policy for the monitor. It is used for SSL certificate and domain expiration checks. When set to null, an e-mail is sent to the entire team.
      */
-    expirationPolicyId?: pulumi.Input<number>;
+    expirationPolicyId?: pulumi.Input<number | undefined>;
     /**
      * Set to true for the monitor to follow redirects.
      */
-    followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean | undefined>;
     /**
      * HTTP Method used to make a request. Valid options: GET, HEAD, POST, PUT, PATCH
      */
-    httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Valid values:
      *
@@ -672,27 +672,27 @@ export interface MonitorArgs {
      *
      *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
+    maintenanceDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Start of the maintenance window each day. We won't check your website during this window. Example: "01:00:00"
      */
-    maintenanceFrom?: pulumi.Input<string>;
+    maintenanceFrom?: pulumi.Input<string | undefined>;
     /**
      * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    maintenanceTimezone?: pulumi.Input<string>;
+    maintenanceTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    maintenanceTo?: pulumi.Input<string>;
+    maintenanceTo?: pulumi.Input<string | undefined>;
     /**
      * Set this attribute if you want to add this monitor to a monitor group.
      */
-    monitorGroupId?: pulumi.Input<number>;
+    monitorGroupId?: pulumi.Input<number | undefined>;
     /**
      * Valid values:
      *
@@ -730,92 +730,92 @@ export interface MonitorArgs {
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * For Playwright monitors, the JavaScript source code of the scenario.
      */
-    playwrightScript?: pulumi.Input<string>;
+    playwrightScript?: pulumi.Input<string | undefined>;
     /**
      * Set the escalation policy for the monitor.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Pronounceable name of the monitor. We will use this when we call you. Try to make it tongue-friendly, please?
      */
-    pronounceableName?: pulumi.Input<string>;
+    pronounceableName?: pulumi.Input<string | undefined>;
     /**
      * A proxy to be used for routing HTTP checks. Use user:pass@hostname format for proxy authentication.
      */
-    proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string | undefined>;
     /**
      * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
      */
-    proxyPort?: pulumi.Input<number>;
+    proxyPort?: pulumi.Input<number | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the monitor must be up to automatically mark an incident as resolved after being down. In seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * An array of regions to set. Allowed values are ["us", "eu", "as", "au"] or any subset of these regions.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set to true to keep cookies when redirecting.
      */
-    rememberCookies?: pulumi.Input<boolean>;
+    rememberCookies?: pulumi.Input<boolean | undefined>;
     /**
      * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to dns (domain to query the DNS server with).
      */
-    requestBody?: pulumi.Input<string>;
+    requestBody?: pulumi.Input<string | undefined>;
     /**
      * An array of request headers, consisting of name and value pairs
      */
-    requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * How long to wait before timing out the request?
      *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
      *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
      *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
-    requiredKeyword?: pulumi.Input<string>;
+    requiredKeyword?: pulumi.Input<string | undefined>;
     /**
      * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
      */
-    scenarioName?: pulumi.Input<string>;
+    scenarioName?: pulumi.Input<string | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * How many days before the SSL certificate expires do you want to be alerted? Valid values are 1, 2, 3, 7, 14, 30, and 60. Set to -1 to disable SSL expiration check.
      */
-    sslExpiration?: pulumi.Input<number>;
+    sslExpiration?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team. In seconds.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
     /**
      * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Should we verify SSL certificate validity?
      */
-    verifySsl?: pulumi.Input<boolean>;
+    verifySsl?: pulumi.Input<boolean | undefined>;
 }

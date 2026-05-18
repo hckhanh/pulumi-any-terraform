@@ -135,39 +135,39 @@ export interface SecretSyncAwsParameterStoreState {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
-    autoSyncEnabled?: pulumi.Input<boolean>;
+    autoSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the aws Connection to use for syncing.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the AWS Parameter Store sync.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
-    destinationConfig?: pulumi.Input<inputs.SecretSyncAwsParameterStoreDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.SecretSyncAwsParameterStoreDestinationConfig | undefined>;
     /**
      * The slug of the project environment to sync secrets from.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The name of the AWS Parameter Store sync to create. Must be slug-friendly.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Infisical project to create the sync in.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The folder path to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are synced.
      */
-    syncOptions?: pulumi.Input<inputs.SecretSyncAwsParameterStoreSyncOptions>;
+    syncOptions?: pulumi.Input<inputs.SecretSyncAwsParameterStoreSyncOptions | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface SecretSyncAwsParameterStoreArgs {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
-    autoSyncEnabled?: pulumi.Input<boolean>;
+    autoSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the aws Connection to use for syncing.
      */
@@ -185,7 +185,7 @@ export interface SecretSyncAwsParameterStoreArgs {
     /**
      * An optional description for the AWS Parameter Store sync.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
@@ -197,7 +197,7 @@ export interface SecretSyncAwsParameterStoreArgs {
     /**
      * The name of the AWS Parameter Store sync to create. Must be slug-friendly.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Infisical project to create the sync in.
      */

@@ -100,23 +100,23 @@ export interface ComputeScriptVariableState {
     /**
      * The ID of the environment variable.
      */
-    computeScriptVariableId?: pulumi.Input<number>;
+    computeScriptVariableId?: pulumi.Input<number | undefined>;
     /**
      * The default value of the environment variable.
      */
-    defaultValue?: pulumi.Input<string>;
+    defaultValue?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment variable.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the environment variable is required.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the associated compute script.
      */
-    script?: pulumi.Input<number>;
+    script?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -130,7 +130,7 @@ export interface ComputeScriptVariableArgs {
     /**
      * The name of the environment variable.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the environment variable is required.
      */

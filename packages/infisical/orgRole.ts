@@ -93,19 +93,19 @@ export interface OrgRoleState {
     /**
      * The description for the new role. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name for the new role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The permissions assigned to the organization role. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.OrgRolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.OrgRolePermission>[] | undefined>;
     /**
      * The slug for the new role
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -115,11 +115,11 @@ export interface OrgRoleArgs {
     /**
      * The description for the new role. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name for the new role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The permissions assigned to the organization role. Refer to the documentation here https://infisical.com/docs/internals/permissions for its usage.
      */

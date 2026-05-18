@@ -128,35 +128,35 @@ export interface IntegrationGcpSecretManagerState {
     /**
      * The slug of the environment to sync to GCP Secret Manager (prod, dev, staging, etc).
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the GCP project.
      */
-    gcpProjectId?: pulumi.Input<string>;
+    gcpProjectId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration auth, used internally by Infisical.
      */
-    integrationAuthId?: pulumi.Input<string>;
+    integrationAuthId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the integration, used internally by Infisical.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string | undefined>;
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationGcpSecretManagerOptions>;
+    options?: pulumi.Input<inputs.IntegrationGcpSecretManagerOptions | undefined>;
     /**
      * The ID of your Infisical project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The secret path in Infisical to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * Service account json for the GCP project.
      */
-    serviceAccountJson?: pulumi.Input<string>;
+    serviceAccountJson?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface IntegrationGcpSecretManagerArgs {
     /**
      * Integration options
      */
-    options?: pulumi.Input<inputs.IntegrationGcpSecretManagerOptions>;
+    options?: pulumi.Input<inputs.IntegrationGcpSecretManagerOptions | undefined>;
     /**
      * The ID of your Infisical project.
      */

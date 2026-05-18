@@ -105,27 +105,27 @@ export interface IdentityState {
     /**
      * The authentication types of the identity
      */
-    authModes?: pulumi.Input<pulumi.Input<string>[]>;
+    authModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the identity has delete protection, defaults to false
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata associated with this identity
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[] | undefined>;
     /**
      * The name for the identity
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization for the identity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The role for the identity. Available default role options are 'admin', 'member', and 'no-access'. If you've created custom roles, you can use their slugs as well.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,15 +135,15 @@ export interface IdentityArgs {
     /**
      * Whether the identity has delete protection, defaults to false
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata associated with this identity
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.IdentityMetadata>[] | undefined>;
     /**
      * The name for the identity
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization for the identity
      */

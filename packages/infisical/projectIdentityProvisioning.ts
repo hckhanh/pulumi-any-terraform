@@ -96,23 +96,23 @@ export interface ProjectIdentityProvisioningState {
     /**
      * The authentication methods configured for the identity.
      */
-    authMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    authMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the identity has delete protection enabled. Defaults to false.
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata associated with this identity.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityProvisioningMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityProvisioningMetadata>[] | undefined>;
     /**
      * The name of the identity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns this identity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,15 +122,15 @@ export interface ProjectIdentityProvisioningArgs {
     /**
      * Whether the identity has delete protection enabled. Defaults to false.
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The metadata associated with this identity.
      */
-    metadatas?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityProvisioningMetadata>[]>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityProvisioningMetadata>[] | undefined>;
     /**
      * The name of the identity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns this identity.
      */

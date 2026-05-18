@@ -121,39 +121,39 @@ export interface StorageFileState {
     /**
      * The SHA-256 hash of the stored file.
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * The to be stored in the file. Use <code>source</code> to upload files from the local disk.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Specifies the content type of the file.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the file was created.
      */
-    dateCreated?: pulumi.Input<string>;
+    dateCreated?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the file was last modified.
      */
-    dateModified?: pulumi.Input<string>;
+    dateModified?: pulumi.Input<string | undefined>;
     /**
      * The path of the file within the storage zone.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The size of the file in bytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the content directly.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the storage zone where the file is stored.
      */
-    zone?: pulumi.Input<number>;
+    zone?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -163,11 +163,11 @@ export interface StorageFileArgs {
     /**
      * The to be stored in the file. Use <code>source</code> to upload files from the local disk.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Specifies the content type of the file.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The path of the file within the storage zone.
      */
@@ -175,7 +175,7 @@ export interface StorageFileArgs {
     /**
      * The path in the local disk for the file to be uploaded to the storage zone. Use <code>content</code> to define the content directly.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the storage zone where the file is stored.
      */

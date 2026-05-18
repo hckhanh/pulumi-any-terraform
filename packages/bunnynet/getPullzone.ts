@@ -139,8 +139,8 @@ export function getPullzoneOutput(args?: GetPullzoneOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPullzone.
  */
 export interface GetPullzoneOutputArgs {
-    id?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.GetPullzoneOriginArgs>;
-    routing?: pulumi.Input<inputs.GetPullzoneRoutingArgs>;
+    id?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.GetPullzoneOriginArgs | undefined>;
+    routing?: pulumi.Input<inputs.GetPullzoneRoutingArgs | undefined>;
 }

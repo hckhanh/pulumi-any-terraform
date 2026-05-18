@@ -349,6 +349,41 @@ export interface EmailIntegrationStartedRule {
     targetField: string;
 }
 
+export interface EmailIntegrationTitleField {
+    /**
+     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType "> match_type </span>is match_regex.
+     */
+    content: string;
+    /**
+     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType "> match_type </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween "> match_between </span>or match_after.
+     */
+    contentAfter: string;
+    /**
+     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType "> match_type </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween "> match_between </span>or match_before.
+     */
+    contentBefore: string;
+    /**
+     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     */
+    fieldTarget: string;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType: string;
+    /**
+     * The name of the field.
+     */
+    name: string;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId "> alert_id </span>or cause or otherwise null for a custom field.
+     */
+    specialType: string;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget "> field_target </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget "> field_target </span>is XML, name of the header for headers or a parameter name for query parameters
+     */
+    targetField: string;
+}
+
 export interface GetIncomingWebhookAcknowledgedAlertIdField {
     content: string;
     contentAfter: string;

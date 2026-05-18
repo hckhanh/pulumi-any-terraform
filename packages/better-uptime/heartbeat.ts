@@ -205,95 +205,95 @@ export interface HeartbeatState {
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * The time when this heartbeat was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend setting this to approx. 20% of period
      */
-    grace?: pulumi.Input<number>;
+    grace?: pulumi.Input<number | undefined>;
     /**
      * Set this attribute if you want to add this heartbeat to a heartbeat group..
      */
-    heartbeatGroupId?: pulumi.Input<number>;
+    heartbeatGroupId?: pulumi.Input<number | undefined>;
     /**
      * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
+    maintenanceDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Start of the maintenance window each day. We won't create incidents during this window. Example: "01:00:00"
      */
-    maintenanceFrom?: pulumi.Input<string>;
+    maintenanceFrom?: pulumi.Input<string | undefined>;
     /**
      * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    maintenanceTimezone?: pulumi.Input<string>;
+    maintenanceTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    maintenanceTo?: pulumi.Input<string>;
+    maintenanceTo?: pulumi.Input<string | undefined>;
     /**
      * A name of the service for this heartbeat.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set to true to pause monitoring — we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The time when this heartbeat was paused.
      */
-    pausedAt?: pulumi.Input<string>;
+    pausedAt?: pulumi.Input<string | undefined>;
     /**
      * How often should we expect this heartbeat? In seconds. Minimum value: 30 seconds
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Set the escalation policy for the heartbeat.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * An index controlling the position of a heartbeat in the heartbeat group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * The status of this heartbeat.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
     /**
      * The time when this heartbeat was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The url of this heartbeat.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -303,15 +303,15 @@ export interface HeartbeatArgs {
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * Heartbeats can fluctuate; specify this value to control what is still acceptable. Minimum value: 0 seconds. We recommend setting this to approx. 20% of period
      */
@@ -319,31 +319,31 @@ export interface HeartbeatArgs {
     /**
      * Set this attribute if you want to add this heartbeat to a heartbeat group..
      */
-    heartbeatGroupId?: pulumi.Input<number>;
+    heartbeatGroupId?: pulumi.Input<number | undefined>;
     /**
      * An array of maintenance days to set. If a maintenance window is overnight both affected days should be set. Allowed values are ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] or any subset of these days.
      */
-    maintenanceDays?: pulumi.Input<pulumi.Input<string>[]>;
+    maintenanceDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Start of the maintenance window each day. We won't create incidents during this window. Example: "01:00:00"
      */
-    maintenanceFrom?: pulumi.Input<string>;
+    maintenanceFrom?: pulumi.Input<string | undefined>;
     /**
      * The timezone to use for the maintenance window each day. Defaults to UTC. The accepted values can be found in the Rails TimeZone documentation. https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
      */
-    maintenanceTimezone?: pulumi.Input<string>;
+    maintenanceTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the maintenance window each day. Example: "03:00:00"
      */
-    maintenanceTo?: pulumi.Input<string>;
+    maintenanceTo?: pulumi.Input<string | undefined>;
     /**
      * A name of the service for this heartbeat.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set to true to pause monitoring — we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * How often should we expect this heartbeat? In seconds. Minimum value: 30 seconds
      */
@@ -351,25 +351,25 @@ export interface HeartbeatArgs {
     /**
      * Set the escalation policy for the heartbeat.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * An index controlling the position of a heartbeat in the heartbeat group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
 }

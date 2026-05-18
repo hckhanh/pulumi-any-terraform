@@ -93,19 +93,19 @@ export interface ComputeScriptSecretState {
     /**
      * The ID of the secret.
      */
-    computeScriptSecretId?: pulumi.Input<number>;
+    computeScriptSecretId?: pulumi.Input<number | undefined>;
     /**
      * The name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated compute script.
      */
-    script?: pulumi.Input<number>;
+    script?: pulumi.Input<number | undefined>;
     /**
      * The value of the secret.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -115,7 +115,7 @@ export interface ComputeScriptSecretArgs {
     /**
      * The name of the secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated compute script.
      */

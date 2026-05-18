@@ -160,67 +160,67 @@ export interface DnsZoneState {
     /**
      * The unique identifier for the DNS zone.
      */
-    dnsZoneId?: pulumi.Input<number>;
+    dnsZoneId?: pulumi.Input<number | undefined>;
     /**
      * The DNSSEC algorithm.
      */
-    dnssecAlgorithm?: pulumi.Input<number>;
+    dnssecAlgorithm?: pulumi.Input<number | undefined>;
     /**
      * The DNSSEC digest.
      */
-    dnssecDigest?: pulumi.Input<string>;
+    dnssecDigest?: pulumi.Input<string | undefined>;
     /**
      * The DNSSEC digest type.
      */
-    dnssecDigestType?: pulumi.Input<number>;
+    dnssecDigestType?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether DNSSEC is enabled.
      */
-    dnssecEnabled?: pulumi.Input<boolean>;
+    dnssecEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The DNSSEC flags.
      */
-    dnssecFlags?: pulumi.Input<number>;
+    dnssecFlags?: pulumi.Input<number | undefined>;
     /**
      * The DNSSEC key tag.
      */
-    dnssecKeytag?: pulumi.Input<number>;
+    dnssecKeytag?: pulumi.Input<number | undefined>;
     /**
      * The DNSSEC public key.
      */
-    dnssecPublicKey?: pulumi.Input<string>;
+    dnssecPublicKey?: pulumi.Input<string | undefined>;
     /**
      * The domain name for the DNS zone.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether DNS logs are anonymized.
      */
-    logAnonymized?: pulumi.Input<boolean>;
+    logAnonymized?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    logAnonymizedStyle?: pulumi.Input<string>;
+    logAnonymizedStyle?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether permanent logging for DNS queries is enabled.
      */
-    logEnabled?: pulumi.Input<boolean>;
+    logEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The primary nameserver for the DNS zone.
      */
-    nameserver1?: pulumi.Input<string>;
+    nameserver1?: pulumi.Input<string | undefined>;
     /**
      * The secondary nameserver for the DNS zone.
      */
-    nameserver2?: pulumi.Input<string>;
+    nameserver2?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether custom nameservers are used.
      */
-    nameserverCustom?: pulumi.Input<boolean>;
+    nameserverCustom?: pulumi.Input<boolean | undefined>;
     /**
      * The email address used in the Start of Authority (SOA) record for the DNS zone.
      */
-    soaEmail?: pulumi.Input<string>;
+    soaEmail?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,7 +230,7 @@ export interface DnsZoneArgs {
     /**
      * Indicates whether DNSSEC is enabled.
      */
-    dnssecEnabled?: pulumi.Input<boolean>;
+    dnssecEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name for the DNS zone.
      */
@@ -238,29 +238,29 @@ export interface DnsZoneArgs {
     /**
      * Indicates whether DNS logs are anonymized.
      */
-    logAnonymized?: pulumi.Input<boolean>;
+    logAnonymized?: pulumi.Input<boolean | undefined>;
     /**
      * Options: `Drop`, `OneDigit`
      */
-    logAnonymizedStyle?: pulumi.Input<string>;
+    logAnonymizedStyle?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether permanent logging for DNS queries is enabled.
      */
-    logEnabled?: pulumi.Input<boolean>;
+    logEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The primary nameserver for the DNS zone.
      */
-    nameserver1?: pulumi.Input<string>;
+    nameserver1?: pulumi.Input<string | undefined>;
     /**
      * The secondary nameserver for the DNS zone.
      */
-    nameserver2?: pulumi.Input<string>;
+    nameserver2?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether custom nameservers are used.
      */
-    nameserverCustom?: pulumi.Input<boolean>;
+    nameserverCustom?: pulumi.Input<boolean | undefined>;
     /**
      * The email address used in the Start of Authority (SOA) record for the DNS zone.
      */
-    soaEmail?: pulumi.Input<string>;
+    soaEmail?: pulumi.Input<string | undefined>;
 }

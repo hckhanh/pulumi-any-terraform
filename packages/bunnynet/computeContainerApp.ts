@@ -120,36 +120,36 @@ export interface ComputeContainerAppState {
     /**
      * The maximum number of instances that will be provisioned per active region.
      */
-    autoscalingMax?: pulumi.Input<number>;
+    autoscalingMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of instances that will be provisioned per active region.
      */
-    autoscalingMin?: pulumi.Input<number>;
+    autoscalingMin?: pulumi.Input<number | undefined>;
     /**
      * Defines a container for the application.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainer>[] | undefined>;
     /**
      * The name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The regions that will be dynamically provisionable based on the user latency.
      */
-    regionsAlloweds?: pulumi.Input<pulumi.Input<string>[]>;
+    regionsAlloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The maximum amount of regions to be deployed at any given time.
      */
-    regionsMaxAllowed?: pulumi.Input<number>;
+    regionsMaxAllowed?: pulumi.Input<number | undefined>;
     /**
      * The regions that will be statically provisioned and will always be running and available to users.
      */
-    regionsRequireds?: pulumi.Input<pulumi.Input<string>[]>;
-    version?: pulumi.Input<number>;
+    regionsRequireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    version?: pulumi.Input<number | undefined>;
     /**
      * Defines a persistent volume to be used by the application.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[] | undefined>;
 }
 
 /**
@@ -159,19 +159,19 @@ export interface ComputeContainerAppArgs {
     /**
      * The maximum number of instances that will be provisioned per active region.
      */
-    autoscalingMax?: pulumi.Input<number>;
+    autoscalingMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of instances that will be provisioned per active region.
      */
-    autoscalingMin?: pulumi.Input<number>;
+    autoscalingMin?: pulumi.Input<number | undefined>;
     /**
      * Defines a container for the application.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainer>[] | undefined>;
     /**
      * The name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The regions that will be dynamically provisionable based on the user latency.
      */
@@ -179,14 +179,14 @@ export interface ComputeContainerAppArgs {
     /**
      * The maximum amount of regions to be deployed at any given time.
      */
-    regionsMaxAllowed?: pulumi.Input<number>;
+    regionsMaxAllowed?: pulumi.Input<number | undefined>;
     /**
      * The regions that will be statically provisioned and will always be running and available to users.
      */
     regionsRequireds: pulumi.Input<pulumi.Input<string>[]>;
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
     /**
      * Defines a persistent volume to be used by the application.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppVolume>[] | undefined>;
 }

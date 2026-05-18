@@ -58,9 +58,9 @@ export function getCommandOutput(args: GetCommandOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getCommand.
  */
 export interface GetCommandOutputArgs {
-    allowNonZeroExitCode?: pulumi.Input<boolean>;
-    arguments?: pulumi.Input<pulumi.Input<string>[]>;
+    allowNonZeroExitCode?: pulumi.Input<boolean | undefined>;
+    arguments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     command: pulumi.Input<string>;
-    stdin?: pulumi.Input<string>;
-    workingDirectory?: pulumi.Input<string>;
+    stdin?: pulumi.Input<string | undefined>;
+    workingDirectory?: pulumi.Input<string | undefined>;
 }

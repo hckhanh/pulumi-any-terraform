@@ -115,27 +115,27 @@ export interface SecretImportState {
     /**
      * The environment slug of the secret import to modify/create
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * The path where the secret should be imported
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * The environment slug of the secret import to modify/create
      */
-    importEnvironmentSlug?: pulumi.Input<string>;
+    importEnvironmentSlug?: pulumi.Input<string | undefined>;
     /**
      * The path where the secret should be imported from
      */
-    importFolderPath?: pulumi.Input<string>;
+    importFolderPath?: pulumi.Input<string | undefined>;
     /**
      * The<span pulumi-lang-nodejs=" isReplication " pulumi-lang-dotnet=" IsReplication " pulumi-lang-go=" isReplication " pulumi-lang-python=" is_replication " pulumi-lang-yaml=" isReplication " pulumi-lang-java=" isReplication "> is_replication </span>of the secret import to modify/create
      */
-    isReplication?: pulumi.Input<boolean>;
+    isReplication?: pulumi.Input<boolean | undefined>;
     /**
      * The Infisical project ID
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -114,35 +114,35 @@ export interface IdentityTokenAuthTokenState {
     /**
      * The UTC timestamp of the created at date.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the identity to create a token for
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating token has been revoked
      */
-    isRevoked?: pulumi.Input<boolean>;
+    isRevoked?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the token auth token
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of times that the token is used
      */
-    numberOfUses?: pulumi.Input<number>;
+    numberOfUses?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of times that the token can be used; a value of 0 implies infinite number of uses. Default: 0
      */
-    numberOfUsesLimit?: pulumi.Input<number>;
+    numberOfUsesLimit?: pulumi.Input<number | undefined>;
     /**
      * The token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The lifetime for the token in seconds. Default: 0 - not expiring
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -156,5 +156,5 @@ export interface IdentityTokenAuthTokenArgs {
     /**
      * The name of the token auth token
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

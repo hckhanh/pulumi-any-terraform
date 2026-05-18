@@ -76,11 +76,11 @@ export interface StreamCollectionState {
     /**
      * The ID of the stream library to which the collection belongs.
      */
-    library?: pulumi.Input<number>;
+    library?: pulumi.Input<number | undefined>;
     /**
      * The name of the stream collection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -94,5 +94,5 @@ export interface StreamCollectionArgs {
     /**
      * The name of the stream collection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

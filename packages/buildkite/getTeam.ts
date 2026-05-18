@@ -52,6 +52,6 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamOutputArgs {
-    id?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

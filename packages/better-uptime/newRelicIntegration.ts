@@ -139,55 +139,55 @@ export interface NewRelicIntegrationState {
     /**
      * Should we alert only on alarms, or on both alarms and warnings. Possible values: alert, alert_and_warn.
      */
-    alertingRule?: pulumi.Input<string>;
+    alertingRule?: pulumi.Input<string | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the AWS CloudWatch Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Is the AWS CloudWatch integration paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the escalation policy associated with the AWS CloudWatch integration.
      */
-    policyId?: pulumi.Input<number>;
+    policyId?: pulumi.Input<number | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the alert must be up to automatically mark an incident as resolved. In seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long we wait before escalating the incident alert to the team. In seconds.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
     /**
      * The webhook URL for the AWS CloudWatch integration.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,49 +197,49 @@ export interface NewRelicIntegrationArgs {
     /**
      * Should we alert only on alarms, or on both alarms and warnings. Possible values: alert, alert_and_warn.
      */
-    alertingRule?: pulumi.Input<string>;
+    alertingRule?: pulumi.Input<string | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the AWS CloudWatch Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Is the AWS CloudWatch integration paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the escalation policy associated with the AWS CloudWatch integration.
      */
-    policyId?: pulumi.Input<number>;
+    policyId?: pulumi.Input<number | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the alert must be up to automatically mark an incident as resolved. In seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long we wait before escalating the incident alert to the team. In seconds.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
 }

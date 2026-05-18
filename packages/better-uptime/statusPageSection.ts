@@ -82,15 +82,15 @@ export interface StatusPageSectionState {
     /**
      * The section name displayed publicly on your status page.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section to the end of the status page. When you specify a position of an existing section, we add the section to this position and shift sections below to accommodate.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Status Page.
      */
-    statusPageId?: pulumi.Input<string>;
+    statusPageId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -100,11 +100,11 @@ export interface StatusPageSectionArgs {
     /**
      * The section name displayed publicly on your status page.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of this section on your status page, indexed from zero. If you don't specify a position, we add the section to the end of the status page. When you specify a position of an existing section, we add the section to this position and shift sections below to accommodate.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Status Page.
      */

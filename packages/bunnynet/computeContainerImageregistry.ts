@@ -96,19 +96,19 @@ export interface ComputeContainerImageregistryState {
     /**
      * The unique identifier for the image registry.
      */
-    computeContainerImageregistryId?: pulumi.Input<number>;
+    computeContainerImageregistryId?: pulumi.Input<number | undefined>;
     /**
      * Options: `DockerHub`, `GitHub`
      */
-    registry?: pulumi.Input<string>;
+    registry?: pulumi.Input<string | undefined>;
     /**
      * The token used to authenticate to the registry. If you are importing a resource, declare the token as an empty string.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The username used to authenticate to the registry.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

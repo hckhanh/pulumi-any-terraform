@@ -121,40 +121,40 @@ export interface ProjectState {
     /**
      * The audit log retention in days
      */
-    auditLogRetentionDays?: pulumi.Input<number>;
+    auditLogRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The description of the project
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the project has delete protection, defaults to false
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS secret manager key to use for the project
      */
-    kmsSecretManagerKeyId?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
+    kmsSecretManagerKeyId?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * The name of the project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to create default environments for the project (dev, staging, prod), defaults to true
      */
-    shouldCreateDefaultEnvs?: pulumi.Input<boolean>;
+    shouldCreateDefaultEnvs?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the project
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The name of the template to use for the project
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * The type of the project. Supported values: secret-manager, cert-manager, kms. Defaults to 'secret-manager'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,27 +164,27 @@ export interface ProjectArgs {
     /**
      * The audit log retention in days
      */
-    auditLogRetentionDays?: pulumi.Input<number>;
+    auditLogRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The description of the project
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the project has delete protection, defaults to false
      */
-    hasDeleteProtection?: pulumi.Input<boolean>;
+    hasDeleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS secret manager key to use for the project
      */
-    kmsSecretManagerKeyId?: pulumi.Input<string>;
+    kmsSecretManagerKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to create default environments for the project (dev, staging, prod), defaults to true
      */
-    shouldCreateDefaultEnvs?: pulumi.Input<boolean>;
+    shouldCreateDefaultEnvs?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the project
      */
@@ -192,9 +192,9 @@ export interface ProjectArgs {
     /**
      * The name of the template to use for the project
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * The type of the project. Supported values: secret-manager, cert-manager, kms. Defaults to 'secret-manager'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

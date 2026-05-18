@@ -109,35 +109,35 @@ export interface SeverityState {
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The name of this Severity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * Set this attribute if you want to add this severity to a severity group.
      */
-    severityGroupId?: pulumi.Input<number>;
+    severityGroupId?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,33 +147,33 @@ export interface SeverityArgs {
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The name of this Severity.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * Set this attribute if you want to add this severity to a severity group.
      */
-    severityGroupId?: pulumi.Input<number>;
+    severityGroupId?: pulumi.Input<number | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

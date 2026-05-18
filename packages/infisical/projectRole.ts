@@ -108,31 +108,31 @@ export interface ProjectRoleState {
     /**
      * The description for the new role. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name for the new role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project role
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[] | undefined>;
     /**
      * The permissions assigned to the project role. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
-    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
+    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[] | undefined>;
     /**
      * The ID of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>or project_slug, but not both.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectSlug " pulumi-lang-dotnet=" ProjectSlug " pulumi-lang-go=" projectSlug " pulumi-lang-python=" project_slug " pulumi-lang-yaml=" projectSlug " pulumi-lang-java=" projectSlug "> project_slug </span>or project_id, but not both.
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The slug for the new role
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,27 +142,27 @@ export interface ProjectRoleArgs {
     /**
      * The description for the new role. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name for the new role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (DEPRECATED, USE permissions_v2. Refer to the migration guide in https://infisical.com/docs/internals/permissions#migrating-from-permission-v1-to-permission-v2) The permissions assigned to the project role
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermission>[] | undefined>;
     /**
      * The permissions assigned to the project role. Refer to the documentation here https://infisical.com/docs/internals/permissions/project-permissions for its usage.
      */
-    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[]>;
+    permissionsV2s?: pulumi.Input<pulumi.Input<inputs.ProjectRolePermissionsV2>[] | undefined>;
     /**
      * The ID of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>or project_slug, but not both.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project to create role. Must provide either<span pulumi-lang-nodejs=" projectSlug " pulumi-lang-dotnet=" ProjectSlug " pulumi-lang-go=" projectSlug " pulumi-lang-python=" project_slug " pulumi-lang-yaml=" projectSlug " pulumi-lang-java=" projectSlug "> project_slug </span>or project_id, but not both.
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The slug for the new role
      */

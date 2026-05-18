@@ -120,35 +120,35 @@ export interface CertManagerCaCertificateState {
     /**
      * The ID of the certificate authority to generate a certificate for
      */
-    caId?: pulumi.Input<string>;
+    caId?: pulumi.Input<string | undefined>;
     /**
      * The generated CA certificate in PEM format
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate chain of the CA in PEM format
      */
-    certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of intermediate CAs that may follow this CA in the certificate chain. Use -1 for no path limit
      */
-    maxPathLength?: pulumi.Input<number>;
+    maxPathLength?: pulumi.Input<number | undefined>;
     /**
      * The date and time when the CA expires in RFC3339 format (e.g., '2034-01-01T00:00:00Z')
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the CA becomes valid in RFC3339 format (e.g., '2024-01-01T00:00:00Z')
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent CA (required for intermediate CAs)
      */
-    parentCaId?: pulumi.Input<string>;
+    parentCaId?: pulumi.Input<string | undefined>;
     /**
      * The serial number of the CA certificate
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface CertManagerCaCertificateArgs {
     /**
      * The maximum number of intermediate CAs that may follow this CA in the certificate chain. Use -1 for no path limit
      */
-    maxPathLength?: pulumi.Input<number>;
+    maxPathLength?: pulumi.Input<number | undefined>;
     /**
      * The date and time when the CA expires in RFC3339 format (e.g., '2034-01-01T00:00:00Z')
      */
@@ -174,5 +174,5 @@ export interface CertManagerCaCertificateArgs {
     /**
      * The ID of the parent CA (required for intermediate CAs)
      */
-    parentCaId?: pulumi.Input<string>;
+    parentCaId?: pulumi.Input<string | undefined>;
 }

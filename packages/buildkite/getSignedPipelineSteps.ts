@@ -56,9 +56,9 @@ export function getSignedPipelineStepsOutput(args: GetSignedPipelineStepsOutputA
  * A collection of arguments for invoking getSignedPipelineSteps.
  */
 export interface GetSignedPipelineStepsOutputArgs {
-    jwks?: pulumi.Input<string>;
-    jwksFile?: pulumi.Input<string>;
-    jwksKeyId?: pulumi.Input<string>;
+    jwks?: pulumi.Input<string | undefined>;
+    jwksFile?: pulumi.Input<string | undefined>;
+    jwksKeyId?: pulumi.Input<string | undefined>;
     repository: pulumi.Input<string>;
     unsignedSteps: pulumi.Input<string>;
 }

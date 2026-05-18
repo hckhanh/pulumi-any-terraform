@@ -45,7 +45,7 @@ export class ClusterSecret extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -114,31 +114,31 @@ export interface ClusterSecretState {
     /**
      * The UUID of the cluster this secret belongs to.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The time when the secret was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A description of what this secret is for.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * YAML access policy defining which pipelines and branches can access this secret.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The time when the secret was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The secret value. Must be less than 8KB.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,15 +152,15 @@ export interface ClusterSecretArgs {
     /**
      * A description of what this secret is for.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
     key: pulumi.Input<string>;
     /**
      * YAML access policy defining which pipelines and branches can access this secret.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The secret value. Must be less than 8KB.
      */

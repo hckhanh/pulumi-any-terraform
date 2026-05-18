@@ -33,71 +33,69 @@ export class Offset extends pulumi.CustomResource {
     }
 
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    public readonly baseRfc3339!: pulumi.Output<string>;
+    declare public readonly baseRfc3339: pulumi.Output<string>;
     /**
      * Number day of offset timestamp.
      */
-    public /*out*/ readonly day!: pulumi.Output<number>;
+    declare public /*out*/ readonly day: pulumi.Output<number>;
     /**
      * Number hour of offset timestamp.
      */
-    public /*out*/ readonly hour!: pulumi.Output<number>;
+    declare public /*out*/ readonly hour: pulumi.Output<number>;
     /**
      * Number minute of offset timestamp.
      */
-    public /*out*/ readonly minute!: pulumi.Output<number>;
+    declare public /*out*/ readonly minute: pulumi.Output<number>;
     /**
      * Number month of offset timestamp.
      */
-    public /*out*/ readonly month!: pulumi.Output<number>;
+    declare public /*out*/ readonly month: pulumi.Output<number>;
     /**
      * Number of days to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetDays!: pulumi.Output<number | undefined>;
+    declare public readonly offsetDays: pulumi.Output<number | undefined>;
     /**
      * Number of hours to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetHours!: pulumi.Output<number | undefined>;
+    declare public readonly offsetHours: pulumi.Output<number | undefined>;
     /**
      * Number of minutes to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly offsetMinutes: pulumi.Output<number | undefined>;
     /**
      * Number of months to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetMonths!: pulumi.Output<number | undefined>;
+    declare public readonly offsetMonths: pulumi.Output<number | undefined>;
     /**
      * Number of seconds to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly offsetSeconds: pulumi.Output<number | undefined>;
     /**
      * Number of years to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    public readonly offsetYears!: pulumi.Output<number | undefined>;
+    declare public readonly offsetYears: pulumi.Output<number | undefined>;
     /**
      * RFC3339 format of the offset timestamp, e.g. `2020-02-12T06:36:13Z`.
      */
-    public /*out*/ readonly rfc3339!: pulumi.Output<string>;
+    declare public /*out*/ readonly rfc3339: pulumi.Output<string>;
     /**
      * Number second of offset timestamp.
      */
-    public /*out*/ readonly second!: pulumi.Output<number>;
+    declare public /*out*/ readonly second: pulumi.Output<number>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. `1581489373`.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
      */
-    public /*out*/ readonly unix!: pulumi.Output<number>;
+    declare public /*out*/ readonly unix: pulumi.Output<number>;
     /**
      * Number year of offset timestamp.
      */
-    public /*out*/ readonly year!: pulumi.Output<number>;
+    declare public /*out*/ readonly year: pulumi.Output<number>;
 
     /**
      * Create a Offset resource with the given unique name, arguments, and options.
@@ -112,32 +110,32 @@ export class Offset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OffsetState | undefined;
-            resourceInputs["baseRfc3339"] = state ? state.baseRfc3339 : undefined;
-            resourceInputs["day"] = state ? state.day : undefined;
-            resourceInputs["hour"] = state ? state.hour : undefined;
-            resourceInputs["minute"] = state ? state.minute : undefined;
-            resourceInputs["month"] = state ? state.month : undefined;
-            resourceInputs["offsetDays"] = state ? state.offsetDays : undefined;
-            resourceInputs["offsetHours"] = state ? state.offsetHours : undefined;
-            resourceInputs["offsetMinutes"] = state ? state.offsetMinutes : undefined;
-            resourceInputs["offsetMonths"] = state ? state.offsetMonths : undefined;
-            resourceInputs["offsetSeconds"] = state ? state.offsetSeconds : undefined;
-            resourceInputs["offsetYears"] = state ? state.offsetYears : undefined;
-            resourceInputs["rfc3339"] = state ? state.rfc3339 : undefined;
-            resourceInputs["second"] = state ? state.second : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
-            resourceInputs["unix"] = state ? state.unix : undefined;
-            resourceInputs["year"] = state ? state.year : undefined;
+            resourceInputs["baseRfc3339"] = state?.baseRfc3339;
+            resourceInputs["day"] = state?.day;
+            resourceInputs["hour"] = state?.hour;
+            resourceInputs["minute"] = state?.minute;
+            resourceInputs["month"] = state?.month;
+            resourceInputs["offsetDays"] = state?.offsetDays;
+            resourceInputs["offsetHours"] = state?.offsetHours;
+            resourceInputs["offsetMinutes"] = state?.offsetMinutes;
+            resourceInputs["offsetMonths"] = state?.offsetMonths;
+            resourceInputs["offsetSeconds"] = state?.offsetSeconds;
+            resourceInputs["offsetYears"] = state?.offsetYears;
+            resourceInputs["rfc3339"] = state?.rfc3339;
+            resourceInputs["second"] = state?.second;
+            resourceInputs["triggers"] = state?.triggers;
+            resourceInputs["unix"] = state?.unix;
+            resourceInputs["year"] = state?.year;
         } else {
             const args = argsOrState as OffsetArgs | undefined;
-            resourceInputs["baseRfc3339"] = args ? args.baseRfc3339 : undefined;
-            resourceInputs["offsetDays"] = args ? args.offsetDays : undefined;
-            resourceInputs["offsetHours"] = args ? args.offsetHours : undefined;
-            resourceInputs["offsetMinutes"] = args ? args.offsetMinutes : undefined;
-            resourceInputs["offsetMonths"] = args ? args.offsetMonths : undefined;
-            resourceInputs["offsetSeconds"] = args ? args.offsetSeconds : undefined;
-            resourceInputs["offsetYears"] = args ? args.offsetYears : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["baseRfc3339"] = args?.baseRfc3339;
+            resourceInputs["offsetDays"] = args?.offsetDays;
+            resourceInputs["offsetHours"] = args?.offsetHours;
+            resourceInputs["offsetMinutes"] = args?.offsetMinutes;
+            resourceInputs["offsetMonths"] = args?.offsetMonths;
+            resourceInputs["offsetSeconds"] = args?.offsetSeconds;
+            resourceInputs["offsetYears"] = args?.offsetYears;
+            resourceInputs["triggers"] = args?.triggers;
             resourceInputs["day"] = undefined /*out*/;
             resourceInputs["hour"] = undefined /*out*/;
             resourceInputs["minute"] = undefined /*out*/;
@@ -157,71 +155,69 @@ export class Offset extends pulumi.CustomResource {
  */
 export interface OffsetState {
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    baseRfc3339?: pulumi.Input<string>;
+    baseRfc3339?: pulumi.Input<string | undefined>;
     /**
      * Number day of offset timestamp.
      */
-    day?: pulumi.Input<number>;
+    day?: pulumi.Input<number | undefined>;
     /**
      * Number hour of offset timestamp.
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Number minute of offset timestamp.
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Number month of offset timestamp.
      */
-    month?: pulumi.Input<number>;
+    month?: pulumi.Input<number | undefined>;
     /**
      * Number of days to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetDays?: pulumi.Input<number>;
+    offsetDays?: pulumi.Input<number | undefined>;
     /**
      * Number of hours to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetHours?: pulumi.Input<number>;
+    offsetHours?: pulumi.Input<number | undefined>;
     /**
      * Number of minutes to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetMinutes?: pulumi.Input<number>;
+    offsetMinutes?: pulumi.Input<number | undefined>;
     /**
      * Number of months to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetMonths?: pulumi.Input<number>;
+    offsetMonths?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetSeconds?: pulumi.Input<number>;
+    offsetSeconds?: pulumi.Input<number | undefined>;
     /**
      * Number of years to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetYears?: pulumi.Input<number>;
+    offsetYears?: pulumi.Input<number | undefined>;
     /**
      * RFC3339 format of the offset timestamp, e.g. `2020-02-12T06:36:13Z`.
      */
-    rfc3339?: pulumi.Input<string>;
+    rfc3339?: pulumi.Input<string | undefined>;
     /**
      * Number second of offset timestamp.
      */
-    second?: pulumi.Input<number>;
+    second?: pulumi.Input<number | undefined>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. `1581489373`.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
      */
-    unix?: pulumi.Input<number>;
+    unix?: pulumi.Input<number | undefined>;
     /**
      * Number year of offset timestamp.
      */
-    year?: pulumi.Input<number>;
+    year?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -229,37 +225,35 @@ export interface OffsetState {
  */
 export interface OffsetArgs {
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    baseRfc3339?: pulumi.Input<string>;
+    baseRfc3339?: pulumi.Input<string | undefined>;
     /**
      * Number of days to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetDays?: pulumi.Input<number>;
+    offsetDays?: pulumi.Input<number | undefined>;
     /**
      * Number of hours to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetHours?: pulumi.Input<number>;
+    offsetHours?: pulumi.Input<number | undefined>;
     /**
      * Number of minutes to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetMinutes?: pulumi.Input<number>;
+    offsetMinutes?: pulumi.Input<number | undefined>;
     /**
      * Number of months to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetMonths?: pulumi.Input<number>;
+    offsetMonths?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetSeconds?: pulumi.Input<number>;
+    offsetSeconds?: pulumi.Input<number | undefined>;
     /**
      * Number of years to offset the base timestamp. At least one of the 'offset_' arguments must be configured.
      */
-    offsetYears?: pulumi.Input<number>;
+    offsetYears?: pulumi.Input<number | undefined>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

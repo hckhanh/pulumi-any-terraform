@@ -94,23 +94,23 @@ export interface PipelineTemplateState {
     /**
      * If the pipeline template is available for assignment by non admin users.
      */
-    available?: pulumi.Input<boolean>;
+    available?: pulumi.Input<boolean | undefined>;
     /**
      * The YAML step configuration for the pipeline template.
      */
-    configuration?: pulumi.Input<string>;
+    configuration?: pulumi.Input<string | undefined>;
     /**
      * A description for the pipeline template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the pipeline template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the pipeline template.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface PipelineTemplateArgs {
     /**
      * If the pipeline template is available for assignment by non admin users.
      */
-    available?: pulumi.Input<boolean>;
+    available?: pulumi.Input<boolean | undefined>;
     /**
      * The YAML step configuration for the pipeline template.
      */
@@ -128,9 +128,9 @@ export interface PipelineTemplateArgs {
     /**
      * A description for the pipeline template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the pipeline template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

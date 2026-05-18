@@ -73,11 +73,11 @@ export interface CatalogRelationState {
     /**
      * A description of the Catalog relation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Catalog relation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -87,9 +87,9 @@ export interface CatalogRelationArgs {
     /**
      * A description of the Catalog relation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Catalog relation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

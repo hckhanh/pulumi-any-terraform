@@ -82,13 +82,13 @@ export interface DatabaseState {
     /**
      * The name of the database.
      */
-    name?: pulumi.Input<string>;
-    regionsPrimaries?: pulumi.Input<pulumi.Input<string>[]>;
-    regionsReplicas?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string | undefined>;
+    regionsPrimaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    regionsReplicas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The connection URL for the database.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -98,7 +98,7 @@ export interface DatabaseArgs {
     /**
      * The name of the database.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     regionsPrimaries: pulumi.Input<pulumi.Input<string>[]>;
-    regionsReplicas?: pulumi.Input<pulumi.Input<string>[]>;
+    regionsReplicas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

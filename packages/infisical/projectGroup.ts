@@ -99,23 +99,23 @@ export interface ProjectGroupState {
     /**
      * The id of the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the group.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The membership Id of the project group
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The roles assigned to the project group
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.ProjectGroupRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.ProjectGroupRole>[] | undefined>;
 }
 
 /**
@@ -125,11 +125,11 @@ export interface ProjectGroupArgs {
     /**
      * The id of the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the group.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */

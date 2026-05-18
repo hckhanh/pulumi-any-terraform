@@ -33,16 +33,17 @@ export class Sleep extends pulumi.CustomResource {
     }
 
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, `30s` for 30
-     * seconds or `5m` for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
-    public readonly createDuration!: pulumi.Output<string | undefined>;
-    public readonly destroyDuration!: pulumi.Output<string | undefined>;
+    declare public readonly createDuration: pulumi.Output<string | undefined>;
     /**
-     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main
-     * provider documentation for more information.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
-    public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly destroyDuration: pulumi.Output<string | undefined>;
+    /**
+     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main provider documentation for more information.
+     */
+    declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Sleep resource with the given unique name, arguments, and options.
@@ -57,14 +58,14 @@ export class Sleep extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SleepState | undefined;
-            resourceInputs["createDuration"] = state ? state.createDuration : undefined;
-            resourceInputs["destroyDuration"] = state ? state.destroyDuration : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["createDuration"] = state?.createDuration;
+            resourceInputs["destroyDuration"] = state?.destroyDuration;
+            resourceInputs["triggers"] = state?.triggers;
         } else {
             const args = argsOrState as SleepArgs | undefined;
-            resourceInputs["createDuration"] = args ? args.createDuration : undefined;
-            resourceInputs["destroyDuration"] = args ? args.destroyDuration : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["createDuration"] = args?.createDuration;
+            resourceInputs["destroyDuration"] = args?.destroyDuration;
+            resourceInputs["triggers"] = args?.triggers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Sleep.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -76,16 +77,17 @@ export class Sleep extends pulumi.CustomResource {
  */
 export interface SleepState {
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, `30s` for 30
-     * seconds or `5m` for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
-    createDuration?: pulumi.Input<string>;
-    destroyDuration?: pulumi.Input<string>;
+    createDuration?: pulumi.Input<string | undefined>;
     /**
-     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main
-     * provider documentation for more information.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    destroyDuration?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main provider documentation for more information.
+     */
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -93,14 +95,15 @@ export interface SleepState {
  */
 export interface SleepArgs {
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, `30s` for 30
-     * seconds or `5m` for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
-    createDuration?: pulumi.Input<string>;
-    destroyDuration?: pulumi.Input<string>;
+    createDuration?: pulumi.Input<string | undefined>;
     /**
-     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main
-     * provider documentation for more information.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    destroyDuration?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional) Arbitrary map of values that, when changed, will run any creation or destroy delays again. See the main provider documentation for more information.
+     */
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -135,49 +135,49 @@ export interface RegistryState {
     /**
      * A color representation of the registry. Accepts hex codes, eg #BADA55.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * This is a description for the registry, this may describe the usage for it, the region, or something else
      * which would help identify the registry's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ecosystem of the registry. This value cannot be changed after creation.
      */
-    ecosystem?: pulumi.Input<string>;
+    ecosystem?: pulumi.Input<string | undefined>;
     /**
      * An emoji to use with the registry, this can either be set using :buildkite: notation, or with the
      * emoji itself, such as 🚀.
      */
-    emoji?: pulumi.Input<string>;
+    emoji?: pulumi.Input<string | undefined>;
     /**
      * The name of the registry. Can only contain numbers and letters, no spaces or special characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The registry's OIDC policy, in YAML format.
      */
-    oidcPolicy?: pulumi.Input<string>;
+    oidcPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether the registry is publicly accessible.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the registry (e.g. <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>).
      */
-    registryType?: pulumi.Input<string>;
+    registryType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the registry.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The team UUIDs that have access to the registry. At least one team must be specified. This value cannot be changed after creation.
      */
-    teamIds?: pulumi.Input<pulumi.Input<string>[]>;
+    teamIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The UUID of the registry.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,12 +187,12 @@ export interface RegistryArgs {
     /**
      * A color representation of the registry. Accepts hex codes, eg #BADA55.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * This is a description for the registry, this may describe the usage for it, the region, or something else
      * which would help identify the registry's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ecosystem of the registry. This value cannot be changed after creation.
      */
@@ -201,15 +201,15 @@ export interface RegistryArgs {
      * An emoji to use with the registry, this can either be set using :buildkite: notation, or with the
      * emoji itself, such as 🚀.
      */
-    emoji?: pulumi.Input<string>;
+    emoji?: pulumi.Input<string | undefined>;
     /**
      * The name of the registry. Can only contain numbers and letters, no spaces or special characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The registry's OIDC policy, in YAML format.
      */
-    oidcPolicy?: pulumi.Input<string>;
+    oidcPolicy?: pulumi.Input<string | undefined>;
     /**
      * The team UUIDs that have access to the registry. At least one team must be specified. This value cannot be changed after creation.
      */

@@ -138,43 +138,43 @@ export interface CertManagerExternalCaAcmeState {
     /**
      * The email address for ACME account registration
      */
-    accountEmail?: pulumi.Input<string>;
+    accountEmail?: pulumi.Input<string | undefined>;
     /**
      * The ACME directory URL
      */
-    directoryUrl?: pulumi.Input<string>;
+    directoryUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNS app connection for ACME challenge validation
      */
-    dnsAppConnectionId?: pulumi.Input<string>;
+    dnsAppConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The hosted zone ID for DNS-01 challenge validation
      */
-    dnsHostedZoneId?: pulumi.Input<string>;
+    dnsHostedZoneId?: pulumi.Input<string | undefined>;
     /**
      * The DNS provider for ACME challenge validation. Supported values: route53, cloudflare, dns-made-easy
      */
-    dnsProvider?: pulumi.Input<string>;
+    dnsProvider?: pulumi.Input<string | undefined>;
     /**
      * External Account Binding (EAB) HMAC key (optional)
      */
-    eabHmacKey?: pulumi.Input<string>;
+    eabHmacKey?: pulumi.Input<string | undefined>;
     /**
      * External Account Binding (EAB) Key ID (optional)
      */
-    eabKid?: pulumi.Input<string>;
+    eabKid?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACME CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
-    projectSlug?: pulumi.Input<string>;
+    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface CertManagerExternalCaAcmeArgs {
     /**
      * The hosted zone ID for DNS-01 challenge validation
      */
-    dnsHostedZoneId?: pulumi.Input<string>;
+    dnsHostedZoneId?: pulumi.Input<string | undefined>;
     /**
      * The DNS provider for ACME challenge validation. Supported values: route53, cloudflare, dns-made-easy
      */
@@ -204,15 +204,15 @@ export interface CertManagerExternalCaAcmeArgs {
     /**
      * External Account Binding (EAB) HMAC key (optional)
      */
-    eabHmacKey?: pulumi.Input<string>;
+    eabHmacKey?: pulumi.Input<string | undefined>;
     /**
      * External Account Binding (EAB) Key ID (optional)
      */
-    eabKid?: pulumi.Input<string>;
+    eabKid?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACME CA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cert-manager project
      */
@@ -220,5 +220,5 @@ export interface CertManagerExternalCaAcmeArgs {
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

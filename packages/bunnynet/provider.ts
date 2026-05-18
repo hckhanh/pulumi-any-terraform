@@ -75,15 +75,15 @@ export interface ProviderArgs {
     /**
      * API key. Can also be set using the `BUNNYNET_API_KEY` environment variable.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Optional. The API URL. Defaults to `https://api.bunny.net`.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Optional. The Stream API URL. Defaults to `https://video.bunnycdn.com`.
      */
-    streamApiUrl?: pulumi.Input<string>;
+    streamApiUrl?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

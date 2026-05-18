@@ -112,35 +112,35 @@ export interface PullzoneHostnameState {
     /**
      * The certificate for the hostname, in PEM format. ***Important***: the Bunny API will not return the certificate data, so you'll have to make sure you're importing the correct certificate.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key for the hostname, in PEM format. ***Important***: the Bunny API will not return the certificate key, so you'll have to make sure you're importing the correct certificate key.
      */
-    certificateKey?: pulumi.Input<string>;
+    certificateKey?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether SSL should be enforced for the hostname.
      */
-    forceSsl?: pulumi.Input<boolean>;
+    forceSsl?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the hostname is internal (in the CDN domain) or provided by the user.
      */
-    isInternal?: pulumi.Input<boolean>;
+    isInternal?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname value for the domain name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pull zone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the hostname.
      */
-    pullzoneHostnameId?: pulumi.Input<number>;
+    pullzoneHostnameId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the hostname should support HTTPS. If a custom certificate is not provided via the <code>certificate</code> attribute, a Domain-validated TLS certificate will be automatically obtained and managed by Bunny. ***Important***: it is not possible to tell managed and custom certificates apart for imported resources.
      */
-    tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -150,19 +150,19 @@ export interface PullzoneHostnameArgs {
     /**
      * The certificate for the hostname, in PEM format. ***Important***: the Bunny API will not return the certificate data, so you'll have to make sure you're importing the correct certificate.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key for the hostname, in PEM format. ***Important***: the Bunny API will not return the certificate key, so you'll have to make sure you're importing the correct certificate key.
      */
-    certificateKey?: pulumi.Input<string>;
+    certificateKey?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether SSL should be enforced for the hostname.
      */
-    forceSsl?: pulumi.Input<boolean>;
+    forceSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname value for the domain name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pull zone.
      */
@@ -170,5 +170,5 @@ export interface PullzoneHostnameArgs {
     /**
      * Indicates whether the hostname should support HTTPS. If a custom certificate is not provided via the <code>certificate</code> attribute, a Domain-validated TLS certificate will be automatically obtained and managed by Bunny. ***Important***: it is not possible to tell managed and custom certificates apart for imported resources.
      */
-    tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean | undefined>;
 }

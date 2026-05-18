@@ -76,27 +76,27 @@ export interface ProviderArgs {
     /**
      * Burst size for rate limiter, allows temporary bursts above the rate limit. 0 means use automatic default (2x rate limit, minimum 10).
      */
-    apiRateBurst?: pulumi.Input<number>;
+    apiRateBurst?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of API requests per second. 0 means no limit.
      */
-    apiRateLimit?: pulumi.Input<number>;
+    apiRateLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of retries for API requests.
      */
-    apiRetryMax?: pulumi.Input<number>;
+    apiRetryMax?: pulumi.Input<number | undefined>;
     /**
      * Maximum time to wait between retries in seconds.
      */
-    apiRetryWaitMax?: pulumi.Input<number>;
+    apiRetryWaitMax?: pulumi.Input<number | undefined>;
     /**
      * Minimum time to wait between retries in seconds.
      */
-    apiRetryWaitMin?: pulumi.Input<number>;
+    apiRetryWaitMin?: pulumi.Input<number | undefined>;
     /**
      * Timeout for individual HTTP requests in seconds.
      */
-    apiTimeout?: pulumi.Input<number>;
+    apiTimeout?: pulumi.Input<number | undefined>;
     /**
      * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team.
      */

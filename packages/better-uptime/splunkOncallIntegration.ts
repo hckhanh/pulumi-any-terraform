@@ -82,15 +82,15 @@ export interface SplunkOncallIntegrationState {
     /**
      * The name of the Splunk On-Call Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The Splunk On-Call URL to post webhooks to.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -100,11 +100,11 @@ export interface SplunkOncallIntegrationArgs {
     /**
      * The name of the Splunk On-Call Integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The Splunk On-Call URL to post webhooks to.
      */

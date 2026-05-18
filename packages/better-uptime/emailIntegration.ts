@@ -139,6 +139,10 @@ export class EmailIntegration extends pulumi.CustomResource {
      */
     declare public readonly teamWait: pulumi.Output<number>;
     /**
+     * An optional field describing how to extract a customized incident title.
+     */
+    declare public readonly titleField: pulumi.Output<outputs.EmailIntegrationTitleField | undefined>;
+    /**
      * The time when this email integration was updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -182,6 +186,7 @@ export class EmailIntegration extends pulumi.CustomResource {
             resourceInputs["startedRules"] = state?.startedRules;
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["teamWait"] = state?.teamWait;
+            resourceInputs["titleField"] = state?.titleField;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as EmailIntegrationArgs | undefined;
@@ -218,6 +223,7 @@ export class EmailIntegration extends pulumi.CustomResource {
             resourceInputs["startedRules"] = args?.startedRules;
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["teamWait"] = args?.teamWait;
+            resourceInputs["titleField"] = args?.titleField;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["emailAddress"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -234,111 +240,115 @@ export interface EmailIntegrationState {
     /**
      * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField>;
+    acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField | undefined>;
     /**
      * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    acknowledgedRuleType?: pulumi.Input<string>;
+    acknowledgedRuleType?: pulumi.Input<string | undefined>;
     /**
      * An array of rules to match to acknowledge an incident.
      */
-    acknowledgedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationAcknowledgedRule>[]>;
+    acknowledgedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationAcknowledgedRule>[] | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * A field describing how to extract an incident cause, used as a short description shared with the team member on-call.
      */
-    causeField?: pulumi.Input<inputs.EmailIntegrationCauseField>;
+    causeField?: pulumi.Input<inputs.EmailIntegrationCauseField | undefined>;
     /**
      * The time when this email integration was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The email address we expect emails to receive at.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of this Email integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array of additional fields, which will be extracted when acknowledging an incident.
      */
-    otherAcknowledgedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherAcknowledgedField>[]>;
+    otherAcknowledgedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherAcknowledgedField>[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when resolving an incident.
      */
-    otherResolvedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherResolvedField>[]>;
+    otherResolvedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherResolvedField>[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when starting an incident.
      */
-    otherStartedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherStartedField>[]>;
+    otherStartedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherStartedField>[] | undefined>;
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the escalation policy associated with the email integration.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the integration must be up to automatically mark an incident as resolved after being down.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField>;
+    resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField | undefined>;
     /**
      * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    resolvedRuleType?: pulumi.Input<string>;
+    resolvedRuleType?: pulumi.Input<string | undefined>;
     /**
      * An array of rules to match to resolved an incident.
      */
-    resolvedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationResolvedRule>[]>;
+    resolvedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationResolvedRule>[] | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField>;
+    startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField | undefined>;
     /**
      * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
-    startedRuleType?: pulumi.Input<string>;
+    startedRuleType?: pulumi.Input<string | undefined>;
     /**
      * An array of rules to match to start a new incident.
      */
-    startedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationStartedRule>[]>;
+    startedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationStartedRule>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
+    /**
+     * An optional field describing how to extract a customized incident title.
+     */
+    titleField?: pulumi.Input<inputs.EmailIntegrationTitleField | undefined>;
     /**
      * The time when this email integration was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -348,7 +358,7 @@ export interface EmailIntegrationArgs {
     /**
      * When acknowledging an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField>;
+    acknowledgedAlertIdField?: pulumi.Input<inputs.EmailIntegrationAcknowledgedAlertIdField | undefined>;
     /**
      * Should an incident be acknowledged for all emails, those satisfying all acknowledged_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
@@ -356,59 +366,59 @@ export interface EmailIntegrationArgs {
     /**
      * An array of rules to match to acknowledge an incident.
      */
-    acknowledgedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationAcknowledgedRule>[]>;
+    acknowledgedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationAcknowledgedRule>[] | undefined>;
     /**
      * Whether to call when a new incident is created.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * A field describing how to extract an incident cause, used as a short description shared with the team member on-call.
      */
-    causeField?: pulumi.Input<inputs.EmailIntegrationCauseField>;
+    causeField?: pulumi.Input<inputs.EmailIntegrationCauseField | undefined>;
     /**
      * Whether to send a critical push notification that ignores the mute switch and Do not Disturb mode when a new incident is created.
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send an email when a new incident is created.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The name of this Email integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array of additional fields, which will be extracted when acknowledging an incident.
      */
-    otherAcknowledgedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherAcknowledgedField>[]>;
+    otherAcknowledgedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherAcknowledgedField>[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when resolving an incident.
      */
-    otherResolvedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherResolvedField>[]>;
+    otherResolvedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherResolvedField>[] | undefined>;
     /**
      * An array of additional fields, which will be extracted when starting an incident.
      */
-    otherStartedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherStartedField>[]>;
+    otherStartedFields?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationOtherStartedField>[] | undefined>;
     /**
      * Set to true to pause monitoring - we won't notify you about downtime. Set to false to resume monitoring.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the escalation policy associated with the email integration.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a push notification when a new incident is created.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * How long the integration must be up to automatically mark an incident as resolved after being down.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * When resolving an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField>;
+    resolvedAlertIdField?: pulumi.Input<inputs.EmailIntegrationResolvedAlertIdField | undefined>;
     /**
      * Should an incident be resolved for all emails, those satisfying all resolved_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
@@ -416,15 +426,15 @@ export interface EmailIntegrationArgs {
     /**
      * An array of rules to match to resolved an incident.
      */
-    resolvedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationResolvedRule>[]>;
+    resolvedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationResolvedRule>[] | undefined>;
     /**
      * Whether to send an SMS when a new incident is created.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * When starting an incident, how to extract an alert id, a unique alert identifier which will be used to acknowledge and resolve incidents.
      */
-    startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField>;
+    startedAlertIdField?: pulumi.Input<inputs.EmailIntegrationStartedAlertIdField | undefined>;
     /**
      * Should an incident be started for all emails, those satisfying all started_rules, or those satisfying any of them. Valid values are unused, all, or any
      */
@@ -432,13 +442,17 @@ export interface EmailIntegrationArgs {
     /**
      * An array of rules to match to start a new incident.
      */
-    startedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationStartedRule>[]>;
+    startedRules?: pulumi.Input<pulumi.Input<inputs.EmailIntegrationStartedRule>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before escalating the incident alert to the team. Leave blank to disable escalating to the entire team.
      */
-    teamWait?: pulumi.Input<number>;
+    teamWait?: pulumi.Input<number | undefined>;
+    /**
+     * An optional field describing how to extract a customized incident title.
+     */
+    titleField?: pulumi.Input<inputs.EmailIntegrationTitleField | undefined>;
 }

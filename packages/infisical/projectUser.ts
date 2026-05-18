@@ -102,23 +102,23 @@ export interface ProjectUserState {
     /**
      * The membershipId of the project user
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The id of the project
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The roles assigned to the project user
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.ProjectUserRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.ProjectUserRole>[] | undefined>;
     /**
      * The user details of the project user
      */
-    user?: pulumi.Input<inputs.ProjectUserUser>;
+    user?: pulumi.Input<inputs.ProjectUserUser | undefined>;
     /**
      * The usename of the user. By default its the email
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

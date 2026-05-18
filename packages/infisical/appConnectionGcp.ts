@@ -105,27 +105,27 @@ export interface AppConnectionGcpState {
     /**
      * The credentials for the GCP App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionGcpCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionGcpCredentials | undefined>;
     /**
      * The hash of the GCP App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the GCP App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with GCP. Possible values are: service-account-impersonation
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the GCP App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionGcpArgs {
     /**
      * An optional description for the GCP App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with GCP. Possible values are: service-account-impersonation
      */
@@ -147,9 +147,9 @@ export interface AppConnectionGcpArgs {
     /**
      * The name of the GCP App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

@@ -65,7 +65,7 @@ export function getDnsRecordOutput(args: GetDnsRecordOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDnsRecord.
  */
 export interface GetDnsRecordOutputArgs {
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     name: pulumi.Input<string>;
     type: pulumi.Input<string>;
     zone: pulumi.Input<number>;

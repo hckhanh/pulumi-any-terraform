@@ -153,51 +153,51 @@ export interface SecretRotationMssqlCredentialsState {
     /**
      * Whether secrets should be automatically rotated.
      */
-    autoRotationEnabled?: pulumi.Input<boolean>;
+    autoRotationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to use for the secret rotation.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * The description of the secret rotation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project environment to rotate secrets from.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret rotation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are rotated.
      */
-    parameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsParameters>;
+    parameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsParameters | undefined>;
     /**
      * The ID of the Infisical project to create the secret rotation in.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationMssqlCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationMssqlCredentialsRotateAtUtc | undefined>;
     /**
      * How many days to wait between each rotation.
      */
-    rotationInterval?: pulumi.Input<number>;
+    rotationInterval?: pulumi.Input<number | undefined>;
     /**
      * The folder path to rotate secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * Secret mappings to modify how secrets are rotated.
      */
-    secretsMapping?: pulumi.Input<inputs.SecretRotationMssqlCredentialsSecretsMapping>;
+    secretsMapping?: pulumi.Input<inputs.SecretRotationMssqlCredentialsSecretsMapping | undefined>;
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsTemporaryParameters | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface SecretRotationMssqlCredentialsArgs {
     /**
      * Whether secrets should be automatically rotated.
      */
-    autoRotationEnabled?: pulumi.Input<boolean>;
+    autoRotationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to use for the secret rotation.
      */
@@ -215,7 +215,7 @@ export interface SecretRotationMssqlCredentialsArgs {
     /**
      * The description of the secret rotation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The slug of the project environment to rotate secrets from.
      */
@@ -223,7 +223,7 @@ export interface SecretRotationMssqlCredentialsArgs {
     /**
      * The name of the secret rotation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are rotated.
      */
@@ -235,11 +235,11 @@ export interface SecretRotationMssqlCredentialsArgs {
     /**
      * At which UTC time the rotation should occur.
      */
-    rotateAtUtc?: pulumi.Input<inputs.SecretRotationMssqlCredentialsRotateAtUtc>;
+    rotateAtUtc?: pulumi.Input<inputs.SecretRotationMssqlCredentialsRotateAtUtc | undefined>;
     /**
      * How many days to wait between each rotation.
      */
-    rotationInterval?: pulumi.Input<number>;
+    rotationInterval?: pulumi.Input<number | undefined>;
     /**
      * The folder path to rotate secrets from.
      */
@@ -251,5 +251,5 @@ export interface SecretRotationMssqlCredentialsArgs {
     /**
      * Temporary parameters to modify how secrets are rotated.
      */
-    temporaryParameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsTemporaryParameters>;
+    temporaryParameters?: pulumi.Input<inputs.SecretRotationMssqlCredentialsTemporaryParameters | undefined>;
 }

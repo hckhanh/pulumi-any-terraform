@@ -88,19 +88,19 @@ export interface DnsScriptState {
     /**
      * The code of the script.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The ID of the script.
      */
-    dnsScriptId?: pulumi.Input<number>;
+    dnsScriptId?: pulumi.Input<number | undefined>;
     /**
      * The name of the script.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The current release identifier for the script.
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -114,5 +114,5 @@ export interface DnsScriptArgs {
     /**
      * The name of the script.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

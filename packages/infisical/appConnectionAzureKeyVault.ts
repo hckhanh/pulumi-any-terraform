@@ -105,27 +105,27 @@ export interface AppConnectionAzureKeyVaultState {
     /**
      * The credentials for the Azure Key Vault App Connection
      */
-    credentials?: pulumi.Input<inputs.AppConnectionAzureKeyVaultCredentials>;
+    credentials?: pulumi.Input<inputs.AppConnectionAzureKeyVaultCredentials | undefined>;
     /**
      * The hash of the Azure Key Vault App Connection credentials
      */
-    credentialsHash?: pulumi.Input<string>;
+    credentialsHash?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the Azure Key Vault App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Azure Key Vault. Possible values are: client-secret
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Key Vault App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AppConnectionAzureKeyVaultArgs {
     /**
      * An optional description for the Azure Key Vault App Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with Azure Key Vault. Possible values are: client-secret
      */
@@ -147,9 +147,9 @@ export interface AppConnectionAzureKeyVaultArgs {
     /**
      * The name of the Azure Key Vault App Connection to create. Must be slug-friendly
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to scope the app connection to. If not provided, the app connection will be scoped to the organization.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

@@ -35,41 +35,39 @@ export class Static extends pulumi.CustomResource {
     /**
      * Number day of timestamp.
      */
-    public /*out*/ readonly day!: pulumi.Output<number>;
+    declare public /*out*/ readonly day: pulumi.Output<number>;
     /**
      * Number hour of timestamp.
      */
-    public /*out*/ readonly hour!: pulumi.Output<number>;
+    declare public /*out*/ readonly hour: pulumi.Output<number>;
     /**
      * Number minute of timestamp.
      */
-    public /*out*/ readonly minute!: pulumi.Output<number>;
+    declare public /*out*/ readonly minute: pulumi.Output<number>;
     /**
      * Number month of timestamp.
      */
-    public /*out*/ readonly month!: pulumi.Output<number>;
+    declare public /*out*/ readonly month: pulumi.Output<number>;
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    public readonly rfc3339!: pulumi.Output<string>;
+    declare public readonly rfc3339: pulumi.Output<string>;
     /**
      * Number second of timestamp.
      */
-    public /*out*/ readonly second!: pulumi.Output<number>;
+    declare public /*out*/ readonly second: pulumi.Output<number>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. `1581489373`.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
      */
-    public /*out*/ readonly unix!: pulumi.Output<number>;
+    declare public /*out*/ readonly unix: pulumi.Output<number>;
     /**
      * Number year of timestamp.
      */
-    public /*out*/ readonly year!: pulumi.Output<number>;
+    declare public /*out*/ readonly year: pulumi.Output<number>;
 
     /**
      * Create a Static resource with the given unique name, arguments, and options.
@@ -84,19 +82,19 @@ export class Static extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StaticState | undefined;
-            resourceInputs["day"] = state ? state.day : undefined;
-            resourceInputs["hour"] = state ? state.hour : undefined;
-            resourceInputs["minute"] = state ? state.minute : undefined;
-            resourceInputs["month"] = state ? state.month : undefined;
-            resourceInputs["rfc3339"] = state ? state.rfc3339 : undefined;
-            resourceInputs["second"] = state ? state.second : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
-            resourceInputs["unix"] = state ? state.unix : undefined;
-            resourceInputs["year"] = state ? state.year : undefined;
+            resourceInputs["day"] = state?.day;
+            resourceInputs["hour"] = state?.hour;
+            resourceInputs["minute"] = state?.minute;
+            resourceInputs["month"] = state?.month;
+            resourceInputs["rfc3339"] = state?.rfc3339;
+            resourceInputs["second"] = state?.second;
+            resourceInputs["triggers"] = state?.triggers;
+            resourceInputs["unix"] = state?.unix;
+            resourceInputs["year"] = state?.year;
         } else {
             const args = argsOrState as StaticArgs | undefined;
-            resourceInputs["rfc3339"] = args ? args.rfc3339 : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["rfc3339"] = args?.rfc3339;
+            resourceInputs["triggers"] = args?.triggers;
             resourceInputs["day"] = undefined /*out*/;
             resourceInputs["hour"] = undefined /*out*/;
             resourceInputs["minute"] = undefined /*out*/;
@@ -117,41 +115,39 @@ export interface StaticState {
     /**
      * Number day of timestamp.
      */
-    day?: pulumi.Input<number>;
+    day?: pulumi.Input<number | undefined>;
     /**
      * Number hour of timestamp.
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Number minute of timestamp.
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Number month of timestamp.
      */
-    month?: pulumi.Input<number>;
+    month?: pulumi.Input<number | undefined>;
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    rfc3339?: pulumi.Input<string>;
+    rfc3339?: pulumi.Input<string | undefined>;
     /**
      * Number second of timestamp.
      */
-    second?: pulumi.Input<number>;
+    second?: pulumi.Input<number | undefined>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. `1581489373`.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
      */
-    unix?: pulumi.Input<number>;
+    unix?: pulumi.Input<number | undefined>;
     /**
      * Number year of timestamp.
      */
-    year?: pulumi.Input<number>;
+    year?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -159,13 +155,11 @@ export interface StaticState {
  */
 export interface StaticArgs {
     /**
-     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time
-     * string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
+     * Base timestamp in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format (see [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) e.g., `YYYY-MM-DDTHH:MM:SSZ`). Defaults to the current time.
      */
-    rfc3339?: pulumi.Input<string>;
+    rfc3339?: pulumi.Input<string | undefined>;
     /**
-     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider
-     * documentation for more information.
+     * Arbitrary map of values that, when changed, will trigger a new base timestamp value to be saved. See the main provider documentation for more information.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

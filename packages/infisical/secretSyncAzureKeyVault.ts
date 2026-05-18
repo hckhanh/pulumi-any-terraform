@@ -135,39 +135,39 @@ export interface SecretSyncAzureKeyVaultState {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
-    autoSyncEnabled?: pulumi.Input<boolean>;
+    autoSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the azure Connection to use for syncing.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the Azure Key Vault sync.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
-    destinationConfig?: pulumi.Input<inputs.SecretSyncAzureKeyVaultDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.SecretSyncAzureKeyVaultDestinationConfig | undefined>;
     /**
      * The slug of the project environment to sync secrets from.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Key Vault sync to create. Must be slug-friendly.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Infisical project to create the sync in.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The folder path to sync secrets from.
      */
-    secretPath?: pulumi.Input<string>;
+    secretPath?: pulumi.Input<string | undefined>;
     /**
      * Parameters to modify how secrets are synced.
      */
-    syncOptions?: pulumi.Input<inputs.SecretSyncAzureKeyVaultSyncOptions>;
+    syncOptions?: pulumi.Input<inputs.SecretSyncAzureKeyVaultSyncOptions | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface SecretSyncAzureKeyVaultArgs {
     /**
      * Whether secrets should be automatically synced when changes occur at the source location or not.
      */
-    autoSyncEnabled?: pulumi.Input<boolean>;
+    autoSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the azure Connection to use for syncing.
      */
@@ -185,7 +185,7 @@ export interface SecretSyncAzureKeyVaultArgs {
     /**
      * An optional description for the Azure Key Vault sync.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination configuration for the secret sync.
      */
@@ -197,7 +197,7 @@ export interface SecretSyncAzureKeyVaultArgs {
     /**
      * The name of the Azure Key Vault sync to create. Must be slug-friendly.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Infisical project to create the sync in.
      */

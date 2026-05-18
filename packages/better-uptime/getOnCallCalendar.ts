@@ -43,5 +43,5 @@ export function getOnCallCalendarOutput(args?: GetOnCallCalendarOutputArgs, opts
  * A collection of arguments for invoking getOnCallCalendar.
  */
 export interface GetOnCallCalendarOutputArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

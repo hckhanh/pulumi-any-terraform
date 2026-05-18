@@ -102,23 +102,23 @@ export interface ProjectIdentityState {
     /**
      * The identity details of the project identity
      */
-    identity?: pulumi.Input<inputs.ProjectIdentityIdentity>;
+    identity?: pulumi.Input<inputs.ProjectIdentityIdentity | undefined>;
     /**
      * The id of the identity.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The membership Id of the project identity
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The id of the project
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The roles assigned to the project identity
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.ProjectIdentityRole>[] | undefined>;
 }
 
 /**

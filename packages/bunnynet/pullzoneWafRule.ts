@@ -108,31 +108,31 @@ export interface PullzoneWafRuleState {
     /**
      * The condition to trigger the WAF rule.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneWafRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneWafRuleCondition>[] | undefined>;
     /**
      * The WAF rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The WAF rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pullzone.
      */
-    pullzone?: pulumi.Input<number>;
+    pullzone?: pulumi.Input<number | undefined>;
     /**
      * The ID of the WAF rule.
      */
-    pullzoneWafRuleId?: pulumi.Input<number>;
+    pullzoneWafRuleId?: pulumi.Input<number | undefined>;
     /**
      * The response once the WAF rule is triggered.
      */
-    response?: pulumi.Input<inputs.PullzoneWafRuleResponse>;
+    response?: pulumi.Input<inputs.PullzoneWafRuleResponse | undefined>;
     /**
      * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
      */
-    transformations?: pulumi.Input<pulumi.Input<string>[]>;
+    transformations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -142,15 +142,15 @@ export interface PullzoneWafRuleArgs {
     /**
      * The condition to trigger the WAF rule.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneWafRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.PullzoneWafRuleCondition>[] | undefined>;
     /**
      * The WAF rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The WAF rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the linked pullzone.
      */
@@ -158,9 +158,9 @@ export interface PullzoneWafRuleArgs {
     /**
      * The response once the WAF rule is triggered.
      */
-    response?: pulumi.Input<inputs.PullzoneWafRuleResponse>;
+    response?: pulumi.Input<inputs.PullzoneWafRuleResponse | undefined>;
     /**
      * Options: `CMDLINE`, `COMPRESSWHITESPACE`, `CSSDECODE`, `HEXENCODE`, `HTMLENTITYDECODE`, `JSDECODE`, `LENGTH`, `LOWERCASE`, `MD5`, `NORMALISEPATH`, `NORMALISEPATHWIN`, `NORMALIZEPATH`, `NORMALIZEPATHWIN`, `REMOVECOMMENTS`, `REMOVENULLS`, `REMOVEWHITESPACE`, `REPLACECOMMENTS`, `SHA1`, `URLDECODE`, `URLDECODEUNI`, `UTF8TOUNICODE`
      */
-    transformations?: pulumi.Input<pulumi.Input<string>[]>;
+    transformations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
