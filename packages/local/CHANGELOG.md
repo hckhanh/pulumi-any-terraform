@@ -1,5 +1,15 @@
 # pulumi-local
 
+## 2.9.0
+
+### Minor Changes
+
+#### 2.9.0 (May 12, 2026)
+
+ENHANCEMENTS:
+
+- Added linux/s390x build target for IBM Z platform support ([hashicorp/terraform-provider-local#504](https://github.com/hashicorp/terraform-provider-local/issues/504))
+
 ## 2.8.1
 
 ### Patch Changes

@@ -1,3 +1,23 @@
+## 0.17.7
+
+### Patch Changes
+
+Update pulumi-infisical from 0.16.18 to 0.16.21
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.16.18...v0.16.21
+
+- improvement(resource-folder): add description by @adilsitos in https://github.com/Infisical/terraform-provider-infisical/pull/276
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.16.21...v0.16.22
+
+- chore: add retry to aws app connection op by @Thiago-AS in https://github.com/Infisical/terraform-provider-infisical/pull/278
+
+#### New Contributors
+
+- @Thiago-AS made their first contribution in https://github.com/Infisical/terraform-provider-infisical/pull/278
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.16.23...v0.16.24
+
 ## 0.17.6
 
 ### Patch Changes
