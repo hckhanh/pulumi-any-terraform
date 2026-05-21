@@ -8,13 +8,16 @@ This package provides a Pulumi provider that enables you to manage your PostHog 
 
 ### Features
 
-- **Product Analytics**: Configure projects, cohorts, and insights for analyzing user behavior
+- **Product Analytics**: Configure projects and insights for analyzing user behavior
 - **Feature Flags**: Create and manage feature flags with rollout strategies and targeting rules
 - **Event Actions**: Define custom actions to track specific user behaviors
-- **Annotations**: Add context to your analytics with time-based annotations
-- **Dashboards**: Build and maintain custom dashboards for data visualization
-- **Experiments**: Run A/B tests and multivariate experiments
-- **Session Recording**: Configure session recording settings and filters
+- **Dashboards**: Build and maintain custom dashboards with custom layouts for data visualization
+- **Alerts**: Monitor metrics and get notified when thresholds are exceeded
+- **Hog Functions**: Run custom server-side transformations and destinations
+- **Surveys**: Create project-scoped surveys with targeting and iteration scheduling
+- **External Data Sources**: Sync data from external systems (Postgres, Stripe, etc.) into PostHog
+- **Proxy Records**: Provision custom-domain proxy records at the organization level
+- **Access Control**: Manage organizations, roles, role memberships, and project-level access
 - **TypeScript Support**: Full type safety with comprehensive TypeScript definitions
 
 ## Installation
@@ -84,19 +87,19 @@ pulumi config set posthog:host "https://app.posthog.com"
 import * as pulumi from '@pulumi/pulumi'
 import * as posthog from 'pulumi-posthog'
 
-// Create a feature flag
+// Create a feature flag (filters is a JSON-encoded string)
 const betaFeature = new posthog.FeatureFlag('beta-feature', {
   key: 'new-dashboard',
   name: 'New Dashboard Beta',
   active: true,
-  filters: {
+  filters: JSON.stringify({
     groups: [
       {
         properties: [],
         rolloutPercentage: 25,
       },
     ],
-  },
+  }),
 })
 
 // Export the feature flag key
@@ -112,7 +115,7 @@ import * as posthog from 'pulumi-posthog'
 // Create a new project
 const project = new posthog.Project('analytics-project', {
   name: 'Production Analytics',
-  isDemo: false,
+  timezone: 'UTC',
 })
 
 // Export the project ID
@@ -125,17 +128,17 @@ export const projectId = project.id
 import * as pulumi from '@pulumi/pulumi'
 import * as posthog from 'pulumi-posthog'
 
-// Create a custom action to track button clicks
+// Create a custom action to track button clicks (steps is a JSON-encoded string)
 const buttonClickAction = new posthog.Action('button-click', {
   name: 'Checkout Button Click',
   description: 'Tracks when users click the checkout button',
-  steps: [
+  stepsJson: JSON.stringify([
     {
       event: '$autocapture',
       selector: '#checkout-button',
       url: '/cart',
     },
-  ],
+  ]),
 })
 
 // Export the action ID
@@ -146,14 +149,17 @@ export const actionId = buttonClickAction.id
 
 This provider supports the following PostHog resources:
 
-- **Projects**: Manage PostHog projects
-- **Feature Flags**: Create and configure feature flags with targeting rules
-- **Actions**: Define custom event actions
-- **Cohorts**: Create user segments based on properties and behaviors
-- **Annotations**: Add contextual markers to your analytics timeline
-- **Dashboards**: Build custom dashboards
-- **Insights**: Configure analytics insights
-- **Webhooks**: Set up webhook integrations
+- **Project**: Manage PostHog projects
+- **FeatureFlag**: Create and configure feature flags with targeting rules
+- **Action**: Define custom event actions
+- **Dashboard** / **DashboardLayout**: Build custom dashboards and place insights on them
+- **Insight**: Configure analytics insights (trends, funnels, retention, etc.)
+- **Alert**: Set up alerts on insights with absolute or relative thresholds
+- **HogFunction**: Run custom Hog code for transformations and destinations
+- **Survey**: Create and manage project-scoped user surveys
+- **ExternalDataSource**: Sync data from external systems (Postgres, Stripe, etc.)
+- **ProxyRecord**: Provision PostHog reverse-proxy records on custom domains
+- **AccessControl** / **OrganizationMember** / **ProjectMember** / **ProjectDefaultAccess** / **Role** / **RoleMembership**: Manage access and permissions
 
 ## Advanced Usage
 
@@ -166,7 +172,7 @@ const advancedFlag = new posthog.FeatureFlag('advanced-targeting', {
   key: 'premium-features',
   name: 'Premium Features',
   active: true,
-  filters: {
+  filters: JSON.stringify({
     groups: [
       {
         properties: [
@@ -184,62 +190,59 @@ const advancedFlag = new posthog.FeatureFlag('advanced-targeting', {
         rolloutPercentage: 10, // 10% rollout for non-premium users
       },
     ],
-  },
-  ensureExperienceContinuity: true,
+  }),
 })
 ```
 
-### Multi-Resource Setup
+### Project-Scoped Survey
 
 ```typescript
-import * as pulumi from '@pulumi/pulumi'
 import * as posthog from 'pulumi-posthog'
 
-// Create a project
-const project = new posthog.Project('app-project', {
-  name: 'My Application',
+const npsSurvey = new posthog.Survey('nps-survey', {
+  name: 'NPS Q2',
+  type: 'popover',
+  projectId: '12345',
+  questionsJson: JSON.stringify([
+    {
+      type: 'rating',
+      question: 'How likely are you to recommend us?',
+      scale: 10,
+    },
+  ]),
+})
+```
+
+### External Data Source
+
+```typescript
+import * as posthog from 'pulumi-posthog'
+
+const stripeSource = new posthog.ExternalDataSource('stripe', {
+  sourceType: 'Stripe',
+  projectId: '12345',
+  schemas: ['Customer', 'Invoice', 'Subscription'],
+  syncFrequency: 'day',
+  // Secrets are redacted by PostHog when read; values stay in Pulumi state.
+  jobInputsJson: JSON.stringify({
+    stripe_account_id: 'acct_123',
+    stripe_secret_key: 'sk_live_...',
+  }),
+})
+```
+
+### Custom-Domain Proxy Record
+
+```typescript
+import * as posthog from 'pulumi-posthog'
+
+// Provision a reverse proxy on a custom domain. After apply, point a CNAME
+// record at `proxy.targetCname` to complete provisioning.
+const proxy = new posthog.ProxyRecord('marketing-proxy', {
+  domain: 'analytics.example.com',
 })
 
-// Create an action within the project
-const signupAction = new posthog.Action(
-  'signup-action',
-  {
-    name: 'User Signup',
-    description: 'Tracks successful user signups',
-    projectId: project.id,
-    steps: [
-      {
-        event: 'signup_completed',
-      },
-    ],
-  },
-  { dependsOn: [project] },
-)
-
-// Create a cohort of users who signed up
-const signupCohort = new posthog.Cohort(
-  'signup-cohort',
-  {
-    name: 'Signed Up Users',
-    projectId: project.id,
-    filters: {
-      properties: {
-        type: 'AND',
-        values: [
-          {
-            type: 'action',
-            key: signupAction.id,
-          },
-        ],
-      },
-    },
-  },
-  { dependsOn: [signupAction] },
-)
-
-export const projectName = project.name
-export const actionId = signupAction.id
-export const cohortId = signupCohort.id
+export const cnameTarget = proxy.targetCname
 ```
 
 ## Authentication

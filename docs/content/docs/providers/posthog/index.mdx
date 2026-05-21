@@ -152,6 +152,56 @@ const transform = new posthog.HogFunction("transform", {
 });
 ```
 
+### Surveys
+
+Create project-scoped surveys with display conditions, targeting, and iteration scheduling.
+
+```typescript
+const npsSurvey = new posthog.Survey("nps-survey", {
+    name: "NPS Q2",
+    type: "popover",
+    projectId: "12345",
+    questionsJson: JSON.stringify([
+        {
+            type: "rating",
+            question: "How likely are you to recommend us?",
+            scale: 10,
+        },
+    ]),
+});
+```
+
+### External Data Sources
+
+Sync data from external systems (Postgres, Stripe, etc.) into PostHog as warehouse tables.
+
+```typescript
+const stripeSource = new posthog.ExternalDataSource("stripe", {
+    sourceType: "Stripe",
+    projectId: "12345",
+    schemas: ["Customer", "Invoice", "Subscription"],
+    syncFrequency: "day",
+    // Secrets are redacted on read by PostHog; the planned value is preserved in state.
+    jobInputsJson: JSON.stringify({
+        stripe_account_id: "acct_123",
+        stripe_secret_key: "sk_live_...",
+    }),
+});
+```
+
+### Proxy Records
+
+Provision organization-scoped PostHog reverse-proxy records on custom domains.
+
+```typescript
+const proxy = new posthog.ProxyRecord("marketing-proxy", {
+    domain: "analytics.example.com",
+});
+
+// After apply, create a CNAME pointing to this target.
+export const cnameTarget = proxy.targetCname;
+```
+
 ## Configuration
 
 See the [Configuration](/docs/providers/posthog/configuration) guide for detailed setup instructions, including:
@@ -246,6 +296,9 @@ export const dashboardId = dashboard.dashboardId;
 | [Insight](/docs/providers/posthog/insight) | Analytics queries and insights |
 | [Alert](/docs/providers/posthog/alert) | Metric alerts and notifications |
 | [HogFunction](/docs/providers/posthog/hog-function) | Custom data transformation functions |
+| Survey | Project-scoped surveys with targeting and iteration scheduling |
+| ExternalDataSource | Sync warehouse data from external systems (Postgres, Stripe, etc.) |
+| ProxyRecord | Organization-scoped reverse-proxy records on custom domains |
 
 ## Getting Help
 
