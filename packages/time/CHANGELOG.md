@@ -1,3 +1,13 @@
+## 0.14.0
+
+### Minor Changes
+
+#### 0.14.0 (May 12, 2026)
+
+ENHANCEMENTS:
+
+- Added linux/s390x build target for IBM Z platform support ([hashicorp/terraform-provider-time#486](https://github.com/hashicorp/terraform-provider-time/issues/486))
+
 ## 0.13.6 (2025-10-08)
 
 ### 🩹 Fixes

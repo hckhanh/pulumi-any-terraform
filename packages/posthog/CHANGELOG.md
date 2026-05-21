@@ -1,5 +1,56 @@
 # pulumi-posthog
 
+## 1.0.7
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@ef08a5e: feat(alert): require condition_type and series_index at provider level (@vdekrijger)
+- PostHog/terraform-provider-posthog@d9aefa0: feat: add organization-scoped proxy record resource (@JulienJBO)
+- PostHog/terraform-provider-posthog@57e8c5a: feat: add posthog_external_data_source resource (@cramt)
+- PostHog/terraform-provider-posthog@0801106: feat: add project-scoped survey resource (@JulienJBO)
+- PostHog/terraform-provider-posthog@2fb3896: feat: expose dashboard layout show_description (@JulienJBO)
+
+#### Bug Fixes
+
+- PostHog/terraform-provider-posthog@561efc9: fix(external_data_source): correct API request shapes and immutability (@vdekrijger)
+- PostHog/terraform-provider-posthog@d1bda51: fix(proxy_record): symmetric domain normalisation, util test helpers (@vdekrijger)
+- PostHog/terraform-provider-posthog@454b26a: fix(survey): centralise helpers, allow nullable clears, expose iteration state (@vdekrijger)
+- PostHog/terraform-provider-posthog@2ef6778: fix(survey): make linked\_\*\_id and targeting_flag_id clearable; trim acc test (@vdekrijger)
+- PostHog/terraform-provider-posthog@a648ee9: fix(survey): use PATCH for updates to dodge upstream dotted-source assertion (@vdekrijger)
+- PostHog/terraform-provider-posthog@cf4195b: fix: normalize feature flag filters state (@JulienJBO)
+- PostHog/terraform-provider-posthog@3033af5: fix: normalize imported insight queries (@JulienJBO)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@c0cdd71: Apply suggestion from @vdekrijger (@vdekrijger)
+- PostHog/terraform-provider-posthog@5961866: Update internal/resource/feature_flag.go (@vdekrijger)
+- PostHog/terraform-provider-posthog@6e61adf: Update internal/resource/feature_flag.go (@vdekrijger)
+- PostHog/terraform-provider-posthog@c7122e8: chore(deps): bump github.com/hashicorp/copywrite in /tools (@dependabot[bot])
+- PostHog/terraform-provider-posthog@d02b424: chore(deps): bump github.com/hashicorp/terraform-plugin-docs in /tools (@dependabot[bot])
+- PostHog/terraform-provider-posthog@b1c99bf: chore(deps): bump github.com/hashicorp/terraform-plugin-testing (@dependabot[bot])
+- PostHog/terraform-provider-posthog@4f4c354: chore(deps): bump the github-actions group across 1 directory with 3 updates (@dependabot[bot])
+- PostHog/terraform-provider-posthog@79f4a65: chore(deps): bump the github-actions group with 2 updates (@dependabot[bot])
+- PostHog/terraform-provider-posthog@fc4697d: chore(proxy_record): use errors.New for static dns harness error (@vdekrijger)
+- PostHog/terraform-provider-posthog@ca87187: chore(survey): tidy follow-up per review (@vdekrijger)
+- PostHog/terraform-provider-posthog@e9392eb: docs(proxy_record): replace docs/notes with code-adjacent comments (@vdekrijger)
+- PostHog/terraform-provider-posthog@2a28456: refactor(external_data_source): apply review feedback (@vdekrijger)
+- PostHog/terraform-provider-posthog@3fe81d6: refactor: extract shared JSON-strip helper to internal/util (@vdekrijger)
+- PostHog/terraform-provider-posthog@2631510: revert(survey): drop the three iteration-tracking computed fields (@vdekrijger)
+- PostHog/terraform-provider-posthog@0fa0535: test(alert): align acceptance helpers with current PostHog spec (@vdekrijger)
+- PostHog/terraform-provider-posthog@77b685a: test(external_data_source): cover API contract and CRUD shapes (@vdekrijger)
+- PostHog/terraform-provider-posthog@957119a: test(external_data_source): exercise PATCH path with API-side verification (@vdekrijger)
+- PostHog/terraform-provider-posthog@bde2b38: test(external_data_source): fix prefix gen, add prefix-replace acctest (@vdekrijger)
+- PostHog/terraform-provider-posthog@7a9c22a: test(survey): cover unset flow in acceptance tests (@vdekrijger)
+
+#### New Contributors
+
+- @JulienJBO made their first contribution in https://github.com/PostHog/terraform-provider-posthog/pull/68
+- @cramt made their first contribution in https://github.com/PostHog/terraform-provider-posthog/pull/76
+
+**Full Changelog**: https://github.com/PostHog/terraform-provider-posthog/compare/v1.0.10...v1.0.11
+
 ## 1.0.6
 
 ### Patch Changes
