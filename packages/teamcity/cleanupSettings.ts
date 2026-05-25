@@ -78,18 +78,18 @@ export class CleanupSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CleanupSettings resources.
  */
 export interface CleanupSettingsState {
-    cron?: pulumi.Input<inputs.CleanupSettingsCron>;
-    daily?: pulumi.Input<inputs.CleanupSettingsDaily>;
-    enabled?: pulumi.Input<boolean>;
-    maxDuration?: pulumi.Input<number>;
+    cron?: pulumi.Input<inputs.CleanupSettingsCron | undefined>;
+    daily?: pulumi.Input<inputs.CleanupSettingsDaily | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    maxDuration?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CleanupSettings resource.
  */
 export interface CleanupSettingsArgs {
-    cron?: pulumi.Input<inputs.CleanupSettingsCron>;
-    daily?: pulumi.Input<inputs.CleanupSettingsDaily>;
+    cron?: pulumi.Input<inputs.CleanupSettingsCron | undefined>;
+    daily?: pulumi.Input<inputs.CleanupSettingsDaily | undefined>;
     enabled: pulumi.Input<boolean>;
     maxDuration: pulumi.Input<number>;
 }

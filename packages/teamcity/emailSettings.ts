@@ -93,13 +93,13 @@ export class EmailSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EmailSettings resources.
  */
 export interface EmailSettingsState {
-    enabled?: pulumi.Input<boolean>;
-    from?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    login?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    secureConnection?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    from?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
+    login?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
+    secureConnection?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,8 +109,8 @@ export interface EmailSettingsArgs {
     enabled: pulumi.Input<boolean>;
     from: pulumi.Input<string>;
     host: pulumi.Input<string>;
-    login?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
     port: pulumi.Input<number>;
-    secureConnection?: pulumi.Input<string>;
+    secureConnection?: pulumi.Input<string | undefined>;
 }

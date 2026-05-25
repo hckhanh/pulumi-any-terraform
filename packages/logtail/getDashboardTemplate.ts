@@ -42,6 +42,6 @@ export function getDashboardTemplateOutput(args?: GetDashboardTemplateOutputArgs
  * A collection of arguments for invoking getDashboardTemplate.
  */
 export interface GetDashboardTemplateOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

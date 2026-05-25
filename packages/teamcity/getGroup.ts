@@ -47,6 +47,6 @@ export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupOutputArgs {
-    key?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -84,14 +84,14 @@ export interface GroupState {
     /**
      * The description for the group. Changing this forces a new resource to be created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */
-    key?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    parentGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    roles?: pulumi.Input<pulumi.Input<inputs.GroupRole>[]>;
+    key?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parentGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    roles?: pulumi.Input<pulumi.Input<inputs.GroupRole>[] | undefined>;
 }
 
 /**
@@ -101,12 +101,12 @@ export interface GroupArgs {
     /**
      * The description for the group. Changing this forces a new resource to be created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Custom key (id) for the group. If not provided, TeamCity will generate one based on the name.
      */
-    key?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    parentGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    roles?: pulumi.Input<pulumi.Input<inputs.GroupRole>[]>;
+    key?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parentGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    roles?: pulumi.Input<pulumi.Input<inputs.GroupRole>[] | undefined>;
 }

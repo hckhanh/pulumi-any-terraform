@@ -67,16 +67,16 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -6,14 +6,14 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AuthSettingsModules {
-    basicHttp?: pulumi.Input<inputs.AuthSettingsModulesBasicHttp>;
-    builtIn?: pulumi.Input<inputs.AuthSettingsModulesBuiltIn>;
-    github?: pulumi.Input<inputs.AuthSettingsModulesGithub>;
-    githubApp?: pulumi.Input<inputs.AuthSettingsModulesGithubApp>;
-    githubEnterprise?: pulumi.Input<inputs.AuthSettingsModulesGithubEnterprise>;
-    google?: pulumi.Input<inputs.AuthSettingsModulesGoogle>;
-    jetbrainsSpace?: pulumi.Input<inputs.AuthSettingsModulesJetbrainsSpace>;
-    ldap?: pulumi.Input<inputs.AuthSettingsModulesLdap>;
+    basicHttp?: pulumi.Input<inputs.AuthSettingsModulesBasicHttp | undefined>;
+    builtIn?: pulumi.Input<inputs.AuthSettingsModulesBuiltIn | undefined>;
+    github?: pulumi.Input<inputs.AuthSettingsModulesGithub | undefined>;
+    githubApp?: pulumi.Input<inputs.AuthSettingsModulesGithubApp | undefined>;
+    githubEnterprise?: pulumi.Input<inputs.AuthSettingsModulesGithubEnterprise | undefined>;
+    google?: pulumi.Input<inputs.AuthSettingsModulesGoogle | undefined>;
+    jetbrainsSpace?: pulumi.Input<inputs.AuthSettingsModulesJetbrainsSpace | undefined>;
+    ldap?: pulumi.Input<inputs.AuthSettingsModulesLdap | undefined>;
     token: pulumi.Input<inputs.AuthSettingsModulesToken>;
 }
 
@@ -23,7 +23,7 @@ export interface AuthSettingsModulesBasicHttp {
 export interface AuthSettingsModulesBuiltIn {
     changePasswords: pulumi.Input<boolean>;
     registration: pulumi.Input<boolean>;
-    resetPasswords?: pulumi.Input<boolean>;
+    resetPasswords?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AuthSettingsModulesGithub {
@@ -44,7 +44,7 @@ export interface AuthSettingsModulesGithubEnterprise {
 export interface AuthSettingsModulesGoogle {
     allDomains: pulumi.Input<boolean>;
     createNewUsers: pulumi.Input<boolean>;
-    domains?: pulumi.Input<string>;
+    domains?: pulumi.Input<string | undefined>;
 }
 
 export interface AuthSettingsModulesJetbrainsSpace {
@@ -82,11 +82,11 @@ export interface ConnectionGithubApp {
 }
 
 export interface GlobalSettingsArtifactsDomainIsolation {
-    artifactsUrl?: pulumi.Input<string>;
+    artifactsUrl?: pulumi.Input<string | undefined>;
     /**
      * Enabled by default, set false if it needs to be disabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GlobalSettingsEncryption {
@@ -94,37 +94,37 @@ export interface GlobalSettingsEncryption {
 }
 
 export interface GroupRole {
-    global?: pulumi.Input<boolean>;
+    global?: pulumi.Input<boolean | undefined>;
     id: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 export interface UserRole {
-    global?: pulumi.Input<boolean>;
+    global?: pulumi.Input<boolean | undefined>;
     id: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 export interface VcsrootGit {
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     branch: pulumi.Input<string>;
-    branchSpec?: pulumi.Input<string>;
-    checkoutPolicy?: pulumi.Input<string>;
-    cleanFilesPolicy?: pulumi.Input<string>;
-    cleanPolicy?: pulumi.Input<string>;
-    convertCrlf?: pulumi.Input<boolean>;
-    ignoreKnownHosts?: pulumi.Input<boolean>;
-    passphrase?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    pathToGit?: pulumi.Input<string>;
-    privateKeyPath?: pulumi.Input<string>;
-    pushUrl?: pulumi.Input<string>;
-    submodules?: pulumi.Input<string>;
-    tagsAsBranches?: pulumi.Input<boolean>;
-    tokenId?: pulumi.Input<string>;
-    uploadedKey?: pulumi.Input<string>;
+    branchSpec?: pulumi.Input<string | undefined>;
+    checkoutPolicy?: pulumi.Input<string | undefined>;
+    cleanFilesPolicy?: pulumi.Input<string | undefined>;
+    cleanPolicy?: pulumi.Input<string | undefined>;
+    convertCrlf?: pulumi.Input<boolean | undefined>;
+    ignoreKnownHosts?: pulumi.Input<boolean | undefined>;
+    passphrase?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    pathToGit?: pulumi.Input<string | undefined>;
+    privateKeyPath?: pulumi.Input<string | undefined>;
+    pushUrl?: pulumi.Input<string | undefined>;
+    submodules?: pulumi.Input<string | undefined>;
+    tagsAsBranches?: pulumi.Input<boolean | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
+    uploadedKey?: pulumi.Input<string | undefined>;
     url: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
-    usernameForTags?: pulumi.Input<string>;
-    usernameStyle?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
+    usernameForTags?: pulumi.Input<string | undefined>;
+    usernameStyle?: pulumi.Input<string | undefined>;
 }

@@ -77,18 +77,18 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    githubUsername?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    roles?: pulumi.Input<pulumi.Input<inputs.UserRole>[]>;
-    username?: pulumi.Input<string>;
+    githubUsername?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    roles?: pulumi.Input<pulumi.Input<inputs.UserRole>[] | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    githubUsername?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    roles?: pulumi.Input<pulumi.Input<inputs.UserRole>[]>;
+    githubUsername?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    roles?: pulumi.Input<pulumi.Input<inputs.UserRole>[] | undefined>;
     username: pulumi.Input<string>;
 }

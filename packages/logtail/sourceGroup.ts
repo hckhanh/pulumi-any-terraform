@@ -91,23 +91,23 @@ export interface SourceGroupState {
     /**
      * The time when this source group was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The name of this source group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The sort index of this source group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this source group was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,13 +117,13 @@ export interface SourceGroupArgs {
     /**
      * The name of this source group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The sort index of this source group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

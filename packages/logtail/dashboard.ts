@@ -135,51 +135,51 @@ export interface DashboardState {
     /**
      * The time when this dashboard was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dashboard group this dashboard belongs to. Use 0 to remove from group.
      */
-    dashboardGroupId?: pulumi.Input<number>;
+    dashboardGroupId?: pulumi.Input<number | undefined>;
     /**
      * The dashboard configuration data as a JSON string. When set, the dashboard is created via the import API and any change forces re-creation. Cannot be combined with individual fields like refresh_interval, date_range_from, chart and variable blocks, etc.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * The start of the date range (e.g., 'now-3h', 'now-24h').
      */
-    dateRangeFrom?: pulumi.Input<string>;
+    dateRangeFrom?: pulumi.Input<string | undefined>;
     /**
      * The end of the date range (e.g., 'now').
      */
-    dateRangeTo?: pulumi.Input<string>;
+    dateRangeTo?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The auto-refresh interval in seconds.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * SQL expression to filter eligible sources.
      */
-    sourceEligibilitySql?: pulumi.Input<string>;
+    sourceEligibilitySql?: pulumi.Input<string | undefined>;
     /**
      * The team ID of the dashboard.
      */
-    teamId?: pulumi.Input<number>;
+    teamId?: pulumi.Input<number | undefined>;
     /**
      * The team name to associate with the dashboard when using a global API token.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this dashboard was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Variables for this dashboard. Default variables (time, start_time, end_time, source) are auto-created.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[] | undefined>;
 }
 
 /**
@@ -189,37 +189,37 @@ export interface DashboardArgs {
     /**
      * The ID of the dashboard group this dashboard belongs to. Use 0 to remove from group.
      */
-    dashboardGroupId?: pulumi.Input<number>;
+    dashboardGroupId?: pulumi.Input<number | undefined>;
     /**
      * The dashboard configuration data as a JSON string. When set, the dashboard is created via the import API and any change forces re-creation. Cannot be combined with individual fields like refresh_interval, date_range_from, chart and variable blocks, etc.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * The start of the date range (e.g., 'now-3h', 'now-24h').
      */
-    dateRangeFrom?: pulumi.Input<string>;
+    dateRangeFrom?: pulumi.Input<string | undefined>;
     /**
      * The end of the date range (e.g., 'now').
      */
-    dateRangeTo?: pulumi.Input<string>;
+    dateRangeTo?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The auto-refresh interval in seconds.
      */
-    refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * SQL expression to filter eligible sources.
      */
-    sourceEligibilitySql?: pulumi.Input<string>;
+    sourceEligibilitySql?: pulumi.Input<string | undefined>;
     /**
      * The team name to associate with the dashboard when using a global API token.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * Variables for this dashboard. Default variables (time, start_time, end_time, source) are auto-created.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[] | undefined>;
 }

@@ -102,13 +102,13 @@ export class AuthSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthSettings resources.
  */
 export interface AuthSettingsState {
-    allowGuest?: pulumi.Input<boolean>;
-    collapseLoginForm?: pulumi.Input<boolean>;
-    emailVerification?: pulumi.Input<boolean>;
-    guestUsername?: pulumi.Input<string>;
-    modules?: pulumi.Input<inputs.AuthSettingsModules>;
-    perProjectPermissions?: pulumi.Input<boolean>;
-    welcomeText?: pulumi.Input<string>;
+    allowGuest?: pulumi.Input<boolean | undefined>;
+    collapseLoginForm?: pulumi.Input<boolean | undefined>;
+    emailVerification?: pulumi.Input<boolean | undefined>;
+    guestUsername?: pulumi.Input<string | undefined>;
+    modules?: pulumi.Input<inputs.AuthSettingsModules | undefined>;
+    perProjectPermissions?: pulumi.Input<boolean | undefined>;
+    welcomeText?: pulumi.Input<string | undefined>;
 }
 
 /**

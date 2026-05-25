@@ -118,31 +118,31 @@ export interface WarehouseEmbeddingState {
     /**
      * The time when this embedding was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The vector dimension of the embeddings to generate.
      */
-    dimension?: pulumi.Input<number>;
+    dimension?: pulumi.Input<number | undefined>;
     /**
      * The source column name containing the text to embed.
      */
-    embedFrom?: pulumi.Input<string>;
+    embedFrom?: pulumi.Input<string | undefined>;
     /**
      * The target column name where the generated embeddings will be stored.
      */
-    embedTo?: pulumi.Input<string>;
+    embedTo?: pulumi.Input<string | undefined>;
     /**
      * The name of the embedding model to use (e.g., `embeddinggemma:300m`).
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Warehouse source to create the embedding for.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The time when this embedding was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

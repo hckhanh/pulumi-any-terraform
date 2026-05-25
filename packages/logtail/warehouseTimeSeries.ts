@@ -118,35 +118,35 @@ export interface WarehouseTimeSeriesState {
     /**
      * An array of aggregation functions (e.g., <span pulumi-lang-nodejs="`avg`" pulumi-lang-dotnet="`Avg`" pulumi-lang-go="`avg`" pulumi-lang-python="`avg`" pulumi-lang-yaml="`avg`" pulumi-lang-java="`avg`">`avg`</span>, <span pulumi-lang-nodejs="`min`" pulumi-lang-dotnet="`Min`" pulumi-lang-go="`min`" pulumi-lang-python="`min`" pulumi-lang-yaml="`min`" pulumi-lang-java="`min`">`min`</span>, <span pulumi-lang-nodejs="`max`" pulumi-lang-dotnet="`Max`" pulumi-lang-go="`max`" pulumi-lang-python="`max`" pulumi-lang-yaml="`max`" pulumi-lang-java="`max`">`max`</span>). If omitted, no aggregations are applied.
      */
-    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
+    aggregations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of vector index to apply (e.g., <span pulumi-lang-nodejs="`vectorSimilarity`" pulumi-lang-dotnet="`VectorSimilarity`" pulumi-lang-go="`vectorSimilarity`" pulumi-lang-python="`vector_similarity`" pulumi-lang-yaml="`vectorSimilarity`" pulumi-lang-java="`vectorSimilarity`">`vector_similarity`</span>). Only applicable for vector types (<span pulumi-lang-nodejs="`arrayBfloat16`" pulumi-lang-dotnet="`ArrayBfloat16`" pulumi-lang-go="`arrayBfloat16`" pulumi-lang-python="`array_bfloat16`" pulumi-lang-yaml="`arrayBfloat16`" pulumi-lang-java="`arrayBfloat16`">`array_bfloat16`</span>, <span pulumi-lang-nodejs="`arrayFloat32`" pulumi-lang-dotnet="`ArrayFloat32`" pulumi-lang-go="`arrayFloat32`" pulumi-lang-python="`array_float32`" pulumi-lang-yaml="`arrayFloat32`" pulumi-lang-java="`arrayFloat32`">`array_float32`</span>).
      */
-    expressionIndex?: pulumi.Input<string>;
+    expressionIndex?: pulumi.Input<string | undefined>;
     /**
      * The name of the time series. Must contain only letters, numbers, and underscores.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Warehouse source to create the time series for.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The SQL expression used to compute the time series. For example `JSONExtract(raw, 'response_time', 'Nullable(Float64)')`.
      */
-    sqlExpression?: pulumi.Input<string>;
+    sqlExpression?: pulumi.Input<string | undefined>;
     /**
      * The data type of the time series. Valid types are: <span pulumi-lang-nodejs="`string`" pulumi-lang-dotnet="`String`" pulumi-lang-go="`string`" pulumi-lang-python="`string`" pulumi-lang-yaml="`string`" pulumi-lang-java="`string`">`string`</span>, <span pulumi-lang-nodejs="`stringLowCardinality`" pulumi-lang-dotnet="`StringLowCardinality`" pulumi-lang-go="`stringLowCardinality`" pulumi-lang-python="`string_low_cardinality`" pulumi-lang-yaml="`stringLowCardinality`" pulumi-lang-java="`stringLowCardinality`">`string_low_cardinality`</span>, <span pulumi-lang-nodejs="`int64Delta`" pulumi-lang-dotnet="`Int64Delta`" pulumi-lang-go="`int64Delta`" pulumi-lang-python="`int64_delta`" pulumi-lang-yaml="`int64Delta`" pulumi-lang-java="`int64Delta`">`int64_delta`</span>, <span pulumi-lang-nodejs="`int64`" pulumi-lang-dotnet="`Int64`" pulumi-lang-go="`int64`" pulumi-lang-python="`int64`" pulumi-lang-yaml="`int64`" pulumi-lang-java="`int64`">`int64`</span>, <span pulumi-lang-nodejs="`uint64Delta`" pulumi-lang-dotnet="`Uint64Delta`" pulumi-lang-go="`uint64Delta`" pulumi-lang-python="`uint64_delta`" pulumi-lang-yaml="`uint64Delta`" pulumi-lang-java="`uint64Delta`">`uint64_delta`</span>, <span pulumi-lang-nodejs="`uint64`" pulumi-lang-dotnet="`Uint64`" pulumi-lang-go="`uint64`" pulumi-lang-python="`uint64`" pulumi-lang-yaml="`uint64`" pulumi-lang-java="`uint64`">`uint64`</span>, <span pulumi-lang-nodejs="`float64Delta`" pulumi-lang-dotnet="`Float64Delta`" pulumi-lang-go="`float64Delta`" pulumi-lang-python="`float64_delta`" pulumi-lang-yaml="`float64Delta`" pulumi-lang-java="`float64Delta`">`float64_delta`</span>, <span pulumi-lang-nodejs="`datetime64Delta`" pulumi-lang-dotnet="`Datetime64Delta`" pulumi-lang-go="`datetime64Delta`" pulumi-lang-python="`datetime64_delta`" pulumi-lang-yaml="`datetime64Delta`" pulumi-lang-java="`datetime64Delta`">`datetime64_delta`</span>, <span pulumi-lang-nodejs="`boolean`" pulumi-lang-dotnet="`Boolean`" pulumi-lang-go="`boolean`" pulumi-lang-python="`boolean`" pulumi-lang-yaml="`boolean`" pulumi-lang-java="`boolean`">`boolean`</span>, <span pulumi-lang-nodejs="`arrayBfloat16`" pulumi-lang-dotnet="`ArrayBfloat16`" pulumi-lang-go="`arrayBfloat16`" pulumi-lang-python="`array_bfloat16`" pulumi-lang-yaml="`arrayBfloat16`" pulumi-lang-java="`arrayBfloat16`">`array_bfloat16`</span>, <span pulumi-lang-nodejs="`arrayFloat32`" pulumi-lang-dotnet="`ArrayFloat32`" pulumi-lang-go="`arrayFloat32`" pulumi-lang-python="`array_float32`" pulumi-lang-yaml="`arrayFloat32`" pulumi-lang-java="`arrayFloat32`">`array_float32`</span>
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The vector dimension if <span pulumi-lang-nodejs="`expressionIndex`" pulumi-lang-dotnet="`ExpressionIndex`" pulumi-lang-go="`expressionIndex`" pulumi-lang-python="`expression_index`" pulumi-lang-yaml="`expressionIndex`" pulumi-lang-java="`expressionIndex`">`expression_index`</span> is <span pulumi-lang-nodejs="`vectorSimilarity`" pulumi-lang-dotnet="`VectorSimilarity`" pulumi-lang-go="`vectorSimilarity`" pulumi-lang-python="`vector_similarity`" pulumi-lang-yaml="`vectorSimilarity`" pulumi-lang-java="`vectorSimilarity`">`vector_similarity`</span> (e.g., <span pulumi-lang-nodejs="`512`" pulumi-lang-dotnet="`512`" pulumi-lang-go="`512`" pulumi-lang-python="`512`" pulumi-lang-yaml="`512`" pulumi-lang-java="`512`">`512`</span>). Supported values: 256, 384, 512, 768, 1024, 1536, 3072, 4096, 10752.
      */
-    vectorDimension?: pulumi.Input<number>;
+    vectorDimension?: pulumi.Input<number | undefined>;
     /**
      * The distance function to use for vector similarity (e.g., <span pulumi-lang-nodejs="`cosine`" pulumi-lang-dotnet="`Cosine`" pulumi-lang-go="`cosine`" pulumi-lang-python="`cosine`" pulumi-lang-yaml="`cosine`" pulumi-lang-java="`cosine`">`cosine`</span>, <span pulumi-lang-nodejs="`l2`" pulumi-lang-dotnet="`L2`" pulumi-lang-go="`l2`" pulumi-lang-python="`l2`" pulumi-lang-yaml="`l2`" pulumi-lang-java="`l2`">`l2`</span>).
      */
-    vectorDistanceFunction?: pulumi.Input<string>;
+    vectorDistanceFunction?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -156,15 +156,15 @@ export interface WarehouseTimeSeriesArgs {
     /**
      * An array of aggregation functions (e.g., <span pulumi-lang-nodejs="`avg`" pulumi-lang-dotnet="`Avg`" pulumi-lang-go="`avg`" pulumi-lang-python="`avg`" pulumi-lang-yaml="`avg`" pulumi-lang-java="`avg`">`avg`</span>, <span pulumi-lang-nodejs="`min`" pulumi-lang-dotnet="`Min`" pulumi-lang-go="`min`" pulumi-lang-python="`min`" pulumi-lang-yaml="`min`" pulumi-lang-java="`min`">`min`</span>, <span pulumi-lang-nodejs="`max`" pulumi-lang-dotnet="`Max`" pulumi-lang-go="`max`" pulumi-lang-python="`max`" pulumi-lang-yaml="`max`" pulumi-lang-java="`max`">`max`</span>). If omitted, no aggregations are applied.
      */
-    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
+    aggregations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of vector index to apply (e.g., <span pulumi-lang-nodejs="`vectorSimilarity`" pulumi-lang-dotnet="`VectorSimilarity`" pulumi-lang-go="`vectorSimilarity`" pulumi-lang-python="`vector_similarity`" pulumi-lang-yaml="`vectorSimilarity`" pulumi-lang-java="`vectorSimilarity`">`vector_similarity`</span>). Only applicable for vector types (<span pulumi-lang-nodejs="`arrayBfloat16`" pulumi-lang-dotnet="`ArrayBfloat16`" pulumi-lang-go="`arrayBfloat16`" pulumi-lang-python="`array_bfloat16`" pulumi-lang-yaml="`arrayBfloat16`" pulumi-lang-java="`arrayBfloat16`">`array_bfloat16`</span>, <span pulumi-lang-nodejs="`arrayFloat32`" pulumi-lang-dotnet="`ArrayFloat32`" pulumi-lang-go="`arrayFloat32`" pulumi-lang-python="`array_float32`" pulumi-lang-yaml="`arrayFloat32`" pulumi-lang-java="`arrayFloat32`">`array_float32`</span>).
      */
-    expressionIndex?: pulumi.Input<string>;
+    expressionIndex?: pulumi.Input<string | undefined>;
     /**
      * The name of the time series. Must contain only letters, numbers, and underscores.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Warehouse source to create the time series for.
      */
@@ -180,9 +180,9 @@ export interface WarehouseTimeSeriesArgs {
     /**
      * The vector dimension if <span pulumi-lang-nodejs="`expressionIndex`" pulumi-lang-dotnet="`ExpressionIndex`" pulumi-lang-go="`expressionIndex`" pulumi-lang-python="`expression_index`" pulumi-lang-yaml="`expressionIndex`" pulumi-lang-java="`expressionIndex`">`expression_index`</span> is <span pulumi-lang-nodejs="`vectorSimilarity`" pulumi-lang-dotnet="`VectorSimilarity`" pulumi-lang-go="`vectorSimilarity`" pulumi-lang-python="`vector_similarity`" pulumi-lang-yaml="`vectorSimilarity`" pulumi-lang-java="`vectorSimilarity`">`vector_similarity`</span> (e.g., <span pulumi-lang-nodejs="`512`" pulumi-lang-dotnet="`512`" pulumi-lang-go="`512`" pulumi-lang-python="`512`" pulumi-lang-yaml="`512`" pulumi-lang-java="`512`">`512`</span>). Supported values: 256, 384, 512, 768, 1024, 1536, 3072, 4096, 10752.
      */
-    vectorDimension?: pulumi.Input<number>;
+    vectorDimension?: pulumi.Input<number | undefined>;
     /**
      * The distance function to use for vector similarity (e.g., <span pulumi-lang-nodejs="`cosine`" pulumi-lang-dotnet="`Cosine`" pulumi-lang-go="`cosine`" pulumi-lang-python="`cosine`" pulumi-lang-yaml="`cosine`" pulumi-lang-java="`cosine`">`cosine`</span>, <span pulumi-lang-nodejs="`l2`" pulumi-lang-dotnet="`L2`" pulumi-lang-go="`l2`" pulumi-lang-python="`l2`" pulumi-lang-yaml="`l2`" pulumi-lang-java="`l2`">`l2`</span>).
      */
-    vectorDistanceFunction?: pulumi.Input<string>;
+    vectorDistanceFunction?: pulumi.Input<string | undefined>;
 }

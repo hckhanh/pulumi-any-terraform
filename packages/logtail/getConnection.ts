@@ -53,5 +53,5 @@ export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulum
  * A collection of arguments for invoking getConnection.
  */
 export interface GetConnectionOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

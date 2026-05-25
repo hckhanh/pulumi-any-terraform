@@ -49,7 +49,7 @@ export function getDashboardOutput(args?: GetDashboardOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getDashboard.
  */
 export interface GetDashboardOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    teamName?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    teamName?: pulumi.Input<string | undefined>;
 }

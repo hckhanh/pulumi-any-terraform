@@ -22,8 +22,12 @@ export interface GetBuildConfigurationArgs {
  * A collection of values returned by getBuildConfiguration.
  */
 export interface GetBuildConfigurationResult {
+    readonly buildType: string;
+    readonly description: string;
     readonly id: string;
     readonly name: string;
+    readonly paused: boolean;
+    readonly projectId: string;
 }
 export function getBuildConfigurationOutput(args: GetBuildConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBuildConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

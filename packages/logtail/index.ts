@@ -10,6 +10,11 @@ export type Collector = import("./collector").Collector;
 export const Collector: typeof import("./collector").Collector = null as any;
 utilities.lazyLoad(exports, ["Collector"], () => require("./collector"));
 
+export { CollectorTargetArgs, CollectorTargetState } from "./collectorTarget";
+export type CollectorTarget = import("./collectorTarget").CollectorTarget;
+export const CollectorTarget: typeof import("./collectorTarget").CollectorTarget = null as any;
+utilities.lazyLoad(exports, ["CollectorTarget"], () => require("./collectorTarget"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -214,6 +219,8 @@ const _module = {
         switch (type) {
             case "logtail:index/collector:Collector":
                 return new Collector(name, <any>undefined, { urn })
+            case "logtail:index/collectorTarget:CollectorTarget":
+                return new CollectorTarget(name, <any>undefined, { urn })
             case "logtail:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "logtail:index/dashboard:Dashboard":
@@ -256,6 +263,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("logtail", "index/collector", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/collectorTarget", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/connection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/dashboardAlert", _module)

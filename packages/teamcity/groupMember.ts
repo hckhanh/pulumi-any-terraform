@@ -70,8 +70,8 @@ export class GroupMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupMember resources.
  */
 export interface GroupMemberState {
-    groupId?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -85,19 +85,19 @@ export interface ExplorationGroupState {
     /**
      * The time when this exploration group was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The name of this exploration group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this exploration group was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -107,9 +107,9 @@ export interface ExplorationGroupArgs {
     /**
      * The name of this exploration group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

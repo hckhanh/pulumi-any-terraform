@@ -103,27 +103,27 @@ export interface DashboardSectionState {
     /**
      * Whether this section is collapsed.
      */
-    collapsed?: pulumi.Input<boolean>;
+    collapsed?: pulumi.Input<boolean | undefined>;
     /**
      * The time when this section was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dashboard this section belongs to.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The name of this section.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The time when this section was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The vertical position of this section in the dashboard grid.
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface DashboardSectionArgs {
     /**
      * Whether this section is collapsed.
      */
-    collapsed?: pulumi.Input<boolean>;
+    collapsed?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the dashboard this section belongs to.
      */
@@ -141,7 +141,7 @@ export interface DashboardSectionArgs {
     /**
      * The name of this section.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The vertical position of this section in the dashboard grid.
      */

@@ -51,7 +51,9 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public readonly dataRegion: pulumi.Output<string>;
     /**
-     * Database connections for the collector.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     *
+     * @deprecated Deprecated
      */
     declare public readonly databases: pulumi.Output<outputs.CollectorDatabase[] | undefined>;
     /**
@@ -218,103 +220,105 @@ export interface CollectorState {
     /**
      * Collector-level configuration including active components, sampling rates, batching, and VRL transformations. These settings run on the collector host inside your infrastructure.
      */
-    configuration?: pulumi.Input<inputs.CollectorConfiguration>;
+    configuration?: pulumi.Input<inputs.CollectorConfiguration | undefined>;
     /**
      * The time when this collector was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the collector. Once set, it cannot be removed.
      */
-    customBucket?: pulumi.Input<inputs.CollectorCustomBucket>;
+    customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
      * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     *
+     * @deprecated Deprecated
      */
-    databases?: pulumi.Input<pulumi.Input<inputs.CollectorDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.CollectorDatabase>[] | undefined>;
     /**
      * The number of database connections configured for this collector.
      */
-    databasesCount?: pulumi.Input<number>;
+    databasesCount?: pulumi.Input<number | undefined>;
     /**
      * The number of hosts connected to this collector.
      */
-    hostsCount?: pulumi.Input<number>;
+    hostsCount?: pulumi.Input<number | undefined>;
     /**
      * The number of hosts currently online.
      */
-    hostsUpCount?: pulumi.Input<number>;
+    hostsUpCount?: pulumi.Input<number | undefined>;
     /**
      * Whether ingestion is paused for this collector.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * Data retention for logs in days. Allowed values: 7, 30, 60, 90, 180, 365, 730, 1095, 1460, 1825. There might be additional charges for longer retention.
      */
-    logsRetention?: pulumi.Input<number>;
+    logsRetention?: pulumi.Input<number | undefined>;
     /**
      * Data retention for metrics in days. Allowed values: 7, 30, 60, 90, 180, 365, 730, 1095, 1460, 1825. There might be additional charges for longer retention.
      */
-    metricsRetention?: pulumi.Input<number>;
+    metricsRetention?: pulumi.Input<number | undefined>;
     /**
      * The name of this collector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A description or note about this collector.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The time when this collector last received data.
      */
-    pingedAt?: pulumi.Input<string>;
+    pingedAt?: pulumi.Input<string | undefined>;
     /**
      * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The secret token used to authenticate collector hosts.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    sourceGroupId?: pulumi.Input<number>;
+    sourceGroupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the underlying source. Use this with <span pulumi-lang-nodejs="`logtail.Metric`" pulumi-lang-dotnet="`logtail.Metric`" pulumi-lang-go="`Metric`" pulumi-lang-python="`Metric`" pulumi-lang-yaml="`logtail.Metric`" pulumi-lang-java="`logtail.Metric`">`logtail.Metric`</span> to define metrics on this collector's data.
      */
-    sourceId?: pulumi.Input<number>;
+    sourceId?: pulumi.Input<number | undefined>;
     /**
      * Server-side VRL transformation that runs during ingestion on Better Stack. Use this for enrichment, routing, or light normalization that doesn't involve sensitive data. For PII redaction and sensitive data filtering, prefer `configuration.vrl_transformation` which runs on the collector host and ensures raw data never leaves your network. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    sourceVrlTransformation?: pulumi.Input<string>;
+    sourceVrlTransformation?: pulumi.Input<string | undefined>;
     /**
      * The current status of this collector.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The team ID for this resource.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this collector was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Custom Vector YAML configuration for additional sources and transforms beyond the built-in component toggles. Must not contain `command:` directives.
      */
-    userVectorConfig?: pulumi.Input<string>;
+    userVectorConfig?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -324,43 +328,45 @@ export interface CollectorArgs {
     /**
      * Collector-level configuration including active components, sampling rates, batching, and VRL transformations. These settings run on the collector host inside your infrastructure.
      */
-    configuration?: pulumi.Input<inputs.CollectorConfiguration>;
+    configuration?: pulumi.Input<inputs.CollectorConfiguration | undefined>;
     /**
      * Optional custom bucket configuration for the collector. Once set, it cannot be removed.
      */
-    customBucket?: pulumi.Input<inputs.CollectorCustomBucket>;
+    customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
      * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     *
+     * @deprecated Deprecated
      */
-    databases?: pulumi.Input<pulumi.Input<inputs.CollectorDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.CollectorDatabase>[] | undefined>;
     /**
      * Whether ingestion is paused for this collector.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * Data retention for logs in days. Allowed values: 7, 30, 60, 90, 180, 365, 730, 1095, 1460, 1825. There might be additional charges for longer retention.
      */
-    logsRetention?: pulumi.Input<number>;
+    logsRetention?: pulumi.Input<number | undefined>;
     /**
      * Data retention for metrics in days. Allowed values: 7, 30, 60, 90, 180, 365, 730, 1095, 1460, 1825. There might be additional charges for longer retention.
      */
-    metricsRetention?: pulumi.Input<number>;
+    metricsRetention?: pulumi.Input<number | undefined>;
     /**
      * The name of this collector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A description or note about this collector.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
      */
@@ -368,17 +374,17 @@ export interface CollectorArgs {
     /**
      * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    sourceGroupId?: pulumi.Input<number>;
+    sourceGroupId?: pulumi.Input<number | undefined>;
     /**
      * Server-side VRL transformation that runs during ingestion on Better Stack. Use this for enrichment, routing, or light normalization that doesn't involve sensitive data. For PII redaction and sensitive data filtering, prefer `configuration.vrl_transformation` which runs on the collector host and ensures raw data never leaves your network. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    sourceVrlTransformation?: pulumi.Input<string>;
+    sourceVrlTransformation?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * Custom Vector YAML configuration for additional sources and transforms beyond the built-in component toggles. Must not contain `command:` directives.
      */
-    userVectorConfig?: pulumi.Input<string>;
+    userVectorConfig?: pulumi.Input<string | undefined>;
 }

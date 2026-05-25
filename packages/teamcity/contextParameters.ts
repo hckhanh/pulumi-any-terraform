@@ -70,8 +70,8 @@ export class ContextParameters extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContextParameters resources.
  */
 export interface ContextParametersState {
-    params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    projectId?: pulumi.Input<string>;
+    params?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**

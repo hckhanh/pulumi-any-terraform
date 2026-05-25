@@ -10,6 +10,56 @@ export type AuthSettings = import("./authSettings").AuthSettings;
 export const AuthSettings: typeof import("./authSettings").AuthSettings = null as any;
 utilities.lazyLoad(exports, ["AuthSettings"], () => require("./authSettings"));
 
+export { BuildConfigurationArgs, BuildConfigurationState } from "./buildConfiguration";
+export type BuildConfiguration = import("./buildConfiguration").BuildConfiguration;
+export const BuildConfiguration: typeof import("./buildConfiguration").BuildConfiguration = null as any;
+utilities.lazyLoad(exports, ["BuildConfiguration"], () => require("./buildConfiguration"));
+
+export { BuildConfigurationAgentRequirementArgs, BuildConfigurationAgentRequirementState } from "./buildConfigurationAgentRequirement";
+export type BuildConfigurationAgentRequirement = import("./buildConfigurationAgentRequirement").BuildConfigurationAgentRequirement;
+export const BuildConfigurationAgentRequirement: typeof import("./buildConfigurationAgentRequirement").BuildConfigurationAgentRequirement = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationAgentRequirement"], () => require("./buildConfigurationAgentRequirement"));
+
+export { BuildConfigurationArtifactDependencyArgs, BuildConfigurationArtifactDependencyState } from "./buildConfigurationArtifactDependency";
+export type BuildConfigurationArtifactDependency = import("./buildConfigurationArtifactDependency").BuildConfigurationArtifactDependency;
+export const BuildConfigurationArtifactDependency: typeof import("./buildConfigurationArtifactDependency").BuildConfigurationArtifactDependency = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationArtifactDependency"], () => require("./buildConfigurationArtifactDependency"));
+
+export { BuildConfigurationFeatureArgs, BuildConfigurationFeatureState } from "./buildConfigurationFeature";
+export type BuildConfigurationFeature = import("./buildConfigurationFeature").BuildConfigurationFeature;
+export const BuildConfigurationFeature: typeof import("./buildConfigurationFeature").BuildConfigurationFeature = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationFeature"], () => require("./buildConfigurationFeature"));
+
+export { BuildConfigurationParameterArgs, BuildConfigurationParameterState } from "./buildConfigurationParameter";
+export type BuildConfigurationParameter = import("./buildConfigurationParameter").BuildConfigurationParameter;
+export const BuildConfigurationParameter: typeof import("./buildConfigurationParameter").BuildConfigurationParameter = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationParameter"], () => require("./buildConfigurationParameter"));
+
+export { BuildConfigurationSettingsArgs, BuildConfigurationSettingsState } from "./buildConfigurationSettings";
+export type BuildConfigurationSettings = import("./buildConfigurationSettings").BuildConfigurationSettings;
+export const BuildConfigurationSettings: typeof import("./buildConfigurationSettings").BuildConfigurationSettings = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationSettings"], () => require("./buildConfigurationSettings"));
+
+export { BuildConfigurationSnapshotDependencyArgs, BuildConfigurationSnapshotDependencyState } from "./buildConfigurationSnapshotDependency";
+export type BuildConfigurationSnapshotDependency = import("./buildConfigurationSnapshotDependency").BuildConfigurationSnapshotDependency;
+export const BuildConfigurationSnapshotDependency: typeof import("./buildConfigurationSnapshotDependency").BuildConfigurationSnapshotDependency = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationSnapshotDependency"], () => require("./buildConfigurationSnapshotDependency"));
+
+export { BuildConfigurationStepArgs, BuildConfigurationStepState } from "./buildConfigurationStep";
+export type BuildConfigurationStep = import("./buildConfigurationStep").BuildConfigurationStep;
+export const BuildConfigurationStep: typeof import("./buildConfigurationStep").BuildConfigurationStep = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationStep"], () => require("./buildConfigurationStep"));
+
+export { BuildConfigurationTriggerArgs, BuildConfigurationTriggerState } from "./buildConfigurationTrigger";
+export type BuildConfigurationTrigger = import("./buildConfigurationTrigger").BuildConfigurationTrigger;
+export const BuildConfigurationTrigger: typeof import("./buildConfigurationTrigger").BuildConfigurationTrigger = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationTrigger"], () => require("./buildConfigurationTrigger"));
+
+export { BuildConfigurationVcsRootArgs, BuildConfigurationVcsRootState } from "./buildConfigurationVcsRoot";
+export type BuildConfigurationVcsRoot = import("./buildConfigurationVcsRoot").BuildConfigurationVcsRoot;
+export const BuildConfigurationVcsRoot: typeof import("./buildConfigurationVcsRoot").BuildConfigurationVcsRoot = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationVcsRoot"], () => require("./buildConfigurationVcsRoot"));
+
 export { CleanupSettingsArgs, CleanupSettingsState } from "./cleanupSettings";
 export type CleanupSettings = import("./cleanupSettings").CleanupSettings;
 export const CleanupSettings: typeof import("./cleanupSettings").CleanupSettings = null as any;
@@ -154,6 +204,26 @@ const _module = {
         switch (type) {
             case "teamcity:index/authSettings:AuthSettings":
                 return new AuthSettings(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfiguration:BuildConfiguration":
+                return new BuildConfiguration(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationAgentRequirement:BuildConfigurationAgentRequirement":
+                return new BuildConfigurationAgentRequirement(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationArtifactDependency:BuildConfigurationArtifactDependency":
+                return new BuildConfigurationArtifactDependency(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationFeature:BuildConfigurationFeature":
+                return new BuildConfigurationFeature(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationParameter:BuildConfigurationParameter":
+                return new BuildConfigurationParameter(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationSettings:BuildConfigurationSettings":
+                return new BuildConfigurationSettings(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationSnapshotDependency:BuildConfigurationSnapshotDependency":
+                return new BuildConfigurationSnapshotDependency(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationStep:BuildConfigurationStep":
+                return new BuildConfigurationStep(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationTrigger:BuildConfigurationTrigger":
+                return new BuildConfigurationTrigger(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationVcsRoot:BuildConfigurationVcsRoot":
+                return new BuildConfigurationVcsRoot(name, <any>undefined, { urn })
             case "teamcity:index/cleanupSettings:CleanupSettings":
                 return new CleanupSettings(name, <any>undefined, { urn })
             case "teamcity:index/connection:Connection":
@@ -198,6 +268,16 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("teamcity", "index/authSettings", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfiguration", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationAgentRequirement", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationArtifactDependency", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationFeature", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationParameter", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationSettings", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationSnapshotDependency", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationStep", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationTrigger", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationVcsRoot", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/cleanupSettings", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/connection", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/contextParameters", _module)

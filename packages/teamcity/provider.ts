@@ -68,14 +68,14 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of retries for requests to the server. Default is 12 (1 min). Each retry waits 5 seconds by default.
      */
-    maxRetries?: pulumi.Input<number>;
-    password?: pulumi.Input<string>;
-    token?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    maxRetries?: pulumi.Input<number | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    token?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

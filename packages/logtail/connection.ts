@@ -158,63 +158,63 @@ export interface ConnectionState {
     /**
      * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`">`clickhouse`</span> is supported.
      */
-    clientType?: pulumi.Input<string>;
+    clientType?: pulumi.Input<string | undefined>;
     /**
      * The time when this connection was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Information about the user who created this connection.
      */
-    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * List of available data sources for this connection.
      */
-    dataSources?: pulumi.Input<pulumi.Input<inputs.ConnectionDataSource>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<inputs.ConnectionDataSource>[] | undefined>;
     /**
      * The connection hostname.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Array of IP addresses or CIDR ranges that are allowed to use this connection.
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A descriptive note for the connection.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The connection password. Only available immediately after creation.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The connection port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * A sample query showing how to use this connection.
      */
-    sampleQuery?: pulumi.Input<string>;
+    sampleQuery?: pulumi.Input<string | undefined>;
     /**
      * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
      */
-    teamIds?: pulumi.Input<pulumi.Input<number>[]>;
+    teamIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
      */
-    teamNames?: pulumi.Input<pulumi.Input<string>[]>;
+    teamNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The connection username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * ISO 8601 timestamp when the connection expires.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,25 +228,25 @@ export interface ConnectionArgs {
     /**
      * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * Array of IP addresses or CIDR ranges that are allowed to use this connection.
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A descriptive note for the connection.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
      */
-    teamIds?: pulumi.Input<pulumi.Input<number>[]>;
+    teamIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
      */
-    teamNames?: pulumi.Input<pulumi.Input<string>[]>;
+    teamNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ISO 8601 timestamp when the connection expires.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }

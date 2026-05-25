@@ -271,47 +271,47 @@ export interface SourceState {
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
-    codeMappingSourceRoot?: pulumi.Input<string>;
+    codeMappingSourceRoot?: pulumi.Input<string | undefined>;
     /**
      * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
      */
-    codeMappingStackRoot?: pulumi.Input<string>;
+    codeMappingStackRoot?: pulumi.Input<string | undefined>;
     /**
      * The time when this monitor group was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.SourceCustomBucket>;
+    customBucket?: pulumi.Input<inputs.SourceCustomBucket | undefined>;
     /**
      * Data region or private cluster name to create the source in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * The host where the logs or metrics should be sent. See [documentation](https://betterstack.com/docs/logs/start/) for your specific source platform for details.
      */
-    ingestingHost?: pulumi.Input<string>;
+    ingestingHost?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's usage quota and you want to prioritize some sources over others).
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * Data retention for logs in days. There might be additional charges for longer retention.
      */
-    logsRetention?: pulumi.Input<number>;
+    logsRetention?: pulumi.Input<number | undefined>;
     /**
      * Data retention for metrics in days. There might be additional charges for longer retention.
      */
-    metricsRetention?: pulumi.Input<number>;
+    metricsRetention?: pulumi.Input<number | undefined>;
     /**
      * The name of this source.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
@@ -368,59 +368,59 @@ export interface SourceState {
      *     - <span pulumi-lang-nodejs="`vercelIntegration`" pulumi-lang-dotnet="`VercelIntegration`" pulumi-lang-go="`vercelIntegration`" pulumi-lang-python="`vercel_integration`" pulumi-lang-yaml="`vercelIntegration`" pulumi-lang-java="`vercelIntegration`">`vercel_integration`</span>
      *     - <span pulumi-lang-nodejs="`winlogbeat`" pulumi-lang-dotnet="`Winlogbeat`" pulumi-lang-go="`winlogbeat`" pulumi-lang-python="`winlogbeat`" pulumi-lang-yaml="`winlogbeat`" pulumi-lang-java="`winlogbeat`">`winlogbeat`</span>
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * For scrape platform types, how often to scrape the URLs.
      */
-    scrapeFrequencySecs?: pulumi.Input<number>;
+    scrapeFrequencySecs?: pulumi.Input<number | undefined>;
     /**
      * Basic auth password for scraping.
      */
-    scrapeRequestBasicAuthPassword?: pulumi.Input<string>;
+    scrapeRequestBasicAuthPassword?: pulumi.Input<string | undefined>;
     /**
      * Basic auth username for scraping.
      */
-    scrapeRequestBasicAuthUser?: pulumi.Input<string>;
+    scrapeRequestBasicAuthUser?: pulumi.Input<string | undefined>;
     /**
      * An array of request headers, each containing <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> fields.
      */
-    scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * For scrape platform types, the set of urls to scrape.
      */
-    scrapeUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    scrapeUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Should the scraper skip SSL certificate verification? Enable for endpoints with self-signed or invalid certificates.
      */
-    skipSslVerify?: pulumi.Input<boolean>;
+    skipSslVerify?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the source group this source belongs to.
      */
-    sourceGroupId?: pulumi.Input<number>;
+    sourceGroupId?: pulumi.Input<number | undefined>;
     /**
      * The table name generated for this source.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * The team ID for this resource. Can be used with<span pulumi-lang-nodejs=" tableName " pulumi-lang-dotnet=" TableName " pulumi-lang-go=" tableName " pulumi-lang-python=" table_name " pulumi-lang-yaml=" tableName " pulumi-lang-java=" tableName "> table_name </span>in [Query API](https://betterstack.com/docs/logs/query-api/connect-remotely/).
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The token of this source. This token is used to identify and route the data you will send to Better Stack.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The time when this monitor group was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * VRL transformation that runs on Better Stack's servers during ingestion. Note: data has already left your infrastructure at this point. For transformations that must run before data leaves your network (e.g. PII redaction), use <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`">`logtail.Collector`</span> with `configuration.vrl_transformation` instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    vrlTransformation?: pulumi.Input<string>;
+    vrlTransformation?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -430,39 +430,39 @@ export interface SourceArgs {
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
-    codeMappingSourceRoot?: pulumi.Input<string>;
+    codeMappingSourceRoot?: pulumi.Input<string | undefined>;
     /**
      * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
      */
-    codeMappingStackRoot?: pulumi.Input<string>;
+    codeMappingStackRoot?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.SourceCustomBucket>;
+    customBucket?: pulumi.Input<inputs.SourceCustomBucket | undefined>;
     /**
      * Data region or private cluster name to create the source in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this source (e.g., when you are reaching your plan's usage quota and you want to prioritize some sources over others).
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Freeform text template for formatting Live tail output with columns wrapped in {column} brackets. Example: "PID: {message_json.pid} {level} {message}"
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * Data retention for logs in days. There might be additional charges for longer retention.
      */
-    logsRetention?: pulumi.Input<number>;
+    logsRetention?: pulumi.Input<number | undefined>;
     /**
      * Data retention for metrics in days. There might be additional charges for longer retention.
      */
-    metricsRetention?: pulumi.Input<number>;
+    metricsRetention?: pulumi.Input<number | undefined>;
     /**
      * The name of this source.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The platform of this source. This value can be set only when you're creating a new source. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`apache2`" pulumi-lang-dotnet="`Apache2`" pulumi-lang-go="`apache2`" pulumi-lang-python="`apache2`" pulumi-lang-yaml="`apache2`" pulumi-lang-java="`apache2`">`apache2`</span>
@@ -523,37 +523,37 @@ export interface SourceArgs {
     /**
      * For scrape platform types, how often to scrape the URLs.
      */
-    scrapeFrequencySecs?: pulumi.Input<number>;
+    scrapeFrequencySecs?: pulumi.Input<number | undefined>;
     /**
      * Basic auth password for scraping.
      */
-    scrapeRequestBasicAuthPassword?: pulumi.Input<string>;
+    scrapeRequestBasicAuthPassword?: pulumi.Input<string | undefined>;
     /**
      * Basic auth username for scraping.
      */
-    scrapeRequestBasicAuthUser?: pulumi.Input<string>;
+    scrapeRequestBasicAuthUser?: pulumi.Input<string | undefined>;
     /**
      * An array of request headers, each containing <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> fields.
      */
-    scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    scrapeRequestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * For scrape platform types, the set of urls to scrape.
      */
-    scrapeUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    scrapeUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Should the scraper skip SSL certificate verification? Enable for endpoints with self-signed or invalid certificates.
      */
-    skipSslVerify?: pulumi.Input<boolean>;
+    skipSslVerify?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the source group this source belongs to.
      */
-    sourceGroupId?: pulumi.Input<number>;
+    sourceGroupId?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * VRL transformation that runs on Better Stack's servers during ingestion. Note: data has already left your infrastructure at this point. For transformations that must run before data leaves your network (e.g. PII redaction), use <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`">`logtail.Collector`</span> with `configuration.vrl_transformation` instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    vrlTransformation?: pulumi.Input<string>;
+    vrlTransformation?: pulumi.Input<string | undefined>;
 }

@@ -88,19 +88,19 @@ export interface UserRoleAssignmentState {
     /**
      * The ID of the role to assign.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The scope of the role assignment. Use 'g' for global scope or 'p:PROJECT_ID' for project-specific scope. Defaults to global if not specified.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -114,13 +114,13 @@ export interface UserRoleAssignmentArgs {
     /**
      * The scope of the role assignment. Use 'g' for global scope or 'p:PROJECT_ID' for project-specific scope. Defaults to global if not specified.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -103,23 +103,23 @@ export interface MetricState {
     /**
      * The list of aggregations to perform on the metric.
      */
-    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
+    aggregations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of this metric.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the source this metric belongs to.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The SQL expression used to extract the metric value.
      */
-    sqlExpression?: pulumi.Input<string>;
+    sqlExpression?: pulumi.Input<string | undefined>;
     /**
      * The type of the metric.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface MetricArgs {
     /**
      * The name of this metric.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the source this metric belongs to.
      */

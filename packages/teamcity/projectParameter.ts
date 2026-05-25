@@ -81,24 +81,24 @@ export class ProjectParameter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectParameter resources.
  */
 export interface ProjectParameterState {
-    name?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Parameter type. Use 'password' to create a secure (hidden) parameter. Defaults to 'text' if omitted.
      */
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ProjectParameter resource.
  */
 export interface ProjectParameterArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     projectId: pulumi.Input<string>;
     /**
      * Parameter type. Use 'password' to create a secure (hidden) parameter. Defaults to 'text' if omitted.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     value: pulumi.Input<string>;
 }

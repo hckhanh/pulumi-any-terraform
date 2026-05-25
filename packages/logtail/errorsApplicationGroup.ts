@@ -91,23 +91,23 @@ export interface ErrorsApplicationGroupState {
     /**
      * The time when this application group was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Application group name. Must be unique within your team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The sort index of this application group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this application group was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,13 +117,13 @@ export interface ErrorsApplicationGroupArgs {
     /**
      * Application group name. Must be unique within your team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The sort index of this application group.
      */
-    sortIndex?: pulumi.Input<number>;
+    sortIndex?: pulumi.Input<number | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

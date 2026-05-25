@@ -76,29 +76,29 @@ export class Pool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Pool resources.
  */
 export interface PoolState {
-    name?: pulumi.Input<string>;
-    poolId?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    poolId?: pulumi.Input<number | undefined>;
     /**
      * Projects assigned to the given pool. List of Project IDs.
      */
-    projects?: pulumi.Input<pulumi.Input<string>[]>;
+    projects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agents capacity for the given pool, don't add for unlimited
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Pool resource.
  */
 export interface PoolArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Projects assigned to the given pool. List of Project IDs.
      */
-    projects?: pulumi.Input<pulumi.Input<string>[]>;
+    projects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agents capacity for the given pool, don't add for unlimited
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }

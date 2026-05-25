@@ -67,16 +67,16 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
-    name?: pulumi.Input<string>;
-    parentProjectId?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    parentProjectId?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
-    name?: pulumi.Input<string>;
-    parentProjectId?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    parentProjectId?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }

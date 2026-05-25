@@ -28,6 +28,9 @@ export interface GetCollectorResult {
     readonly createdAt: string;
     readonly customBuckets: outputs.GetCollectorCustomBucket[];
     readonly dataRegion: string;
+    /**
+     * @deprecated Deprecated
+     */
     readonly databases: outputs.GetCollectorDatabase[];
     readonly databasesCount: number;
     readonly hostsCount: number;

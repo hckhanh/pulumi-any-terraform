@@ -155,65 +155,65 @@ export interface WarehouseSourceState {
     /**
      * The time when this warehouse source was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.WarehouseSourceCustomBucket>;
+    customBucket?: pulumi.Input<inputs.WarehouseSourceCustomBucket | undefined>;
     /**
      * The data region or cluster name where the source's data will be stored.
      * Possible values include <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>, or a specific cluster name like `us-east-9`.
      * The actual region created may differ slightly due to dynamic load balancing.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period for event data in days. Default is 9999999 days (effectively infinite).
      */
-    eventsRetention?: pulumi.Input<number>;
+    eventsRetention?: pulumi.Input<number | undefined>;
     /**
      * The host where the data should be sent. See documentation for details.
      */
-    ingestingHost?: pulumi.Input<string>;
+    ingestingHost?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this source.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * A display template for live tail messages. Default is `"{status} {message}"`.
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * The name of the new Warehouse source. Can contain letters, numbers, spaces, and special characters. Source names do not need to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The table name generated for this warehouse source.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The retention period for time series data in days. Default is 9999999 days (effectively infinite).
      */
-    timeSeriesRetention?: pulumi.Input<number>;
+    timeSeriesRetention?: pulumi.Input<number | undefined>;
     /**
      * The token of this warehouse source. This token is used to identify and route the data you will send to Better Stack.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The time when this warehouse source was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * A VRL program for real-time data transformation. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    vrlTransformation?: pulumi.Input<string>;
+    vrlTransformation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the warehouse source group this source belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    warehouseSourceGroupId?: pulumi.Input<number>;
+    warehouseSourceGroupId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -223,43 +223,43 @@ export interface WarehouseSourceArgs {
     /**
      * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.WarehouseSourceCustomBucket>;
+    customBucket?: pulumi.Input<inputs.WarehouseSourceCustomBucket | undefined>;
     /**
      * The data region or cluster name where the source's data will be stored.
      * Possible values include <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>, or a specific cluster name like `us-east-9`.
      * The actual region created may differ slightly due to dynamic load balancing.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period for event data in days. Default is 9999999 days (effectively infinite).
      */
-    eventsRetention?: pulumi.Input<number>;
+    eventsRetention?: pulumi.Input<number | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this source.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * A display template for live tail messages. Default is `"{status} {message}"`.
      */
-    liveTailPattern?: pulumi.Input<string>;
+    liveTailPattern?: pulumi.Input<string | undefined>;
     /**
      * The name of the new Warehouse source. Can contain letters, numbers, spaces, and special characters. Source names do not need to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The retention period for time series data in days. Default is 9999999 days (effectively infinite).
      */
-    timeSeriesRetention?: pulumi.Input<number>;
+    timeSeriesRetention?: pulumi.Input<number | undefined>;
     /**
      * A VRL program for real-time data transformation. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    vrlTransformation?: pulumi.Input<string>;
+    vrlTransformation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the warehouse source group this source belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    warehouseSourceGroupId?: pulumi.Input<number>;
+    warehouseSourceGroupId?: pulumi.Input<number | undefined>;
 }

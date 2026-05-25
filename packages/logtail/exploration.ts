@@ -129,43 +129,43 @@ export interface ExplorationState {
     /**
      * The chart configuration for this exploration.
      */
-    chart?: pulumi.Input<inputs.ExplorationChart>;
+    chart?: pulumi.Input<inputs.ExplorationChart | undefined>;
     /**
      * The time when this exploration was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The start of the date range (e.g., 'now-3h', 'now-24h').
      */
-    dateRangeFrom?: pulumi.Input<string>;
+    dateRangeFrom?: pulumi.Input<string | undefined>;
     /**
      * The end of the date range (e.g., 'now').
      */
-    dateRangeTo?: pulumi.Input<string>;
+    dateRangeTo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the exploration group this exploration belongs to. Use 0 to remove from group.
      */
-    explorationGroupId?: pulumi.Input<number>;
+    explorationGroupId?: pulumi.Input<number | undefined>;
     /**
      * The name of this exploration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The queries for this exploration. At least one query is required.
      */
-    queries?: pulumi.Input<pulumi.Input<inputs.ExplorationQuery>[]>;
+    queries?: pulumi.Input<pulumi.Input<inputs.ExplorationQuery>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The time when this exploration was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Variables for this exploration. Default variables (time, start_time, end_time, source) are auto-created.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.ExplorationVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.ExplorationVariable>[] | undefined>;
 }
 
 /**
@@ -179,19 +179,19 @@ export interface ExplorationArgs {
     /**
      * The start of the date range (e.g., 'now-3h', 'now-24h').
      */
-    dateRangeFrom?: pulumi.Input<string>;
+    dateRangeFrom?: pulumi.Input<string | undefined>;
     /**
      * The end of the date range (e.g., 'now').
      */
-    dateRangeTo?: pulumi.Input<string>;
+    dateRangeTo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the exploration group this exploration belongs to. Use 0 to remove from group.
      */
-    explorationGroupId?: pulumi.Input<number>;
+    explorationGroupId?: pulumi.Input<number | undefined>;
     /**
      * The name of this exploration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The queries for this exploration. At least one query is required.
      */
@@ -199,9 +199,9 @@ export interface ExplorationArgs {
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * Variables for this exploration. Default variables (time, start_time, end_time, source) are auto-created.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.ExplorationVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.ExplorationVariable>[] | undefined>;
 }

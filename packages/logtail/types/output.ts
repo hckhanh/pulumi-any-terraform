@@ -15,6 +15,10 @@ export interface CollectorConfiguration {
      */
     diskBatchSizeMb: number;
     /**
+     * Maximum log line length in kB. Lines longer than this are dropped by the collector to protect Vector from memory exhaustion. Higher values may use more memory. Must be between 4 and 128. Defaults to 8.
+     */
+    logLineLengthLimitKb: number;
+    /**
      * Sample rate for logs (0-100).
      */
     logsSampleRate: number;
@@ -377,6 +381,7 @@ export interface ExplorationVariable {
 export interface GetCollectorConfiguration {
     components: outputs.GetCollectorConfigurationComponent[];
     diskBatchSizeMb: number;
+    logLineLengthLimitKb: number;
     logsSampleRate: number;
     memoryBatchSizeMb: number;
     namespaceOptions: outputs.GetCollectorConfigurationNamespaceOption[];

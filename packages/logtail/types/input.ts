@@ -9,97 +9,101 @@ export interface CollectorConfiguration {
     /**
      * Enable or disable specific collector components. Maps to the Logs, Metrics, and eBPF tabs in the collector settings UI.
      */
-    components?: pulumi.Input<inputs.CollectorConfigurationComponents>;
+    components?: pulumi.Input<inputs.CollectorConfigurationComponents | undefined>;
     /**
      * Disk buffer size in MB for outgoing requests. Minimum 256 MB.
      */
-    diskBatchSizeMb?: pulumi.Input<number>;
+    diskBatchSizeMb?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum log line length in kB. Lines longer than this are dropped by the collector to protect Vector from memory exhaustion. Higher values may use more memory. Must be between 4 and 128. Defaults to 8.
+     */
+    logLineLengthLimitKb?: pulumi.Input<number | undefined>;
     /**
      * Sample rate for logs (0-100).
      */
-    logsSampleRate?: pulumi.Input<number>;
+    logsSampleRate?: pulumi.Input<number | undefined>;
     /**
      * Memory batch size in MB for outgoing requests. Maximum 40 MB.
      */
-    memoryBatchSizeMb?: pulumi.Input<number>;
+    memoryBatchSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Per-namespace overrides for log sampling rate and trace ingestion (Kubernetes only). Order-independent; entries are identified by name.
      */
-    namespaceOptions?: pulumi.Input<pulumi.Input<inputs.CollectorConfigurationNamespaceOption>[]>;
+    namespaceOptions?: pulumi.Input<pulumi.Input<inputs.CollectorConfigurationNamespaceOption>[] | undefined>;
     /**
      * Per-service overrides for log sampling rate and trace ingestion. Only includes user-managed services; internal collector services (`better-stack-beyla`, `better-stack-collector`) are excluded. Use the <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`">`logtail.Collector`</span> data source to see all discovered services.
      */
-    serviceOptions?: pulumi.Input<pulumi.Input<inputs.CollectorConfigurationServiceOption>[]>;
+    serviceOptions?: pulumi.Input<pulumi.Input<inputs.CollectorConfigurationServiceOption>[] | undefined>;
     /**
      * Sample rate for traces (0-100).
      */
-    tracesSampleRate?: pulumi.Input<number>;
+    tracesSampleRate?: pulumi.Input<number | undefined>;
     /**
      * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`">`source_vrl_transformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    vrlTransformation?: pulumi.Input<string>;
+    vrlTransformation?: pulumi.Input<string | undefined>;
 }
 
 export interface CollectorConfigurationComponents {
     /**
      * Enable eBPF-based metrics collection.
      */
-    ebpfMetrics?: pulumi.Input<boolean>;
+    ebpfMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * Enable service map and RED (Requests, Error rate, Duration) metrics via eBPF.
      */
-    ebpfRedMetrics?: pulumi.Input<boolean>;
+    ebpfRedMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * Enable basic eBPF tracing.
      */
-    ebpfTracingBasic?: pulumi.Input<boolean>;
+    ebpfTracingBasic?: pulumi.Input<boolean | undefined>;
     /**
      * Enable full eBPF tracing.
      */
-    ebpfTracingFull?: pulumi.Input<boolean>;
+    ebpfTracingFull?: pulumi.Input<boolean | undefined>;
     /**
      * Collect internal collector logs.
      */
-    logsCollectorInternals?: pulumi.Input<boolean>;
+    logsCollectorInternals?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Docker container logs.
      */
-    logsDocker?: pulumi.Input<boolean>;
+    logsDocker?: pulumi.Input<boolean | undefined>;
     /**
      * Collect host-level logs.
      */
-    logsHost?: pulumi.Input<boolean>;
+    logsHost?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Kubernetes logs.
      */
-    logsKubernetes?: pulumi.Input<boolean>;
+    logsKubernetes?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Apache metrics.
      */
-    metricsApache?: pulumi.Input<boolean>;
+    metricsApache?: pulumi.Input<boolean | undefined>;
     /**
      * Collect database metrics via the cluster agent.
      */
-    metricsDatabases?: pulumi.Input<boolean>;
+    metricsDatabases?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Nginx metrics.
      */
-    metricsNginx?: pulumi.Input<boolean>;
+    metricsNginx?: pulumi.Input<boolean | undefined>;
     /**
      * Accept OpenTelemetry SDK traces on ports 4317 (gRPC) and 4318 (HTTP).
      */
-    tracesOpentelemetry?: pulumi.Input<boolean>;
+    tracesOpentelemetry?: pulumi.Input<boolean | undefined>;
 }
 
 export interface CollectorConfigurationNamespaceOption {
     /**
      * Whether to ingest traces for this namespace.
      */
-    ingestTraces?: pulumi.Input<boolean>;
+    ingestTraces?: pulumi.Input<boolean | undefined>;
     /**
      * Log sampling rate (0-100).
      */
-    logSampling?: pulumi.Input<number>;
+    logSampling?: pulumi.Input<number | undefined>;
     /**
      * Namespace name.
      */
@@ -110,11 +114,11 @@ export interface CollectorConfigurationServiceOption {
     /**
      * Whether to ingest traces for this service.
      */
-    ingestTraces?: pulumi.Input<boolean>;
+    ingestTraces?: pulumi.Input<boolean | undefined>;
     /**
      * Log sampling rate (0-100).
      */
-    logSampling?: pulumi.Input<number>;
+    logSampling?: pulumi.Input<number | undefined>;
     /**
      * Service name.
      */
@@ -133,7 +137,7 @@ export interface CollectorCustomBucket {
     /**
      * Whether to keep data in the bucket after the retention period.
      */
-    keepDataAfterRetention?: pulumi.Input<boolean>;
+    keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
      * Bucket name.
      */
@@ -152,11 +156,11 @@ export interface CollectorDatabase {
     /**
      * The ID of this database connection (assigned by the API).
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The database password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The database port.
      */
@@ -168,15 +172,15 @@ export interface CollectorDatabase {
     /**
      * SSL mode for PostgreSQL connections. Valid values: <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>, <span pulumi-lang-nodejs="`require`" pulumi-lang-dotnet="`Require`" pulumi-lang-go="`require`" pulumi-lang-python="`require`" pulumi-lang-yaml="`require`" pulumi-lang-java="`require`">`require`</span>, `verify-ca`.
      */
-    sslMode?: pulumi.Input<string>;
+    sslMode?: pulumi.Input<string | undefined>;
     /**
      * TLS mode for MySQL connections. Valid values: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, `skip-verify`, <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span>.
      */
-    tls?: pulumi.Input<string>;
+    tls?: pulumi.Input<string | undefined>;
     /**
      * The database username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionDataSource {
@@ -190,30 +194,30 @@ export interface DashboardAlertEscalationTarget {
     /**
      * The Better Stack escalation policy ID.
      */
-    policyId?: pulumi.Input<number>;
+    policyId?: pulumi.Input<number | undefined>;
     /**
      * The Better Stack escalation policy name.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The Better Stack team ID to escalate to.
      */
-    teamId?: pulumi.Input<number>;
+    teamId?: pulumi.Input<number | undefined>;
     /**
      * The Better Stack team name to escalate to.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardChartQuery {
     /**
      * The ID of this query (read-only).
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the query.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of query: 'sql_expression', 'tail_query', or 'static_text'. Note: 'pql_expression', 'query_builder', and 'funnel_query' are read-only.
      */
@@ -221,26 +225,26 @@ export interface DashboardChartQuery {
     /**
      * The source variable reference (default: 'source').
      */
-    sourceVariable?: pulumi.Input<string>;
+    sourceVariable?: pulumi.Input<string | undefined>;
     /**
      * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
      */
-    sqlQuery?: pulumi.Input<string>;
+    sqlQuery?: pulumi.Input<string | undefined>;
     /**
      * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
      */
-    staticText?: pulumi.Input<string>;
+    staticText?: pulumi.Input<string | undefined>;
     /**
      * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
      */
-    whereCondition?: pulumi.Input<string>;
+    whereCondition?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardVariable {
     /**
      * Default selected values for the variable.
      */
-    defaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the variable (used as {{name}} in queries).
      */
@@ -248,11 +252,11 @@ export interface DashboardVariable {
     /**
      * SQL definition for 'select_with_sql' or 'multi_select_with_sql' type variables.
      */
-    sqlDefinition?: pulumi.Input<string>;
+    sqlDefinition?: pulumi.Input<string | undefined>;
     /**
      * Predefined values for 'select_value' type variables.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', 'select_with_sql', or 'multi_select_with_sql'.
      */
@@ -271,7 +275,7 @@ export interface ErrorsApplicationCustomBucket {
     /**
      * Whether we should keep data in the bucket after the retention period.
      */
-    keepDataAfterRetention?: pulumi.Input<boolean>;
+    keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
      * Bucket name
      */
@@ -286,19 +290,19 @@ export interface ExplorationAlertEscalationTarget {
     /**
      * The Better Stack escalation policy ID.
      */
-    policyId?: pulumi.Input<number>;
+    policyId?: pulumi.Input<number | undefined>;
     /**
      * The Better Stack escalation policy name.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The Better Stack team ID to escalate to.
      */
-    teamId?: pulumi.Input<number>;
+    teamId?: pulumi.Input<number | undefined>;
     /**
      * The Better Stack team name to escalate to.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 export interface ExplorationChart {
@@ -309,26 +313,26 @@ export interface ExplorationChart {
     /**
      * The description of the chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the chart. Automatically set to the exploration name by the API.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Chart settings as a JSON string. Settings vary by chart type and include options like unit, decimal_places, legend, stacking, etc.
      */
-    settings?: pulumi.Input<string>;
+    settings?: pulumi.Input<string | undefined>;
 }
 
 export interface ExplorationQuery {
     /**
      * The ID of this query (read-only).
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the query.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of query: 'sql_expression', 'tail_query', or 'static_text'. Note: 'pql_expression', 'query_builder', and 'funnel_query' are read-only.
      */
@@ -336,26 +340,26 @@ export interface ExplorationQuery {
     /**
      * The source variable reference (default: 'source').
      */
-    sourceVariable?: pulumi.Input<string>;
+    sourceVariable?: pulumi.Input<string | undefined>;
     /**
      * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
      */
-    sqlQuery?: pulumi.Input<string>;
+    sqlQuery?: pulumi.Input<string | undefined>;
     /**
      * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
      */
-    staticText?: pulumi.Input<string>;
+    staticText?: pulumi.Input<string | undefined>;
     /**
      * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
      */
-    whereCondition?: pulumi.Input<string>;
+    whereCondition?: pulumi.Input<string | undefined>;
 }
 
 export interface ExplorationVariable {
     /**
      * Default selected values for the variable.
      */
-    defaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the variable (used as {{name}} in queries).
      */
@@ -363,11 +367,11 @@ export interface ExplorationVariable {
     /**
      * SQL definition for 'select_with_sql' or 'multi_select_with_sql' type variables.
      */
-    sqlDefinition?: pulumi.Input<string>;
+    sqlDefinition?: pulumi.Input<string | undefined>;
     /**
      * Predefined values for 'select_value' type variables.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of variable: 'source', 'string', 'number', 'date', 'datetime', 'boolean', 'sql_expression', 'select_value', 'select_with_sql', or 'multi_select_with_sql'.
      */
@@ -386,7 +390,7 @@ export interface SourceCustomBucket {
     /**
      * Whether we should keep data in the bucket after the retention period.
      */
-    keepDataAfterRetention?: pulumi.Input<boolean>;
+    keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
      * Bucket name
      */
@@ -409,7 +413,7 @@ export interface WarehouseSourceCustomBucket {
     /**
      * Whether we should keep data in the bucket after the retention period.
      */
-    keepDataAfterRetention?: pulumi.Input<boolean>;
+    keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
      * Bucket name
      */

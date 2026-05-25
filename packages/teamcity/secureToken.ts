@@ -72,8 +72,8 @@ export class SecureToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecureToken resources.
  */
 export interface SecureTokenState {
-    projectId?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

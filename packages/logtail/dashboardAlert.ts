@@ -258,127 +258,127 @@ export interface DashboardAlertState {
     /**
      * The data aggregation interval in seconds.
      */
-    aggregationInterval?: pulumi.Input<number>;
+    aggregationInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of alert: 'threshold', 'relative', or 'anomaly_rrcf'.
      */
-    alertType?: pulumi.Input<string>;
+    alertType?: pulumi.Input<string | undefined>;
     /**
      * Anomaly detection sensitivity 0-100 (only for 'anomaly_rrcf' type, lower = more sensitive).
      */
-    anomalySensitivity?: pulumi.Input<number>;
+    anomalySensitivity?: pulumi.Input<number | undefined>;
     /**
      * Anomaly trigger mode: 'any', 'higher', or 'lower' (only for 'anomaly_rrcf' type).
      */
-    anomalyTrigger?: pulumi.Input<string>;
+    anomalyTrigger?: pulumi.Input<string | undefined>;
     /**
      * Enable phone call notifications.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
      */
-    chartId?: pulumi.Input<string>;
+    chartId?: pulumi.Input<string | undefined>;
     /**
      * How often to check the alert condition in seconds.
      */
-    checkPeriod?: pulumi.Input<number>;
+    checkPeriod?: pulumi.Input<number | undefined>;
     /**
      * The confirmation delay in seconds before triggering (required, >= 0).
      */
-    confirmationPeriod?: pulumi.Input<number>;
+    confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
      * The time when this alert was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Mark as critical alert (bypasses quiet hours).
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the dashboard this alert belongs to.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * Enable email notifications.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The escalation target for this alert. Specify either team_id/team_name OR policy_id/policy_name.
      */
-    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget>;
+    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget | undefined>;
     /**
      * Incident description template (supports {{variable}} interpolation).
      */
-    incidentCause?: pulumi.Input<string>;
+    incidentCause?: pulumi.Input<string | undefined>;
     /**
      * Create separate incidents per series.
      */
-    incidentPerSeries?: pulumi.Input<boolean>;
+    incidentPerSeries?: pulumi.Input<boolean | undefined>;
     /**
      * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'. Not required for anomaly alerts.
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Whether the alert is paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Read-only field explaining why the alert is paused (e.g., 'Manually paused', complexity issues, too many failures).
      */
-    pausedReason?: pulumi.Input<string>;
+    pausedReason?: pulumi.Input<string | undefined>;
     /**
      * Enable push notifications.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * The query evaluation window in seconds (default: 60).
      */
-    queryPeriod?: pulumi.Input<number>;
+    queryPeriod?: pulumi.Input<number | undefined>;
     /**
      * The recovery delay in seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Specific series to monitor.
      */
-    seriesNames?: pulumi.Input<pulumi.Input<string>[]>;
+    seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable SMS notifications.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Source selection mode: 'source_variable', 'platforms_single_source', or 'platforms_all_sources'.
      */
-    sourceMode?: pulumi.Input<string>;
+    sourceMode?: pulumi.Input<string | undefined>;
     /**
      * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
      */
-    sourcePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source reference (format: 'source:table_name'). If omitted, derived from the parent resource's source variable.
      */
-    sourceVariable?: pulumi.Input<string>;
+    sourceVariable?: pulumi.Input<string | undefined>;
     /**
      * The string threshold value (only for threshold alerts with 'equal' or 'not_equal' operators).
      */
-    stringValue?: pulumi.Input<string>;
+    stringValue?: pulumi.Input<string | undefined>;
     /**
      * The time when this alert was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The numeric threshold value. Required for threshold and relative alerts.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -388,7 +388,7 @@ export interface DashboardAlertArgs {
     /**
      * The data aggregation interval in seconds.
      */
-    aggregationInterval?: pulumi.Input<number>;
+    aggregationInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of alert: 'threshold', 'relative', or 'anomaly_rrcf'.
      */
@@ -396,15 +396,15 @@ export interface DashboardAlertArgs {
     /**
      * Anomaly detection sensitivity 0-100 (only for 'anomaly_rrcf' type, lower = more sensitive).
      */
-    anomalySensitivity?: pulumi.Input<number>;
+    anomalySensitivity?: pulumi.Input<number | undefined>;
     /**
      * Anomaly trigger mode: 'any', 'higher', or 'lower' (only for 'anomaly_rrcf' type).
      */
-    anomalyTrigger?: pulumi.Input<string>;
+    anomalyTrigger?: pulumi.Input<string | undefined>;
     /**
      * Enable phone call notifications.
      */
-    call?: pulumi.Input<boolean>;
+    call?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
      */
@@ -412,15 +412,15 @@ export interface DashboardAlertArgs {
     /**
      * How often to check the alert condition in seconds.
      */
-    checkPeriod?: pulumi.Input<number>;
+    checkPeriod?: pulumi.Input<number | undefined>;
     /**
      * The confirmation delay in seconds before triggering (required, >= 0).
      */
-    confirmationPeriod?: pulumi.Input<number>;
+    confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
      * Mark as critical alert (bypasses quiet hours).
      */
-    criticalAlert?: pulumi.Input<boolean>;
+    criticalAlert?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the dashboard this alert belongs to.
      */
@@ -428,73 +428,73 @@ export interface DashboardAlertArgs {
     /**
      * Enable email notifications.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * The escalation target for this alert. Specify either team_id/team_name OR policy_id/policy_name.
      */
-    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget>;
+    escalationTarget?: pulumi.Input<inputs.DashboardAlertEscalationTarget | undefined>;
     /**
      * Incident description template (supports {{variable}} interpolation).
      */
-    incidentCause?: pulumi.Input<string>;
+    incidentCause?: pulumi.Input<string | undefined>;
     /**
      * Create separate incidents per series.
      */
-    incidentPerSeries?: pulumi.Input<boolean>;
+    incidentPerSeries?: pulumi.Input<boolean | undefined>;
     /**
      * Custom metadata key-value pairs included in incident notifications. Use a plain string for a single value; for multiple values use jsonencode([...]).
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'. Not required for anomaly alerts.
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Whether the alert is paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Enable push notifications.
      */
-    push?: pulumi.Input<boolean>;
+    push?: pulumi.Input<boolean | undefined>;
     /**
      * The query evaluation window in seconds (default: 60).
      */
-    queryPeriod?: pulumi.Input<number>;
+    queryPeriod?: pulumi.Input<number | undefined>;
     /**
      * The recovery delay in seconds.
      */
-    recoveryPeriod?: pulumi.Input<number>;
+    recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Specific series to monitor.
      */
-    seriesNames?: pulumi.Input<pulumi.Input<string>[]>;
+    seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable SMS notifications.
      */
-    sms?: pulumi.Input<boolean>;
+    sms?: pulumi.Input<boolean | undefined>;
     /**
      * Source selection mode: 'source_variable', 'platforms_single_source', or 'platforms_all_sources'.
      */
-    sourceMode?: pulumi.Input<string>;
+    sourceMode?: pulumi.Input<string | undefined>;
     /**
      * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
      */
-    sourcePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source reference (format: 'source:table_name'). If omitted, derived from the parent resource's source variable.
      */
-    sourceVariable?: pulumi.Input<string>;
+    sourceVariable?: pulumi.Input<string | undefined>;
     /**
      * The string threshold value (only for threshold alerts with 'equal' or 'not_equal' operators).
      */
-    stringValue?: pulumi.Input<string>;
+    stringValue?: pulumi.Input<string | undefined>;
     /**
      * The numeric threshold value. Required for threshold and relative alerts.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }

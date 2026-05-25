@@ -66,7 +66,7 @@ export class License extends pulumi.CustomResource {
  * Input properties used for looking up and filtering License resources.
  */
 export interface LicenseState {
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
 }
 
 /**

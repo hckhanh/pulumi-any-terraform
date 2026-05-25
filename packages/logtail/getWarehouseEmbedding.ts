@@ -47,6 +47,6 @@ export function getWarehouseEmbeddingOutput(args?: GetWarehouseEmbeddingOutputAr
  * A collection of arguments for invoking getWarehouseEmbedding.
  */
 export interface GetWarehouseEmbeddingOutputArgs {
-    id?: pulumi.Input<string>;
-    sourceId?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    sourceId?: pulumi.Input<string | undefined>;
 }

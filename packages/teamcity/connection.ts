@@ -75,9 +75,9 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
-    featureId?: pulumi.Input<string>;
-    githubApp?: pulumi.Input<inputs.ConnectionGithubApp>;
-    projectId?: pulumi.Input<string>;
+    featureId?: pulumi.Input<string | undefined>;
+    githubApp?: pulumi.Input<inputs.ConnectionGithubApp | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**

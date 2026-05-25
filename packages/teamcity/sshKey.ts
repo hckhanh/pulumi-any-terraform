@@ -75,16 +75,16 @@ export class SshKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SshKey resources.
  */
 export interface SshKeyState {
-    name?: pulumi.Input<string>;
-    privateKey?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    privateKey?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SshKey resource.
  */
 export interface SshKeyArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     privateKey: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
 }

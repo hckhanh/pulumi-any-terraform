@@ -90,30 +90,30 @@ export class GlobalSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalSettings resources.
  */
 export interface GlobalSettingsState {
-    artifactDirectories?: pulumi.Input<string>;
-    artifactsDomainIsolation?: pulumi.Input<inputs.GlobalSettingsArtifactsDomainIsolation>;
-    defaultExecutionTimeout?: pulumi.Input<number>;
-    defaultQuietPeriod?: pulumi.Input<number>;
-    defaultVcsCheckInterval?: pulumi.Input<number>;
-    encryption?: pulumi.Input<inputs.GlobalSettingsEncryption>;
-    enforceDefaultVcsCheckInterval?: pulumi.Input<boolean>;
-    maxArtifactNumber?: pulumi.Input<number>;
-    maxArtifactSize?: pulumi.Input<number>;
-    rootUrl?: pulumi.Input<string>;
+    artifactDirectories?: pulumi.Input<string | undefined>;
+    artifactsDomainIsolation?: pulumi.Input<inputs.GlobalSettingsArtifactsDomainIsolation | undefined>;
+    defaultExecutionTimeout?: pulumi.Input<number | undefined>;
+    defaultQuietPeriod?: pulumi.Input<number | undefined>;
+    defaultVcsCheckInterval?: pulumi.Input<number | undefined>;
+    encryption?: pulumi.Input<inputs.GlobalSettingsEncryption | undefined>;
+    enforceDefaultVcsCheckInterval?: pulumi.Input<boolean | undefined>;
+    maxArtifactNumber?: pulumi.Input<number | undefined>;
+    maxArtifactSize?: pulumi.Input<number | undefined>;
+    rootUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a GlobalSettings resource.
  */
 export interface GlobalSettingsArgs {
-    artifactDirectories?: pulumi.Input<string>;
-    artifactsDomainIsolation?: pulumi.Input<inputs.GlobalSettingsArtifactsDomainIsolation>;
-    defaultExecutionTimeout?: pulumi.Input<number>;
-    defaultQuietPeriod?: pulumi.Input<number>;
-    defaultVcsCheckInterval?: pulumi.Input<number>;
-    encryption?: pulumi.Input<inputs.GlobalSettingsEncryption>;
-    enforceDefaultVcsCheckInterval?: pulumi.Input<boolean>;
-    maxArtifactNumber?: pulumi.Input<number>;
-    maxArtifactSize?: pulumi.Input<number>;
-    rootUrl?: pulumi.Input<string>;
+    artifactDirectories?: pulumi.Input<string | undefined>;
+    artifactsDomainIsolation?: pulumi.Input<inputs.GlobalSettingsArtifactsDomainIsolation | undefined>;
+    defaultExecutionTimeout?: pulumi.Input<number | undefined>;
+    defaultQuietPeriod?: pulumi.Input<number | undefined>;
+    defaultVcsCheckInterval?: pulumi.Input<number | undefined>;
+    encryption?: pulumi.Input<inputs.GlobalSettingsEncryption | undefined>;
+    enforceDefaultVcsCheckInterval?: pulumi.Input<boolean | undefined>;
+    maxArtifactNumber?: pulumi.Input<number | undefined>;
+    maxArtifactSize?: pulumi.Input<number | undefined>;
+    rootUrl?: pulumi.Input<string | undefined>;
 }

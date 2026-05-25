@@ -81,11 +81,11 @@ export class Vcsroot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vcsroot resources.
  */
 export interface VcsrootState {
-    git?: pulumi.Input<inputs.VcsrootGit>;
-    name?: pulumi.Input<string>;
-    pollingInterval?: pulumi.Input<number>;
-    projectId?: pulumi.Input<string>;
-    vcsrootId?: pulumi.Input<string>;
+    git?: pulumi.Input<inputs.VcsrootGit | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    pollingInterval?: pulumi.Input<number | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
+    vcsrootId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -93,8 +93,8 @@ export interface VcsrootState {
  */
 export interface VcsrootArgs {
     git: pulumi.Input<inputs.VcsrootGit>;
-    name?: pulumi.Input<string>;
-    pollingInterval?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    pollingInterval?: pulumi.Input<number | undefined>;
     projectId: pulumi.Input<string>;
-    vcsrootId?: pulumi.Input<string>;
+    vcsrootId?: pulumi.Input<string | undefined>;
 }

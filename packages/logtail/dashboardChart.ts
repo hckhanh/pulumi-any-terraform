@@ -144,51 +144,51 @@ export interface DashboardChartState {
     /**
      * The type of chart: 'line_chart', 'bar_chart', 'pie_chart', 'number_chart', 'table_chart', 'tail_chart', 'static_text_chart', 'scatter_chart', 'gauge_chart', 'heatmap_chart', 'map_chart', 'text_chart', 'funnel_chart', or 'anomalies_chart'.
      */
-    chartType?: pulumi.Input<string>;
+    chartType?: pulumi.Input<string | undefined>;
     /**
      * The time when this chart was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dashboard this chart belongs to.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The description of this chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The height of this chart in grid units.
      */
-    h?: pulumi.Input<number>;
+    h?: pulumi.Input<number | undefined>;
     /**
      * The name of this chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The queries for this chart. At least one query is required.
      */
-    queries?: pulumi.Input<pulumi.Input<inputs.DashboardChartQuery>[]>;
+    queries?: pulumi.Input<pulumi.Input<inputs.DashboardChartQuery>[] | undefined>;
     /**
      * Chart settings as a JSON string. Settings vary by chart type and include options like unit, decimal_places, legend, stacking, etc.
      */
-    settings?: pulumi.Input<string>;
+    settings?: pulumi.Input<string | undefined>;
     /**
      * The time when this chart was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The width of this chart in grid units (1-12).
      */
-    w?: pulumi.Input<number>;
+    w?: pulumi.Input<number | undefined>;
     /**
      * The horizontal position of this chart in the dashboard grid (0-11).
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * The vertical position of this chart in the dashboard grid.
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -206,15 +206,15 @@ export interface DashboardChartArgs {
     /**
      * The description of this chart.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The height of this chart in grid units.
      */
-    h?: pulumi.Input<number>;
+    h?: pulumi.Input<number | undefined>;
     /**
      * The name of this chart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The queries for this chart. At least one query is required.
      */
@@ -222,17 +222,17 @@ export interface DashboardChartArgs {
     /**
      * Chart settings as a JSON string. Settings vary by chart type and include options like unit, decimal_places, legend, stacking, etc.
      */
-    settings?: pulumi.Input<string>;
+    settings?: pulumi.Input<string | undefined>;
     /**
      * The width of this chart in grid units (1-12).
      */
-    w?: pulumi.Input<number>;
+    w?: pulumi.Input<number | undefined>;
     /**
      * The horizontal position of this chart in the dashboard grid (0-11).
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * The vertical position of this chart in the dashboard grid.
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }

@@ -257,43 +257,43 @@ export interface ErrorsApplicationState {
     /**
      * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    applicationGroupId?: pulumi.Input<number>;
+    applicationGroupId?: pulumi.Input<number | undefined>;
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
-    codeMappingSourceRoot?: pulumi.Input<string>;
+    codeMappingSourceRoot?: pulumi.Input<string | undefined>;
     /**
      * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
      */
-    codeMappingStackRoot?: pulumi.Input<string>;
+    codeMappingStackRoot?: pulumi.Input<string | undefined>;
     /**
      * The time when this application was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket>;
+    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**
      * Data region or cluster name where application data will be stored. If omitted, the default data region for your team will be used.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * Error data retention period in days. Default retention is 90 days.
      */
-    errorsRetention?: pulumi.Input<number>;
+    errorsRetention?: pulumi.Input<number | undefined>;
     /**
      * The host where the errors should be sent. See documentation for your specific platform for details.
      */
-    ingestingHost?: pulumi.Input<string>;
+    ingestingHost?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this application.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Application name. Must be unique within your team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The platform type for the application. This helps configure appropriate SDKs and integrations. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`aiohttpErrors`" pulumi-lang-dotnet="`AiohttpErrors`" pulumi-lang-go="`aiohttpErrors`" pulumi-lang-python="`aiohttp_errors`" pulumi-lang-yaml="`aiohttpErrors`" pulumi-lang-java="`aiohttpErrors`">`aiohttp_errors`</span>
@@ -392,27 +392,27 @@ export interface ErrorsApplicationState {
      *     - <span pulumi-lang-nodejs="`wpfErrors`" pulumi-lang-dotnet="`WpfErrors`" pulumi-lang-go="`wpfErrors`" pulumi-lang-python="`wpf_errors`" pulumi-lang-yaml="`wpfErrors`" pulumi-lang-java="`wpfErrors`">`wpf_errors`</span>
      *     - <span pulumi-lang-nodejs="`wsgiErrors`" pulumi-lang-dotnet="`WsgiErrors`" pulumi-lang-go="`wsgiErrors`" pulumi-lang-python="`wsgi_errors`" pulumi-lang-yaml="`wsgiErrors`" pulumi-lang-java="`wsgiErrors`">`wsgi_errors`</span>
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The table name generated for this application.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * The team ID for this resource.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
     /**
      * The token of this application. This token is used to identify and route the data you will send to Better Stack.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The time when this application was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -422,35 +422,35 @@ export interface ErrorsApplicationArgs {
     /**
      * ID of the application group this application belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
      */
-    applicationGroupId?: pulumi.Input<number>;
+    applicationGroupId?: pulumi.Input<number | undefined>;
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
-    codeMappingSourceRoot?: pulumi.Input<string>;
+    codeMappingSourceRoot?: pulumi.Input<string | undefined>;
     /**
      * Stack trace root path prefix to match. When a stack trace file starts with this prefix, it will be replaced with the source code root to map to the correct repository path.
      */
-    codeMappingStackRoot?: pulumi.Input<string>;
+    codeMappingStackRoot?: pulumi.Input<string | undefined>;
     /**
      * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
      */
-    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket>;
+    customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**
      * Data region or cluster name where application data will be stored. If omitted, the default data region for your team will be used.
      */
-    dataRegion?: pulumi.Input<string>;
+    dataRegion?: pulumi.Input<string | undefined>;
     /**
      * Error data retention period in days. Default retention is 90 days.
      */
-    errorsRetention?: pulumi.Input<number>;
+    errorsRetention?: pulumi.Input<number | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this application.
      */
-    ingestingPaused?: pulumi.Input<boolean>;
+    ingestingPaused?: pulumi.Input<boolean | undefined>;
     /**
      * Application name. Must be unique within your team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The platform type for the application. This helps configure appropriate SDKs and integrations. You can't update this value later. Valid values are:
      *     - <span pulumi-lang-nodejs="`aiohttpErrors`" pulumi-lang-dotnet="`AiohttpErrors`" pulumi-lang-go="`aiohttpErrors`" pulumi-lang-python="`aiohttp_errors`" pulumi-lang-yaml="`aiohttpErrors`" pulumi-lang-java="`aiohttpErrors`">`aiohttp_errors`</span>
@@ -553,5 +553,5 @@ export interface ErrorsApplicationArgs {
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
-    teamName?: pulumi.Input<string>;
+    teamName?: pulumi.Input<string | undefined>;
 }

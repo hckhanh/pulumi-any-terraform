@@ -88,11 +88,11 @@ export class VersionedSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VersionedSettings resources.
  */
 export interface VersionedSettingsState {
-    allowUiEditing?: pulumi.Input<boolean>;
-    projectId?: pulumi.Input<string>;
-    settings?: pulumi.Input<string>;
-    showChanges?: pulumi.Input<boolean>;
-    vcsrootId?: pulumi.Input<string>;
+    allowUiEditing?: pulumi.Input<boolean | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
+    settings?: pulumi.Input<string | undefined>;
+    showChanges?: pulumi.Input<boolean | undefined>;
+    vcsrootId?: pulumi.Input<string | undefined>;
 }
 
 /**
