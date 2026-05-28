@@ -232,12 +232,20 @@ const healthMetrics = [
 - **Source**: Log sources for collecting logs from various platforms and services
 - **SourceGroup**: Logical groups for organizing related log sources
 - **Metric**: Custom metrics based on log data for monitoring and alerting
+- **Collector**: Self-hosted agent that collects metrics from databases and processes inside your infrastructure
+- **CollectorTarget**: Individual scrape target attached to a collector (postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus). Added in 10.11.3 and now the preferred way to configure collector targets instead of the deprecated `databases` field on `Collector`.
+- **Connection**: Connect external data sources for log ingestion
+- **Dashboard / DashboardGroup / DashboardSection / DashboardChart / DashboardAlert**: Build and organize log dashboards and alerts
+- **Exploration / ExplorationGroup / ExplorationAlert**: Saved log explorations and their alerts
+- **ErrorsApplication / ErrorsApplicationGroup**: Application error tracking
+- **WarehouseSource / WarehouseSourceGroup / WarehouseEmbedding / WarehouseTimeSeries**: Warehouse-based log storage and analytics
 
 ### Data Sources
 
-- **getSource**: Retrieve information about existing log sources
-- **getSourceGroup**: Retrieve information about existing source groups
-- **getMetric**: Retrieve information about existing metrics
+The provider exposes `get*` data sources for every resource above, including
+`getSource`, `getSourceGroup`, `getMetric`, `getCollector`, `getConnection`,
+`getDashboard`, `getDashboardTemplate`, `getExploration`, `getErrorsApplication`,
+and the warehouse equivalents.
 
 ## API Reference
 

@@ -96,11 +96,10 @@ const project = new teamcity.Project('my-project', {
 // Create a VCS root
 const vcsRoot = new teamcity.Vcsroot('my-vcs', {
   name: 'Main Repository',
-  vcsName: 'jetbrains.git',
   projectId: project.projectId,
-  properties: {
-    branch: 'refs/heads/main',
+  git: {
     url: 'https://github.com/example/my-app.git',
+    branch: 'refs/heads/main',
     authMethod: 'PASSWORD',
     username: 'git-user',
     password: 'git-token',
@@ -111,21 +110,24 @@ const vcsRoot = new teamcity.Vcsroot('my-vcs', {
 const buildConfig = new teamcity.BuildConfiguration('my-build', {
   name: 'Build and Test',
   projectId: project.projectId,
-  vcsRoots: [
-    {
-      id: vcsRoot.id,
-      checkoutRules: '+:. => source',
-    },
-  ],
-  steps: [
-    {
-      type: 'simpleRunner',
-      name: 'Build',
-      properties: {
-        script: 'npm install && npm run build',
-      },
-    },
-  ],
+})
+
+// Attach the VCS root to the build configuration
+new teamcity.BuildConfigurationVcsRoot('my-build-vcs', {
+  buildConfigurationId: buildConfig.buildConfigurationId,
+  vcsRootId: vcsRoot.vcsrootId,
+  checkoutRules: '+:. => source',
+})
+
+// Add a build step
+new teamcity.BuildConfigurationStep('my-build-step', {
+  buildConfigurationId: buildConfig.buildConfigurationId,
+  name: 'Build',
+  type: 'simpleRunner',
+  properties: {
+    'script.content': 'npm install && npm run build',
+    'use.custom.script': 'true',
+  },
 })
 ```
 
@@ -178,14 +180,14 @@ const pool = new teamcity.Pool('build-pool', {
 
 This provider supports all TeamCity resource types including:
 
-- **Projects**: `teamcity.Project`
-- **Build Configurations**: `teamcity.BuildConfiguration`
+- **Projects**: `teamcity.Project`, `teamcity.ProjectParameter`
+- **Build Configurations**: `teamcity.BuildConfiguration` plus the composition resources `teamcity.BuildConfigurationSettings`, `teamcity.BuildConfigurationStep`, `teamcity.BuildConfigurationFeature`, `teamcity.BuildConfigurationTrigger`, `teamcity.BuildConfigurationParameter`, `teamcity.BuildConfigurationVcsRoot`, `teamcity.BuildConfigurationAgentRequirement`, `teamcity.BuildConfigurationSnapshotDependency`, `teamcity.BuildConfigurationArtifactDependency`
 - **VCS Roots**: `teamcity.Vcsroot`
-- **Users**: `teamcity.User`
-- **Groups**: `teamcity.Group`
+- **Users**: `teamcity.User`, `teamcity.UserRoleAssignment`
+- **Groups**: `teamcity.Group`, `teamcity.GroupMember`, `teamcity.GroupRoleAssignment`
 - **Roles**: `teamcity.Role`
 - **Agent Pools**: `teamcity.Pool`
-- **Settings**: Various configuration resources
+- **Settings**: `teamcity.GlobalSettings`, `teamcity.AuthSettings`, `teamcity.CleanupSettings`, `teamcity.EmailSettings`, `teamcity.VersionedSettings`
 
 For a complete list of available resources and their properties, refer to the [Terraform TeamCity Provider documentation](https://registry.terraform.io/providers/jetbrains/teamcity/latest/docs).
 

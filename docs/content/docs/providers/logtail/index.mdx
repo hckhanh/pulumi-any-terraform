@@ -84,11 +84,37 @@ const syslogSource = new logtail.Source("syslog", {
 });
 ```
 
-### Views
+### Collectors and Targets
+
+Collectors are agents that run inside your infrastructure to collect metrics from databases and processes. Use `logtail.CollectorTarget` (added in 10.11.3) to attach scrape targets to a collector:
 
 ```typescript
-const errorView = new logtail.View("errors", {
-    name: "Error Logs",
-    query: "level:error",
+const collector = new logtail.Collector("infra-collector", {
+    name: "Infra Collector",
+    dataRegion: "eu",
+});
+
+new logtail.CollectorTarget("postgres-primary", {
+    collectorId: collector.id,
+    kind: "postgres",
+    host: "db.internal",
+    port: 5432,
+    username: "metrics",
+    password: "secret",
+});
+
+new logtail.CollectorTarget("nginx-edge", {
+    collectorId: collector.id,
+    kind: "nginx",
+    collectorHost: "edge-01.internal",
+    endpoint: "http://127.0.0.1/nginx_status",
+});
+```
+
+### Dashboards
+
+```typescript
+const dashboard = new logtail.Dashboard("errors-overview", {
+    name: "Errors Overview",
 });
 ```
