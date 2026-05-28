@@ -1,3 +1,20 @@
+## 1.3.0
+
+### Minor Changes
+
+Update logtail provider from 10.11.2 to 10.11.3.
+
+#### What's Changed
+
+- Collect metrics support by @paweljw in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/77 — adds the new `logtail.CollectorTarget` resource for configuring collector scrape targets (postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus). The `databases` field on `logtail.Collector` is now deprecated in favor of this resource.
+- Cover `log_line_length_limit_kb` by @paweljw in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/78
+
+#### New Contributors
+
+- @paweljw made their first contribution in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/77
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.11.2...v10.11.3
+
 ## 1.2.1
 
 ### Patch Changes
