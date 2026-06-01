@@ -64,12 +64,12 @@ export function getGitopsRepoFileOutput(args: GetGitopsRepoFileOutputArgs, opts?
  * A collection of arguments for invoking getGitopsRepoFile.
  */
 export interface GetGitopsRepoFileOutputArgs {
-    gitCredentialId?: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    reference?: pulumi.Input<string>;
+    gitCredentialId?: pulumi.Input<number | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    reference?: pulumi.Input<string | undefined>;
     repositoryUrl: pulumi.Input<string>;
-    targetFile?: pulumi.Input<string>;
-    tlsSkipVerify?: pulumi.Input<boolean>;
-    username?: pulumi.Input<string>;
+    targetFile?: pulumi.Input<string | undefined>;
+    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }

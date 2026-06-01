@@ -46,6 +46,6 @@ export function getDockerNetworkOutput(args: GetDockerNetworkOutputArgs, opts?: 
  */
 export interface GetDockerNetworkOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

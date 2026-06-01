@@ -32,19 +32,58 @@ export class Registry extends pulumi.CustomResource {
         return obj['__pulumiType'] === Registry.__pulumiType;
     }
 
+    /**
+     * Whether the registry requires authentication. When true, username and password are sent to Portainer.
+     */
     declare public readonly authentication: pulumi.Output<boolean | undefined>;
+    /**
+     * AWS region used by ECR (type 7) registries.
+     */
     declare public readonly awsRegion: pulumi.Output<string | undefined>;
+    /**
+     * Optional base URL of the registry used by Portainer for web-based actions and links.
+     */
     declare public readonly baseUrl: pulumi.Output<string | undefined>;
+    /**
+     * Name of the GitHub organisation used when<span pulumi-lang-nodejs=" githubUseOrganisation " pulumi-lang-dotnet=" GithubUseOrganisation " pulumi-lang-go=" githubUseOrganisation " pulumi-lang-python=" github_use_organisation " pulumi-lang-yaml=" githubUseOrganisation " pulumi-lang-java=" githubUseOrganisation " pulumi-lang-hcl=" github_use_organisation "> githubUseOrganisation </span>is true (type 8).
+     */
     declare public readonly githubOrganisationName: pulumi.Output<string | undefined>;
+    /**
+     * Whether the GitHub (type 8) registry should be scoped to an organisation rather than a user account.
+     */
     declare public readonly githubUseOrganisation: pulumi.Output<boolean | undefined>;
+    /**
+     * Instance URL used by GitLab (type 4) registries to identify the GitLab instance.
+     */
     declare public readonly instanceUrl: pulumi.Output<string | undefined>;
+    /**
+     * Name of the registry as displayed in Portainer.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Password used to authenticate against the registry when authentication is enabled. Stored in state as a sensitive value.
+     */
     declare public readonly password: pulumi.Output<string | undefined>;
+    /**
+     * Name of the Quay organisation used when<span pulumi-lang-nodejs=" quayUseOrganisation " pulumi-lang-dotnet=" QuayUseOrganisation " pulumi-lang-go=" quayUseOrganisation " pulumi-lang-python=" quay_use_organisation " pulumi-lang-yaml=" quayUseOrganisation " pulumi-lang-java=" quayUseOrganisation " pulumi-lang-hcl=" quay_use_organisation "> quayUseOrganisation </span>is true (type 1).
+     */
     declare public readonly quayOrganisationName: pulumi.Output<string | undefined>;
+    /**
+     * Whether the Quay (type 1) registry should be scoped to an organisation rather than a user account.
+     */
     declare public readonly quayUseOrganisation: pulumi.Output<boolean | undefined>;
     declare public readonly registryId: pulumi.Output<string>;
+    /**
+     * Registry type: 1 = Quay, 2 = Azure, 3 = Custom, 4 = GitLab, 5 = ProGet, 6 = DockerHub, 7 = ECR, 8 = GitHub. Changing this value forces resource recreation.
+     */
     declare public readonly type: pulumi.Output<number>;
+    /**
+     * URL of the registry (e.g. registry hostname). Used by Portainer to push and pull images.
+     */
     declare public readonly url: pulumi.Output<string>;
+    /**
+     * Username used to authenticate against the registry when authentication is enabled.
+     */
     declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
@@ -108,38 +147,116 @@ export class Registry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Registry resources.
  */
 export interface RegistryState {
-    authentication?: pulumi.Input<boolean>;
-    awsRegion?: pulumi.Input<string>;
-    baseUrl?: pulumi.Input<string>;
-    githubOrganisationName?: pulumi.Input<string>;
-    githubUseOrganisation?: pulumi.Input<boolean>;
-    instanceUrl?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    quayOrganisationName?: pulumi.Input<string>;
-    quayUseOrganisation?: pulumi.Input<boolean>;
-    registryId?: pulumi.Input<string>;
-    type?: pulumi.Input<number>;
-    url?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    /**
+     * Whether the registry requires authentication. When true, username and password are sent to Portainer.
+     */
+    authentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * AWS region used by ECR (type 7) registries.
+     */
+    awsRegion?: pulumi.Input<string | undefined>;
+    /**
+     * Optional base URL of the registry used by Portainer for web-based actions and links.
+     */
+    baseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the GitHub organisation used when<span pulumi-lang-nodejs=" githubUseOrganisation " pulumi-lang-dotnet=" GithubUseOrganisation " pulumi-lang-go=" githubUseOrganisation " pulumi-lang-python=" github_use_organisation " pulumi-lang-yaml=" githubUseOrganisation " pulumi-lang-java=" githubUseOrganisation " pulumi-lang-hcl=" github_use_organisation "> githubUseOrganisation </span>is true (type 8).
+     */
+    githubOrganisationName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the GitHub (type 8) registry should be scoped to an organisation rather than a user account.
+     */
+    githubUseOrganisation?: pulumi.Input<boolean | undefined>;
+    /**
+     * Instance URL used by GitLab (type 4) registries to identify the GitLab instance.
+     */
+    instanceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the registry as displayed in Portainer.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Password used to authenticate against the registry when authentication is enabled. Stored in state as a sensitive value.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Quay organisation used when<span pulumi-lang-nodejs=" quayUseOrganisation " pulumi-lang-dotnet=" QuayUseOrganisation " pulumi-lang-go=" quayUseOrganisation " pulumi-lang-python=" quay_use_organisation " pulumi-lang-yaml=" quayUseOrganisation " pulumi-lang-java=" quayUseOrganisation " pulumi-lang-hcl=" quay_use_organisation "> quayUseOrganisation </span>is true (type 1).
+     */
+    quayOrganisationName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Quay (type 1) registry should be scoped to an organisation rather than a user account.
+     */
+    quayUseOrganisation?: pulumi.Input<boolean | undefined>;
+    registryId?: pulumi.Input<string | undefined>;
+    /**
+     * Registry type: 1 = Quay, 2 = Azure, 3 = Custom, 4 = GitLab, 5 = ProGet, 6 = DockerHub, 7 = ECR, 8 = GitHub. Changing this value forces resource recreation.
+     */
+    type?: pulumi.Input<number | undefined>;
+    /**
+     * URL of the registry (e.g. registry hostname). Used by Portainer to push and pull images.
+     */
+    url?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the registry when authentication is enabled.
+     */
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Registry resource.
  */
 export interface RegistryArgs {
-    authentication?: pulumi.Input<boolean>;
-    awsRegion?: pulumi.Input<string>;
-    baseUrl?: pulumi.Input<string>;
-    githubOrganisationName?: pulumi.Input<string>;
-    githubUseOrganisation?: pulumi.Input<boolean>;
-    instanceUrl?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    quayOrganisationName?: pulumi.Input<string>;
-    quayUseOrganisation?: pulumi.Input<boolean>;
-    registryId?: pulumi.Input<string>;
+    /**
+     * Whether the registry requires authentication. When true, username and password are sent to Portainer.
+     */
+    authentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * AWS region used by ECR (type 7) registries.
+     */
+    awsRegion?: pulumi.Input<string | undefined>;
+    /**
+     * Optional base URL of the registry used by Portainer for web-based actions and links.
+     */
+    baseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the GitHub organisation used when<span pulumi-lang-nodejs=" githubUseOrganisation " pulumi-lang-dotnet=" GithubUseOrganisation " pulumi-lang-go=" githubUseOrganisation " pulumi-lang-python=" github_use_organisation " pulumi-lang-yaml=" githubUseOrganisation " pulumi-lang-java=" githubUseOrganisation " pulumi-lang-hcl=" github_use_organisation "> githubUseOrganisation </span>is true (type 8).
+     */
+    githubOrganisationName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the GitHub (type 8) registry should be scoped to an organisation rather than a user account.
+     */
+    githubUseOrganisation?: pulumi.Input<boolean | undefined>;
+    /**
+     * Instance URL used by GitLab (type 4) registries to identify the GitLab instance.
+     */
+    instanceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the registry as displayed in Portainer.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Password used to authenticate against the registry when authentication is enabled. Stored in state as a sensitive value.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Quay organisation used when<span pulumi-lang-nodejs=" quayUseOrganisation " pulumi-lang-dotnet=" QuayUseOrganisation " pulumi-lang-go=" quayUseOrganisation " pulumi-lang-python=" quay_use_organisation " pulumi-lang-yaml=" quayUseOrganisation " pulumi-lang-java=" quayUseOrganisation " pulumi-lang-hcl=" quay_use_organisation "> quayUseOrganisation </span>is true (type 1).
+     */
+    quayOrganisationName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Quay (type 1) registry should be scoped to an organisation rather than a user account.
+     */
+    quayUseOrganisation?: pulumi.Input<boolean | undefined>;
+    registryId?: pulumi.Input<string | undefined>;
+    /**
+     * Registry type: 1 = Quay, 2 = Azure, 3 = Custom, 4 = GitLab, 5 = ProGet, 6 = DockerHub, 7 = ECR, 8 = GitHub. Changing this value forces resource recreation.
+     */
     type: pulumi.Input<number>;
+    /**
+     * URL of the registry (e.g. registry hostname). Used by Portainer to push and pull images.
+     */
     url: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    /**
+     * Username used to authenticate against the registry when authentication is enabled.
+     */
+    username?: pulumi.Input<string | undefined>;
 }

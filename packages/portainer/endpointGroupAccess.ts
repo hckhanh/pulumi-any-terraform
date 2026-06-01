@@ -33,9 +33,21 @@ export class EndpointGroupAccess extends pulumi.CustomResource {
     }
 
     declare public readonly endpointGroupAccessId: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer endpoint group to which the access policy applies.
+     */
     declare public readonly endpointGroupId: pulumi.Output<number>;
+    /**
+     * Role identifier assigned to the user or team for this endpoint group.
+     */
     declare public readonly roleId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the team granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
     declare public readonly teamId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the user granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
     declare public readonly userId: pulumi.Output<number | undefined>;
 
     /**
@@ -76,20 +88,44 @@ export class EndpointGroupAccess extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointGroupAccess resources.
  */
 export interface EndpointGroupAccessState {
-    endpointGroupAccessId?: pulumi.Input<string>;
-    endpointGroupId?: pulumi.Input<number>;
-    roleId?: pulumi.Input<number>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    endpointGroupAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint group to which the access policy applies.
+     */
+    endpointGroupId?: pulumi.Input<number | undefined>;
+    /**
+     * Role identifier assigned to the user or team for this endpoint group.
+     */
+    roleId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the team granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the user granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointGroupAccess resource.
  */
 export interface EndpointGroupAccessArgs {
-    endpointGroupAccessId?: pulumi.Input<string>;
+    endpointGroupAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint group to which the access policy applies.
+     */
     endpointGroupId: pulumi.Input<number>;
-    roleId?: pulumi.Input<number>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    /**
+     * Role identifier assigned to the user or team for this endpoint group.
+     */
+    roleId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the team granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the user granted access to the endpoint group. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
+    userId?: pulumi.Input<number | undefined>;
 }

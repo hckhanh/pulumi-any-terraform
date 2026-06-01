@@ -70,18 +70,18 @@ export class EdgeStackWebhook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeStackWebhook resources.
  */
 export interface EdgeStackWebhookState {
-    edgeStackWebhookId?: pulumi.Input<string>;
+    edgeStackWebhookId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the webhook to trigger
      */
-    webhookId?: pulumi.Input<string>;
+    webhookId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EdgeStackWebhook resource.
  */
 export interface EdgeStackWebhookArgs {
-    edgeStackWebhookId?: pulumi.Input<string>;
+    edgeStackWebhookId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the webhook to trigger
      */

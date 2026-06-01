@@ -65,10 +65,6 @@ export class CertManagerExternalCaAcme extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The slug of the cert-manager project
-     */
-    declare public readonly projectSlug: pulumi.Output<string>;
-    /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
     declare public readonly status: pulumi.Output<string>;
@@ -94,7 +90,6 @@ export class CertManagerExternalCaAcme extends pulumi.CustomResource {
             resourceInputs["eabHmacKey"] = state?.eabHmacKey;
             resourceInputs["eabKid"] = state?.eabKid;
             resourceInputs["name"] = state?.name;
-            resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CertManagerExternalCaAcmeArgs | undefined;
@@ -110,9 +105,6 @@ export class CertManagerExternalCaAcme extends pulumi.CustomResource {
             if (args?.dnsProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsProvider'");
             }
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
             resourceInputs["accountEmail"] = args?.accountEmail;
             resourceInputs["directoryUrl"] = args?.directoryUrl;
             resourceInputs["dnsAppConnectionId"] = args?.dnsAppConnectionId;
@@ -121,7 +113,6 @@ export class CertManagerExternalCaAcme extends pulumi.CustomResource {
             resourceInputs["eabHmacKey"] = args?.eabHmacKey ? pulumi.secret(args.eabHmacKey) : undefined;
             resourceInputs["eabKid"] = args?.eabKid;
             resourceInputs["name"] = args?.name;
-            resourceInputs["projectSlug"] = args?.projectSlug;
             resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -168,10 +159,6 @@ export interface CertManagerExternalCaAcmeState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The slug of the cert-manager project
-     */
-    projectSlug?: pulumi.Input<string | undefined>;
-    /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
     status?: pulumi.Input<string | undefined>;
@@ -213,10 +200,6 @@ export interface CertManagerExternalCaAcmeArgs {
      * The name of the ACME CA
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug: pulumi.Input<string>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */

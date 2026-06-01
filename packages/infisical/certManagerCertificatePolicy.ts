@@ -55,10 +55,6 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The slug of the cert-manager project
-     */
-    declare public readonly projectSlug: pulumi.Output<string>;
-    /**
      * Subject alternative name (SAN) policies for the certificate policy
      */
     declare public readonly sans: pulumi.Output<outputs.CertManagerCertificatePolicySan[] | undefined>;
@@ -78,7 +74,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CertManagerCertificatePolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: CertManagerCertificatePolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertManagerCertificatePolicyArgs | CertManagerCertificatePolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -89,21 +85,16 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
             resourceInputs["extendedKeyUsages"] = state?.extendedKeyUsages;
             resourceInputs["keyUsages"] = state?.keyUsages;
             resourceInputs["name"] = state?.name;
-            resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["sans"] = state?.sans;
             resourceInputs["subjects"] = state?.subjects;
             resourceInputs["validity"] = state?.validity;
         } else {
             const args = argsOrState as CertManagerCertificatePolicyArgs | undefined;
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
             resourceInputs["algorithms"] = args?.algorithms;
             resourceInputs["description"] = args?.description;
             resourceInputs["extendedKeyUsages"] = args?.extendedKeyUsages;
             resourceInputs["keyUsages"] = args?.keyUsages;
             resourceInputs["name"] = args?.name;
-            resourceInputs["projectSlug"] = args?.projectSlug;
             resourceInputs["sans"] = args?.sans;
             resourceInputs["subjects"] = args?.subjects;
             resourceInputs["validity"] = args?.validity;
@@ -137,10 +128,6 @@ export interface CertManagerCertificatePolicyState {
      * The name of the certificate policy
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * Subject alternative name (SAN) policies for the certificate policy
      */
@@ -179,10 +166,6 @@ export interface CertManagerCertificatePolicyArgs {
      * The name of the certificate policy
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug: pulumi.Input<string>;
     /**
      * Subject alternative name (SAN) policies for the certificate policy
      */

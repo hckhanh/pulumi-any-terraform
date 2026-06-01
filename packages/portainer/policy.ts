@@ -118,36 +118,36 @@ export interface PolicyState {
     /**
      * Whether to allow environments to override this policy.
      */
-    allowOverride?: pulumi.Input<boolean>;
+    allowOverride?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp when the policy was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Policy data as a JSON string. Structure depends on policy_type.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * List of environment group IDs to which the policy applies.
      */
-    environmentGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    environmentGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Environment type for the policy (kubernetes, docker, podman, swarm).
      */
-    environmentType?: pulumi.Input<string>;
+    environmentType?: pulumi.Input<string | undefined>;
     /**
      * Name of the policy.
      */
-    name?: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Policy type (e.g. rbac-k8s, security-docker).
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the policy was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,15 +157,15 @@ export interface PolicyArgs {
     /**
      * Whether to allow environments to override this policy.
      */
-    allowOverride?: pulumi.Input<boolean>;
+    allowOverride?: pulumi.Input<boolean | undefined>;
     /**
      * Policy data as a JSON string. Structure depends on policy_type.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * List of environment group IDs to which the policy applies.
      */
-    environmentGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    environmentGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Environment type for the policy (kubernetes, docker, podman, swarm).
      */
@@ -173,8 +173,8 @@ export interface PolicyArgs {
     /**
      * Name of the policy.
      */
-    name?: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Policy type (e.g. rbac-k8s, security-docker).
      */

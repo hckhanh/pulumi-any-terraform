@@ -111,28 +111,28 @@ export interface UserGitCredentialState {
     /**
      * Authorization type: 0 = Basic, 1 = Token
      */
-    authorizationType?: pulumi.Input<number>;
+    authorizationType?: pulumi.Input<number | undefined>;
     /**
      * ID of the git credential
      */
-    credentialId?: pulumi.Input<number>;
+    credentialId?: pulumi.Input<number | undefined>;
     /**
      * Name of the git credential
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password or token for git authentication
      */
-    password?: pulumi.Input<string>;
-    userGitCredentialId?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    userGitCredentialId?: pulumi.Input<string | undefined>;
     /**
      * ID of the user who owns this git credential
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Username for git authentication
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,16 +142,16 @@ export interface UserGitCredentialArgs {
     /**
      * Authorization type: 0 = Basic, 1 = Token
      */
-    authorizationType?: pulumi.Input<number>;
+    authorizationType?: pulumi.Input<number | undefined>;
     /**
      * Name of the git credential
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password or token for git authentication
      */
     password: pulumi.Input<string>;
-    userGitCredentialId?: pulumi.Input<string>;
+    userGitCredentialId?: pulumi.Input<string | undefined>;
     /**
      * ID of the user who owns this git credential
      */

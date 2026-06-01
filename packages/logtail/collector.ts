@@ -47,11 +47,11 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public readonly customBucket: pulumi.Output<outputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
      */
     declare public readonly dataRegion: pulumi.Output<string>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */
@@ -97,7 +97,7 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pingedAt: pulumi.Output<string>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`" pulumi-lang-hcl="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`" pulumi-lang-hcl="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`" pulumi-lang-hcl="`kubernetes`">`kubernetes`</span>.
      */
     declare public readonly platform: pulumi.Output<string>;
     /**
@@ -105,11 +105,11 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
-     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
+     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> to remove from a group.
      */
     declare public readonly sourceGroupId: pulumi.Output<number | undefined>;
     /**
-     * The ID of the underlying source. Use this with <span pulumi-lang-nodejs="`logtail.Metric`" pulumi-lang-dotnet="`logtail.Metric`" pulumi-lang-go="`Metric`" pulumi-lang-python="`Metric`" pulumi-lang-yaml="`logtail.Metric`" pulumi-lang-java="`logtail.Metric`">`logtail.Metric`</span> to define metrics on this collector's data.
+     * The ID of the underlying source. Use this with <span pulumi-lang-nodejs="`logtail.Metric`" pulumi-lang-dotnet="`logtail.Metric`" pulumi-lang-go="`Metric`" pulumi-lang-python="`Metric`" pulumi-lang-yaml="`logtail.Metric`" pulumi-lang-java="`logtail.Metric`" pulumi-lang-hcl="`logtail_metric`">`logtail.Metric`</span> to define metrics on this collector's data.
      */
     declare public /*out*/ readonly sourceId: pulumi.Output<number>;
     /**
@@ -230,11 +230,11 @@ export interface CollectorState {
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */
@@ -280,7 +280,7 @@ export interface CollectorState {
      */
     pingedAt?: pulumi.Input<string | undefined>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`" pulumi-lang-hcl="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`" pulumi-lang-hcl="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`" pulumi-lang-hcl="`kubernetes`">`kubernetes`</span>.
      */
     platform?: pulumi.Input<string | undefined>;
     /**
@@ -288,11 +288,11 @@ export interface CollectorState {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
+     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> to remove from a group.
      */
     sourceGroupId?: pulumi.Input<number | undefined>;
     /**
-     * The ID of the underlying source. Use this with <span pulumi-lang-nodejs="`logtail.Metric`" pulumi-lang-dotnet="`logtail.Metric`" pulumi-lang-go="`Metric`" pulumi-lang-python="`Metric`" pulumi-lang-yaml="`logtail.Metric`" pulumi-lang-java="`logtail.Metric`">`logtail.Metric`</span> to define metrics on this collector's data.
+     * The ID of the underlying source. Use this with <span pulumi-lang-nodejs="`logtail.Metric`" pulumi-lang-dotnet="`logtail.Metric`" pulumi-lang-go="`Metric`" pulumi-lang-python="`Metric`" pulumi-lang-yaml="`logtail.Metric`" pulumi-lang-java="`logtail.Metric`" pulumi-lang-hcl="`logtail_metric`">`logtail.Metric`</span> to define metrics on this collector's data.
      */
     sourceId?: pulumi.Input<number | undefined>;
     /**
@@ -334,11 +334,11 @@ export interface CollectorArgs {
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */
@@ -368,11 +368,11 @@ export interface CollectorArgs {
      */
     note?: pulumi.Input<string | undefined>;
     /**
-     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`">`kubernetes`</span>.
+     * The platform of this collector. This value can be set only when creating a new collector and cannot be changed later. Valid values are: <span pulumi-lang-nodejs="`docker`" pulumi-lang-dotnet="`Docker`" pulumi-lang-go="`docker`" pulumi-lang-python="`docker`" pulumi-lang-yaml="`docker`" pulumi-lang-java="`docker`" pulumi-lang-hcl="`docker`">`docker`</span>, <span pulumi-lang-nodejs="`swarm`" pulumi-lang-dotnet="`Swarm`" pulumi-lang-go="`swarm`" pulumi-lang-python="`swarm`" pulumi-lang-yaml="`swarm`" pulumi-lang-java="`swarm`" pulumi-lang-hcl="`swarm`">`swarm`</span>, <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`" pulumi-lang-hcl="`kubernetes`">`kubernetes`</span>.
      */
     platform: pulumi.Input<string>;
     /**
-     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to remove from a group.
+     * The ID of the source group (folder) this collector belongs to. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> to remove from a group.
      */
     sourceGroupId?: pulumi.Input<number | undefined>;
     /**

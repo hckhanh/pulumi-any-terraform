@@ -32,9 +32,18 @@ export class KubernetesRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesRole.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Role is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesRoleId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Role.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Role is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesRole resources.
  */
 export interface KubernetesRoleState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesRoleId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Role is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesRoleId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Role.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Role is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesRole resource.
  */
 export interface KubernetesRoleArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Role is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesRoleId?: pulumi.Input<string>;
+    kubernetesRoleId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Role.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the Role is created.
+     */
     namespace: pulumi.Input<string>;
 }

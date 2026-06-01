@@ -37,6 +37,10 @@ export class SplunkOncallIntegration extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    declare public readonly notifyAlongsidePrimaryResponder: pulumi.Output<boolean | undefined>;
+    /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
@@ -59,6 +63,7 @@ export class SplunkOncallIntegration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SplunkOncallIntegrationState | undefined;
             resourceInputs["name"] = state?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = state?.notifyAlongsidePrimaryResponder;
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["url"] = state?.url;
         } else {
@@ -67,6 +72,7 @@ export class SplunkOncallIntegration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'url'");
             }
             resourceInputs["name"] = args?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = args?.notifyAlongsidePrimaryResponder;
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["url"] = args?.url;
         }
@@ -83,6 +89,10 @@ export interface SplunkOncallIntegrationState {
      * The name of the Splunk On-Call Integration.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */
@@ -101,6 +111,10 @@ export interface SplunkOncallIntegrationArgs {
      * The name of the Splunk On-Call Integration.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
      */

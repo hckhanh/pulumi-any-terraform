@@ -40,6 +40,6 @@ export function getEdgeJobOutput(args: GetEdgeJobOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getEdgeJob.
  */
 export interface GetEdgeJobOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

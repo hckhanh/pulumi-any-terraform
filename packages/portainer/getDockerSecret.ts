@@ -44,6 +44,6 @@ export function getDockerSecretOutput(args: GetDockerSecretOutputArgs, opts?: pu
  */
 export interface GetDockerSecretOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

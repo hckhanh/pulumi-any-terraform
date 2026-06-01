@@ -41,6 +41,6 @@ export function getCustomTemplateOutput(args: GetCustomTemplateOutputArgs, opts?
  * A collection of arguments for invoking getCustomTemplate.
  */
 export interface GetCustomTemplateOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     title: pulumi.Input<string>;
 }

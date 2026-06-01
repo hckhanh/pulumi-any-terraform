@@ -79,12 +79,12 @@ export interface ComposeConvertState {
     /**
      * The content of the docker-compose.yml file.
      */
-    composeContent?: pulumi.Input<string>;
-    composeConvertId?: pulumi.Input<string>;
+    composeContent?: pulumi.Input<string | undefined>;
+    composeConvertId?: pulumi.Input<string | undefined>;
     /**
      * Map of generated Kubernetes YAML manifests.
      */
-    manifests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    manifests?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -95,5 +95,5 @@ export interface ComposeConvertArgs {
      * The content of the docker-compose.yml file.
      */
     composeContent: pulumi.Input<string>;
-    composeConvertId?: pulumi.Input<string>;
+    composeConvertId?: pulumi.Input<string | undefined>;
 }

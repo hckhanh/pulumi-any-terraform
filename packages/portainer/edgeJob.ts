@@ -32,13 +32,34 @@ export class EdgeJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeJob.__pulumiType;
     }
 
+    /**
+     * Cron expression that schedules execution of the edge job.
+     */
     declare public readonly cronExpression: pulumi.Output<string>;
+    /**
+     * List of edge group identifiers targeted by the job.
+     */
     declare public readonly edgeGroups: pulumi.Output<number[]>;
     declare public readonly edgeJobId: pulumi.Output<string>;
+    /**
+     * List of edge endpoint identifiers explicitly targeted by the job (in addition to those in <span pulumi-lang-nodejs="`edgeGroups`" pulumi-lang-dotnet="`EdgeGroups`" pulumi-lang-go="`edgeGroups`" pulumi-lang-python="`edge_groups`" pulumi-lang-yaml="`edgeGroups`" pulumi-lang-java="`edgeGroups`" pulumi-lang-hcl="`edge_groups`">`edgeGroups`</span>).
+     */
     declare public readonly endpoints: pulumi.Output<number[]>;
+    /**
+     * Inline script executed by edge agents. Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span>.
+     */
     declare public readonly fileContent: pulumi.Output<string | undefined>;
+    /**
+     * Path on the local filesystem to a script file uploaded as the job payload. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span>.
+     */
     declare public readonly filePath: pulumi.Output<string | undefined>;
+    /**
+     * Name of the Portainer edge job.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Whether the edge job should run repeatedly according to the cron expression (true) or only once (false).
+     */
     declare public readonly recurring: pulumi.Output<boolean | undefined>;
 
     /**
@@ -91,26 +112,68 @@ export class EdgeJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeJob resources.
  */
 export interface EdgeJobState {
-    cronExpression?: pulumi.Input<string>;
-    edgeGroups?: pulumi.Input<pulumi.Input<number>[]>;
-    edgeJobId?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<number>[]>;
-    fileContent?: pulumi.Input<string>;
-    filePath?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    recurring?: pulumi.Input<boolean>;
+    /**
+     * Cron expression that schedules execution of the edge job.
+     */
+    cronExpression?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge group identifiers targeted by the job.
+     */
+    edgeGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    edgeJobId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge endpoint identifiers explicitly targeted by the job (in addition to those in <span pulumi-lang-nodejs="`edgeGroups`" pulumi-lang-dotnet="`EdgeGroups`" pulumi-lang-go="`edgeGroups`" pulumi-lang-python="`edge_groups`" pulumi-lang-yaml="`edgeGroups`" pulumi-lang-java="`edgeGroups`" pulumi-lang-hcl="`edge_groups`">`edgeGroups`</span>).
+     */
+    endpoints?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Inline script executed by edge agents. Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span>.
+     */
+    fileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Path on the local filesystem to a script file uploaded as the job payload. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span>.
+     */
+    filePath?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer edge job.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the edge job should run repeatedly according to the cron expression (true) or only once (false).
+     */
+    recurring?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EdgeJob resource.
  */
 export interface EdgeJobArgs {
+    /**
+     * Cron expression that schedules execution of the edge job.
+     */
     cronExpression: pulumi.Input<string>;
+    /**
+     * List of edge group identifiers targeted by the job.
+     */
     edgeGroups: pulumi.Input<pulumi.Input<number>[]>;
-    edgeJobId?: pulumi.Input<string>;
+    edgeJobId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge endpoint identifiers explicitly targeted by the job (in addition to those in <span pulumi-lang-nodejs="`edgeGroups`" pulumi-lang-dotnet="`EdgeGroups`" pulumi-lang-go="`edgeGroups`" pulumi-lang-python="`edge_groups`" pulumi-lang-yaml="`edgeGroups`" pulumi-lang-java="`edgeGroups`" pulumi-lang-hcl="`edge_groups`">`edgeGroups`</span>).
+     */
     endpoints: pulumi.Input<pulumi.Input<number>[]>;
-    fileContent?: pulumi.Input<string>;
-    filePath?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    recurring?: pulumi.Input<boolean>;
+    /**
+     * Inline script executed by edge agents. Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span>.
+     */
+    fileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Path on the local filesystem to a script file uploaded as the job payload. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span>.
+     */
+    filePath?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer edge job.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the edge job should run repeatedly according to the cron expression (true) or only once (false).
+     */
+    recurring?: pulumi.Input<boolean | undefined>;
 }

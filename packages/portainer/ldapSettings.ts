@@ -152,60 +152,60 @@ export interface LdapSettingsState {
     /**
      * Whether auto admin population is enabled
      */
-    adminAutoPopulate?: pulumi.Input<boolean>;
+    adminAutoPopulate?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP admin group search settings
      */
-    adminGroupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsAdminGroupSearchSetting>[]>;
+    adminGroupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsAdminGroupSearchSetting>[] | undefined>;
     /**
      * Saved admin group list
      */
-    adminGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    adminGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable anonymous mode. When enabled, ReaderDN and Password will not be used
      */
-    anonymousMode?: pulumi.Input<boolean>;
+    anonymousMode?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically provision users and assign them to matching LDAP group names
      */
-    autoCreateUsers?: pulumi.Input<boolean>;
+    autoCreateUsers?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP group search settings
      */
-    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsGroupSearchSetting>[]>;
-    ldapSettingsId?: pulumi.Input<string>;
+    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsGroupSearchSetting>[] | undefined>;
+    ldapSettingsId?: pulumi.Input<string | undefined>;
     /**
      * Password of the account used to search users
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Account that will be used to search for users (e.g. cn=readonly-account,dc=ldap,dc=domain,dc=tld)
      */
-    readerDn?: pulumi.Input<string>;
+    readerDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP user search settings
      */
-    searchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsSearchSetting>[]>;
+    searchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsSearchSetting>[] | undefined>;
     /**
      * LDAP server type
      */
-    serverType?: pulumi.Input<number>;
+    serverType?: pulumi.Input<number | undefined>;
     /**
      * Whether LDAP connection should use StartTLS
      */
-    startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean | undefined>;
     /**
      * TLS configuration for LDAP
      */
-    tlsConfig?: pulumi.Input<inputs.LdapSettingsTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.LdapSettingsTlsConfig | undefined>;
     /**
      * URL or IP address of the LDAP server (deprecated, use urls)
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * URLs or IP addresses of the LDAP server
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -215,58 +215,58 @@ export interface LdapSettingsArgs {
     /**
      * Whether auto admin population is enabled
      */
-    adminAutoPopulate?: pulumi.Input<boolean>;
+    adminAutoPopulate?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP admin group search settings
      */
-    adminGroupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsAdminGroupSearchSetting>[]>;
+    adminGroupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsAdminGroupSearchSetting>[] | undefined>;
     /**
      * Saved admin group list
      */
-    adminGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    adminGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable anonymous mode. When enabled, ReaderDN and Password will not be used
      */
-    anonymousMode?: pulumi.Input<boolean>;
+    anonymousMode?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically provision users and assign them to matching LDAP group names
      */
-    autoCreateUsers?: pulumi.Input<boolean>;
+    autoCreateUsers?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP group search settings
      */
-    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsGroupSearchSetting>[]>;
-    ldapSettingsId?: pulumi.Input<string>;
+    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsGroupSearchSetting>[] | undefined>;
+    ldapSettingsId?: pulumi.Input<string | undefined>;
     /**
      * Password of the account used to search users
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Account that will be used to search for users (e.g. cn=readonly-account,dc=ldap,dc=domain,dc=tld)
      */
-    readerDn?: pulumi.Input<string>;
+    readerDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP user search settings
      */
-    searchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsSearchSetting>[]>;
+    searchSettings?: pulumi.Input<pulumi.Input<inputs.LdapSettingsSearchSetting>[] | undefined>;
     /**
      * LDAP server type
      */
-    serverType?: pulumi.Input<number>;
+    serverType?: pulumi.Input<number | undefined>;
     /**
      * Whether LDAP connection should use StartTLS
      */
-    startTls?: pulumi.Input<boolean>;
+    startTls?: pulumi.Input<boolean | undefined>;
     /**
      * TLS configuration for LDAP
      */
-    tlsConfig?: pulumi.Input<inputs.LdapSettingsTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.LdapSettingsTlsConfig | undefined>;
     /**
      * URL or IP address of the LDAP server (deprecated, use urls)
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * URLs or IP addresses of the LDAP server
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

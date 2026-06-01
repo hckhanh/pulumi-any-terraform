@@ -32,13 +32,34 @@ export class BackupS3 extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupS3.__pulumiType;
     }
 
+    /**
+     * Sensitive S3 access key identifier used to upload the Portainer backup archive.
+     */
     declare public readonly accessKeyId: pulumi.Output<string>;
     declare public readonly backupS3Id: pulumi.Output<string>;
+    /**
+     * Name of the S3 bucket where the Portainer backup archive will be stored.
+     */
     declare public readonly bucketName: pulumi.Output<string>;
+    /**
+     * Optional cron expression that schedules recurring S3 backups in Portainer.
+     */
     declare public readonly cronRule: pulumi.Output<string | undefined>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive before upload.
+     */
     declare public readonly password: pulumi.Output<string>;
+    /**
+     * AWS or S3-compatible region of the destination bucket.
+     */
     declare public readonly region: pulumi.Output<string>;
+    /**
+     * Endpoint URL of the S3 or S3-compatible service used for the backup upload.
+     */
     declare public readonly s3CompatibleHost: pulumi.Output<string>;
+    /**
+     * Sensitive S3 secret access key paired with <span pulumi-lang-nodejs="`accessKeyId`" pulumi-lang-dotnet="`AccessKeyId`" pulumi-lang-go="`accessKeyId`" pulumi-lang-python="`access_key_id`" pulumi-lang-yaml="`accessKeyId`" pulumi-lang-java="`accessKeyId`" pulumi-lang-hcl="`access_key_id`">`accessKeyId`</span>.
+     */
     declare public readonly secretAccessKey: pulumi.Output<string>;
 
     /**
@@ -102,26 +123,68 @@ export class BackupS3 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackupS3 resources.
  */
 export interface BackupS3State {
-    accessKeyId?: pulumi.Input<string>;
-    backupS3Id?: pulumi.Input<string>;
-    bucketName?: pulumi.Input<string>;
-    cronRule?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    s3CompatibleHost?: pulumi.Input<string>;
-    secretAccessKey?: pulumi.Input<string>;
+    /**
+     * Sensitive S3 access key identifier used to upload the Portainer backup archive.
+     */
+    accessKeyId?: pulumi.Input<string | undefined>;
+    backupS3Id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the S3 bucket where the Portainer backup archive will be stored.
+     */
+    bucketName?: pulumi.Input<string | undefined>;
+    /**
+     * Optional cron expression that schedules recurring S3 backups in Portainer.
+     */
+    cronRule?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive before upload.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * AWS or S3-compatible region of the destination bucket.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * Endpoint URL of the S3 or S3-compatible service used for the backup upload.
+     */
+    s3CompatibleHost?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive S3 secret access key paired with <span pulumi-lang-nodejs="`accessKeyId`" pulumi-lang-dotnet="`AccessKeyId`" pulumi-lang-go="`accessKeyId`" pulumi-lang-python="`access_key_id`" pulumi-lang-yaml="`accessKeyId`" pulumi-lang-java="`accessKeyId`" pulumi-lang-hcl="`access_key_id`">`accessKeyId`</span>.
+     */
+    secretAccessKey?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a BackupS3 resource.
  */
 export interface BackupS3Args {
+    /**
+     * Sensitive S3 access key identifier used to upload the Portainer backup archive.
+     */
     accessKeyId: pulumi.Input<string>;
-    backupS3Id?: pulumi.Input<string>;
+    backupS3Id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the S3 bucket where the Portainer backup archive will be stored.
+     */
     bucketName: pulumi.Input<string>;
-    cronRule?: pulumi.Input<string>;
+    /**
+     * Optional cron expression that schedules recurring S3 backups in Portainer.
+     */
+    cronRule?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive before upload.
+     */
     password: pulumi.Input<string>;
+    /**
+     * AWS or S3-compatible region of the destination bucket.
+     */
     region: pulumi.Input<string>;
+    /**
+     * Endpoint URL of the S3 or S3-compatible service used for the backup upload.
+     */
     s3CompatibleHost: pulumi.Input<string>;
+    /**
+     * Sensitive S3 secret access key paired with <span pulumi-lang-nodejs="`accessKeyId`" pulumi-lang-dotnet="`AccessKeyId`" pulumi-lang-go="`accessKeyId`" pulumi-lang-python="`access_key_id`" pulumi-lang-yaml="`accessKeyId`" pulumi-lang-java="`accessKeyId`" pulumi-lang-hcl="`access_key_id`">`accessKeyId`</span>.
+     */
     secretAccessKey: pulumi.Input<string>;
 }

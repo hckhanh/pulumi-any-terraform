@@ -55,7 +55,7 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly call: pulumi.Output<boolean>;
     /**
-     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart " pulumi-lang-hcl=" logtail_dashboard_chart "> logtail.DashboardChart </span>resources.
      */
     declare public readonly chartId: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly sourceMode: pulumi.Output<string>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     declare public readonly sourcePlatforms: pulumi.Output<string[]>;
     /**
@@ -276,7 +276,7 @@ export interface DashboardAlertState {
      */
     call?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart " pulumi-lang-hcl=" logtail_dashboard_chart "> logtail.DashboardChart </span>resources.
      */
     chartId?: pulumi.Input<string | undefined>;
     /**
@@ -360,7 +360,7 @@ export interface DashboardAlertState {
      */
     sourceMode?: pulumi.Input<string | undefined>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -406,7 +406,7 @@ export interface DashboardAlertArgs {
      */
     call?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart "> logtail.DashboardChart </span>resources.
+     * The ID of the chart this alert belongs to. Accepts either a bare chart ID or a composite dashboard_id/chart_id from<span pulumi-lang-nodejs=" logtail.DashboardChart " pulumi-lang-dotnet=" logtail.DashboardChart " pulumi-lang-go=" DashboardChart " pulumi-lang-python=" DashboardChart " pulumi-lang-yaml=" logtail.DashboardChart " pulumi-lang-java=" logtail.DashboardChart " pulumi-lang-hcl=" logtail_dashboard_chart "> logtail.DashboardChart </span>resources.
      */
     chartId: pulumi.Input<string>;
     /**
@@ -482,7 +482,7 @@ export interface DashboardAlertArgs {
      */
     sourceMode?: pulumi.Input<string | undefined>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

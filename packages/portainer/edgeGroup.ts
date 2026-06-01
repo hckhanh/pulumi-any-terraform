@@ -32,11 +32,26 @@ export class EdgeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeGroup.__pulumiType;
     }
 
+    /**
+     * Whether the Edge group is dynamic (membership determined by tags) or static (explicit endpoints).
+     */
     declare public readonly dynamic: pulumi.Output<boolean>;
     declare public readonly edgeGroupId: pulumi.Output<string>;
+    /**
+     * List of Portainer environment (endpoint) IDs that are statically assigned to the Edge group. Used when dynamic is false.
+     */
     declare public readonly endpoints: pulumi.Output<number[] | undefined>;
+    /**
+     * Name of the Portainer Edge group.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * For dynamic groups, whether to match endpoints with any (true) or all (false) of the specified tags.
+     */
     declare public readonly partialMatch: pulumi.Output<boolean | undefined>;
+    /**
+     * List of tag IDs used to dynamically select endpoints. Used when dynamic is true.
+     */
     declare public readonly tagIds: pulumi.Output<number[] | undefined>;
 
     /**
@@ -79,22 +94,52 @@ export class EdgeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeGroup resources.
  */
 export interface EdgeGroupState {
-    dynamic?: pulumi.Input<boolean>;
-    edgeGroupId?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
-    partialMatch?: pulumi.Input<boolean>;
-    tagIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Whether the Edge group is dynamic (membership determined by tags) or static (explicit endpoints).
+     */
+    dynamic?: pulumi.Input<boolean | undefined>;
+    edgeGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer environment (endpoint) IDs that are statically assigned to the Edge group. Used when dynamic is false.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Name of the Portainer Edge group.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * For dynamic groups, whether to match endpoints with any (true) or all (false) of the specified tags.
+     */
+    partialMatch?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of tag IDs used to dynamically select endpoints. Used when dynamic is true.
+     */
+    tagIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EdgeGroup resource.
  */
 export interface EdgeGroupArgs {
+    /**
+     * Whether the Edge group is dynamic (membership determined by tags) or static (explicit endpoints).
+     */
     dynamic: pulumi.Input<boolean>;
-    edgeGroupId?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
-    partialMatch?: pulumi.Input<boolean>;
-    tagIds?: pulumi.Input<pulumi.Input<number>[]>;
+    edgeGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer environment (endpoint) IDs that are statically assigned to the Edge group. Used when dynamic is false.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Name of the Portainer Edge group.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * For dynamic groups, whether to match endpoints with any (true) or all (false) of the specified tags.
+     */
+    partialMatch?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of tag IDs used to dynamically select endpoints. Used when dynamic is true.
+     */
+    tagIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

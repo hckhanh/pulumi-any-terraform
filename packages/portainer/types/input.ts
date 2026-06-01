@@ -9,30 +9,30 @@ export interface AlertingSettingsNotificationChannel {
     /**
      * Notification channel identifier.
      */
-    channelId?: pulumi.Input<number>;
+    channelId?: pulumi.Input<number | undefined>;
     /**
      * Configuration key-value pairs for the notification channel.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the notification channel is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the notification channel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of the notification channel.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertingSilenceMatcher {
     /**
      * Whether to match for equality (true) or inequality (false).
      */
-    isEqual?: pulumi.Input<boolean>;
+    isEqual?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the value is a regular expression.
      */
@@ -48,297 +48,645 @@ export interface AlertingSilenceMatcher {
 }
 
 export interface CloudProviderProvisionTimeouts {
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
 }
 
 export interface ContainerExecTimeouts {
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
 }
 
 export interface DeployTimeouts {
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
 }
 
 export interface DockerImageTimeouts {
-    create?: pulumi.Input<string>;
-    delete?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
+    delete?: pulumi.Input<string | undefined>;
 }
 
 export interface DockerNetworkIpamConfig {
-    auxiliaryAddresses?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    gateway?: pulumi.Input<string>;
-    ipRange?: pulumi.Input<string>;
+    /**
+     * Auxiliary IPv4 or IPv6 addresses used by the network driver, keyed by name.
+     */
+    auxiliaryAddresses?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Gateway IPv4 or IPv6 address for the subnet.
+     */
+    gateway?: pulumi.Input<string | undefined>;
+    /**
+     * Sub-range of IP addresses within the subnet from which to allocate container IPs.
+     */
+    ipRange?: pulumi.Input<string | undefined>;
+    /**
+     * Subnet in CIDR notation for the IPAM pool.
+     */
     subnet: pulumi.Input<string>;
 }
 
 export interface DockerPluginSetting {
-    description?: pulumi.Input<string>;
+    /**
+     * Human-readable description of the plugin setting.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Docker plugin setting.
+     */
     name: pulumi.Input<string>;
+    /**
+     * List of values assigned to the plugin setting.
+     */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DockerVolumeClusterVolumeSpec {
-    accessMode?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessMode>;
-    accessibilityRequirements?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirements>;
-    availability?: pulumi.Input<string>;
-    capacityRange?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecCapacityRange>;
-    group?: pulumi.Input<string>;
-    secrets?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecSecret>[]>;
+    /**
+     * Access mode describing how the cluster volume may be mounted by tasks.
+     */
+    accessMode?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessMode | undefined>;
+    /**
+     * Topology constraints describing where the cluster volume can be accessed.
+     */
+    accessibilityRequirements?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirements | undefined>;
+    /**
+     * Availability of the cluster volume (active, pause, or drain).
+     */
+    availability?: pulumi.Input<string | undefined>;
+    /**
+     * Capacity bounds requested for the cluster volume.
+     */
+    capacityRange?: pulumi.Input<inputs.DockerVolumeClusterVolumeSpecCapacityRange | undefined>;
+    /**
+     * Group name used to associate related cluster volumes.
+     */
+    group?: pulumi.Input<string | undefined>;
+    /**
+     * Secrets passed to the CSI plugin when provisioning the cluster volume.
+     */
+    secrets?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecSecret>[] | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessMode {
-    mountVolume?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    scope?: pulumi.Input<string>;
-    sharing?: pulumi.Input<string>;
+    /**
+     * Filesystem mount options applied when the cluster volume is attached.
+     */
+    mountVolume?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Scope of the cluster volume access (e.g., single or multi node).
+     */
+    scope?: pulumi.Input<string | undefined>;
+    /**
+     * Sharing mode for the cluster volume (e.g., none, readonly, onewriter, all).
+     */
+    sharing?: pulumi.Input<string | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirements {
-    preferreds?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsPreferred>[]>;
-    requisites?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsRequisite>[]>;
+    /**
+     * Topologies in which the cluster volume should preferably be accessible.
+     */
+    preferreds?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsPreferred>[] | undefined>;
+    /**
+     * Topologies in which the cluster volume must be accessible.
+     */
+    requisites?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsRequisite>[] | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirementsPreferred {
-    property1?: pulumi.Input<string>;
-    property2?: pulumi.Input<string>;
+    /**
+     * First topology key/value pair describing a preferred location.
+     */
+    property1?: pulumi.Input<string | undefined>;
+    /**
+     * Second topology key/value pair describing a preferred location.
+     */
+    property2?: pulumi.Input<string | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirementsRequisite {
-    property1?: pulumi.Input<string>;
-    property2?: pulumi.Input<string>;
+    /**
+     * First topology key/value pair describing a required location.
+     */
+    property1?: pulumi.Input<string | undefined>;
+    /**
+     * Second topology key/value pair describing a required location.
+     */
+    property2?: pulumi.Input<string | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecCapacityRange {
-    limitBytes?: pulumi.Input<number>;
-    requiredBytes?: pulumi.Input<number>;
+    /**
+     * Maximum allowed size of the cluster volume in bytes.
+     */
+    limitBytes?: pulumi.Input<number | undefined>;
+    /**
+     * Minimum required size of the cluster volume in bytes.
+     */
+    requiredBytes?: pulumi.Input<number | undefined>;
 }
 
 export interface DockerVolumeClusterVolumeSpecSecret {
+    /**
+     * Key used by the CSI plugin to identify the secret value.
+     */
     key: pulumi.Input<string>;
+    /**
+     * Name of the Docker Swarm secret providing the value.
+     */
     secret: pulumi.Input<string>;
 }
 
 export interface EdgeStackTimeouts {
-    create?: pulumi.Input<string>;
-    delete?: pulumi.Input<string>;
-    update?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
+    delete?: pulumi.Input<string | undefined>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface EndpointSettingsChangeWindow {
-    enabled?: pulumi.Input<boolean>;
-    endTime?: pulumi.Input<string>;
-    startTime?: pulumi.Input<string>;
+    /**
+     * Whether the change window is enabled.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * End time of the change window in HH:MM format.
+     */
+    endTime?: pulumi.Input<string | undefined>;
+    /**
+     * Start time of the change window in HH:MM format.
+     */
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 export interface EndpointSettingsDeploymentOptions {
-    hideAddWithForm?: pulumi.Input<boolean>;
-    hideFileUpload?: pulumi.Input<boolean>;
-    hideWebEditor?: pulumi.Input<boolean>;
-    overrideGlobalOptions?: pulumi.Input<boolean>;
+    /**
+     * Whether to hide the form-based add option in the deployment UI.
+     */
+    hideAddWithForm?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to hide the file upload option in the deployment UI.
+     */
+    hideFileUpload?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to hide the web editor option in the deployment UI.
+     */
+    hideWebEditor?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to override global deployment options with these environment-specific values.
+     */
+    overrideGlobalOptions?: pulumi.Input<boolean | undefined>;
 }
 
 export interface EndpointSettingsGpus {
+    /**
+     * Display name of the GPU device.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Device identifier of the GPU as exposed to Docker.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface EndpointSettingsSecuritySettings {
-    allowBindMounts?: pulumi.Input<boolean>;
-    allowContainerCapabilities?: pulumi.Input<boolean>;
-    allowDeviceMapping?: pulumi.Input<boolean>;
-    allowHostNamespace?: pulumi.Input<boolean>;
-    allowPrivilegedMode?: pulumi.Input<boolean>;
-    allowStackManagement?: pulumi.Input<boolean>;
-    allowSysctlSetting?: pulumi.Input<boolean>;
-    allowVolumeBrowser?: pulumi.Input<boolean>;
-    enableHostManagement?: pulumi.Input<boolean>;
+    /**
+     * Whether regular users may use bind mounts when deploying containers.
+     */
+    allowBindMounts?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may add Linux capabilities to containers.
+     */
+    allowContainerCapabilities?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may map host devices into containers.
+     */
+    allowDeviceMapping?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may use the host namespace for containers.
+     */
+    allowHostNamespace?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may run containers in privileged mode.
+     */
+    allowPrivilegedMode?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may create and manage stacks.
+     */
+    allowStackManagement?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may set sysctl values on containers.
+     */
+    allowSysctlSetting?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether regular users may browse the contents of volumes via Portainer.
+     */
+    allowVolumeBrowser?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether host management features (host browser, host info) are enabled in the UI.
+     */
+    enableHostManagement?: pulumi.Input<boolean | undefined>;
 }
 
 export interface KubernetesApplicationTimeouts {
-    create?: pulumi.Input<string>;
-    delete?: pulumi.Input<string>;
-    update?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
+    delete?: pulumi.Input<string | undefined>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesHelmTimeouts {
-    create?: pulumi.Input<string>;
-    delete?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
+    delete?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesIngresscontrollersController {
+    /**
+     * Whether the ingress controller is exposed for selection in the Portainer UI.
+     */
     availability: pulumi.Input<boolean>;
+    /**
+     * Kubernetes IngressClass name associated with the controller.
+     */
     className: pulumi.Input<string>;
+    /**
+     * Display name of the ingress controller in Portainer.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Whether Portainer should treat this entry as a newly-registered controller.
+     */
     new: pulumi.Input<boolean>;
+    /**
+     * Type of the ingress controller (for example <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`" pulumi-lang-hcl="`nginx`">`nginx`</span>, <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`" pulumi-lang-hcl="`traefik`">`traefik`</span>, <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span>).
+     */
     type: pulumi.Input<string>;
+    /**
+     * Whether the ingress controller is currently in use by workloads.
+     */
     used: pulumi.Input<boolean>;
 }
 
 export interface KubernetesIngressesPath {
+    /**
+     * Hostname matched by this routing rule.
+     */
     host: pulumi.Input<string>;
+    /**
+     * URL path matched by this routing rule.
+     */
     path: pulumi.Input<string>;
+    /**
+     * Path matching strategy (`Exact`, `Prefix`, or `ImplementationSpecific`).
+     */
     pathType: pulumi.Input<string>;
+    /**
+     * Port on the backend Service that traffic is forwarded to.
+     */
     port: pulumi.Input<number>;
+    /**
+     * Name of the Kubernetes Service that receives traffic for this rule.
+     */
     serviceName: pulumi.Input<string>;
 }
 
 export interface KubernetesIngressesTl {
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    secretName?: pulumi.Input<string>;
+    /**
+     * List of hostnames covered by the referenced TLS secret.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Name of the Kubernetes Secret containing the TLS certificate and key.
+     */
+    secretName?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesNamespaceIngresscontrollersController {
+    /**
+     * Whether the controller is available for selection in the namespace.
+     */
     availability: pulumi.Input<boolean>;
+    /**
+     * Kubernetes IngressClass name associated with the controller.
+     */
     className: pulumi.Input<string>;
+    /**
+     * Display name of the ingress controller in Portainer.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Whether Portainer should treat this entry as a newly-registered controller.
+     */
     new: pulumi.Input<boolean>;
+    /**
+     * Type of the ingress controller (for example <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`" pulumi-lang-hcl="`nginx`">`nginx`</span>, <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`" pulumi-lang-hcl="`traefik`">`traefik`</span>, <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span>).
+     */
     type: pulumi.Input<string>;
+    /**
+     * Whether the controller is currently in use by workloads in the namespace.
+     */
     used: pulumi.Input<boolean>;
 }
 
 export interface LdapSettingsAdminGroupSearchSetting {
-    groupAttribute?: pulumi.Input<string>;
-    groupBaseDn?: pulumi.Input<string>;
-    groupFilter?: pulumi.Input<string>;
+    /**
+     * LDAP attribute used to identify group membership for admin users (e.g. <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>).
+     */
+    groupAttribute?: pulumi.Input<string | undefined>;
+    /**
+     * Base distinguished name under which to search for admin groups.
+     */
+    groupBaseDn?: pulumi.Input<string | undefined>;
+    /**
+     * LDAP search filter used to match admin groups (e.g. `(objectClass=groupOfNames)`).
+     */
+    groupFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface LdapSettingsGroupSearchSetting {
     /**
      * LDAP group attribute
      */
-    groupAttribute?: pulumi.Input<string>;
+    groupAttribute?: pulumi.Input<string | undefined>;
     /**
      * Base DN for group search
      */
-    groupBaseDn?: pulumi.Input<string>;
+    groupBaseDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP group search filter
      */
-    groupFilter?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface LdapSettingsSearchSetting {
     /**
      * Base DN for user search
      */
-    baseDn?: pulumi.Input<string>;
+    baseDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP search filter
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Attribute used for username
      */
-    userNameAttribute?: pulumi.Input<string>;
+    userNameAttribute?: pulumi.Input<string | undefined>;
 }
 
 export interface LdapSettingsTlsConfig {
     /**
      * Whether TLS is enabled
      */
-    tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean | undefined>;
     /**
      * TLS CA certificate
      */
-    tlsCaCert?: pulumi.Input<string>;
+    tlsCaCert?: pulumi.Input<string | undefined>;
     /**
      * TLS certificate
      */
-    tlsCert?: pulumi.Input<string>;
+    tlsCert?: pulumi.Input<string | undefined>;
     /**
      * TLS key
      */
-    tlsKey?: pulumi.Input<string>;
+    tlsKey?: pulumi.Input<string | undefined>;
     /**
      * Skip TLS verification
      */
-    tlsSkipVerify?: pulumi.Input<boolean>;
+    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SettingsBlackListedLabel {
+    /**
+     * Name of the container label to hide.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Value of the container label to match for hiding.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SettingsGlobalDeploymentOptions {
-    hideStacksFunctionality?: pulumi.Input<boolean>;
+    /**
+     * Whether the stacks functionality is hidden from non-admin users.
+     */
+    hideStacksFunctionality?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SettingsInternalAuthSettings {
-    requiredPasswordLength?: pulumi.Input<number>;
+    /**
+     * Minimum password length required for internally-managed users.
+     */
+    requiredPasswordLength?: pulumi.Input<number | undefined>;
 }
 
 export interface SettingsLdapSettings {
-    anonymousMode?: pulumi.Input<boolean>;
-    autoCreateUsers?: pulumi.Input<boolean>;
-    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.SettingsLdapSettingsGroupSearchSetting>[]>;
-    password?: pulumi.Input<string>;
-    readerDn?: pulumi.Input<string>;
-    searchSettings?: pulumi.Input<pulumi.Input<inputs.SettingsLdapSettingsSearchSetting>[]>;
-    startTls?: pulumi.Input<boolean>;
-    tlsConfig?: pulumi.Input<inputs.SettingsLdapSettingsTlsConfig>;
-    url?: pulumi.Input<string>;
+    /**
+     * Whether to bind to the LDAP server anonymously instead of using reader credentials.
+     */
+    anonymousMode?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer automatically creates a local user record on the first LDAP login.
+     */
+    autoCreateUsers?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of LDAP group search configurations used to resolve user group memberships.
+     */
+    groupSearchSettings?: pulumi.Input<pulumi.Input<inputs.SettingsLdapSettingsGroupSearchSetting>[] | undefined>;
+    /**
+     * Password used by the LDAP reader account. Stored in state as a sensitive value.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Distinguished Name of the LDAP account used to perform user lookups.
+     */
+    readerDn?: pulumi.Input<string | undefined>;
+    /**
+     * List of LDAP user search configurations applied to locate user entries.
+     */
+    searchSettings?: pulumi.Input<pulumi.Input<inputs.SettingsLdapSettingsSearchSetting>[] | undefined>;
+    /**
+     * Whether to upgrade the LDAP connection to TLS using StartTLS.
+     */
+    startTls?: pulumi.Input<boolean | undefined>;
+    /**
+     * TLS configuration used for the LDAP connection.
+     */
+    tlsConfig?: pulumi.Input<inputs.SettingsLdapSettingsTlsConfig | undefined>;
+    /**
+     * URL of the LDAP server (e.g. "ldap://ldap.example.com:389").
+     */
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface SettingsLdapSettingsGroupSearchSetting {
-    groupAttribute?: pulumi.Input<string>;
-    groupBaseDn?: pulumi.Input<string>;
-    groupFilter?: pulumi.Input<string>;
+    /**
+     * LDAP attribute on group entries that lists their members.
+     */
+    groupAttribute?: pulumi.Input<string | undefined>;
+    /**
+     * Base DN under which group entries are searched.
+     */
+    groupBaseDn?: pulumi.Input<string | undefined>;
+    /**
+     * LDAP search filter applied when looking up groups.
+     */
+    groupFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface SettingsLdapSettingsSearchSetting {
-    baseDn?: pulumi.Input<string>;
-    filter?: pulumi.Input<string>;
-    userNameAttribute?: pulumi.Input<string>;
+    /**
+     * Base DN under which user entries are searched.
+     */
+    baseDn?: pulumi.Input<string | undefined>;
+    /**
+     * LDAP search filter applied when looking up users.
+     */
+    filter?: pulumi.Input<string | undefined>;
+    /**
+     * LDAP attribute used as the user's login name (e.g. "uid", "sAMAccountName").
+     */
+    userNameAttribute?: pulumi.Input<string | undefined>;
 }
 
 export interface SettingsLdapSettingsTlsConfig {
-    tls?: pulumi.Input<boolean>;
-    tlsCaCert?: pulumi.Input<string>;
-    tlsCert?: pulumi.Input<string>;
-    tlsKey?: pulumi.Input<string>;
-    tlsSkipVerify?: pulumi.Input<boolean>;
+    /**
+     * Whether TLS is enabled for the LDAP connection.
+     */
+    tls?: pulumi.Input<boolean | undefined>;
+    /**
+     * PEM-encoded CA certificate used to verify the LDAP server certificate.
+     */
+    tlsCaCert?: pulumi.Input<string | undefined>;
+    /**
+     * PEM-encoded client certificate presented to the LDAP server.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * PEM-encoded private key matching the client certificate.
+     */
+    tlsKey?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip verification of the LDAP server certificate.
+     */
+    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SettingsOauthSettings {
-    accessTokenUri?: pulumi.Input<string>;
-    authStyle?: pulumi.Input<number>;
-    authorizationUri?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    defaultTeamId?: pulumi.Input<number>;
-    hideInternalAuth?: pulumi.Input<boolean>;
-    kubeSecretKeys?: pulumi.Input<pulumi.Input<number>[]>;
-    logoutUri?: pulumi.Input<string>;
-    microsoftTenantId?: pulumi.Input<string>;
-    oauthAutoCreateUsers?: pulumi.Input<boolean>;
-    oauthAutoMapTeamMemberships?: pulumi.Input<boolean>;
-    redirectUri?: pulumi.Input<string>;
-    resourceUri?: pulumi.Input<string>;
-    scopes?: pulumi.Input<string>;
-    sso?: pulumi.Input<boolean>;
-    teamMemberships?: pulumi.Input<inputs.SettingsOauthSettingsTeamMemberships>;
-    userIdentifier?: pulumi.Input<string>;
+    /**
+     * Token endpoint URL used to exchange the authorization code for an access token.
+     */
+    accessTokenUri?: pulumi.Input<string | undefined>;
+    /**
+     * OAuth client authentication style passed to the token endpoint (0 = auto-detect, 1 = params, 2 = HTTP Basic header).
+     */
+    authStyle?: pulumi.Input<number | undefined>;
+    /**
+     * Authorization endpoint URL of the OAuth provider.
+     */
+    authorizationUri?: pulumi.Input<string | undefined>;
+    /**
+     * OAuth client identifier registered with the provider.
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * OAuth client secret. Stored in state as a sensitive value.
+     */
+    clientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the team that new OAuth users are added to by default. 0 means no default team.
+     */
+    defaultTeamId?: pulumi.Input<number | undefined>;
+    /**
+     * Whether to hide the internal username/password login form when OAuth is configured.
+     */
+    hideInternalAuth?: pulumi.Input<boolean | undefined>;
+    /**
+     * Byte-array key used to encrypt OAuth-derived Kubernetes secrets. Stored in state.
+     */
+    kubeSecretKeys?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * URL the user is redirected to after logging out from Portainer.
+     */
+    logoutUri?: pulumi.Input<string | undefined>;
+    /**
+     * Microsoft Entra/Azure AD tenant identifier used when the OAuth provider is Microsoft.
+     */
+    microsoftTenantId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Portainer automatically creates a local user record on the first OAuth login.
+     */
+    oauthAutoCreateUsers?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer automatically maps Portainer team memberships from OAuth claims.
+     */
+    oauthAutoMapTeamMemberships?: pulumi.Input<boolean | undefined>;
+    /**
+     * Redirect URI registered with the OAuth provider; must match Portainer's callback URL.
+     */
+    redirectUri?: pulumi.Input<string | undefined>;
+    /**
+     * Resource endpoint URL used to fetch the authenticated user's profile.
+     */
+    resourceUri?: pulumi.Input<string | undefined>;
+    /**
+     * OAuth scopes requested from the provider (space- or comma-separated).
+     */
+    scopes?: pulumi.Input<string | undefined>;
+    /**
+     * Whether single sign-on is enabled, redirecting users straight to the OAuth provider.
+     */
+    sso?: pulumi.Input<boolean | undefined>;
+    /**
+     * Rules that map OAuth claims to Portainer team memberships and admin role.
+     */
+    teamMemberships?: pulumi.Input<inputs.SettingsOauthSettingsTeamMemberships | undefined>;
+    /**
+     * Claim used as the unique user identifier from the OAuth provider response.
+     */
+    userIdentifier?: pulumi.Input<string | undefined>;
 }
 
 export interface SettingsOauthSettingsTeamMemberships {
-    adminAutoPopulate?: pulumi.Input<boolean>;
-    adminGroupClaimsRegexLists?: pulumi.Input<pulumi.Input<string>[]>;
-    oauthClaimMappings?: pulumi.Input<pulumi.Input<inputs.SettingsOauthSettingsTeamMembershipsOauthClaimMapping>[]>;
-    oauthClaimName?: pulumi.Input<string>;
+    /**
+     * Whether Portainer auto-grants admin rights to users whose claim values match the admin regex list.
+     */
+    adminAutoPopulate?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of regular expressions that, when matching a claim value, mark the user as Portainer admin.
+     */
+    adminGroupClaimsRegexLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * List of mappings from OAuth claim value regexes to Portainer team IDs.
+     */
+    oauthClaimMappings?: pulumi.Input<pulumi.Input<inputs.SettingsOauthSettingsTeamMembershipsOauthClaimMapping>[] | undefined>;
+    /**
+     * Name of the OAuth claim that carries the user's group/team membership values.
+     */
+    oauthClaimName?: pulumi.Input<string | undefined>;
 }
 
 export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
-    claimValRegex?: pulumi.Input<string>;
-    team?: pulumi.Input<number>;
+    /**
+     * Regular expression matched against the OAuth claim value to trigger this mapping.
+     */
+    claimValRegex?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer team that matching users are added to.
+     */
+    team?: pulumi.Input<number | undefined>;
 }
 
 export interface StackEnv {
+    /**
+     * Name of the environment variable.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Value of the environment variable.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface StackTimeouts {
-    create?: pulumi.Input<string>;
-    delete?: pulumi.Input<string>;
-    update?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
+    delete?: pulumi.Input<string | undefined>;
+    update?: pulumi.Input<string | undefined>;
 }

@@ -91,16 +91,16 @@ export interface OpenAmtDevicesActionState {
     /**
      * The out-of-band action to execute on the device (e.g. poweron, poweroff, reset).
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The ID of the AMT managed device.
      */
-    deviceId?: pulumi.Input<number>;
+    deviceId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the environment (endpoint).
      */
-    environmentId?: pulumi.Input<number>;
-    openAmtDevicesActionId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<number | undefined>;
+    openAmtDevicesActionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -119,5 +119,5 @@ export interface OpenAmtDevicesActionArgs {
      * The ID of the environment (endpoint).
      */
     environmentId: pulumi.Input<number>;
-    openAmtDevicesActionId?: pulumi.Input<string>;
+    openAmtDevicesActionId?: pulumi.Input<string | undefined>;
 }

@@ -32,13 +32,34 @@ export class ResourceControl extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceControl.__pulumiType;
     }
 
+    /**
+     * Whether the resource is restricted to Portainer administrators only.
+     */
     declare public readonly administratorsOnly: pulumi.Output<boolean | undefined>;
     declare public readonly portainerResourceControlId: pulumi.Output<string>;
+    /**
+     * Whether the resource is publicly accessible to all Portainer users.
+     */
     declare public readonly public: pulumi.Output<boolean | undefined>;
+    /**
+     * Identifier of an existing Portainer resource control to manage directly instead of looking it up via <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> and <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`" pulumi-lang-hcl="`type`">`type`</span>.
+     */
     declare public readonly resourceControlId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the underlying Portainer resource (e.g. stack ID) the resource control applies to.
+     */
     declare public readonly resourceId: pulumi.Output<string | undefined>;
+    /**
+     * List of Portainer team identifiers granted access to the resource.
+     */
     declare public readonly teams: pulumi.Output<number[] | undefined>;
+    /**
+     * Resource type that the control protects (1 = container, 2 = service, 3 = volume, 4 = network, 5 = secret, 6 = stack, 7 = config). Defaults to 6 (stack).
+     */
     declare public readonly type: pulumi.Output<number | undefined>;
+    /**
+     * List of Portainer user identifiers granted access to the resource.
+     */
     declare public readonly users: pulumi.Output<number[] | undefined>;
 
     /**
@@ -82,26 +103,68 @@ export class ResourceControl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceControl resources.
  */
 export interface ResourceControlState {
-    administratorsOnly?: pulumi.Input<boolean>;
-    portainerResourceControlId?: pulumi.Input<string>;
-    public?: pulumi.Input<boolean>;
-    resourceControlId?: pulumi.Input<number>;
-    resourceId?: pulumi.Input<string>;
-    teams?: pulumi.Input<pulumi.Input<number>[]>;
-    type?: pulumi.Input<number>;
-    users?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Whether the resource is restricted to Portainer administrators only.
+     */
+    administratorsOnly?: pulumi.Input<boolean | undefined>;
+    portainerResourceControlId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the resource is publicly accessible to all Portainer users.
+     */
+    public?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier of an existing Portainer resource control to manage directly instead of looking it up via <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> and <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`" pulumi-lang-hcl="`type`">`type`</span>.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the underlying Portainer resource (e.g. stack ID) the resource control applies to.
+     */
+    resourceId?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer team identifiers granted access to the resource.
+     */
+    teams?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Resource type that the control protects (1 = container, 2 = service, 3 = volume, 4 = network, 5 = secret, 6 = stack, 7 = config). Defaults to 6 (stack).
+     */
+    type?: pulumi.Input<number | undefined>;
+    /**
+     * List of Portainer user identifiers granted access to the resource.
+     */
+    users?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ResourceControl resource.
  */
 export interface ResourceControlArgs {
-    administratorsOnly?: pulumi.Input<boolean>;
-    portainerResourceControlId?: pulumi.Input<string>;
-    public?: pulumi.Input<boolean>;
-    resourceControlId?: pulumi.Input<number>;
-    resourceId?: pulumi.Input<string>;
-    teams?: pulumi.Input<pulumi.Input<number>[]>;
-    type?: pulumi.Input<number>;
-    users?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Whether the resource is restricted to Portainer administrators only.
+     */
+    administratorsOnly?: pulumi.Input<boolean | undefined>;
+    portainerResourceControlId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the resource is publicly accessible to all Portainer users.
+     */
+    public?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier of an existing Portainer resource control to manage directly instead of looking it up via <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> and <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`" pulumi-lang-hcl="`type`">`type`</span>.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the underlying Portainer resource (e.g. stack ID) the resource control applies to.
+     */
+    resourceId?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer team identifiers granted access to the resource.
+     */
+    teams?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Resource type that the control protects (1 = container, 2 = service, 3 = volume, 4 = network, 5 = secret, 6 = stack, 7 = config). Defaults to 6 (stack).
+     */
+    type?: pulumi.Input<number | undefined>;
+    /**
+     * List of Portainer user identifiers granted access to the resource.
+     */
+    users?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

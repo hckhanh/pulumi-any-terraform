@@ -70,8 +70,8 @@ export interface EndpointSnapshotState {
     /**
      * ID of the endpoint to snapshot. If omitted, all endpoints will be snapshotted.
      */
-    endpointId?: pulumi.Input<number>;
-    endpointSnapshotId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<number | undefined>;
+    endpointSnapshotId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -81,6 +81,6 @@ export interface EndpointSnapshotArgs {
     /**
      * ID of the endpoint to snapshot. If omitted, all endpoints will be snapshotted.
      */
-    endpointId?: pulumi.Input<number>;
-    endpointSnapshotId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<number | undefined>;
+    endpointSnapshotId?: pulumi.Input<string | undefined>;
 }

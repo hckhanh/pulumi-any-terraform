@@ -34,7 +34,13 @@ export class KubernetesIngresscontrollers extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesIngresscontrollers.__pulumiType;
     }
 
+    /**
+     * List of ingress controller configurations to apply at the cluster level.
+     */
     declare public readonly controllers: pulumi.Output<outputs.KubernetesIngresscontrollersController[]>;
+    /**
+     * Identifier of the Portainer Kubernetes environment whose ingress controllers are managed.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesIngresscontrollersId: pulumi.Output<string>;
 
@@ -75,16 +81,28 @@ export class KubernetesIngresscontrollers extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesIngresscontrollers resources.
  */
 export interface KubernetesIngresscontrollersState {
-    controllers?: pulumi.Input<pulumi.Input<inputs.KubernetesIngresscontrollersController>[]>;
-    environmentId?: pulumi.Input<number>;
-    kubernetesIngresscontrollersId?: pulumi.Input<string>;
+    /**
+     * List of ingress controller configurations to apply at the cluster level.
+     */
+    controllers?: pulumi.Input<pulumi.Input<inputs.KubernetesIngresscontrollersController>[] | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment whose ingress controllers are managed.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesIngresscontrollersId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesIngresscontrollers resource.
  */
 export interface KubernetesIngresscontrollersArgs {
+    /**
+     * List of ingress controller configurations to apply at the cluster level.
+     */
     controllers: pulumi.Input<pulumi.Input<inputs.KubernetesIngresscontrollersController>[]>;
+    /**
+     * Identifier of the Portainer Kubernetes environment whose ingress controllers are managed.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesIngresscontrollersId?: pulumi.Input<string>;
+    kubernetesIngresscontrollersId?: pulumi.Input<string | undefined>;
 }

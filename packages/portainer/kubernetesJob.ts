@@ -32,9 +32,18 @@ export class KubernetesJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesJob.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the Job is deployed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesJobId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes Job to deploy.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Job manifest is applied.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesJob resources.
  */
 export interface KubernetesJobState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesJobId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the Job is deployed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesJobId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes Job to deploy.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Job manifest is applied.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesJob resource.
  */
 export interface KubernetesJobArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the Job is deployed.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesJobId?: pulumi.Input<string>;
+    kubernetesJobId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes Job to deploy.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the Job manifest is applied.
+     */
     namespace: pulumi.Input<string>;
 }

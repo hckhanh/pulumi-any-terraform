@@ -42,6 +42,6 @@ export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulu
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

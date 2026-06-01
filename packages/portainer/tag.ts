@@ -32,6 +32,9 @@ export class Tag extends pulumi.CustomResource {
         return obj['__pulumiType'] === Tag.__pulumiType;
     }
 
+    /**
+     * Name of the tag. Must be unique within the Portainer instance. Changing this value forces resource recreation.
+     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly tagId: pulumi.Output<string>;
 
@@ -64,14 +67,20 @@ export class Tag extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Tag resources.
  */
 export interface TagState {
-    name?: pulumi.Input<string>;
-    tagId?: pulumi.Input<string>;
+    /**
+     * Name of the tag. Must be unique within the Portainer instance. Changing this value forces resource recreation.
+     */
+    name?: pulumi.Input<string | undefined>;
+    tagId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Tag resource.
  */
 export interface TagArgs {
-    name?: pulumi.Input<string>;
-    tagId?: pulumi.Input<string>;
+    /**
+     * Name of the tag. Must be unique within the Portainer instance. Changing this value forces resource recreation.
+     */
+    name?: pulumi.Input<string | undefined>;
+    tagId?: pulumi.Input<string | undefined>;
 }

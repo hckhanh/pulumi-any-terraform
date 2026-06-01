@@ -70,8 +70,8 @@ export interface SettingsExperimentalState {
     /**
      * Enable or disable OpenAI integration.
      */
-    openaiIntegration?: pulumi.Input<boolean>;
-    settingsExperimentalId?: pulumi.Input<string>;
+    openaiIntegration?: pulumi.Input<boolean | undefined>;
+    settingsExperimentalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -81,6 +81,6 @@ export interface SettingsExperimentalArgs {
     /**
      * Enable or disable OpenAI integration.
      */
-    openaiIntegration?: pulumi.Input<boolean>;
-    settingsExperimentalId?: pulumi.Input<string>;
+    openaiIntegration?: pulumi.Input<boolean | undefined>;
+    settingsExperimentalId?: pulumi.Input<string | undefined>;
 }

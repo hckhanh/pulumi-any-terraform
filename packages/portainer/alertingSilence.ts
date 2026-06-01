@@ -120,28 +120,28 @@ export interface AlertingSilenceState {
     /**
      * URL of the AlertManager instance.
      */
-    alertManagerUrl?: pulumi.Input<string>;
-    alertingSilenceId?: pulumi.Input<string>;
+    alertManagerUrl?: pulumi.Input<string | undefined>;
+    alertingSilenceId?: pulumi.Input<string | undefined>;
     /**
      * Comment explaining the reason for the silence.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of the user creating the silence.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * End time of the silence in RFC3339 format.
      */
-    endsAt?: pulumi.Input<string>;
+    endsAt?: pulumi.Input<string | undefined>;
     /**
      * List of matchers to determine which alerts are silenced.
      */
-    matchers?: pulumi.Input<pulumi.Input<inputs.AlertingSilenceMatcher>[]>;
+    matchers?: pulumi.Input<pulumi.Input<inputs.AlertingSilenceMatcher>[] | undefined>;
     /**
      * Start time of the silence in RFC3339 format.
      */
-    startsAt?: pulumi.Input<string>;
+    startsAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface AlertingSilenceArgs {
      * URL of the AlertManager instance.
      */
     alertManagerUrl: pulumi.Input<string>;
-    alertingSilenceId?: pulumi.Input<string>;
+    alertingSilenceId?: pulumi.Input<string | undefined>;
     /**
      * Comment explaining the reason for the silence.
      */

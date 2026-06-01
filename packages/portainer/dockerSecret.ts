@@ -42,15 +42,33 @@ export class DockerSecret extends pulumi.CustomResource {
      */
     declare public readonly dataWo: pulumi.Output<string | undefined>;
     /**
-     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`" pulumi-lang-hcl="`data_wo`">`dataWo`</span> to trigger updates.
      */
     declare public readonly dataWoVersion: pulumi.Output<number | undefined>;
     declare public readonly dockerSecretId: pulumi.Output<string>;
+    /**
+     * External secret driver configuration used to fetch the secret value at runtime.
+     */
     declare public readonly driver: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the secret is created.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Key/value labels attached to the Docker Swarm secret.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the Docker Swarm secret.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * ID of the Portainer resource control associated with this Docker Swarm secret.
+     */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
+    /**
+     * Templating driver configuration applied to the secret payload at runtime.
+     */
     declare public readonly templating: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -106,23 +124,41 @@ export interface DockerSecretState {
     /**
      * Base64-encoded secret data (stored in Terraform state).
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only secret data (supports ephemeral values; not stored in Terraform state).
      */
-    dataWo?: pulumi.Input<string>;
+    dataWo?: pulumi.Input<string | undefined>;
     /**
-     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`" pulumi-lang-hcl="`data_wo`">`dataWo`</span> to trigger updates.
      */
-    dataWoVersion?: pulumi.Input<number>;
-    dockerSecretId?: pulumi.Input<string>;
-    driver?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    endpointId?: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    resourceControlId?: pulumi.Input<number>;
-    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dataWoVersion?: pulumi.Input<number | undefined>;
+    dockerSecretId?: pulumi.Input<string | undefined>;
+    /**
+     * External secret driver configuration used to fetch the secret value at runtime.
+     */
+    driver?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the secret is created.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Key/value labels attached to the Docker Swarm secret.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker Swarm secret.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer resource control associated with this Docker Swarm secret.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Templating driver configuration applied to the secret payload at runtime.
+     */
+    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -132,20 +168,35 @@ export interface DockerSecretArgs {
     /**
      * Base64-encoded secret data (stored in Terraform state).
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only secret data (supports ephemeral values; not stored in Terraform state).
      */
-    dataWo?: pulumi.Input<string>;
+    dataWo?: pulumi.Input<string | undefined>;
     /**
-     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`">`data_wo`</span> to trigger updates.
+     * Version flag for write-only data; must be set when using <span pulumi-lang-nodejs="`dataWo`" pulumi-lang-dotnet="`DataWo`" pulumi-lang-go="`dataWo`" pulumi-lang-python="`data_wo`" pulumi-lang-yaml="`dataWo`" pulumi-lang-java="`dataWo`" pulumi-lang-hcl="`data_wo`">`dataWo`</span> to trigger updates.
      */
-    dataWoVersion?: pulumi.Input<number>;
-    dockerSecretId?: pulumi.Input<string>;
-    driver?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dataWoVersion?: pulumi.Input<number | undefined>;
+    dockerSecretId?: pulumi.Input<string | undefined>;
+    /**
+     * External secret driver configuration used to fetch the secret value at runtime.
+     */
+    driver?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the secret is created.
+     */
     endpointId: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Key/value labels attached to the Docker Swarm secret.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker Swarm secret.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Templating driver configuration applied to the secret payload at runtime.
+     */
+    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

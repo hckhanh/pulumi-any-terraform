@@ -115,6 +115,31 @@ export type AppConnectionSupabase = import("./appConnectionSupabase").AppConnect
 export const AppConnectionSupabase: typeof import("./appConnectionSupabase").AppConnectionSupabase = null as any;
 utilities.lazyLoad(exports, ["AppConnectionSupabase"], () => require("./appConnectionSupabase"));
 
+export { CertManagerApplicationArgs, CertManagerApplicationState } from "./certManagerApplication";
+export type CertManagerApplication = import("./certManagerApplication").CertManagerApplication;
+export const CertManagerApplication: typeof import("./certManagerApplication").CertManagerApplication = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplication"], () => require("./certManagerApplication"));
+
+export { CertManagerApplicationGroupArgs, CertManagerApplicationGroupState } from "./certManagerApplicationGroup";
+export type CertManagerApplicationGroup = import("./certManagerApplicationGroup").CertManagerApplicationGroup;
+export const CertManagerApplicationGroup: typeof import("./certManagerApplicationGroup").CertManagerApplicationGroup = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplicationGroup"], () => require("./certManagerApplicationGroup"));
+
+export { CertManagerApplicationIdentityArgs, CertManagerApplicationIdentityState } from "./certManagerApplicationIdentity";
+export type CertManagerApplicationIdentity = import("./certManagerApplicationIdentity").CertManagerApplicationIdentity;
+export const CertManagerApplicationIdentity: typeof import("./certManagerApplicationIdentity").CertManagerApplicationIdentity = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplicationIdentity"], () => require("./certManagerApplicationIdentity"));
+
+export { CertManagerApplicationProfileArgs, CertManagerApplicationProfileState } from "./certManagerApplicationProfile";
+export type CertManagerApplicationProfile = import("./certManagerApplicationProfile").CertManagerApplicationProfile;
+export const CertManagerApplicationProfile: typeof import("./certManagerApplicationProfile").CertManagerApplicationProfile = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplicationProfile"], () => require("./certManagerApplicationProfile"));
+
+export { CertManagerApplicationUserArgs, CertManagerApplicationUserState } from "./certManagerApplicationUser";
+export type CertManagerApplicationUser = import("./certManagerApplicationUser").CertManagerApplicationUser;
+export const CertManagerApplicationUser: typeof import("./certManagerApplicationUser").CertManagerApplicationUser = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplicationUser"], () => require("./certManagerApplicationUser"));
+
 export { CertManagerCaCertificateArgs, CertManagerCaCertificateState } from "./certManagerCaCertificate";
 export type CertManagerCaCertificate = import("./certManagerCaCertificate").CertManagerCaCertificate;
 export const CertManagerCaCertificate: typeof import("./certManagerCaCertificate").CertManagerCaCertificate = null as any;
@@ -145,10 +170,25 @@ export type CertManagerExternalCaAdcs = import("./certManagerExternalCaAdcs").Ce
 export const CertManagerExternalCaAdcs: typeof import("./certManagerExternalCaAdcs").CertManagerExternalCaAdcs = null as any;
 utilities.lazyLoad(exports, ["CertManagerExternalCaAdcs"], () => require("./certManagerExternalCaAdcs"));
 
+export { CertManagerGroupArgs, CertManagerGroupState } from "./certManagerGroup";
+export type CertManagerGroup = import("./certManagerGroup").CertManagerGroup;
+export const CertManagerGroup: typeof import("./certManagerGroup").CertManagerGroup = null as any;
+utilities.lazyLoad(exports, ["CertManagerGroup"], () => require("./certManagerGroup"));
+
+export { CertManagerIdentityArgs, CertManagerIdentityState } from "./certManagerIdentity";
+export type CertManagerIdentity = import("./certManagerIdentity").CertManagerIdentity;
+export const CertManagerIdentity: typeof import("./certManagerIdentity").CertManagerIdentity = null as any;
+utilities.lazyLoad(exports, ["CertManagerIdentity"], () => require("./certManagerIdentity"));
+
 export { CertManagerInternalCaArgs, CertManagerInternalCaState } from "./certManagerInternalCa";
 export type CertManagerInternalCa = import("./certManagerInternalCa").CertManagerInternalCa;
 export const CertManagerInternalCa: typeof import("./certManagerInternalCa").CertManagerInternalCa = null as any;
 utilities.lazyLoad(exports, ["CertManagerInternalCa"], () => require("./certManagerInternalCa"));
+
+export { CertManagerUserArgs, CertManagerUserState } from "./certManagerUser";
+export type CertManagerUser = import("./certManagerUser").CertManagerUser;
+export const CertManagerUser: typeof import("./certManagerUser").CertManagerUser = null as any;
+utilities.lazyLoad(exports, ["CertManagerUser"], () => require("./certManagerUser"));
 
 export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
 export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
@@ -566,6 +606,16 @@ const _module = {
                 return new AppConnectionRender(name, <any>undefined, { urn })
             case "infisical:index/appConnectionSupabase:AppConnectionSupabase":
                 return new AppConnectionSupabase(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplication:CertManagerApplication":
+                return new CertManagerApplication(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplicationGroup:CertManagerApplicationGroup":
+                return new CertManagerApplicationGroup(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplicationIdentity:CertManagerApplicationIdentity":
+                return new CertManagerApplicationIdentity(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplicationProfile:CertManagerApplicationProfile":
+                return new CertManagerApplicationProfile(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplicationUser:CertManagerApplicationUser":
+                return new CertManagerApplicationUser(name, <any>undefined, { urn })
             case "infisical:index/certManagerCaCertificate:CertManagerCaCertificate":
                 return new CertManagerCaCertificate(name, <any>undefined, { urn })
             case "infisical:index/certManagerCertificate:CertManagerCertificate":
@@ -578,8 +628,14 @@ const _module = {
                 return new CertManagerExternalCaAcme(name, <any>undefined, { urn })
             case "infisical:index/certManagerExternalCaAdcs:CertManagerExternalCaAdcs":
                 return new CertManagerExternalCaAdcs(name, <any>undefined, { urn })
+            case "infisical:index/certManagerGroup:CertManagerGroup":
+                return new CertManagerGroup(name, <any>undefined, { urn })
+            case "infisical:index/certManagerIdentity:CertManagerIdentity":
+                return new CertManagerIdentity(name, <any>undefined, { urn })
             case "infisical:index/certManagerInternalCa:CertManagerInternalCa":
                 return new CertManagerInternalCa(name, <any>undefined, { urn })
+            case "infisical:index/certManagerUser:CertManagerUser":
+                return new CertManagerUser(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
@@ -733,13 +789,21 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb"
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplication", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationGroup", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationIdentity", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationProfile", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationUser", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerCaCertificate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificatePolicy", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificateProfile", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAcme", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAdcs", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerGroup", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerInternalCa", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerUser", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)

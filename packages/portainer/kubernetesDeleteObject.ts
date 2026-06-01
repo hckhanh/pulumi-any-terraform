@@ -32,10 +32,22 @@ export class KubernetesDeleteObject extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesDeleteObject.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment from which the resources are deleted.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesDeleteObjectId: pulumi.Output<string>;
+    /**
+     * List of resource names to delete within the target namespace or cluster scope.
+     */
     declare public readonly names: pulumi.Output<string[]>;
+    /**
+     * Kubernetes namespace containing the resources to delete (ignored for cluster-scoped types).
+     */
     declare public readonly namespace: pulumi.Output<string>;
+    /**
+     * Type of Kubernetes resource to delete. One of <span pulumi-lang-nodejs="`cronJobs`" pulumi-lang-dotnet="`CronJobs`" pulumi-lang-go="`cronJobs`" pulumi-lang-python="`cron_jobs`" pulumi-lang-yaml="`cronJobs`" pulumi-lang-java="`cronJobs`" pulumi-lang-hcl="`cron_jobs`">`cronJobs`</span>, <span pulumi-lang-nodejs="`ingresses`" pulumi-lang-dotnet="`Ingresses`" pulumi-lang-go="`ingresses`" pulumi-lang-python="`ingresses`" pulumi-lang-yaml="`ingresses`" pulumi-lang-java="`ingresses`" pulumi-lang-hcl="`ingresses`">`ingresses`</span>, <span pulumi-lang-nodejs="`jobs`" pulumi-lang-dotnet="`Jobs`" pulumi-lang-go="`jobs`" pulumi-lang-python="`jobs`" pulumi-lang-yaml="`jobs`" pulumi-lang-java="`jobs`" pulumi-lang-hcl="`jobs`">`jobs`</span>, <span pulumi-lang-nodejs="`roleBindings`" pulumi-lang-dotnet="`RoleBindings`" pulumi-lang-go="`roleBindings`" pulumi-lang-python="`role_bindings`" pulumi-lang-yaml="`roleBindings`" pulumi-lang-java="`roleBindings`" pulumi-lang-hcl="`role_bindings`">`roleBindings`</span>, <span pulumi-lang-nodejs="`roles`" pulumi-lang-dotnet="`Roles`" pulumi-lang-go="`roles`" pulumi-lang-python="`roles`" pulumi-lang-yaml="`roles`" pulumi-lang-java="`roles`" pulumi-lang-hcl="`roles`">`roles`</span>, <span pulumi-lang-nodejs="`serviceAccounts`" pulumi-lang-dotnet="`ServiceAccounts`" pulumi-lang-go="`serviceAccounts`" pulumi-lang-python="`service_accounts`" pulumi-lang-yaml="`serviceAccounts`" pulumi-lang-java="`serviceAccounts`" pulumi-lang-hcl="`service_accounts`">`serviceAccounts`</span>, <span pulumi-lang-nodejs="`services`" pulumi-lang-dotnet="`Services`" pulumi-lang-go="`services`" pulumi-lang-python="`services`" pulumi-lang-yaml="`services`" pulumi-lang-java="`services`" pulumi-lang-hcl="`services`">`services`</span>, <span pulumi-lang-nodejs="`clusterRoleBindings`" pulumi-lang-dotnet="`ClusterRoleBindings`" pulumi-lang-go="`clusterRoleBindings`" pulumi-lang-python="`cluster_role_bindings`" pulumi-lang-yaml="`clusterRoleBindings`" pulumi-lang-java="`clusterRoleBindings`" pulumi-lang-hcl="`cluster_role_bindings`">`clusterRoleBindings`</span>, <span pulumi-lang-nodejs="`clusterRoles`" pulumi-lang-dotnet="`ClusterRoles`" pulumi-lang-go="`clusterRoles`" pulumi-lang-python="`cluster_roles`" pulumi-lang-yaml="`clusterRoles`" pulumi-lang-java="`clusterRoles`" pulumi-lang-hcl="`cluster_roles`">`clusterRoles`</span>.
+     */
     declare public readonly resourceType: pulumi.Output<string>;
 
     /**
@@ -85,20 +97,44 @@ export class KubernetesDeleteObject extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesDeleteObject resources.
  */
 export interface KubernetesDeleteObjectState {
-    environmentId?: pulumi.Input<number>;
-    kubernetesDeleteObjectId?: pulumi.Input<string>;
-    names?: pulumi.Input<pulumi.Input<string>[]>;
-    namespace?: pulumi.Input<string>;
-    resourceType?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment from which the resources are deleted.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesDeleteObjectId?: pulumi.Input<string | undefined>;
+    /**
+     * List of resource names to delete within the target namespace or cluster scope.
+     */
+    names?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Kubernetes namespace containing the resources to delete (ignored for cluster-scoped types).
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * Type of Kubernetes resource to delete. One of <span pulumi-lang-nodejs="`cronJobs`" pulumi-lang-dotnet="`CronJobs`" pulumi-lang-go="`cronJobs`" pulumi-lang-python="`cron_jobs`" pulumi-lang-yaml="`cronJobs`" pulumi-lang-java="`cronJobs`" pulumi-lang-hcl="`cron_jobs`">`cronJobs`</span>, <span pulumi-lang-nodejs="`ingresses`" pulumi-lang-dotnet="`Ingresses`" pulumi-lang-go="`ingresses`" pulumi-lang-python="`ingresses`" pulumi-lang-yaml="`ingresses`" pulumi-lang-java="`ingresses`" pulumi-lang-hcl="`ingresses`">`ingresses`</span>, <span pulumi-lang-nodejs="`jobs`" pulumi-lang-dotnet="`Jobs`" pulumi-lang-go="`jobs`" pulumi-lang-python="`jobs`" pulumi-lang-yaml="`jobs`" pulumi-lang-java="`jobs`" pulumi-lang-hcl="`jobs`">`jobs`</span>, <span pulumi-lang-nodejs="`roleBindings`" pulumi-lang-dotnet="`RoleBindings`" pulumi-lang-go="`roleBindings`" pulumi-lang-python="`role_bindings`" pulumi-lang-yaml="`roleBindings`" pulumi-lang-java="`roleBindings`" pulumi-lang-hcl="`role_bindings`">`roleBindings`</span>, <span pulumi-lang-nodejs="`roles`" pulumi-lang-dotnet="`Roles`" pulumi-lang-go="`roles`" pulumi-lang-python="`roles`" pulumi-lang-yaml="`roles`" pulumi-lang-java="`roles`" pulumi-lang-hcl="`roles`">`roles`</span>, <span pulumi-lang-nodejs="`serviceAccounts`" pulumi-lang-dotnet="`ServiceAccounts`" pulumi-lang-go="`serviceAccounts`" pulumi-lang-python="`service_accounts`" pulumi-lang-yaml="`serviceAccounts`" pulumi-lang-java="`serviceAccounts`" pulumi-lang-hcl="`service_accounts`">`serviceAccounts`</span>, <span pulumi-lang-nodejs="`services`" pulumi-lang-dotnet="`Services`" pulumi-lang-go="`services`" pulumi-lang-python="`services`" pulumi-lang-yaml="`services`" pulumi-lang-java="`services`" pulumi-lang-hcl="`services`">`services`</span>, <span pulumi-lang-nodejs="`clusterRoleBindings`" pulumi-lang-dotnet="`ClusterRoleBindings`" pulumi-lang-go="`clusterRoleBindings`" pulumi-lang-python="`cluster_role_bindings`" pulumi-lang-yaml="`clusterRoleBindings`" pulumi-lang-java="`clusterRoleBindings`" pulumi-lang-hcl="`cluster_role_bindings`">`clusterRoleBindings`</span>, <span pulumi-lang-nodejs="`clusterRoles`" pulumi-lang-dotnet="`ClusterRoles`" pulumi-lang-go="`clusterRoles`" pulumi-lang-python="`cluster_roles`" pulumi-lang-yaml="`clusterRoles`" pulumi-lang-java="`clusterRoles`" pulumi-lang-hcl="`cluster_roles`">`clusterRoles`</span>.
+     */
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesDeleteObject resource.
  */
 export interface KubernetesDeleteObjectArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment from which the resources are deleted.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesDeleteObjectId?: pulumi.Input<string>;
+    kubernetesDeleteObjectId?: pulumi.Input<string | undefined>;
+    /**
+     * List of resource names to delete within the target namespace or cluster scope.
+     */
     names: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kubernetes namespace containing the resources to delete (ignored for cluster-scoped types).
+     */
     namespace: pulumi.Input<string>;
+    /**
+     * Type of Kubernetes resource to delete. One of <span pulumi-lang-nodejs="`cronJobs`" pulumi-lang-dotnet="`CronJobs`" pulumi-lang-go="`cronJobs`" pulumi-lang-python="`cron_jobs`" pulumi-lang-yaml="`cronJobs`" pulumi-lang-java="`cronJobs`" pulumi-lang-hcl="`cron_jobs`">`cronJobs`</span>, <span pulumi-lang-nodejs="`ingresses`" pulumi-lang-dotnet="`Ingresses`" pulumi-lang-go="`ingresses`" pulumi-lang-python="`ingresses`" pulumi-lang-yaml="`ingresses`" pulumi-lang-java="`ingresses`" pulumi-lang-hcl="`ingresses`">`ingresses`</span>, <span pulumi-lang-nodejs="`jobs`" pulumi-lang-dotnet="`Jobs`" pulumi-lang-go="`jobs`" pulumi-lang-python="`jobs`" pulumi-lang-yaml="`jobs`" pulumi-lang-java="`jobs`" pulumi-lang-hcl="`jobs`">`jobs`</span>, <span pulumi-lang-nodejs="`roleBindings`" pulumi-lang-dotnet="`RoleBindings`" pulumi-lang-go="`roleBindings`" pulumi-lang-python="`role_bindings`" pulumi-lang-yaml="`roleBindings`" pulumi-lang-java="`roleBindings`" pulumi-lang-hcl="`role_bindings`">`roleBindings`</span>, <span pulumi-lang-nodejs="`roles`" pulumi-lang-dotnet="`Roles`" pulumi-lang-go="`roles`" pulumi-lang-python="`roles`" pulumi-lang-yaml="`roles`" pulumi-lang-java="`roles`" pulumi-lang-hcl="`roles`">`roles`</span>, <span pulumi-lang-nodejs="`serviceAccounts`" pulumi-lang-dotnet="`ServiceAccounts`" pulumi-lang-go="`serviceAccounts`" pulumi-lang-python="`service_accounts`" pulumi-lang-yaml="`serviceAccounts`" pulumi-lang-java="`serviceAccounts`" pulumi-lang-hcl="`service_accounts`">`serviceAccounts`</span>, <span pulumi-lang-nodejs="`services`" pulumi-lang-dotnet="`Services`" pulumi-lang-go="`services`" pulumi-lang-python="`services`" pulumi-lang-yaml="`services`" pulumi-lang-java="`services`" pulumi-lang-hcl="`services`">`services`</span>, <span pulumi-lang-nodejs="`clusterRoleBindings`" pulumi-lang-dotnet="`ClusterRoleBindings`" pulumi-lang-go="`clusterRoleBindings`" pulumi-lang-python="`cluster_role_bindings`" pulumi-lang-yaml="`clusterRoleBindings`" pulumi-lang-java="`clusterRoleBindings`" pulumi-lang-hcl="`cluster_role_bindings`">`clusterRoleBindings`</span>, <span pulumi-lang-nodejs="`clusterRoles`" pulumi-lang-dotnet="`ClusterRoles`" pulumi-lang-go="`clusterRoles`" pulumi-lang-python="`cluster_roles`" pulumi-lang-yaml="`clusterRoles`" pulumi-lang-java="`clusterRoles`" pulumi-lang-hcl="`cluster_roles`">`clusterRoles`</span>.
+     */
     resourceType: pulumi.Input<string>;
 }

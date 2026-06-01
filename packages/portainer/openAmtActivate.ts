@@ -73,8 +73,8 @@ export interface OpenAmtActivateState {
     /**
      * The ID of the environment (endpoint) to activate OpenAMT on.
      */
-    environmentId?: pulumi.Input<number>;
-    openAmtActivateId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<number | undefined>;
+    openAmtActivateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -85,5 +85,5 @@ export interface OpenAmtActivateArgs {
      * The ID of the environment (endpoint) to activate OpenAMT on.
      */
     environmentId: pulumi.Input<number>;
-    openAmtActivateId?: pulumi.Input<string>;
+    openAmtActivateId?: pulumi.Input<string | undefined>;
 }

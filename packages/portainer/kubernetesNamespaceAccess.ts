@@ -32,12 +32,30 @@ export class KubernetesNamespaceAccess extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesNamespaceAccess.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint owning the namespace.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesNamespaceAccessId: pulumi.Output<string>;
+    /**
+     * Name (identifier) of the Kubernetes namespace whose access policy is being updated.
+     */
     declare public readonly namespaceId: pulumi.Output<string>;
+    /**
+     * List of Portainer team identifiers to grant access to the namespace.
+     */
     declare public readonly teamsToAdds: pulumi.Output<number[] | undefined>;
+    /**
+     * List of Portainer team identifiers whose namespace access should be revoked.
+     */
     declare public readonly teamsToRemoves: pulumi.Output<number[] | undefined>;
+    /**
+     * List of Portainer user identifiers to grant access to the namespace.
+     */
     declare public readonly usersToAdds: pulumi.Output<number[] | undefined>;
+    /**
+     * List of Portainer user identifiers whose namespace access should be revoked.
+     */
     declare public readonly usersToRemoves: pulumi.Output<number[] | undefined>;
 
     /**
@@ -85,24 +103,60 @@ export class KubernetesNamespaceAccess extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesNamespaceAccess resources.
  */
 export interface KubernetesNamespaceAccessState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesNamespaceAccessId?: pulumi.Input<string>;
-    namespaceId?: pulumi.Input<string>;
-    teamsToAdds?: pulumi.Input<pulumi.Input<number>[]>;
-    teamsToRemoves?: pulumi.Input<pulumi.Input<number>[]>;
-    usersToAdds?: pulumi.Input<pulumi.Input<number>[]>;
-    usersToRemoves?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint owning the namespace.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesNamespaceAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Name (identifier) of the Kubernetes namespace whose access policy is being updated.
+     */
+    namespaceId?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer team identifiers to grant access to the namespace.
+     */
+    teamsToAdds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer team identifiers whose namespace access should be revoked.
+     */
+    teamsToRemoves?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer user identifiers to grant access to the namespace.
+     */
+    usersToAdds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer user identifiers whose namespace access should be revoked.
+     */
+    usersToRemoves?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesNamespaceAccess resource.
  */
 export interface KubernetesNamespaceAccessArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint owning the namespace.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesNamespaceAccessId?: pulumi.Input<string>;
+    kubernetesNamespaceAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Name (identifier) of the Kubernetes namespace whose access policy is being updated.
+     */
     namespaceId: pulumi.Input<string>;
-    teamsToAdds?: pulumi.Input<pulumi.Input<number>[]>;
-    teamsToRemoves?: pulumi.Input<pulumi.Input<number>[]>;
-    usersToAdds?: pulumi.Input<pulumi.Input<number>[]>;
-    usersToRemoves?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * List of Portainer team identifiers to grant access to the namespace.
+     */
+    teamsToAdds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer team identifiers whose namespace access should be revoked.
+     */
+    teamsToRemoves?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer user identifiers to grant access to the namespace.
+     */
+    usersToAdds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * List of Portainer user identifiers whose namespace access should be revoked.
+     */
+    usersToRemoves?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

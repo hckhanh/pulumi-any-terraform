@@ -32,8 +32,14 @@ export class KubernetesClusterrolebinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesClusterrolebinding.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRoleBinding is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesClusterrolebindingId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRoleBinding.
+     */
     declare public readonly manifest: pulumi.Output<string>;
 
     /**
@@ -73,16 +79,28 @@ export class KubernetesClusterrolebinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesClusterrolebinding resources.
  */
 export interface KubernetesClusterrolebindingState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesClusterrolebindingId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRoleBinding is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesClusterrolebindingId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRoleBinding.
+     */
+    manifest?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesClusterrolebinding resource.
  */
 export interface KubernetesClusterrolebindingArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRoleBinding is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesClusterrolebindingId?: pulumi.Input<string>;
+    kubernetesClusterrolebindingId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRoleBinding.
+     */
     manifest: pulumi.Input<string>;
 }

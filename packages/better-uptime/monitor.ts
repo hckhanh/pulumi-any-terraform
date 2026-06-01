@@ -73,7 +73,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly environmentVariables: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
     declare public readonly expectedStatusCodes: pulumi.Output<number[] | undefined>;
     /**
@@ -91,9 +91,9 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> Use IPv4 only,
+     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
      *
-     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Use IPv6 only.
+     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     declare public readonly ipVersion: pulumi.Output<string>;
     /**
@@ -123,35 +123,35 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> We will check your website for 2XX HTTP status code.
+     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
      *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`">`expected_status_code`</span> We will check if your website returned one of the values in expected_status_codes.
+     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
      *
-     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
+     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`">`keyword_absence`</span> We will check if your website doesn't contain the required_keyword.
+     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span> We will ping your host specified in the url parameter.
+     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
      *
-     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *
-     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
-     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword "> required_keyword </span>are required).
+     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
+     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword " pulumi-lang-hcl=" required_keyword "> requiredKeyword </span>are required).
      *
-     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
      * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
      *
-     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
      * (port is required, and can be 110, 995, or both).
      *
-     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
      * (port is required, and can be 143, 993, or both).
      *
-     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
      * (request_body is required, and should contain the domain to query the DNS server with).
      *
-     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
+     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
     declare public readonly monitorType: pulumi.Output<string>;
     /**
@@ -171,7 +171,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly policyId: pulumi.Output<string>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
     declare public readonly port: pulumi.Output<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly proxyHost: pulumi.Output<string | undefined>;
     /**
-     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`" pulumi-lang-hcl="`proxy_host`">`proxyHost`</span>.
      */
     declare public readonly proxyPort: pulumi.Output<number | undefined>;
     /**
@@ -203,7 +203,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly rememberCookies: pulumi.Output<boolean>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to dns (domain to query the DNS server with).
+     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to dns (domain to query the DNS server with).
      */
     declare public readonly requestBody: pulumi.Output<string | undefined>;
     /**
@@ -212,17 +212,17 @@ export class Monitor extends pulumi.CustomResource {
     declare public readonly requestHeaders: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
      * How long to wait before timing out the request?
-     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
-     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
+     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
      *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
     declare public readonly requestTimeout: pulumi.Output<number>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
     declare public readonly requiredKeyword: pulumi.Output<string | undefined>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     declare public readonly scenarioName: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     declare public readonly url: pulumi.Output<string | undefined>;
     /**
@@ -423,7 +423,7 @@ export interface MonitorState {
      */
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
     expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
@@ -441,9 +441,9 @@ export interface MonitorState {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> Use IPv4 only,
+     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
      *
-     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Use IPv6 only.
+     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string | undefined>;
     /**
@@ -473,35 +473,35 @@ export interface MonitorState {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> We will check your website for 2XX HTTP status code.
+     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
      *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`">`expected_status_code`</span> We will check if your website returned one of the values in expected_status_codes.
+     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
      *
-     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
+     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`">`keyword_absence`</span> We will check if your website doesn't contain the required_keyword.
+     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span> We will ping your host specified in the url parameter.
+     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
      *
-     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *
-     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
-     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword "> required_keyword </span>are required).
+     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
+     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword " pulumi-lang-hcl=" required_keyword "> requiredKeyword </span>are required).
      *
-     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
      * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
      *
-     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
      * (port is required, and can be 110, 995, or both).
      *
-     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
      * (port is required, and can be 143, 993, or both).
      *
-     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
      * (request_body is required, and should contain the domain to query the DNS server with).
      *
-     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
+     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
     monitorType?: pulumi.Input<string | undefined>;
     /**
@@ -521,7 +521,7 @@ export interface MonitorState {
      */
     policyId?: pulumi.Input<string | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
     port?: pulumi.Input<string | undefined>;
     /**
@@ -533,7 +533,7 @@ export interface MonitorState {
      */
     proxyHost?: pulumi.Input<string | undefined>;
     /**
-     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`" pulumi-lang-hcl="`proxy_host`">`proxyHost`</span>.
      */
     proxyPort?: pulumi.Input<number | undefined>;
     /**
@@ -553,7 +553,7 @@ export interface MonitorState {
      */
     rememberCookies?: pulumi.Input<boolean | undefined>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to dns (domain to query the DNS server with).
+     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to dns (domain to query the DNS server with).
      */
     requestBody?: pulumi.Input<string | undefined>;
     /**
@@ -562,17 +562,17 @@ export interface MonitorState {
     requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * How long to wait before timing out the request?
-     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
-     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
+     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
      *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
     requestTimeout?: pulumi.Input<number | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
     requiredKeyword?: pulumi.Input<string | undefined>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     scenarioName?: pulumi.Input<string | undefined>;
     /**
@@ -600,7 +600,7 @@ export interface MonitorState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     url?: pulumi.Input<string | undefined>;
     /**
@@ -650,7 +650,7 @@ export interface MonitorArgs {
      */
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to expected_status_code. We will create a new incident if the status code returned from the server is not in the list of expected status codes.
      */
     expectedStatusCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
@@ -668,9 +668,9 @@ export interface MonitorArgs {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> Use IPv4 only,
+     *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
      *
-     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Use IPv6 only.
+     *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string | undefined>;
     /**
@@ -696,35 +696,35 @@ export interface MonitorArgs {
     /**
      * Valid values:
      *
-     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> We will check your website for 2XX HTTP status code.
+     *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
      *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`">`expected_status_code`</span> We will check if your website returned one of the values in expected_status_codes.
+     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
      *
-     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
+     *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`">`keyword_absence`</span> We will check if your website doesn't contain the required_keyword.
+     *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
      *
-     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span> We will ping your host specified in the url parameter.
+     *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
      *
-     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *
-     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
-     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword "> required_keyword </span>are required).
+     *     <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span> We will test a UDP port at your host specified in the url parameter
+     * (port and<span pulumi-lang-nodejs=" requiredKeyword " pulumi-lang-dotnet=" RequiredKeyword " pulumi-lang-go=" requiredKeyword " pulumi-lang-python=" required_keyword " pulumi-lang-yaml=" requiredKeyword " pulumi-lang-java=" requiredKeyword " pulumi-lang-hcl=" required_keyword "> requiredKeyword </span>are required).
      *
-     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span> We will check for a SMTP server at the host specified in the url parameter
      * (port is required, and can be one of 25, 465, 587, or a combination of those ports separated by comma).
      *
-     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span> We will check for a POP3 server at the host specified in the url parameter
      * (port is required, and can be 110, 995, or both).
      *
-     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> We will check for an IMAP server at the host specified in the url parameter
      * (port is required, and can be 143, 993, or both).
      *
-     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
+     *     <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span> We will check for a DNS server at the host specified in the url parameter
      * (request_body is required, and should contain the domain to query the DNS server with).
      *
-     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
+     *     <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span> We will run the scenario defined by playwright_script, identified in the UI by scenario_name
      */
     monitorType: pulumi.Input<string>;
     /**
@@ -740,7 +740,7 @@ export interface MonitorArgs {
      */
     policyId?: pulumi.Input<string | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to tcp, udp, smtp, pop, or imap. tcp and udp monitors accept any ports, while smtp, pop, and imap accept only the specified ports corresponding with their servers (e.g. "25,465,587" for smtp).
      */
     port?: pulumi.Input<string | undefined>;
     /**
@@ -752,7 +752,7 @@ export interface MonitorArgs {
      */
     proxyHost?: pulumi.Input<string | undefined>;
     /**
-     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`">`proxy_host`</span>.
+     * The port to be used with <span pulumi-lang-nodejs="`proxyHost`" pulumi-lang-dotnet="`ProxyHost`" pulumi-lang-go="`proxyHost`" pulumi-lang-python="`proxy_host`" pulumi-lang-yaml="`proxyHost`" pulumi-lang-java="`proxyHost`" pulumi-lang-hcl="`proxy_host`">`proxyHost`</span>.
      */
     proxyPort?: pulumi.Input<number | undefined>;
     /**
@@ -772,7 +772,7 @@ export interface MonitorArgs {
      */
     rememberCookies?: pulumi.Input<boolean | undefined>;
     /**
-     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to dns (domain to query the DNS server with).
+     * Request body for POST, PUT, PATCH requests. Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to dns (domain to query the DNS server with).
      */
     requestBody?: pulumi.Input<string | undefined>;
     /**
@@ -781,17 +781,17 @@ export interface MonitorArgs {
     requestHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * How long to wait before timing out the request?
-     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
-     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
+     *   - For Server and Port monitors (types <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`" pulumi-lang-hcl="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`smtp`" pulumi-lang-dotnet="`Smtp`" pulumi-lang-go="`smtp`" pulumi-lang-python="`smtp`" pulumi-lang-yaml="`smtp`" pulumi-lang-java="`smtp`" pulumi-lang-hcl="`smtp`">`smtp`</span>, <span pulumi-lang-nodejs="`pop`" pulumi-lang-dotnet="`Pop`" pulumi-lang-go="`pop`" pulumi-lang-python="`pop`" pulumi-lang-yaml="`pop`" pulumi-lang-java="`pop`" pulumi-lang-hcl="`pop`">`pop`</span>, <span pulumi-lang-nodejs="`imap`" pulumi-lang-dotnet="`Imap`" pulumi-lang-go="`imap`" pulumi-lang-python="`imap`" pulumi-lang-yaml="`imap`" pulumi-lang-java="`imap`" pulumi-lang-hcl="`imap`">`imap`</span> and <span pulumi-lang-nodejs="`dns`" pulumi-lang-dotnet="`Dns`" pulumi-lang-go="`dns`" pulumi-lang-python="`dns`" pulumi-lang-yaml="`dns`" pulumi-lang-java="`dns`" pulumi-lang-hcl="`dns`">`dns`</span>) the timeout is specified in *milliseconds*. Valid options: 500, 1000, 2000, 3000, 5000.
+     *   - For Playwright monitors (type <span pulumi-lang-nodejs="`playwright`" pulumi-lang-dotnet="`Playwright`" pulumi-lang-go="`playwright`" pulumi-lang-python="`playwright`" pulumi-lang-yaml="`playwright`" pulumi-lang-java="`playwright`" pulumi-lang-hcl="`playwright`">`playwright`</span>), this determines the Playwright scenario timeout instead in *seconds*. Valid options: 15, 30, 45, 60, 120, 180, 240, 300, 360, 480, 600, 900.
      *   - For all other monitors, the timeout is specified in *seconds*. Valid options: 2, 3, 5, 10, 15, 30, 45, 60.
      */
     requestTimeout?: pulumi.Input<number | undefined>;
     /**
-     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
+     * Required if<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>is set to keyword  or udp. We will create a new incident if this keyword is missing on your page.
      */
     requiredKeyword?: pulumi.Input<string | undefined>;
     /**
-     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * For Playwright monitors, the scenario name identifying the monitor in the UI. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     scenarioName?: pulumi.Input<string | undefined>;
     /**
@@ -811,7 +811,7 @@ export interface MonitorArgs {
      */
     teamWait?: pulumi.Input<number | undefined>;
     /**
-     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType "> monitor_type </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`">`scenario_name`</span> must be provided.
+     * URL of your website or the host you want to ping (see<span pulumi-lang-nodejs=" monitorType " pulumi-lang-dotnet=" MonitorType " pulumi-lang-go=" monitorType " pulumi-lang-python=" monitor_type " pulumi-lang-yaml=" monitorType " pulumi-lang-java=" monitorType " pulumi-lang-hcl=" monitor_type "> monitorType </span>below). Required for all monitor types except Playwright. For Playwright monitors, either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`scenarioName`" pulumi-lang-dotnet="`ScenarioName`" pulumi-lang-go="`scenarioName`" pulumi-lang-python="`scenario_name`" pulumi-lang-yaml="`scenarioName`" pulumi-lang-java="`scenarioName`" pulumi-lang-hcl="`scenario_name`">`scenarioName`</span> must be provided.
      */
     url?: pulumi.Input<string | undefined>;
     /**

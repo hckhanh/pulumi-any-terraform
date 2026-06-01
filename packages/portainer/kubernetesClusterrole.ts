@@ -32,8 +32,14 @@ export class KubernetesClusterrole extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesClusterrole.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRole is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesClusterroleId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRole.
+     */
     declare public readonly manifest: pulumi.Output<string>;
 
     /**
@@ -73,16 +79,28 @@ export class KubernetesClusterrole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesClusterrole resources.
  */
 export interface KubernetesClusterroleState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesClusterroleId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRole is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesClusterroleId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRole.
+     */
+    manifest?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesClusterrole resource.
  */
 export interface KubernetesClusterroleArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the cluster-scoped ClusterRole is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesClusterroleId?: pulumi.Input<string>;
+    kubernetesClusterroleId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes ClusterRole.
+     */
     manifest: pulumi.Input<string>;
 }

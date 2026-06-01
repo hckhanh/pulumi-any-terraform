@@ -41,6 +41,6 @@ export function getEdgeConfigurationOutput(args: GetEdgeConfigurationOutputArgs,
  * A collection of arguments for invoking getEdgeConfiguration.
  */
 export interface GetEdgeConfigurationOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

@@ -49,7 +49,7 @@ export function getPolicyTemplateOutput(args?: GetPolicyTemplateOutputArgs, opts
  * A collection of arguments for invoking getPolicyTemplate.
  */
 export interface GetPolicyTemplateOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    templateId?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    templateId?: pulumi.Input<string | undefined>;
 }

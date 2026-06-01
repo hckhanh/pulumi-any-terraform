@@ -37,11 +37,17 @@ export class Check extends pulumi.CustomResource {
      * Desired container state (e.g. running).
      */
     declare public readonly desiredState: pulumi.Output<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to check.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     /**
      * Maximum retries for each service check.
      */
     declare public readonly maxRetries: pulumi.Output<number | undefined>;
+    /**
+     * Human-readable summary of the check results returned by the provider.
+     */
     declare public /*out*/ readonly output: pulumi.Output<string>;
     /**
      * Expected revision (image tag) of running containers/services.
@@ -51,6 +57,9 @@ export class Check extends pulumi.CustomResource {
      * Comma-separated list of service names (without stack prefix).
      */
     declare public readonly servicesList: pulumi.Output<string>;
+    /**
+     * Name of the Portainer stack whose service status is being validated.
+     */
     declare public readonly stackName: pulumi.Output<string>;
     /**
      * Initial wait before the first check (seconds).
@@ -118,50 +127,62 @@ export class Check extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Check resources.
  */
 export interface CheckState {
-    checkId?: pulumi.Input<string>;
+    checkId?: pulumi.Input<string | undefined>;
     /**
      * Desired container state (e.g. running).
      */
-    desiredState?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
+    desiredState?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to check.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * Maximum retries for each service check.
      */
-    maxRetries?: pulumi.Input<number>;
-    output?: pulumi.Input<string>;
+    maxRetries?: pulumi.Input<number | undefined>;
+    /**
+     * Human-readable summary of the check results returned by the provider.
+     */
+    output?: pulumi.Input<string | undefined>;
     /**
      * Expected revision (image tag) of running containers/services.
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of service names (without stack prefix).
      */
-    servicesList?: pulumi.Input<string>;
-    stackName?: pulumi.Input<string>;
+    servicesList?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer stack whose service status is being validated.
+     */
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * Initial wait before the first check (seconds).
      */
-    wait?: pulumi.Input<number>;
+    wait?: pulumi.Input<number | undefined>;
     /**
      * Wait time between retry checks (seconds).
      */
-    waitBetweenChecks?: pulumi.Input<number>;
+    waitBetweenChecks?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Check resource.
  */
 export interface CheckArgs {
-    checkId?: pulumi.Input<string>;
+    checkId?: pulumi.Input<string | undefined>;
     /**
      * Desired container state (e.g. running).
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to check.
+     */
     endpointId: pulumi.Input<number>;
     /**
      * Maximum retries for each service check.
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * Expected revision (image tag) of running containers/services.
      */
@@ -170,13 +191,16 @@ export interface CheckArgs {
      * Comma-separated list of service names (without stack prefix).
      */
     servicesList: pulumi.Input<string>;
+    /**
+     * Name of the Portainer stack whose service status is being validated.
+     */
     stackName: pulumi.Input<string>;
     /**
      * Initial wait before the first check (seconds).
      */
-    wait?: pulumi.Input<number>;
+    wait?: pulumi.Input<number | undefined>;
     /**
      * Wait time between retry checks (seconds).
      */
-    waitBetweenChecks?: pulumi.Input<number>;
+    waitBetweenChecks?: pulumi.Input<number | undefined>;
 }

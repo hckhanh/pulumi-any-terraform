@@ -35,11 +35,29 @@ export class DockerPlugin extends pulumi.CustomResource {
     }
 
     declare public readonly dockerPluginId: pulumi.Output<string>;
+    /**
+     * Whether to enable the Docker plugin immediately after installation.
+     */
     declare public readonly enable: pulumi.Output<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host) where the plugin is installed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Local alias name for the installed Docker plugin.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Base64-encoded registry authentication payload used to pull the plugin from a private registry.
+     */
     declare public readonly registryAuth: pulumi.Output<string | undefined>;
+    /**
+     * Remote source URL or registry reference of the Docker plugin to pull.
+     */
     declare public readonly remote: pulumi.Output<string>;
+    /**
+     * Configuration settings applied to the Docker plugin during installation.
+     */
     declare public readonly settings: pulumi.Output<outputs.DockerPluginSetting[] | undefined>;
 
     /**
@@ -87,24 +105,60 @@ export class DockerPlugin extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerPlugin resources.
  */
 export interface DockerPluginState {
-    dockerPluginId?: pulumi.Input<string>;
-    enable?: pulumi.Input<boolean>;
-    endpointId?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    registryAuth?: pulumi.Input<string>;
-    remote?: pulumi.Input<string>;
-    settings?: pulumi.Input<pulumi.Input<inputs.DockerPluginSetting>[]>;
+    dockerPluginId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable the Docker plugin immediately after installation.
+     */
+    enable?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host) where the plugin is installed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Local alias name for the installed Docker plugin.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Base64-encoded registry authentication payload used to pull the plugin from a private registry.
+     */
+    registryAuth?: pulumi.Input<string | undefined>;
+    /**
+     * Remote source URL or registry reference of the Docker plugin to pull.
+     */
+    remote?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration settings applied to the Docker plugin during installation.
+     */
+    settings?: pulumi.Input<pulumi.Input<inputs.DockerPluginSetting>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerPlugin resource.
  */
 export interface DockerPluginArgs {
-    dockerPluginId?: pulumi.Input<string>;
-    enable?: pulumi.Input<boolean>;
+    dockerPluginId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable the Docker plugin immediately after installation.
+     */
+    enable?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host) where the plugin is installed.
+     */
     endpointId: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    registryAuth?: pulumi.Input<string>;
+    /**
+     * Local alias name for the installed Docker plugin.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Base64-encoded registry authentication payload used to pull the plugin from a private registry.
+     */
+    registryAuth?: pulumi.Input<string | undefined>;
+    /**
+     * Remote source URL or registry reference of the Docker plugin to pull.
+     */
     remote: pulumi.Input<string>;
-    settings?: pulumi.Input<pulumi.Input<inputs.DockerPluginSetting>[]>;
+    /**
+     * Configuration settings applied to the Docker plugin during installation.
+     */
+    settings?: pulumi.Input<pulumi.Input<inputs.DockerPluginSetting>[] | undefined>;
 }

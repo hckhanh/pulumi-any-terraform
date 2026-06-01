@@ -51,7 +51,7 @@ export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getPolicy.
  */
 export interface GetPolicyOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    policyId?: pulumi.Input<number>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<number | undefined>;
 }

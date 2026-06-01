@@ -32,12 +32,30 @@ export class DockerNode extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerNode.__pulumiType;
     }
 
+    /**
+     * Desired availability of the Swarm node (active, pause, or drain).
+     */
     declare public readonly availability: pulumi.Output<string | undefined>;
     declare public readonly dockerNodeId: pulumi.Output<string>;
+    /**
+     * ID of the Portainer environment (Docker Swarm cluster) where the node is managed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Key/value labels assigned to the Swarm node for placement and selection.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Desired display name for the Swarm node.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Docker Swarm node ID to update.
+     */
     declare public readonly nodeId: pulumi.Output<string>;
+    /**
+     * Desired role of the Swarm node (worker or manager).
+     */
     declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Swarm node version required for update operation
@@ -94,30 +112,66 @@ export class DockerNode extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerNode resources.
  */
 export interface DockerNodeState {
-    availability?: pulumi.Input<string>;
-    dockerNodeId?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    nodeId?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    /**
+     * Desired availability of the Swarm node (active, pause, or drain).
+     */
+    availability?: pulumi.Input<string | undefined>;
+    dockerNodeId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm cluster) where the node is managed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Key/value labels assigned to the Swarm node for placement and selection.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Desired display name for the Swarm node.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Docker Swarm node ID to update.
+     */
+    nodeId?: pulumi.Input<string | undefined>;
+    /**
+     * Desired role of the Swarm node (worker or manager).
+     */
+    role?: pulumi.Input<string | undefined>;
     /**
      * Swarm node version required for update operation
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerNode resource.
  */
 export interface DockerNodeArgs {
-    availability?: pulumi.Input<string>;
-    dockerNodeId?: pulumi.Input<string>;
+    /**
+     * Desired availability of the Swarm node (active, pause, or drain).
+     */
+    availability?: pulumi.Input<string | undefined>;
+    dockerNodeId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm cluster) where the node is managed.
+     */
     endpointId: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
+    /**
+     * Key/value labels assigned to the Swarm node for placement and selection.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Desired display name for the Swarm node.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Docker Swarm node ID to update.
+     */
     nodeId: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    /**
+     * Desired role of the Swarm node (worker or manager).
+     */
+    role?: pulumi.Input<string | undefined>;
     /**
      * Swarm node version required for update operation
      */

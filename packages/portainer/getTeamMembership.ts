@@ -44,7 +44,7 @@ export function getTeamMembershipOutput(args: GetTeamMembershipOutputArgs, opts?
  * A collection of arguments for invoking getTeamMembership.
  */
 export interface GetTeamMembershipOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     teamId: pulumi.Input<number>;
     userId: pulumi.Input<number>;
 }

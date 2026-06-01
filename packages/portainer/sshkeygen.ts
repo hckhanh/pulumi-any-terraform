@@ -78,17 +78,17 @@ export interface SshkeygenState {
     /**
      * Generated private key
      */
-    private?: pulumi.Input<string>;
+    private?: pulumi.Input<string | undefined>;
     /**
      * Generated public key
      */
-    public?: pulumi.Input<string>;
-    sshkeygenId?: pulumi.Input<string>;
+    public?: pulumi.Input<string | undefined>;
+    sshkeygenId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Sshkeygen resource.
  */
 export interface SshkeygenArgs {
-    sshkeygenId?: pulumi.Input<string>;
+    sshkeygenId?: pulumi.Input<string | undefined>;
 }

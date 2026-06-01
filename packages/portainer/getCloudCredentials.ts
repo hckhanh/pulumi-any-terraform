@@ -40,6 +40,6 @@ export function getCloudCredentialsOutput(args: GetCloudCredentialsOutputArgs, o
  * A collection of arguments for invoking getCloudCredentials.
  */
 export interface GetCloudCredentialsOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

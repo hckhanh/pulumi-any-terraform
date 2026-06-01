@@ -34,13 +34,34 @@ export class DockerVolume extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerVolume.__pulumiType;
     }
 
+    /**
+     * Specification for a Swarm cluster volume (CSI-backed volume managed by Docker Swarm).
+     */
     declare public readonly clusterVolumeSpecs: pulumi.Output<outputs.DockerVolumeClusterVolumeSpec[] | undefined>;
     declare public readonly dockerVolumeId: pulumi.Output<string>;
+    /**
+     * Driver used by the Docker volume (e.g., local, nfs, btrfs).
+     */
     declare public readonly driver: pulumi.Output<string | undefined>;
+    /**
+     * Driver-specific options passed to the Docker volume driver.
+     */
     declare public readonly driverOpts: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the volume is created.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Key/value labels attached to the Docker volume.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the Docker volume.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * ID of the Portainer resource control associated with this Docker volume.
+     */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
 
     /**
@@ -87,25 +108,64 @@ export class DockerVolume extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerVolume resources.
  */
 export interface DockerVolumeState {
-    clusterVolumeSpecs?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpec>[]>;
-    dockerVolumeId?: pulumi.Input<string>;
-    driver?: pulumi.Input<string>;
-    driverOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    endpointId?: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    resourceControlId?: pulumi.Input<number>;
+    /**
+     * Specification for a Swarm cluster volume (CSI-backed volume managed by Docker Swarm).
+     */
+    clusterVolumeSpecs?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpec>[] | undefined>;
+    dockerVolumeId?: pulumi.Input<string | undefined>;
+    /**
+     * Driver used by the Docker volume (e.g., local, nfs, btrfs).
+     */
+    driver?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the Docker volume driver.
+     */
+    driverOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the volume is created.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Key/value labels attached to the Docker volume.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker volume.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer resource control associated with this Docker volume.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerVolume resource.
  */
 export interface DockerVolumeArgs {
-    clusterVolumeSpecs?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpec>[]>;
-    dockerVolumeId?: pulumi.Input<string>;
-    driver?: pulumi.Input<string>;
-    driverOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specification for a Swarm cluster volume (CSI-backed volume managed by Docker Swarm).
+     */
+    clusterVolumeSpecs?: pulumi.Input<pulumi.Input<inputs.DockerVolumeClusterVolumeSpec>[] | undefined>;
+    dockerVolumeId?: pulumi.Input<string | undefined>;
+    /**
+     * Driver used by the Docker volume (e.g., local, nfs, btrfs).
+     */
+    driver?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the Docker volume driver.
+     */
+    driverOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the volume is created.
+     */
     endpointId: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
+    /**
+     * Key/value labels attached to the Docker volume.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker volume.
+     */
+    name?: pulumi.Input<string | undefined>;
 }

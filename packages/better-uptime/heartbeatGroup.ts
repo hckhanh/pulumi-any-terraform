@@ -45,7 +45,7 @@ export class HeartbeatGroup extends pulumi.CustomResource {
      */
     declare public readonly paused: pulumi.Output<boolean>;
     /**
-     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your heartbeat groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex " pulumi-lang-hcl=" sort_index "> sortIndex </span>to specify how to sort your heartbeat groups.
      */
     declare public readonly sortIndex: pulumi.Output<number>;
     /**
@@ -107,7 +107,7 @@ export interface HeartbeatGroupState {
      */
     paused?: pulumi.Input<boolean | undefined>;
     /**
-     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your heartbeat groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex " pulumi-lang-hcl=" sort_index "> sortIndex </span>to specify how to sort your heartbeat groups.
      */
     sortIndex?: pulumi.Input<number | undefined>;
     /**
@@ -133,7 +133,7 @@ export interface HeartbeatGroupArgs {
      */
     paused?: pulumi.Input<boolean | undefined>;
     /**
-     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex "> sort_index </span>to specify how to sort your heartbeat groups.
+     * Set<span pulumi-lang-nodejs=" sortIndex " pulumi-lang-dotnet=" SortIndex " pulumi-lang-go=" sortIndex " pulumi-lang-python=" sort_index " pulumi-lang-yaml=" sortIndex " pulumi-lang-java=" sortIndex " pulumi-lang-hcl=" sort_index "> sortIndex </span>to specify how to sort your heartbeat groups.
      */
     sortIndex?: pulumi.Input<number | undefined>;
     /**

@@ -34,13 +34,34 @@ export class EndpointSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === EndpointSettings.__pulumiType;
     }
 
+    /**
+     * Maintenance change window during which automatic updates may run on the environment.
+     */
     declare public readonly changeWindow: pulumi.Output<outputs.EndpointSettingsChangeWindow | undefined>;
+    /**
+     * Per-environment overrides for stack and application deployment UI options.
+     */
     declare public readonly deploymentOptions: pulumi.Output<outputs.EndpointSettingsDeploymentOptions | undefined>;
+    /**
+     * Whether GPU management is enabled for the Portainer environment.
+     */
     declare public readonly enableGpuManagement: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether image update notifications are enabled for the Portainer environment.
+     */
     declare public readonly enableImageNotification: pulumi.Output<boolean | undefined>;
+    /**
+     * ID of the Portainer environment whose runtime settings are managed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly endpointSettingsId: pulumi.Output<string>;
+    /**
+     * List of GPU devices exposed to Portainer for this environment.
+     */
     declare public readonly gpuses: pulumi.Output<outputs.EndpointSettingsGpus[] | undefined>;
+    /**
+     * Per-environment security settings controlling what regular (non-admin) users may do.
+     */
     declare public readonly securitySettings: pulumi.Output<outputs.EndpointSettingsSecuritySettings | undefined>;
 
     /**
@@ -87,26 +108,68 @@ export class EndpointSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointSettings resources.
  */
 export interface EndpointSettingsState {
-    changeWindow?: pulumi.Input<inputs.EndpointSettingsChangeWindow>;
-    deploymentOptions?: pulumi.Input<inputs.EndpointSettingsDeploymentOptions>;
-    enableGpuManagement?: pulumi.Input<boolean>;
-    enableImageNotification?: pulumi.Input<boolean>;
-    endpointId?: pulumi.Input<number>;
-    endpointSettingsId?: pulumi.Input<string>;
-    gpuses?: pulumi.Input<pulumi.Input<inputs.EndpointSettingsGpus>[]>;
-    securitySettings?: pulumi.Input<inputs.EndpointSettingsSecuritySettings>;
+    /**
+     * Maintenance change window during which automatic updates may run on the environment.
+     */
+    changeWindow?: pulumi.Input<inputs.EndpointSettingsChangeWindow | undefined>;
+    /**
+     * Per-environment overrides for stack and application deployment UI options.
+     */
+    deploymentOptions?: pulumi.Input<inputs.EndpointSettingsDeploymentOptions | undefined>;
+    /**
+     * Whether GPU management is enabled for the Portainer environment.
+     */
+    enableGpuManagement?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether image update notifications are enabled for the Portainer environment.
+     */
+    enableImageNotification?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment whose runtime settings are managed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    endpointSettingsId?: pulumi.Input<string | undefined>;
+    /**
+     * List of GPU devices exposed to Portainer for this environment.
+     */
+    gpuses?: pulumi.Input<pulumi.Input<inputs.EndpointSettingsGpus>[] | undefined>;
+    /**
+     * Per-environment security settings controlling what regular (non-admin) users may do.
+     */
+    securitySettings?: pulumi.Input<inputs.EndpointSettingsSecuritySettings | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointSettings resource.
  */
 export interface EndpointSettingsArgs {
-    changeWindow?: pulumi.Input<inputs.EndpointSettingsChangeWindow>;
-    deploymentOptions?: pulumi.Input<inputs.EndpointSettingsDeploymentOptions>;
-    enableGpuManagement?: pulumi.Input<boolean>;
-    enableImageNotification?: pulumi.Input<boolean>;
+    /**
+     * Maintenance change window during which automatic updates may run on the environment.
+     */
+    changeWindow?: pulumi.Input<inputs.EndpointSettingsChangeWindow | undefined>;
+    /**
+     * Per-environment overrides for stack and application deployment UI options.
+     */
+    deploymentOptions?: pulumi.Input<inputs.EndpointSettingsDeploymentOptions | undefined>;
+    /**
+     * Whether GPU management is enabled for the Portainer environment.
+     */
+    enableGpuManagement?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether image update notifications are enabled for the Portainer environment.
+     */
+    enableImageNotification?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment whose runtime settings are managed.
+     */
     endpointId: pulumi.Input<number>;
-    endpointSettingsId?: pulumi.Input<string>;
-    gpuses?: pulumi.Input<pulumi.Input<inputs.EndpointSettingsGpus>[]>;
-    securitySettings?: pulumi.Input<inputs.EndpointSettingsSecuritySettings>;
+    endpointSettingsId?: pulumi.Input<string | undefined>;
+    /**
+     * List of GPU devices exposed to Portainer for this environment.
+     */
+    gpuses?: pulumi.Input<pulumi.Input<inputs.EndpointSettingsGpus>[] | undefined>;
+    /**
+     * Per-environment security settings controlling what regular (non-admin) users may do.
+     */
+    securitySettings?: pulumi.Input<inputs.EndpointSettingsSecuritySettings | undefined>;
 }

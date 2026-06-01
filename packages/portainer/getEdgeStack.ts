@@ -40,6 +40,6 @@ export function getEdgeStackOutput(args: GetEdgeStackOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getEdgeStack.
  */
 export interface GetEdgeStackOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

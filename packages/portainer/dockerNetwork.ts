@@ -34,24 +34,78 @@ export class DockerNetwork extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerNetwork.__pulumiType;
     }
 
+    /**
+     * Whether standalone containers may attach to this Swarm overlay network.
+     */
     declare public readonly attachable: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of a config-only network from which to copy configuration.
+     */
     declare public readonly configFrom: pulumi.Output<string | undefined>;
+    /**
+     * Whether this is a config-only network that contains only configuration for other networks.
+     */
     declare public readonly configOnly: pulumi.Output<boolean | undefined>;
     declare public readonly dockerNetworkId: pulumi.Output<string>;
+    /**
+     * Driver used by the Docker network (e.g., bridge, overlay, macvlan, host, null).
+     */
     declare public readonly driver: pulumi.Output<string | undefined>;
+    /**
+     * Whether IPv4 is enabled on the Docker network.
+     */
     declare public readonly enableIpv4: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether IPv6 is enabled on the Docker network.
+     */
     declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the network is created.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Whether the network is a Swarm ingress network used for the routing mesh.
+     */
     declare public readonly ingress: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the network is restricted to internal use only (no external connectivity).
+     */
     declare public readonly internal: pulumi.Output<boolean | undefined>;
+    /**
+     * List of IPAM configuration blocks defining subnets, gateways, and IP ranges.
+     */
     declare public readonly ipamConfigs: pulumi.Output<outputs.DockerNetworkIpamConfig[] | undefined>;
+    /**
+     * IPAM driver used to allocate IP addresses for the Docker network.
+     */
     declare public readonly ipamDriver: pulumi.Output<string | undefined>;
+    /**
+     * Driver-specific options passed to the IPAM driver.
+     */
     declare public readonly ipamOptions: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Key/value labels attached to the Docker network.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the Docker network.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Driver-specific options passed to the Docker network driver.
+     */
     declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * ID of the Portainer resource control associated with this Docker network.
+     */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
+    /**
+     * Scope of the Docker network (local, global, or swarm).
+     */
     declare public readonly scope: pulumi.Output<string | undefined>;
+    /**
+     * Swarm node ID where the network operation is targeted, when applicable.
+     */
     declare public readonly swarmNodeId: pulumi.Output<string | undefined>;
 
     /**
@@ -120,47 +174,152 @@ export class DockerNetwork extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerNetwork resources.
  */
 export interface DockerNetworkState {
-    attachable?: pulumi.Input<boolean>;
-    configFrom?: pulumi.Input<string>;
-    configOnly?: pulumi.Input<boolean>;
-    dockerNetworkId?: pulumi.Input<string>;
-    driver?: pulumi.Input<string>;
-    enableIpv4?: pulumi.Input<boolean>;
-    enableIpv6?: pulumi.Input<boolean>;
-    endpointId?: pulumi.Input<number>;
-    ingress?: pulumi.Input<boolean>;
-    internal?: pulumi.Input<boolean>;
-    ipamConfigs?: pulumi.Input<pulumi.Input<inputs.DockerNetworkIpamConfig>[]>;
-    ipamDriver?: pulumi.Input<string>;
-    ipamOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    resourceControlId?: pulumi.Input<number>;
-    scope?: pulumi.Input<string>;
-    swarmNodeId?: pulumi.Input<string>;
+    /**
+     * Whether standalone containers may attach to this Swarm overlay network.
+     */
+    attachable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of a config-only network from which to copy configuration.
+     */
+    configFrom?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this is a config-only network that contains only configuration for other networks.
+     */
+    configOnly?: pulumi.Input<boolean | undefined>;
+    dockerNetworkId?: pulumi.Input<string | undefined>;
+    /**
+     * Driver used by the Docker network (e.g., bridge, overlay, macvlan, host, null).
+     */
+    driver?: pulumi.Input<string | undefined>;
+    /**
+     * Whether IPv4 is enabled on the Docker network.
+     */
+    enableIpv4?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether IPv6 is enabled on the Docker network.
+     */
+    enableIpv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the network is created.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Whether the network is a Swarm ingress network used for the routing mesh.
+     */
+    ingress?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the network is restricted to internal use only (no external connectivity).
+     */
+    internal?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of IPAM configuration blocks defining subnets, gateways, and IP ranges.
+     */
+    ipamConfigs?: pulumi.Input<pulumi.Input<inputs.DockerNetworkIpamConfig>[] | undefined>;
+    /**
+     * IPAM driver used to allocate IP addresses for the Docker network.
+     */
+    ipamDriver?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the IPAM driver.
+     */
+    ipamOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Key/value labels attached to the Docker network.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker network.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the Docker network driver.
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * ID of the Portainer resource control associated with this Docker network.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Scope of the Docker network (local, global, or swarm).
+     */
+    scope?: pulumi.Input<string | undefined>;
+    /**
+     * Swarm node ID where the network operation is targeted, when applicable.
+     */
+    swarmNodeId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerNetwork resource.
  */
 export interface DockerNetworkArgs {
-    attachable?: pulumi.Input<boolean>;
-    configFrom?: pulumi.Input<string>;
-    configOnly?: pulumi.Input<boolean>;
-    dockerNetworkId?: pulumi.Input<string>;
-    driver?: pulumi.Input<string>;
-    enableIpv4?: pulumi.Input<boolean>;
-    enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Whether standalone containers may attach to this Swarm overlay network.
+     */
+    attachable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of a config-only network from which to copy configuration.
+     */
+    configFrom?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this is a config-only network that contains only configuration for other networks.
+     */
+    configOnly?: pulumi.Input<boolean | undefined>;
+    dockerNetworkId?: pulumi.Input<string | undefined>;
+    /**
+     * Driver used by the Docker network (e.g., bridge, overlay, macvlan, host, null).
+     */
+    driver?: pulumi.Input<string | undefined>;
+    /**
+     * Whether IPv4 is enabled on the Docker network.
+     */
+    enableIpv4?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether IPv6 is enabled on the Docker network.
+     */
+    enableIpv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * ID of the Portainer environment (Docker host or Swarm) where the network is created.
+     */
     endpointId: pulumi.Input<number>;
-    ingress?: pulumi.Input<boolean>;
-    internal?: pulumi.Input<boolean>;
-    ipamConfigs?: pulumi.Input<pulumi.Input<inputs.DockerNetworkIpamConfig>[]>;
-    ipamDriver?: pulumi.Input<string>;
-    ipamOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    scope?: pulumi.Input<string>;
-    swarmNodeId?: pulumi.Input<string>;
+    /**
+     * Whether the network is a Swarm ingress network used for the routing mesh.
+     */
+    ingress?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the network is restricted to internal use only (no external connectivity).
+     */
+    internal?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of IPAM configuration blocks defining subnets, gateways, and IP ranges.
+     */
+    ipamConfigs?: pulumi.Input<pulumi.Input<inputs.DockerNetworkIpamConfig>[] | undefined>;
+    /**
+     * IPAM driver used to allocate IP addresses for the Docker network.
+     */
+    ipamDriver?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the IPAM driver.
+     */
+    ipamOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Key/value labels attached to the Docker network.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker network.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Driver-specific options passed to the Docker network driver.
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Scope of the Docker network (local, global, or swarm).
+     */
+    scope?: pulumi.Input<string | undefined>;
+    /**
+     * Swarm node ID where the network operation is targeted, when applicable.
+     */
+    swarmNodeId?: pulumi.Input<string | undefined>;
 }

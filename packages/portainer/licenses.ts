@@ -87,16 +87,16 @@ export interface LicensesState {
     /**
      * List of conflicting license keys, if any
      */
-    conflictingKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    conflictingKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Force attach even if there are conflicting licenses
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * License key to be attached
      */
-    key?: pulumi.Input<string>;
-    licensesId?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    licensesId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -106,10 +106,10 @@ export interface LicensesArgs {
     /**
      * Force attach even if there are conflicting licenses
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * License key to be attached
      */
     key: pulumi.Input<string>;
-    licensesId?: pulumi.Input<string>;
+    licensesId?: pulumi.Input<string | undefined>;
 }

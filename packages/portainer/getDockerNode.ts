@@ -47,5 +47,5 @@ export function getDockerNodeOutput(args: GetDockerNodeOutputArgs, opts?: pulumi
 export interface GetDockerNodeOutputArgs {
     endpointId: pulumi.Input<number>;
     hostname: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

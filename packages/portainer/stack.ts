@@ -54,33 +54,57 @@ export class Stack extends pulumi.CustomResource {
      * List of user IDs authorized to access this stack (only if ownership is restricted).
      */
     declare public readonly authorizedUsers: pulumi.Output<number[] | undefined>;
+    /**
+     * Whether the supplied content is in Docker Compose format (true) instead of native Kubernetes manifest (false). Only applies to Kubernetes stacks. Changing this value forces resource recreation.
+     */
     declare public readonly composeFormat: pulumi.Output<boolean | undefined>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
      */
     declare public readonly deploymentType: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer environment (endpoint) where the stack will be deployed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * List of environment variables injected into the stack at deploy time.
+     */
     declare public readonly envs: pulumi.Output<outputs.StackEnv[] | undefined>;
     /**
-     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath " pulumi-lang-hcl=" helm_chart_path "> helmChartPath </span>is set.
      */
     declare public readonly filePathInRepository: pulumi.Output<string | undefined>;
+    /**
+     * Local filesystem path on the host used when<span pulumi-lang-nodejs=" supportRelativePath " pulumi-lang-dotnet=" SupportRelativePath " pulumi-lang-go=" supportRelativePath " pulumi-lang-python=" support_relative_path " pulumi-lang-yaml=" supportRelativePath " pulumi-lang-java=" supportRelativePath " pulumi-lang-hcl=" support_relative_path "> supportRelativePath </span>is true. Maps to the repository working directory.
+     */
     declare public readonly filesystemPath: pulumi.Output<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
     declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the Git repository requires authentication. When true,<span pulumi-lang-nodejs=" repositoryUsername " pulumi-lang-dotnet=" RepositoryUsername " pulumi-lang-go=" repositoryUsername " pulumi-lang-python=" repository_username " pulumi-lang-yaml=" repositoryUsername " pulumi-lang-java=" repositoryUsername " pulumi-lang-hcl=" repository_username "> repositoryUsername </span>and<span pulumi-lang-nodejs=" repositoryPassword " pulumi-lang-dotnet=" RepositoryPassword " pulumi-lang-go=" repositoryPassword " pulumi-lang-python=" repository_password " pulumi-lang-yaml=" repositoryPassword " pulumi-lang-java=" repositoryPassword " pulumi-lang-hcl=" repository_password "> repositoryPassword </span>(or their write-only equivalents) are sent to Portainer.
+     */
     declare public readonly gitRepositoryAuthentication: pulumi.Output<boolean | undefined>;
     /**
-     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'repository'.
      */
     declare public readonly helmChartPath: pulumi.Output<string | undefined>;
+    /**
+     * URL to a remote Kubernetes manifest used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'url'. Changing this value forces resource recreation.
+     */
     declare public readonly manifestUrl: pulumi.Output<string | undefined>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
      */
     declare public readonly method: pulumi.Output<string>;
+    /**
+     * Name of the Portainer stack. Must be unique within the target endpoint. Changing this value forces resource recreation.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes'. Changing this value forces resource recreation.
+     */
     declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Ownership level: 'public', 'administrators' or 'restricted'.
@@ -102,19 +126,31 @@ export class Stack extends pulumi.CustomResource {
      * ID of the Git credentials to use for authentication.
      */
     declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as a sensitive value.
+     */
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
     declare public readonly repositoryPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * Git reference (branch or tag) used by Portainer when deploying from the repository. Defaults to refs/heads/main.
+     */
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
+    /**
+     * URL of the Git repository used to deploy the stack when method is 'repository'. Changing this value forces resource recreation.
+     */
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
     declare public readonly repositoryUrlWo: pulumi.Output<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -125,18 +161,39 @@ export class Stack extends pulumi.CustomResource {
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
     declare public readonly repositoryWoVersion: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the Portainer resource control entry associated with the stack. Computed by Portainer.
+     */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
+    /**
+     * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
+     */
     declare public readonly stackFileContent: pulumi.Output<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file. Contents are read and uploaded to Portainer when method is 'file'.
+     */
     declare public readonly stackFilePath: pulumi.Output<string | undefined>;
     declare public readonly stackId: pulumi.Output<string>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
     declare public readonly stackWebhook: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether Portainer should support relative paths inside the Compose file for bind mounts referencing repository contents. Changing this value forces resource recreation.
+     */
     declare public readonly supportRelativePath: pulumi.Output<boolean | undefined>;
+    /**
+     * Identifier of the Docker Swarm cluster used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'swarm'. Automatically fetched from Portainer when not provided. Changing this value forces resource recreation.
+     */
     declare public readonly swarmId: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.StackTimeouts | undefined>;
+    /**
+     * Whether to skip TLS verification when Portainer connects to the Git repository. Changing this value forces resource recreation.
+     */
     declare public readonly tlsskipVerify: pulumi.Output<boolean>;
+    /**
+     * GitOps auto-update polling interval (e.g. '5m', '1h'). When set, Portainer periodically checks the Git repository for changes and redeploys the stack.
+     */
     declare public readonly updateInterval: pulumi.Output<string | undefined>;
     /**
      * UUID of the GitOps webhook (read-only).
@@ -272,115 +329,172 @@ export interface StackState {
     /**
      * Whether the stack should be running. Set to false to stop the stack.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * List of additional Compose file paths to use when deploying from Git repository.
      */
-    additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of additional Helm values files (e.g. values-prod.yaml). Only used with helm_chart_path.
      */
-    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of team IDs authorized to access this stack (only if ownership is restricted).
      */
-    authorizedTeams?: pulumi.Input<pulumi.Input<number>[]>;
+    authorizedTeams?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of user IDs authorized to access this stack (only if ownership is restricted).
      */
-    authorizedUsers?: pulumi.Input<pulumi.Input<number>[]>;
-    composeFormat?: pulumi.Input<boolean>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Whether the supplied content is in Docker Compose format (true) instead of native Kubernetes manifest (false). Only applies to Kubernetes stacks. Changing this value forces resource recreation.
+     */
+    composeFormat?: pulumi.Input<boolean | undefined>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
      */
-    deploymentType?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
-    envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
+    deploymentType?: pulumi.Input<string | undefined>;
     /**
-     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Identifier of the Portainer environment (endpoint) where the stack will be deployed. Changing this value forces resource recreation.
      */
-    filePathInRepository?: pulumi.Input<string>;
-    filesystemPath?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * List of environment variables injected into the stack at deploy time.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[] | undefined>;
+    /**
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath " pulumi-lang-hcl=" helm_chart_path "> helmChartPath </span>is set.
+     */
+    filePathInRepository?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path on the host used when<span pulumi-lang-nodejs=" supportRelativePath " pulumi-lang-dotnet=" SupportRelativePath " pulumi-lang-go=" supportRelativePath " pulumi-lang-python=" support_relative_path " pulumi-lang-yaml=" supportRelativePath " pulumi-lang-java=" supportRelativePath " pulumi-lang-hcl=" support_relative_path "> supportRelativePath </span>is true. Maps to the repository working directory.
+     */
+    filesystemPath?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
-    forceUpdate?: pulumi.Input<boolean>;
-    gitRepositoryAuthentication?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
-     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     * Whether the Git repository requires authentication. When true,<span pulumi-lang-nodejs=" repositoryUsername " pulumi-lang-dotnet=" RepositoryUsername " pulumi-lang-go=" repositoryUsername " pulumi-lang-python=" repository_username " pulumi-lang-yaml=" repositoryUsername " pulumi-lang-java=" repositoryUsername " pulumi-lang-hcl=" repository_username "> repositoryUsername </span>and<span pulumi-lang-nodejs=" repositoryPassword " pulumi-lang-dotnet=" RepositoryPassword " pulumi-lang-go=" repositoryPassword " pulumi-lang-python=" repository_password " pulumi-lang-yaml=" repositoryPassword " pulumi-lang-java=" repositoryPassword " pulumi-lang-hcl=" repository_password "> repositoryPassword </span>(or their write-only equivalents) are sent to Portainer.
      */
-    helmChartPath?: pulumi.Input<string>;
-    manifestUrl?: pulumi.Input<string>;
+    gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'repository'.
+     */
+    helmChartPath?: pulumi.Input<string | undefined>;
+    /**
+     * URL to a remote Kubernetes manifest used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'url'. Changing this value forces resource recreation.
+     */
+    manifestUrl?: pulumi.Input<string | undefined>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
      */
-    method?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer stack. Must be unique within the target endpoint. Changing this value forces resource recreation.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes'. Changing this value forces resource recreation.
+     */
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Ownership level: 'public', 'administrators' or 'restricted'.
      */
-    ownership?: pulumi.Input<string>;
+    ownership?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: false)
      */
-    prune?: pulumi.Input<boolean>;
+    prune?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force pull latest images during stack update (default: true)
      */
-    pullImage?: pulumi.Input<boolean>;
+    pullImage?: pulumi.Input<boolean | undefined>;
     /**
      * List of registry IDs allowed for this stack.
      */
-    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * ID of the Git credentials to use for authentication.
      */
-    repositoryGitCredentialId?: pulumi.Input<number>;
-    repositoryPassword?: pulumi.Input<string>;
+    repositoryGitCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as a sensitive value.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
-    repositoryPasswordWo?: pulumi.Input<string>;
-    repositoryReferenceName?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch or tag) used by Portainer when deploying from the repository. Defaults to refs/heads/main.
+     */
+    repositoryReferenceName?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the Git repository used to deploy the stack when method is 'repository'. Changing this value forces resource recreation.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
-    repositoryUrlWo?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
+    repositoryUrlWo?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository username (supports ephemeral values).
      */
-    repositoryUsernameWo?: pulumi.Input<string>;
+    repositoryUsernameWo?: pulumi.Input<string | undefined>;
     /**
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
-    repositoryWoVersion?: pulumi.Input<number>;
-    resourceControlId?: pulumi.Input<number>;
-    stackFileContent?: pulumi.Input<string>;
-    stackFilePath?: pulumi.Input<string>;
-    stackId?: pulumi.Input<string>;
+    repositoryWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the Portainer resource control entry associated with the stack. Computed by Portainer.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
+     */
+    stackFileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file. Contents are read and uploaded to Portainer when method is 'file'.
+     */
+    stackFilePath?: pulumi.Input<string | undefined>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
-    stackWebhook?: pulumi.Input<boolean>;
-    supportRelativePath?: pulumi.Input<boolean>;
-    swarmId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.StackTimeouts>;
-    tlsskipVerify?: pulumi.Input<boolean>;
-    updateInterval?: pulumi.Input<string>;
+    stackWebhook?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer should support relative paths inside the Compose file for bind mounts referencing repository contents. Changing this value forces resource recreation.
+     */
+    supportRelativePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier of the Docker Swarm cluster used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'swarm'. Automatically fetched from Portainer when not provided. Changing this value forces resource recreation.
+     */
+    swarmId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.StackTimeouts | undefined>;
+    /**
+     * Whether to skip TLS verification when Portainer connects to the Git repository. Changing this value forces resource recreation.
+     */
+    tlsskipVerify?: pulumi.Input<boolean | undefined>;
+    /**
+     * GitOps auto-update polling interval (e.g. '5m', '1h'). When set, Portainer periodically checks the Git repository for changes and redeploys the stack.
+     */
+    updateInterval?: pulumi.Input<string | undefined>;
     /**
      * UUID of the GitOps webhook (read-only).
      */
-    webhookId?: pulumi.Input<string>;
+    webhookId?: pulumi.Input<string | undefined>;
     /**
      * Full URL of the webhook trigger
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -390,104 +504,158 @@ export interface StackArgs {
     /**
      * Whether the stack should be running. Set to false to stop the stack.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * List of additional Compose file paths to use when deploying from Git repository.
      */
-    additionalFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of additional Helm values files (e.g. values-prod.yaml). Only used with helm_chart_path.
      */
-    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalHelmValuesFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of team IDs authorized to access this stack (only if ownership is restricted).
      */
-    authorizedTeams?: pulumi.Input<pulumi.Input<number>[]>;
+    authorizedTeams?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of user IDs authorized to access this stack (only if ownership is restricted).
      */
-    authorizedUsers?: pulumi.Input<pulumi.Input<number>[]>;
-    composeFormat?: pulumi.Input<boolean>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Whether the supplied content is in Docker Compose format (true) instead of native Kubernetes manifest (false). Only applies to Kubernetes stacks. Changing this value forces resource recreation.
+     */
+    composeFormat?: pulumi.Input<boolean | undefined>;
     /**
      * Deployment mode: 'standalone', 'swarm', or 'kubernetes'
      */
     deploymentType: pulumi.Input<string>;
-    endpointId: pulumi.Input<number>;
-    envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[]>;
     /**
-     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath "> helm_chart_path </span>is set.
+     * Identifier of the Portainer environment (endpoint) where the stack will be deployed. Changing this value forces resource recreation.
      */
-    filePathInRepository?: pulumi.Input<string>;
-    filesystemPath?: pulumi.Input<string>;
+    endpointId: pulumi.Input<number>;
+    /**
+     * List of environment variables injected into the stack at deploy time.
+     */
+    envs?: pulumi.Input<pulumi.Input<inputs.StackEnv>[] | undefined>;
+    /**
+     * Path to Compose/manifest file in the repository. Defaults to docker-compose.yml for Docker/Swarm stacks. Not required when<span pulumi-lang-nodejs=" helmChartPath " pulumi-lang-dotnet=" HelmChartPath " pulumi-lang-go=" helmChartPath " pulumi-lang-python=" helm_chart_path " pulumi-lang-yaml=" helmChartPath " pulumi-lang-java=" helmChartPath " pulumi-lang-hcl=" helm_chart_path "> helmChartPath </span>is set.
+     */
+    filePathInRepository?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path on the host used when<span pulumi-lang-nodejs=" supportRelativePath " pulumi-lang-dotnet=" SupportRelativePath " pulumi-lang-go=" supportRelativePath " pulumi-lang-python=" support_relative_path " pulumi-lang-yaml=" supportRelativePath " pulumi-lang-java=" supportRelativePath " pulumi-lang-hcl=" support_relative_path "> supportRelativePath </span>is true. Maps to the repository working directory.
+     */
+    filesystemPath?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
-    forceUpdate?: pulumi.Input<boolean>;
-    gitRepositoryAuthentication?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
-     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType "> deployment_type </span>is 'kubernetes' and method is 'repository'.
+     * Whether the Git repository requires authentication. When true,<span pulumi-lang-nodejs=" repositoryUsername " pulumi-lang-dotnet=" RepositoryUsername " pulumi-lang-go=" repositoryUsername " pulumi-lang-python=" repository_username " pulumi-lang-yaml=" repositoryUsername " pulumi-lang-java=" repositoryUsername " pulumi-lang-hcl=" repository_username "> repositoryUsername </span>and<span pulumi-lang-nodejs=" repositoryPassword " pulumi-lang-dotnet=" RepositoryPassword " pulumi-lang-go=" repositoryPassword " pulumi-lang-python=" repository_password " pulumi-lang-yaml=" repositoryPassword " pulumi-lang-java=" repositoryPassword " pulumi-lang-hcl=" repository_password "> repositoryPassword </span>(or their write-only equivalents) are sent to Portainer.
      */
-    helmChartPath?: pulumi.Input<string>;
-    manifestUrl?: pulumi.Input<string>;
+    gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Path to a Helm chart folder in the Git repository (must contain Chart.yaml). Only used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'repository'.
+     */
+    helmChartPath?: pulumi.Input<string | undefined>;
+    /**
+     * URL to a remote Kubernetes manifest used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes' and method is 'url'. Changing this value forces resource recreation.
+     */
+    manifestUrl?: pulumi.Input<string | undefined>;
     /**
      * Creation method: 'string', 'file', 'repository', or 'url'
      */
     method: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Name of the Portainer stack. Must be unique within the target endpoint. Changing this value forces resource recreation.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'kubernetes'. Changing this value forces resource recreation.
+     */
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Ownership level: 'public', 'administrators' or 'restricted'.
      */
-    ownership?: pulumi.Input<string>;
+    ownership?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: false)
      */
-    prune?: pulumi.Input<boolean>;
+    prune?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force pull latest images during stack update (default: true)
      */
-    pullImage?: pulumi.Input<boolean>;
+    pullImage?: pulumi.Input<boolean | undefined>;
     /**
      * List of registry IDs allowed for this stack.
      */
-    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * ID of the Git credentials to use for authentication.
      */
-    repositoryGitCredentialId?: pulumi.Input<number>;
-    repositoryPassword?: pulumi.Input<string>;
+    repositoryGitCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as a sensitive value.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository password (supports ephemeral values; not stored in Terraform state).
      */
-    repositoryPasswordWo?: pulumi.Input<string>;
-    repositoryReferenceName?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch or tag) used by Portainer when deploying from the repository. Defaults to refs/heads/main.
+     */
+    repositoryReferenceName?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the Git repository used to deploy the stack when method is 'repository'. Changing this value forces resource recreation.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository URL (supports ephemeral values; not stored in Terraform state).
      */
-    repositoryUrlWo?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
+    repositoryUrlWo?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Write-only repository username (supports ephemeral values).
      */
-    repositoryUsernameWo?: pulumi.Input<string>;
+    repositoryUsernameWo?: pulumi.Input<string | undefined>;
     /**
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
-    repositoryWoVersion?: pulumi.Input<number>;
-    stackFileContent?: pulumi.Input<string>;
-    stackFilePath?: pulumi.Input<string>;
-    stackId?: pulumi.Input<string>;
+    repositoryWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
+     */
+    stackFileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file. Contents are read and uploaded to Portainer when method is 'file'.
+     */
+    stackFilePath?: pulumi.Input<string | undefined>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
-    stackWebhook?: pulumi.Input<boolean>;
-    supportRelativePath?: pulumi.Input<boolean>;
-    swarmId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.StackTimeouts>;
-    tlsskipVerify?: pulumi.Input<boolean>;
-    updateInterval?: pulumi.Input<string>;
+    stackWebhook?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer should support relative paths inside the Compose file for bind mounts referencing repository contents. Changing this value forces resource recreation.
+     */
+    supportRelativePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier of the Docker Swarm cluster used when<span pulumi-lang-nodejs=" deploymentType " pulumi-lang-dotnet=" DeploymentType " pulumi-lang-go=" deploymentType " pulumi-lang-python=" deployment_type " pulumi-lang-yaml=" deploymentType " pulumi-lang-java=" deploymentType " pulumi-lang-hcl=" deployment_type "> deploymentType </span>is 'swarm'. Automatically fetched from Portainer when not provided. Changing this value forces resource recreation.
+     */
+    swarmId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.StackTimeouts | undefined>;
+    /**
+     * Whether to skip TLS verification when Portainer connects to the Git repository. Changing this value forces resource recreation.
+     */
+    tlsskipVerify?: pulumi.Input<boolean | undefined>;
+    /**
+     * GitOps auto-update polling interval (e.g. '5m', '1h'). When set, Portainer periodically checks the Git repository for changes and redeploys the stack.
+     */
+    updateInterval?: pulumi.Input<string | undefined>;
 }

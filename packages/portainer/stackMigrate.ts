@@ -100,24 +100,24 @@ export interface StackMigrateState {
     /**
      * Optional source environment (endpoint) identifier. Required for stacks created before Portainer 1.18.0.
      */
-    endpointId?: pulumi.Input<number>;
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * Stack identifier to migrate.
      */
-    stackId?: pulumi.Input<number>;
-    stackMigrateId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<number | undefined>;
+    stackMigrateId?: pulumi.Input<string | undefined>;
     /**
      * New name for the stack after migration. If not set, the original name is kept.
      */
-    stackName?: pulumi.Input<string>;
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * Swarm cluster identifier (required when migrating to a Swarm environment).
      */
-    swarmId?: pulumi.Input<string>;
+    swarmId?: pulumi.Input<string | undefined>;
     /**
      * Target environment (endpoint) identifier to migrate the stack to.
      */
-    targetEndpointId?: pulumi.Input<number>;
+    targetEndpointId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -127,20 +127,20 @@ export interface StackMigrateArgs {
     /**
      * Optional source environment (endpoint) identifier. Required for stacks created before Portainer 1.18.0.
      */
-    endpointId?: pulumi.Input<number>;
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * Stack identifier to migrate.
      */
     stackId: pulumi.Input<number>;
-    stackMigrateId?: pulumi.Input<string>;
+    stackMigrateId?: pulumi.Input<string | undefined>;
     /**
      * New name for the stack after migration. If not set, the original name is kept.
      */
-    stackName?: pulumi.Input<string>;
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * Swarm cluster identifier (required when migrating to a Swarm environment).
      */
-    swarmId?: pulumi.Input<string>;
+    swarmId?: pulumi.Input<string | undefined>;
     /**
      * Target environment (endpoint) identifier to migrate the stack to.
      */

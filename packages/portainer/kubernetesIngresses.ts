@@ -34,15 +34,42 @@ export class KubernetesIngresses extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesIngresses.__pulumiType;
     }
 
+    /**
+     * Annotations applied to the Ingress resource as key/value strings.
+     */
     declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the IngressClass that should handle this Ingress (sets `spec.ingressClassName`).
+     */
     declare public readonly className: pulumi.Output<string | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Ingress resource is managed.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
+    /**
+     * List of hostnames associated with the Ingress.
+     */
     declare public readonly hosts: pulumi.Output<string[] | undefined>;
     declare public readonly kubernetesIngressesId: pulumi.Output<string>;
+    /**
+     * Labels applied to the Ingress resource as key/value strings.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the Kubernetes Ingress resource.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Ingress is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
+    /**
+     * List of routing rules mapping host/path combinations to backend Kubernetes services.
+     */
     declare public readonly paths: pulumi.Output<outputs.KubernetesIngressesPath[] | undefined>;
+    /**
+     * TLS configuration blocks for the Ingress, each pairing a list of hosts with a TLS secret.
+     */
     declare public readonly tls: pulumi.Output<outputs.KubernetesIngressesTl[] | undefined>;
 
     /**
@@ -96,30 +123,84 @@ export class KubernetesIngresses extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesIngresses resources.
  */
 export interface KubernetesIngressesState {
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    className?: pulumi.Input<string>;
-    environmentId?: pulumi.Input<number>;
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    kubernetesIngressesId?: pulumi.Input<string>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    paths?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesPath>[]>;
-    tls?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesTl>[]>;
+    /**
+     * Annotations applied to the Ingress resource as key/value strings.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the IngressClass that should handle this Ingress (sets `spec.ingressClassName`).
+     */
+    className?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Ingress resource is managed.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    /**
+     * List of hostnames associated with the Ingress.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    kubernetesIngressesId?: pulumi.Input<string | undefined>;
+    /**
+     * Labels applied to the Ingress resource as key/value strings.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Kubernetes Ingress resource.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Ingress is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * List of routing rules mapping host/path combinations to backend Kubernetes services.
+     */
+    paths?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesPath>[] | undefined>;
+    /**
+     * TLS configuration blocks for the Ingress, each pairing a list of hosts with a TLS secret.
+     */
+    tls?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesTl>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesIngresses resource.
  */
 export interface KubernetesIngressesArgs {
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    className?: pulumi.Input<string>;
+    /**
+     * Annotations applied to the Ingress resource as key/value strings.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the IngressClass that should handle this Ingress (sets `spec.ingressClassName`).
+     */
+    className?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Ingress resource is managed.
+     */
     environmentId: pulumi.Input<number>;
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    kubernetesIngressesId?: pulumi.Input<string>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
+    /**
+     * List of hostnames associated with the Ingress.
+     */
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    kubernetesIngressesId?: pulumi.Input<string | undefined>;
+    /**
+     * Labels applied to the Ingress resource as key/value strings.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Kubernetes Ingress resource.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Ingress is created.
+     */
     namespace: pulumi.Input<string>;
-    paths?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesPath>[]>;
-    tls?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesTl>[]>;
+    /**
+     * List of routing rules mapping host/path combinations to backend Kubernetes services.
+     */
+    paths?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesPath>[] | undefined>;
+    /**
+     * TLS configuration blocks for the Ingress, each pairing a list of hosts with a TLS secret.
+     */
+    tls?: pulumi.Input<pulumi.Input<inputs.KubernetesIngressesTl>[] | undefined>;
 }

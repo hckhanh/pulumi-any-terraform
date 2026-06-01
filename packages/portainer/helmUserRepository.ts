@@ -79,22 +79,22 @@ export class HelmUserRepository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HelmUserRepository resources.
  */
 export interface HelmUserRepositoryState {
-    helmUserRepositoryId?: pulumi.Input<string>;
+    helmUserRepositoryId?: pulumi.Input<string | undefined>;
     /**
      * Helm repository URL (e.g. https://charts.bitnami.com/bitnami).
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * User identifier.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a HelmUserRepository resource.
  */
 export interface HelmUserRepositoryArgs {
-    helmUserRepositoryId?: pulumi.Input<string>;
+    helmUserRepositoryId?: pulumi.Input<string | undefined>;
     /**
      * Helm repository URL (e.g. https://charts.bitnami.com/bitnami).
      */

@@ -44,6 +44,6 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

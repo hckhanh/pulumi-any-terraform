@@ -34,9 +34,18 @@ export class KubernetesApplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesApplication.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the application is deployed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesApplicationId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes application to deploy.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the application manifest is applied.
+     */
     declare public readonly namespace: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.KubernetesApplicationTimeouts | undefined>;
 
@@ -84,20 +93,38 @@ export class KubernetesApplication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesApplication resources.
  */
 export interface KubernetesApplicationState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesApplicationId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the application is deployed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesApplicationId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes application to deploy.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the application manifest is applied.
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesApplication resource.
  */
 export interface KubernetesApplicationArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the application is deployed.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesApplicationId?: pulumi.Input<string>;
+    kubernetesApplicationId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes application to deploy.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the application manifest is applied.
+     */
     namespace: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts>;
+    timeouts?: pulumi.Input<inputs.KubernetesApplicationTimeouts | undefined>;
 }

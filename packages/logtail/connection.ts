@@ -35,7 +35,7 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`">`clickhouse`</span> is supported.
+     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`" pulumi-lang-hcl="`clickhouse`">`clickhouse`</span> is supported.
      */
     declare public readonly clientType: pulumi.Output<string>;
     /**
@@ -47,7 +47,7 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<{[key: string]: string}>;
     /**
-     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
+     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>.
      */
     declare public readonly dataRegion: pulumi.Output<string | undefined>;
     /**
@@ -79,11 +79,11 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly sampleQuery: pulumi.Output<string>;
     /**
-     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     declare public readonly teamIds: pulumi.Output<number[]>;
     /**
-     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     declare public readonly teamNames: pulumi.Output<string[]>;
     /**
@@ -156,7 +156,7 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`">`clickhouse`</span> is supported.
+     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`" pulumi-lang-hcl="`clickhouse`">`clickhouse`</span> is supported.
      */
     clientType?: pulumi.Input<string | undefined>;
     /**
@@ -168,7 +168,7 @@ export interface ConnectionState {
      */
     createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
+     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
@@ -200,11 +200,11 @@ export interface ConnectionState {
      */
     sampleQuery?: pulumi.Input<string | undefined>;
     /**
-     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     teamIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     teamNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -222,11 +222,11 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`">`clickhouse`</span> is supported.
+     * Type of client connection. Currently only <span pulumi-lang-nodejs="`clickhouse`" pulumi-lang-dotnet="`Clickhouse`" pulumi-lang-go="`clickhouse`" pulumi-lang-python="`clickhouse`" pulumi-lang-yaml="`clickhouse`" pulumi-lang-java="`clickhouse`" pulumi-lang-hcl="`clickhouse`">`clickhouse`</span> is supported.
      */
     clientType: pulumi.Input<string>;
     /**
-     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`">`us_east`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`">`singapore`</span>.
+     * Data region or private cluster name. Permitted values: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
@@ -238,11 +238,11 @@ export interface ConnectionArgs {
      */
     note?: pulumi.Input<string | undefined>;
     /**
-     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team IDs to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     teamIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`">`team_names`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`">`team_ids`</span> should be provided.
+     * Array of team names to associate with the connection. Only one of <span pulumi-lang-nodejs="`teamNames`" pulumi-lang-dotnet="`TeamNames`" pulumi-lang-go="`teamNames`" pulumi-lang-python="`team_names`" pulumi-lang-yaml="`teamNames`" pulumi-lang-java="`teamNames`" pulumi-lang-hcl="`team_names`">`teamNames`</span> or <span pulumi-lang-nodejs="`teamIds`" pulumi-lang-dotnet="`TeamIds`" pulumi-lang-go="`teamIds`" pulumi-lang-python="`team_ids`" pulumi-lang-yaml="`teamIds`" pulumi-lang-java="`teamIds`" pulumi-lang-hcl="`team_ids`">`teamIds`</span> should be provided.
      */
     teamNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

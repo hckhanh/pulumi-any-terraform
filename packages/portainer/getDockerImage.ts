@@ -44,6 +44,6 @@ export function getDockerImageOutput(args: GetDockerImageOutputArgs, opts?: pulu
  */
 export interface GetDockerImageOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

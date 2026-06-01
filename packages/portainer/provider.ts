@@ -87,19 +87,19 @@ export interface ProviderArgs {
     /**
      * API key to authenticate with Portainer. Mutually exclusive with 'user' and 'password'.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Password for authentication. Must be used together with 'user'.
      */
-    apiPassword?: pulumi.Input<string>;
+    apiPassword?: pulumi.Input<string | undefined>;
     /**
      * Username for authentication. Must be used together with 'password'.
      */
-    apiUser?: pulumi.Input<string>;
+    apiUser?: pulumi.Input<string | undefined>;
     /**
      * Custom headers to add to all requests (e.g. for Cloudflare Access or other security proxies).
      */
-    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * URL of the Portainer instance (e.g. https://portainer.example.com). '/api' will be appended automatically if missing.
      */
@@ -107,7 +107,7 @@ export interface ProviderArgs {
     /**
      * Verify the SSL/TLS certificate for the Portainer endpoint
      */
-    skipSslVerify?: pulumi.Input<boolean>;
+    skipSslVerify?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

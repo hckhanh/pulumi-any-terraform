@@ -40,6 +40,6 @@ export function getEdgeGroupOutput(args: GetEdgeGroupOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getEdgeGroup.
  */
 export interface GetEdgeGroupOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

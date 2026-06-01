@@ -73,10 +73,12 @@ export class CloudCredentials extends pulumi.CustomResource {
             }
             resourceInputs["cloudCredentialsId"] = args?.cloudCredentialsId;
             resourceInputs["cloudProvider"] = args?.cloudProvider;
-            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["credentials"] = args?.credentials ? pulumi.secret(args.credentials) : undefined;
             resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["credentials"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CloudCredentials.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
@@ -85,26 +87,26 @@ export class CloudCredentials extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudCredentials resources.
  */
 export interface CloudCredentialsState {
-    cloudCredentialsId?: pulumi.Input<string>;
+    cloudCredentialsId?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider name (e.g., aws, gcp, digitalocean)
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * JSON-encoded credentials for the provider
      */
-    credentials?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    credentials?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Human-readable name of the credentials
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CloudCredentials resource.
  */
 export interface CloudCredentialsArgs {
-    cloudCredentialsId?: pulumi.Input<string>;
+    cloudCredentialsId?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider name (e.g., aws, gcp, digitalocean)
      */
@@ -116,5 +118,5 @@ export interface CloudCredentialsArgs {
     /**
      * Human-readable name of the credentials
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

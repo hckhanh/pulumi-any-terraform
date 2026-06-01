@@ -135,7 +135,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly sourceMode: pulumi.Output<string>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     declare public readonly sourcePlatforms: pulumi.Output<string[]>;
     /**
@@ -347,7 +347,7 @@ export interface ExplorationAlertState {
      */
     sourceMode?: pulumi.Input<string | undefined>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -465,7 +465,7 @@ export interface ExplorationAlertArgs {
      */
     sourceMode?: pulumi.Input<string | undefined>;
     /**
-     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode "> source_mode </span>is 'platforms_*').
+     * Platform filters (used when<span pulumi-lang-nodejs=" sourceMode " pulumi-lang-dotnet=" SourceMode " pulumi-lang-go=" sourceMode " pulumi-lang-python=" source_mode " pulumi-lang-yaml=" sourceMode " pulumi-lang-java=" sourceMode " pulumi-lang-hcl=" source_mode "> sourceMode </span>is 'platforms_*').
      */
     sourcePlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

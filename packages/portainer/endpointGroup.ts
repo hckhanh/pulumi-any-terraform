@@ -32,9 +32,18 @@ export class EndpointGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === EndpointGroup.__pulumiType;
     }
 
+    /**
+     * Human-readable description of the endpoint group displayed in the Portainer UI.
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly endpointGroupId: pulumi.Output<string>;
+    /**
+     * Name of the Portainer endpoint group. Must be unique within the Portainer instance.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * List of Portainer tag identifiers associated with this endpoint group.
+     */
     declare public readonly tagIds: pulumi.Output<number[] | undefined>;
 
     /**
@@ -70,18 +79,36 @@ export class EndpointGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointGroup resources.
  */
 export interface EndpointGroupState {
-    description?: pulumi.Input<string>;
-    endpointGroupId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    tagIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Human-readable description of the endpoint group displayed in the Portainer UI.
+     */
+    description?: pulumi.Input<string | undefined>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer endpoint group. Must be unique within the Portainer instance.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer tag identifiers associated with this endpoint group.
+     */
+    tagIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointGroup resource.
  */
 export interface EndpointGroupArgs {
-    description?: pulumi.Input<string>;
-    endpointGroupId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    tagIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Human-readable description of the endpoint group displayed in the Portainer UI.
+     */
+    description?: pulumi.Input<string | undefined>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer endpoint group. Must be unique within the Portainer instance.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * List of Portainer tag identifiers associated with this endpoint group.
+     */
+    tagIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

@@ -31,7 +31,7 @@ export interface CollectorConfiguration {
      */
     namespaceOptions?: outputs.CollectorConfigurationNamespaceOption[];
     /**
-     * Per-service overrides for log sampling rate and trace ingestion. Only includes user-managed services; internal collector services (`better-stack-beyla`, `better-stack-collector`) are excluded. Use the <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`">`logtail.Collector`</span> data source to see all discovered services.
+     * Per-service overrides for log sampling rate and trace ingestion. Only includes user-managed services; internal collector services (`better-stack-beyla`, `better-stack-collector`) are excluded. Use the <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`" pulumi-lang-hcl="`logtail_collector`">`logtail.Collector`</span> data source to see all discovered services.
      */
     serviceOptions?: outputs.CollectorConfigurationServiceOption[];
     /**
@@ -39,7 +39,7 @@ export interface CollectorConfiguration {
      */
     tracesSampleRate: number;
     /**
-     * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`">`source_vrl_transformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`" pulumi-lang-hcl="`source_vrl_transformation`">`sourceVrlTransformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformation: string;
 }
@@ -170,11 +170,11 @@ export interface CollectorDatabase {
      */
     serviceType: string;
     /**
-     * SSL mode for PostgreSQL connections. Valid values: <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>, <span pulumi-lang-nodejs="`require`" pulumi-lang-dotnet="`Require`" pulumi-lang-go="`require`" pulumi-lang-python="`require`" pulumi-lang-yaml="`require`" pulumi-lang-java="`require`">`require`</span>, `verify-ca`.
+     * SSL mode for PostgreSQL connections. Valid values: <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`" pulumi-lang-hcl="`disable`">`disable`</span>, <span pulumi-lang-nodejs="`require`" pulumi-lang-dotnet="`Require`" pulumi-lang-go="`require`" pulumi-lang-python="`require`" pulumi-lang-yaml="`require`" pulumi-lang-java="`require`" pulumi-lang-hcl="`require`">`require`</span>, `verify-ca`.
      */
     sslMode?: string;
     /**
-     * TLS mode for MySQL connections. Valid values: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, `skip-verify`, <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span>.
+     * TLS mode for MySQL connections. Valid values: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>, `skip-verify`, <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`" pulumi-lang-hcl="`preferred`">`preferred`</span>.
      */
     tls?: string;
     /**
@@ -227,15 +227,15 @@ export interface DashboardChartQuery {
      */
     sourceVariable: string;
     /**
-     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
+     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'sql_expression'.
      */
     sqlQuery: string;
     /**
-     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
+     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'static_text'.
      */
     staticText: string;
     /**
-     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
+     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'tail_query'.
      */
     whereCondition: string;
 }
@@ -342,15 +342,15 @@ export interface ExplorationQuery {
      */
     sourceVariable: string;
     /**
-     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'sql_expression'.
+     * The SQL query string. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'sql_expression'.
      */
     sqlQuery?: string;
     /**
-     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'static_text'.
+     * The static text content (markdown). Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'static_text'.
      */
     staticText?: string;
     /**
-     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType "> query_type </span>is 'tail_query'.
+     * The WHERE condition for filtering. Required when<span pulumi-lang-nodejs=" queryType " pulumi-lang-dotnet=" QueryType " pulumi-lang-go=" queryType " pulumi-lang-python=" query_type " pulumi-lang-yaml=" queryType " pulumi-lang-java=" queryType " pulumi-lang-hcl=" query_type "> queryType </span>is 'tail_query'.
      */
     whereCondition?: string;
 }
@@ -508,38 +508,7 @@ export interface GetSourceCustomBucket {
     secretAccessKey: string;
 }
 
-export interface GetWarehouseSourceCustomBucket {
-    accessKeyId: string;
-    endpoint: string;
-    keepDataAfterRetention: boolean;
-    name: string;
-    secretAccessKey: string;
-}
-
 export interface SourceCustomBucket {
-    /**
-     * Access key ID
-     */
-    accessKeyId: string;
-    /**
-     * Bucket endpoint
-     */
-    endpoint: string;
-    /**
-     * Whether we should keep data in the bucket after the retention period.
-     */
-    keepDataAfterRetention?: boolean;
-    /**
-     * Bucket name
-     */
-    name: string;
-    /**
-     * Secret access key
-     */
-    secretAccessKey: string;
-}
-
-export interface WarehouseSourceCustomBucket {
     /**
      * Access key ID
      */

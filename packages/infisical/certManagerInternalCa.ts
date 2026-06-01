@@ -61,10 +61,6 @@ export class CertManagerInternalCa extends pulumi.CustomResource {
      */
     declare public readonly ou: pulumi.Output<string | undefined>;
     /**
-     * The slug of the cert-manager project
-     */
-    declare public readonly projectSlug: pulumi.Output<string>;
-    /**
      * The state/province (ST) of the CA certificate
      */
     declare public readonly province: pulumi.Output<string | undefined>;
@@ -97,15 +93,11 @@ export class CertManagerInternalCa extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["organization"] = state?.organization;
             resourceInputs["ou"] = state?.ou;
-            resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["province"] = state?.province;
             resourceInputs["status"] = state?.status;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as CertManagerInternalCaArgs | undefined;
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -116,7 +108,6 @@ export class CertManagerInternalCa extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["organization"] = args?.organization;
             resourceInputs["ou"] = args?.ou;
-            resourceInputs["projectSlug"] = args?.projectSlug;
             resourceInputs["province"] = args?.province;
             resourceInputs["status"] = args?.status;
             resourceInputs["type"] = args?.type;
@@ -158,10 +149,6 @@ export interface CertManagerInternalCaState {
      * The organizational unit (OU) of the CA certificate
      */
     ou?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug?: pulumi.Input<string | undefined>;
     /**
      * The state/province (ST) of the CA certificate
      */
@@ -208,10 +195,6 @@ export interface CertManagerInternalCaArgs {
      * The organizational unit (OU) of the CA certificate
      */
     ou?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug: pulumi.Input<string>;
     /**
      * The state/province (ST) of the CA certificate
      */

@@ -91,16 +91,16 @@ export interface TeamMembershipState {
     /**
      * Membership role: 1 = team leader, 2 = regular member
      */
-    role?: pulumi.Input<number>;
+    role?: pulumi.Input<number | undefined>;
     /**
      * ID of the team
      */
-    teamId?: pulumi.Input<number>;
-    teamMembershipId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<number | undefined>;
+    teamMembershipId?: pulumi.Input<string | undefined>;
     /**
      * ID of the user
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -115,7 +115,7 @@ export interface TeamMembershipArgs {
      * ID of the team
      */
     teamId: pulumi.Input<number>;
-    teamMembershipId?: pulumi.Input<string>;
+    teamMembershipId?: pulumi.Input<string | undefined>;
     /**
      * ID of the user
      */

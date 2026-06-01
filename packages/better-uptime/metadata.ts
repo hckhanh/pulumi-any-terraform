@@ -65,7 +65,7 @@ export class Metadata extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue "> metadata_value </span>to define values with types instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue " pulumi-lang-hcl=" metadata_value "> metadataValue </span>to define values with types instead.
      *
      * @deprecated Deprecated
      */
@@ -152,7 +152,7 @@ export interface MetadataState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue "> metadata_value </span>to define values with types instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue " pulumi-lang-hcl=" metadata_value "> metadataValue </span>to define values with types instead.
      *
      * @deprecated Deprecated
      */
@@ -186,7 +186,7 @@ export interface MetadataArgs {
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
-     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue "> metadata_value </span>to define values with types instead.
+     * The value of this Metadata. This field is deprecated, use repeatable block<span pulumi-lang-nodejs=" metadataValue " pulumi-lang-dotnet=" MetadataValue " pulumi-lang-go=" metadataValue " pulumi-lang-python=" metadata_value " pulumi-lang-yaml=" metadataValue " pulumi-lang-java=" metadataValue " pulumi-lang-hcl=" metadata_value "> metadataValue </span>to define values with types instead.
      *
      * @deprecated Deprecated
      */

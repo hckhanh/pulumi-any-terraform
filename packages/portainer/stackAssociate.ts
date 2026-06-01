@@ -32,10 +32,22 @@ export class StackAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === StackAssociate.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer endpoint that should adopt the orphaned stack.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Whether the orphaned stack is already running on the endpoint; controls Portainer's adoption behaviour.
+     */
     declare public readonly orphanedRunning: pulumi.Output<boolean | undefined>;
     declare public readonly stackAssociateId: pulumi.Output<string>;
+    /**
+     * Identifier of the orphaned Portainer stack to associate with an endpoint.
+     */
     declare public readonly stackId: pulumi.Output<number>;
+    /**
+     * Swarm cluster identifier (`Cluster.ID`) of the target endpoint when associating a Swarm stack.
+     */
     declare public readonly swarmId: pulumi.Output<string>;
 
     /**
@@ -82,20 +94,44 @@ export class StackAssociate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StackAssociate resources.
  */
 export interface StackAssociateState {
-    endpointId?: pulumi.Input<number>;
-    orphanedRunning?: pulumi.Input<boolean>;
-    stackAssociateId?: pulumi.Input<string>;
-    stackId?: pulumi.Input<number>;
-    swarmId?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer endpoint that should adopt the orphaned stack.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Whether the orphaned stack is already running on the endpoint; controls Portainer's adoption behaviour.
+     */
+    orphanedRunning?: pulumi.Input<boolean | undefined>;
+    stackAssociateId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the orphaned Portainer stack to associate with an endpoint.
+     */
+    stackId?: pulumi.Input<number | undefined>;
+    /**
+     * Swarm cluster identifier (`Cluster.ID`) of the target endpoint when associating a Swarm stack.
+     */
+    swarmId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StackAssociate resource.
  */
 export interface StackAssociateArgs {
+    /**
+     * Identifier of the Portainer endpoint that should adopt the orphaned stack.
+     */
     endpointId: pulumi.Input<number>;
-    orphanedRunning?: pulumi.Input<boolean>;
-    stackAssociateId?: pulumi.Input<string>;
+    /**
+     * Whether the orphaned stack is already running on the endpoint; controls Portainer's adoption behaviour.
+     */
+    orphanedRunning?: pulumi.Input<boolean | undefined>;
+    stackAssociateId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the orphaned Portainer stack to associate with an endpoint.
+     */
     stackId: pulumi.Input<number>;
+    /**
+     * Swarm cluster identifier (`Cluster.ID`) of the target endpoint when associating a Swarm stack.
+     */
     swarmId: pulumi.Input<string>;
 }

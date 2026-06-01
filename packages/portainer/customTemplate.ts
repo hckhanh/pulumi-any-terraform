@@ -32,27 +32,78 @@ export class CustomTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomTemplate.__pulumiType;
     }
 
+    /**
+     * Path within the Git repository to the Compose or manifest file (defaults to `docker-compose.yml`).
+     */
     declare public readonly composeFilePath: pulumi.Output<string | undefined>;
     declare public readonly customTemplateId: pulumi.Output<string>;
+    /**
+     * Short description of the custom template displayed in the Portainer UI.
+     */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * Whether this template is exposed as an Edge template.
+     */
     declare public readonly edgeTemplate: pulumi.Output<boolean | undefined>;
+    /**
+     * Inline template body (Compose YAML, Kubernetes manifest, or Swarm stack file). Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span> and the repository fields.
+     */
     declare public readonly fileContent: pulumi.Output<string | undefined>;
+    /**
+     * Path on the local filesystem to a file containing the template body. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span> and the repository fields.
+     */
     declare public readonly filePath: pulumi.Output<string | undefined>;
+    /**
+     * Whether the Kubernetes manifest is provided in Compose format (only relevant for `type = 3`).
+     */
     declare public readonly isComposeFormat: pulumi.Output<boolean | undefined>;
+    /**
+     * URL of the logo image displayed next to the template in the Portainer UI.
+     */
     declare public readonly logo: pulumi.Output<string | undefined>;
+    /**
+     * Additional note or instructions associated with the custom template.
+     */
     declare public readonly note: pulumi.Output<string>;
+    /**
+     * Target platform for the template: 1 = Linux, 2 = Windows.
+     */
     declare public readonly platform: pulumi.Output<number>;
     /**
      * Enable authentication for the Git repository (default: false).
      */
     declare public readonly repositoryAuthentication: pulumi.Output<boolean | undefined>;
+    /**
+     * Sensitive password or personal access token used to authenticate against the Git repository.
+     */
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
+    /**
+     * Git reference (branch, tag, or commit) to check out (defaults to `refs/heads/main`).
+     */
     declare public readonly repositoryReference: pulumi.Output<string | undefined>;
+    /**
+     * URL of the Git repository hosting the template manifest.
+     */
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
+    /**
+     * Title of the Portainer custom template.
+     */
     declare public readonly title: pulumi.Output<string>;
+    /**
+     * Whether to skip TLS verification when cloning the Git repository.
+     */
     declare public readonly tlsskipVerify: pulumi.Output<boolean | undefined>;
+    /**
+     * Template type: 1 = Swarm stack, 2 = Compose stack, 3 = Kubernetes manifest.
+     */
     declare public readonly type: pulumi.Output<number>;
+    /**
+     * List of template variable definitions (name, label, description, defaultValue) used for parameterized templates.
+     */
     declare public readonly variables: pulumi.Output<{[key: string]: string}[] | undefined>;
 
     /**
@@ -135,54 +186,156 @@ export class CustomTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomTemplate resources.
  */
 export interface CustomTemplateState {
-    composeFilePath?: pulumi.Input<string>;
-    customTemplateId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    edgeTemplate?: pulumi.Input<boolean>;
-    fileContent?: pulumi.Input<string>;
-    filePath?: pulumi.Input<string>;
-    isComposeFormat?: pulumi.Input<boolean>;
-    logo?: pulumi.Input<string>;
-    note?: pulumi.Input<string>;
-    platform?: pulumi.Input<number>;
+    /**
+     * Path within the Git repository to the Compose or manifest file (defaults to `docker-compose.yml`).
+     */
+    composeFilePath?: pulumi.Input<string | undefined>;
+    customTemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Short description of the custom template displayed in the Portainer UI.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this template is exposed as an Edge template.
+     */
+    edgeTemplate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Inline template body (Compose YAML, Kubernetes manifest, or Swarm stack file). Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span> and the repository fields.
+     */
+    fileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Path on the local filesystem to a file containing the template body. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span> and the repository fields.
+     */
+    filePath?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Kubernetes manifest is provided in Compose format (only relevant for `type = 3`).
+     */
+    isComposeFormat?: pulumi.Input<boolean | undefined>;
+    /**
+     * URL of the logo image displayed next to the template in the Portainer UI.
+     */
+    logo?: pulumi.Input<string | undefined>;
+    /**
+     * Additional note or instructions associated with the custom template.
+     */
+    note?: pulumi.Input<string | undefined>;
+    /**
+     * Target platform for the template: 1 = Linux, 2 = Windows.
+     */
+    platform?: pulumi.Input<number | undefined>;
     /**
      * Enable authentication for the Git repository (default: false).
      */
-    repositoryAuthentication?: pulumi.Input<boolean>;
-    repositoryPassword?: pulumi.Input<string>;
-    repositoryReference?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
-    tlsskipVerify?: pulumi.Input<boolean>;
-    type?: pulumi.Input<number>;
-    variables?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    repositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sensitive password or personal access token used to authenticate against the Git repository.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch, tag, or commit) to check out (defaults to `refs/heads/main`).
+     */
+    repositoryReference?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the Git repository hosting the template manifest.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
+    /**
+     * Title of the Portainer custom template.
+     */
+    title?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip TLS verification when cloning the Git repository.
+     */
+    tlsskipVerify?: pulumi.Input<boolean | undefined>;
+    /**
+     * Template type: 1 = Swarm stack, 2 = Compose stack, 3 = Kubernetes manifest.
+     */
+    type?: pulumi.Input<number | undefined>;
+    /**
+     * List of template variable definitions (name, label, description, defaultValue) used for parameterized templates.
+     */
+    variables?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CustomTemplate resource.
  */
 export interface CustomTemplateArgs {
-    composeFilePath?: pulumi.Input<string>;
-    customTemplateId?: pulumi.Input<string>;
+    /**
+     * Path within the Git repository to the Compose or manifest file (defaults to `docker-compose.yml`).
+     */
+    composeFilePath?: pulumi.Input<string | undefined>;
+    customTemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Short description of the custom template displayed in the Portainer UI.
+     */
     description: pulumi.Input<string>;
-    edgeTemplate?: pulumi.Input<boolean>;
-    fileContent?: pulumi.Input<string>;
-    filePath?: pulumi.Input<string>;
-    isComposeFormat?: pulumi.Input<boolean>;
-    logo?: pulumi.Input<string>;
+    /**
+     * Whether this template is exposed as an Edge template.
+     */
+    edgeTemplate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Inline template body (Compose YAML, Kubernetes manifest, or Swarm stack file). Mutually exclusive with <span pulumi-lang-nodejs="`filePath`" pulumi-lang-dotnet="`FilePath`" pulumi-lang-go="`filePath`" pulumi-lang-python="`file_path`" pulumi-lang-yaml="`filePath`" pulumi-lang-java="`filePath`" pulumi-lang-hcl="`file_path`">`filePath`</span> and the repository fields.
+     */
+    fileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Path on the local filesystem to a file containing the template body. Mutually exclusive with <span pulumi-lang-nodejs="`fileContent`" pulumi-lang-dotnet="`FileContent`" pulumi-lang-go="`fileContent`" pulumi-lang-python="`file_content`" pulumi-lang-yaml="`fileContent`" pulumi-lang-java="`fileContent`" pulumi-lang-hcl="`file_content`">`fileContent`</span> and the repository fields.
+     */
+    filePath?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Kubernetes manifest is provided in Compose format (only relevant for `type = 3`).
+     */
+    isComposeFormat?: pulumi.Input<boolean | undefined>;
+    /**
+     * URL of the logo image displayed next to the template in the Portainer UI.
+     */
+    logo?: pulumi.Input<string | undefined>;
+    /**
+     * Additional note or instructions associated with the custom template.
+     */
     note: pulumi.Input<string>;
+    /**
+     * Target platform for the template: 1 = Linux, 2 = Windows.
+     */
     platform: pulumi.Input<number>;
     /**
      * Enable authentication for the Git repository (default: false).
      */
-    repositoryAuthentication?: pulumi.Input<boolean>;
-    repositoryPassword?: pulumi.Input<string>;
-    repositoryReference?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
+    repositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sensitive password or personal access token used to authenticate against the Git repository.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch, tag, or commit) to check out (defaults to `refs/heads/main`).
+     */
+    repositoryReference?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the Git repository hosting the template manifest.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
+    /**
+     * Title of the Portainer custom template.
+     */
     title: pulumi.Input<string>;
-    tlsskipVerify?: pulumi.Input<boolean>;
+    /**
+     * Whether to skip TLS verification when cloning the Git repository.
+     */
+    tlsskipVerify?: pulumi.Input<boolean | undefined>;
+    /**
+     * Template type: 1 = Swarm stack, 2 = Compose stack, 3 = Kubernetes manifest.
+     */
     type: pulumi.Input<number>;
-    variables?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * List of template variable definitions (name, label, description, defaultValue) used for parameterized templates.
+     */
+    variables?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
 }

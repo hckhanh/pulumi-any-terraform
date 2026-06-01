@@ -46,6 +46,6 @@ export function getDockerVolumeOutput(args: GetDockerVolumeOutputArgs, opts?: pu
  */
 export interface GetDockerVolumeOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

@@ -91,16 +91,16 @@ export interface TlsState {
     /**
      * Type of TLS certificate: one of 'ca', 'cert', 'key'
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Path to the local TLS file to upload
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Folder name where the TLS file will be stored
      */
-    folder?: pulumi.Input<string>;
-    tlsId?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
+    tlsId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -119,5 +119,5 @@ export interface TlsArgs {
      * Folder name where the TLS file will be stored
      */
     folder: pulumi.Input<string>;
-    tlsId?: pulumi.Input<string>;
+    tlsId?: pulumi.Input<string | undefined>;
 }

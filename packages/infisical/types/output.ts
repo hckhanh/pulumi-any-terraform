@@ -167,7 +167,7 @@ export interface AppConnectionGcpCredentials {
 
 export interface AppConnectionGithubCredentials {
     /**
-     * The hostname of your GitHub Enterprise instance. Required when<span pulumi-lang-nodejs=" instanceType " pulumi-lang-dotnet=" InstanceType " pulumi-lang-go=" instanceType " pulumi-lang-python=" instance_type " pulumi-lang-yaml=" instanceType " pulumi-lang-java=" instanceType "> instance_type </span>is 'server'.
+     * The hostname of your GitHub Enterprise instance. Required when<span pulumi-lang-nodejs=" instanceType " pulumi-lang-dotnet=" InstanceType " pulumi-lang-go=" instanceType " pulumi-lang-python=" instance_type " pulumi-lang-yaml=" instanceType " pulumi-lang-java=" instanceType " pulumi-lang-hcl=" instance_type "> instanceType </span>is 'server'.
      */
     host?: string;
     /**
@@ -186,7 +186,7 @@ export interface AppConnectionGitlabCredentials {
      */
     accessToken: string;
     /**
-     * The type of token used to connect with GitLab. Supported options: 'project' and 'personal'
+     * The type of token used to connect with GitLab. Supported options: 'project', 'personal', and 'group'
      */
     accessTokenType: string;
     /**
@@ -403,6 +403,102 @@ export interface AppConnectionSupabaseCredentials {
     instanceUrl?: string;
 }
 
+export interface CertManagerApplicationProfileAcmeConfig {
+    /**
+     * The ACME directory URL clients should use.
+     */
+    directoryUrl: string;
+    /**
+     * External Account Binding key identifier. Populated on create and on import; routine refreshes don't re-fetch it. Rotated only by the explicit rotate endpoint, never by Terraform.
+     */
+    eabKid: string;
+    /**
+     * External Account Binding shared secret. Populated on create and on import; routine refreshes don't re-fetch it. Rotated only by the explicit rotate endpoint, never by Terraform.
+     */
+    eabSecret: string;
+    /**
+     * Skip DNS ownership verification. Defaults to false.
+     */
+    skipDnsOwnershipVerification: boolean;
+    /**
+     * Skip External Account Binding. Defaults to false. Cannot be set to true at the same time as skip_dns_ownership_verification.
+     */
+    skipEabBinding: boolean;
+}
+
+export interface CertManagerApplicationProfileApiConfig {
+    /**
+     * Whether to automatically renew certificates. Defaults to false when omitted.
+     */
+    autoRenew: boolean;
+    /**
+     * Number of days before expiration to renew (1-30). Defaults to 7 when omitted.
+     */
+    renewBeforeDays: number;
+}
+
+export interface CertManagerApplicationProfileEstConfig {
+    /**
+     * PEM-encoded CA chain used for bootstrap CA validation (only honored when<span pulumi-lang-nodejs=" disableBootstrapCaValidation " pulumi-lang-dotnet=" DisableBootstrapCaValidation " pulumi-lang-go=" disableBootstrapCaValidation " pulumi-lang-python=" disable_bootstrap_ca_validation " pulumi-lang-yaml=" disableBootstrapCaValidation " pulumi-lang-java=" disableBootstrapCaValidation " pulumi-lang-hcl=" disable_bootstrap_ca_validation "> disableBootstrapCaValidation </span>is false).
+     */
+    caChain?: string;
+    /**
+     * Whether to disable bootstrap CA validation. Defaults to false.
+     */
+    disableBootstrapCaValidation: boolean;
+    /**
+     * The EST endpoint URL clients should use.
+     */
+    endpointUrl: string;
+    /**
+     * EST passphrase used to authorize certificate requests.
+     */
+    passphrase: string;
+}
+
+export interface CertManagerApplicationProfileScepConfig {
+    /**
+     * Allow certificate-based renewal. Defaults to true.
+     */
+    allowCertBasedRenewal: boolean;
+    /**
+     * The SCEP dynamic challenge endpoint URL (only set when<span pulumi-lang-nodejs=" challengeType " pulumi-lang-dotnet=" ChallengeType " pulumi-lang-go=" challengeType " pulumi-lang-python=" challenge_type " pulumi-lang-yaml=" challengeType " pulumi-lang-java=" challengeType " pulumi-lang-hcl=" challenge_type "> challengeType </span>is dynamic).
+     */
+    challengeEndpointUrl: string;
+    /**
+     * Static-mode SCEP challenge password (min 8 chars). Required when<span pulumi-lang-nodejs=" challengeType " pulumi-lang-dotnet=" ChallengeType " pulumi-lang-go=" challengeType " pulumi-lang-python=" challenge_type " pulumi-lang-yaml=" challengeType " pulumi-lang-java=" challengeType " pulumi-lang-hcl=" challenge_type "> challengeType </span>is static.
+     */
+    challengePassword?: string;
+    /**
+     * SCEP challenge type. Supported values: static, dynamic. Defaults to static.
+     */
+    challengeType: string;
+    /**
+     * Expiry of a dynamic challenge in minutes (1-1440). Only used when<span pulumi-lang-nodejs=" challengeType " pulumi-lang-dotnet=" ChallengeType " pulumi-lang-go=" challengeType " pulumi-lang-python=" challenge_type " pulumi-lang-yaml=" challengeType " pulumi-lang-java=" challengeType " pulumi-lang-hcl=" challenge_type "> challengeType </span>is dynamic.
+     */
+    dynamicChallengeExpiryMinutes: number;
+    /**
+     * Maximum pending dynamic challenges (1-1000). Only used when<span pulumi-lang-nodejs=" challengeType " pulumi-lang-dotnet=" ChallengeType " pulumi-lang-go=" challengeType " pulumi-lang-python=" challenge_type " pulumi-lang-yaml=" challengeType " pulumi-lang-java=" challengeType " pulumi-lang-hcl=" challenge_type "> challengeType </span>is dynamic.
+     */
+    dynamicChallengeMaxPending: number;
+    /**
+     * Include the issuing CA certificate in SCEP responses. Defaults to true.
+     */
+    includeCaCertInResponse: boolean;
+    /**
+     * ISO-8601 timestamp when the RA certificate expires.
+     */
+    raCertExpiresAt: string;
+    /**
+     * The PEM-encoded RA certificate used by the SCEP service.
+     */
+    raCertificatePem: string;
+    /**
+     * The SCEP endpoint URL clients should use.
+     */
+    scepEndpointUrl: string;
+}
+
 export interface CertManagerCertificatePolicyAlgorithms {
     /**
      * List of allowed key algorithms (at least one required). Supported values: RSA-2048, RSA-3072, RSA-4096, ECDSA-P256, ECDSA-P521, ECDSA-P384
@@ -489,37 +585,51 @@ export interface CertManagerCertificatePolicyValidity {
     max?: string;
 }
 
-export interface CertManagerCertificateProfileApiConfig {
+export interface CertManagerCertificateProfileDefaults {
     /**
-     * Whether to automatically renew certificates
+     * Default common name
      */
-    autoRenew: boolean;
+    commonName?: string;
     /**
-     * Number of days before expiration to renew certificates (1-30)
+     * Default country (C)
      */
-    renewBeforeDays: number;
-}
-
-export interface CertManagerCertificateProfileEstConfig {
+    country?: string;
     /**
-     * The CA certificate chain for EST enrollment
+     * Default extended key usages. Supported values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
-    caChain?: string;
+    extendedKeyUsages?: string[];
     /**
-     * Whether to disable bootstrap CA validation
+     * Default key algorithm. Supported values: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
-    disableBootstrapCaValidation: boolean;
+    keyAlgorithm?: string;
     /**
-     * The passphrase for EST enrollment
+     * Default key usages. Supported values: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
      */
-    passphrase?: string;
-}
-
-export interface CertManagerCertificateProfileExternalConfigs {
+    keyUsages?: string[];
     /**
-     * Certificate template name for Azure AD CS
+     * Default locality (L)
      */
-    template?: string;
+    locality?: string;
+    /**
+     * Default organization (O)
+     */
+    organization?: string;
+    /**
+     * Default organizational unit (OU)
+     */
+    organizationalUnit?: string;
+    /**
+     * Default signature algorithm. Supported values: RSA-SHA256, RSA-SHA384, RSA-SHA512, ECDSA-SHA256, ECDSA-SHA384, ECDSA-SHA512
+     */
+    signatureAlgorithm?: string;
+    /**
+     * Default state/province (ST)
+     */
+    state?: string;
+    /**
+     * Default certificate validity in days
+     */
+    ttlDays?: number;
 }
 
 export interface DynamicSecretAwsIamConfiguration {
@@ -1074,7 +1184,7 @@ export interface IntegrationAwsSecretsManagerOptions {
      */
     awsTags?: outputs.IntegrationAwsSecretsManagerOptionsAwsTag[];
     /**
-     * The sync mode for AWS tags. The supported options are `secret-metadata` and <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`">`custom`</span>. If `secret-metadata` is selected, the metadata of the Infisical secrets are used as tags in AWS (only supported for one-to-one integrations). If <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`">`custom`</span> is selected, then the key/value pairs in the <span pulumi-lang-nodejs="`awsTags`" pulumi-lang-dotnet="`AwsTags`" pulumi-lang-go="`awsTags`" pulumi-lang-python="`aws_tags`" pulumi-lang-yaml="`awsTags`" pulumi-lang-java="`awsTags`">`aws_tags`</span> field is used.
+     * The sync mode for AWS tags. The supported options are `secret-metadata` and <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span>. If `secret-metadata` is selected, the metadata of the Infisical secrets are used as tags in AWS (only supported for one-to-one integrations). If <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span> is selected, then the key/value pairs in the <span pulumi-lang-nodejs="`awsTags`" pulumi-lang-dotnet="`AwsTags`" pulumi-lang-go="`awsTags`" pulumi-lang-python="`aws_tags`" pulumi-lang-yaml="`awsTags`" pulumi-lang-java="`awsTags`" pulumi-lang-hcl="`aws_tags`">`awsTags`</span> field is used.
      */
     metadataSyncMode?: string;
     /**
@@ -1126,7 +1236,7 @@ export interface OrgRolePermission {
 
 export interface ProjectGroupRole {
     /**
-     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
      */
     isTemporary?: boolean;
     /**
@@ -1179,7 +1289,7 @@ export interface ProjectIdentityRole {
      */
     id: string;
     /**
-     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
      */
     isTemporary: boolean;
     /**
@@ -1187,7 +1297,7 @@ export interface ProjectIdentityRole {
      */
     roleSlug: string;
     /**
-     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and temporary_access_start_time
      */
     temporaryAccessEndTime: string;
     /**
@@ -1353,7 +1463,7 @@ export interface ProjectUserRole {
      */
     id: string;
     /**
-     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary "> is_temporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime "> temporary_access_start_time </span>is required.
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
      */
     isTemporary: boolean;
     /**
@@ -1361,7 +1471,7 @@ export interface ProjectUserRole {
      */
     roleSlug: string;
     /**
-     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange "> temporary_range </span>and temporary_access_start_time
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and temporary_access_start_time
      */
     temporaryAccessEndTime: string;
     /**
@@ -1798,7 +1908,7 @@ export interface SecretSyncAwsSecretsManagerDestinationConfig {
      */
     awsRegion: string;
     /**
-     * The name of the AWS secret to map to. This only applies when<span pulumi-lang-nodejs=" mappingBehavior " pulumi-lang-dotnet=" MappingBehavior " pulumi-lang-go=" mappingBehavior " pulumi-lang-python=" mapping_behavior " pulumi-lang-yaml=" mappingBehavior " pulumi-lang-java=" mappingBehavior "> mapping_behavior </span>is set to 'many-to-one'.
+     * The name of the AWS secret to map to. This only applies when<span pulumi-lang-nodejs=" mappingBehavior " pulumi-lang-dotnet=" MappingBehavior " pulumi-lang-go=" mappingBehavior " pulumi-lang-python=" mapping_behavior " pulumi-lang-yaml=" mappingBehavior " pulumi-lang-java=" mappingBehavior " pulumi-lang-hcl=" mapping_behavior "> mappingBehavior </span>is set to 'many-to-one'.
      */
     awsSecretsManagerSecretName?: string;
     /**
@@ -2065,11 +2175,11 @@ export interface SecretSyncGithubDestinationConfig {
      */
     repositoryEnvironment?: string;
     /**
-     * The repository to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span> or `repository-environment`. This is only the name of the repository, without the repository owner included. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `go-sdk` here.
+     * The repository to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`" pulumi-lang-hcl="`repository`">`repository`</span> or `repository-environment`. This is only the name of the repository, without the repository owner included. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `go-sdk` here.
      */
     repositoryName?: string;
     /**
-     * The owner of the Github repository, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span>, `repository-environment`, or <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span>. This is the organization name, or the username for personal repositories. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `Infisical` here.
+     * The owner of the Github repository, required if scope is <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`" pulumi-lang-hcl="`repository`">`repository`</span>, `repository-environment`, or <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`" pulumi-lang-hcl="`organization`">`organization`</span>. This is the organization name, or the username for personal repositories. As an example if you have a repository called Infisical/go-sdk, you would only need to provide `Infisical` here.
      */
     repositoryOwner?: string;
     /**
@@ -2077,11 +2187,11 @@ export interface SecretSyncGithubDestinationConfig {
      */
     scope: string;
     /**
-     * The repository ids to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span> and the visibility field is set to <span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`">`selected`</span>
+     * The repository ids to sync the secrets to, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`" pulumi-lang-hcl="`organization`">`organization`</span> and the visibility field is set to <span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`" pulumi-lang-hcl="`selected`">`selected`</span>
      */
     selectedRepositoryIds?: number[];
     /**
-     * The visibility of the Github repository, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span>. Accepted values are: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>|<span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>|<span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`">`selected`</span>
+     * The visibility of the Github repository, required if scope is <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`" pulumi-lang-hcl="`organization`">`organization`</span>. Accepted values are: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>|<span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`" pulumi-lang-hcl="`private`">`private`</span>|<span pulumi-lang-nodejs="`selected`" pulumi-lang-dotnet="`Selected`" pulumi-lang-go="`selected`" pulumi-lang-python="`selected`" pulumi-lang-yaml="`selected`" pulumi-lang-java="`selected`" pulumi-lang-hcl="`selected`">`selected`</span>
      */
     visibility?: string;
 }

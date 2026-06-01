@@ -126,54 +126,54 @@ export class AlertingSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertingSettings resources.
  */
 export interface AlertingSettingsState {
-    alertingSettingsId?: pulumi.Input<string>;
+    alertingSettingsId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the settings were created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * User who created the settings.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Whether alerting is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this uses the internal AlertManager.
      */
-    isInternal?: pulumi.Input<boolean>;
+    isInternal?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the alerting settings entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of notification channels.
      */
-    notificationChannels?: pulumi.Input<pulumi.Input<inputs.AlertingSettingsNotificationChannel>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<inputs.AlertingSettingsNotificationChannel>[] | undefined>;
     /**
      * Portainer URL used by AlertManager for callbacks.
      */
-    portainerUrl?: pulumi.Input<string>;
+    portainerUrl?: pulumi.Input<string | undefined>;
     /**
      * Connection status (disabled, connected, disconnected, error).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Uptime of the AlertManager.
      */
-    uptime?: pulumi.Input<string>;
+    uptime?: pulumi.Input<string | undefined>;
     /**
      * URL of the external AlertManager instance. Leave empty for internal.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AlertingSettings resource.
  */
 export interface AlertingSettingsArgs {
-    alertingSettingsId?: pulumi.Input<string>;
+    alertingSettingsId?: pulumi.Input<string | undefined>;
     /**
      * Whether alerting is enabled.
      */
@@ -181,17 +181,17 @@ export interface AlertingSettingsArgs {
     /**
      * Name of the alerting settings entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of notification channels.
      */
-    notificationChannels?: pulumi.Input<pulumi.Input<inputs.AlertingSettingsNotificationChannel>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<inputs.AlertingSettingsNotificationChannel>[] | undefined>;
     /**
      * Portainer URL used by AlertManager for callbacks.
      */
-    portainerUrl?: pulumi.Input<string>;
+    portainerUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the external AlertManager instance. Leave empty for internal.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

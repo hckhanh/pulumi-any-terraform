@@ -44,6 +44,6 @@ export function getDockerConfigOutput(args: GetDockerConfigOutputArgs, opts?: pu
  */
 export interface GetDockerConfigOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

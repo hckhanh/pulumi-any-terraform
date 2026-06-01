@@ -40,6 +40,6 @@ export function getEndpointGroupOutput(args: GetEndpointGroupOutputArgs, opts?: 
  * A collection of arguments for invoking getEndpointGroup.
  */
 export interface GetEndpointGroupOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

@@ -43,6 +43,10 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Only applies to <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> webhooks. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    declare public readonly notifyAlongsidePrimaryResponder: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
     declare public readonly onIncidentAcknowledged: pulumi.Output<boolean | undefined>;
@@ -67,7 +71,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`" pulumi-lang-hcl="`on_call_change`">`onCallChange`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
      */
     declare public readonly triggerType: pulumi.Output<string>;
     /**
@@ -90,6 +94,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
             const state = argsOrState as OutgoingWebhookState | undefined;
             resourceInputs["customWebhookTemplateAttributes"] = state?.customWebhookTemplateAttributes;
             resourceInputs["name"] = state?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = state?.notifyAlongsidePrimaryResponder;
             resourceInputs["onIncidentAcknowledged"] = state?.onIncidentAcknowledged;
             resourceInputs["onIncidentComment"] = state?.onIncidentComment;
             resourceInputs["onIncidentReopened"] = state?.onIncidentReopened;
@@ -108,6 +113,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
             }
             resourceInputs["customWebhookTemplateAttributes"] = args?.customWebhookTemplateAttributes;
             resourceInputs["name"] = args?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = args?.notifyAlongsidePrimaryResponder;
             resourceInputs["onIncidentAcknowledged"] = args?.onIncidentAcknowledged;
             resourceInputs["onIncidentComment"] = args?.onIncidentComment;
             resourceInputs["onIncidentReopened"] = args?.onIncidentReopened;
@@ -135,6 +141,10 @@ export interface OutgoingWebhookState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Only applies to <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> webhooks. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
     onIncidentAcknowledged?: pulumi.Input<boolean | undefined>;
@@ -159,7 +169,7 @@ export interface OutgoingWebhookState {
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`" pulumi-lang-hcl="`on_call_change`">`onCallChange`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -181,6 +191,10 @@ export interface OutgoingWebhookArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Only applies to <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> webhooks. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to trigger webhook when incident is acknowledged. Only when `trigger_type=incident_change`.
      */
     onIncidentAcknowledged?: pulumi.Input<boolean | undefined>;
@@ -205,7 +219,7 @@ export interface OutgoingWebhookArgs {
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
-     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`">`incident_change`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`">`on_call_change`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`">`monitor_change`</span>.
+     * The type of trigger for the webhook. Only settable during creation. Available values: <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span>, <span pulumi-lang-nodejs="`onCallChange`" pulumi-lang-dotnet="`OnCallChange`" pulumi-lang-go="`onCallChange`" pulumi-lang-python="`on_call_change`" pulumi-lang-yaml="`onCallChange`" pulumi-lang-java="`onCallChange`" pulumi-lang-hcl="`on_call_change`">`onCallChange`</span>, <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
      */
     triggerType: pulumi.Input<string>;
     /**

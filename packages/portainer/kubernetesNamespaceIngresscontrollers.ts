@@ -34,9 +34,18 @@ export class KubernetesNamespaceIngresscontrollers extends pulumi.CustomResource
         return obj['__pulumiType'] === KubernetesNamespaceIngresscontrollers.__pulumiType;
     }
 
+    /**
+     * List of ingress controllers allowed for the namespace.
+     */
     declare public readonly controllers: pulumi.Output<outputs.KubernetesNamespaceIngresscontrollersController[]>;
+    /**
+     * Identifier of the Portainer Kubernetes environment hosting the namespace.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesNamespaceIngresscontrollersId: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace whose ingress controller allow-list is being configured.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -81,18 +90,36 @@ export class KubernetesNamespaceIngresscontrollers extends pulumi.CustomResource
  * Input properties used for looking up and filtering KubernetesNamespaceIngresscontrollers resources.
  */
 export interface KubernetesNamespaceIngresscontrollersState {
-    controllers?: pulumi.Input<pulumi.Input<inputs.KubernetesNamespaceIngresscontrollersController>[]>;
-    environmentId?: pulumi.Input<number>;
-    kubernetesNamespaceIngresscontrollersId?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * List of ingress controllers allowed for the namespace.
+     */
+    controllers?: pulumi.Input<pulumi.Input<inputs.KubernetesNamespaceIngresscontrollersController>[] | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment hosting the namespace.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesNamespaceIngresscontrollersId?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace whose ingress controller allow-list is being configured.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesNamespaceIngresscontrollers resource.
  */
 export interface KubernetesNamespaceIngresscontrollersArgs {
+    /**
+     * List of ingress controllers allowed for the namespace.
+     */
     controllers: pulumi.Input<pulumi.Input<inputs.KubernetesNamespaceIngresscontrollersController>[]>;
+    /**
+     * Identifier of the Portainer Kubernetes environment hosting the namespace.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesNamespaceIngresscontrollersId?: pulumi.Input<string>;
+    kubernetesNamespaceIngresscontrollersId?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace whose ingress controller allow-list is being configured.
+     */
     namespace: pulumi.Input<string>;
 }

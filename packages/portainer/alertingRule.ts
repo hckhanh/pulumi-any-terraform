@@ -184,80 +184,80 @@ export interface AlertingRuleState {
     /**
      * ID of the associated AlertManager settings.
      */
-    alertManagerId?: pulumi.Input<number>;
-    alertingRuleId?: pulumi.Input<string>;
+    alertManagerId?: pulumi.Input<number | undefined>;
+    alertingRuleId?: pulumi.Input<string | undefined>;
     /**
      * Condition operator for threshold comparison.
      */
-    conditionOperator?: pulumi.Input<string>;
+    conditionOperator?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the rule was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * User who created the rule.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Description of the alert rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Duration (in seconds) the condition must persist before firing.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether the alert rule is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alert rule can be edited.
      */
-    isEditable?: pulumi.Input<boolean>;
+    isEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alert rule is an internal/system rule.
      */
-    isInternal?: pulumi.Input<boolean>;
+    isInternal?: pulumi.Input<boolean | undefined>;
     /**
      * Labels associated with the alert rule.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of metric for the alert rule.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the predefined alert rule to manage. Rules are predefined in Portainer and must be imported by ID.
      */
-    ruleId?: pulumi.Input<number>;
+    ruleId?: pulumi.Input<number | undefined>;
     /**
      * Severity level of the alert rule.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Summary of the alert rule.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * Minimum agent version that supports this rule.
      */
-    supportedAgentVersion?: pulumi.Input<string>;
+    supportedAgentVersion?: pulumi.Input<string | undefined>;
     /**
      * Environment types that support this rule (docker, kubernetes, podman, all).
      */
-    supportedEnvironmentTypes?: pulumi.Input<string>;
+    supportedEnvironmentTypes?: pulumi.Input<string | undefined>;
     /**
      * Threshold value for the alert rule.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the rule was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,20 +267,20 @@ export interface AlertingRuleArgs {
     /**
      * ID of the associated AlertManager settings.
      */
-    alertManagerId?: pulumi.Input<number>;
-    alertingRuleId?: pulumi.Input<string>;
+    alertManagerId?: pulumi.Input<number | undefined>;
+    alertingRuleId?: pulumi.Input<string | undefined>;
     /**
      * Condition operator for threshold comparison.
      */
-    conditionOperator?: pulumi.Input<string>;
+    conditionOperator?: pulumi.Input<string | undefined>;
     /**
      * Description of the alert rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Duration (in seconds) the condition must persist before firing.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether the alert rule is enabled.
      */
@@ -288,15 +288,15 @@ export interface AlertingRuleArgs {
     /**
      * Labels associated with the alert rule.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of metric for the alert rule.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the predefined alert rule to manage. Rules are predefined in Portainer and must be imported by ID.
      */
@@ -304,13 +304,13 @@ export interface AlertingRuleArgs {
     /**
      * Severity level of the alert rule.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Summary of the alert rule.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * Threshold value for the alert rule.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
 }

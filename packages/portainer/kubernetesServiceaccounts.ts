@@ -32,9 +32,18 @@ export class KubernetesServiceaccounts extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesServiceaccounts.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the ServiceAccount is created.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesServiceaccountsId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes ServiceAccount to deploy.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the ServiceAccount manifest is applied.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesServiceaccounts extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesServiceaccounts resources.
  */
 export interface KubernetesServiceaccountsState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesServiceaccountsId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the ServiceAccount is created.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesServiceaccountsId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes ServiceAccount to deploy.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the ServiceAccount manifest is applied.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesServiceaccounts resource.
  */
 export interface KubernetesServiceaccountsArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the ServiceAccount is created.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesServiceaccountsId?: pulumi.Input<string>;
+    kubernetesServiceaccountsId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes ServiceAccount to deploy.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the ServiceAccount manifest is applied.
+     */
     namespace: pulumi.Input<string>;
 }

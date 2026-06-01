@@ -35,8 +35,17 @@ export class DockerImage extends pulumi.CustomResource {
     }
 
     declare public readonly dockerImageId: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer endpoint on which the Docker image should be pulled.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Image reference to pull (for example `nginx:latest`).
+     */
     declare public readonly image: pulumi.Output<string>;
+    /**
+     * Sensitive base64-encoded JSON object with registry credentials (username, password, email, serveraddress) used to pull the image.
+     */
     declare public readonly registryAuth: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.DockerImageTimeouts | undefined>;
 
@@ -83,20 +92,38 @@ export class DockerImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerImage resources.
  */
 export interface DockerImageState {
-    dockerImageId?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
-    image?: pulumi.Input<string>;
-    registryAuth?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DockerImageTimeouts>;
+    dockerImageId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint on which the Docker image should be pulled.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Image reference to pull (for example `nginx:latest`).
+     */
+    image?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive base64-encoded JSON object with registry credentials (username, password, email, serveraddress) used to pull the image.
+     */
+    registryAuth?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DockerImageTimeouts | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerImage resource.
  */
 export interface DockerImageArgs {
-    dockerImageId?: pulumi.Input<string>;
+    dockerImageId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint on which the Docker image should be pulled.
+     */
     endpointId: pulumi.Input<number>;
+    /**
+     * Image reference to pull (for example `nginx:latest`).
+     */
     image: pulumi.Input<string>;
-    registryAuth?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DockerImageTimeouts>;
+    /**
+     * Sensitive base64-encoded JSON object with registry credentials (username, password, email, serveraddress) used to pull the image.
+     */
+    registryAuth?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DockerImageTimeouts | undefined>;
 }

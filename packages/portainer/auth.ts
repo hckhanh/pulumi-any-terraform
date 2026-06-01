@@ -33,8 +33,17 @@ export class Auth extends pulumi.CustomResource {
     }
 
     declare public readonly authId: pulumi.Output<string>;
+    /**
+     * JWT bearer token issued by Portainer after successful authentication. Computed and stored in state as a sensitive value.
+     */
     declare public /*out*/ readonly jwt: pulumi.Output<string>;
+    /**
+     * Password used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
     declare public readonly password: pulumi.Output<string>;
+    /**
+     * Username used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
     declare public readonly username: pulumi.Output<string>;
 
     /**
@@ -78,17 +87,32 @@ export class Auth extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Auth resources.
  */
 export interface AuthState {
-    authId?: pulumi.Input<string>;
-    jwt?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    authId?: pulumi.Input<string | undefined>;
+    /**
+     * JWT bearer token issued by Portainer after successful authentication. Computed and stored in state as a sensitive value.
+     */
+    jwt?: pulumi.Input<string | undefined>;
+    /**
+     * Password used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Auth resource.
  */
 export interface AuthArgs {
-    authId?: pulumi.Input<string>;
+    authId?: pulumi.Input<string | undefined>;
+    /**
+     * Password used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
     password: pulumi.Input<string>;
+    /**
+     * Username used to authenticate against the Portainer API. Stored in state as a sensitive value. Changing this value forces resource recreation.
+     */
     username: pulumi.Input<string>;
 }

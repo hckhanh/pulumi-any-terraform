@@ -47,6 +47,6 @@ export function getKubernetesCrdOutput(args: GetKubernetesCrdOutputArgs, opts?: 
  */
 export interface GetKubernetesCrdOutputArgs {
     environmentId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

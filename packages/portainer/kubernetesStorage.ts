@@ -32,8 +32,14 @@ export class KubernetesStorage extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesStorage.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the storage class manifest is applied.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesStorageId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes StorageClass or related storage resources.
+     */
     declare public readonly manifest: pulumi.Output<string>;
 
     /**
@@ -73,16 +79,28 @@ export class KubernetesStorage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesStorage resources.
  */
 export interface KubernetesStorageState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesStorageId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the storage class manifest is applied.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesStorageId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes StorageClass or related storage resources.
+     */
+    manifest?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesStorage resource.
  */
 export interface KubernetesStorageArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the storage class manifest is applied.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesStorageId?: pulumi.Input<string>;
+    kubernetesStorageId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes StorageClass or related storage resources.
+     */
     manifest: pulumi.Input<string>;
 }

@@ -37,11 +37,15 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      */
     declare public readonly altNames: pulumi.Output<string[]>;
     /**
-     * The issued certificate in PEM format
+     * The ID of the Certificate Manager application to issue this certificate from
+     */
+    declare public readonly applicationId: pulumi.Output<string>;
+    /**
+     * The issued certificate in PEM format.
      */
     declare public /*out*/ readonly certificate: pulumi.Output<string>;
     /**
-     * The certificate chain in PEM format
+     * The certificate chain in PEM format.
      */
     declare public /*out*/ readonly certificateChain: pulumi.Output<string>;
     /**
@@ -55,15 +59,15 @@ export class CertManagerCertificate extends pulumi.CustomResource {
     /**
      * The country (C) for the certificate (2-letter code)
      */
-    declare public readonly country: pulumi.Output<string | undefined>;
+    declare public readonly country: pulumi.Output<string>;
     /**
-     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr")).
      */
-    declare public readonly csr: pulumi.Output<string | undefined>;
+    declare public readonly csr: pulumi.Output<string>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
-    declare public readonly extendedKeyUsages: pulumi.Output<string[] | undefined>;
+    declare public readonly extendedKeyUsages: pulumi.Output<string[]>;
     /**
      * The key algorithm for the certificate. Supported: RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1
      */
@@ -71,11 +75,11 @@ export class CertManagerCertificate extends pulumi.CustomResource {
     /**
      * Key usages for the certificate. Supported: digital_signature, key_encipherment, non_repudiation, data_encipherment, key_agreement, key_cert_sign, crl_sign, encipher_only, decipher_only
      */
-    declare public readonly keyUsages: pulumi.Output<string[] | undefined>;
+    declare public readonly keyUsages: pulumi.Output<string[]>;
     /**
      * The locality (L) for the certificate
      */
-    declare public readonly locality: pulumi.Output<string | undefined>;
+    declare public readonly locality: pulumi.Output<string>;
     /**
      * The not-after (expiration) date of the certificate (RFC3339 format)
      */
@@ -87,13 +91,13 @@ export class CertManagerCertificate extends pulumi.CustomResource {
     /**
      * The organization (O) for the certificate
      */
-    declare public readonly organization: pulumi.Output<string | undefined>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * The organizational unit (OU) for the certificate
      */
-    declare public readonly ou: pulumi.Output<string | undefined>;
+    declare public readonly ou: pulumi.Output<string>;
     /**
-     * The private key in PEM format (only available for direct field requests, not CSR-based)
+     * The private key in PEM format (only available for direct field requests, not CSR-based).
      */
     declare public /*out*/ readonly privateKey: pulumi.Output<string>;
     /**
@@ -103,7 +107,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
     /**
      * The state/province (ST) for the certificate
      */
-    declare public readonly province: pulumi.Output<string | undefined>;
+    declare public readonly province: pulumi.Output<string>;
     /**
      * The serial number of the issued certificate
      */
@@ -121,9 +125,9 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      */
     declare public readonly timeoutSeconds: pulumi.Output<number>;
     /**
-     * Time to live for the certificate (e.g., '30d', '90d', '1y')
+     * Time to live for the certificate (e.g., '30d', '90d', '1y').
      */
-    declare public readonly ttl: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string>;
 
     /**
      * Create a CertManagerCertificate resource with the given unique name, arguments, and options.
@@ -139,6 +143,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CertManagerCertificateState | undefined;
             resourceInputs["altNames"] = state?.altNames;
+            resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["certificate"] = state?.certificate;
             resourceInputs["certificateChain"] = state?.certificateChain;
             resourceInputs["certificateRequestId"] = state?.certificateRequestId;
@@ -163,10 +168,14 @@ export class CertManagerCertificate extends pulumi.CustomResource {
             resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as CertManagerCertificateArgs | undefined;
+            if (args?.applicationId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'applicationId'");
+            }
             if (args?.profileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileId'");
             }
             resourceInputs["altNames"] = args?.altNames;
+            resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["commonName"] = args?.commonName;
             resourceInputs["country"] = args?.country;
             resourceInputs["csr"] = args?.csr;
@@ -206,11 +215,15 @@ export interface CertManagerCertificateState {
      */
     altNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The issued certificate in PEM format
+     * The ID of the Certificate Manager application to issue this certificate from
+     */
+    applicationId?: pulumi.Input<string | undefined>;
+    /**
+     * The issued certificate in PEM format.
      */
     certificate?: pulumi.Input<string | undefined>;
     /**
-     * The certificate chain in PEM format
+     * The certificate chain in PEM format.
      */
     certificateChain?: pulumi.Input<string | undefined>;
     /**
@@ -226,7 +239,7 @@ export interface CertManagerCertificateState {
      */
     country?: pulumi.Input<string | undefined>;
     /**
-     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr")).
      */
     csr?: pulumi.Input<string | undefined>;
     /**
@@ -262,7 +275,7 @@ export interface CertManagerCertificateState {
      */
     ou?: pulumi.Input<string | undefined>;
     /**
-     * The private key in PEM format (only available for direct field requests, not CSR-based)
+     * The private key in PEM format (only available for direct field requests, not CSR-based).
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
@@ -290,7 +303,7 @@ export interface CertManagerCertificateState {
      */
     timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
-     * Time to live for the certificate (e.g., '30d', '90d', '1y')
+     * Time to live for the certificate (e.g., '30d', '90d', '1y').
      */
     ttl?: pulumi.Input<string | undefined>;
 }
@@ -304,6 +317,10 @@ export interface CertManagerCertificateArgs {
      */
     altNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The ID of the Certificate Manager application to issue this certificate from
+     */
+    applicationId: pulumi.Input<string>;
+    /**
      * The common name (CN) for the certificate. Required when not using CSR
      */
     commonName?: pulumi.Input<string | undefined>;
@@ -312,7 +329,7 @@ export interface CertManagerCertificateArgs {
      */
     country?: pulumi.Input<string | undefined>;
     /**
-     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr"))
+     * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr")).
      */
     csr?: pulumi.Input<string | undefined>;
     /**
@@ -356,7 +373,7 @@ export interface CertManagerCertificateArgs {
      */
     timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
-     * Time to live for the certificate (e.g., '30d', '90d', '1y')
+     * Time to live for the certificate (e.g., '30d', '90d', '1y').
      */
     ttl?: pulumi.Input<string | undefined>;
 }

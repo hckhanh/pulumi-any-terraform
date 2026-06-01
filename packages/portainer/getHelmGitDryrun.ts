@@ -85,17 +85,17 @@ export function getHelmGitDryrunOutput(args: GetHelmGitDryrunOutputArgs, opts?: 
  * A collection of arguments for invoking getHelmGitDryrun.
  */
 export interface GetHelmGitDryrunOutputArgs {
-    chartPath?: pulumi.Input<string>;
+    chartPath?: pulumi.Input<string | undefined>;
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    referenceName?: pulumi.Input<string>;
-    releaseName?: pulumi.Input<string>;
-    repositoryAuthentication?: pulumi.Input<boolean>;
-    repositoryGitCredentialId?: pulumi.Input<number>;
-    repositoryPassword?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
+    referenceName?: pulumi.Input<string | undefined>;
+    releaseName?: pulumi.Input<string | undefined>;
+    repositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    repositoryGitCredentialId?: pulumi.Input<number | undefined>;
+    repositoryPassword?: pulumi.Input<string | undefined>;
     repositoryUrl: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
-    tlsSkipVerify?: pulumi.Input<boolean>;
-    valuesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    repositoryUsername?: pulumi.Input<string | undefined>;
+    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
+    valuesFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

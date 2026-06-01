@@ -49,7 +49,7 @@ export function getEndpointGroupAccessOutput(args: GetEndpointGroupAccessOutputA
  */
 export interface GetEndpointGroupAccessOutputArgs {
     endpointGroupId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    id?: pulumi.Input<string | undefined>;
+    teamId?: pulumi.Input<number | undefined>;
+    userId?: pulumi.Input<number | undefined>;
 }

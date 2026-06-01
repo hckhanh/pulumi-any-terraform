@@ -57,16 +57,16 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public readonly tagIds: pulumi.Output<string[] | undefined>;
     /**
-     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is not set.
      */
     declare public readonly value: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     declare public readonly valueWo: pulumi.Output<string | undefined>;
     /**
-     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>is required.
      */
     declare public readonly valueWoVersion: pulumi.Output<number | undefined>;
     /**
@@ -152,16 +152,16 @@ export interface SecretState {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is not set.
      */
     value?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     valueWo?: pulumi.Input<string | undefined>;
     /**
-     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>is required.
      */
     valueWoVersion?: pulumi.Input<number | undefined>;
     /**
@@ -196,16 +196,16 @@ export interface SecretArgs {
      */
     tagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is not set.
+     * The value of the secret in plain text. This is required if <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is not set.
      */
     value?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
+     * The value of the secret in plain text as a write-only secret. If set, the secret value will not be stored in state. This is required if <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> is not set. Requires Terraform version 1.11.0 or higher.
      */
     valueWo?: pulumi.Input<string | undefined>;
     /**
-     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo "> value_wo </span>is required.
+     * Used together with<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>to trigger an update. Increment this value when an update to the<span pulumi-lang-nodejs=" valueWo " pulumi-lang-dotnet=" ValueWo " pulumi-lang-go=" valueWo " pulumi-lang-python=" value_wo " pulumi-lang-yaml=" valueWo " pulumi-lang-java=" valueWo " pulumi-lang-hcl=" value_wo "> valueWo </span>is required.
      */
     valueWoVersion?: pulumi.Input<number | undefined>;
     /**

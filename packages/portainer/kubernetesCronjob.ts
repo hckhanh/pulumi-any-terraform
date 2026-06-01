@@ -32,9 +32,18 @@ export class KubernetesCronjob extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesCronjob.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the CronJob is deployed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesCronjobId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes CronJob to deploy.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the CronJob manifest is applied.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesCronjob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesCronjob resources.
  */
 export interface KubernetesCronjobState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesCronjobId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the CronJob is deployed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesCronjobId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes CronJob to deploy.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the CronJob manifest is applied.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesCronjob resource.
  */
 export interface KubernetesCronjobArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the CronJob is deployed.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesCronjobId?: pulumi.Input<string>;
+    kubernetesCronjobId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes CronJob to deploy.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the CronJob manifest is applied.
+     */
     namespace: pulumi.Input<string>;
 }

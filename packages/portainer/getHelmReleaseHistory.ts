@@ -51,7 +51,7 @@ export function getHelmReleaseHistoryOutput(args: GetHelmReleaseHistoryOutputArg
  */
 export interface GetHelmReleaseHistoryOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
     releaseName: pulumi.Input<string>;
 }

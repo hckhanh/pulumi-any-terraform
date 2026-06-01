@@ -41,6 +41,10 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    declare public readonly notifyAlongsidePrimaryResponder: pulumi.Output<boolean | undefined>;
+    /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */
     declare public readonly severity: pulumi.Output<string>;
@@ -64,6 +68,7 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
             const state = argsOrState as PagerdutyIntegrationState | undefined;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = state?.notifyAlongsidePrimaryResponder;
             resourceInputs["severity"] = state?.severity;
             resourceInputs["teamName"] = state?.teamName;
         } else {
@@ -76,6 +81,7 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
             }
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
+            resourceInputs["notifyAlongsidePrimaryResponder"] = args?.notifyAlongsidePrimaryResponder;
             resourceInputs["severity"] = args?.severity;
             resourceInputs["teamName"] = args?.teamName;
         }
@@ -96,6 +102,10 @@ export interface PagerdutyIntegrationState {
      * The name of the PagerDuty Integration.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
     /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */
@@ -118,6 +128,10 @@ export interface PagerdutyIntegrationArgs {
      * The name of the PagerDuty Integration.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this integration should be notified alongside the primary responder when no escalation policy is configured. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    notifyAlongsidePrimaryResponder?: pulumi.Input<boolean | undefined>;
     /**
      * The PagerDuty alert severity. Can be any of the following: info, warning, error, or critical.
      */

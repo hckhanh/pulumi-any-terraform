@@ -32,10 +32,22 @@ export class EdgeUpdateSchedules extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeUpdateSchedules.__pulumiType;
     }
 
+    /**
+     * Container image used as the target Portainer Edge agent image after the update runs.
+     */
     declare public readonly agentImage: pulumi.Output<string>;
     declare public readonly edgeUpdateSchedulesId: pulumi.Output<string>;
+    /**
+     * List of edge group identifiers targeted by the update schedule.
+     */
     declare public readonly groupIds: pulumi.Output<number[]>;
+    /**
+     * Name of the Portainer edge update schedule.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer registry from which the agent and updater images are pulled.
+     */
     declare public readonly registryId: pulumi.Output<number>;
     /**
      * Time in RFC3339 format
@@ -45,6 +57,9 @@ export class EdgeUpdateSchedules extends pulumi.CustomResource {
      * 0 = update, 1 = rollback
      */
     declare public readonly type: pulumi.Output<number>;
+    /**
+     * Container image used to perform the Edge agent update.
+     */
     declare public readonly updaterImage: pulumi.Output<string>;
 
     /**
@@ -106,30 +121,57 @@ export class EdgeUpdateSchedules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeUpdateSchedules resources.
  */
 export interface EdgeUpdateSchedulesState {
-    agentImage?: pulumi.Input<string>;
-    edgeUpdateSchedulesId?: pulumi.Input<string>;
-    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
-    registryId?: pulumi.Input<number>;
+    /**
+     * Container image used as the target Portainer Edge agent image after the update runs.
+     */
+    agentImage?: pulumi.Input<string | undefined>;
+    edgeUpdateSchedulesId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge group identifiers targeted by the update schedule.
+     */
+    groupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Name of the Portainer edge update schedule.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer registry from which the agent and updater images are pulled.
+     */
+    registryId?: pulumi.Input<number | undefined>;
     /**
      * Time in RFC3339 format
      */
-    scheduledTime?: pulumi.Input<string>;
+    scheduledTime?: pulumi.Input<string | undefined>;
     /**
      * 0 = update, 1 = rollback
      */
-    type?: pulumi.Input<number>;
-    updaterImage?: pulumi.Input<string>;
+    type?: pulumi.Input<number | undefined>;
+    /**
+     * Container image used to perform the Edge agent update.
+     */
+    updaterImage?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EdgeUpdateSchedules resource.
  */
 export interface EdgeUpdateSchedulesArgs {
+    /**
+     * Container image used as the target Portainer Edge agent image after the update runs.
+     */
     agentImage: pulumi.Input<string>;
-    edgeUpdateSchedulesId?: pulumi.Input<string>;
+    edgeUpdateSchedulesId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge group identifiers targeted by the update schedule.
+     */
     groupIds: pulumi.Input<pulumi.Input<number>[]>;
-    name?: pulumi.Input<string>;
+    /**
+     * Name of the Portainer edge update schedule.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer registry from which the agent and updater images are pulled.
+     */
     registryId: pulumi.Input<number>;
     /**
      * Time in RFC3339 format
@@ -139,5 +181,8 @@ export interface EdgeUpdateSchedulesArgs {
      * 0 = update, 1 = rollback
      */
     type: pulumi.Input<number>;
+    /**
+     * Container image used to perform the Edge agent update.
+     */
     updaterImage: pulumi.Input<string>;
 }

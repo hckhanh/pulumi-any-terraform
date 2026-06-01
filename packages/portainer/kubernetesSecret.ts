@@ -32,9 +32,18 @@ export class KubernetesSecret extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesSecret.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Secret is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesSecretId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Secret. May contain sensitive data; stored in Terraform state.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Secret is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesSecret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesSecret resources.
  */
 export interface KubernetesSecretState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesSecretId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Secret is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesSecretId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Secret. May contain sensitive data; stored in Terraform state.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Secret is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesSecret resource.
  */
 export interface KubernetesSecretArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Secret is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesSecretId?: pulumi.Input<string>;
+    kubernetesSecretId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Secret. May contain sensitive data; stored in Terraform state.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the Secret is created.
+     */
     namespace: pulumi.Input<string>;
 }

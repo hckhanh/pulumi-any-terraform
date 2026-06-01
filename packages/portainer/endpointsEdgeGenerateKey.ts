@@ -70,13 +70,13 @@ export interface EndpointsEdgeGenerateKeyState {
     /**
      * The generated general edge key.
      */
-    edgeKey?: pulumi.Input<string>;
-    endpointsEdgeGenerateKeyId?: pulumi.Input<string>;
+    edgeKey?: pulumi.Input<string | undefined>;
+    endpointsEdgeGenerateKeyId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointsEdgeGenerateKey resource.
  */
 export interface EndpointsEdgeGenerateKeyArgs {
-    endpointsEdgeGenerateKeyId?: pulumi.Input<string>;
+    endpointsEdgeGenerateKeyId?: pulumi.Input<string | undefined>;
 }

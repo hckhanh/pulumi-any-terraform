@@ -99,20 +99,20 @@ export interface SslState {
     /**
      * SSL certificate content
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * SSL client certificate content
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Whether HTTP should be enabled (true) or disabled (false)
      */
-    httpEnabled?: pulumi.Input<boolean>;
+    httpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * SSL private key content
      */
-    key?: pulumi.Input<string>;
-    sslId?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    sslId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -126,7 +126,7 @@ export interface SslArgs {
     /**
      * SSL client certificate content
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Whether HTTP should be enabled (true) or disabled (false)
      */
@@ -135,5 +135,5 @@ export interface SslArgs {
      * SSL private key content
      */
     key: pulumi.Input<string>;
-    sslId?: pulumi.Input<string>;
+    sslId?: pulumi.Input<string | undefined>;
 }

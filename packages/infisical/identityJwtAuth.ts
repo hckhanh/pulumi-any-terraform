@@ -79,11 +79,11 @@ export class IdentityJwtAuth extends pulumi.CustomResource {
      */
     declare public readonly jwksCaCert: pulumi.Output<string>;
     /**
-     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'jwks'.
+     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'jwks'.
      */
     declare public readonly jwksUrl: pulumi.Output<string>;
     /**
-     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'static'.
+     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'static'.
      */
     declare public readonly publicKeys: pulumi.Output<string[]>;
 
@@ -189,11 +189,11 @@ export interface IdentityJwtAuthState {
      */
     jwksCaCert?: pulumi.Input<string | undefined>;
     /**
-     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'jwks'.
+     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'jwks'.
      */
     jwksUrl?: pulumi.Input<string | undefined>;
     /**
-     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'static'.
+     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'static'.
      */
     publicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -247,11 +247,11 @@ export interface IdentityJwtAuthArgs {
      */
     jwksCaCert?: pulumi.Input<string | undefined>;
     /**
-     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'jwks'.
+     * The URL used to retrieve the JSON Web Key Set (JWKS) for verifying JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'jwks'.
      */
     jwksUrl?: pulumi.Input<string | undefined>;
     /**
-     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType "> configuration_type </span>is 'static'.
+     * A list of PEM-encoded public keys used to verify JWTs. Required when<span pulumi-lang-nodejs=" configurationType " pulumi-lang-dotnet=" ConfigurationType " pulumi-lang-go=" configurationType " pulumi-lang-python=" configuration_type " pulumi-lang-yaml=" configurationType " pulumi-lang-java=" configurationType " pulumi-lang-hcl=" configuration_type "> configurationType </span>is 'static'.
      */
     publicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

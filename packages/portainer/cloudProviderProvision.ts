@@ -87,13 +87,13 @@ export interface CloudProviderProvisionState {
     /**
      * Cloud provider (civo, digitalocean, linode, amazon, azure, gke)
      */
-    cloudProvider?: pulumi.Input<string>;
-    cloudProviderProvisionId?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
+    cloudProviderProvisionId?: pulumi.Input<string | undefined>;
     /**
      * Raw payload with provisioning parameters.
      */
-    payload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts>;
+    payload?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts | undefined>;
 }
 
 /**
@@ -104,10 +104,10 @@ export interface CloudProviderProvisionArgs {
      * Cloud provider (civo, digitalocean, linode, amazon, azure, gke)
      */
     cloudProvider: pulumi.Input<string>;
-    cloudProviderProvisionId?: pulumi.Input<string>;
+    cloudProviderProvisionId?: pulumi.Input<string | undefined>;
     /**
      * Raw payload with provisioning parameters.
      */
     payload: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts>;
+    timeouts?: pulumi.Input<inputs.CloudProviderProvisionTimeouts | undefined>;
 }

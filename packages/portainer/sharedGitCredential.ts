@@ -102,24 +102,24 @@ export interface SharedGitCredentialState {
     /**
      * Authorization type: 0 = Basic, 1 = Token
      */
-    authorizationType?: pulumi.Input<number>;
+    authorizationType?: pulumi.Input<number | undefined>;
     /**
      * Name of the shared git credential
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password or token for git authentication
      */
-    password?: pulumi.Input<string>;
-    sharedGitCredentialId?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    sharedGitCredentialId?: pulumi.Input<string | undefined>;
     /**
      * User ID of the credential owner
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Username for git authentication
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,16 +129,16 @@ export interface SharedGitCredentialArgs {
     /**
      * Authorization type: 0 = Basic, 1 = Token
      */
-    authorizationType?: pulumi.Input<number>;
+    authorizationType?: pulumi.Input<number | undefined>;
     /**
      * Name of the shared git credential
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password or token for git authentication
      */
     password: pulumi.Input<string>;
-    sharedGitCredentialId?: pulumi.Input<string>;
+    sharedGitCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Username for git authentication
      */

@@ -70,18 +70,18 @@ export class StackWebhook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StackWebhook resources.
  */
 export interface StackWebhookState {
-    stackWebhookId?: pulumi.Input<string>;
+    stackWebhookId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the webhook to trigger
      */
-    webhookId?: pulumi.Input<string>;
+    webhookId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a StackWebhook resource.
  */
 export interface StackWebhookArgs {
-    stackWebhookId?: pulumi.Input<string>;
+    stackWebhookId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the webhook to trigger
      */

@@ -35,32 +35,53 @@ export class EdgeStack extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath " pulumi-lang-hcl=" relative_path "> relativePath </span>is set.
      */
     declare public readonly alwaysClone: pulumi.Output<boolean | undefined>;
     /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
     declare public readonly deploymentType: pulumi.Output<number>;
+    /**
+     * If true, perform a dry-run of the Edge stack deployment without applying changes.
+     */
     declare public readonly dryrun: pulumi.Output<boolean | undefined>;
+    /**
+     * List of Portainer Edge group IDs to which this Edge stack is deployed.
+     */
     declare public readonly edgeGroups: pulumi.Output<number[]>;
     declare public readonly edgeStackId: pulumi.Output<string>;
     /**
      * Environment variables for the Edge Stack
      */
     declare public readonly environment: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Path to the Compose or manifest file within the Git repository. Changing this value forces resource recreation.
+     */
     declare public readonly filePathInRepository: pulumi.Output<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
     declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether authentication is required to clone the Git repository.
+     */
     declare public readonly gitRepositoryAuthentication: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of the Portainer Edge stack.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Whether Portainer should pre-pull images on Edge agents before deploying the stack.
+     */
     declare public readonly prePullImage: pulumi.Output<boolean | undefined>;
     /**
      * Whether to force pull latest images during stack update (default: true)
      */
     declare public readonly pullImage: pulumi.Output<boolean | undefined>;
+    /**
+     * List of Portainer registry IDs used to pull images for this Edge stack.
+     */
     declare public readonly registries: pulumi.Output<number[] | undefined>;
     /**
      * Enable relative path volumes – also used as value for 'filesystemPath'.
@@ -70,19 +91,46 @@ export class EdgeStack extends pulumi.CustomResource {
      * ID of the Git credentials to use for authentication.
      */
     declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as sensitive value. Changing this value forces resource recreation.
+     */
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
+    /**
+     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     */
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
+    /**
+     * Git repository URL containing the Edge stack definition. Changing this value forces resource recreation.
+     */
     declare public readonly repositoryUrl: pulumi.Output<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository. Changing this value forces resource recreation.
+     */
     declare public readonly repositoryUsername: pulumi.Output<string | undefined>;
+    /**
+     * Whether the Edge agent should retry deployment on failure.
+     */
     declare public readonly retryDeploy: pulumi.Output<boolean | undefined>;
+    /**
+     * Inline content of the Docker Compose or Kubernetes manifest used to deploy the Edge stack.
+     */
     declare public readonly stackFileContent: pulumi.Output<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file used as the Edge stack definition. Changing this value forces resource recreation.
+     */
     declare public readonly stackFilePath: pulumi.Output<string | undefined>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
     declare public readonly stackWebhook: pulumi.Output<boolean | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.EdgeStackTimeouts | undefined>;
+    /**
+     * GitOps update interval (e.g. "5m") at which Portainer polls the Git repository for Edge stack changes.
+     */
     declare public readonly updateInterval: pulumi.Output<string | undefined>;
+    /**
+     * For Kubernetes deployments, whether to use namespaces declared inside the manifest instead of the default Portainer namespace.
+     */
     declare public readonly useManifestNamespaces: pulumi.Output<boolean | undefined>;
     /**
      * UUID of the GitOps webhook (read-only).
@@ -183,63 +231,111 @@ export class EdgeStack extends pulumi.CustomResource {
  */
 export interface EdgeStackState {
     /**
-     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath " pulumi-lang-hcl=" relative_path "> relativePath </span>is set.
      */
-    alwaysClone?: pulumi.Input<boolean>;
+    alwaysClone?: pulumi.Input<boolean | undefined>;
     /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
-    deploymentType?: pulumi.Input<number>;
-    dryrun?: pulumi.Input<boolean>;
-    edgeGroups?: pulumi.Input<pulumi.Input<number>[]>;
-    edgeStackId?: pulumi.Input<string>;
+    deploymentType?: pulumi.Input<number | undefined>;
+    /**
+     * If true, perform a dry-run of the Edge stack deployment without applying changes.
+     */
+    dryrun?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of Portainer Edge group IDs to which this Edge stack is deployed.
+     */
+    edgeGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    edgeStackId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables for the Edge Stack
      */
-    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    filePathInRepository?: pulumi.Input<string>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Path to the Compose or manifest file within the Git repository. Changing this value forces resource recreation.
+     */
+    filePathInRepository?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
-    forceUpdate?: pulumi.Input<boolean>;
-    gitRepositoryAuthentication?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    prePullImage?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether authentication is required to clone the Git repository.
+     */
+    gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the Portainer Edge stack.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Portainer should pre-pull images on Edge agents before deploying the stack.
+     */
+    prePullImage?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force pull latest images during stack update (default: true)
      */
-    pullImage?: pulumi.Input<boolean>;
-    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    pullImage?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of Portainer registry IDs used to pull images for this Edge stack.
+     */
+    registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable relative path volumes – also used as value for 'filesystemPath'.
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * ID of the Git credentials to use for authentication.
      */
-    repositoryGitCredentialId?: pulumi.Input<number>;
-    repositoryPassword?: pulumi.Input<string>;
-    repositoryReferenceName?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
-    retryDeploy?: pulumi.Input<boolean>;
-    stackFileContent?: pulumi.Input<string>;
-    stackFilePath?: pulumi.Input<string>;
+    repositoryGitCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as sensitive value. Changing this value forces resource recreation.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     */
+    repositoryReferenceName?: pulumi.Input<string | undefined>;
+    /**
+     * Git repository URL containing the Edge stack definition. Changing this value forces resource recreation.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository. Changing this value forces resource recreation.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Edge agent should retry deployment on failure.
+     */
+    retryDeploy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Inline content of the Docker Compose or Kubernetes manifest used to deploy the Edge stack.
+     */
+    stackFileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file used as the Edge stack definition. Changing this value forces resource recreation.
+     */
+    stackFilePath?: pulumi.Input<string | undefined>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
-    stackWebhook?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts>;
-    updateInterval?: pulumi.Input<string>;
-    useManifestNamespaces?: pulumi.Input<boolean>;
+    stackWebhook?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts | undefined>;
+    /**
+     * GitOps update interval (e.g. "5m") at which Portainer polls the Git repository for Edge stack changes.
+     */
+    updateInterval?: pulumi.Input<string | undefined>;
+    /**
+     * For Kubernetes deployments, whether to use namespaces declared inside the manifest instead of the default Portainer namespace.
+     */
+    useManifestNamespaces?: pulumi.Input<boolean | undefined>;
     /**
      * UUID of the GitOps webhook (read-only).
      */
-    webhookId?: pulumi.Input<string>;
+    webhookId?: pulumi.Input<string | undefined>;
     /**
      * Full URL of the webhook trigger
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -247,53 +343,101 @@ export interface EdgeStackState {
  */
 export interface EdgeStackArgs {
     /**
-     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath "> relative_path </span>is set.
+     * Whether the agent must always clone the git repository for relative path. Only valid when<span pulumi-lang-nodejs=" relativePath " pulumi-lang-dotnet=" RelativePath " pulumi-lang-go=" relativePath " pulumi-lang-python=" relative_path " pulumi-lang-yaml=" relativePath " pulumi-lang-java=" relativePath " pulumi-lang-hcl=" relative_path "> relativePath </span>is set.
      */
-    alwaysClone?: pulumi.Input<boolean>;
+    alwaysClone?: pulumi.Input<boolean | undefined>;
     /**
      * 0 = Docker Compose, 1 = Kubernetes
      */
     deploymentType: pulumi.Input<number>;
-    dryrun?: pulumi.Input<boolean>;
+    /**
+     * If true, perform a dry-run of the Edge stack deployment without applying changes.
+     */
+    dryrun?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of Portainer Edge group IDs to which this Edge stack is deployed.
+     */
     edgeGroups: pulumi.Input<pulumi.Input<number>[]>;
-    edgeStackId?: pulumi.Input<string>;
+    edgeStackId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables for the Edge Stack
      */
-    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    filePathInRepository?: pulumi.Input<string>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Path to the Compose or manifest file within the Git repository. Changing this value forces resource recreation.
+     */
+    filePathInRepository?: pulumi.Input<string | undefined>;
     /**
      * Whether to prune unused services/networks during stack update (default: true)
      */
-    forceUpdate?: pulumi.Input<boolean>;
-    gitRepositoryAuthentication?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    prePullImage?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether authentication is required to clone the Git repository.
+     */
+    gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the Portainer Edge stack.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Portainer should pre-pull images on Edge agents before deploying the stack.
+     */
+    prePullImage?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force pull latest images during stack update (default: true)
      */
-    pullImage?: pulumi.Input<boolean>;
-    registries?: pulumi.Input<pulumi.Input<number>[]>;
+    pullImage?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of Portainer registry IDs used to pull images for this Edge stack.
+     */
+    registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable relative path volumes – also used as value for 'filesystemPath'.
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * ID of the Git credentials to use for authentication.
      */
-    repositoryGitCredentialId?: pulumi.Input<number>;
-    repositoryPassword?: pulumi.Input<string>;
-    repositoryReferenceName?: pulumi.Input<string>;
-    repositoryUrl?: pulumi.Input<string>;
-    repositoryUsername?: pulumi.Input<string>;
-    retryDeploy?: pulumi.Input<boolean>;
-    stackFileContent?: pulumi.Input<string>;
-    stackFilePath?: pulumi.Input<string>;
+    repositoryGitCredentialId?: pulumi.Input<number | undefined>;
+    /**
+     * Password or personal access token used to authenticate against the Git repository. Stored in state as sensitive value. Changing this value forces resource recreation.
+     */
+    repositoryPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     */
+    repositoryReferenceName?: pulumi.Input<string | undefined>;
+    /**
+     * Git repository URL containing the Edge stack definition. Changing this value forces resource recreation.
+     */
+    repositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the Git repository. Changing this value forces resource recreation.
+     */
+    repositoryUsername?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Edge agent should retry deployment on failure.
+     */
+    retryDeploy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Inline content of the Docker Compose or Kubernetes manifest used to deploy the Edge stack.
+     */
+    stackFileContent?: pulumi.Input<string | undefined>;
+    /**
+     * Local filesystem path to a Compose or manifest file used as the Edge stack definition. Changing this value forces resource recreation.
+     */
+    stackFilePath?: pulumi.Input<string | undefined>;
     /**
      * Enable autoUpdate webhook (GitOps).
      */
-    stackWebhook?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts>;
-    updateInterval?: pulumi.Input<string>;
-    useManifestNamespaces?: pulumi.Input<boolean>;
+    stackWebhook?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.EdgeStackTimeouts | undefined>;
+    /**
+     * GitOps update interval (e.g. "5m") at which Portainer polls the Git repository for Edge stack changes.
+     */
+    updateInterval?: pulumi.Input<string | undefined>;
+    /**
+     * For Kubernetes deployments, whether to use namespaces declared inside the manifest instead of the default Portainer namespace.
+     */
+    useManifestNamespaces?: pulumi.Input<boolean | undefined>;
 }

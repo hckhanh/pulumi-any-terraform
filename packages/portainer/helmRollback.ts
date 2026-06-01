@@ -124,40 +124,40 @@ export interface HelmRollbackState {
     /**
      * Environment (Endpoint) identifier
      */
-    endpointId?: pulumi.Input<number>;
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * Force resource update through delete/recreate if needed
      */
-    force?: pulumi.Input<boolean>;
-    helmRollbackId?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean | undefined>;
+    helmRollbackId?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes namespace of the release
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Perform pods restart for the resource if applicable
      */
-    recreate?: pulumi.Input<boolean>;
+    recreate?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Helm release to rollback
      */
-    releaseName?: pulumi.Input<string>;
+    releaseName?: pulumi.Input<string | undefined>;
     /**
      * Revision number to rollback to (defaults to previous revision if not specified)
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * Time to wait for any individual Kubernetes operation in seconds
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Wait for resources to be ready
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * Wait for jobs to complete before marking the release as successful
      */
-    waitForJobs?: pulumi.Input<boolean>;
+    waitForJobs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -171,16 +171,16 @@ export interface HelmRollbackArgs {
     /**
      * Force resource update through delete/recreate if needed
      */
-    force?: pulumi.Input<boolean>;
-    helmRollbackId?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean | undefined>;
+    helmRollbackId?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes namespace of the release
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Perform pods restart for the resource if applicable
      */
-    recreate?: pulumi.Input<boolean>;
+    recreate?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Helm release to rollback
      */
@@ -188,17 +188,17 @@ export interface HelmRollbackArgs {
     /**
      * Revision number to rollback to (defaults to previous revision if not specified)
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * Time to wait for any individual Kubernetes operation in seconds
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Wait for resources to be ready
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * Wait for jobs to complete before marking the release as successful
      */
-    waitForJobs?: pulumi.Input<boolean>;
+    waitForJobs?: pulumi.Input<boolean | undefined>;
 }

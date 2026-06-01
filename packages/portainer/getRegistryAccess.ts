@@ -53,8 +53,8 @@ export function getRegistryAccessOutput(args: GetRegistryAccessOutputArgs, opts?
  */
 export interface GetRegistryAccessOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     registryId: pulumi.Input<number>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    teamId?: pulumi.Input<number | undefined>;
+    userId?: pulumi.Input<number | undefined>;
 }

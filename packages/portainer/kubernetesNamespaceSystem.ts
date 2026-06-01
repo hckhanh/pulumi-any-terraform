@@ -32,9 +32,18 @@ export class KubernetesNamespaceSystem extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesNamespaceSystem.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment owning the namespace.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesNamespaceSystemId: pulumi.Output<string>;
+    /**
+     * Name of the Kubernetes namespace whose system flag is being toggled.
+     */
     declare public readonly namespace: pulumi.Output<string>;
+    /**
+     * Whether the namespace should be marked as a Portainer system namespace.
+     */
     declare public readonly system: pulumi.Output<boolean>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesNamespaceSystem extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesNamespaceSystem resources.
  */
 export interface KubernetesNamespaceSystemState {
-    environmentId?: pulumi.Input<number>;
-    kubernetesNamespaceSystemId?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    system?: pulumi.Input<boolean>;
+    /**
+     * Identifier of the Portainer Kubernetes environment owning the namespace.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesNamespaceSystemId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Kubernetes namespace whose system flag is being toggled.
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the namespace should be marked as a Portainer system namespace.
+     */
+    system?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesNamespaceSystem resource.
  */
 export interface KubernetesNamespaceSystemArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment owning the namespace.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesNamespaceSystemId?: pulumi.Input<string>;
+    kubernetesNamespaceSystemId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Kubernetes namespace whose system flag is being toggled.
+     */
     namespace: pulumi.Input<string>;
+    /**
+     * Whether the namespace should be marked as a Portainer system namespace.
+     */
     system: pulumi.Input<boolean>;
 }

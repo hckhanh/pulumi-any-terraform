@@ -35,11 +35,17 @@ export class Deploy extends pulumi.CustomResource {
     }
 
     declare public readonly deployId: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to deploy/update.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     /**
      * If true, call Portainer forceupdateservice endpoint for each updated service (after optional wait).
      */
     declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
+    /**
+     * Human-readable summary of the deployment actions performed by the provider.
+     */
     declare public /*out*/ readonly output: pulumi.Output<string>;
     /**
      * Target image tag/revision to set on services and optionally on stack ENV in stack_env_var.
@@ -53,14 +59,17 @@ export class Deploy extends pulumi.CustomResource {
      * Name of stack environment variable to update.
      */
     declare public readonly stackEnvVar: pulumi.Output<string>;
+    /**
+     * Name of the Portainer stack whose services are being deployed.
+     */
     declare public readonly stackName: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.DeployTimeouts | undefined>;
     /**
-     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
+     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar " pulumi-lang-hcl=" stack_env_var "> stackEnvVar </span>to the provided revision.
      */
     declare public readonly updateRevision: pulumi.Output<boolean | undefined>;
     /**
-     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate "> force_update </span>= true).
+     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate " pulumi-lang-hcl=" force_update "> forceUpdate </span>= true).
      */
     declare public readonly wait: pulumi.Output<number | undefined>;
 
@@ -126,47 +135,59 @@ export class Deploy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Deploy resources.
  */
 export interface DeployState {
-    deployId?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
+    deployId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to deploy/update.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * If true, call Portainer forceupdateservice endpoint for each updated service (after optional wait).
      */
-    forceUpdate?: pulumi.Input<boolean>;
-    output?: pulumi.Input<string>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Human-readable summary of the deployment actions performed by the provider.
+     */
+    output?: pulumi.Input<string | undefined>;
     /**
      * Target image tag/revision to set on services and optionally on stack ENV in stack_env_var.
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of service names (without stack prefix).
      */
-    servicesList?: pulumi.Input<string>;
+    servicesList?: pulumi.Input<string | undefined>;
     /**
      * Name of stack environment variable to update.
      */
-    stackEnvVar?: pulumi.Input<string>;
-    stackName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DeployTimeouts>;
+    stackEnvVar?: pulumi.Input<string | undefined>;
     /**
-     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
+     * Name of the Portainer stack whose services are being deployed.
      */
-    updateRevision?: pulumi.Input<boolean>;
+    stackName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DeployTimeouts | undefined>;
     /**
-     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate "> force_update </span>= true).
+     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar " pulumi-lang-hcl=" stack_env_var "> stackEnvVar </span>to the provided revision.
      */
-    wait?: pulumi.Input<number>;
+    updateRevision?: pulumi.Input<boolean | undefined>;
+    /**
+     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate " pulumi-lang-hcl=" force_update "> forceUpdate </span>= true).
+     */
+    wait?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Deploy resource.
  */
 export interface DeployArgs {
-    deployId?: pulumi.Input<string>;
+    deployId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the stack to deploy/update.
+     */
     endpointId: pulumi.Input<number>;
     /**
      * If true, call Portainer forceupdateservice endpoint for each updated service (after optional wait).
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Target image tag/revision to set on services and optionally on stack ENV in stack_env_var.
      */
@@ -179,14 +200,17 @@ export interface DeployArgs {
      * Name of stack environment variable to update.
      */
     stackEnvVar: pulumi.Input<string>;
+    /**
+     * Name of the Portainer stack whose services are being deployed.
+     */
     stackName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DeployTimeouts>;
+    timeouts?: pulumi.Input<inputs.DeployTimeouts | undefined>;
     /**
-     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar "> stack_env_var </span>to the provided revision.
+     * If true, also update stack ENV variable in<span pulumi-lang-nodejs=" stackEnvVar " pulumi-lang-dotnet=" StackEnvVar " pulumi-lang-go=" stackEnvVar " pulumi-lang-python=" stack_env_var " pulumi-lang-yaml=" stackEnvVar " pulumi-lang-java=" stackEnvVar " pulumi-lang-hcl=" stack_env_var "> stackEnvVar </span>to the provided revision.
      */
-    updateRevision?: pulumi.Input<boolean>;
+    updateRevision?: pulumi.Input<boolean | undefined>;
     /**
-     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate "> force_update </span>= true).
+     * Seconds to wait before force-updating a service (only when<span pulumi-lang-nodejs=" forceUpdate " pulumi-lang-dotnet=" ForceUpdate " pulumi-lang-go=" forceUpdate " pulumi-lang-python=" force_update " pulumi-lang-yaml=" forceUpdate " pulumi-lang-java=" forceUpdate " pulumi-lang-hcl=" force_update "> forceUpdate </span>= true).
      */
-    wait?: pulumi.Input<number>;
+    wait?: pulumi.Input<number | undefined>;
 }

@@ -46,6 +46,6 @@ export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.Invok
  */
 export interface GetWebhookOutputArgs {
     endpointId: pulumi.Input<number>;
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     resourceId: pulumi.Input<string>;
 }

@@ -32,11 +32,26 @@ export class KubernetesNamespace extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesNamespace.__pulumiType;
     }
 
+    /**
+     * Map of annotations applied to the Kubernetes namespace.
+     */
     declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the namespace is created.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesNamespaceId: pulumi.Output<string>;
+    /**
+     * Name of the Kubernetes namespace (metadata.name).
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Owner label assigned to the namespace in Portainer.
+     */
     declare public readonly owner: pulumi.Output<string | undefined>;
+    /**
+     * Resource quota limits applied to the namespace (e.g. cpu, memory limits and requests).
+     */
     declare public readonly resourceQuota: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -79,22 +94,52 @@ export class KubernetesNamespace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesNamespace resources.
  */
 export interface KubernetesNamespaceState {
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    environmentId?: pulumi.Input<number>;
-    kubernetesNamespaceId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
-    resourceQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map of annotations applied to the Kubernetes namespace.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the namespace is created.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesNamespaceId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Kubernetes namespace (metadata.name).
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Owner label assigned to the namespace in Portainer.
+     */
+    owner?: pulumi.Input<string | undefined>;
+    /**
+     * Resource quota limits applied to the namespace (e.g. cpu, memory limits and requests).
+     */
+    resourceQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesNamespace resource.
  */
 export interface KubernetesNamespaceArgs {
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map of annotations applied to the Kubernetes namespace.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the namespace is created.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesNamespaceId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
-    resourceQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kubernetesNamespaceId?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Kubernetes namespace (metadata.name).
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Owner label assigned to the namespace in Portainer.
+     */
+    owner?: pulumi.Input<string | undefined>;
+    /**
+     * Resource quota limits applied to the namespace (e.g. cpu, memory limits and requests).
+     */
+    resourceQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

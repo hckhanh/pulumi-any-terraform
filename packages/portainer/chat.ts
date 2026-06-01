@@ -33,11 +33,29 @@ export class Chat extends pulumi.CustomResource {
     }
 
     declare public readonly chatId: pulumi.Output<string>;
+    /**
+     * Conversation context identifier passed to the Portainer chat assistant.
+     */
     declare public readonly context: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer environment the chat request is scoped to.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
+    /**
+     * User prompt sent to the Portainer chat assistant.
+     */
     declare public readonly message: pulumi.Output<string>;
+    /**
+     * AI model name used to generate the chat response (defaults to `gpt-3.5-turbo`).
+     */
     declare public readonly model: pulumi.Output<string | undefined>;
+    /**
+     * Textual response returned by the Portainer chat assistant.
+     */
     declare public /*out*/ readonly responseMessage: pulumi.Output<string>;
+    /**
+     * YAML manifest extracted from the chat response, when applicable.
+     */
     declare public /*out*/ readonly responseYaml: pulumi.Output<string>;
 
     /**
@@ -88,22 +106,52 @@ export class Chat extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Chat resources.
  */
 export interface ChatState {
-    chatId?: pulumi.Input<string>;
-    context?: pulumi.Input<string>;
-    environmentId?: pulumi.Input<number>;
-    message?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
-    responseMessage?: pulumi.Input<string>;
-    responseYaml?: pulumi.Input<string>;
+    chatId?: pulumi.Input<string | undefined>;
+    /**
+     * Conversation context identifier passed to the Portainer chat assistant.
+     */
+    context?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer environment the chat request is scoped to.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    /**
+     * User prompt sent to the Portainer chat assistant.
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * AI model name used to generate the chat response (defaults to `gpt-3.5-turbo`).
+     */
+    model?: pulumi.Input<string | undefined>;
+    /**
+     * Textual response returned by the Portainer chat assistant.
+     */
+    responseMessage?: pulumi.Input<string | undefined>;
+    /**
+     * YAML manifest extracted from the chat response, when applicable.
+     */
+    responseYaml?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Chat resource.
  */
 export interface ChatArgs {
-    chatId?: pulumi.Input<string>;
+    chatId?: pulumi.Input<string | undefined>;
+    /**
+     * Conversation context identifier passed to the Portainer chat assistant.
+     */
     context: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer environment the chat request is scoped to.
+     */
     environmentId: pulumi.Input<number>;
+    /**
+     * User prompt sent to the Portainer chat assistant.
+     */
     message: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
+    /**
+     * AI model name used to generate the chat response (defaults to `gpt-3.5-turbo`).
+     */
+    model?: pulumi.Input<string | undefined>;
 }

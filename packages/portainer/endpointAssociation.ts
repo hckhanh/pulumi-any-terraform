@@ -70,18 +70,18 @@ export class EndpointAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointAssociation resources.
  */
 export interface EndpointAssociationState {
-    endpointAssociationId?: pulumi.Input<string>;
+    endpointAssociationId?: pulumi.Input<string | undefined>;
     /**
      * Environment (Endpoint) identifier to de-associate
      */
-    endpointId?: pulumi.Input<number>;
+    endpointId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointAssociation resource.
  */
 export interface EndpointAssociationArgs {
-    endpointAssociationId?: pulumi.Input<string>;
+    endpointAssociationId?: pulumi.Input<string | undefined>;
     /**
      * Environment (Endpoint) identifier to de-associate
      */

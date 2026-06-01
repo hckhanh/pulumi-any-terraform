@@ -73,8 +73,8 @@ export interface SupportDebugLogState {
     /**
      * Enable or disable the global debug log
      */
-    enabled?: pulumi.Input<boolean>;
-    supportDebugLogId?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    supportDebugLogId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -85,5 +85,5 @@ export interface SupportDebugLogArgs {
      * Enable or disable the global debug log
      */
     enabled: pulumi.Input<boolean>;
-    supportDebugLogId?: pulumi.Input<string>;
+    supportDebugLogId?: pulumi.Input<string | undefined>;
 }

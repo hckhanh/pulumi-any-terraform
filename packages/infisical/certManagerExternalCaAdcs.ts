@@ -41,10 +41,6 @@ export class CertManagerExternalCaAdcs extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The slug of the cert-manager project
-     */
-    declare public readonly projectSlug: pulumi.Output<string>;
-    /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
     declare public readonly status: pulumi.Output<string>;
@@ -64,19 +60,14 @@ export class CertManagerExternalCaAdcs extends pulumi.CustomResource {
             const state = argsOrState as CertManagerExternalCaAdcsState | undefined;
             resourceInputs["azureAdcsConnectionId"] = state?.azureAdcsConnectionId;
             resourceInputs["name"] = state?.name;
-            resourceInputs["projectSlug"] = state?.projectSlug;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CertManagerExternalCaAdcsArgs | undefined;
             if (args?.azureAdcsConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'azureAdcsConnectionId'");
             }
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
             resourceInputs["azureAdcsConnectionId"] = args?.azureAdcsConnectionId;
             resourceInputs["name"] = args?.name;
-            resourceInputs["projectSlug"] = args?.projectSlug;
             resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -97,10 +88,6 @@ export interface CertManagerExternalCaAdcsState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The slug of the cert-manager project
-     */
-    projectSlug?: pulumi.Input<string | undefined>;
-    /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */
     status?: pulumi.Input<string | undefined>;
@@ -118,10 +105,6 @@ export interface CertManagerExternalCaAdcsArgs {
      * The name of the ADCS CA
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug: pulumi.Input<string>;
     /**
      * The status of the CA. Supported values: active, disabled. Defaults to 'active'.
      */

@@ -150,21 +150,6 @@ export const getSourceGroup: typeof import("./getSourceGroup").getSourceGroup = 
 export const getSourceGroupOutput: typeof import("./getSourceGroup").getSourceGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getSourceGroup","getSourceGroupOutput"], () => require("./getSourceGroup"));
 
-export { GetWarehouseEmbeddingArgs, GetWarehouseEmbeddingResult, GetWarehouseEmbeddingOutputArgs } from "./getWarehouseEmbedding";
-export const getWarehouseEmbedding: typeof import("./getWarehouseEmbedding").getWarehouseEmbedding = null as any;
-export const getWarehouseEmbeddingOutput: typeof import("./getWarehouseEmbedding").getWarehouseEmbeddingOutput = null as any;
-utilities.lazyLoad(exports, ["getWarehouseEmbedding","getWarehouseEmbeddingOutput"], () => require("./getWarehouseEmbedding"));
-
-export { GetWarehouseSourceArgs, GetWarehouseSourceResult, GetWarehouseSourceOutputArgs } from "./getWarehouseSource";
-export const getWarehouseSource: typeof import("./getWarehouseSource").getWarehouseSource = null as any;
-export const getWarehouseSourceOutput: typeof import("./getWarehouseSource").getWarehouseSourceOutput = null as any;
-utilities.lazyLoad(exports, ["getWarehouseSource","getWarehouseSourceOutput"], () => require("./getWarehouseSource"));
-
-export { GetWarehouseSourceGroupArgs, GetWarehouseSourceGroupResult, GetWarehouseSourceGroupOutputArgs } from "./getWarehouseSourceGroup";
-export const getWarehouseSourceGroup: typeof import("./getWarehouseSourceGroup").getWarehouseSourceGroup = null as any;
-export const getWarehouseSourceGroupOutput: typeof import("./getWarehouseSourceGroup").getWarehouseSourceGroupOutput = null as any;
-utilities.lazyLoad(exports, ["getWarehouseSourceGroup","getWarehouseSourceGroupOutput"], () => require("./getWarehouseSourceGroup"));
-
 export { MetricArgs, MetricState } from "./metric";
 export type Metric = import("./metric").Metric;
 export const Metric: typeof import("./metric").Metric = null as any;
@@ -182,26 +167,6 @@ export { SourceGroupArgs, SourceGroupState } from "./sourceGroup";
 export type SourceGroup = import("./sourceGroup").SourceGroup;
 export const SourceGroup: typeof import("./sourceGroup").SourceGroup = null as any;
 utilities.lazyLoad(exports, ["SourceGroup"], () => require("./sourceGroup"));
-
-export { WarehouseEmbeddingArgs, WarehouseEmbeddingState } from "./warehouseEmbedding";
-export type WarehouseEmbedding = import("./warehouseEmbedding").WarehouseEmbedding;
-export const WarehouseEmbedding: typeof import("./warehouseEmbedding").WarehouseEmbedding = null as any;
-utilities.lazyLoad(exports, ["WarehouseEmbedding"], () => require("./warehouseEmbedding"));
-
-export { WarehouseSourceArgs, WarehouseSourceState } from "./warehouseSource";
-export type WarehouseSource = import("./warehouseSource").WarehouseSource;
-export const WarehouseSource: typeof import("./warehouseSource").WarehouseSource = null as any;
-utilities.lazyLoad(exports, ["WarehouseSource"], () => require("./warehouseSource"));
-
-export { WarehouseSourceGroupArgs, WarehouseSourceGroupState } from "./warehouseSourceGroup";
-export type WarehouseSourceGroup = import("./warehouseSourceGroup").WarehouseSourceGroup;
-export const WarehouseSourceGroup: typeof import("./warehouseSourceGroup").WarehouseSourceGroup = null as any;
-utilities.lazyLoad(exports, ["WarehouseSourceGroup"], () => require("./warehouseSourceGroup"));
-
-export { WarehouseTimeSeriesArgs, WarehouseTimeSeriesState } from "./warehouseTimeSeries";
-export type WarehouseTimeSeries = import("./warehouseTimeSeries").WarehouseTimeSeries;
-export const WarehouseTimeSeries: typeof import("./warehouseTimeSeries").WarehouseTimeSeries = null as any;
-utilities.lazyLoad(exports, ["WarehouseTimeSeries"], () => require("./warehouseTimeSeries"));
 
 
 // Export sub-modules:
@@ -249,14 +214,6 @@ const _module = {
                 return new Source(name, <any>undefined, { urn })
             case "logtail:index/sourceGroup:SourceGroup":
                 return new SourceGroup(name, <any>undefined, { urn })
-            case "logtail:index/warehouseEmbedding:WarehouseEmbedding":
-                return new WarehouseEmbedding(name, <any>undefined, { urn })
-            case "logtail:index/warehouseSource:WarehouseSource":
-                return new WarehouseSource(name, <any>undefined, { urn })
-            case "logtail:index/warehouseSourceGroup:WarehouseSourceGroup":
-                return new WarehouseSourceGroup(name, <any>undefined, { urn })
-            case "logtail:index/warehouseTimeSeries:WarehouseTimeSeries":
-                return new WarehouseTimeSeries(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -278,10 +235,6 @@ pulumi.runtime.registerResourceModule("logtail", "index/explorationGroup", _modu
 pulumi.runtime.registerResourceModule("logtail", "index/metric", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/source", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceGroup", _module)
-pulumi.runtime.registerResourceModule("logtail", "index/warehouseEmbedding", _module)
-pulumi.runtime.registerResourceModule("logtail", "index/warehouseSource", _module)
-pulumi.runtime.registerResourceModule("logtail", "index/warehouseSourceGroup", _module)
-pulumi.runtime.registerResourceModule("logtail", "index/warehouseTimeSeries", _module)
 pulumi.runtime.registerResourcePackage("logtail", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

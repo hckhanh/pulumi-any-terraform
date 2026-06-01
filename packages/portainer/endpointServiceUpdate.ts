@@ -32,9 +32,18 @@ export class EndpointServiceUpdate extends pulumi.CustomResource {
         return obj['__pulumiType'] === EndpointServiceUpdate.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer endpoint hosting the Swarm service to force-update.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly endpointServiceUpdateId: pulumi.Output<string>;
+    /**
+     * Whether Portainer should pull the latest image when force-updating the service.
+     */
     declare public readonly pullImage: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of the Swarm service that should be force-updated.
+     */
     declare public readonly serviceName: pulumi.Output<string>;
 
     /**
@@ -76,18 +85,36 @@ export class EndpointServiceUpdate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointServiceUpdate resources.
  */
 export interface EndpointServiceUpdateState {
-    endpointId?: pulumi.Input<number>;
-    endpointServiceUpdateId?: pulumi.Input<string>;
-    pullImage?: pulumi.Input<boolean>;
-    serviceName?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer endpoint hosting the Swarm service to force-update.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    endpointServiceUpdateId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Portainer should pull the latest image when force-updating the service.
+     */
+    pullImage?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the Swarm service that should be force-updated.
+     */
+    serviceName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EndpointServiceUpdate resource.
  */
 export interface EndpointServiceUpdateArgs {
+    /**
+     * Identifier of the Portainer endpoint hosting the Swarm service to force-update.
+     */
     endpointId: pulumi.Input<number>;
-    endpointServiceUpdateId?: pulumi.Input<string>;
-    pullImage?: pulumi.Input<boolean>;
+    endpointServiceUpdateId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Portainer should pull the latest image when force-updating the service.
+     */
+    pullImage?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the Swarm service that should be force-updated.
+     */
     serviceName: pulumi.Input<string>;
 }

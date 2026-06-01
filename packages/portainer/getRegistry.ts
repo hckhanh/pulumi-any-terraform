@@ -41,6 +41,6 @@ export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRegistry.
  */
 export interface GetRegistryOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }

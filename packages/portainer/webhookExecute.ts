@@ -67,10 +67,12 @@ export class WebhookExecute extends pulumi.CustomResource {
             const args = argsOrState as WebhookExecuteArgs | undefined;
             resourceInputs["edgeStackId"] = args?.edgeStackId;
             resourceInputs["stackId"] = args?.stackId;
-            resourceInputs["token"] = args?.token;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["webhookExecuteId"] = args?.webhookExecuteId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WebhookExecute.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
 }
@@ -82,16 +84,16 @@ export interface WebhookExecuteState {
     /**
      * Edge Stack ID for triggering edge stack GitOps update
      */
-    edgeStackId?: pulumi.Input<string>;
+    edgeStackId?: pulumi.Input<string | undefined>;
     /**
      * Stack ID for triggering stack GitOps update
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Webhook token for service restart webhook
      */
-    token?: pulumi.Input<string>;
-    webhookExecuteId?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
+    webhookExecuteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -101,14 +103,14 @@ export interface WebhookExecuteArgs {
     /**
      * Edge Stack ID for triggering edge stack GitOps update
      */
-    edgeStackId?: pulumi.Input<string>;
+    edgeStackId?: pulumi.Input<string | undefined>;
     /**
      * Stack ID for triggering stack GitOps update
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Webhook token for service restart webhook
      */
-    token?: pulumi.Input<string>;
-    webhookExecuteId?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
+    webhookExecuteId?: pulumi.Input<string | undefined>;
 }

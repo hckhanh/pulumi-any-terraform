@@ -32,13 +32,34 @@ export class EdgeConfigurations extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeConfigurations.__pulumiType;
     }
 
+    /**
+     * Base directory on edge agents where the configuration files are written.
+     */
     declare public readonly baseDir: pulumi.Output<string | undefined>;
+    /**
+     * Category of the edge configuration. One of <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`" pulumi-lang-hcl="`configuration`">`configuration`</span>, <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`" pulumi-lang-hcl="`secret`">`secret`</span>, or empty string.
+     */
     declare public readonly category: pulumi.Output<string | undefined>;
     declare public readonly edgeConfigurationsId: pulumi.Output<string>;
+    /**
+     * List of edge group identifiers that should receive this configuration.
+     */
     declare public readonly edgeGroupIds: pulumi.Output<number[]>;
+    /**
+     * Path on the local filesystem to the file or archive uploaded as the edge configuration payload.
+     */
     declare public readonly filePath: pulumi.Output<string>;
+    /**
+     * SHA256 hash of the uploaded edge configuration file used to detect content changes.
+     */
     declare public /*out*/ readonly fileSha256: pulumi.Output<string>;
+    /**
+     * Name of the Portainer edge configuration.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Edge configuration type. Accepts the textual form <span pulumi-lang-nodejs="`general`" pulumi-lang-dotnet="`General`" pulumi-lang-go="`general`" pulumi-lang-python="`general`" pulumi-lang-yaml="`general`" pulumi-lang-java="`general`" pulumi-lang-hcl="`general`">`general`</span> or the numeric form <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span>.
+     */
     declare public readonly type: pulumi.Output<string>;
 
     /**
@@ -91,25 +112,64 @@ export class EdgeConfigurations extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeConfigurations resources.
  */
 export interface EdgeConfigurationsState {
-    baseDir?: pulumi.Input<string>;
-    category?: pulumi.Input<string>;
-    edgeConfigurationsId?: pulumi.Input<string>;
-    edgeGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
-    filePath?: pulumi.Input<string>;
-    fileSha256?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    /**
+     * Base directory on edge agents where the configuration files are written.
+     */
+    baseDir?: pulumi.Input<string | undefined>;
+    /**
+     * Category of the edge configuration. One of <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`" pulumi-lang-hcl="`configuration`">`configuration`</span>, <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`" pulumi-lang-hcl="`secret`">`secret`</span>, or empty string.
+     */
+    category?: pulumi.Input<string | undefined>;
+    edgeConfigurationsId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge group identifiers that should receive this configuration.
+     */
+    edgeGroupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Path on the local filesystem to the file or archive uploaded as the edge configuration payload.
+     */
+    filePath?: pulumi.Input<string | undefined>;
+    /**
+     * SHA256 hash of the uploaded edge configuration file used to detect content changes.
+     */
+    fileSha256?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Portainer edge configuration.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Edge configuration type. Accepts the textual form <span pulumi-lang-nodejs="`general`" pulumi-lang-dotnet="`General`" pulumi-lang-go="`general`" pulumi-lang-python="`general`" pulumi-lang-yaml="`general`" pulumi-lang-java="`general`" pulumi-lang-hcl="`general`">`general`</span> or the numeric form <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span>.
+     */
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EdgeConfigurations resource.
  */
 export interface EdgeConfigurationsArgs {
-    baseDir?: pulumi.Input<string>;
-    category?: pulumi.Input<string>;
-    edgeConfigurationsId?: pulumi.Input<string>;
+    /**
+     * Base directory on edge agents where the configuration files are written.
+     */
+    baseDir?: pulumi.Input<string | undefined>;
+    /**
+     * Category of the edge configuration. One of <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`" pulumi-lang-hcl="`configuration`">`configuration`</span>, <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`" pulumi-lang-hcl="`secret`">`secret`</span>, or empty string.
+     */
+    category?: pulumi.Input<string | undefined>;
+    edgeConfigurationsId?: pulumi.Input<string | undefined>;
+    /**
+     * List of edge group identifiers that should receive this configuration.
+     */
     edgeGroupIds: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Path on the local filesystem to the file or archive uploaded as the edge configuration payload.
+     */
     filePath: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    /**
+     * Name of the Portainer edge configuration.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Edge configuration type. Accepts the textual form <span pulumi-lang-nodejs="`general`" pulumi-lang-dotnet="`General`" pulumi-lang-go="`general`" pulumi-lang-python="`general`" pulumi-lang-yaml="`general`" pulumi-lang-java="`general`" pulumi-lang-hcl="`general`">`general`</span> or the numeric form <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span>.
+     */
     type: pulumi.Input<string>;
 }

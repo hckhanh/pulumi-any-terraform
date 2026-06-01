@@ -32,13 +32,37 @@ export class OpenAmt extends pulumi.CustomResource {
         return obj['__pulumiType'] === OpenAmt.__pulumiType;
     }
 
+    /**
+     * Sensitive base64-encoded content of the OpenAMT provisioning certificate file.
+     */
     declare public readonly certFileContent: pulumi.Output<string>;
+    /**
+     * File name of the OpenAMT provisioning certificate.
+     */
     declare public readonly certFileName: pulumi.Output<string>;
+    /**
+     * Sensitive password protecting the OpenAMT provisioning certificate.
+     */
     declare public readonly certFilePassword: pulumi.Output<string>;
+    /**
+     * Domain name configured for OpenAMT provisioning.
+     */
     declare public readonly domainName: pulumi.Output<string>;
+    /**
+     * Whether the OpenAMT integration is enabled in Portainer.
+     */
     declare public readonly enabled: pulumi.Output<boolean>;
+    /**
+     * Sensitive password used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
     declare public readonly mpspassword: pulumi.Output<string>;
+    /**
+     * Hostname or URL of the OpenAMT MPS (Management Presence Server).
+     */
     declare public readonly mpsserver: pulumi.Output<string>;
+    /**
+     * Username used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
     declare public readonly mpsuser: pulumi.Output<string>;
     declare public readonly openAmtId: pulumi.Output<string>;
 
@@ -111,28 +135,76 @@ export class OpenAmt extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpenAmt resources.
  */
 export interface OpenAmtState {
-    certFileContent?: pulumi.Input<string>;
-    certFileName?: pulumi.Input<string>;
-    certFilePassword?: pulumi.Input<string>;
-    domainName?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    mpspassword?: pulumi.Input<string>;
-    mpsserver?: pulumi.Input<string>;
-    mpsuser?: pulumi.Input<string>;
-    openAmtId?: pulumi.Input<string>;
+    /**
+     * Sensitive base64-encoded content of the OpenAMT provisioning certificate file.
+     */
+    certFileContent?: pulumi.Input<string | undefined>;
+    /**
+     * File name of the OpenAMT provisioning certificate.
+     */
+    certFileName?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive password protecting the OpenAMT provisioning certificate.
+     */
+    certFilePassword?: pulumi.Input<string | undefined>;
+    /**
+     * Domain name configured for OpenAMT provisioning.
+     */
+    domainName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the OpenAMT integration is enabled in Portainer.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sensitive password used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
+    mpspassword?: pulumi.Input<string | undefined>;
+    /**
+     * Hostname or URL of the OpenAMT MPS (Management Presence Server).
+     */
+    mpsserver?: pulumi.Input<string | undefined>;
+    /**
+     * Username used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
+    mpsuser?: pulumi.Input<string | undefined>;
+    openAmtId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a OpenAmt resource.
  */
 export interface OpenAmtArgs {
+    /**
+     * Sensitive base64-encoded content of the OpenAMT provisioning certificate file.
+     */
     certFileContent: pulumi.Input<string>;
+    /**
+     * File name of the OpenAMT provisioning certificate.
+     */
     certFileName: pulumi.Input<string>;
+    /**
+     * Sensitive password protecting the OpenAMT provisioning certificate.
+     */
     certFilePassword: pulumi.Input<string>;
+    /**
+     * Domain name configured for OpenAMT provisioning.
+     */
     domainName: pulumi.Input<string>;
+    /**
+     * Whether the OpenAMT integration is enabled in Portainer.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Sensitive password used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
     mpspassword: pulumi.Input<string>;
+    /**
+     * Hostname or URL of the OpenAMT MPS (Management Presence Server).
+     */
     mpsserver: pulumi.Input<string>;
+    /**
+     * Username used to authenticate against the OpenAMT MPS (Management Presence Server).
+     */
     mpsuser: pulumi.Input<string>;
-    openAmtId?: pulumi.Input<string>;
+    openAmtId?: pulumi.Input<string | undefined>;
 }

@@ -32,9 +32,18 @@ export class KubernetesRolebinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesRolebinding.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the RoleBinding is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesRolebindingId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes RoleBinding.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the RoleBinding is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesRolebinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesRolebinding resources.
  */
 export interface KubernetesRolebindingState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesRolebindingId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the RoleBinding is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesRolebindingId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes RoleBinding.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the RoleBinding is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesRolebinding resource.
  */
 export interface KubernetesRolebindingArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the RoleBinding is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesRolebindingId?: pulumi.Input<string>;
+    kubernetesRolebindingId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes RoleBinding.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the RoleBinding is created.
+     */
     namespace: pulumi.Input<string>;
 }

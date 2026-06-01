@@ -34,31 +34,106 @@ export class Settings extends pulumi.CustomResource {
         return obj['__pulumiType'] === Settings.__pulumiType;
     }
 
+    /**
+     * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
+     */
     declare public readonly authenticationMethod: pulumi.Output<number>;
+    /**
+     * List of container labels that Portainer should hide from the UI.
+     */
     declare public readonly blackListedLabels: pulumi.Output<outputs.SettingsBlackListedLabel[] | undefined>;
+    /**
+     * Whether automatic synchronization of Kubernetes roles is disabled.
+     */
     declare public readonly disableKubeRolesSync: pulumi.Output<boolean>;
+    /**
+     * Whether the in-browser Kubernetes shell is disabled for users.
+     */
     declare public readonly disableKubeShell: pulumi.Output<boolean>;
+    /**
+     * Whether downloading kubeconfig files from the Portainer UI is disabled.
+     */
     declare public readonly disableKubeconfigDownload: pulumi.Output<boolean>;
+    /**
+     * Whether the donation header banner is shown in the Portainer UI.
+     */
     declare public readonly displayDonationHeader: pulumi.Output<boolean>;
+    /**
+     * Whether external contributors are displayed in the Portainer UI.
+     */
     declare public readonly displayExternalContributors: pulumi.Output<boolean>;
+    /**
+     * Heartbeat interval (in seconds) used by edge agents to poll Portainer.
+     */
     declare public readonly edgeAgentCheckinInterval: pulumi.Output<number>;
+    /**
+     * Public URL of the Portainer instance that edge agents use to reach back for polling and tunneling.
+     */
     declare public readonly edgePortainerUrl: pulumi.Output<string>;
+    /**
+     * Whether Edge Compute features (edge agents, edge stacks, edge jobs) are enabled.
+     */
     declare public readonly enableEdgeComputeFeatures: pulumi.Output<boolean>;
+    /**
+     * Whether anonymous usage telemetry is sent to Portainer.
+     */
     declare public readonly enableTelemetry: pulumi.Output<boolean>;
+    /**
+     * Whether Portainer enforces a matching edge identifier when an edge agent connects.
+     */
     declare public readonly enforceEdgeId: pulumi.Output<boolean>;
+    /**
+     * Global deployment options applied across environments.
+     */
     declare public readonly globalDeploymentOptions: pulumi.Output<outputs.SettingsGlobalDeploymentOptions | undefined>;
+    /**
+     * Global Helm repository URL used by Portainer for chart browsing.
+     */
     declare public readonly helmRepositoryUrl: pulumi.Output<string>;
+    /**
+     * Settings for Portainer's internal authentication provider, such as the password policy.
+     */
     declare public readonly internalAuthSettings: pulumi.Output<outputs.SettingsInternalAuthSettings | undefined>;
+    /**
+     * Whether this Portainer instance runs as a Docker Desktop extension.
+     */
     declare public readonly isDockerDesktopExtension: pulumi.Output<boolean>;
+    /**
+     * Validity period of kubeconfig files generated for users (e.g. "24h", "0" for never).
+     */
     declare public readonly kubeconfigExpiry: pulumi.Output<string>;
+    /**
+     * Container image used for the in-browser kubectl shell.
+     */
     declare public readonly kubectlShellImage: pulumi.Output<string>;
+    /**
+     * Configuration for the LDAP authentication provider.
+     */
     declare public readonly ldapSettings: pulumi.Output<outputs.SettingsLdapSettings | undefined>;
+    /**
+     * URL of a custom logo displayed in the Portainer UI.
+     */
     declare public readonly logoUrl: pulumi.Output<string>;
+    /**
+     * Configuration for the OAuth authentication provider.
+     */
     declare public readonly oauthSettings: pulumi.Output<outputs.SettingsOauthSettings | undefined>;
     declare public readonly settingsId: pulumi.Output<string>;
+    /**
+     * Interval at which Portainer snapshots endpoints (e.g. "5m", "1h").
+     */
     declare public readonly snapshotInterval: pulumi.Output<string>;
+    /**
+     * URL of the JSON file with application templates used by the Portainer UI.
+     */
     declare public readonly templatesUrl: pulumi.Output<string>;
+    /**
+     * Whether edge agents are automatically trusted on their first connection.
+     */
     declare public readonly trustOnFirstConnect: pulumi.Output<boolean>;
+    /**
+     * Duration after which an idle user session expires (e.g. "8h").
+     */
     declare public readonly userSessionTimeout: pulumi.Output<string>;
 
     /**
@@ -138,62 +213,212 @@ export class Settings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Settings resources.
  */
 export interface SettingsState {
-    authenticationMethod?: pulumi.Input<number>;
-    blackListedLabels?: pulumi.Input<pulumi.Input<inputs.SettingsBlackListedLabel>[]>;
-    disableKubeRolesSync?: pulumi.Input<boolean>;
-    disableKubeShell?: pulumi.Input<boolean>;
-    disableKubeconfigDownload?: pulumi.Input<boolean>;
-    displayDonationHeader?: pulumi.Input<boolean>;
-    displayExternalContributors?: pulumi.Input<boolean>;
-    edgeAgentCheckinInterval?: pulumi.Input<number>;
-    edgePortainerUrl?: pulumi.Input<string>;
-    enableEdgeComputeFeatures?: pulumi.Input<boolean>;
-    enableTelemetry?: pulumi.Input<boolean>;
-    enforceEdgeId?: pulumi.Input<boolean>;
-    globalDeploymentOptions?: pulumi.Input<inputs.SettingsGlobalDeploymentOptions>;
-    helmRepositoryUrl?: pulumi.Input<string>;
-    internalAuthSettings?: pulumi.Input<inputs.SettingsInternalAuthSettings>;
-    isDockerDesktopExtension?: pulumi.Input<boolean>;
-    kubeconfigExpiry?: pulumi.Input<string>;
-    kubectlShellImage?: pulumi.Input<string>;
-    ldapSettings?: pulumi.Input<inputs.SettingsLdapSettings>;
-    logoUrl?: pulumi.Input<string>;
-    oauthSettings?: pulumi.Input<inputs.SettingsOauthSettings>;
-    settingsId?: pulumi.Input<string>;
-    snapshotInterval?: pulumi.Input<string>;
-    templatesUrl?: pulumi.Input<string>;
-    trustOnFirstConnect?: pulumi.Input<boolean>;
-    userSessionTimeout?: pulumi.Input<string>;
+    /**
+     * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
+     */
+    authenticationMethod?: pulumi.Input<number | undefined>;
+    /**
+     * List of container labels that Portainer should hide from the UI.
+     */
+    blackListedLabels?: pulumi.Input<pulumi.Input<inputs.SettingsBlackListedLabel>[] | undefined>;
+    /**
+     * Whether automatic synchronization of Kubernetes roles is disabled.
+     */
+    disableKubeRolesSync?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the in-browser Kubernetes shell is disabled for users.
+     */
+    disableKubeShell?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether downloading kubeconfig files from the Portainer UI is disabled.
+     */
+    disableKubeconfigDownload?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the donation header banner is shown in the Portainer UI.
+     */
+    displayDonationHeader?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether external contributors are displayed in the Portainer UI.
+     */
+    displayExternalContributors?: pulumi.Input<boolean | undefined>;
+    /**
+     * Heartbeat interval (in seconds) used by edge agents to poll Portainer.
+     */
+    edgeAgentCheckinInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Public URL of the Portainer instance that edge agents use to reach back for polling and tunneling.
+     */
+    edgePortainerUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Edge Compute features (edge agents, edge stacks, edge jobs) are enabled.
+     */
+    enableEdgeComputeFeatures?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether anonymous usage telemetry is sent to Portainer.
+     */
+    enableTelemetry?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer enforces a matching edge identifier when an edge agent connects.
+     */
+    enforceEdgeId?: pulumi.Input<boolean | undefined>;
+    /**
+     * Global deployment options applied across environments.
+     */
+    globalDeploymentOptions?: pulumi.Input<inputs.SettingsGlobalDeploymentOptions | undefined>;
+    /**
+     * Global Helm repository URL used by Portainer for chart browsing.
+     */
+    helmRepositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Settings for Portainer's internal authentication provider, such as the password policy.
+     */
+    internalAuthSettings?: pulumi.Input<inputs.SettingsInternalAuthSettings | undefined>;
+    /**
+     * Whether this Portainer instance runs as a Docker Desktop extension.
+     */
+    isDockerDesktopExtension?: pulumi.Input<boolean | undefined>;
+    /**
+     * Validity period of kubeconfig files generated for users (e.g. "24h", "0" for never).
+     */
+    kubeconfigExpiry?: pulumi.Input<string | undefined>;
+    /**
+     * Container image used for the in-browser kubectl shell.
+     */
+    kubectlShellImage?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the LDAP authentication provider.
+     */
+    ldapSettings?: pulumi.Input<inputs.SettingsLdapSettings | undefined>;
+    /**
+     * URL of a custom logo displayed in the Portainer UI.
+     */
+    logoUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the OAuth authentication provider.
+     */
+    oauthSettings?: pulumi.Input<inputs.SettingsOauthSettings | undefined>;
+    settingsId?: pulumi.Input<string | undefined>;
+    /**
+     * Interval at which Portainer snapshots endpoints (e.g. "5m", "1h").
+     */
+    snapshotInterval?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the JSON file with application templates used by the Portainer UI.
+     */
+    templatesUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether edge agents are automatically trusted on their first connection.
+     */
+    trustOnFirstConnect?: pulumi.Input<boolean | undefined>;
+    /**
+     * Duration after which an idle user session expires (e.g. "8h").
+     */
+    userSessionTimeout?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Settings resource.
  */
 export interface SettingsArgs {
-    authenticationMethod?: pulumi.Input<number>;
-    blackListedLabels?: pulumi.Input<pulumi.Input<inputs.SettingsBlackListedLabel>[]>;
-    disableKubeRolesSync?: pulumi.Input<boolean>;
-    disableKubeShell?: pulumi.Input<boolean>;
-    disableKubeconfigDownload?: pulumi.Input<boolean>;
-    displayDonationHeader?: pulumi.Input<boolean>;
-    displayExternalContributors?: pulumi.Input<boolean>;
-    edgeAgentCheckinInterval?: pulumi.Input<number>;
-    edgePortainerUrl?: pulumi.Input<string>;
-    enableEdgeComputeFeatures?: pulumi.Input<boolean>;
-    enableTelemetry?: pulumi.Input<boolean>;
-    enforceEdgeId?: pulumi.Input<boolean>;
-    globalDeploymentOptions?: pulumi.Input<inputs.SettingsGlobalDeploymentOptions>;
-    helmRepositoryUrl?: pulumi.Input<string>;
-    internalAuthSettings?: pulumi.Input<inputs.SettingsInternalAuthSettings>;
-    isDockerDesktopExtension?: pulumi.Input<boolean>;
-    kubeconfigExpiry?: pulumi.Input<string>;
-    kubectlShellImage?: pulumi.Input<string>;
-    ldapSettings?: pulumi.Input<inputs.SettingsLdapSettings>;
-    logoUrl?: pulumi.Input<string>;
-    oauthSettings?: pulumi.Input<inputs.SettingsOauthSettings>;
-    settingsId?: pulumi.Input<string>;
-    snapshotInterval?: pulumi.Input<string>;
-    templatesUrl?: pulumi.Input<string>;
-    trustOnFirstConnect?: pulumi.Input<boolean>;
-    userSessionTimeout?: pulumi.Input<string>;
+    /**
+     * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
+     */
+    authenticationMethod?: pulumi.Input<number | undefined>;
+    /**
+     * List of container labels that Portainer should hide from the UI.
+     */
+    blackListedLabels?: pulumi.Input<pulumi.Input<inputs.SettingsBlackListedLabel>[] | undefined>;
+    /**
+     * Whether automatic synchronization of Kubernetes roles is disabled.
+     */
+    disableKubeRolesSync?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the in-browser Kubernetes shell is disabled for users.
+     */
+    disableKubeShell?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether downloading kubeconfig files from the Portainer UI is disabled.
+     */
+    disableKubeconfigDownload?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the donation header banner is shown in the Portainer UI.
+     */
+    displayDonationHeader?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether external contributors are displayed in the Portainer UI.
+     */
+    displayExternalContributors?: pulumi.Input<boolean | undefined>;
+    /**
+     * Heartbeat interval (in seconds) used by edge agents to poll Portainer.
+     */
+    edgeAgentCheckinInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Public URL of the Portainer instance that edge agents use to reach back for polling and tunneling.
+     */
+    edgePortainerUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Edge Compute features (edge agents, edge stacks, edge jobs) are enabled.
+     */
+    enableEdgeComputeFeatures?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether anonymous usage telemetry is sent to Portainer.
+     */
+    enableTelemetry?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Portainer enforces a matching edge identifier when an edge agent connects.
+     */
+    enforceEdgeId?: pulumi.Input<boolean | undefined>;
+    /**
+     * Global deployment options applied across environments.
+     */
+    globalDeploymentOptions?: pulumi.Input<inputs.SettingsGlobalDeploymentOptions | undefined>;
+    /**
+     * Global Helm repository URL used by Portainer for chart browsing.
+     */
+    helmRepositoryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Settings for Portainer's internal authentication provider, such as the password policy.
+     */
+    internalAuthSettings?: pulumi.Input<inputs.SettingsInternalAuthSettings | undefined>;
+    /**
+     * Whether this Portainer instance runs as a Docker Desktop extension.
+     */
+    isDockerDesktopExtension?: pulumi.Input<boolean | undefined>;
+    /**
+     * Validity period of kubeconfig files generated for users (e.g. "24h", "0" for never).
+     */
+    kubeconfigExpiry?: pulumi.Input<string | undefined>;
+    /**
+     * Container image used for the in-browser kubectl shell.
+     */
+    kubectlShellImage?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the LDAP authentication provider.
+     */
+    ldapSettings?: pulumi.Input<inputs.SettingsLdapSettings | undefined>;
+    /**
+     * URL of a custom logo displayed in the Portainer UI.
+     */
+    logoUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the OAuth authentication provider.
+     */
+    oauthSettings?: pulumi.Input<inputs.SettingsOauthSettings | undefined>;
+    settingsId?: pulumi.Input<string | undefined>;
+    /**
+     * Interval at which Portainer snapshots endpoints (e.g. "5m", "1h").
+     */
+    snapshotInterval?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the JSON file with application templates used by the Portainer UI.
+     */
+    templatesUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Whether edge agents are automatically trusted on their first connection.
+     */
+    trustOnFirstConnect?: pulumi.Input<boolean | undefined>;
+    /**
+     * Duration after which an idle user session expires (e.g. "8h").
+     */
+    userSessionTimeout?: pulumi.Input<string | undefined>;
 }

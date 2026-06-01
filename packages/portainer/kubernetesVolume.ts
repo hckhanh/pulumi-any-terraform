@@ -32,10 +32,22 @@ export class KubernetesVolume extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesVolume.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the volume resource is managed.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesVolumeId: pulumi.Output<string>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes volume resource to deploy.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace for namespaced volume resources (required for `persistent-volume-claim`).
+     */
     declare public readonly namespace: pulumi.Output<string | undefined>;
+    /**
+     * Type of Kubernetes volume resource: `persistent-volume-claim`, `persistent-volume`, or `volume-attachment`.
+     */
     declare public readonly type: pulumi.Output<string>;
 
     /**
@@ -82,20 +94,44 @@ export class KubernetesVolume extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesVolume resources.
  */
 export interface KubernetesVolumeState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesVolumeId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the volume resource is managed.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesVolumeId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes volume resource to deploy.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace for namespaced volume resources (required for `persistent-volume-claim`).
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * Type of Kubernetes volume resource: `persistent-volume-claim`, `persistent-volume`, or `volume-attachment`.
+     */
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesVolume resource.
  */
 export interface KubernetesVolumeArgs {
+    /**
+     * Identifier of the Portainer Kubernetes endpoint where the volume resource is managed.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesVolumeId?: pulumi.Input<string>;
+    kubernetesVolumeId?: pulumi.Input<string | undefined>;
+    /**
+     * YAML or JSON manifest describing the Kubernetes volume resource to deploy.
+     */
     manifest: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace for namespaced volume resources (required for `persistent-volume-claim`).
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * Type of Kubernetes volume resource: `persistent-volume-claim`, `persistent-volume`, or `volume-attachment`.
+     */
     type: pulumi.Input<string>;
 }

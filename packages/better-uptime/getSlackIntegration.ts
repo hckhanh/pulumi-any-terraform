@@ -24,6 +24,7 @@ export interface GetSlackIntegrationArgs {
 export interface GetSlackIntegrationResult {
     readonly id: string;
     readonly integrationType: string;
+    readonly notifyAlongsidePrimaryResponder: boolean;
     readonly onCallNotifications: boolean;
     readonly slackChannelId: string;
     readonly slackChannelName: string;

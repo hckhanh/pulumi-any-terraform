@@ -32,6 +32,9 @@ export class Team extends pulumi.CustomResource {
         return obj['__pulumiType'] === Team.__pulumiType;
     }
 
+    /**
+     * Name of the Portainer team. Must be unique within the Portainer instance.
+     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly teamId: pulumi.Output<string>;
 
@@ -64,14 +67,20 @@ export class Team extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Team resources.
  */
 export interface TeamState {
-    name?: pulumi.Input<string>;
-    teamId?: pulumi.Input<string>;
+    /**
+     * Name of the Portainer team. Must be unique within the Portainer instance.
+     */
+    name?: pulumi.Input<string | undefined>;
+    teamId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Team resource.
  */
 export interface TeamArgs {
-    name?: pulumi.Input<string>;
-    teamId?: pulumi.Input<string>;
+    /**
+     * Name of the Portainer team. Must be unique within the Portainer instance.
+     */
+    name?: pulumi.Input<string | undefined>;
+    teamId?: pulumi.Input<string | undefined>;
 }

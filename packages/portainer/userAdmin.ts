@@ -87,16 +87,16 @@ export interface UserAdminState {
     /**
      * Whether the admin user has been initialized via this resource.
      */
-    initialized?: pulumi.Input<boolean>;
+    initialized?: pulumi.Input<boolean | undefined>;
     /**
      * Password for the admin account. Only used during initial bootstrap.
      */
-    password?: pulumi.Input<string>;
-    userAdminId?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    userAdminId?: pulumi.Input<string | undefined>;
     /**
      * Username of the admin account to initialize (defaults to 'admin').
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -107,9 +107,9 @@ export interface UserAdminArgs {
      * Password for the admin account. Only used during initial bootstrap.
      */
     password: pulumi.Input<string>;
-    userAdminId?: pulumi.Input<string>;
+    userAdminId?: pulumi.Input<string | undefined>;
     /**
      * Username of the admin account to initialize (defaults to 'admin').
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

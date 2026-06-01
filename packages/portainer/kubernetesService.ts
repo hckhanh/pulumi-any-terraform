@@ -32,9 +32,18 @@ export class KubernetesService extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesService.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Service is managed. Changing this value forces resource recreation.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly kubernetesServiceId: pulumi.Output<string>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Service.
+     */
     declare public readonly manifest: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Service is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
 
     /**
@@ -79,18 +88,36 @@ export class KubernetesService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesService resources.
  */
 export interface KubernetesServiceState {
-    endpointId?: pulumi.Input<number>;
-    kubernetesServiceId?: pulumi.Input<string>;
-    manifest?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Service is managed. Changing this value forces resource recreation.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    kubernetesServiceId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Service.
+     */
+    manifest?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Service is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesService resource.
  */
 export interface KubernetesServiceArgs {
+    /**
+     * Identifier of the Portainer Kubernetes environment (endpoint) where the Service is managed. Changing this value forces resource recreation.
+     */
     endpointId: pulumi.Input<number>;
-    kubernetesServiceId?: pulumi.Input<string>;
+    kubernetesServiceId?: pulumi.Input<string | undefined>;
+    /**
+     * Raw YAML or JSON manifest defining the Kubernetes Service.
+     */
     manifest: pulumi.Input<string>;
+    /**
+     * Kubernetes namespace in which the Service is created.
+     */
     namespace: pulumi.Input<string>;
 }

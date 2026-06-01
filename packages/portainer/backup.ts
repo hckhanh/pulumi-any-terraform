@@ -37,6 +37,9 @@ export class Backup extends pulumi.CustomResource {
      * Path on local disk where the backup .tar.gz should be saved
      */
     declare public readonly outputPath: pulumi.Output<string>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive.
+     */
     declare public readonly password: pulumi.Output<string>;
 
     /**
@@ -78,22 +81,28 @@ export class Backup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Backup resources.
  */
 export interface BackupState {
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Path on local disk where the backup .tar.gz should be saved
      */
-    outputPath?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
+    outputPath?: pulumi.Input<string | undefined>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive.
+     */
+    password?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Path on local disk where the backup .tar.gz should be saved
      */
     outputPath: pulumi.Input<string>;
+    /**
+     * Sensitive password used to encrypt the Portainer backup archive.
+     */
     password: pulumi.Input<string>;
 }

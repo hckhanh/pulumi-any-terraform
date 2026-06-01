@@ -34,17 +34,35 @@ export class ContainerExec extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContainerExec.__pulumiType;
     }
 
+    /**
+     * Shell command to execute inside the target container.
+     */
     declare public readonly command: pulumi.Output<string>;
     declare public readonly containerExecId: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer endpoint hosting the container or Swarm service.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     /**
      * Deployment mode: 'standalone' (default) or 'swarm'
      */
     declare public readonly mode: pulumi.Output<string | undefined>;
+    /**
+     * Standard output captured from the executed command.
+     */
     declare public /*out*/ readonly output: pulumi.Output<string>;
+    /**
+     * Name of the container (standalone) or Swarm service in which the command should be executed.
+     */
     declare public readonly serviceName: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.ContainerExecTimeouts | undefined>;
+    /**
+     * User and optional group used to run the command inside the container (defaults to `root:root`).
+     */
     declare public readonly user: pulumi.Output<string | undefined>;
+    /**
+     * Initial delay in seconds before executing the command.
+     */
     declare public readonly wait: pulumi.Output<number | undefined>;
 
     /**
@@ -99,33 +117,66 @@ export class ContainerExec extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerExec resources.
  */
 export interface ContainerExecState {
-    command?: pulumi.Input<string>;
-    containerExecId?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
+    /**
+     * Shell command to execute inside the target container.
+     */
+    command?: pulumi.Input<string | undefined>;
+    containerExecId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the container or Swarm service.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
     /**
      * Deployment mode: 'standalone' (default) or 'swarm'
      */
-    mode?: pulumi.Input<string>;
-    output?: pulumi.Input<string>;
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts>;
-    user?: pulumi.Input<string>;
-    wait?: pulumi.Input<number>;
+    mode?: pulumi.Input<string | undefined>;
+    /**
+     * Standard output captured from the executed command.
+     */
+    output?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the container (standalone) or Swarm service in which the command should be executed.
+     */
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts | undefined>;
+    /**
+     * User and optional group used to run the command inside the container (defaults to `root:root`).
+     */
+    user?: pulumi.Input<string | undefined>;
+    /**
+     * Initial delay in seconds before executing the command.
+     */
+    wait?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ContainerExec resource.
  */
 export interface ContainerExecArgs {
+    /**
+     * Shell command to execute inside the target container.
+     */
     command: pulumi.Input<string>;
-    containerExecId?: pulumi.Input<string>;
+    containerExecId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer endpoint hosting the container or Swarm service.
+     */
     endpointId: pulumi.Input<number>;
     /**
      * Deployment mode: 'standalone' (default) or 'swarm'
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the container (standalone) or Swarm service in which the command should be executed.
+     */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts>;
-    user?: pulumi.Input<string>;
-    wait?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.ContainerExecTimeouts | undefined>;
+    /**
+     * User and optional group used to run the command inside the container (defaults to `root:root`).
+     */
+    user?: pulumi.Input<string | undefined>;
+    /**
+     * Initial delay in seconds before executing the command.
+     */
+    wait?: pulumi.Input<number | undefined>;
 }

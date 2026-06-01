@@ -32,12 +32,30 @@ export class DockerConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === DockerConfig.__pulumiType;
     }
 
+    /**
+     * Base64-encoded config payload stored in the Docker Swarm config.
+     */
     declare public readonly data: pulumi.Output<string>;
     declare public readonly dockerConfigId: pulumi.Output<string>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the config is created.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
+    /**
+     * Key/value labels attached to the Docker Swarm config.
+     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of the Docker Swarm config.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * ID of the Portainer resource control associated with this Docker Swarm config.
+     */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
+    /**
+     * Templating driver configuration applied to the config payload at runtime.
+     */
     declare public readonly templating: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -87,23 +105,56 @@ export class DockerConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DockerConfig resources.
  */
 export interface DockerConfigState {
-    data?: pulumi.Input<string>;
-    dockerConfigId?: pulumi.Input<string>;
-    endpointId?: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    resourceControlId?: pulumi.Input<number>;
-    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Base64-encoded config payload stored in the Docker Swarm config.
+     */
+    data?: pulumi.Input<string | undefined>;
+    dockerConfigId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the config is created.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    /**
+     * Key/value labels attached to the Docker Swarm config.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker Swarm config.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer resource control associated with this Docker Swarm config.
+     */
+    resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * Templating driver configuration applied to the config payload at runtime.
+     */
+    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DockerConfig resource.
  */
 export interface DockerConfigArgs {
+    /**
+     * Base64-encoded config payload stored in the Docker Swarm config.
+     */
     data: pulumi.Input<string>;
-    dockerConfigId?: pulumi.Input<string>;
+    dockerConfigId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the Portainer environment (Docker Swarm) where the config is created.
+     */
     endpointId: pulumi.Input<number>;
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Key/value labels attached to the Docker Swarm config.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Docker Swarm config.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Templating driver configuration applied to the config payload at runtime.
+     */
+    templating?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

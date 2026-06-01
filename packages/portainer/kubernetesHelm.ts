@@ -34,13 +34,31 @@ export class KubernetesHelm extends pulumi.CustomResource {
         return obj['__pulumiType'] === KubernetesHelm.__pulumiType;
     }
 
+    /**
+     * Name of the Helm chart to install.
+     */
     declare public readonly chart: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Helm chart is installed.
+     */
     declare public readonly environmentId: pulumi.Output<number>;
     declare public readonly kubernetesHelmId: pulumi.Output<string>;
+    /**
+     * Helm release name used to install the chart.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace in which the Helm release is created.
+     */
     declare public readonly namespace: pulumi.Output<string>;
+    /**
+     * URL of the Helm chart repository hosting the chart.
+     */
     declare public readonly repo: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.KubernetesHelmTimeouts | undefined>;
+    /**
+     * Optional Helm values document (YAML) used to customise the release.
+     */
     declare public readonly values: pulumi.Output<string | undefined>;
 
     /**
@@ -96,26 +114,62 @@ export class KubernetesHelm extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesHelm resources.
  */
 export interface KubernetesHelmState {
-    chart?: pulumi.Input<string>;
-    environmentId?: pulumi.Input<number>;
-    kubernetesHelmId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts>;
-    values?: pulumi.Input<string>;
+    /**
+     * Name of the Helm chart to install.
+     */
+    chart?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Helm chart is installed.
+     */
+    environmentId?: pulumi.Input<number | undefined>;
+    kubernetesHelmId?: pulumi.Input<string | undefined>;
+    /**
+     * Helm release name used to install the chart.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Helm release is created.
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * URL of the Helm chart repository hosting the chart.
+     */
+    repo?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts | undefined>;
+    /**
+     * Optional Helm values document (YAML) used to customise the release.
+     */
+    values?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a KubernetesHelm resource.
  */
 export interface KubernetesHelmArgs {
+    /**
+     * Name of the Helm chart to install.
+     */
     chart: pulumi.Input<string>;
+    /**
+     * Identifier of the Portainer Kubernetes environment where the Helm chart is installed.
+     */
     environmentId: pulumi.Input<number>;
-    kubernetesHelmId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    kubernetesHelmId?: pulumi.Input<string | undefined>;
+    /**
+     * Helm release name used to install the chart.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace in which the Helm release is created.
+     */
     namespace: pulumi.Input<string>;
+    /**
+     * URL of the Helm chart repository hosting the chart.
+     */
     repo: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts>;
-    values?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KubernetesHelmTimeouts | undefined>;
+    /**
+     * Optional Helm values document (YAML) used to customise the release.
+     */
+    values?: pulumi.Input<string | undefined>;
 }

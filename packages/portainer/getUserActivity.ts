@@ -82,15 +82,15 @@ export function getUserActivityOutput(args?: GetUserActivityOutputArgs, opts?: p
  * A collection of arguments for invoking getUserActivity.
  */
 export interface GetUserActivityOutputArgs {
-    after?: pulumi.Input<number>;
-    before?: pulumi.Input<number>;
-    contexts?: pulumi.Input<pulumi.Input<string>[]>;
-    id?: pulumi.Input<string>;
-    keyword?: pulumi.Input<string>;
-    limit?: pulumi.Input<number>;
-    logType?: pulumi.Input<string>;
-    offset?: pulumi.Input<number>;
-    sortBy?: pulumi.Input<string>;
-    sortDesc?: pulumi.Input<boolean>;
-    usernames?: pulumi.Input<pulumi.Input<string>[]>;
+    after?: pulumi.Input<number | undefined>;
+    before?: pulumi.Input<number | undefined>;
+    contexts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    keyword?: pulumi.Input<string | undefined>;
+    limit?: pulumi.Input<number | undefined>;
+    logType?: pulumi.Input<string | undefined>;
+    offset?: pulumi.Input<number | undefined>;
+    sortBy?: pulumi.Input<string | undefined>;
+    sortDesc?: pulumi.Input<boolean | undefined>;
+    usernames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

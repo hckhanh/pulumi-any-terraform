@@ -65,55 +65,133 @@ export interface DockerImageTimeouts {
 }
 
 export interface DockerNetworkIpamConfig {
+    /**
+     * Auxiliary IPv4 or IPv6 addresses used by the network driver, keyed by name.
+     */
     auxiliaryAddresses?: {[key: string]: string};
+    /**
+     * Gateway IPv4 or IPv6 address for the subnet.
+     */
     gateway?: string;
+    /**
+     * Sub-range of IP addresses within the subnet from which to allocate container IPs.
+     */
     ipRange?: string;
+    /**
+     * Subnet in CIDR notation for the IPAM pool.
+     */
     subnet: string;
 }
 
 export interface DockerPluginSetting {
+    /**
+     * Human-readable description of the plugin setting.
+     */
     description?: string;
+    /**
+     * Name of the Docker plugin setting.
+     */
     name: string;
+    /**
+     * List of values assigned to the plugin setting.
+     */
     values: string[];
 }
 
 export interface DockerVolumeClusterVolumeSpec {
+    /**
+     * Access mode describing how the cluster volume may be mounted by tasks.
+     */
     accessMode?: outputs.DockerVolumeClusterVolumeSpecAccessMode;
+    /**
+     * Topology constraints describing where the cluster volume can be accessed.
+     */
     accessibilityRequirements?: outputs.DockerVolumeClusterVolumeSpecAccessibilityRequirements;
+    /**
+     * Availability of the cluster volume (active, pause, or drain).
+     */
     availability?: string;
+    /**
+     * Capacity bounds requested for the cluster volume.
+     */
     capacityRange?: outputs.DockerVolumeClusterVolumeSpecCapacityRange;
+    /**
+     * Group name used to associate related cluster volumes.
+     */
     group?: string;
+    /**
+     * Secrets passed to the CSI plugin when provisioning the cluster volume.
+     */
     secrets?: outputs.DockerVolumeClusterVolumeSpecSecret[];
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessMode {
+    /**
+     * Filesystem mount options applied when the cluster volume is attached.
+     */
     mountVolume?: {[key: string]: string};
+    /**
+     * Scope of the cluster volume access (e.g., single or multi node).
+     */
     scope?: string;
+    /**
+     * Sharing mode for the cluster volume (e.g., none, readonly, onewriter, all).
+     */
     sharing?: string;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirements {
+    /**
+     * Topologies in which the cluster volume should preferably be accessible.
+     */
     preferreds?: outputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsPreferred[];
+    /**
+     * Topologies in which the cluster volume must be accessible.
+     */
     requisites?: outputs.DockerVolumeClusterVolumeSpecAccessibilityRequirementsRequisite[];
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirementsPreferred {
+    /**
+     * First topology key/value pair describing a preferred location.
+     */
     property1?: string;
+    /**
+     * Second topology key/value pair describing a preferred location.
+     */
     property2?: string;
 }
 
 export interface DockerVolumeClusterVolumeSpecAccessibilityRequirementsRequisite {
+    /**
+     * First topology key/value pair describing a required location.
+     */
     property1?: string;
+    /**
+     * Second topology key/value pair describing a required location.
+     */
     property2?: string;
 }
 
 export interface DockerVolumeClusterVolumeSpecCapacityRange {
+    /**
+     * Maximum allowed size of the cluster volume in bytes.
+     */
     limitBytes?: number;
+    /**
+     * Minimum required size of the cluster volume in bytes.
+     */
     requiredBytes?: number;
 }
 
 export interface DockerVolumeClusterVolumeSpecSecret {
+    /**
+     * Key used by the CSI plugin to identify the secret value.
+     */
     key: string;
+    /**
+     * Name of the Docker Swarm secret providing the value.
+     */
     secret: string;
 }
 
@@ -124,32 +202,86 @@ export interface EdgeStackTimeouts {
 }
 
 export interface EndpointSettingsChangeWindow {
+    /**
+     * Whether the change window is enabled.
+     */
     enabled?: boolean;
+    /**
+     * End time of the change window in HH:MM format.
+     */
     endTime?: string;
+    /**
+     * Start time of the change window in HH:MM format.
+     */
     startTime?: string;
 }
 
 export interface EndpointSettingsDeploymentOptions {
+    /**
+     * Whether to hide the form-based add option in the deployment UI.
+     */
     hideAddWithForm?: boolean;
+    /**
+     * Whether to hide the file upload option in the deployment UI.
+     */
     hideFileUpload?: boolean;
+    /**
+     * Whether to hide the web editor option in the deployment UI.
+     */
     hideWebEditor?: boolean;
+    /**
+     * Whether to override global deployment options with these environment-specific values.
+     */
     overrideGlobalOptions?: boolean;
 }
 
 export interface EndpointSettingsGpus {
+    /**
+     * Display name of the GPU device.
+     */
     name: string;
+    /**
+     * Device identifier of the GPU as exposed to Docker.
+     */
     value: string;
 }
 
 export interface EndpointSettingsSecuritySettings {
+    /**
+     * Whether regular users may use bind mounts when deploying containers.
+     */
     allowBindMounts?: boolean;
+    /**
+     * Whether regular users may add Linux capabilities to containers.
+     */
     allowContainerCapabilities?: boolean;
+    /**
+     * Whether regular users may map host devices into containers.
+     */
     allowDeviceMapping?: boolean;
+    /**
+     * Whether regular users may use the host namespace for containers.
+     */
     allowHostNamespace?: boolean;
+    /**
+     * Whether regular users may run containers in privileged mode.
+     */
     allowPrivilegedMode?: boolean;
+    /**
+     * Whether regular users may create and manage stacks.
+     */
     allowStackManagement?: boolean;
+    /**
+     * Whether regular users may set sysctl values on containers.
+     */
     allowSysctlSetting?: boolean;
+    /**
+     * Whether regular users may browse the contents of volumes via Portainer.
+     */
     allowVolumeBrowser?: boolean;
+    /**
+     * Whether host management features (host browser, host info) are enabled in the UI.
+     */
     enableHostManagement?: boolean;
 }
 
@@ -210,39 +342,105 @@ export interface KubernetesHelmTimeouts {
 }
 
 export interface KubernetesIngresscontrollersController {
+    /**
+     * Whether the ingress controller is exposed for selection in the Portainer UI.
+     */
     availability: boolean;
+    /**
+     * Kubernetes IngressClass name associated with the controller.
+     */
     className: string;
+    /**
+     * Display name of the ingress controller in Portainer.
+     */
     name: string;
+    /**
+     * Whether Portainer should treat this entry as a newly-registered controller.
+     */
     new: boolean;
+    /**
+     * Type of the ingress controller (for example <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`" pulumi-lang-hcl="`nginx`">`nginx`</span>, <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`" pulumi-lang-hcl="`traefik`">`traefik`</span>, <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span>).
+     */
     type: string;
+    /**
+     * Whether the ingress controller is currently in use by workloads.
+     */
     used: boolean;
 }
 
 export interface KubernetesIngressesPath {
+    /**
+     * Hostname matched by this routing rule.
+     */
     host: string;
+    /**
+     * URL path matched by this routing rule.
+     */
     path: string;
+    /**
+     * Path matching strategy (`Exact`, `Prefix`, or `ImplementationSpecific`).
+     */
     pathType: string;
+    /**
+     * Port on the backend Service that traffic is forwarded to.
+     */
     port: number;
+    /**
+     * Name of the Kubernetes Service that receives traffic for this rule.
+     */
     serviceName: string;
 }
 
 export interface KubernetesIngressesTl {
+    /**
+     * List of hostnames covered by the referenced TLS secret.
+     */
     hosts?: string[];
+    /**
+     * Name of the Kubernetes Secret containing the TLS certificate and key.
+     */
     secretName?: string;
 }
 
 export interface KubernetesNamespaceIngresscontrollersController {
+    /**
+     * Whether the controller is available for selection in the namespace.
+     */
     availability: boolean;
+    /**
+     * Kubernetes IngressClass name associated with the controller.
+     */
     className: string;
+    /**
+     * Display name of the ingress controller in Portainer.
+     */
     name: string;
+    /**
+     * Whether Portainer should treat this entry as a newly-registered controller.
+     */
     new: boolean;
+    /**
+     * Type of the ingress controller (for example <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`" pulumi-lang-hcl="`nginx`">`nginx`</span>, <span pulumi-lang-nodejs="`traefik`" pulumi-lang-dotnet="`Traefik`" pulumi-lang-go="`traefik`" pulumi-lang-python="`traefik`" pulumi-lang-yaml="`traefik`" pulumi-lang-java="`traefik`" pulumi-lang-hcl="`traefik`">`traefik`</span>, <span pulumi-lang-nodejs="`custom`" pulumi-lang-dotnet="`Custom`" pulumi-lang-go="`custom`" pulumi-lang-python="`custom`" pulumi-lang-yaml="`custom`" pulumi-lang-java="`custom`" pulumi-lang-hcl="`custom`">`custom`</span>).
+     */
     type: string;
+    /**
+     * Whether the controller is currently in use by workloads in the namespace.
+     */
     used: boolean;
 }
 
 export interface LdapSettingsAdminGroupSearchSetting {
+    /**
+     * LDAP attribute used to identify group membership for admin users (e.g. <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>).
+     */
     groupAttribute: string;
+    /**
+     * Base distinguished name under which to search for admin groups.
+     */
     groupBaseDn: string;
+    /**
+     * LDAP search filter used to match admin groups (e.g. `(objectClass=groupOfNames)`).
+     */
     groupFilter: string;
 }
 
@@ -300,85 +498,235 @@ export interface LdapSettingsTlsConfig {
 }
 
 export interface SettingsBlackListedLabel {
+    /**
+     * Name of the container label to hide.
+     */
     name: string;
+    /**
+     * Value of the container label to match for hiding.
+     */
     value: string;
 }
 
 export interface SettingsGlobalDeploymentOptions {
+    /**
+     * Whether the stacks functionality is hidden from non-admin users.
+     */
     hideStacksFunctionality: boolean;
 }
 
 export interface SettingsInternalAuthSettings {
+    /**
+     * Minimum password length required for internally-managed users.
+     */
     requiredPasswordLength: number;
 }
 
 export interface SettingsLdapSettings {
+    /**
+     * Whether to bind to the LDAP server anonymously instead of using reader credentials.
+     */
     anonymousMode: boolean;
+    /**
+     * Whether Portainer automatically creates a local user record on the first LDAP login.
+     */
     autoCreateUsers: boolean;
+    /**
+     * List of LDAP group search configurations used to resolve user group memberships.
+     */
     groupSearchSettings?: outputs.SettingsLdapSettingsGroupSearchSetting[];
+    /**
+     * Password used by the LDAP reader account. Stored in state as a sensitive value.
+     */
     password: string;
+    /**
+     * Distinguished Name of the LDAP account used to perform user lookups.
+     */
     readerDn: string;
+    /**
+     * List of LDAP user search configurations applied to locate user entries.
+     */
     searchSettings?: outputs.SettingsLdapSettingsSearchSetting[];
+    /**
+     * Whether to upgrade the LDAP connection to TLS using StartTLS.
+     */
     startTls: boolean;
+    /**
+     * TLS configuration used for the LDAP connection.
+     */
     tlsConfig?: outputs.SettingsLdapSettingsTlsConfig;
+    /**
+     * URL of the LDAP server (e.g. "ldap://ldap.example.com:389").
+     */
     url: string;
 }
 
 export interface SettingsLdapSettingsGroupSearchSetting {
+    /**
+     * LDAP attribute on group entries that lists their members.
+     */
     groupAttribute: string;
+    /**
+     * Base DN under which group entries are searched.
+     */
     groupBaseDn: string;
+    /**
+     * LDAP search filter applied when looking up groups.
+     */
     groupFilter: string;
 }
 
 export interface SettingsLdapSettingsSearchSetting {
+    /**
+     * Base DN under which user entries are searched.
+     */
     baseDn: string;
+    /**
+     * LDAP search filter applied when looking up users.
+     */
     filter: string;
+    /**
+     * LDAP attribute used as the user's login name (e.g. "uid", "sAMAccountName").
+     */
     userNameAttribute: string;
 }
 
 export interface SettingsLdapSettingsTlsConfig {
+    /**
+     * Whether TLS is enabled for the LDAP connection.
+     */
     tls: boolean;
+    /**
+     * PEM-encoded CA certificate used to verify the LDAP server certificate.
+     */
     tlsCaCert: string;
+    /**
+     * PEM-encoded client certificate presented to the LDAP server.
+     */
     tlsCert: string;
+    /**
+     * PEM-encoded private key matching the client certificate.
+     */
     tlsKey: string;
+    /**
+     * Whether to skip verification of the LDAP server certificate.
+     */
     tlsSkipVerify: boolean;
 }
 
 export interface SettingsOauthSettings {
+    /**
+     * Token endpoint URL used to exchange the authorization code for an access token.
+     */
     accessTokenUri: string;
+    /**
+     * OAuth client authentication style passed to the token endpoint (0 = auto-detect, 1 = params, 2 = HTTP Basic header).
+     */
     authStyle: number;
+    /**
+     * Authorization endpoint URL of the OAuth provider.
+     */
     authorizationUri: string;
+    /**
+     * OAuth client identifier registered with the provider.
+     */
     clientId: string;
+    /**
+     * OAuth client secret. Stored in state as a sensitive value.
+     */
     clientSecret: string;
+    /**
+     * Identifier of the team that new OAuth users are added to by default. 0 means no default team.
+     */
     defaultTeamId: number;
+    /**
+     * Whether to hide the internal username/password login form when OAuth is configured.
+     */
     hideInternalAuth: boolean;
+    /**
+     * Byte-array key used to encrypt OAuth-derived Kubernetes secrets. Stored in state.
+     */
     kubeSecretKeys: number[];
+    /**
+     * URL the user is redirected to after logging out from Portainer.
+     */
     logoutUri: string;
+    /**
+     * Microsoft Entra/Azure AD tenant identifier used when the OAuth provider is Microsoft.
+     */
     microsoftTenantId: string;
+    /**
+     * Whether Portainer automatically creates a local user record on the first OAuth login.
+     */
     oauthAutoCreateUsers: boolean;
+    /**
+     * Whether Portainer automatically maps Portainer team memberships from OAuth claims.
+     */
     oauthAutoMapTeamMemberships: boolean;
+    /**
+     * Redirect URI registered with the OAuth provider; must match Portainer's callback URL.
+     */
     redirectUri: string;
+    /**
+     * Resource endpoint URL used to fetch the authenticated user's profile.
+     */
     resourceUri: string;
+    /**
+     * OAuth scopes requested from the provider (space- or comma-separated).
+     */
     scopes: string;
+    /**
+     * Whether single sign-on is enabled, redirecting users straight to the OAuth provider.
+     */
     sso: boolean;
+    /**
+     * Rules that map OAuth claims to Portainer team memberships and admin role.
+     */
     teamMemberships?: outputs.SettingsOauthSettingsTeamMemberships;
+    /**
+     * Claim used as the unique user identifier from the OAuth provider response.
+     */
     userIdentifier: string;
 }
 
 export interface SettingsOauthSettingsTeamMemberships {
+    /**
+     * Whether Portainer auto-grants admin rights to users whose claim values match the admin regex list.
+     */
     adminAutoPopulate: boolean;
+    /**
+     * List of regular expressions that, when matching a claim value, mark the user as Portainer admin.
+     */
     adminGroupClaimsRegexLists: string[];
+    /**
+     * List of mappings from OAuth claim value regexes to Portainer team IDs.
+     */
     oauthClaimMappings?: outputs.SettingsOauthSettingsTeamMembershipsOauthClaimMapping[];
+    /**
+     * Name of the OAuth claim that carries the user's group/team membership values.
+     */
     oauthClaimName: string;
 }
 
 export interface SettingsOauthSettingsTeamMembershipsOauthClaimMapping {
+    /**
+     * Regular expression matched against the OAuth claim value to trigger this mapping.
+     */
     claimValRegex: string;
+    /**
+     * Identifier of the Portainer team that matching users are added to.
+     */
     team: number;
 }
 
 export interface StackEnv {
+    /**
+     * Name of the environment variable.
+     */
     name: string;
+    /**
+     * Value of the environment variable.
+     */
     value: string;
 }
 

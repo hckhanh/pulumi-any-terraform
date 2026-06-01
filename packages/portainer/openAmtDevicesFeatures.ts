@@ -112,32 +112,32 @@ export interface OpenAmtDevicesFeaturesState {
     /**
      * ID of the AMT-managed device.
      */
-    deviceId?: pulumi.Input<number>;
+    deviceId?: pulumi.Input<number | undefined>;
     /**
      * Portainer environment (endpoint) ID.
      */
-    environmentId?: pulumi.Input<number>;
+    environmentId?: pulumi.Input<number | undefined>;
     /**
      * Enable IDER (IDE Redirection).
      */
-    ider?: pulumi.Input<boolean>;
+    ider?: pulumi.Input<boolean | undefined>;
     /**
      * Enable KVM (Keyboard/Video/Mouse).
      */
-    kvm?: pulumi.Input<boolean>;
-    openAmtDevicesFeaturesId?: pulumi.Input<string>;
+    kvm?: pulumi.Input<boolean | undefined>;
+    openAmtDevicesFeaturesId?: pulumi.Input<string | undefined>;
     /**
      * Enable redirection.
      */
-    redirection?: pulumi.Input<boolean>;
+    redirection?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SOL (Serial Over LAN).
      */
-    sol?: pulumi.Input<boolean>;
+    sol?: pulumi.Input<boolean | undefined>;
     /**
      * User consent policy (e.g., 'none', 'all', 'kvmOnly').
      */
-    userConsent?: pulumi.Input<string>;
+    userConsent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,22 +155,22 @@ export interface OpenAmtDevicesFeaturesArgs {
     /**
      * Enable IDER (IDE Redirection).
      */
-    ider?: pulumi.Input<boolean>;
+    ider?: pulumi.Input<boolean | undefined>;
     /**
      * Enable KVM (Keyboard/Video/Mouse).
      */
-    kvm?: pulumi.Input<boolean>;
-    openAmtDevicesFeaturesId?: pulumi.Input<string>;
+    kvm?: pulumi.Input<boolean | undefined>;
+    openAmtDevicesFeaturesId?: pulumi.Input<string | undefined>;
     /**
      * Enable redirection.
      */
-    redirection?: pulumi.Input<boolean>;
+    redirection?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SOL (Serial Over LAN).
      */
-    sol?: pulumi.Input<boolean>;
+    sol?: pulumi.Input<boolean | undefined>;
     /**
      * User consent policy (e.g., 'none', 'all', 'kvmOnly').
      */
-    userConsent?: pulumi.Input<string>;
+    userConsent?: pulumi.Input<string | undefined>;
 }

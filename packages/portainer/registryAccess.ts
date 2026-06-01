@@ -32,11 +32,26 @@ export class RegistryAccess extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegistryAccess.__pulumiType;
     }
 
+    /**
+     * Identifier of the Portainer endpoint to which the registry access policy applies.
+     */
     declare public readonly endpointId: pulumi.Output<number>;
     declare public readonly registryAccessId: pulumi.Output<string>;
+    /**
+     * Identifier of the Portainer registry whose access policy is being managed.
+     */
     declare public readonly registryId: pulumi.Output<number>;
+    /**
+     * Role identifier assigned to the user or team for the registry on the given endpoint.
+     */
     declare public readonly roleId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the team granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
     declare public readonly teamId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the user granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
     declare public readonly userId: pulumi.Output<number | undefined>;
 
     /**
@@ -82,22 +97,52 @@ export class RegistryAccess extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegistryAccess resources.
  */
 export interface RegistryAccessState {
-    endpointId?: pulumi.Input<number>;
-    registryAccessId?: pulumi.Input<string>;
-    registryId?: pulumi.Input<number>;
-    roleId?: pulumi.Input<number>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    /**
+     * Identifier of the Portainer endpoint to which the registry access policy applies.
+     */
+    endpointId?: pulumi.Input<number | undefined>;
+    registryAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer registry whose access policy is being managed.
+     */
+    registryId?: pulumi.Input<number | undefined>;
+    /**
+     * Role identifier assigned to the user or team for the registry on the given endpoint.
+     */
+    roleId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the team granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the user granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RegistryAccess resource.
  */
 export interface RegistryAccessArgs {
+    /**
+     * Identifier of the Portainer endpoint to which the registry access policy applies.
+     */
     endpointId: pulumi.Input<number>;
-    registryAccessId?: pulumi.Input<string>;
+    registryAccessId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the Portainer registry whose access policy is being managed.
+     */
     registryId: pulumi.Input<number>;
-    roleId?: pulumi.Input<number>;
-    teamId?: pulumi.Input<number>;
-    userId?: pulumi.Input<number>;
+    /**
+     * Role identifier assigned to the user or team for the registry on the given endpoint.
+     */
+    roleId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the team granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`" pulumi-lang-hcl="`user_id`">`userId`</span>.
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the user granted access to the registry. Mutually exclusive with <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`" pulumi-lang-hcl="`team_id`">`teamId`</span>.
+     */
+    userId?: pulumi.Input<number | undefined>;
 }

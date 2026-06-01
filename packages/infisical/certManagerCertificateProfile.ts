@@ -35,11 +35,7 @@ export class CertManagerCertificateProfile extends pulumi.CustomResource {
     }
 
     /**
-     * API configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'api')
-     */
-    declare public readonly apiConfig: pulumi.Output<outputs.CertManagerCertificateProfileApiConfig | undefined>;
-    /**
-     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType "> issuer_type </span>is 'self-signed')
+     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType " pulumi-lang-hcl=" issuer_type "> issuerType </span>is 'self-signed')
      */
     declare public readonly caId: pulumi.Output<string | undefined>;
     /**
@@ -47,21 +43,13 @@ export class CertManagerCertificateProfile extends pulumi.CustomResource {
      */
     declare public readonly certificatePolicyId: pulumi.Output<string>;
     /**
+     * Default certificate attribute values applied when issuing certificates from this profile
+     */
+    declare public readonly defaults: pulumi.Output<outputs.CertManagerCertificateProfileDefaults | undefined>;
+    /**
      * The description of the certificate profile
      */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The enrollment type for the profile. Supported values: api, est, acme
-     */
-    declare public readonly enrollmentType: pulumi.Output<string>;
-    /**
-     * EST configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'est')
-     */
-    declare public readonly estConfig: pulumi.Output<outputs.CertManagerCertificateProfileEstConfig | undefined>;
-    /**
-     * External configuration for external CA types (e.g., ADCS template name)
-     */
-    declare public readonly externalConfigs: pulumi.Output<outputs.CertManagerCertificateProfileExternalConfigs | undefined>;
     /**
      * The issuer type for the profile. Supported values: ca, self-signed. Defaults to 'ca'.
      */
@@ -70,10 +58,6 @@ export class CertManagerCertificateProfile extends pulumi.CustomResource {
      * The unique name of the certificate profile
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The slug of the cert-manager project
-     */
-    declare public readonly projectSlug: pulumi.Output<string>;
 
     /**
      * Create a CertManagerCertificateProfile resource with the given unique name, arguments, and options.
@@ -88,37 +72,23 @@ export class CertManagerCertificateProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertManagerCertificateProfileState | undefined;
-            resourceInputs["apiConfig"] = state?.apiConfig;
             resourceInputs["caId"] = state?.caId;
             resourceInputs["certificatePolicyId"] = state?.certificatePolicyId;
+            resourceInputs["defaults"] = state?.defaults;
             resourceInputs["description"] = state?.description;
-            resourceInputs["enrollmentType"] = state?.enrollmentType;
-            resourceInputs["estConfig"] = state?.estConfig;
-            resourceInputs["externalConfigs"] = state?.externalConfigs;
             resourceInputs["issuerType"] = state?.issuerType;
             resourceInputs["name"] = state?.name;
-            resourceInputs["projectSlug"] = state?.projectSlug;
         } else {
             const args = argsOrState as CertManagerCertificateProfileArgs | undefined;
             if (args?.certificatePolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificatePolicyId'");
             }
-            if (args?.enrollmentType === undefined && !opts.urn) {
-                throw new Error("Missing required property 'enrollmentType'");
-            }
-            if (args?.projectSlug === undefined && !opts.urn) {
-                throw new Error("Missing required property 'projectSlug'");
-            }
-            resourceInputs["apiConfig"] = args?.apiConfig;
             resourceInputs["caId"] = args?.caId;
             resourceInputs["certificatePolicyId"] = args?.certificatePolicyId;
+            resourceInputs["defaults"] = args?.defaults;
             resourceInputs["description"] = args?.description;
-            resourceInputs["enrollmentType"] = args?.enrollmentType;
-            resourceInputs["estConfig"] = args?.estConfig;
-            resourceInputs["externalConfigs"] = args?.externalConfigs;
             resourceInputs["issuerType"] = args?.issuerType;
             resourceInputs["name"] = args?.name;
-            resourceInputs["projectSlug"] = args?.projectSlug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CertManagerCertificateProfile.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -130,11 +100,7 @@ export class CertManagerCertificateProfile extends pulumi.CustomResource {
  */
 export interface CertManagerCertificateProfileState {
     /**
-     * API configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'api')
-     */
-    apiConfig?: pulumi.Input<inputs.CertManagerCertificateProfileApiConfig | undefined>;
-    /**
-     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType "> issuer_type </span>is 'self-signed')
+     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType " pulumi-lang-hcl=" issuer_type "> issuerType </span>is 'self-signed')
      */
     caId?: pulumi.Input<string | undefined>;
     /**
@@ -142,21 +108,13 @@ export interface CertManagerCertificateProfileState {
      */
     certificatePolicyId?: pulumi.Input<string | undefined>;
     /**
+     * Default certificate attribute values applied when issuing certificates from this profile
+     */
+    defaults?: pulumi.Input<inputs.CertManagerCertificateProfileDefaults | undefined>;
+    /**
      * The description of the certificate profile
      */
     description?: pulumi.Input<string | undefined>;
-    /**
-     * The enrollment type for the profile. Supported values: api, est, acme
-     */
-    enrollmentType?: pulumi.Input<string | undefined>;
-    /**
-     * EST configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'est')
-     */
-    estConfig?: pulumi.Input<inputs.CertManagerCertificateProfileEstConfig | undefined>;
-    /**
-     * External configuration for external CA types (e.g., ADCS template name)
-     */
-    externalConfigs?: pulumi.Input<inputs.CertManagerCertificateProfileExternalConfigs | undefined>;
     /**
      * The issuer type for the profile. Supported values: ca, self-signed. Defaults to 'ca'.
      */
@@ -165,10 +123,6 @@ export interface CertManagerCertificateProfileState {
      * The unique name of the certificate profile
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,11 +130,7 @@ export interface CertManagerCertificateProfileState {
  */
 export interface CertManagerCertificateProfileArgs {
     /**
-     * API configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'api')
-     */
-    apiConfig?: pulumi.Input<inputs.CertManagerCertificateProfileApiConfig | undefined>;
-    /**
-     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType "> issuer_type </span>is 'self-signed')
+     * The ID of the certificate authority to use (required unless<span pulumi-lang-nodejs=" issuerType " pulumi-lang-dotnet=" IssuerType " pulumi-lang-go=" issuerType " pulumi-lang-python=" issuer_type " pulumi-lang-yaml=" issuerType " pulumi-lang-java=" issuerType " pulumi-lang-hcl=" issuer_type "> issuerType </span>is 'self-signed')
      */
     caId?: pulumi.Input<string | undefined>;
     /**
@@ -188,21 +138,13 @@ export interface CertManagerCertificateProfileArgs {
      */
     certificatePolicyId: pulumi.Input<string>;
     /**
+     * Default certificate attribute values applied when issuing certificates from this profile
+     */
+    defaults?: pulumi.Input<inputs.CertManagerCertificateProfileDefaults | undefined>;
+    /**
      * The description of the certificate profile
      */
     description?: pulumi.Input<string | undefined>;
-    /**
-     * The enrollment type for the profile. Supported values: api, est, acme
-     */
-    enrollmentType: pulumi.Input<string>;
-    /**
-     * EST configuration (required when<span pulumi-lang-nodejs=" enrollmentType " pulumi-lang-dotnet=" EnrollmentType " pulumi-lang-go=" enrollmentType " pulumi-lang-python=" enrollment_type " pulumi-lang-yaml=" enrollmentType " pulumi-lang-java=" enrollmentType "> enrollment_type </span>is 'est')
-     */
-    estConfig?: pulumi.Input<inputs.CertManagerCertificateProfileEstConfig | undefined>;
-    /**
-     * External configuration for external CA types (e.g., ADCS template name)
-     */
-    externalConfigs?: pulumi.Input<inputs.CertManagerCertificateProfileExternalConfigs | undefined>;
     /**
      * The issuer type for the profile. Supported values: ca, self-signed. Defaults to 'ca'.
      */
@@ -211,8 +153,4 @@ export interface CertManagerCertificateProfileArgs {
      * The unique name of the certificate profile
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the cert-manager project
-     */
-    projectSlug: pulumi.Input<string>;
 }
