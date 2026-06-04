@@ -1,3 +1,11 @@
+## 1.26.0
+
+### Minor Changes
+
+##### Fixed
+
+- Errors from the Portainer API now include the actual response body instead of generic SDK placeholders like `endpointCreateBadRequest`. (portainer/terraform-provider-portainer#122 )
+
 ## 1.25.0
 
 ### Minor Changes
