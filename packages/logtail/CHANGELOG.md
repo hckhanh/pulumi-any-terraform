@@ -1,3 +1,15 @@
+## 2.0.0
+
+### Major Changes
+
+- T-17482: Expose correlate_with_source_id on errors_application by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/83
+
+#### Breaking Changes
+
+- Removed the Warehouse resources and data sources (`WarehouseSource`, `WarehouseSourceGroup`, `WarehouseEmbedding`, `WarehouseTimeSeries`, `getWarehouseSource`, `getWarehouseSourceGroup`, `getWarehouseEmbedding`). These were dropped from the upstream Terraform provider and are no longer available.
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.12.1...v10.12.2
+
 ## 1.3.0
 
 ### Minor Changes
