@@ -237,15 +237,14 @@ const healthMetrics = [
 - **Connection**: Connect external data sources for log ingestion
 - **Dashboard / DashboardGroup / DashboardSection / DashboardChart / DashboardAlert**: Build and organize log dashboards and alerts
 - **Exploration / ExplorationGroup / ExplorationAlert**: Saved log explorations and their alerts
-- **ErrorsApplication / ErrorsApplicationGroup**: Application error tracking
-- **WarehouseSource / WarehouseSourceGroup / WarehouseEmbedding / WarehouseTimeSeries**: Warehouse-based log storage and analytics
+- **ErrorsApplication / ErrorsApplicationGroup**: Application error tracking. `ErrorsApplication` exposes `correlateWithSourceId` to correlate errors with a specific log source.
 
 ### Data Sources
 
 The provider exposes `get*` data sources for every resource above, including
 `getSource`, `getSourceGroup`, `getMetric`, `getCollector`, `getConnection`,
-`getDashboard`, `getDashboardTemplate`, `getExploration`, `getErrorsApplication`,
-and the warehouse equivalents.
+`getDashboard`, `getDashboardTemplate`, `getExploration`, and
+`getErrorsApplication`.
 
 ## API Reference
 

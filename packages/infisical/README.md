@@ -452,6 +452,15 @@ const secretApprovalPolicy = new infisical.SecretApprovalPolicy(
 - **AccessApprovalPolicy**: Approval requirements for access
 - **SecretApprovalPolicy**: Approval requirements for secret changes
 
+### Certificate Management (PKI)
+
+- **CertManagerInternalCa / CertManagerCaCertificate**: Internal certificate authorities and their CA certificates
+- **CertManagerExternalCaAcme / CertManagerExternalCaAdcs**: External ACME and Microsoft ADCS certificate authorities
+- **CertManagerCertificate / CertManagerCertificatePolicy / CertManagerCertificateProfile**: Issued certificates and their policies/profiles
+- **CertManagerApplication / CertManagerApplicationProfile**: Certificate-consuming applications and their profiles
+- **CertManagerApplicationUser / CertManagerApplicationGroup / CertManagerApplicationIdentity**: Grant users, groups, and identities access to a certificate application
+- **CertManagerUser / CertManagerGroup / CertManagerIdentity**: Grant users, groups, and identities access to the certificate management module
+
 ## API Reference
 
 For detailed API documentation, see the generated documentation in your IDE or visit the [Pulumi Registry](https://www.pulumi.com/registry/).
