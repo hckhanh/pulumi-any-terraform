@@ -12,7 +12,7 @@ minimumReleaseAgeExclude:
   # Renovate security update: next@16.2.6
   - next@16.2.6
 overrides:
-  axios@>=1.0.0 <1.15.0: '1.16.1'
+  axios@>=1.0.0 <1.15.0: '1.17.0'
   brace-expansion@>=5.0.0 <5.0.6: '5.0.6'
   minimatch@>=9.0.0 <9.0.6: '10.2.5'
   minimatch@>=9.0.0 <9.0.7: '10.2.5'
