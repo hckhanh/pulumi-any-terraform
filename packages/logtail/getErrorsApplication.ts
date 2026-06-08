@@ -32,6 +32,7 @@ export interface GetErrorsApplicationResult {
     readonly customBuckets: outputs.GetErrorsApplicationCustomBucket[];
     readonly dataRegion: string;
     readonly errorsRetention: number;
+    readonly githubRepositoryName: string;
     readonly id: string;
     readonly ingestingHost: string;
     readonly ingestingPaused: boolean;

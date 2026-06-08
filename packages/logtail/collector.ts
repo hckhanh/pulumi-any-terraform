@@ -47,7 +47,8 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public readonly customBucket: pulumi.Output<outputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region or private cluster name to create the collector in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * When importing an existing collector, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after collector is created` error.
      */
     declare public readonly dataRegion: pulumi.Output<string>;
     /**
@@ -125,7 +126,7 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly teamId: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -230,7 +231,8 @@ export interface CollectorState {
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region or private cluster name to create the collector in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * When importing an existing collector, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after collector is created` error.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
@@ -308,7 +310,7 @@ export interface CollectorState {
      */
     teamId?: pulumi.Input<string | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -334,7 +336,8 @@ export interface CollectorArgs {
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
-     * Data region (e.g. <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`" pulumi-lang-hcl="`us`">`us`</span>) or private cluster name to create the collector in. This can only be set at creation time. Note: the API may return a different identifier (the internal storage region name) than the value you provided.
+     * Data region or private cluster name to create the collector in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * When importing an existing collector, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after collector is created` error.
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
@@ -380,7 +383,7 @@ export interface CollectorArgs {
      */
     sourceVrlTransformation?: pulumi.Input<string | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

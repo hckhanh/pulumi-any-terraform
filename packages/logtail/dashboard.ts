@@ -71,7 +71,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly teamId: pulumi.Output<number>;
     /**
-     * The team name to associate with the dashboard when using a global API token.
+     * The team name to associate with the dashboard when using a global API token. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -169,7 +169,7 @@ export interface DashboardState {
      */
     teamId?: pulumi.Input<number | undefined>;
     /**
-     * The team name to associate with the dashboard when using a global API token.
+     * The team name to associate with the dashboard when using a global API token. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface DashboardArgs {
      */
     sourceEligibilitySql?: pulumi.Input<string | undefined>;
     /**
-     * The team name to associate with the dashboard when using a global API token.
+     * The team name to associate with the dashboard when using a global API token. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

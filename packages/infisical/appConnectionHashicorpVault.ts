@@ -47,6 +47,10 @@ export class AppConnectionHashicorpVault extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The Gateway ID to use for the app connection. If not specified, the Internet Gateway will be used.
+     */
+    declare public readonly gatewayId: pulumi.Output<string | undefined>;
+    /**
      * The method used to authenticate with HashiCorp Vault. Possible values are: access-token, app-role
      */
     declare public readonly method: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class AppConnectionHashicorpVault extends pulumi.CustomResource {
             resourceInputs["credentials"] = state?.credentials;
             resourceInputs["credentialsHash"] = state?.credentialsHash;
             resourceInputs["description"] = state?.description;
+            resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["method"] = state?.method;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -88,6 +93,7 @@ export class AppConnectionHashicorpVault extends pulumi.CustomResource {
             }
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["description"] = args?.description;
+            resourceInputs["gatewayId"] = args?.gatewayId;
             resourceInputs["method"] = args?.method;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -115,6 +121,10 @@ export interface AppConnectionHashicorpVaultState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * The Gateway ID to use for the app connection. If not specified, the Internet Gateway will be used.
+     */
+    gatewayId?: pulumi.Input<string | undefined>;
+    /**
      * The method used to authenticate with HashiCorp Vault. Possible values are: access-token, app-role
      */
     method?: pulumi.Input<string | undefined>;
@@ -140,6 +150,10 @@ export interface AppConnectionHashicorpVaultArgs {
      * An optional description for the HashiCorp Vault App Connection.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The Gateway ID to use for the app connection. If not specified, the Internet Gateway will be used.
+     */
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The method used to authenticate with HashiCorp Vault. Possible values are: access-token, app-role
      */

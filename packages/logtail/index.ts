@@ -163,6 +163,11 @@ export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
+export { SourceAwsAccountArgs, SourceAwsAccountState } from "./sourceAwsAccount";
+export type SourceAwsAccount = import("./sourceAwsAccount").SourceAwsAccount;
+export const SourceAwsAccount: typeof import("./sourceAwsAccount").SourceAwsAccount = null as any;
+utilities.lazyLoad(exports, ["SourceAwsAccount"], () => require("./sourceAwsAccount"));
+
 export { SourceGroupArgs, SourceGroupState } from "./sourceGroup";
 export type SourceGroup = import("./sourceGroup").SourceGroup;
 export const SourceGroup: typeof import("./sourceGroup").SourceGroup = null as any;
@@ -212,6 +217,8 @@ const _module = {
                 return new Metric(name, <any>undefined, { urn })
             case "logtail:index/source:Source":
                 return new Source(name, <any>undefined, { urn })
+            case "logtail:index/sourceAwsAccount:SourceAwsAccount":
+                return new SourceAwsAccount(name, <any>undefined, { urn })
             case "logtail:index/sourceGroup:SourceGroup":
                 return new SourceGroup(name, <any>undefined, { urn })
             default:
@@ -234,6 +241,7 @@ pulumi.runtime.registerResourceModule("logtail", "index/explorationAlert", _modu
 pulumi.runtime.registerResourceModule("logtail", "index/explorationGroup", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/metric", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/source", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/sourceAwsAccount", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceGroup", _module)
 pulumi.runtime.registerResourcePackage("logtail", {
     version: utilities.getVersion(),

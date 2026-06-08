@@ -59,7 +59,7 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly steps: pulumi.Output<outputs.PolicyStep[]>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
 
@@ -130,7 +130,7 @@ export interface PolicyState {
      */
     steps?: pulumi.Input<pulumi.Input<inputs.PolicyStep>[] | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }
@@ -160,7 +160,7 @@ export interface PolicyArgs {
      */
     steps: pulumi.Input<pulumi.Input<inputs.PolicyStep>[]>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }

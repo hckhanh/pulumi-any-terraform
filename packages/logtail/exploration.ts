@@ -63,7 +63,7 @@ export class Exploration extends pulumi.CustomResource {
      */
     declare public readonly queries: pulumi.Output<outputs.ExplorationQuery[]>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +155,7 @@ export interface ExplorationState {
      */
     queries?: pulumi.Input<pulumi.Input<inputs.ExplorationQuery>[] | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -197,7 +197,7 @@ export interface ExplorationArgs {
      */
     queries: pulumi.Input<pulumi.Input<inputs.ExplorationQuery>[]>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

@@ -51,7 +51,7 @@ export class OnCallCalendar extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly onCallUsers: pulumi.Output<outputs.OnCallCalendarOnCallUser[]>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
 
@@ -107,7 +107,7 @@ export interface OnCallCalendarState {
      */
     onCallUsers?: pulumi.Input<pulumi.Input<inputs.OnCallCalendarOnCallUser>[] | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }
@@ -125,7 +125,7 @@ export interface OnCallCalendarArgs {
      */
     onCallRotation?: pulumi.Input<inputs.OnCallCalendarOnCallRotation | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }

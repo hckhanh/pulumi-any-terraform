@@ -54,6 +54,7 @@
         "metric.ts",
         "provider.ts",
         "source.ts",
+        "sourceAwsAccount.ts",
         "sourceGroup.ts",
         "types/index.ts",
         "types/input.ts",

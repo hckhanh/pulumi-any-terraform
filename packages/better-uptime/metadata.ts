@@ -55,7 +55,7 @@ export class Metadata extends pulumi.CustomResource {
      */
     declare public readonly ownerType: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore. You can't update this value later.
      *
      * @deprecated Deprecated
      */
@@ -142,7 +142,7 @@ export interface MetadataState {
      */
     ownerType?: pulumi.Input<string | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore. You can't update this value later.
      *
      * @deprecated Deprecated
      */
@@ -180,7 +180,7 @@ export interface MetadataArgs {
      */
     ownerType: pulumi.Input<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore.
+     * Used to specify the team the resource should be created in when using global tokens. This field is deprecated, team name doesn't have to be specified for this resource anymore. You can't update this value later.
      *
      * @deprecated Deprecated
      */

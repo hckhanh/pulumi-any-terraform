@@ -67,7 +67,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly onIncidentStarted: pulumi.Output<boolean | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -165,7 +165,7 @@ export interface OutgoingWebhookState {
      */
     onIncidentStarted?: pulumi.Input<boolean | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface OutgoingWebhookArgs {
      */
     onIncidentStarted?: pulumi.Input<boolean | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

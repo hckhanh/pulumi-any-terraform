@@ -49,7 +49,7 @@ export class PagerdutyIntegration extends pulumi.CustomResource {
      */
     declare public readonly severity: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
 
@@ -111,7 +111,7 @@ export interface PagerdutyIntegrationState {
      */
     severity?: pulumi.Input<string | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }
@@ -137,7 +137,7 @@ export interface PagerdutyIntegrationArgs {
      */
     severity: pulumi.Input<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
 }

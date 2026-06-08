@@ -73,7 +73,7 @@ export class NewRelicIntegration extends pulumi.CustomResource {
      */
     declare public readonly sms: pulumi.Output<boolean>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -177,7 +177,7 @@ export interface NewRelicIntegrationState {
      */
     sms?: pulumi.Input<boolean | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -235,7 +235,7 @@ export interface NewRelicIntegrationArgs {
      */
     sms?: pulumi.Input<boolean | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

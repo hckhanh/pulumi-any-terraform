@@ -97,6 +97,10 @@ export class Heartbeat extends pulumi.CustomResource {
      */
     declare public readonly push: pulumi.Output<boolean>;
     /**
+     * The IANA timezone (e.g. "Europe/Berlin") used to evaluate this heartbeat's period against wall-clock time, keeping daily and cron-style schedules aligned across daylight saving time changes. Only applies to periods of 1 hour or longer; it is cleared for shorter periods.
+     */
+    declare public readonly serverTimezone: pulumi.Output<string | undefined>;
+    /**
      * Whether to send an SMS when a new incident is created.
      */
     declare public readonly sms: pulumi.Output<boolean>;
@@ -109,7 +113,7 @@ export class Heartbeat extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     declare public readonly teamName: pulumi.Output<string | undefined>;
     /**
@@ -154,6 +158,7 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["period"] = state?.period;
             resourceInputs["policyId"] = state?.policyId;
             resourceInputs["push"] = state?.push;
+            resourceInputs["serverTimezone"] = state?.serverTimezone;
             resourceInputs["sms"] = state?.sms;
             resourceInputs["sortIndex"] = state?.sortIndex;
             resourceInputs["status"] = state?.status;
@@ -183,6 +188,7 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["period"] = args?.period;
             resourceInputs["policyId"] = args?.policyId;
             resourceInputs["push"] = args?.push;
+            resourceInputs["serverTimezone"] = args?.serverTimezone;
             resourceInputs["sms"] = args?.sms;
             resourceInputs["sortIndex"] = args?.sortIndex;
             resourceInputs["teamName"] = args?.teamName;
@@ -267,6 +273,10 @@ export interface HeartbeatState {
      */
     push?: pulumi.Input<boolean | undefined>;
     /**
+     * The IANA timezone (e.g. "Europe/Berlin") used to evaluate this heartbeat's period against wall-clock time, keeping daily and cron-style schedules aligned across daylight saving time changes. Only applies to periods of 1 hour or longer; it is cleared for shorter periods.
+     */
+    serverTimezone?: pulumi.Input<string | undefined>;
+    /**
      * Whether to send an SMS when a new incident is created.
      */
     sms?: pulumi.Input<boolean | undefined>;
@@ -279,7 +289,7 @@ export interface HeartbeatState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
@@ -357,6 +367,10 @@ export interface HeartbeatArgs {
      */
     push?: pulumi.Input<boolean | undefined>;
     /**
+     * The IANA timezone (e.g. "Europe/Berlin") used to evaluate this heartbeat's period against wall-clock time, keeping daily and cron-style schedules aligned across daylight saving time changes. Only applies to periods of 1 hour or longer; it is cleared for shorter periods.
+     */
+    serverTimezone?: pulumi.Input<string | undefined>;
+    /**
      * Whether to send an SMS when a new incident is created.
      */
     sms?: pulumi.Input<boolean | undefined>;
@@ -365,7 +379,7 @@ export interface HeartbeatArgs {
      */
     sortIndex?: pulumi.Input<number | undefined>;
     /**
-     * Used to specify the team the resource should be created in when using global tokens.
+     * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
     /**

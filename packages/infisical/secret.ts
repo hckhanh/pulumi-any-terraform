@@ -42,6 +42,9 @@ export class Secret extends pulumi.CustomResource {
      * The path to the folder where the given secret resides
      */
     declare public readonly folderPath: pulumi.Output<string>;
+    /**
+     * The last time the secret was updated.
+     */
     declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * Metadata associated with the secret as key-value pairs.
@@ -137,6 +140,9 @@ export interface SecretState {
      * The path to the folder where the given secret resides
      */
     folderPath?: pulumi.Input<string | undefined>;
+    /**
+     * The last time the secret was updated.
+     */
     lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the secret as key-value pairs.
