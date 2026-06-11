@@ -1,3 +1,11 @@
+## 1.26.1
+
+### Patch Changes
+
+##### Fixed
+
+- Creating a `portainer_environment` with `tag_ids` set failed against any Portainer version since `v1.24.0`
+
 ## 1.26.0
 
 ### Minor Changes

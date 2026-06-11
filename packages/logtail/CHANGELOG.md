@@ -1,3 +1,12 @@
+## 2.1.0
+
+### Minor Changes
+
+- T-18525 Add logtail_source_aws_account resource for AWS account linkage by @curusarn in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/88
+- T-18501 Add github_repository_name to errors_application by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/89
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.13.0...v10.14.0
+
 ## 2.0.0
 
 ### Major Changes
