@@ -189,6 +189,36 @@ const dbSource = new logtail.Source('database-logs', {
 })
 ```
 
+### Linking an AWS Account
+
+For `aws` platform sources, use `SourceAwsAccount` to connect the AWS account
+that Better Stack pulls logs from. Connect a new account with the
+`IntegrationRoleArn`/`ExternalId` outputs of the Better Stack CloudFormation
+stack, or reuse an already-connected account by its `awsAccountId`:
+
+```typescript
+import * as logtail from 'pulumi-logtail'
+
+// An AWS-platform source to attach the account to
+const awsSource = new logtail.Source('aws-logs', {
+  name: 'AWS Logs',
+  platform: 'aws',
+})
+
+// Connect a new AWS account using the Better Stack CloudFormation outputs
+const awsAccount = new logtail.SourceAwsAccount('aws-account', {
+  sourceId: awsSource.id,
+  awsRoleArn: 'arn:aws:iam::123456789012:role/BetterStackIntegration',
+  awsExternalId: 'cf-stack-external-id',
+})
+
+// ...or reuse an account you've already connected
+const reusedAccount = new logtail.SourceAwsAccount('aws-account-reuse', {
+  sourceId: awsSource.id,
+  awsAccountId: '123456789012',
+})
+```
+
 ### Log Analytics and Querying
 
 ```typescript
@@ -230,6 +260,7 @@ const healthMetrics = [
 ### Core Resources
 
 - **Source**: Log sources for collecting logs from various platforms and services
+- **SourceAwsAccount**: Link an AWS account to an `aws` platform `Source`, either by reusing an already-connected account (`awsAccountId`) or by connecting a new one with the `awsRoleArn`/`awsExternalId` pair from the Better Stack CloudFormation stack. Added in 10.14.0.
 - **SourceGroup**: Logical groups for organizing related log sources
 - **Metric**: Custom metrics based on log data for monitoring and alerting
 - **Collector**: Self-hosted agent that collects metrics from databases and processes inside your infrastructure
@@ -237,7 +268,7 @@ const healthMetrics = [
 - **Connection**: Connect external data sources for log ingestion
 - **Dashboard / DashboardGroup / DashboardSection / DashboardChart / DashboardAlert**: Build and organize log dashboards and alerts
 - **Exploration / ExplorationGroup / ExplorationAlert**: Saved log explorations and their alerts
-- **ErrorsApplication / ErrorsApplicationGroup**: Application error tracking. `ErrorsApplication` exposes `correlateWithSourceId` to correlate errors with a specific log source.
+- **ErrorsApplication / ErrorsApplicationGroup**: Application error tracking. `ErrorsApplication` exposes `correlateWithSourceId` to correlate errors with a specific log source and `githubRepositoryName` (added in 10.14.0) to link the application to a GitHub repository for source-level context.
 
 ### Data Sources
 

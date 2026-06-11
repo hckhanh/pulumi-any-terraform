@@ -84,6 +84,26 @@ const syslogSource = new logtail.Source("syslog", {
 });
 ```
 
+### Linking an AWS Account
+
+For `aws` platform sources, attach the AWS account that Better Stack pulls logs
+from with `logtail.SourceAwsAccount` (added in 10.14.0). Connect a new account
+using the Better Stack CloudFormation stack outputs, or reuse one you've already
+connected via `awsAccountId`:
+
+```typescript
+const awsSource = new logtail.Source("aws-logs", {
+    name: "AWS Logs",
+    platform: "aws",
+});
+
+new logtail.SourceAwsAccount("aws-account", {
+    sourceId: awsSource.id,
+    awsRoleArn: "arn:aws:iam::123456789012:role/BetterStackIntegration",
+    awsExternalId: "cf-stack-external-id",
+});
+```
+
 ### Collectors and Targets
 
 Collectors are agents that run inside your infrastructure to collect metrics from databases and processes. Use `logtail.CollectorTarget` (added in 10.11.3) to attach scrape targets to a collector:
