@@ -21,7 +21,7 @@
     "@swc/helpers": "0.5.23",
     "@types/node": "24.13.1",
     "nx": "22.7.5",
-    "prettier": "3.8.3",
+    "prettier": "3.8.4",
     "syncpack": "14.3.1",
     "typescript": "5.9.3"
   },
