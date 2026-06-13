@@ -17,7 +17,7 @@
     "@nx/js": "22.7.5",
     "@nx/shared-fs-cache": "5.0.7",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.15.40",
+    "@swc/core": "1.15.41",
     "@swc/helpers": "0.5.23",
     "@types/node": "24.13.1",
     "nx": "22.7.5",
