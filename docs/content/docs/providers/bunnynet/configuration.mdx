@@ -113,15 +113,14 @@ const devProvider = new bunnynet.Provider("dev", {
 
 ```typescript
 import * as bunnynet from "pulumi-bunnynet";
-import * as pulumi from "@pulumi/pulumi";
 
-const config = new pulumi.Config("bunnynet");
-
-// Create a CDN pull zone
-const pullZone = new bunnynet.PullZone("website-cdn", {
+// Create a CDN pull zone with a URL origin
+const pullZone = new bunnynet.Pullzone("website-cdn", {
     name: "example-cdn",
-    originUrl: "https://origin.example.com",
-    storageZoneId: 0,
+    origin: {
+        type: "OriginUrl",
+        url: "https://origin.example.com",
+    },
 });
 ```
 
@@ -132,9 +131,37 @@ const pullZone = new bunnynet.PullZone("website-cdn", {
 const storageZone = new bunnynet.StorageZone("assets", {
     name: "example-assets",
     region: "NY",
+    zoneTier: "Standard",
     replicationRegions: ["LA", "SG"],
 });
 ```
+
+### Linking Storage Zone to Pull Zone
+
+To use a Bunny Storage Zone as the CDN origin, set `origin.type` to `"StorageZone"` and pass the storage zone ID via `origin.storagezone`. The `storageZoneId` property on `StorageZone` is output-only — create the storage zone first, then reference its ID from the pull zone.
+
+```typescript
+import * as bunnynet from "pulumi-bunnynet";
+
+const storageZone = new bunnynet.StorageZone("assets", {
+    name: "example-assets",
+    region: "NY",
+    zoneTier: "Standard",
+});
+
+const pullZone = new bunnynet.Pullzone("website-cdn", {
+    name: "example-cdn",
+    origin: {
+        type: "StorageZone",
+        storagezone: storageZone.storageZoneId,
+    },
+}, { dependsOn: [storageZone] });
+```
+
+Do not confuse `origin.storagezone` with other pull zone storage fields:
+
+- `logStorageZone` — storage zone used for access log storage
+- `permacacheStoragezone` — storage zone used for Perma-Cache
 
 ## Troubleshooting
 
