@@ -55,16 +55,18 @@ export BUNNY_API_KEY="your-api-key"
 ## Quick Start
 
 ```typescript
-import * as pulumi from "@pulumi/pulumi";
 import * as bunnynet from "pulumi-bunnynet";
 
 // Create a pull zone (CDN)
-const pullZone = new bunnynet.PullZone("my-cdn", {
+const pullZone = new bunnynet.Pullzone("my-cdn", {
     name: "my-website-cdn",
-    originUrl: "https://example.com",
+    origin: {
+        type: "OriginUrl",
+        url: "https://example.com",
+    },
 });
 
-export const cdnUrl = pullZone.cdnUrl;
+export const cdnDomain = pullZone.cdnDomain;
 ```
 
 ## Key Features
@@ -72,14 +74,33 @@ export const cdnUrl = pullZone.cdnUrl;
 ### Pull Zones (CDN)
 
 ```typescript
-const pullZone = new bunnynet.PullZone("cdn", {
+const pullZone = new bunnynet.Pullzone("cdn", {
     name: "my-cdn",
-    originUrl: "https://origin.example.com",
-    cacheControlMaxAge: 3600,
-    enableGeoZoneAsia: true,
-    enableGeoZoneEurope: true,
-    enableGeoZoneUS: true,
+    origin: {
+        type: "OriginUrl",
+        url: "https://origin.example.com",
+    },
+    cacheEnabled: true,
+    cacheExpirationTime: 3600,
 });
+```
+
+To use a storage zone as the origin instead of a URL:
+
+```typescript
+const storageZone = new bunnynet.StorageZone("storage", {
+    name: "my-storage",
+    region: "DE",
+    zoneTier: "Standard",
+});
+
+const pullZone = new bunnynet.Pullzone("cdn", {
+    name: "my-cdn",
+    origin: {
+        type: "StorageZone",
+        storagezone: storageZone.storageZoneId,
+    },
+}, { dependsOn: [storageZone] });
 ```
 
 ### Storage Zones
@@ -88,6 +109,7 @@ const pullZone = new bunnynet.PullZone("cdn", {
 const storageZone = new bunnynet.StorageZone("storage", {
     name: "my-storage",
     region: "DE", // Germany
+    zoneTier: "Standard",
     replicationRegions: ["NY", "LA"],
 });
 ```
@@ -100,7 +122,7 @@ const dnsZone = new bunnynet.DnsZone("dns", {
 });
 
 const dnsRecord = new bunnynet.DnsRecord("www", {
-    zoneId: dnsZone.id,
+    zone: dnsZone.dnsZoneId,
     name: "www",
     type: "A",
     value: "192.168.1.1",

@@ -19,6 +19,11 @@ dist
 .eslintcache
 .cache
 *.tsbuildinfo
+.pnpm-store/
+
+# local tooling
+.cursor/hooks/state
+.memsearch/
 
 # code coverage
 coverage

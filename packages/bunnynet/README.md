@@ -81,33 +81,57 @@ const provider = new bunnynet.Provider('bunnynet-provider', {
 ```typescript
 import * as bunnynet from 'pulumi-bunnynet'
 
-// Create a pull zone for CDN
+// Create a pull zone with a URL origin
 const pullZone = new bunnynet.Pullzone('my-cdn', {
   name: 'my-website-cdn',
-  originUrl: 'https://my-website.com',
-  type: 'standard',
-  storageZoneId: 12345,
-  cacheControlMaxAge: 3600,
-  cacheControlPublicMaxAge: 86400,
+  origin: {
+    type: 'OriginUrl',
+    url: 'https://my-website.com',
+  },
   addCanonicalHeader: true,
-  enableGeoipCountryCode: true,
-  enableOriginShield: true,
+  originshieldEnabled: true,
 })
+
+// Create a pull zone backed by a storage zone
+const storageZone = new bunnynet.StorageZone('assets', {
+  name: 'my-assets',
+  region: 'NY',
+  zoneTier: 'Standard',
+})
+
+const storagePullZone = new bunnynet.Pullzone(
+  'storage-cdn',
+  {
+    name: 'my-assets-cdn',
+    origin: {
+      type: 'StorageZone',
+      storagezone: storageZone.storageZoneId,
+    },
+  },
+  { dependsOn: [storageZone] },
+)
 
 // Add a custom hostname
 const hostname = new bunnynet.PullzoneHostname('custom-domain', {
-  pullzoneId: pullZone.id,
-  hostname: 'cdn.my-website.com',
-  certificateId: 67890,
+  pullzone: pullZone.pullzoneId,
+  name: 'cdn.my-website.com',
 })
 
 // Create edge rules
 const edgeRule = new bunnynet.PullzoneEdgerule('cache-rule', {
-  pullzoneId: pullZone.id,
-  actionType: 'SetCacheTime',
-  triggerType: 'RequestHeader',
-  triggerValue: 'X-Cache-Control',
+  pullzone: pullZone.pullzoneId,
+  enabled: true,
+  action: 'OverrideCacheTime',
   actionParameter1: '3600',
+  triggers: [
+    {
+      type: 'Url',
+      matchType: 'MatchAny',
+      patterns: ['*'],
+      parameter1: '',
+      parameter2: '',
+    },
+  ],
 })
 ```
 
@@ -120,12 +144,13 @@ import * as bunnynet from 'pulumi-bunnynet'
 const storageZone = new bunnynet.StorageZone('media-storage', {
   name: 'media-files',
   region: 'NY', // New York region
+  zoneTier: 'Standard',
   replicationRegions: ['LA', 'SG'], // Los Angeles and Singapore replicas
 })
 
 // Upload files to storage
 const file = new bunnynet.StorageFile('logo', {
-  storageZoneName: storageZone.name,
+  zone: storageZone.storageZoneId,
   path: '/images/logo.png',
   source: './assets/logo.png',
   contentType: 'image/png',
@@ -140,12 +165,11 @@ import * as bunnynet from 'pulumi-bunnynet'
 // Create DNS zone
 const dnsZone = new bunnynet.DnsZone('my-domain', {
   domain: 'example.com',
-  soaEmail: 'admin@example.com',
 })
 
 // Add DNS records
 const aRecord = new bunnynet.DnsRecord('www-record', {
-  zoneId: dnsZone.id,
+  zone: dnsZone.dnsZoneId,
   type: 'A',
   name: 'www',
   value: '203.0.113.1',
@@ -153,7 +177,7 @@ const aRecord = new bunnynet.DnsRecord('www-record', {
 })
 
 const cnameRecord = new bunnynet.DnsRecord('cdn-record', {
-  zoneId: dnsZone.id,
+  zone: dnsZone.dnsZoneId,
   type: 'CNAME',
   name: 'cdn',
   value: 'b-cdn.net',
@@ -168,28 +192,25 @@ import * as bunnynet from 'pulumi-bunnynet'
 
 // Create container image registry
 const registry = new bunnynet.ComputeContainerImageregistry('my-registry', {
-  name: 'my-app-registry',
-  imageUrl: 'docker.io/myorg/myapp:latest',
+  registry: 'DockerHub',
   username: 'myusername',
-  password: 'mypassword',
+  token: 'my-token',
 })
 
 // Deploy container app
 const containerApp = new bunnynet.ComputeContainerApp('edge-app', {
   name: 'my-edge-app',
-  imageRegistryId: registry.id,
-  environmentVariables: [
+  regionsAlloweds: ['ny'],
+  regionsRequireds: ['ny'],
+  containers: [
     {
-      name: 'NODE_ENV',
-      value: 'production',
-    },
-    {
-      name: 'API_URL',
-      value: 'https://api.example.com',
+      name: 'app',
+      imageRegistry: registry.computeContainerImageregistryId,
+      imageNamespace: 'myorg',
+      imageName: 'myapp',
+      imageTag: 'latest',
     },
   ],
-  cpu: 0.1,
-  memory: 128,
 })
 ```
 
@@ -198,11 +219,16 @@ const containerApp = new bunnynet.ComputeContainerApp('edge-app', {
 ```typescript
 import * as bunnynet from 'pulumi-bunnynet'
 
+const videoStorage = new bunnynet.StorageZone('video-storage', {
+  name: 'video-files',
+  region: 'NY',
+  zoneTier: 'Standard',
+})
+
 // Create video library
 const videoLibrary = new bunnynet.StreamLibrary('video-content', {
   name: 'my-video-library',
-  storageZoneId: 12345,
-  replicationRegions: ['NY', 'LA', 'SG'],
+  storageZone: videoStorage.storageZoneId,
   watermarkPositionLeft: 10,
   watermarkPositionTop: 10,
   watermarkWidth: 100,
@@ -211,16 +237,14 @@ const videoLibrary = new bunnynet.StreamLibrary('video-content', {
 
 // Create video collection
 const collection = new bunnynet.StreamCollection('tutorials', {
-  libraryId: videoLibrary.id,
+  library: videoLibrary.streamLibraryId,
   name: 'Tutorial Videos',
 })
 
-// Upload video
+// Create a video entry (upload content separately via API or dashboard)
 const video = new bunnynet.StreamVideo('intro-video', {
-  libraryId: videoLibrary.id,
+  library: videoLibrary.streamLibraryId,
   title: 'Introduction Tutorial',
-  collectionId: collection.id,
-  // Video will be uploaded separately via API or dashboard
 })
 ```
 
@@ -232,22 +256,21 @@ import * as bunnynet from 'pulumi-bunnynet'
 // Create compute script
 const script = new bunnynet.ComputeScript('edge-function', {
   name: 'my-edge-function',
-  scriptType: 'standalone',
-  code: `
+  type: 'standalone',
+  content: `
         async function handleRequest(request) {
             const response = await fetch(request);
             const body = await response.text();
-            
-            // Add custom header
+
             const headers = new Headers(response.headers);
             headers.set('X-Processed-By', 'Bunny-Edge');
-            
+
             return new Response(body, {
                 status: response.status,
                 headers: headers
             });
         }
-        
+
         addEventListener('fetch', event => {
             event.respondWith(handleRequest(event.request));
         });
@@ -256,14 +279,15 @@ const script = new bunnynet.ComputeScript('edge-function', {
 
 // Add script variables
 const scriptVar = new bunnynet.ComputeScriptVariable('api-endpoint', {
-  scriptId: script.id,
+  script: script.computeScriptId,
   name: 'API_ENDPOINT',
-  value: 'https://api.example.com/v1',
+  defaultValue: 'https://api.example.com/v1',
+  required: true,
 })
 
 // Add script secrets
 const scriptSecret = new bunnynet.ComputeScriptSecret('api-key', {
-  scriptId: script.id,
+  script: script.computeScriptId,
   name: 'API_KEY',
   value: 'secret-api-key-value',
 })
