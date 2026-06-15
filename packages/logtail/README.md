@@ -263,8 +263,8 @@ const healthMetrics = [
 - **SourceAwsAccount**: Link an AWS account to an `aws` platform `Source`, either by reusing an already-connected account (`awsAccountId`) or by connecting a new one with the `awsRoleArn`/`awsExternalId` pair from the Better Stack CloudFormation stack. Added in 10.14.0.
 - **SourceGroup**: Logical groups for organizing related log sources
 - **Metric**: Custom metrics based on log data for monitoring and alerting
-- **Collector**: Self-hosted agent that collects metrics from databases and processes inside your infrastructure
-- **CollectorTarget**: Individual scrape target attached to a collector (postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus). Added in 10.11.3 and now the preferred way to configure collector targets instead of the deprecated `databases` field on `Collector`.
+- **Collector**: Self-hosted agent that collects metrics from databases and processes inside your infrastructure. Supports multi-line log merging (`mergeLogs`/`mergeLogsConfig`) and disk-buffer tuning (`bufferMaxEvents`, plus an overflow policy of `dropNewest` or `block`), added in 10.14.2.
+- **CollectorTarget**: Individual scrape target attached to a collector (postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus). Added in 10.11.3 and now the preferred way to configure collector targets instead of the deprecated `databases` field on `Collector`. The `pgbouncer` kind was added in 10.14.2.
 - **Connection**: Connect external data sources for log ingestion
 - **Dashboard / DashboardGroup / DashboardSection / DashboardChart / DashboardAlert**: Build and organize log dashboards and alerts
 - **Exploration / ExplorationGroup / ExplorationAlert**: Saved log explorations and their alerts
