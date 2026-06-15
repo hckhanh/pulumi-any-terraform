@@ -87,7 +87,7 @@ jobs:
 ### Performance Optimizations
 
 - **Nx Affected**: Only processes changed packages
-- **Nx Cloud**: Distributed caching for faster builds
+- **GitHub Actions Cache**: pnpm store cached across runs on the lockfile hash
 - **Concurrent Execution**: Multiple jobs run in parallel
 
 ## Update Workflow
@@ -206,40 +206,25 @@ Protects against supply chain attacks:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NX_KEY: ${{ secrets.NX_KEY }}
 ```
 
 **Secrets used**:
 - `GITHUB_TOKEN`: Repository access
 - `NPM_TOKEN`: Package publishing
-- `NX_KEY`: Nx Cloud access
-- `AWS_*`: S3 cache access
 
 ## Caching Strategy
 
-### Nx Cloud Cache
+### Nx Local Cache
 
-Distributed task caching across CI runs:
-
-```json
-{
-  "s3": {
-    "region": "auto",
-    "bucket": "nx-caches",
-    "forcePathStyle": true
-  }
-}
-```
+Nx caches task outputs locally and skips tasks whose inputs are unchanged. There is **no remote or shared cache** -- build correctness comes from Nx's input-hashing, and the machine-bound `.nx/cache` database is not restored across CI runs.
 
 **Benefits**:
-- Faster builds
-- Reduced compute time
-- Shared cache across team
-- Cost savings
+- Faster local rebuilds
+- Skips unchanged tasks
 
 ### GitHub Actions Cache
 
-Caches node_modules and build artifacts:
+Caches the pnpm store across runs:
 
 ```yaml
 - uses: actions/cache@v3
@@ -374,7 +359,6 @@ Dependency management:
 
 1. Clear Nx cache: `pnpm nx reset`
 2. Clear GitHub Actions cache (in repository settings)
-3. Verify S3 cache credentials
 
 ## Best Practices
 
@@ -413,7 +397,7 @@ Regularly update GitHub Actions:
 
 ### 5. Monitor Build Times
 
-Track and optimize slow builds using Nx Cloud dashboard.
+Review per-job timings in the GitHub Actions run summary.
 
 ## Metrics & Analytics
 

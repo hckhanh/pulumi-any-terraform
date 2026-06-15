@@ -15,7 +15,6 @@
     "@changesets/cli": "2.31.0",
     "@nx/devkit": "22.7.5",
     "@nx/js": "22.7.5",
-    "@nx/shared-fs-cache": "5.0.7",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.41",
     "@swc/helpers": "0.5.23",
