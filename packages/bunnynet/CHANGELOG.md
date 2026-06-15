@@ -1,3 +1,9 @@
+## 0.14.3
+
+### Patch Changes
+
+Fix README and docs examples for linking StorageZone to Pullzone via origin block.
+
 ## 0.14.2
 
 ### Patch Changes

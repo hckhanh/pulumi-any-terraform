@@ -1,3 +1,13 @@
+## 2.1.1
+
+### Patch Changes
+
+- Add CLAUDE.md with guidance for repository usage by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/93
+- Add pgbouncer kind to logtail_collector_target by @paweljw in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/92
+- Add merge logs and buffering settings to logtail_collector by @paweljw in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/91
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.14.1...v10.14.2
+
 ## 2.1.0
 
 ### Minor Changes
