@@ -45,7 +45,7 @@ export class ClusterSecret extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`" pulumi-lang-hcl="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`" pulumi-lang-hcl="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -57,9 +57,18 @@ export class ClusterSecret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The secret value. Must be less than 8KB.
+     * The secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is stored in Terraform state; use <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to avoid storing secret values in state.
      */
-    declare public readonly value: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is not stored in Terraform plan or state artifacts. Pair with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to trigger secret value updates.
+     */
+    declare public readonly valueWo: pulumi.Output<string | undefined>;
+    /**
+     * Non-empty, non-secret version identifier for <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span>. Required when <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is configured. Change this value when the write-only secret value changes, for example by using an external secret manager version ID.
+     */
+    declare public readonly valueWoVersion: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClusterSecret resource with the given unique name, arguments, and options.
@@ -81,6 +90,8 @@ export class ClusterSecret extends pulumi.CustomResource {
             resourceInputs["policy"] = state?.policy;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["value"] = state?.value;
+            resourceInputs["valueWo"] = state?.valueWo;
+            resourceInputs["valueWoVersion"] = state?.valueWoVersion;
         } else {
             const args = argsOrState as ClusterSecretArgs | undefined;
             if (args?.clusterId === undefined && !opts.urn) {
@@ -89,19 +100,18 @@ export class ClusterSecret extends pulumi.CustomResource {
             if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if (args?.value === undefined && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["description"] = args?.description;
             resourceInputs["key"] = args?.key;
             resourceInputs["policy"] = args?.policy;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
+            resourceInputs["valueWo"] = args?.valueWo ? pulumi.secret(args.valueWo) : undefined;
+            resourceInputs["valueWoVersion"] = args?.valueWoVersion;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["value"] };
+        const secretOpts = { additionalSecretOutputs: ["value", "valueWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClusterSecret.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
@@ -124,7 +134,7 @@ export interface ClusterSecretState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`" pulumi-lang-hcl="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`" pulumi-lang-hcl="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -136,9 +146,18 @@ export interface ClusterSecretState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * The secret value. Must be less than 8KB.
+     * The secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is stored in Terraform state; use <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to avoid storing secret values in state.
      */
     value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is not stored in Terraform plan or state artifacts. Pair with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to trigger secret value updates.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty, non-secret version identifier for <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span>. Required when <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is configured. Change this value when the write-only secret value changes, for example by using an external secret manager version ID.
+     */
+    valueWoVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,7 +173,7 @@ export interface ClusterSecretArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
+     * The key name for the secret. Must start with a letter and only contain letters, numbers, and underscores. Maximum 255 characters. Must not start with <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`" pulumi-lang-hcl="`buildkite`">`buildkite`</span> or <span pulumi-lang-nodejs="`bk`" pulumi-lang-dotnet="`Bk`" pulumi-lang-go="`bk`" pulumi-lang-python="`bk`" pulumi-lang-yaml="`bk`" pulumi-lang-java="`bk`" pulumi-lang-hcl="`bk`">`bk`</span> (case-insensitive) as these prefixes are reserved.
      */
     key: pulumi.Input<string>;
     /**
@@ -162,7 +181,16 @@ export interface ClusterSecretArgs {
      */
     policy?: pulumi.Input<string | undefined>;
     /**
-     * The secret value. Must be less than 8KB.
+     * The secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is stored in Terraform state; use <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to avoid storing secret values in state.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret value. Must be less than 8KB. Exactly one of <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`" pulumi-lang-hcl="`value`">`value`</span> or <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> must be configured. This value is not stored in Terraform plan or state artifacts. Pair with <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`" pulumi-lang-hcl="`value_wo_version`">`valueWoVersion`</span> to trigger secret value updates.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty, non-secret version identifier for <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span>. Required when <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`" pulumi-lang-hcl="`value_wo`">`valueWo`</span> is configured. Change this value when the write-only secret value changes, for example by using an external secret manager version ID.
+     */
+    valueWoVersion?: pulumi.Input<string | undefined>;
 }

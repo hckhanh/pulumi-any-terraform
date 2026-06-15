@@ -24,6 +24,7 @@ export interface GetPolicyArgs {
  * A collection of values returned by getPolicy.
  */
 export interface GetPolicyResult {
+    readonly fallbackPolicyId: number;
     readonly id: string;
     readonly incidentToken: string;
     readonly name: string;

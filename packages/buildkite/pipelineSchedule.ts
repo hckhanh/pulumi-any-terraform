@@ -49,7 +49,7 @@ export class PipelineSchedule extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * The environment variables that scheduled builds should use.
+     * The environment variables that scheduled builds should use. An empty map (`{}`) is equivalent to omitting this attribute at the API level.
      */
     declare public readonly env: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -141,7 +141,7 @@ export interface PipelineScheduleState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The environment variables that scheduled builds should use.
+     * The environment variables that scheduled builds should use. An empty map (`{}`) is equivalent to omitting this attribute at the API level.
      */
     env?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface PipelineScheduleArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The environment variables that scheduled builds should use.
+     * The environment variables that scheduled builds should use. An empty map (`{}`) is equivalent to omitting this attribute at the API level.
      */
     env?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

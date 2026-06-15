@@ -35,7 +35,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * A list of IP addresses in CIDR format that are allowed to access the Buildkite API.If not set, all IP addresses are allowed (the same as setting 0.0.0.0/0).
      *
-     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`">`allowed_api_ip_addresses`</span> attribute.
+     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`" pulumi-lang-hcl="`allowed_api_ip_addresses`">`allowedApiIpAddresses`</span> attribute.
      */
     declare public readonly allowedApiIpAddresses: pulumi.Output<string[] | undefined>;
     /**
@@ -81,7 +81,7 @@ export interface OrganizationState {
     /**
      * A list of IP addresses in CIDR format that are allowed to access the Buildkite API.If not set, all IP addresses are allowed (the same as setting 0.0.0.0/0).
      *
-     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`">`allowed_api_ip_addresses`</span> attribute.
+     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`" pulumi-lang-hcl="`allowed_api_ip_addresses`">`allowedApiIpAddresses`</span> attribute.
      */
     allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -101,7 +101,7 @@ export interface OrganizationArgs {
     /**
      * A list of IP addresses in CIDR format that are allowed to access the Buildkite API.If not set, all IP addresses are allowed (the same as setting 0.0.0.0/0).
      *
-     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`">`allowed_api_ip_addresses`</span> attribute.
+     * > The "Allowed API IP Addresses" feature must be enabled on your organization in order to manage the <span pulumi-lang-nodejs="`allowedApiIpAddresses`" pulumi-lang-dotnet="`AllowedApiIpAddresses`" pulumi-lang-go="`allowedApiIpAddresses`" pulumi-lang-python="`allowed_api_ip_addresses`" pulumi-lang-yaml="`allowedApiIpAddresses`" pulumi-lang-java="`allowedApiIpAddresses`" pulumi-lang-hcl="`allowed_api_ip_addresses`">`allowedApiIpAddresses`</span> attribute.
      */
     allowedApiIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

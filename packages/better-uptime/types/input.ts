@@ -779,11 +779,11 @@ export interface OnCallCalendarOnCallRotation {
 }
 
 export interface OnCallCalendarOnCallUser {
-    email: pulumi.Input<string>;
-    firstName: pulumi.Input<string>;
-    id: pulumi.Input<string>;
-    lastName: pulumi.Input<string>;
-    phoneNumbers: pulumi.Input<pulumi.Input<string>[]>;
+    email?: pulumi.Input<string | undefined>;
+    firstName?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    lastName?: pulumi.Input<string | undefined>;
+    phoneNumbers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OutgoingWebhookCustomWebhookTemplateAttributes {
@@ -1049,8 +1049,8 @@ export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
 }
 
 export interface StatusPageResourceStatusHistory {
-    day: pulumi.Input<string>;
-    downtimeDuration: pulumi.Input<number>;
-    maintenanceDuration: pulumi.Input<number>;
-    status: pulumi.Input<string>;
+    day?: pulumi.Input<string | undefined>;
+    downtimeDuration?: pulumi.Input<number | undefined>;
+    maintenanceDuration?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

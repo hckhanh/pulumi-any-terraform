@@ -59,11 +59,11 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly chartId: pulumi.Output<string>;
     /**
-     * How often to check the alert condition in seconds.
+     * How often to check the alert condition in seconds. Required for threshold and relative alerts; ignored for anomaly alerts, which derive their cadence from query_period.
      */
     declare public readonly checkPeriod: pulumi.Output<number>;
     /**
-     * The confirmation delay in seconds before triggering (required, >= 0).
+     * The confirmation delay in seconds before triggering.
      */
     declare public readonly confirmationPeriod: pulumi.Output<number>;
     /**
@@ -103,7 +103,7 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'. Not required for anomaly alerts.
+     * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     declare public readonly operator: pulumi.Output<string>;
     /**
@@ -119,7 +119,7 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly push: pulumi.Output<boolean>;
     /**
-     * The query evaluation window in seconds (default: 60).
+     * The query evaluation window in seconds.
      */
     declare public readonly queryPeriod: pulumi.Output<number>;
     /**
@@ -280,11 +280,11 @@ export interface DashboardAlertState {
      */
     chartId?: pulumi.Input<string | undefined>;
     /**
-     * How often to check the alert condition in seconds.
+     * How often to check the alert condition in seconds. Required for threshold and relative alerts; ignored for anomaly alerts, which derive their cadence from query_period.
      */
     checkPeriod?: pulumi.Input<number | undefined>;
     /**
-     * The confirmation delay in seconds before triggering (required, >= 0).
+     * The confirmation delay in seconds before triggering.
      */
     confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -324,7 +324,7 @@ export interface DashboardAlertState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'. Not required for anomaly alerts.
+     * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     operator?: pulumi.Input<string | undefined>;
     /**
@@ -340,7 +340,7 @@ export interface DashboardAlertState {
      */
     push?: pulumi.Input<boolean | undefined>;
     /**
-     * The query evaluation window in seconds (default: 60).
+     * The query evaluation window in seconds.
      */
     queryPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -410,11 +410,11 @@ export interface DashboardAlertArgs {
      */
     chartId: pulumi.Input<string>;
     /**
-     * How often to check the alert condition in seconds.
+     * How often to check the alert condition in seconds. Required for threshold and relative alerts; ignored for anomaly alerts, which derive their cadence from query_period.
      */
     checkPeriod?: pulumi.Input<number | undefined>;
     /**
-     * The confirmation delay in seconds before triggering (required, >= 0).
+     * The confirmation delay in seconds before triggering.
      */
     confirmationPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -450,7 +450,7 @@ export interface DashboardAlertArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'. Not required for anomaly alerts.
+     * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     operator?: pulumi.Input<string | undefined>;
     /**
@@ -462,7 +462,7 @@ export interface DashboardAlertArgs {
      */
     push?: pulumi.Input<boolean | undefined>;
     /**
-     * The query evaluation window in seconds (default: 60).
+     * The query evaluation window in seconds.
      */
     queryPeriod?: pulumi.Input<number | undefined>;
     /**

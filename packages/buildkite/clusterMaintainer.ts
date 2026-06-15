@@ -58,12 +58,12 @@ export class ClusterMaintainer extends pulumi.CustomResource {
     declare public readonly clusterUuid: pulumi.Output<string>;
     /**
      * The UUID of the team to add as a maintainer. This is mutually exclusive with user_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     declare public readonly teamUuid: pulumi.Output<string | undefined>;
     /**
      * The UUID of the user to add as a maintainer. This is mutually exclusive with team_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     declare public readonly userUuid: pulumi.Output<string | undefined>;
 
@@ -137,12 +137,12 @@ export interface ClusterMaintainerState {
     clusterUuid?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the team to add as a maintainer. This is mutually exclusive with user_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     teamUuid?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the user to add as a maintainer. This is mutually exclusive with team_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     userUuid?: pulumi.Input<string | undefined>;
 }
@@ -157,12 +157,12 @@ export interface ClusterMaintainerArgs {
     clusterUuid: pulumi.Input<string>;
     /**
      * The UUID of the team to add as a maintainer. This is mutually exclusive with user_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     teamUuid?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the user to add as a maintainer. This is mutually exclusive with team_uuid.
-     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid "> user_uuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid "> team_uuid </span>can be specified.
+     * Only one of<span pulumi-lang-nodejs=" userUuid " pulumi-lang-dotnet=" UserUuid " pulumi-lang-go=" userUuid " pulumi-lang-python=" user_uuid " pulumi-lang-yaml=" userUuid " pulumi-lang-java=" userUuid " pulumi-lang-hcl=" user_uuid "> userUuid </span>or<span pulumi-lang-nodejs=" teamUuid " pulumi-lang-dotnet=" TeamUuid " pulumi-lang-go=" teamUuid " pulumi-lang-python=" team_uuid " pulumi-lang-yaml=" teamUuid " pulumi-lang-java=" teamUuid " pulumi-lang-hcl=" team_uuid "> teamUuid </span>can be specified.
      */
     userUuid?: pulumi.Input<string | undefined>;
 }

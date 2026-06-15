@@ -61,11 +61,11 @@ export class CollectorTarget extends pulumi.CustomResource {
      */
     declare public readonly endpoint: pulumi.Output<string | undefined>;
     /**
-     * Hostname or IP of the database server. Use this for database kinds (postgres, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
+     * Hostname or IP of the database server. Use this for database kinds (postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
      */
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
-     * The target kind. One of: postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
      */
     declare public readonly kind: pulumi.Output<string>;
     /**
@@ -209,11 +209,11 @@ export interface CollectorTargetState {
      */
     endpoint?: pulumi.Input<string | undefined>;
     /**
-     * Hostname or IP of the database server. Use this for database kinds (postgres, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
+     * Hostname or IP of the database server. Use this for database kinds (postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The target kind. One of: postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -283,11 +283,11 @@ export interface CollectorTargetArgs {
      */
     endpoint?: pulumi.Input<string | undefined>;
     /**
-     * Hostname or IP of the database server. Use this for database kinds (postgres, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
+     * Hostname or IP of the database server. Use this for database kinds (postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch). For process kinds use <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> instead.
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The target kind. One of: postgres, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
      */
     kind: pulumi.Input<string>;
     /**

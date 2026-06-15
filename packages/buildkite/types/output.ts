@@ -300,6 +300,18 @@ export interface PipelineProviderSettings {
      */
     buildBranches: boolean;
     /**
+     * Whether to create a build when a GitHub check run completes. Useful for chaining CI workflows by triggering a Buildkite pipeline after another CI system finishes.
+     */
+    buildCheckRunCompleted: boolean;
+    /**
+     * Whether to create a build when a branch or tag is created on GitHub.
+     */
+    buildCreateEvent: boolean;
+    /**
+     * Whether to create a build when a GitHub deployment status is created.
+     */
+    buildDeploymentStatusCreated: boolean;
+    /**
      * Whether to create builds when an issue comment is created on a pull request.
      */
     buildIssueCommentCreated: boolean;
@@ -311,6 +323,10 @@ export interface PipelineProviderSettings {
      * Whether to create builds for pull requests when its base branch changes.
      */
     buildPullRequestBaseBranchChanged: boolean;
+    /**
+     * Whether to create a build when a pull request is converted to a draft.
+     */
+    buildPullRequestConvertedToDraft: boolean;
     /**
      * Whether to create builds for pull requests from third-party forks.
      */
@@ -328,9 +344,33 @@ export interface PipelineProviderSettings {
      */
     buildPullRequestReadyForReview: boolean;
     /**
+     * Whether to create a build when a pull request review is dismissed.
+     */
+    buildPullRequestReviewDismissed: boolean;
+    /**
+     * Whether to create a build when a review is requested on a pull request.
+     */
+    buildPullRequestReviewRequested: boolean;
+    /**
+     * Whether to create a build when a pull request review is submitted.
+     */
+    buildPullRequestReviewSubmitted: boolean;
+    /**
      * Whether to create builds for commits that are part of a pull request.
      */
     buildPullRequests: boolean;
+    /**
+     * Whether to create a build when a GitHub release is created (including drafts).
+     */
+    buildReleaseCreated: boolean;
+    /**
+     * Whether to create a build when a GitHub release is published.
+     */
+    buildReleasePublished: boolean;
+    /**
+     * Whether to create a build when a GitHub release is published as final (excludes pre-releases and drafts).
+     */
+    buildReleaseReleased: boolean;
     /**
      * Whether to create builds when tags are pushed.
      */
@@ -344,11 +384,11 @@ export interface PipelineProviderSettings {
      */
     cancelWhenMergeGroupDestroyed: boolean;
     /**
-     * The condition to evaluate when deciding if a build should run. This is only valid when <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`">`trigger_mode`</span> is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span>. More details available in [the documentation](https://buildkite.com/docs/pipelines/conditionals).
+     * The condition to evaluate when deciding if a build should run. This is only valid when <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`" pulumi-lang-hcl="`trigger_mode`">`triggerMode`</span> is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`" pulumi-lang-hcl="`code`">`code`</span>. More details available in [the documentation](https://buildkite.com/docs/pipelines/conditionals).
      */
     filterCondition: string;
     /**
-     * Whether to filter builds to only run when the condition in <span pulumi-lang-nodejs="`filterCondition`" pulumi-lang-dotnet="`FilterCondition`" pulumi-lang-go="`filterCondition`" pulumi-lang-python="`filter_condition`" pulumi-lang-yaml="`filterCondition`" pulumi-lang-java="`filterCondition`">`filter_condition`</span> is true.
+     * Whether to filter builds to only run when the condition in <span pulumi-lang-nodejs="`filterCondition`" pulumi-lang-dotnet="`FilterCondition`" pulumi-lang-go="`filterCondition`" pulumi-lang-python="`filter_condition`" pulumi-lang-yaml="`filterCondition`" pulumi-lang-java="`filterCondition`" pulumi-lang-hcl="`filter_condition`">`filterCondition`</span> is true.
      */
     filterEnabled: boolean;
     /**
@@ -401,19 +441,23 @@ export interface PipelineProviderSettings {
     skipPullRequestBuildsForExistingCommits: boolean;
     /**
      * What type of event to trigger builds on. Must be one of:
-     * 	- <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span> will create builds when code is pushed to GitHub.
-     * 	- <span pulumi-lang-nodejs="`deployment`" pulumi-lang-dotnet="`Deployment`" pulumi-lang-go="`deployment`" pulumi-lang-python="`deployment`" pulumi-lang-yaml="`deployment`" pulumi-lang-java="`deployment`">`deployment`</span> will create builds when a deployment is created in GitHub.
-     * 	- <span pulumi-lang-nodejs="`fork`" pulumi-lang-dotnet="`Fork`" pulumi-lang-go="`fork`" pulumi-lang-python="`fork`" pulumi-lang-yaml="`fork`" pulumi-lang-java="`fork`">`fork`</span> will create builds when the GitHub repository is forked.
-     * 	- <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span> will not create any builds based on GitHub activity.
+     * 	- <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`" pulumi-lang-hcl="`code`">`code`</span> will create builds when code is pushed to GitHub.
+     * 	- <span pulumi-lang-nodejs="`deployment`" pulumi-lang-dotnet="`Deployment`" pulumi-lang-go="`deployment`" pulumi-lang-python="`deployment`" pulumi-lang-yaml="`deployment`" pulumi-lang-java="`deployment`" pulumi-lang-hcl="`deployment`">`deployment`</span> will create builds when a deployment is created in GitHub.
+     * 	- <span pulumi-lang-nodejs="`fork`" pulumi-lang-dotnet="`Fork`" pulumi-lang-go="`fork`" pulumi-lang-python="`fork`" pulumi-lang-yaml="`fork`" pulumi-lang-java="`fork`" pulumi-lang-hcl="`fork`">`fork`</span> will create builds when the GitHub repository is forked.
+     * 	- <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span> will not create any builds based on GitHub activity.
      *
-     * 	> <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`">`trigger_mode`</span> is only valid if the pipeline uses a GitHub repository.
-     * 	> If not set, the default value is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span> and other provider settings defaults are applied.
+     * 	> <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`" pulumi-lang-hcl="`trigger_mode`">`triggerMode`</span> is only valid if the pipeline uses a GitHub repository.
+     * 	> If not set, the default value is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`" pulumi-lang-hcl="`code`">`code`</span> and other provider settings defaults are applied.
      */
     triggerMode: string;
     /**
-     * When enabled, agents performing a git diff to determine steps to upload based on [<span pulumi-lang-nodejs="`ifChanged`" pulumi-lang-dotnet="`IfChanged`" pulumi-lang-go="`ifChanged`" pulumi-lang-python="`if_changed`" pulumi-lang-yaml="`ifChanged`" pulumi-lang-java="`ifChanged`">`if_changed`</span>](https://buildkite.com/docs/pipelines/configure/step-types/command-step#agent-applied-attributes)comparisons will use the base commit that points to the previous merge group rather than the base branch
+     * When enabled, agents performing a git diff to determine steps to upload based on [<span pulumi-lang-nodejs="`ifChanged`" pulumi-lang-dotnet="`IfChanged`" pulumi-lang-go="`ifChanged`" pulumi-lang-python="`if_changed`" pulumi-lang-yaml="`ifChanged`" pulumi-lang-java="`ifChanged`" pulumi-lang-hcl="`if_changed`">`ifChanged`</span>](https://buildkite.com/docs/pipelines/configure/step-types/command-step#agent-applied-attributes)comparisons will use the base commit that points to the previous merge group rather than the base branch
      */
     useMergeGroupBaseCommitForGitDiffBase: boolean;
+    /**
+     * Whether to use step keys as commit status names for per-step commit statuses. Requires <span pulumi-lang-nodejs="`publishCommitStatus`" pulumi-lang-dotnet="`PublishCommitStatus`" pulumi-lang-go="`publishCommitStatus`" pulumi-lang-python="`publish_commit_status`" pulumi-lang-yaml="`publishCommitStatus`" pulumi-lang-java="`publishCommitStatus`" pulumi-lang-hcl="`publish_commit_status`">`publishCommitStatus`</span> and <span pulumi-lang-nodejs="`publishCommitStatusPerStep`" pulumi-lang-dotnet="`PublishCommitStatusPerStep`" pulumi-lang-go="`publishCommitStatusPerStep`" pulumi-lang-python="`publish_commit_status_per_step`" pulumi-lang-yaml="`publishCommitStatusPerStep`" pulumi-lang-java="`publishCommitStatusPerStep`" pulumi-lang-hcl="`publish_commit_status_per_step`">`publishCommitStatusPerStep`</span> to also be enabled. Defaults to false.
+     */
+    useStepKeyAsCommitStatus: boolean;
 }
 
 export interface PortalCreatedBy {

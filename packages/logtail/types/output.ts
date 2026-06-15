@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface CollectorConfiguration {
     /**
+     * Maximum number of events held in the collector's in-memory buffer before overflowing to the disk buffer. Defaults to 10000.
+     */
+    bufferMaxEvents: number;
+    /**
      * Enable or disable specific collector components. Maps to the Logs, Metrics, and eBPF tabs in the collector settings UI.
      */
     components?: outputs.CollectorConfigurationComponents;
@@ -27,6 +31,14 @@ export interface CollectorConfiguration {
      */
     memoryBatchSizeMb: number;
     /**
+     * Whether to merge multi-line logs (e.g. stack traces) into single log entries on the collector host before transmission. Matches the Merge logs tab in the collector's Transform data UI.
+     */
+    mergeLogs: boolean;
+    /**
+     * VRL condition detecting the first line of a new log entry — consecutive lines not matching it are merged into the preceding entry. Leave unset to use the built-in heuristic (lines starting with a timestamp or log level). Only used when <span pulumi-lang-nodejs="`mergeLogs`" pulumi-lang-dotnet="`MergeLogs`" pulumi-lang-go="`mergeLogs`" pulumi-lang-python="`merge_logs`" pulumi-lang-yaml="`mergeLogs`" pulumi-lang-java="`mergeLogs`" pulumi-lang-hcl="`merge_logs`">`mergeLogs`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    mergeLogsConfig: string;
+    /**
      * Per-namespace overrides for log sampling rate and trace ingestion (Kubernetes only). Order-independent; entries are identified by name.
      */
     namespaceOptions?: outputs.CollectorConfigurationNamespaceOption[];
@@ -42,6 +54,10 @@ export interface CollectorConfiguration {
      * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`" pulumi-lang-hcl="`source_vrl_transformation`">`sourceVrlTransformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformation: string;
+    /**
+     * What the collector does when the disk buffer is full. <span pulumi-lang-nodejs="`dropNewest`" pulumi-lang-dotnet="`DropNewest`" pulumi-lang-go="`dropNewest`" pulumi-lang-python="`drop_newest`" pulumi-lang-yaml="`dropNewest`" pulumi-lang-java="`dropNewest`" pulumi-lang-hcl="`drop_newest`">`dropNewest`</span> (default) drops incoming data, preferring availability; <span pulumi-lang-nodejs="`block`" pulumi-lang-dotnet="`Block`" pulumi-lang-go="`block`" pulumi-lang-python="`block`" pulumi-lang-yaml="`block`" pulumi-lang-java="`block`" pulumi-lang-hcl="`block`">`block`</span> applies backpressure to producers, preferring completeness.
+     */
+    whenFull: string;
 }
 
 export interface CollectorConfigurationComponents {
@@ -184,10 +200,10 @@ export interface CollectorDatabase {
 }
 
 export interface ConnectionDataSource {
-    dataSources: string[];
-    sourceId: number;
-    sourceName: string;
-    teamName: string;
+    dataSources?: string[];
+    sourceId?: number;
+    sourceName?: string;
+    teamName?: string;
 }
 
 export interface DashboardAlertEscalationTarget {
@@ -242,7 +258,7 @@ export interface DashboardChartQuery {
 
 export interface DashboardVariable {
     /**
-     * Default selected values for the variable.
+     * For 'string', 'number', and 'boolean' variables: fallback value used when <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`" pulumi-lang-hcl="`values`">`values`</span> is empty. For 'select_value' variables: the predefined options shown in the picker. Unused for other types.
      */
     defaultValues: string[];
     /**
@@ -254,7 +270,7 @@ export interface DashboardVariable {
      */
     sqlDefinition: string;
     /**
-     * Predefined values for 'select_value' type variables.
+     * The selected values. For 'source' variables these are the source IDs the variable resolves to (e.g. `logtail_source.web.id`) — this is the field that selects the source. For other types it is the current picker selection or input.
      */
     values: string[];
     /**
@@ -357,7 +373,7 @@ export interface ExplorationQuery {
 
 export interface ExplorationVariable {
     /**
-     * Default selected values for the variable.
+     * For 'string', 'number', and 'boolean' variables: fallback value used when <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`" pulumi-lang-hcl="`values`">`values`</span> is empty. For 'select_value' variables: the predefined options shown in the picker. Unused for other types.
      */
     defaultValues?: string[];
     /**
@@ -369,7 +385,7 @@ export interface ExplorationVariable {
      */
     sqlDefinition?: string;
     /**
-     * Predefined values for 'select_value' type variables.
+     * The selected values. For 'source' variables these are the source IDs the variable resolves to (e.g. `logtail_source.web.id`) — this is the field that selects the source. For other types it is the current picker selection or input.
      */
     values?: string[];
     /**
@@ -379,133 +395,137 @@ export interface ExplorationVariable {
 }
 
 export interface GetCollectorConfiguration {
-    components: outputs.GetCollectorConfigurationComponent[];
-    diskBatchSizeMb: number;
-    logLineLengthLimitKb: number;
-    logsSampleRate: number;
-    memoryBatchSizeMb: number;
-    namespaceOptions: outputs.GetCollectorConfigurationNamespaceOption[];
-    serviceOptions: outputs.GetCollectorConfigurationServiceOption[];
-    tracesSampleRate: number;
-    vrlTransformation: string;
+    bufferMaxEvents?: number;
+    components?: outputs.GetCollectorConfigurationComponent[];
+    diskBatchSizeMb?: number;
+    logLineLengthLimitKb?: number;
+    logsSampleRate?: number;
+    memoryBatchSizeMb?: number;
+    mergeLogs?: boolean;
+    mergeLogsConfig?: string;
+    namespaceOptions?: outputs.GetCollectorConfigurationNamespaceOption[];
+    serviceOptions?: outputs.GetCollectorConfigurationServiceOption[];
+    tracesSampleRate?: number;
+    vrlTransformation?: string;
+    whenFull?: string;
 }
 
 export interface GetCollectorConfigurationComponent {
-    ebpfMetrics: boolean;
-    ebpfRedMetrics: boolean;
-    ebpfTracingBasic: boolean;
-    ebpfTracingFull: boolean;
-    logsCollectorInternals: boolean;
-    logsDocker: boolean;
-    logsHost: boolean;
-    logsKubernetes: boolean;
-    metricsApache: boolean;
-    metricsDatabases: boolean;
-    metricsNginx: boolean;
-    tracesOpentelemetry: boolean;
+    ebpfMetrics?: boolean;
+    ebpfRedMetrics?: boolean;
+    ebpfTracingBasic?: boolean;
+    ebpfTracingFull?: boolean;
+    logsCollectorInternals?: boolean;
+    logsDocker?: boolean;
+    logsHost?: boolean;
+    logsKubernetes?: boolean;
+    metricsApache?: boolean;
+    metricsDatabases?: boolean;
+    metricsNginx?: boolean;
+    tracesOpentelemetry?: boolean;
 }
 
 export interface GetCollectorConfigurationNamespaceOption {
-    ingestTraces: boolean;
-    logSampling: number;
-    name: string;
+    ingestTraces?: boolean;
+    logSampling?: number;
+    name?: string;
 }
 
 export interface GetCollectorConfigurationServiceOption {
-    ingestTraces: boolean;
-    logSampling: number;
-    name: string;
+    ingestTraces?: boolean;
+    logSampling?: number;
+    name?: string;
 }
 
 export interface GetCollectorCustomBucket {
-    accessKeyId: string;
-    endpoint: string;
-    keepDataAfterRetention: boolean;
-    name: string;
-    secretAccessKey: string;
+    accessKeyId?: string;
+    endpoint?: string;
+    keepDataAfterRetention?: boolean;
+    name?: string;
+    secretAccessKey?: string;
 }
 
 export interface GetCollectorDatabase {
-    host: string;
-    id: number;
-    password: string;
-    port: number;
-    serviceType: string;
-    sslMode: string;
-    tls: string;
-    username: string;
+    host?: string;
+    id?: number;
+    password?: string;
+    port?: number;
+    serviceType?: string;
+    sslMode?: string;
+    tls?: string;
+    username?: string;
 }
 
 export interface GetConnectionDataSource {
-    dataSources: string[];
-    sourceId: number;
-    sourceName: string;
-    teamName: string;
+    dataSources?: string[];
+    sourceId?: number;
+    sourceName?: string;
+    teamName?: string;
 }
 
 export interface GetDashboardAlertEscalationTarget {
-    policyId: number;
-    policyName: string;
-    teamId: number;
-    teamName: string;
+    policyId?: number;
+    policyName?: string;
+    teamId?: number;
+    teamName?: string;
 }
 
 export interface GetDashboardChartQuery {
-    id: number;
-    name: string;
-    queryType: string;
-    sourceVariable: string;
-    sqlQuery: string;
-    staticText: string;
-    whereCondition: string;
+    id?: number;
+    name?: string;
+    queryType?: string;
+    sourceVariable?: string;
+    sqlQuery?: string;
+    staticText?: string;
+    whereCondition?: string;
 }
 
 export interface GetErrorsApplicationCustomBucket {
-    accessKeyId: string;
-    endpoint: string;
-    keepDataAfterRetention: boolean;
-    name: string;
-    secretAccessKey: string;
+    accessKeyId?: string;
+    endpoint?: string;
+    keepDataAfterRetention?: boolean;
+    name?: string;
+    secretAccessKey?: string;
 }
 
 export interface GetExplorationAlertEscalationTarget {
-    policyId: number;
-    policyName: string;
-    teamId: number;
-    teamName: string;
+    policyId?: number;
+    policyName?: string;
+    teamId?: number;
+    teamName?: string;
 }
 
 export interface GetExplorationChart {
-    chartType: string;
-    description: string;
-    name: string;
-    settings: string;
+    chartType?: string;
+    description?: string;
+    name?: string;
+    settings?: string;
 }
 
 export interface GetExplorationQuery {
-    id: number;
-    name: string;
-    queryType: string;
-    sourceVariable: string;
-    sqlQuery: string;
-    staticText: string;
-    whereCondition: string;
+    id?: number;
+    name?: string;
+    queryType?: string;
+    sourceVariable?: string;
+    sqlQuery?: string;
+    staticText?: string;
+    whereCondition?: string;
 }
 
 export interface GetExplorationVariable {
-    defaultValues: string[];
-    name: string;
-    sqlDefinition: string;
-    values: string[];
-    variableType: string;
+    defaultValues?: string[];
+    name?: string;
+    sqlDefinition?: string;
+    values?: string[];
+    variableType?: string;
 }
 
 export interface GetSourceCustomBucket {
-    accessKeyId: string;
-    endpoint: string;
-    keepDataAfterRetention: boolean;
-    name: string;
-    secretAccessKey: string;
+    accessKeyId?: string;
+    endpoint?: string;
+    keepDataAfterRetention?: boolean;
+    name?: string;
+    secretAccessKey?: string;
 }
 
 export interface SourceCustomBucket {

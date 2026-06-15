@@ -385,164 +385,164 @@ export interface EmailIntegrationTitleField {
 }
 
 export interface GetIncomingWebhookAcknowledgedAlertIdField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookAcknowledgedRule {
-    content: string;
-    matchType: string;
-    ruleTarget: string;
-    targetField: string;
+    content?: string;
+    matchType?: string;
+    ruleTarget?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookCauseField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookOtherAcknowledgedField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookOtherResolvedField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookOtherStartedField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookResolvedAlertIdField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookResolvedRule {
-    content: string;
-    matchType: string;
-    ruleTarget: string;
-    targetField: string;
+    content?: string;
+    matchType?: string;
+    ruleTarget?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookStartedAlertIdField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookStartedRule {
-    content: string;
-    matchType: string;
-    ruleTarget: string;
-    targetField: string;
+    content?: string;
+    matchType?: string;
+    ruleTarget?: string;
+    targetField?: string;
 }
 
 export interface GetIncomingWebhookTitleField {
-    content: string;
-    contentAfter: string;
-    contentBefore: string;
-    fieldTarget: string;
-    matchType: string;
-    name: string;
-    specialType: string;
-    targetField: string;
+    content?: string;
+    contentAfter?: string;
+    contentBefore?: string;
+    fieldTarget?: string;
+    matchType?: string;
+    name?: string;
+    specialType?: string;
+    targetField?: string;
 }
 
 export interface GetOnCallCalendarOnCallRotation {
-    endRotationsAt: string;
-    rotationInterval: string;
-    rotationLength: number;
-    startRotationsAt: string;
-    users: string[];
+    endRotationsAt?: string;
+    rotationInterval?: string;
+    rotationLength?: number;
+    startRotationsAt?: string;
+    users?: string[];
 }
 
 export interface GetOnCallCalendarOnCallUser {
-    email: string;
-    firstName: string;
-    id: string;
-    lastName: string;
-    phoneNumbers: string[];
+    email?: string;
+    firstName?: string;
+    id?: string;
+    lastName?: string;
+    phoneNumbers?: string[];
 }
 
 export interface GetPolicyStep {
-    comment: string;
-    days: string[];
-    metadataKey: string;
-    metadataValue: outputs.GetPolicyStepMetadataValue[];
-    metadataValues: string[];
-    policyId: number;
-    policyMetadataKey: string;
-    reminderEnabled: boolean;
-    reminderIntervalHours: number;
-    stepMembers: outputs.GetPolicyStepStepMember[];
-    timeFrom: string;
-    timeTo: string;
-    timezone: string;
-    type: string;
-    urgencyId: number;
-    waitBefore: number;
-    waitUntilTime: string;
-    waitUntilTimezone: string;
+    comment?: string;
+    days?: string[];
+    metadataKey?: string;
+    metadataValue?: outputs.GetPolicyStepMetadataValue[];
+    metadataValues?: string[];
+    policyId?: number;
+    policyMetadataKey?: string;
+    reminderEnabled?: boolean;
+    reminderIntervalHours?: number;
+    stepMembers?: outputs.GetPolicyStepStepMember[];
+    timeFrom?: string;
+    timeTo?: string;
+    timezone?: string;
+    type?: string;
+    urgencyId?: number;
+    waitBefore?: number;
+    waitUntilTime?: string;
+    waitUntilTimezone?: string;
 }
 
 export interface GetPolicyStepMetadataValue {
-    email: string;
-    itemId: string;
-    name: string;
-    type: string;
-    value: string;
+    email?: string;
+    itemId?: string;
+    name?: string;
+    type?: string;
+    value?: string;
 }
 
 export interface GetPolicyStepStepMember {
-    id: number;
-    metadataKey: string;
-    teamId: number;
-    type: string;
+    id?: number;
+    metadataKey?: string;
+    teamId?: number;
+    type?: string;
 }
 
 export interface IncomingWebhookAcknowledgedAlertIdField {
@@ -940,11 +940,11 @@ export interface OnCallCalendarOnCallRotation {
 }
 
 export interface OnCallCalendarOnCallUser {
-    email: string;
-    firstName: string;
-    id: string;
-    lastName: string;
-    phoneNumbers: string[];
+    email?: string;
+    firstName?: string;
+    id?: string;
+    lastName?: string;
+    phoneNumbers?: string[];
 }
 
 export interface OutgoingWebhookCustomWebhookTemplateAttributes {
@@ -1210,9 +1210,9 @@ export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
 }
 
 export interface StatusPageResourceStatusHistory {
-    day: string;
-    downtimeDuration: number;
-    maintenanceDuration: number;
-    status: string;
+    day?: string;
+    downtimeDuration?: number;
+    maintenanceDuration?: number;
+    status?: string;
 }
 

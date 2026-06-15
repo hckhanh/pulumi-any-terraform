@@ -37,6 +37,10 @@ export class CatalogRelation extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Should a record enrich incidents matching any of its primary attribute values, or only incidents matching all of them (an empty primary value then matches any value). Possible values: any, all. Defaults to any.
+     */
+    declare public readonly matchMode: pulumi.Output<string | undefined>;
+    /**
      * The name of the Catalog relation.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -55,10 +59,12 @@ export class CatalogRelation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CatalogRelationState | undefined;
             resourceInputs["description"] = state?.description;
+            resourceInputs["matchMode"] = state?.matchMode;
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as CatalogRelationArgs | undefined;
             resourceInputs["description"] = args?.description;
+            resourceInputs["matchMode"] = args?.matchMode;
             resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -75,6 +81,10 @@ export interface CatalogRelationState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Should a record enrich incidents matching any of its primary attribute values, or only incidents matching all of them (an empty primary value then matches any value). Possible values: any, all. Defaults to any.
+     */
+    matchMode?: pulumi.Input<string | undefined>;
+    /**
      * The name of the Catalog relation.
      */
     name?: pulumi.Input<string | undefined>;
@@ -88,6 +98,10 @@ export interface CatalogRelationArgs {
      * A description of the Catalog relation.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Should a record enrich incidents matching any of its primary attribute values, or only incidents matching all of them (an empty primary value then matches any value). Possible values: any, all. Defaults to any.
+     */
+    matchMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the Catalog relation.
      */

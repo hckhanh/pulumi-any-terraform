@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface CollectorConfiguration {
     /**
+     * Maximum number of events held in the collector's in-memory buffer before overflowing to the disk buffer. Defaults to 10000.
+     */
+    bufferMaxEvents?: pulumi.Input<number | undefined>;
+    /**
      * Enable or disable specific collector components. Maps to the Logs, Metrics, and eBPF tabs in the collector settings UI.
      */
     components?: pulumi.Input<inputs.CollectorConfigurationComponents | undefined>;
@@ -27,6 +31,14 @@ export interface CollectorConfiguration {
      */
     memoryBatchSizeMb?: pulumi.Input<number | undefined>;
     /**
+     * Whether to merge multi-line logs (e.g. stack traces) into single log entries on the collector host before transmission. Matches the Merge logs tab in the collector's Transform data UI.
+     */
+    mergeLogs?: pulumi.Input<boolean | undefined>;
+    /**
+     * VRL condition detecting the first line of a new log entry — consecutive lines not matching it are merged into the preceding entry. Leave unset to use the built-in heuristic (lines starting with a timestamp or log level). Only used when <span pulumi-lang-nodejs="`mergeLogs`" pulumi-lang-dotnet="`MergeLogs`" pulumi-lang-go="`mergeLogs`" pulumi-lang-python="`merge_logs`" pulumi-lang-yaml="`mergeLogs`" pulumi-lang-java="`mergeLogs`" pulumi-lang-hcl="`merge_logs`">`mergeLogs`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    mergeLogsConfig?: pulumi.Input<string | undefined>;
+    /**
      * Per-namespace overrides for log sampling rate and trace ingestion (Kubernetes only). Order-independent; entries are identified by name.
      */
     namespaceOptions?: pulumi.Input<pulumi.Input<inputs.CollectorConfigurationNamespaceOption>[] | undefined>;
@@ -42,6 +54,10 @@ export interface CollectorConfiguration {
      * VRL transformation that runs on the collector host, inside your infrastructure, before data is transmitted to Better Stack. Use this for PII redaction and sensitive data filtering — raw data never leaves your network. For server-side transformations that run during ingestion on Better Stack, use the top-level <span pulumi-lang-nodejs="`sourceVrlTransformation`" pulumi-lang-dotnet="`SourceVrlTransformation`" pulumi-lang-go="`sourceVrlTransformation`" pulumi-lang-python="`source_vrl_transformation`" pulumi-lang-yaml="`sourceVrlTransformation`" pulumi-lang-java="`sourceVrlTransformation`" pulumi-lang-hcl="`source_vrl_transformation`">`sourceVrlTransformation`</span> attribute instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformation?: pulumi.Input<string | undefined>;
+    /**
+     * What the collector does when the disk buffer is full. <span pulumi-lang-nodejs="`dropNewest`" pulumi-lang-dotnet="`DropNewest`" pulumi-lang-go="`dropNewest`" pulumi-lang-python="`drop_newest`" pulumi-lang-yaml="`dropNewest`" pulumi-lang-java="`dropNewest`" pulumi-lang-hcl="`drop_newest`">`dropNewest`</span> (default) drops incoming data, preferring availability; <span pulumi-lang-nodejs="`block`" pulumi-lang-dotnet="`Block`" pulumi-lang-go="`block`" pulumi-lang-python="`block`" pulumi-lang-yaml="`block`" pulumi-lang-java="`block`" pulumi-lang-hcl="`block`">`block`</span> applies backpressure to producers, preferring completeness.
+     */
+    whenFull?: pulumi.Input<string | undefined>;
 }
 
 export interface CollectorConfigurationComponents {
@@ -184,10 +200,10 @@ export interface CollectorDatabase {
 }
 
 export interface ConnectionDataSource {
-    dataSources: pulumi.Input<pulumi.Input<string>[]>;
-    sourceId: pulumi.Input<number>;
-    sourceName: pulumi.Input<string>;
-    teamName: pulumi.Input<string>;
+    dataSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sourceId?: pulumi.Input<number | undefined>;
+    sourceName?: pulumi.Input<string | undefined>;
+    teamName?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardAlertEscalationTarget {
@@ -242,7 +258,7 @@ export interface DashboardChartQuery {
 
 export interface DashboardVariable {
     /**
-     * Default selected values for the variable.
+     * For 'string', 'number', and 'boolean' variables: fallback value used when <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`" pulumi-lang-hcl="`values`">`values`</span> is empty. For 'select_value' variables: the predefined options shown in the picker. Unused for other types.
      */
     defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -254,7 +270,7 @@ export interface DashboardVariable {
      */
     sqlDefinition?: pulumi.Input<string | undefined>;
     /**
-     * Predefined values for 'select_value' type variables.
+     * The selected values. For 'source' variables these are the source IDs the variable resolves to (e.g. `logtail_source.web.id`) — this is the field that selects the source. For other types it is the current picker selection or input.
      */
     values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -357,7 +373,7 @@ export interface ExplorationQuery {
 
 export interface ExplorationVariable {
     /**
-     * Default selected values for the variable.
+     * For 'string', 'number', and 'boolean' variables: fallback value used when <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`" pulumi-lang-hcl="`values`">`values`</span> is empty. For 'select_value' variables: the predefined options shown in the picker. Unused for other types.
      */
     defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -369,7 +385,7 @@ export interface ExplorationVariable {
      */
     sqlDefinition?: pulumi.Input<string | undefined>;
     /**
-     * Predefined values for 'select_value' type variables.
+     * The selected values. For 'source' variables these are the source IDs the variable resolves to (e.g. `logtail_source.web.id`) — this is the field that selects the source. For other types it is the current picker selection or input.
      */
     values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

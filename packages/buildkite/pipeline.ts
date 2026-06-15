@@ -55,7 +55,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly cancelIntermediateBuilds: pulumi.Output<boolean>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`">`cancel_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`" pulumi-lang-hcl="`cancel_intermediate_builds`">`cancelIntermediateBuilds`</span> setting based on this branch condition.
      */
     declare public readonly cancelIntermediateBuildsBranchFilter: pulumi.Output<string>;
     /**
@@ -75,7 +75,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly defaultBranch: pulumi.Output<string>;
     /**
-     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
+     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`" pulumi-lang-hcl="`buildkite_pipeline_team`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
      */
     declare public readonly defaultTeamId: pulumi.Output<string | undefined>;
     /**
@@ -103,7 +103,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly pipelineTemplateId: pulumi.Output<string | undefined>;
     /**
-     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span>.
+     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`" pulumi-lang-hcl="`repository`">`repository`</span>.
      */
     declare public readonly providerSettings: pulumi.Output<outputs.PipelineProviderSettings | undefined>;
     /**
@@ -115,15 +115,15 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly skipIntermediateBuilds: pulumi.Output<boolean>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`">`skip_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`" pulumi-lang-hcl="`skip_intermediate_builds`">`skipIntermediateBuilds`</span> setting based on this branch condition.
      */
     declare public readonly skipIntermediateBuildsBranchFilter: pulumi.Output<string>;
     /**
-     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
-     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
+     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`" pulumi-lang-hcl="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`" pulumi-lang-hcl="`data.buildkite_signed_pipeline_steps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
      */
     declare public readonly steps: pulumi.Output<string>;
     /**
@@ -246,7 +246,7 @@ export interface PipelineState {
      */
     cancelIntermediateBuilds?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`">`cancel_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`" pulumi-lang-hcl="`cancel_intermediate_builds`">`cancelIntermediateBuilds`</span> setting based on this branch condition.
      */
     cancelIntermediateBuildsBranchFilter?: pulumi.Input<string | undefined>;
     /**
@@ -266,7 +266,7 @@ export interface PipelineState {
      */
     defaultBranch?: pulumi.Input<string | undefined>;
     /**
-     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
+     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`" pulumi-lang-hcl="`buildkite_pipeline_team`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
      */
     defaultTeamId?: pulumi.Input<string | undefined>;
     /**
@@ -294,7 +294,7 @@ export interface PipelineState {
      */
     pipelineTemplateId?: pulumi.Input<string | undefined>;
     /**
-     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span>.
+     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`" pulumi-lang-hcl="`repository`">`repository`</span>.
      */
     providerSettings?: pulumi.Input<inputs.PipelineProviderSettings | undefined>;
     /**
@@ -306,15 +306,15 @@ export interface PipelineState {
      */
     skipIntermediateBuilds?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`">`skip_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`" pulumi-lang-hcl="`skip_intermediate_builds`">`skipIntermediateBuilds`</span> setting based on this branch condition.
      */
     skipIntermediateBuildsBranchFilter?: pulumi.Input<string | undefined>;
     /**
-     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
-     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
+     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`" pulumi-lang-hcl="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`" pulumi-lang-hcl="`data.buildkite_signed_pipeline_steps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
      */
     steps?: pulumi.Input<string | undefined>;
     /**
@@ -356,7 +356,7 @@ export interface PipelineArgs {
      */
     cancelIntermediateBuilds?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`">`cancel_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`cancelIntermediateBuilds`" pulumi-lang-dotnet="`CancelIntermediateBuilds`" pulumi-lang-go="`cancelIntermediateBuilds`" pulumi-lang-python="`cancel_intermediate_builds`" pulumi-lang-yaml="`cancelIntermediateBuilds`" pulumi-lang-java="`cancelIntermediateBuilds`" pulumi-lang-hcl="`cancel_intermediate_builds`">`cancelIntermediateBuilds`</span> setting based on this branch condition.
      */
     cancelIntermediateBuildsBranchFilter?: pulumi.Input<string | undefined>;
     /**
@@ -372,7 +372,7 @@ export interface PipelineArgs {
      */
     defaultBranch?: pulumi.Input<string | undefined>;
     /**
-     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
+     * The GraphQL ID of a team to initially assign to the pipeline. This is required by the Buildkite API when creating a new pipeline. The team assigned here will be given 'Manage Build and Read' access. Further team associations can be managed with the <span pulumi-lang-nodejs="`buildkite.PipelineTeam`" pulumi-lang-dotnet="`buildkite.PipelineTeam`" pulumi-lang-go="`PipelineTeam`" pulumi-lang-python="`PipelineTeam`" pulumi-lang-yaml="`buildkite.PipelineTeam`" pulumi-lang-java="`buildkite.PipelineTeam`" pulumi-lang-hcl="`buildkite_pipeline_team`">`buildkite.PipelineTeam`</span> resource after the pipeline is created.
      */
     defaultTeamId?: pulumi.Input<string | undefined>;
     /**
@@ -400,7 +400,7 @@ export interface PipelineArgs {
      */
     pipelineTemplateId?: pulumi.Input<string | undefined>;
     /**
-     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span>.
+     * Control settings depending on the VCS provider used in <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`" pulumi-lang-hcl="`repository`">`repository`</span>.
      */
     providerSettings?: pulumi.Input<inputs.PipelineProviderSettings | undefined>;
     /**
@@ -412,15 +412,15 @@ export interface PipelineArgs {
      */
     skipIntermediateBuilds?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`">`skip_intermediate_builds`</span> setting based on this branch condition.
+     * Filter the <span pulumi-lang-nodejs="`skipIntermediateBuilds`" pulumi-lang-dotnet="`SkipIntermediateBuilds`" pulumi-lang-go="`skipIntermediateBuilds`" pulumi-lang-python="`skip_intermediate_builds`" pulumi-lang-yaml="`skipIntermediateBuilds`" pulumi-lang-java="`skipIntermediateBuilds`" pulumi-lang-hcl="`skip_intermediate_builds`">`skipIntermediateBuilds`</span> setting based on this branch condition.
      */
     skipIntermediateBuildsBranchFilter?: pulumi.Input<string | undefined>;
     /**
-     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+     * A custom identifier for the pipeline. If provided, this slug will be used as the pipeline's URL path instead of automatically converting the pipeline name. If not provided, the slug will be [derived](https://buildkite.com/docs/apis/graphql/cookbooks/pipelines#create-a-pipeline-deriving-a-pipeline-slug-from-the-pipelines-name) from the pipeline <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
-     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
+     * The YAML steps to configure for the pipeline. Can also accept the <span pulumi-lang-nodejs="`steps`" pulumi-lang-dotnet="`Steps`" pulumi-lang-go="`steps`" pulumi-lang-python="`steps`" pulumi-lang-yaml="`steps`" pulumi-lang-java="`steps`" pulumi-lang-hcl="`steps`">`steps`</span> attribute from the [<span pulumi-lang-nodejs="`buildkite.getSignedPipelineSteps`" pulumi-lang-dotnet="`buildkite.getSignedPipelineSteps`" pulumi-lang-go="`getSignedPipelineSteps`" pulumi-lang-python="`get_signed_pipeline_steps`" pulumi-lang-yaml="`buildkite.getSignedPipelineSteps`" pulumi-lang-java="`buildkite.getSignedPipelineSteps`" pulumi-lang-hcl="`data.buildkite_signed_pipeline_steps`">`buildkite.getSignedPipelineSteps`</span>](https://www.terraform.io/docs/data-sources/signed_pipeline_steps) data source to enable a signed pipeline. Defaults to `buildkite-agent pipeline upload`.
      */
     steps?: pulumi.Input<string | undefined>;
     /**

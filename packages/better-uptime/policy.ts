@@ -35,6 +35,10 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
+     * Set this to escalate to another escalation policy once this policy has run all its steps and repeats without being acknowledged. The fallback policy must belong to the same organization.
+     */
+    declare public readonly fallbackPolicyId: pulumi.Output<number>;
+    /**
      * Incident token that can be used for manually reporting incidents.
      */
     declare public /*out*/ readonly incidentToken: pulumi.Output<string>;
@@ -76,6 +80,7 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
+            resourceInputs["fallbackPolicyId"] = state?.fallbackPolicyId;
             resourceInputs["incidentToken"] = state?.incidentToken;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyGroupId"] = state?.policyGroupId;
@@ -88,6 +93,7 @@ export class Policy extends pulumi.CustomResource {
             if (args?.steps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'steps'");
             }
+            resourceInputs["fallbackPolicyId"] = args?.fallbackPolicyId;
             resourceInputs["name"] = args?.name;
             resourceInputs["policyGroupId"] = args?.policyGroupId;
             resourceInputs["repeatCount"] = args?.repeatCount;
@@ -105,6 +111,10 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
+    /**
+     * Set this to escalate to another escalation policy once this policy has run all its steps and repeats without being acknowledged. The fallback policy must belong to the same organization.
+     */
+    fallbackPolicyId?: pulumi.Input<number | undefined>;
     /**
      * Incident token that can be used for manually reporting incidents.
      */
@@ -139,6 +149,10 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
+    /**
+     * Set this to escalate to another escalation policy once this policy has run all its steps and repeats without being acknowledged. The fallback policy must belong to the same organization.
+     */
+    fallbackPolicyId?: pulumi.Input<number | undefined>;
     /**
      * The name of this Policy.
      */

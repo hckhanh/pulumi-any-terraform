@@ -63,7 +63,7 @@ export class Registry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly public: pulumi.Output<boolean>;
     /**
-     * The type of the registry (e.g. <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>).
+     * The type of the registry (e.g. <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`" pulumi-lang-hcl="`source`">`source`</span>).
      */
     declare public /*out*/ readonly registryType: pulumi.Output<string>;
     /**
@@ -163,7 +163,7 @@ export interface RegistryState {
      */
     public?: pulumi.Input<boolean | undefined>;
     /**
-     * The type of the registry (e.g. <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>).
+     * The type of the registry (e.g. <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`" pulumi-lang-hcl="`source`">`source`</span>).
      */
     registryType?: pulumi.Input<string | undefined>;
     /**
