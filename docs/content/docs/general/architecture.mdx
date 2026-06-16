@@ -210,7 +210,6 @@ Custom Nx plugins in `/tools/` provide:
 
 Nx provides smart caching to speed up builds:
 - **Local cache**: Stores build outputs locally
-- **Remote cache**: Shared cache on AWS S3 (Cloudflare R2)
 - **Computation caching**: Skips unnecessary rebuilds
 
 ## CI/CD Pipeline
@@ -270,17 +269,12 @@ graph LR
   - GitHub Actions
   - Package registry
 
-### 4. Nx Cloud
-- **Purpose**: Distributed build caching
-- **Usage**: Speed up CI/CD builds
-- **Storage**: AWS S3 (via Cloudflare R2)
-
-### 5. Aikido Safe Chain
+### 4. Aikido Safe Chain
 - **Purpose**: Dependency security scanning
 - **Usage**: Blocks malicious packages during install
 - **Integration**: GitHub Actions
 
-### 6. Autofix.ci
+### 5. Autofix.ci
 - **Purpose**: Automated code fixes
 - **Usage**: Auto-fixes linting and formatting issues
 - **Integration**: Automatic PR commits

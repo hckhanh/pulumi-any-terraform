@@ -35,10 +35,9 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            .nx/cache
-          key: ${{ runner.os }}-pnpm-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-nx-
+            ${{ runner.os }}-pnpm-
       - name: Setup Aikido Safe Chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.5.7/install-safe-chain.sh | sh -s -- --ci
       - name: Install dependencies
@@ -55,8 +54,6 @@ jobs:
         run: |
           pnpm nx run-many -t fix
           git add .
-        env:
-          NX_KEY: ${{ secrets.NX_KEY }}
       - name: Update lockfile
         run: |
           pnpm install --no-frozen-lockfile

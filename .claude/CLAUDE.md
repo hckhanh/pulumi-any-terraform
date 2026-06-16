@@ -117,7 +117,7 @@ All build orchestration runs through custom Nx plugins in `tools/` that extend t
 | `tools/linter.ts`   | `**/project.json`    | aggregate `check`, `fix`                       |
 | `tools/prettier.ts` | `**/project.json`    | `prettier:check`, `prettier:write`             |
 
-`@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead). `@nx/shared-fs-cache` is wired in for shared-cache parity with `NX_KEY` in CI.
+`@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead). Nx caching is local-only; CI relies on Nx input-hashing for correctness -- there is no remote/shared cache.
 
 When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implement `processFile(file)` returning a `CreateNodesResult`, then add the plugin path to the `plugins` array in `nx.json`.
 
@@ -201,10 +201,10 @@ Workflow conventions:
 - All `uses:` actions are **pinned by full SHA** (not tags).
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
-- `pnpm` store and `.nx/cache` are cached on `pnpm-lock.yaml` hash.
+- The `pnpm` store is cached on the `pnpm-lock.yaml` hash; `.nx/cache` is intentionally **not** cached across runners (the Nx 22 database cache is machine-bound and errors on foreign artifacts).
 - **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
 - `publish.yml` uses `commitMode: 'github-api'` for the changesets release commit so it's signed by GitHub.
-- `NX_DAEMON: 'false'` is set globally in CI; `NX_KEY` enables shared cache.
+- `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops; `autofix.yml` also skips Renovate-authored commits and its own `[autofix.ci]` commits.
 
 ## When working in this repo

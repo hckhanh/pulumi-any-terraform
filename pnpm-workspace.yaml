@@ -11,10 +11,26 @@ minimumReleaseAge: 2880
 minimumReleaseAgeExclude:
   # Renovate security update: next@16.2.6
   - next@16.2.6
+  - tmp@0.2.7
+  - form-data@4.0.6
 overrides:
   axios@>=1.0.0 <1.15.0: '1.17.0'
   brace-expansion@>=5.0.0 <5.0.6: '5.0.6'
+  form-data@>=4.0.0 <4.0.6: ^4.0.6
   minimatch@>=9.0.0 <9.0.6: '10.2.5'
   minimatch@>=9.0.0 <9.0.7: '10.2.5'
   postcss@<8.5.10: '8.5.15'
+  tmp@>=0.2.6 <0.2.7: ^0.2.7
   yaml@>=2.0.0 <2.8.3: '2.9.0'
+auditConfig:
+  # These two moderate advisories are intentionally ignored: their `pnpm audit --fix`
+  # overrides break consumers, and neither code path is reachable in this repo.
+  ignoreGhsas:
+    # js-yaml: quadratic-complexity DoS via YAML merge keys. Only reached by
+    # read-yaml-file@1.1.0 (transitive of @manypkg/get-packages) reading our own trusted
+    # pnpm-workspace.yaml. read-yaml-file@1.1.0 uses js-yaml.safeLoad() (removed in js-yaml 4),
+    # so the audit fix (force >=4.1.2) crashes `changeset publish`.
+    - GHSA-h67p-54hq-rp68
+    # @opentelemetry/core: W3C trace-context DoS. nx telemetry is disabled (analytics: false),
+    # so this path is never exercised; the audit fix forces core 2.x into a 1.30.x OTel stack.
+    - GHSA-8988-4f7v-96qf

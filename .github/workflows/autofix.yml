@@ -17,7 +17,7 @@ jobs:
   fix:
     name: Fix
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'renovate[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') && ! contains(github.event.head_commit.message , '[autofix.ci]') }}
+    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'autofix-ci[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') && ! contains(github.event.head_commit.message , '[autofix.ci]') }}
     steps:
       - name: Checkout
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
@@ -34,10 +34,9 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            .nx/cache
-          key: ${{ runner.os }}-pnpm-nx-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-nx-
+            ${{ runner.os }}-pnpm-
       - name: Setup Aikido Safe Chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.5.7/install-safe-chain.sh | sh -s -- --ci
       - name: Update package lock file
@@ -45,13 +44,13 @@ jobs:
           rm -rf **/node_modules pnpm-lock.yaml
           pnpm install --no-frozen-lockfile
       - name: Fix dependencies audit
-        run: pnpm audit --fix override
+        run: |
+          pnpm audit --fix override
+          pnpm install --no-frozen-lockfile
       - name: Set SHAs
         uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
       - name: Fix
         run: pnpm nx affected -t fix
-        env:
-          NX_KEY: ${{ secrets.NX_KEY }}
       - name: Update lock file
         run: |
           pnpm install --no-frozen-lockfile
