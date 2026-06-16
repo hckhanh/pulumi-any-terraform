@@ -51,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Update npm
-        run: npm install -g npm@11.16.0
+        run: npm install -g npm@11.17.0
       - name: Publish to npm
         uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
