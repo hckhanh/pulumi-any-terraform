@@ -87,7 +87,7 @@ jobs:
 ### Performance Optimizations
 
 - **Nx Affected**: Only processes changed packages
-- **GitHub Actions Cache**: pnpm store cached across runs on the lockfile hash
+- **GitHub Actions Cache**: pnpm store and the Nx task cache (`.nx`) persisted across runs
 - **Concurrent Execution**: Multiple jobs run in parallel
 
 ## Update Workflow
@@ -216,7 +216,7 @@ env:
 
 ### Nx Local Cache
 
-Nx caches task outputs locally and skips tasks whose inputs are unchanged. There is **no remote or shared cache** -- build correctness comes from Nx's input-hashing, and the machine-bound `.nx/cache` database is not restored across CI runs.
+Nx caches task outputs locally and skips tasks whose inputs are unchanged. CI persists the whole `.nx` directory (cache + its db) across runs via `actions/cache`, so unchanged tasks are restored instead of rebuilt. There is no remote cache _service_ (Nx Cloud / S3); correctness always comes from Nx's input-hashing, and a cache produced on a different runner is safely ignored rather than trusted.
 
 **Benefits**:
 - Faster local rebuilds
@@ -224,7 +224,7 @@ Nx caches task outputs locally and skips tasks whose inputs are unchanged. There
 
 ### GitHub Actions Cache
 
-Caches the pnpm store across runs:
+Caches the pnpm store and the Nx task cache (`.nx`) across runs:
 
 ```yaml
 - uses: actions/cache@v3
