@@ -201,7 +201,7 @@ Workflow conventions:
 - All `uses:` actions are **pinned by full SHA** (not tags).
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
-- The `pnpm` store is cached on the `pnpm-lock.yaml` hash; the full `.nx` directory (local cache + its db in `workspace-data`) is cached per run (key `…-nx-<run_id>`) with a `restore-keys` fallback, so Nx task results are reused across runs. The Nx 22 db cache is machine-keyed, so a cache from a different runner is safely ignored (a warning + recompute), never a hard failure.
+- The `pnpm` store is cached on the `pnpm-lock.yaml` hash; the full `.nx` directory (local cache + its db in `workspace-data`) is cached per run (key `…-nx-<lockfile_hash>-<run_id>`, `restore-keys` `…-nx-<lockfile_hash>-`) so Nx task results are reused across runs but never across lockfile changes. The Nx 22 db cache is machine-keyed, so a cache from a different runner is safely ignored (a warning + recompute), never a hard failure.
 - **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
 - `publish.yml` uses `commitMode: 'github-api'` for the changesets release commit so it's signed by GitHub.
 - `NX_DAEMON: 'false'` is set globally in CI.

@@ -224,13 +224,20 @@ Nx caches task outputs locally and skips tasks whose inputs are unchanged. CI pe
 
 ### GitHub Actions Cache
 
-Caches the pnpm store and the Nx task cache (`.nx`) across runs:
+Caches the pnpm store and the Nx task cache (`.nx`) across runs. Both keys include the `pnpm-lock.yaml` hash so dependency changes never reuse a stale Nx cache:
 
 ```yaml
 - uses: actions/cache@v3
   with:
     path: ~/.pnpm-store
     key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+- uses: actions/cache@v3
+  with:
+    path: .nx
+    key: ${{ runner.os }}-nx-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.run_id }}
+    restore-keys: |
+      ${{ runner.os }}-nx-${{ hashFiles('**/pnpm-lock.yaml') }}-
 ```
 
 ## Automated Code Fixes
