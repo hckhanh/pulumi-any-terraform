@@ -11,7 +11,8 @@
     "schedule:nonOfficeHours",
     ":separateMultipleMajorReleases",
     "schedule:automergeNonOfficeHours",
-    ":automergeRequireAllStatusChecks"
+    ":automergeRequireAllStatusChecks",
+    ":preserveSemverRanges"
   ],
   "postUpdateOptions": ["pnpmDedupe"],
   "timezone": "Asia/Ho_Chi_Minh",
