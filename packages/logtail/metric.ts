@@ -33,9 +33,9 @@ export class Metric extends pulumi.CustomResource {
     }
 
     /**
-     * The list of aggregations to perform on the metric.
+     * The list of aggregations to perform on the metric. Optional: omit it (or set it to an empty list) to create a Label (a group-by dimension) instead of a Metric.
      */
-    declare public readonly aggregations: pulumi.Output<string[]>;
+    declare public readonly aggregations: pulumi.Output<string[] | undefined>;
     /**
      * The name of this metric.
      */
@@ -73,9 +73,6 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if (args?.aggregations === undefined && !opts.urn) {
-                throw new Error("Missing required property 'aggregations'");
-            }
             if (args?.sourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
@@ -101,7 +98,7 @@ export class Metric extends pulumi.CustomResource {
  */
 export interface MetricState {
     /**
-     * The list of aggregations to perform on the metric.
+     * The list of aggregations to perform on the metric. Optional: omit it (or set it to an empty list) to create a Label (a group-by dimension) instead of a Metric.
      */
     aggregations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -127,9 +124,9 @@ export interface MetricState {
  */
 export interface MetricArgs {
     /**
-     * The list of aggregations to perform on the metric.
+     * The list of aggregations to perform on the metric. Optional: omit it (or set it to an empty list) to create a Label (a group-by dimension) instead of a Metric.
      */
-    aggregations: pulumi.Input<pulumi.Input<string>[]>;
+    aggregations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of this metric.
      */

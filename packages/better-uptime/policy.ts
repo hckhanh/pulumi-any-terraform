@@ -59,9 +59,9 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly repeatDelay: pulumi.Output<number>;
     /**
-     * An array of escalation policy steps
+     * An array of escalation policy steps. May be empty to create a silent policy that only collects incidents without alerting anyone.
      */
-    declare public readonly steps: pulumi.Output<outputs.PolicyStep[]>;
+    declare public readonly steps: pulumi.Output<outputs.PolicyStep[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
@@ -74,7 +74,7 @@ export class Policy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -90,9 +90,6 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["teamName"] = state?.teamName;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if (args?.steps === undefined && !opts.urn) {
-                throw new Error("Missing required property 'steps'");
-            }
             resourceInputs["fallbackPolicyId"] = args?.fallbackPolicyId;
             resourceInputs["name"] = args?.name;
             resourceInputs["policyGroupId"] = args?.policyGroupId;
@@ -136,7 +133,7 @@ export interface PolicyState {
      */
     repeatDelay?: pulumi.Input<number | undefined>;
     /**
-     * An array of escalation policy steps
+     * An array of escalation policy steps. May be empty to create a silent policy that only collects incidents without alerting anyone.
      */
     steps?: pulumi.Input<pulumi.Input<inputs.PolicyStep>[] | undefined>;
     /**
@@ -170,9 +167,9 @@ export interface PolicyArgs {
      */
     repeatDelay?: pulumi.Input<number | undefined>;
     /**
-     * An array of escalation policy steps
+     * An array of escalation policy steps. May be empty to create a silent policy that only collects incidents without alerting anyone.
      */
-    steps: pulumi.Input<pulumi.Input<inputs.PolicyStep>[]>;
+    steps?: pulumi.Input<pulumi.Input<inputs.PolicyStep>[] | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */

@@ -96,7 +96,7 @@ export class EdgeStack extends pulumi.CustomResource {
      */
     declare public readonly repositoryPassword: pulumi.Output<string | undefined>;
     /**
-     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     * Git reference (branch or tag) to check out from the repository.
      */
     declare public readonly repositoryReferenceName: pulumi.Output<string | undefined>;
     /**
@@ -292,7 +292,7 @@ export interface EdgeStackState {
      */
     repositoryPassword?: pulumi.Input<string | undefined>;
     /**
-     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     * Git reference (branch or tag) to check out from the repository.
      */
     repositoryReferenceName?: pulumi.Input<string | undefined>;
     /**
@@ -404,7 +404,7 @@ export interface EdgeStackArgs {
      */
     repositoryPassword?: pulumi.Input<string | undefined>;
     /**
-     * Git reference (branch or tag) to check out from the repository. Changing this value forces resource recreation.
+     * Git reference (branch or tag) to check out from the repository.
      */
     repositoryReferenceName?: pulumi.Input<string | undefined>;
     /**

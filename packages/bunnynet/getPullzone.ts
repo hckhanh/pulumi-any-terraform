@@ -46,6 +46,7 @@ export interface GetPullzoneResult {
     readonly cacheStales: string[];
     readonly cacheVaries: string[];
     readonly cacheVaryCookies: string[];
+    readonly cacheVaryHeaders: string[];
     readonly cacheVaryQuerystrings: string[];
     readonly cdnDomain: string;
     readonly corsEnabled: boolean;
