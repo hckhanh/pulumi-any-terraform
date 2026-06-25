@@ -404,6 +404,33 @@ const secretApprovalPolicy = new infisical.SecretApprovalPolicy(
 )
 ```
 
+### Webhooks
+
+```typescript
+import * as infisical from 'pulumi-infisical'
+
+// Notify an external endpoint whenever secrets change in production
+const deployHook = new infisical.Webhook('prod-deploy-hook', {
+  projectId: project.id,
+  environment: 'prod',
+  secretPath: '/api',
+  webhookUrl: 'https://ci.example.com/hooks/infisical',
+  // Limit to specific events (omit/empty to fire on every supported event)
+  eventsFilters: ['secrets.modified'],
+  // Optional signing secret so the receiver can verify the payload (write-only)
+  webhookSecretKey: 'a-shared-signing-secret',
+})
+
+// A Slack-type webhook that is created but initially disabled
+const slackHook = new infisical.Webhook('slack-hook', {
+  projectId: project.id,
+  environment: 'prod',
+  type: 'slack',
+  webhookUrl: 'https://hooks.slack.com/services/T000/B000/XXXX',
+  isDisabled: true,
+})
+```
+
 ## Resources
 
 ### Project Management
@@ -451,6 +478,10 @@ const secretApprovalPolicy = new infisical.SecretApprovalPolicy(
 
 - **AccessApprovalPolicy**: Approval requirements for access
 - **SecretApprovalPolicy**: Approval requirements for secret changes
+
+### Webhooks
+
+- **Webhook**: Deliver secret events (modified, rotation-failed) to an external URL, with `general` / `slack` / `microsoft-teams` types and an optional signing secret
 
 ### Certificate Management (PKI)
 
