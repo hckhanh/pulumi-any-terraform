@@ -1,3 +1,11 @@
+## 2.1.2
+
+### Patch Changes
+
+- Make logtail_metric.aggregations optional and align valid values with the API by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/95
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.14.2...v10.14.3
+
 ## 2.1.1
 
 ### Patch Changes
