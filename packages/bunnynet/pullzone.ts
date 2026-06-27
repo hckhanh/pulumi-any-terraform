@@ -83,17 +83,21 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly cacheExpirationTimeBrowser: pulumi.Output<number>;
     /**
-     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`">`updating`</span>
+     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`" pulumi-lang-hcl="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`" pulumi-lang-hcl="`updating`">`updating`</span>
      */
     declare public readonly cacheStales: pulumi.Output<string[]>;
     /**
-     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`">`webp`</span>
+     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`" pulumi-lang-hcl="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`" pulumi-lang-hcl="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`" pulumi-lang-hcl="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`" pulumi-lang-hcl="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`" pulumi-lang-hcl="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`" pulumi-lang-hcl="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`" pulumi-lang-hcl="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`" pulumi-lang-hcl="`webp`">`webp`</span>
      */
     declare public readonly cacheVaries: pulumi.Output<string[]>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     declare public readonly cacheVaryCookies: pulumi.Output<string[]>;
+    /**
+     * Contains the list of request headers will be used for vary cache. If empty, it will not be used.
+     */
+    declare public readonly cacheVaryHeaders: pulumi.Output<string[]>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
@@ -422,6 +426,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["cacheStales"] = state?.cacheStales;
             resourceInputs["cacheVaries"] = state?.cacheVaries;
             resourceInputs["cacheVaryCookies"] = state?.cacheVaryCookies;
+            resourceInputs["cacheVaryHeaders"] = state?.cacheVaryHeaders;
             resourceInputs["cacheVaryQuerystrings"] = state?.cacheVaryQuerystrings;
             resourceInputs["cdnDomain"] = state?.cdnDomain;
             resourceInputs["corsEnabled"] = state?.corsEnabled;
@@ -516,6 +521,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["cacheStales"] = args?.cacheStales;
             resourceInputs["cacheVaries"] = args?.cacheVaries;
             resourceInputs["cacheVaryCookies"] = args?.cacheVaryCookies;
+            resourceInputs["cacheVaryHeaders"] = args?.cacheVaryHeaders;
             resourceInputs["cacheVaryQuerystrings"] = args?.cacheVaryQuerystrings;
             resourceInputs["corsEnabled"] = args?.corsEnabled;
             resourceInputs["corsExtensions"] = args?.corsExtensions;
@@ -654,17 +660,21 @@ export interface PullzoneState {
      */
     cacheExpirationTimeBrowser?: pulumi.Input<number | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`">`updating`</span>
+     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`" pulumi-lang-hcl="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`" pulumi-lang-hcl="`updating`">`updating`</span>
      */
     cacheStales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`">`webp`</span>
+     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`" pulumi-lang-hcl="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`" pulumi-lang-hcl="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`" pulumi-lang-hcl="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`" pulumi-lang-hcl="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`" pulumi-lang-hcl="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`" pulumi-lang-hcl="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`" pulumi-lang-hcl="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`" pulumi-lang-hcl="`webp`">`webp`</span>
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Contains the list of request headers will be used for vary cache. If empty, it will not be used.
+     */
+    cacheVaryHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */
@@ -1019,17 +1029,21 @@ export interface PullzoneArgs {
      */
     cacheExpirationTimeBrowser?: pulumi.Input<number | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`">`updating`</span>
+     * Options: <span pulumi-lang-nodejs="`offline`" pulumi-lang-dotnet="`Offline`" pulumi-lang-go="`offline`" pulumi-lang-python="`offline`" pulumi-lang-yaml="`offline`" pulumi-lang-java="`offline`" pulumi-lang-hcl="`offline`">`offline`</span>, <span pulumi-lang-nodejs="`updating`" pulumi-lang-dotnet="`Updating`" pulumi-lang-go="`updating`" pulumi-lang-python="`updating`" pulumi-lang-yaml="`updating`" pulumi-lang-java="`updating`" pulumi-lang-hcl="`updating`">`updating`</span>
      */
     cacheStales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`">`webp`</span>
+     * Options: <span pulumi-lang-nodejs="`avif`" pulumi-lang-dotnet="`Avif`" pulumi-lang-go="`avif`" pulumi-lang-python="`avif`" pulumi-lang-yaml="`avif`" pulumi-lang-java="`avif`" pulumi-lang-hcl="`avif`">`avif`</span>, <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`" pulumi-lang-hcl="`cookie`">`cookie`</span>, <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`" pulumi-lang-hcl="`country`">`country`</span>, <span pulumi-lang-nodejs="`hostname`" pulumi-lang-dotnet="`Hostname`" pulumi-lang-go="`hostname`" pulumi-lang-python="`hostname`" pulumi-lang-yaml="`hostname`" pulumi-lang-java="`hostname`" pulumi-lang-hcl="`hostname`">`hostname`</span>, <span pulumi-lang-nodejs="`mobile`" pulumi-lang-dotnet="`Mobile`" pulumi-lang-go="`mobile`" pulumi-lang-python="`mobile`" pulumi-lang-yaml="`mobile`" pulumi-lang-java="`mobile`" pulumi-lang-hcl="`mobile`">`mobile`</span>, <span pulumi-lang-nodejs="`querystring`" pulumi-lang-dotnet="`Querystring`" pulumi-lang-go="`querystring`" pulumi-lang-python="`querystring`" pulumi-lang-yaml="`querystring`" pulumi-lang-java="`querystring`" pulumi-lang-hcl="`querystring`">`querystring`</span>, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`" pulumi-lang-hcl="`state`">`state`</span>, <span pulumi-lang-nodejs="`webp`" pulumi-lang-dotnet="`Webp`" pulumi-lang-go="`webp`" pulumi-lang-python="`webp`" pulumi-lang-yaml="`webp`" pulumi-lang-java="`webp`" pulumi-lang-hcl="`webp`">`webp`</span>
      */
     cacheVaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by cookie string. If empty, cookie vary will not be used.
      */
     cacheVaryCookies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Contains the list of request headers will be used for vary cache. If empty, it will not be used.
+     */
+    cacheVaryHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contains the list of vary parameters that will be used for vary cache by query string. If empty, all parameters will be used to construct the key
      */

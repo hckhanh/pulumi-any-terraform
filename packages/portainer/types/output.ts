@@ -286,48 +286,48 @@ export interface EndpointSettingsSecuritySettings {
 }
 
 export interface GetHelmReleaseHistoryRevision {
-    appVersion: string;
-    chart: string;
-    description: string;
-    name: string;
-    namespace: string;
-    revision: number;
-    status: string;
-    updated: string;
+    appVersion?: string;
+    chart?: string;
+    description?: string;
+    name?: string;
+    namespace?: string;
+    revision?: number;
+    status?: string;
+    updated?: string;
 }
 
 export interface GetKubernetesCrdCrd {
-    creationDate: string;
-    group: string;
-    name: string;
-    releaseName: string;
-    releaseNamespace: string;
-    releaseVersion: string;
-    scope: string;
+    creationDate?: string;
+    group?: string;
+    name?: string;
+    releaseName?: string;
+    releaseNamespace?: string;
+    releaseVersion?: string;
+    scope?: string;
 }
 
 export interface GetRoleRole {
-    description: string;
-    id: number;
-    name: string;
-    priority: number;
+    description?: string;
+    id?: number;
+    name?: string;
+    priority?: number;
 }
 
 export interface GetUserActivityActivityLog {
-    action: string;
-    context: string;
-    id: number;
-    timestamp: number;
-    username: string;
+    action?: string;
+    context?: string;
+    id?: number;
+    timestamp?: number;
+    username?: string;
 }
 
 export interface GetUserActivityAuthLog {
-    context: number;
-    id: number;
-    origin: string;
-    timestamp: number;
-    type: number;
-    username: string;
+    context?: number;
+    id?: number;
+    origin?: string;
+    timestamp?: number;
+    type?: number;
+    username?: string;
 }
 
 export interface KubernetesApplicationTimeouts {

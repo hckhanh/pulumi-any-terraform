@@ -53,7 +53,7 @@ export class ComputeScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly release: pulumi.Output<string>;
     /**
-     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`">`standalone`</span>
+     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`" pulumi-lang-hcl="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`" pulumi-lang-hcl="`standalone`">`standalone`</span>
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -121,7 +121,7 @@ export interface ComputeScriptState {
      */
     release?: pulumi.Input<string | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`">`standalone`</span>
+     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`" pulumi-lang-hcl="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`" pulumi-lang-hcl="`standalone`">`standalone`</span>
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -139,7 +139,7 @@ export interface ComputeScriptArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`">`standalone`</span>
+     * Options: <span pulumi-lang-nodejs="`middleware`" pulumi-lang-dotnet="`Middleware`" pulumi-lang-go="`middleware`" pulumi-lang-python="`middleware`" pulumi-lang-yaml="`middleware`" pulumi-lang-java="`middleware`" pulumi-lang-hcl="`middleware`">`middleware`</span>, <span pulumi-lang-nodejs="`standalone`" pulumi-lang-dotnet="`Standalone`" pulumi-lang-go="`standalone`" pulumi-lang-python="`standalone`" pulumi-lang-yaml="`standalone`" pulumi-lang-java="`standalone`" pulumi-lang-hcl="`standalone`">`standalone`</span>
      */
     type: pulumi.Input<string>;
 }

@@ -177,7 +177,7 @@ export interface ComputeContainerAppContainerLivenessProbe {
      */
     timeout?: pulumi.Input<number | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`" pulumi-lang-hcl="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`" pulumi-lang-hcl="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -234,7 +234,7 @@ export interface ComputeContainerAppContainerReadinessProbe {
      */
     timeout?: pulumi.Input<number | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`" pulumi-lang-hcl="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`" pulumi-lang-hcl="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -291,7 +291,7 @@ export interface ComputeContainerAppContainerStartupProbe {
      */
     timeout?: pulumi.Input<number | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>
+     * Options: <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`" pulumi-lang-hcl="`grpc`">`grpc`</span>, <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`" pulumi-lang-hcl="`http`">`http`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span>
      */
     type: pulumi.Input<string>;
 }
@@ -452,7 +452,7 @@ export interface GetPullzoneRouting {
      */
     blockedCountries?: string[];
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: string[];
     /**
@@ -475,7 +475,7 @@ export interface GetPullzoneRoutingArgs {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -493,18 +493,18 @@ export interface GetPullzoneRoutingArgs {
 }
 
 export interface PullzoneEdgeruleAction {
-    parameter1: pulumi.Input<string>;
-    parameter2: pulumi.Input<string>;
-    parameter3: pulumi.Input<string>;
-    type: pulumi.Input<string>;
+    parameter1?: pulumi.Input<string | undefined>;
+    parameter2?: pulumi.Input<string | undefined>;
+    parameter3?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneEdgeruleTrigger {
-    matchType: pulumi.Input<string>;
-    parameter1: pulumi.Input<string>;
-    parameter2: pulumi.Input<string>;
-    patterns: pulumi.Input<pulumi.Input<string>[]>;
-    type: pulumi.Input<string>;
+    matchType?: pulumi.Input<string | undefined>;
+    parameter1?: pulumi.Input<string | undefined>;
+    parameter2?: pulumi.Input<string | undefined>;
+    patterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneOrigin {
@@ -599,7 +599,7 @@ export interface PullzoneRouting {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -753,12 +753,12 @@ export interface PullzoneWafRuleResponse {
 }
 
 export interface StreamVideoChapter {
-    end: pulumi.Input<string>;
-    start: pulumi.Input<string>;
-    title: pulumi.Input<string>;
+    end?: pulumi.Input<string | undefined>;
+    start?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface StreamVideoMoment {
-    label: pulumi.Input<string>;
-    timestamp: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
+    timestamp?: pulumi.Input<string | undefined>;
 }

@@ -548,6 +548,11 @@ export type SecretTag = import("./secretTag").SecretTag;
 export const SecretTag: typeof import("./secretTag").SecretTag = null as any;
 utilities.lazyLoad(exports, ["SecretTag"], () => require("./secretTag"));
 
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -762,6 +767,8 @@ const _module = {
                 return new SecretSyncSupabase(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
                 return new SecretTag(name, <any>undefined, { urn })
+            case "infisical:index/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -867,6 +874,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGitlab", _mo
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("infisical", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
