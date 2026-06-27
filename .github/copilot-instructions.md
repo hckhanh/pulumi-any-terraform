@@ -180,5 +180,5 @@ class MyPlugin extends Plugin {
 }
 
 const plugin = new MyPlugin()
-export const { createNodesV2 } = plugin
+export const { createNodes } = plugin
 ```

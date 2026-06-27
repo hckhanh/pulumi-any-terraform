@@ -42,4 +42,4 @@ class PrettierPlugin extends Plugin {
 }
 
 const plugin = new PrettierPlugin()
-export const { createNodesV2 } = plugin
+export const { createNodes } = plugin

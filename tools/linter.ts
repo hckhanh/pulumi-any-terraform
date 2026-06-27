@@ -46,4 +46,4 @@ class LinterPlugin extends Plugin {
 }
 
 const plugin = new LinterPlugin()
-export const { createNodesV2 } = plugin
+export const { createNodes } = plugin

@@ -1,8 +1,8 @@
 import {
   AggregateCreateNodesError,
-  type CreateNodesFunctionV2,
+  type CreateNodes,
+  type CreateNodesFunction,
   type CreateNodesResult,
-  type CreateNodesV2,
 } from '@nx/devkit'
 
 export abstract class Plugin {
@@ -12,7 +12,7 @@ export abstract class Plugin {
     this.projectFilePattern = projectFilePattern
   }
 
-  private readonly createNodesFunction: CreateNodesFunctionV2 = (
+  private readonly createNodesFunction: CreateNodesFunction = (
     configFiles,
     _options,
     _context,
@@ -40,7 +40,7 @@ export abstract class Plugin {
 
   protected abstract processFile(file: string): CreateNodesResult
 
-  get createNodesV2(): CreateNodesV2 {
+  get createNodes(): CreateNodes {
     return [this.projectFilePattern, this.createNodesFunction]
   }
 }
