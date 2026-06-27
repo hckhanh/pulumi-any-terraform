@@ -34,4 +34,4 @@ class BuildPlugin extends Plugin {
 }
 
 const plugin = new BuildPlugin()
-export const { createNodesV2 } = plugin
+export const { createNodes } = plugin

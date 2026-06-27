@@ -51,4 +51,4 @@ class BiomePlugin extends Plugin {
 }
 
 const plugin = new BiomePlugin()
-export const { createNodesV2 } = plugin
+export const { createNodes } = plugin
