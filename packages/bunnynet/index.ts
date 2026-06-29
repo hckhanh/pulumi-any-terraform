@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccountSubuserArgs, AccountSubuserState } from "./accountSubuser";
+export type AccountSubuser = import("./accountSubuser").AccountSubuser;
+export const AccountSubuser: typeof import("./accountSubuser").AccountSubuser = null as any;
+utilities.lazyLoad(exports, ["AccountSubuser"], () => require("./accountSubuser"));
+
 export { ComputeContainerAppArgs, ComputeContainerAppState } from "./computeContainerApp";
 export type ComputeContainerApp = import("./computeContainerApp").ComputeContainerApp;
 export const ComputeContainerApp: typeof import("./computeContainerApp").ComputeContainerApp = null as any;
@@ -182,6 +187,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "bunnynet:index/accountSubuser:AccountSubuser":
+                return new AccountSubuser(name, <any>undefined, { urn })
             case "bunnynet:index/computeContainerApp:ComputeContainerApp":
                 return new ComputeContainerApp(name, <any>undefined, { urn })
             case "bunnynet:index/computeContainerImageregistry:ComputeContainerImageregistry":
@@ -233,6 +240,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("bunnynet", "index/accountSubuser", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeContainerApp", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeContainerImageregistry", _module)
 pulumi.runtime.registerResourceModule("bunnynet", "index/computeScript", _module)

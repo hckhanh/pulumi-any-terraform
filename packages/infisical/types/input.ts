@@ -44,6 +44,10 @@ export interface AppConnectionAwsCredentials {
      * The AWS Secret Access Key associated with the Access Key ID to authenticate requests to AWS services. Required for access-key access method. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/aws#access-key
      */
     secretAccessKey?: pulumi.Input<string | undefined>;
+    /**
+     * An optional custom endpoint URL for the AWS STS API (must start with https://). Only applicable to the assume-role method; when omitted, AWS's default STS endpoint resolution is used.
+     */
+    stsEndpoint?: pulumi.Input<string | undefined>;
 }
 
 export interface AppConnectionAzureAppConfigurationCredentials {

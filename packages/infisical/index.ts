@@ -235,10 +235,35 @@ export const getKmsKeyPublicKey: typeof import("./getKmsKeyPublicKey").getKmsKey
 export const getKmsKeyPublicKeyOutput: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getKmsKeyPublicKey","getKmsKeyPublicKeyOutput"], () => require("./getKmsKeyPublicKey"));
 
+export { GetProjectEnvironmentArgs, GetProjectEnvironmentResult, GetProjectEnvironmentOutputArgs } from "./getProjectEnvironment";
+export const getProjectEnvironment: typeof import("./getProjectEnvironment").getProjectEnvironment = null as any;
+export const getProjectEnvironmentOutput: typeof import("./getProjectEnvironment").getProjectEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectEnvironment","getProjectEnvironmentOutput"], () => require("./getProjectEnvironment"));
+
+export { GetProjectIdentityArgs, GetProjectIdentityResult, GetProjectIdentityOutputArgs } from "./getProjectIdentity";
+export const getProjectIdentity: typeof import("./getProjectIdentity").getProjectIdentity = null as any;
+export const getProjectIdentityOutput: typeof import("./getProjectIdentity").getProjectIdentityOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIdentity","getProjectIdentityOutput"], () => require("./getProjectIdentity"));
+
+export { GetProjectRoleArgs, GetProjectRoleResult, GetProjectRoleOutputArgs } from "./getProjectRole";
+export const getProjectRole: typeof import("./getProjectRole").getProjectRole = null as any;
+export const getProjectRoleOutput: typeof import("./getProjectRole").getProjectRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectRole","getProjectRoleOutput"], () => require("./getProjectRole"));
+
+export { GetProjectUserArgs, GetProjectUserResult, GetProjectUserOutputArgs } from "./getProjectUser";
+export const getProjectUser: typeof import("./getProjectUser").getProjectUser = null as any;
+export const getProjectUserOutput: typeof import("./getProjectUser").getProjectUserOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectUser","getProjectUserOutput"], () => require("./getProjectUser"));
+
 export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
 export const getProjects: typeof import("./getProjects").getProjects = null as any;
 export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjects","getProjectsOutput"], () => require("./getProjects"));
+
+export { GetProjectsListArgs, GetProjectsListResult, GetProjectsListOutputArgs } from "./getProjectsList";
+export const getProjectsList: typeof import("./getProjectsList").getProjectsList = null as any;
+export const getProjectsListOutput: typeof import("./getProjectsList").getProjectsListOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectsList","getProjectsListOutput"], () => require("./getProjectsList"));
 
 export { GetSecretFoldersArgs, GetSecretFoldersResult, GetSecretFoldersOutputArgs } from "./getSecretFolders";
 export const getSecretFolders: typeof import("./getSecretFolders").getSecretFolders = null as any;

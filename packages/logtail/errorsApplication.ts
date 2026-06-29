@@ -59,7 +59,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public readonly customBucket: pulumi.Output<outputs.ErrorsApplicationCustomBucket | undefined>;
     /**
-     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).\
      * When importing an existing application, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after application is created` error.
      */
     declare public readonly dataRegion: pulumi.Output<string>;
@@ -68,9 +68,13 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public readonly errorsRetention: pulumi.Output<number>;
     /**
-     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect.
+     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`gitlabRepositoryName`" pulumi-lang-dotnet="`GitlabRepositoryName`" pulumi-lang-go="`gitlabRepositoryName`" pulumi-lang-python="`gitlab_repository_name`" pulumi-lang-yaml="`gitlabRepositoryName`" pulumi-lang-java="`gitlabRepositoryName`" pulumi-lang-hcl="`gitlab_repository_name`">`gitlabRepositoryName`</span>.
      */
     declare public readonly githubRepositoryName: pulumi.Output<string>;
+    /**
+     * Full name of a GitLab repository (e.g. `group/project`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitLab integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`githubRepositoryName`" pulumi-lang-dotnet="`GithubRepositoryName`" pulumi-lang-go="`githubRepositoryName`" pulumi-lang-python="`github_repository_name`" pulumi-lang-yaml="`githubRepositoryName`" pulumi-lang-java="`githubRepositoryName`" pulumi-lang-hcl="`github_repository_name`">`githubRepositoryName`</span>.
+     */
+    declare public readonly gitlabRepositoryName: pulumi.Output<string>;
     /**
      * The host where the errors should be sent. See documentation for your specific platform for details.
      */
@@ -225,6 +229,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["dataRegion"] = state?.dataRegion;
             resourceInputs["errorsRetention"] = state?.errorsRetention;
             resourceInputs["githubRepositoryName"] = state?.githubRepositoryName;
+            resourceInputs["gitlabRepositoryName"] = state?.gitlabRepositoryName;
             resourceInputs["ingestingHost"] = state?.ingestingHost;
             resourceInputs["ingestingPaused"] = state?.ingestingPaused;
             resourceInputs["name"] = state?.name;
@@ -247,6 +252,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["dataRegion"] = args?.dataRegion;
             resourceInputs["errorsRetention"] = args?.errorsRetention;
             resourceInputs["githubRepositoryName"] = args?.githubRepositoryName;
+            resourceInputs["gitlabRepositoryName"] = args?.gitlabRepositoryName;
             resourceInputs["ingestingPaused"] = args?.ingestingPaused;
             resourceInputs["name"] = args?.name;
             resourceInputs["platform"] = args?.platform;
@@ -292,7 +298,7 @@ export interface ErrorsApplicationState {
      */
     customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**
-     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).\
      * When importing an existing application, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after application is created` error.
      */
     dataRegion?: pulumi.Input<string | undefined>;
@@ -301,9 +307,13 @@ export interface ErrorsApplicationState {
      */
     errorsRetention?: pulumi.Input<number | undefined>;
     /**
-     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect.
+     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`gitlabRepositoryName`" pulumi-lang-dotnet="`GitlabRepositoryName`" pulumi-lang-go="`gitlabRepositoryName`" pulumi-lang-python="`gitlab_repository_name`" pulumi-lang-yaml="`gitlabRepositoryName`" pulumi-lang-java="`gitlabRepositoryName`" pulumi-lang-hcl="`gitlab_repository_name`">`gitlabRepositoryName`</span>.
      */
     githubRepositoryName?: pulumi.Input<string | undefined>;
+    /**
+     * Full name of a GitLab repository (e.g. `group/project`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitLab integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`githubRepositoryName`" pulumi-lang-dotnet="`GithubRepositoryName`" pulumi-lang-go="`githubRepositoryName`" pulumi-lang-python="`github_repository_name`" pulumi-lang-yaml="`githubRepositoryName`" pulumi-lang-java="`githubRepositoryName`" pulumi-lang-hcl="`github_repository_name`">`githubRepositoryName`</span>.
+     */
+    gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * The host where the errors should be sent. See documentation for your specific platform for details.
      */
@@ -462,7 +472,7 @@ export interface ErrorsApplicationArgs {
      */
     customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**
-     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).  
+     * Data region or private cluster name to create the application in. Permitted values for most plans are: <span pulumi-lang-nodejs="`usEast`" pulumi-lang-dotnet="`UsEast`" pulumi-lang-go="`usEast`" pulumi-lang-python="`us_east`" pulumi-lang-yaml="`usEast`" pulumi-lang-java="`usEast`" pulumi-lang-hcl="`us_east`">`usEast`</span>, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span>, <span pulumi-lang-nodejs="`singapore`" pulumi-lang-dotnet="`Singapore`" pulumi-lang-go="`singapore`" pulumi-lang-python="`singapore`" pulumi-lang-yaml="`singapore`" pulumi-lang-java="`singapore`" pulumi-lang-hcl="`singapore`">`singapore`</span>. This value can only be set at creation time and cannot be changed afterwards. The API returns the specific cluster name, which may differ from the value you provide (for example, <span pulumi-lang-nodejs="`germany`" pulumi-lang-dotnet="`Germany`" pulumi-lang-go="`germany`" pulumi-lang-python="`germany`" pulumi-lang-yaml="`germany`" pulumi-lang-java="`germany`" pulumi-lang-hcl="`germany`">`germany`</span> may read back as `eu-nbg-2`).\
      * When importing an existing application, leave <span pulumi-lang-nodejs="`dataRegion`" pulumi-lang-dotnet="`DataRegion`" pulumi-lang-go="`dataRegion`" pulumi-lang-python="`data_region`" pulumi-lang-yaml="`dataRegion`" pulumi-lang-java="`dataRegion`" pulumi-lang-hcl="`data_region`">`dataRegion`</span> unset in your configuration - Terraform reads it from the API. Pinning it to an identifier that differs from the stored cluster name produces a spurious <span pulumi-lang-nodejs="`dataRegion " pulumi-lang-dotnet="`DataRegion " pulumi-lang-go="`dataRegion " pulumi-lang-python="`data_region " pulumi-lang-yaml="`dataRegion " pulumi-lang-java="`dataRegion " pulumi-lang-hcl="`data_region ">`dataRegion </span>cannot be changed after application is created` error.
      */
     dataRegion?: pulumi.Input<string | undefined>;
@@ -471,9 +481,13 @@ export interface ErrorsApplicationArgs {
      */
     errorsRetention?: pulumi.Input<number | undefined>;
     /**
-     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect.
+     * Full name of a GitHub repository (e.g. `owner/repo`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitHub integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`gitlabRepositoryName`" pulumi-lang-dotnet="`GitlabRepositoryName`" pulumi-lang-go="`gitlabRepositoryName`" pulumi-lang-python="`gitlab_repository_name`" pulumi-lang-yaml="`gitlabRepositoryName`" pulumi-lang-java="`gitlabRepositoryName`" pulumi-lang-hcl="`gitlab_repository_name`">`gitlabRepositoryName`</span>.
      */
     githubRepositoryName?: pulumi.Input<string | undefined>;
+    /**
+     * Full name of a GitLab repository (e.g. `group/project`) to connect to this application for source links, git blame, and AI-assisted fixes. The repository must already be connected to your team's GitLab integration. Set to an empty string to disconnect. Mutually exclusive with <span pulumi-lang-nodejs="`githubRepositoryName`" pulumi-lang-dotnet="`GithubRepositoryName`" pulumi-lang-go="`githubRepositoryName`" pulumi-lang-python="`github_repository_name`" pulumi-lang-yaml="`githubRepositoryName`" pulumi-lang-java="`githubRepositoryName`" pulumi-lang-hcl="`github_repository_name`">`githubRepositoryName`</span>.
+     */
+    gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to temporarily pause data ingesting for this application.
      */

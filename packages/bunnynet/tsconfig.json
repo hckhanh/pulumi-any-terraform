@@ -19,6 +19,7 @@
         "skipLibCheck": true
     },
     "files": [
+        "accountSubuser.ts",
         "computeContainerApp.ts",
         "computeContainerImageregistry.ts",
         "computeScript.ts",

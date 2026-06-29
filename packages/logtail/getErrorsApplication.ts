@@ -33,6 +33,7 @@ export interface GetErrorsApplicationResult {
     readonly dataRegion: string;
     readonly errorsRetention: number;
     readonly githubRepositoryName: string;
+    readonly gitlabRepositoryName: string;
     readonly id: string;
     readonly ingestingHost: string;
     readonly ingestingPaused: boolean;
