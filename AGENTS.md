@@ -191,7 +191,7 @@ Workflow conventions:
 - All `uses:` actions are **pinned by full SHA** (not tags).
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
-- `pnpm` store and `.nx/cache` are cached on `pnpm-lock.yaml` hash.
+- `pnpm` store and the full `.nx` directory (cache + `workspace-data` db) are cached across runs; both keys include the `pnpm-lock.yaml` hash so dependency changes never reuse a stale Nx cache.
 - **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection.
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops.
