@@ -37,7 +37,7 @@ export class ExternalDataSource extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`">`source_type`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
+     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`" pulumi-lang-hcl="`source_type`">`sourceType`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
      */
     declare public readonly jobInputsJson: pulumi.Output<string>;
     /**
@@ -126,39 +126,39 @@ export interface ExternalDataSourceState {
     /**
      * Timestamp when the source was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
-     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`">`source_type`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
+     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`" pulumi-lang-hcl="`source_type`">`sourceType`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
      */
-    jobInputsJson?: pulumi.Input<string>;
+    jobInputsJson?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the most recent sync run.
      */
-    lastRunAt?: pulumi.Input<string>;
+    lastRunAt?: pulumi.Input<string | undefined>;
     /**
      * Optional prefix for synced table names (e.g. `stripe_prod_`). Useful when connecting multiple sources of the same type. The PostHog update endpoint silently ignores prefix changes for non-direct-postgres sources, so this resource treats it as RequiresReplace.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * List of table names to sync from the source (e.g. `["users", "orders"]`). PostHog discovers available tables from the source; these must match discovered table names. The source-level update endpoint cannot edit the schema list, so changes force destroy+recreate.
      */
-    schemas?: pulumi.Input<pulumi.Input<string>[]>;
+    schemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source type recognised by the PostHog data warehouse (e.g. `Stripe`, `Postgres`, `Snowflake`, `BigQuery`, `Hubspot`). PostHog defines the set of accepted values and may add new types over time; see the PostHog data warehouse docs for the current list. Cannot be changed after creation.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * Current status reported by PostHog (e.g. `Running`, `Completed`, `Error`).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Sync cadence reported by PostHog. Defaults to 6 hours (5 minutes for CDC schemas) and is not configurable on this resource — the create endpoint does not accept a sync frequency. Reports the value of the first schema; sources with mixed schedules will see this flap. Modify per-schema cadence via the PostHog UI or schemas API.
      */
-    syncFrequency?: pulumi.Input<string>;
+    syncFrequency?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,17 +166,17 @@ export interface ExternalDataSourceState {
  */
 export interface ExternalDataSourceArgs {
     /**
-     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`">`source_type`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
+     * JSON-encoded connection configuration for the source. Shape depends on <span pulumi-lang-nodejs="`sourceType`" pulumi-lang-dotnet="`SourceType`" pulumi-lang-go="`sourceType`" pulumi-lang-python="`source_type`" pulumi-lang-yaml="`sourceType`" pulumi-lang-java="`sourceType`" pulumi-lang-hcl="`source_type`">`sourceType`</span>. For example Postgres expects `{host, port, database, user, password, schema}`; Stripe expects `{stripe_account_id, stripe_secret_key}`. PostHog redacts secret values when reading, so the plan value is preserved in state. On import, redacted secrets will appear in state until the next apply with real values.
      */
     jobInputsJson: pulumi.Input<string>;
     /**
      * Optional prefix for synced table names (e.g. `stripe_prod_`). Useful when connecting multiple sources of the same type. The PostHog update endpoint silently ignores prefix changes for non-direct-postgres sources, so this resource treats it as RequiresReplace.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * List of table names to sync from the source (e.g. `["users", "orders"]`). PostHog discovers available tables from the source; these must match discovered table names. The source-level update endpoint cannot edit the schema list, so changes force destroy+recreate.
      */

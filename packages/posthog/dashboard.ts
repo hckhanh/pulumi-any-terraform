@@ -103,31 +103,31 @@ export interface DashboardState {
     /**
      * Dashboard ID
      */
-    dashboardId?: pulumi.Input<number>;
+    dashboardId?: pulumi.Input<number | undefined>;
     /**
      * Whether the dashboard is deleted (soft delete)
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
     /**
      * Dashboard description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dashboard name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the dashboard is pinned
      */
-    pinned?: pulumi.Input<boolean>;
+    pinned?: pulumi.Input<boolean | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Set of tags for the dashboard
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -137,25 +137,25 @@ export interface DashboardArgs {
     /**
      * Whether the dashboard is deleted (soft delete)
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
     /**
      * Dashboard description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dashboard name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the dashboard is pinned
      */
-    pinned?: pulumi.Input<boolean>;
+    pinned?: pulumi.Input<boolean | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Set of tags for the dashboard
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

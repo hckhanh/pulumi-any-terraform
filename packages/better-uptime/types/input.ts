@@ -30,14 +30,14 @@ export interface CatalogRecordAttribute {
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
      *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
-     *   
+     *
      *   The value of a **Scalar** type is defined using the value field.
-     *   
+     *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
      *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
-     *   
+     *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
     type?: pulumi.Input<string | undefined>;
@@ -49,15 +49,15 @@ export interface CatalogRecordAttribute {
 
 export interface EmailIntegrationAcknowledgedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -84,7 +84,7 @@ export interface EmailIntegrationAcknowledgedAlertIdField {
 
 export interface EmailIntegrationAcknowledgedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -103,15 +103,15 @@ export interface EmailIntegrationAcknowledgedRule {
 
 export interface EmailIntegrationCauseField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -138,15 +138,15 @@ export interface EmailIntegrationCauseField {
 
 export interface EmailIntegrationOtherAcknowledgedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -173,15 +173,15 @@ export interface EmailIntegrationOtherAcknowledgedField {
 
 export interface EmailIntegrationOtherResolvedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -208,15 +208,15 @@ export interface EmailIntegrationOtherResolvedField {
 
 export interface EmailIntegrationOtherStartedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -243,15 +243,15 @@ export interface EmailIntegrationOtherStartedField {
 
 export interface EmailIntegrationResolvedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +278,7 @@ export interface EmailIntegrationResolvedAlertIdField {
 
 export interface EmailIntegrationResolvedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -297,15 +297,15 @@ export interface EmailIntegrationResolvedRule {
 
 export interface EmailIntegrationStartedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface EmailIntegrationStartedAlertIdField {
 
 export interface EmailIntegrationStartedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -351,15 +351,15 @@ export interface EmailIntegrationStartedRule {
 
 export interface EmailIntegrationTitleField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -386,15 +386,15 @@ export interface EmailIntegrationTitleField {
 
 export interface IncomingWebhookAcknowledgedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -421,7 +421,7 @@ export interface IncomingWebhookAcknowledgedAlertIdField {
 
 export interface IncomingWebhookAcknowledgedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -440,15 +440,15 @@ export interface IncomingWebhookAcknowledgedRule {
 
 export interface IncomingWebhookCauseField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -475,15 +475,15 @@ export interface IncomingWebhookCauseField {
 
 export interface IncomingWebhookOtherAcknowledgedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -510,15 +510,15 @@ export interface IncomingWebhookOtherAcknowledgedField {
 
 export interface IncomingWebhookOtherResolvedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -545,15 +545,15 @@ export interface IncomingWebhookOtherResolvedField {
 
 export interface IncomingWebhookOtherStartedField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -580,15 +580,15 @@ export interface IncomingWebhookOtherStartedField {
 
 export interface IncomingWebhookResolvedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -615,7 +615,7 @@ export interface IncomingWebhookResolvedAlertIdField {
 
 export interface IncomingWebhookResolvedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -634,15 +634,15 @@ export interface IncomingWebhookResolvedRule {
 
 export interface IncomingWebhookStartedAlertIdField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -669,7 +669,7 @@ export interface IncomingWebhookStartedAlertIdField {
 
 export interface IncomingWebhookStartedRule {
     /**
-     * The content we should match to satisfy the rule. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
@@ -688,15 +688,15 @@ export interface IncomingWebhookStartedRule {
 
 export interface IncomingWebhookTitleField {
     /**
-     * How should we extract content the field. Should be a valid Regex when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * When should we start extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_after.
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentAfter?: pulumi.Input<string | undefined>;
     /**
-     * When should we stop extracting content for the field. Should be present when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is either<span pulumi-lang-nodejs=" matchBetween " pulumi-lang-dotnet=" MatchBetween " pulumi-lang-go=" matchBetween " pulumi-lang-python=" match_between " pulumi-lang-yaml=" matchBetween " pulumi-lang-java=" matchBetween " pulumi-lang-hcl=" match_between "> matchBetween </span>or match_before.
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
@@ -738,14 +738,14 @@ export interface MetadataMetadataValue {
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
      *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
-     *   
+     *
      *   The value of a **Scalar** type is defined using the value field.
-     *   
+     *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
      *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
-     *   
+     *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
     type?: pulumi.Input<string | undefined>;
@@ -909,15 +909,17 @@ export interface PolicyStepMetadataValue {
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
      *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
-     *   
+     *
      *   The value of a **Scalar** type is defined using the value field.
-     *   
+     *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
      *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
-     *   
+     *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
+     *
+     *   Policy <span pulumi-lang-nodejs="`metadataBranching`" pulumi-lang-dotnet="`MetadataBranching`" pulumi-lang-go="`metadataBranching`" pulumi-lang-python="`metadata_branching`" pulumi-lang-yaml="`metadataBranching`" pulumi-lang-java="`metadataBranching`" pulumi-lang-hcl="`metadata_branching`">`metadataBranching`</span> steps additionally accept <span pulumi-lang-nodejs="`noValue`" pulumi-lang-dotnet="`NoValue`" pulumi-lang-go="`noValue`" pulumi-lang-python="`no_value`" pulumi-lang-yaml="`noValue`" pulumi-lang-java="`noValue`" pulumi-lang-hcl="`no_value`">`noValue`</span>, which matches incidents whose metadata field is absent or blank.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -928,7 +930,11 @@ export interface PolicyStepMetadataValue {
 
 export interface PolicyStepStepMember {
     /**
-     * The ID of the resource to notify during an incident. Required for user, webhook, slack_integration, microsoft_teams_integration, zapier_webhook,<span pulumi-lang-nodejs=" pagerdutyIntegration " pulumi-lang-dotnet=" PagerdutyIntegration " pulumi-lang-go=" pagerdutyIntegration " pulumi-lang-python=" pagerduty_integration " pulumi-lang-yaml=" pagerdutyIntegration " pulumi-lang-java=" pagerdutyIntegration " pulumi-lang-hcl=" pagerduty_integration "> pagerdutyIntegration </span>and policy member types. This is e.g. the ID of the user to notify when member type is user, the on-call calendar ID when member type is current_on_call, or the chained escalation policy ID when member type is policy.
+     * The e-mail address of the user to notify during an incident. Can be used instead of id when member type is user - it is resolved to the user's ID automatically. Only one of id and email can be set.
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the resource to notify during an incident. Required for user, webhook, slack_integration, microsoft_teams_integration, zapier_webhook,<span pulumi-lang-nodejs=" pagerdutyIntegration " pulumi-lang-dotnet=" PagerdutyIntegration " pulumi-lang-go=" pagerdutyIntegration " pulumi-lang-python=" pagerduty_integration " pulumi-lang-yaml=" pagerdutyIntegration " pulumi-lang-java=" pagerdutyIntegration " pulumi-lang-hcl=" pagerduty_integration "> pagerdutyIntegration </span>and policy member types. This is e.g. the ID of the user to notify when member type is user, the on-call calendar ID when member type is current_on_call, or the chained escalation policy ID when member type is policy. When member type is user, you can set email instead.
      */
     id?: pulumi.Input<number | undefined>;
     /**
@@ -986,14 +992,14 @@ export interface StatusPageResourceMarkAsDegradedMetadataRuleMetadataValue {
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
      *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
-     *   
+     *
      *   The value of a **Scalar** type is defined using the value field.
-     *   
+     *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
      *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
-     *   
+     *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
     type?: pulumi.Input<string | undefined>;
@@ -1031,14 +1037,14 @@ export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
      *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
-     *   
+     *
      *   The value of a **Scalar** type is defined using the value field.
-     *   
+     *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
      *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
-     *   
+     *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
     type?: pulumi.Input<string | undefined>;

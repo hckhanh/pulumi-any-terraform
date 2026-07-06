@@ -33,7 +33,7 @@ export class ProjectMember extends pulumi.CustomResource {
     }
 
     /**
-     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`">`admin`</span>.
+     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`" pulumi-lang-hcl="`admin`">`admin`</span>.
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -41,7 +41,7 @@ export class ProjectMember extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span>.
      */
     declare public readonly organizationMember: pulumi.Output<string | undefined>;
     /**
@@ -49,7 +49,7 @@ export class ProjectMember extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`">`organization_member`</span>.
+     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`" pulumi-lang-hcl="`organization_member`">`organizationMember`</span>.
      */
     declare public readonly role: pulumi.Output<string | undefined>;
     /**
@@ -98,29 +98,29 @@ export class ProjectMember extends pulumi.CustomResource {
  */
 export interface ProjectMemberState {
     /**
-     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`">`admin`</span>.
+     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`" pulumi-lang-hcl="`admin`">`admin`</span>.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the access was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
-     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span>.
      */
-    organizationMember?: pulumi.Input<string>;
+    organizationMember?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
-     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`">`organization_member`</span>.
+     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`" pulumi-lang-hcl="`organization_member`">`organizationMember`</span>.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the access was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -128,19 +128,19 @@ export interface ProjectMemberState {
  */
 export interface ProjectMemberArgs {
     /**
-     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`">`admin`</span>.
+     * The access level to grant. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>, or <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`" pulumi-lang-hcl="`admin`">`admin`</span>.
      */
     accessLevel: pulumi.Input<string>;
     /**
-     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+     * The UUID of the organization member to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span>.
      */
-    organizationMember?: pulumi.Input<string>;
+    organizationMember?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
-     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`">`organization_member`</span>.
+     * The UUID of the role to grant project access to. Mutually exclusive with <span pulumi-lang-nodejs="`organizationMember`" pulumi-lang-dotnet="`OrganizationMember`" pulumi-lang-go="`organizationMember`" pulumi-lang-python="`organization_member`" pulumi-lang-yaml="`organizationMember`" pulumi-lang-java="`organizationMember`" pulumi-lang-hcl="`organization_member`">`organizationMember`</span>.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }

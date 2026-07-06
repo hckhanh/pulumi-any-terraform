@@ -93,19 +93,19 @@ export interface DashboardLayoutState {
     /**
      * PostHog dashboard ID.
      */
-    dashboardId?: pulumi.Input<number>;
+    dashboardId?: pulumi.Input<number | undefined>;
     /**
      * Resource ID (same value as dashboard_id).
      */
-    dashboardLayoutId?: pulumi.Input<number>;
+    dashboardLayoutId?: pulumi.Input<number | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Ordered list of tiles to manage on the dashboard.
      */
-    tiles?: pulumi.Input<pulumi.Input<inputs.DashboardLayoutTile>[]>;
+    tiles?: pulumi.Input<pulumi.Input<inputs.DashboardLayoutTile>[] | undefined>;
 }
 
 /**
@@ -119,7 +119,7 @@ export interface DashboardLayoutArgs {
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Ordered list of tiles to manage on the dashboard.
      */

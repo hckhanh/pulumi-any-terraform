@@ -49,7 +49,7 @@ export class ProxyRecord extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -112,35 +112,35 @@ export interface ProxyRecordState {
     /**
      * Timestamp when the proxy record was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Numeric identifier of the user who created the proxy record.
      */
-    createdBy?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<number | undefined>;
     /**
      * The custom domain to provision in PostHog. Configured values are normalised to lowercase with no trailing dot, so `Example.COM.` and `example.com` plan as the same value.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Additional status detail returned by PostHog, when present.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The current provisioning status reported by PostHog.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The PostHog-managed CNAME target that your DNS record must point to.
      */
-    targetCname?: pulumi.Input<string>;
+    targetCname?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the proxy record was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface ProxyRecordArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }

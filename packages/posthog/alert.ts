@@ -33,7 +33,7 @@ export class Alert extends pulumi.CustomResource {
     }
 
     /**
-     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`">`monthly`</span>.
+     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`" pulumi-lang-hcl="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`" pulumi-lang-hcl="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`" pulumi-lang-hcl="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`" pulumi-lang-hcl="`monthly`">`monthly`</span>.
      */
     declare public readonly calculationInterval: pulumi.Output<string>;
     /**
@@ -41,7 +41,7 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly checkOngoingInterval: pulumi.Output<boolean>;
     /**
-     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`">`absolute_value`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`">`relative_increase`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`">`relative_decrease`</span>.
+     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
     declare public readonly conditionType: pulumi.Output<string>;
     /**
@@ -77,7 +77,7 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly thresholdLower: pulumi.Output<number | undefined>;
     /**
-     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`">`percentage`</span> for relative changes.
+     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`" pulumi-lang-hcl="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`" pulumi-lang-hcl="`percentage`">`percentage`</span> for relative changes.
      */
     declare public readonly thresholdType: pulumi.Output<string>;
     /**
@@ -152,57 +152,57 @@ export class Alert extends pulumi.CustomResource {
  */
 export interface AlertState {
     /**
-     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`">`monthly`</span>.
+     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`" pulumi-lang-hcl="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`" pulumi-lang-hcl="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`" pulumi-lang-hcl="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`" pulumi-lang-hcl="`monthly`">`monthly`</span>.
      */
-    calculationInterval?: pulumi.Input<string>;
+    calculationInterval?: pulumi.Input<string | undefined>;
     /**
      * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked.
      */
-    checkOngoingInterval?: pulumi.Input<boolean>;
+    checkOngoingInterval?: pulumi.Input<boolean | undefined>;
     /**
-     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`">`absolute_value`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`">`relative_increase`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`">`relative_decrease`</span>.
+     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * Whether the alert is enabled. Defaults to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the insight this alert monitors.
      */
-    insight?: pulumi.Input<number>;
+    insight?: pulumi.Input<number | undefined>;
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
-    seriesIndex?: pulumi.Input<number>;
+    seriesIndex?: pulumi.Input<number | undefined>;
     /**
      * Whether to skip checking the alert on weekends.
      */
-    skipWeekend?: pulumi.Input<boolean>;
+    skipWeekend?: pulumi.Input<boolean | undefined>;
     /**
      * List of user IDs to notify when the alert fires.
      */
-    subscribedUsers?: pulumi.Input<pulumi.Input<number>[]>;
+    subscribedUsers?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Lower bound of the threshold. Alert fires when value goes below this.
      */
-    thresholdLower?: pulumi.Input<number>;
+    thresholdLower?: pulumi.Input<number | undefined>;
     /**
-     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`">`percentage`</span> for relative changes.
+     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`" pulumi-lang-hcl="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`" pulumi-lang-hcl="`percentage`">`percentage`</span> for relative changes.
      */
-    thresholdType?: pulumi.Input<string>;
+    thresholdType?: pulumi.Input<string | undefined>;
     /**
      * Upper bound of the threshold. Alert fires when value goes above this.
      */
-    thresholdUpper?: pulumi.Input<number>;
+    thresholdUpper?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -210,21 +210,21 @@ export interface AlertState {
  */
 export interface AlertArgs {
     /**
-     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`">`monthly`</span>.
+     * How often to check the alert: <span pulumi-lang-nodejs="`hourly`" pulumi-lang-dotnet="`Hourly`" pulumi-lang-go="`hourly`" pulumi-lang-python="`hourly`" pulumi-lang-yaml="`hourly`" pulumi-lang-java="`hourly`" pulumi-lang-hcl="`hourly`">`hourly`</span>, <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`" pulumi-lang-hcl="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`" pulumi-lang-hcl="`weekly`">`weekly`</span>, or <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`" pulumi-lang-hcl="`monthly`">`monthly`</span>.
      */
-    calculationInterval?: pulumi.Input<string>;
+    calculationInterval?: pulumi.Input<string | undefined>;
     /**
      * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked.
      */
-    checkOngoingInterval?: pulumi.Input<boolean>;
+    checkOngoingInterval?: pulumi.Input<boolean | undefined>;
     /**
-     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`">`absolute_value`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`">`relative_increase`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`">`relative_decrease`</span>.
+     * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
     conditionType: pulumi.Input<string>;
     /**
      * Whether the alert is enabled. Defaults to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the insight this alert monitors.
      */
@@ -232,11 +232,11 @@ export interface AlertArgs {
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
@@ -244,7 +244,7 @@ export interface AlertArgs {
     /**
      * Whether to skip checking the alert on weekends.
      */
-    skipWeekend?: pulumi.Input<boolean>;
+    skipWeekend?: pulumi.Input<boolean | undefined>;
     /**
      * List of user IDs to notify when the alert fires.
      */
@@ -252,13 +252,13 @@ export interface AlertArgs {
     /**
      * Lower bound of the threshold. Alert fires when value goes below this.
      */
-    thresholdLower?: pulumi.Input<number>;
+    thresholdLower?: pulumi.Input<number | undefined>;
     /**
-     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`">`percentage`</span> for relative changes.
+     * Type of threshold: <span pulumi-lang-nodejs="`absolute`" pulumi-lang-dotnet="`Absolute`" pulumi-lang-go="`absolute`" pulumi-lang-python="`absolute`" pulumi-lang-yaml="`absolute`" pulumi-lang-java="`absolute`" pulumi-lang-hcl="`absolute`">`absolute`</span> for fixed values, <span pulumi-lang-nodejs="`percentage`" pulumi-lang-dotnet="`Percentage`" pulumi-lang-go="`percentage`" pulumi-lang-python="`percentage`" pulumi-lang-yaml="`percentage`" pulumi-lang-java="`percentage`" pulumi-lang-hcl="`percentage`">`percentage`</span> for relative changes.
      */
     thresholdType: pulumi.Input<string>;
     /**
      * Upper bound of the threshold. Alert fires when value goes above this.
      */
-    thresholdUpper?: pulumi.Input<number>;
+    thresholdUpper?: pulumi.Input<number | undefined>;
 }

@@ -6,9 +6,9 @@ import * as utilities from "./utilities";
 
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("posthog:index/getRole:getRole", {
+    return pulumi.runtime.invoke("better-uptime:index/getRole:getRole", {
+        "id": args.id,
         "name": args.name,
-        "organizationId": args.organizationId,
     }, opts, utilities.getPackage());
 }
 
@@ -16,25 +16,23 @@ export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
+    id?: string;
     name: string;
-    organizationId?: string;
 }
 
 /**
  * A collection of values returned by getRole.
  */
 export interface GetRoleResult {
-    readonly createdAt: string;
-    readonly createdBy: string;
     readonly id: string;
     readonly name: string;
-    readonly organizationId: string;
+    readonly role: string;
 }
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("posthog:index/getRole:getRole", {
+    return pulumi.runtime.invokeOutput("better-uptime:index/getRole:getRole", {
+        "id": args.id,
         "name": args.name,
-        "organizationId": args.organizationId,
     }, opts, utilities.getPackage());
 }
 
@@ -42,6 +40,6 @@ export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
+    id?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
-    organizationId?: pulumi.Input<string | undefined>;
 }

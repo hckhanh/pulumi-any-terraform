@@ -24,6 +24,7 @@ export interface GetSourceArgs {
  * A collection of values returned by getSource.
  */
 export interface GetSourceResult {
+    readonly blockedMetrics: string[];
     readonly codeMappingSourceRoot: string;
     readonly codeMappingStackRoot: string;
     readonly createdAt: string;
@@ -49,7 +50,12 @@ export interface GetSourceResult {
     readonly teamName: string;
     readonly token: string;
     readonly updatedAt: string;
+    /**
+     * @deprecated Deprecated
+     */
     readonly vrlTransformation: string;
+    readonly vrlTransformationLogs: string;
+    readonly vrlTransformationSpans: string;
 }
 export function getSourceOutput(args: GetSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

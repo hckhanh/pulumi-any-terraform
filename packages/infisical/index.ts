@@ -225,6 +225,11 @@ export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
+export { GetIdentityArgs, GetIdentityResult, GetIdentityOutputArgs } from "./getIdentity";
+export const getIdentity: typeof import("./getIdentity").getIdentity = null as any;
+export const getIdentityOutput: typeof import("./getIdentity").getIdentityOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentity","getIdentityOutput"], () => require("./getIdentity"));
+
 export { GetIdentityDetailsResult } from "./getIdentityDetails";
 export const getIdentityDetails: typeof import("./getIdentityDetails").getIdentityDetails = null as any;
 export const getIdentityDetailsOutput: typeof import("./getIdentityDetails").getIdentityDetailsOutput = null as any;
@@ -405,11 +410,6 @@ export type ProjectIdentity = import("./projectIdentity").ProjectIdentity;
 export const ProjectIdentity: typeof import("./projectIdentity").ProjectIdentity = null as any;
 utilities.lazyLoad(exports, ["ProjectIdentity"], () => require("./projectIdentity"));
 
-export { ProjectIdentityProvisioningArgs, ProjectIdentityProvisioningState } from "./projectIdentityProvisioning";
-export type ProjectIdentityProvisioning = import("./projectIdentityProvisioning").ProjectIdentityProvisioning;
-export const ProjectIdentityProvisioning: typeof import("./projectIdentityProvisioning").ProjectIdentityProvisioning = null as any;
-utilities.lazyLoad(exports, ["ProjectIdentityProvisioning"], () => require("./projectIdentityProvisioning"));
-
 export { ProjectIdentitySpecificPrivilegeArgs, ProjectIdentitySpecificPrivilegeState } from "./projectIdentitySpecificPrivilege";
 export type ProjectIdentitySpecificPrivilege = import("./projectIdentitySpecificPrivilege").ProjectIdentitySpecificPrivilege;
 export const ProjectIdentitySpecificPrivilege: typeof import("./projectIdentitySpecificPrivilege").ProjectIdentitySpecificPrivilege = null as any;
@@ -419,6 +419,11 @@ export { ProjectRoleArgs, ProjectRoleState } from "./projectRole";
 export type ProjectRole = import("./projectRole").ProjectRole;
 export const ProjectRole: typeof import("./projectRole").ProjectRole = null as any;
 utilities.lazyLoad(exports, ["ProjectRole"], () => require("./projectRole"));
+
+export { ProjectScopedIdentityArgs, ProjectScopedIdentityState } from "./projectScopedIdentity";
+export type ProjectScopedIdentity = import("./projectScopedIdentity").ProjectScopedIdentity;
+export const ProjectScopedIdentity: typeof import("./projectScopedIdentity").ProjectScopedIdentity = null as any;
+utilities.lazyLoad(exports, ["ProjectScopedIdentity"], () => require("./projectScopedIdentity"));
 
 export { ProjectTemplateArgs, ProjectTemplateState } from "./projectTemplate";
 export type ProjectTemplate = import("./projectTemplate").ProjectTemplate;
@@ -726,12 +731,12 @@ const _module = {
                 return new ProjectGroup(name, <any>undefined, { urn })
             case "infisical:index/projectIdentity:ProjectIdentity":
                 return new ProjectIdentity(name, <any>undefined, { urn })
-            case "infisical:index/projectIdentityProvisioning:ProjectIdentityProvisioning":
-                return new ProjectIdentityProvisioning(name, <any>undefined, { urn })
             case "infisical:index/projectIdentitySpecificPrivilege:ProjectIdentitySpecificPrivilege":
                 return new ProjectIdentitySpecificPrivilege(name, <any>undefined, { urn })
             case "infisical:index/projectRole:ProjectRole":
                 return new ProjectRole(name, <any>undefined, { urn })
+            case "infisical:index/projectScopedIdentity:ProjectScopedIdentity":
+                return new ProjectScopedIdentity(name, <any>undefined, { urn })
             case "infisical:index/projectTemplate:ProjectTemplate":
                 return new ProjectTemplate(name, <any>undefined, { urn })
             case "infisical:index/projectUser:ProjectUser":
@@ -866,9 +871,9 @@ pulumi.runtime.registerResourceModule("infisical", "index/project", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectEnvironment", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectGroup", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectIdentity", _module)
-pulumi.runtime.registerResourceModule("infisical", "index/projectIdentityProvisioning", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectIdentitySpecificPrivilege", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectRole", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/projectScopedIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectTemplate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/projectUser", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secret", _module)

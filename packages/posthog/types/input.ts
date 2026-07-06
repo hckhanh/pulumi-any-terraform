@@ -9,25 +9,25 @@ export interface DashboardLayoutTile {
     /**
      * Background color of the tile. Valid values are defined by the PostHog API; see [InsightColor in types.ts](https://github.com/PostHog/posthog/blob/master/frontend/src/types.ts#L2154) for the current list.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
-     * ID of the insight to display. Exactly one of<span pulumi-lang-nodejs=" insightId " pulumi-lang-dotnet=" InsightId " pulumi-lang-go=" insightId " pulumi-lang-python=" insight_id " pulumi-lang-yaml=" insightId " pulumi-lang-java=" insightId "> insight_id </span>or<span pulumi-lang-nodejs=" textBody " pulumi-lang-dotnet=" TextBody " pulumi-lang-go=" textBody " pulumi-lang-python=" text_body " pulumi-lang-yaml=" textBody " pulumi-lang-java=" textBody "> text_body </span>must be set.
+     * ID of the insight to display. Exactly one of<span pulumi-lang-nodejs=" insightId " pulumi-lang-dotnet=" InsightId " pulumi-lang-go=" insightId " pulumi-lang-python=" insight_id " pulumi-lang-yaml=" insightId " pulumi-lang-java=" insightId " pulumi-lang-hcl=" insight_id "> insightId </span>or<span pulumi-lang-nodejs=" textBody " pulumi-lang-dotnet=" TextBody " pulumi-lang-go=" textBody " pulumi-lang-python=" text_body " pulumi-lang-yaml=" textBody " pulumi-lang-java=" textBody " pulumi-lang-hcl=" text_body "> textBody </span>must be set.
      */
-    insightId?: pulumi.Input<number>;
+    insightId?: pulumi.Input<number | undefined>;
     /**
-     * JSON object with breakpoint keys <span pulumi-lang-nodejs="`sm`" pulumi-lang-dotnet="`Sm`" pulumi-lang-go="`sm`" pulumi-lang-python="`sm`" pulumi-lang-yaml="`sm`" pulumi-lang-java="`sm`">`sm`</span> and/or <span pulumi-lang-nodejs="`xs`" pulumi-lang-dotnet="`Xs`" pulumi-lang-go="`xs`" pulumi-lang-python="`xs`" pulumi-lang-yaml="`xs`" pulumi-lang-java="`xs`">`xs`</span>, each containing position properties: <span pulumi-lang-nodejs="`x`" pulumi-lang-dotnet="`X`" pulumi-lang-go="`x`" pulumi-lang-python="`x`" pulumi-lang-yaml="`x`" pulumi-lang-java="`x`">`x`</span>, <span pulumi-lang-nodejs="`y`" pulumi-lang-dotnet="`Y`" pulumi-lang-go="`y`" pulumi-lang-python="`y`" pulumi-lang-yaml="`y`" pulumi-lang-java="`y`">`y`</span>, <span pulumi-lang-nodejs="`w`" pulumi-lang-dotnet="`W`" pulumi-lang-go="`w`" pulumi-lang-python="`w`" pulumi-lang-yaml="`w`" pulumi-lang-java="`w`">`w`</span>, <span pulumi-lang-nodejs="`h`" pulumi-lang-dotnet="`H`" pulumi-lang-go="`h`" pulumi-lang-python="`h`" pulumi-lang-yaml="`h`" pulumi-lang-java="`h`">`h`</span> (required), and optionally `minW`, `minH` (e.g. `{"sm":{"x":0,"y":0,"w":6,"h":5},"xs":{"x":0,"y":0,"w":1,"h":5}}`). Semantic JSON equality is used to suppress phantom diffs.
+     * JSON object with breakpoint keys <span pulumi-lang-nodejs="`sm`" pulumi-lang-dotnet="`Sm`" pulumi-lang-go="`sm`" pulumi-lang-python="`sm`" pulumi-lang-yaml="`sm`" pulumi-lang-java="`sm`" pulumi-lang-hcl="`sm`">`sm`</span> and/or <span pulumi-lang-nodejs="`xs`" pulumi-lang-dotnet="`Xs`" pulumi-lang-go="`xs`" pulumi-lang-python="`xs`" pulumi-lang-yaml="`xs`" pulumi-lang-java="`xs`" pulumi-lang-hcl="`xs`">`xs`</span>, each containing position properties: <span pulumi-lang-nodejs="`x`" pulumi-lang-dotnet="`X`" pulumi-lang-go="`x`" pulumi-lang-python="`x`" pulumi-lang-yaml="`x`" pulumi-lang-java="`x`" pulumi-lang-hcl="`x`">`x`</span>, <span pulumi-lang-nodejs="`y`" pulumi-lang-dotnet="`Y`" pulumi-lang-go="`y`" pulumi-lang-python="`y`" pulumi-lang-yaml="`y`" pulumi-lang-java="`y`" pulumi-lang-hcl="`y`">`y`</span>, <span pulumi-lang-nodejs="`w`" pulumi-lang-dotnet="`W`" pulumi-lang-go="`w`" pulumi-lang-python="`w`" pulumi-lang-yaml="`w`" pulumi-lang-java="`w`" pulumi-lang-hcl="`w`">`w`</span>, <span pulumi-lang-nodejs="`h`" pulumi-lang-dotnet="`H`" pulumi-lang-go="`h`" pulumi-lang-python="`h`" pulumi-lang-yaml="`h`" pulumi-lang-java="`h`" pulumi-lang-hcl="`h`">`h`</span> (required), and optionally `minW`, `minH` (e.g. `{"sm":{"x":0,"y":0,"w":6,"h":5},"xs":{"x":0,"y":0,"w":1,"h":5}}`). Semantic JSON equality is used to suppress phantom diffs.
      */
-    layoutsJson?: pulumi.Input<string>;
+    layoutsJson?: pulumi.Input<string | undefined>;
     /**
-     * Whether to show the insight description on the tile. Omit the field to clear it back to the PostHog API default (<span pulumi-lang-nodejs="`null`" pulumi-lang-dotnet="`Null`" pulumi-lang-go="`null`" pulumi-lang-python="`null`" pulumi-lang-yaml="`null`" pulumi-lang-java="`null`">`null`</span>).
+     * Whether to show the insight description on the tile. Omit the field to clear it back to the PostHog API default (<span pulumi-lang-nodejs="`null`" pulumi-lang-dotnet="`Null`" pulumi-lang-go="`null`" pulumi-lang-python="`null`" pulumi-lang-yaml="`null`" pulumi-lang-java="`null`" pulumi-lang-hcl="`null`">`null`</span>).
      */
-    showDescription?: pulumi.Input<boolean>;
+    showDescription?: pulumi.Input<boolean | undefined>;
     /**
-     * Markdown body for a text tile (max 4000 characters). Exactly one of<span pulumi-lang-nodejs=" insightId " pulumi-lang-dotnet=" InsightId " pulumi-lang-go=" insightId " pulumi-lang-python=" insight_id " pulumi-lang-yaml=" insightId " pulumi-lang-java=" insightId "> insight_id </span>or<span pulumi-lang-nodejs=" textBody " pulumi-lang-dotnet=" TextBody " pulumi-lang-go=" textBody " pulumi-lang-python=" text_body " pulumi-lang-yaml=" textBody " pulumi-lang-java=" textBody "> text_body </span>must be set.
+     * Markdown body for a text tile (max 4000 characters). Exactly one of<span pulumi-lang-nodejs=" insightId " pulumi-lang-dotnet=" InsightId " pulumi-lang-go=" insightId " pulumi-lang-python=" insight_id " pulumi-lang-yaml=" insightId " pulumi-lang-java=" insightId " pulumi-lang-hcl=" insight_id "> insightId </span>or<span pulumi-lang-nodejs=" textBody " pulumi-lang-dotnet=" TextBody " pulumi-lang-go=" textBody " pulumi-lang-python=" text_body " pulumi-lang-yaml=" textBody " pulumi-lang-java=" textBody " pulumi-lang-hcl=" text_body "> textBody </span>must be set.
      */
-    textBody?: pulumi.Input<string>;
+    textBody?: pulumi.Input<string | undefined>;
     /**
      * Server-assigned tile ID. Populated after the first apply.
      */
-    tileId?: pulumi.Input<number>;
+    tileId?: pulumi.Input<number | undefined>;
 }

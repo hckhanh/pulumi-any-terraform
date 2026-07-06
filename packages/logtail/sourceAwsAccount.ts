@@ -37,11 +37,11 @@ export class SourceAwsAccount extends pulumi.CustomResource {
      */
     declare public readonly awsAccountId: pulumi.Output<string | undefined>;
     /**
-     * The external ID used for the STS assume-role trust — the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The external ID used for the STS assume-role trust - the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     declare public readonly awsExternalId: pulumi.Output<string | undefined>;
     /**
-     * The IAM role ARN to connect your AWS account — the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The IAM role ARN to connect your AWS account - the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     declare public readonly awsRoleArn: pulumi.Output<string | undefined>;
     declare public readonly sourceAwsAccountId: pulumi.Output<string>;
@@ -95,11 +95,11 @@ export interface SourceAwsAccountState {
      */
     awsAccountId?: pulumi.Input<string | undefined>;
     /**
-     * The external ID used for the STS assume-role trust — the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The external ID used for the STS assume-role trust - the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     awsExternalId?: pulumi.Input<string | undefined>;
     /**
-     * The IAM role ARN to connect your AWS account — the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The IAM role ARN to connect your AWS account - the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     awsRoleArn?: pulumi.Input<string | undefined>;
     sourceAwsAccountId?: pulumi.Input<string | undefined>;
@@ -118,11 +118,11 @@ export interface SourceAwsAccountArgs {
      */
     awsAccountId?: pulumi.Input<string | undefined>;
     /**
-     * The external ID used for the STS assume-role trust — the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The external ID used for the STS assume-role trust - the `ExternalId` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     awsExternalId?: pulumi.Input<string | undefined>;
     /**
-     * The IAM role ARN to connect your AWS account — the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
+     * The IAM role ARN to connect your AWS account - the `IntegrationRoleArn` output of the Better Stack CloudFormation stack. Provide together with <span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span>. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     awsRoleArn?: pulumi.Input<string | undefined>;
     sourceAwsAccountId?: pulumi.Input<string | undefined>;

@@ -80,6 +80,11 @@ export type ProjectMember = import("./projectMember").ProjectMember;
 export const ProjectMember: typeof import("./projectMember").ProjectMember = null as any;
 utilities.lazyLoad(exports, ["ProjectMember"], () => require("./projectMember"));
 
+export { ProjectSettingsArgs, ProjectSettingsState } from "./projectSettings";
+export type ProjectSettings = import("./projectSettings").ProjectSettings;
+export const ProjectSettings: typeof import("./projectSettings").ProjectSettings = null as any;
+utilities.lazyLoad(exports, ["ProjectSettings"], () => require("./projectSettings"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -143,6 +148,8 @@ const _module = {
                 return new ProjectDefaultAccess(name, <any>undefined, { urn })
             case "posthog:index/projectMember:ProjectMember":
                 return new ProjectMember(name, <any>undefined, { urn })
+            case "posthog:index/projectSettings:ProjectSettings":
+                return new ProjectSettings(name, <any>undefined, { urn })
             case "posthog:index/proxyRecord:ProxyRecord":
                 return new ProxyRecord(name, <any>undefined, { urn })
             case "posthog:index/role:Role":
@@ -169,6 +176,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/organizationMember", _mo
 pulumi.runtime.registerResourceModule("posthog", "index/project", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectDefaultAccess", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectMember", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/projectSettings", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/proxyRecord", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/role", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/roleMembership", _module)

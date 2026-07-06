@@ -50,6 +50,8 @@ export class Metric extends pulumi.CustomResource {
     declare public readonly sqlExpression: pulumi.Output<string>;
     /**
      * The type of the metric.
+     *
+     * @deprecated Deprecated
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -78,9 +80,6 @@ export class Metric extends pulumi.CustomResource {
             }
             if (args?.sqlExpression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sqlExpression'");
-            }
-            if (args?.type === undefined && !opts.urn) {
-                throw new Error("Missing required property 'type'");
             }
             resourceInputs["aggregations"] = args?.aggregations;
             resourceInputs["name"] = args?.name;
@@ -115,6 +114,8 @@ export interface MetricState {
     sqlExpression?: pulumi.Input<string | undefined>;
     /**
      * The type of the metric.
+     *
+     * @deprecated Deprecated
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -141,6 +142,8 @@ export interface MetricArgs {
     sqlExpression: pulumi.Input<string>;
     /**
      * The type of the metric.
+     *
+     * @deprecated Deprecated
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

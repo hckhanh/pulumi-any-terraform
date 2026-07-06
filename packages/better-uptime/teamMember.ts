@@ -61,9 +61,13 @@ export class TeamMember extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly mobileAppPlatforms: pulumi.Output<string[]>;
     /**
-     * The role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder.
+     * The system role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder. Use <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span> to assign a custom role. Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
      */
     declare public readonly role: pulumi.Output<string>;
+    /**
+     * The ID of the role to assign — for example from the<span pulumi-lang-nodejs=" better-uptime.getRole " pulumi-lang-dotnet=" better-uptime.getRole " pulumi-lang-go=" getRole " pulumi-lang-python=" get_role " pulumi-lang-yaml=" better-uptime.getRole " pulumi-lang-java=" better-uptime.getRole " pulumi-lang-hcl=" data.betteruptime_role "> better-uptime.getRole </span>data source. Use this to assign a custom role (for built-in roles you can use <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> instead). Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
+     */
+    declare public readonly roleId: pulumi.Output<string>;
     declare public readonly teamMemberId: pulumi.Output<string>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
@@ -91,6 +95,7 @@ export class TeamMember extends pulumi.CustomResource {
             resourceInputs["memberId"] = state?.memberId;
             resourceInputs["mobileAppPlatforms"] = state?.mobileAppPlatforms;
             resourceInputs["role"] = state?.role;
+            resourceInputs["roleId"] = state?.roleId;
             resourceInputs["teamMemberId"] = state?.teamMemberId;
             resourceInputs["teamName"] = state?.teamName;
         } else {
@@ -100,6 +105,7 @@ export class TeamMember extends pulumi.CustomResource {
             }
             resourceInputs["email"] = args?.email;
             resourceInputs["role"] = args?.role;
+            resourceInputs["roleId"] = args?.roleId;
             resourceInputs["teamMemberId"] = args?.teamMemberId;
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -147,9 +153,13 @@ export interface TeamMemberState {
      */
     mobileAppPlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder.
+     * The system role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder. Use <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span> to assign a custom role. Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
      */
     role?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the role to assign — for example from the<span pulumi-lang-nodejs=" better-uptime.getRole " pulumi-lang-dotnet=" better-uptime.getRole " pulumi-lang-go=" getRole " pulumi-lang-python=" get_role " pulumi-lang-yaml=" better-uptime.getRole " pulumi-lang-java=" better-uptime.getRole " pulumi-lang-hcl=" data.betteruptime_role "> better-uptime.getRole </span>data source. Use this to assign a custom role (for built-in roles you can use <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> instead). Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
+     */
+    roleId?: pulumi.Input<string | undefined>;
     teamMemberId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.
@@ -166,9 +176,13 @@ export interface TeamMemberArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * The role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder.
+     * The system role of the team member. Allowed values: responder, member, team_lead, billing_admin. Defaults to responder. Use <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span> to assign a custom role. Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
      */
     role?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the role to assign — for example from the<span pulumi-lang-nodejs=" better-uptime.getRole " pulumi-lang-dotnet=" better-uptime.getRole " pulumi-lang-go=" getRole " pulumi-lang-python=" get_role " pulumi-lang-yaml=" better-uptime.getRole " pulumi-lang-java=" better-uptime.getRole " pulumi-lang-hcl=" data.betteruptime_role "> better-uptime.getRole </span>data source. Use this to assign a custom role (for built-in roles you can use <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> instead). Set only one of <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`" pulumi-lang-hcl="`role`">`role`</span> or <span pulumi-lang-nodejs="`roleId`" pulumi-lang-dotnet="`RoleId`" pulumi-lang-go="`roleId`" pulumi-lang-python="`role_id`" pulumi-lang-yaml="`roleId`" pulumi-lang-java="`roleId`" pulumi-lang-hcl="`role_id`">`roleId`</span>.
+     */
+    roleId?: pulumi.Input<string | undefined>;
     teamMemberId?: pulumi.Input<string | undefined>;
     /**
      * Used to specify the team the resource should be created in when using global tokens.

@@ -79,7 +79,7 @@ export class StatusPage extends pulumi.CustomResource {
      */
     declare public readonly customCss: pulumi.Output<string>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com` To remove the custom domain, set the value to an empty string `""`.
      */
     declare public readonly customDomain: pulumi.Output<string>;
     /**
@@ -317,7 +317,7 @@ export interface StatusPageState {
      */
     customCss?: pulumi.Input<string | undefined>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com` To remove the custom domain, set the value to an empty string `""`.
      */
     customDomain?: pulumi.Input<string | undefined>;
     /**
@@ -447,7 +447,7 @@ export interface StatusPageArgs {
      */
     customCss?: pulumi.Input<string | undefined>;
     /**
-     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com`
+     * Do you want a custom domain on your status page? Add a CNAME record that points your domain to status.betteruptime.com. Example: `CNAME status.walmine.com statuspage.betteruptime.com` To remove the custom domain, set the value to an empty string `""`.
      */
     customDomain?: pulumi.Input<string | undefined>;
     /**

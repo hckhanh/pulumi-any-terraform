@@ -70,6 +70,11 @@ export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
 
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
 export { GetSeverityArgs, GetSeverityResult, GetSeverityOutputArgs } from "./getSeverity";
 export const getSeverity: typeof import("./getSeverity").getSeverity = null as any;
 export const getSeverityOutput: typeof import("./getSeverity").getSeverityOutput = null as any;

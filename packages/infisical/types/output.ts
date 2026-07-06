@@ -1059,6 +1059,17 @@ export interface GetIdentityDetailsOrganization {
     slug: string;
 }
 
+export interface GetIdentityMetadata {
+    /**
+     * The key of the metadata entry
+     */
+    key: string;
+    /**
+     * The value of the metadata entry
+     */
+    value: string;
+}
+
 export interface GetProjectIdentityRole {
     /**
      * The ID of the custom role, if applicable.
@@ -1423,17 +1434,6 @@ export interface ProjectIdentityIdentity {
     name: string;
 }
 
-export interface ProjectIdentityProvisioningMetadata {
-    /**
-     * The key of the metadata entry.
-     */
-    key: string;
-    /**
-     * The value of the metadata entry.
-     */
-    value: string;
-}
-
 export interface ProjectIdentityRole {
     /**
      * The id of the custom role slug
@@ -1557,6 +1557,52 @@ export interface ProjectRolePermissionsV2 {
      * Describe the entity the permission pertains to.
      */
     subject: string;
+}
+
+export interface ProjectScopedIdentityMetadata {
+    /**
+     * The key of the metadata entry.
+     */
+    key: string;
+    /**
+     * The value of the metadata entry.
+     */
+    value: string;
+}
+
+export interface ProjectScopedIdentityRole {
+    /**
+     * The id of the custom role. Read-only; reference custom roles via role_slug.
+     */
+    customRoleId: string;
+    /**
+     * The ID of the project identity role.
+     */
+    id: string;
+    /**
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true fields temporary_mode,<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
+     */
+    isTemporary: boolean;
+    /**
+     * The slug of the role. To assign a custom role, set this to the custom role's slug.
+     */
+    roleSlug: string;
+    /**
+     * ISO time for which temporary access will end. Computed based on<span pulumi-lang-nodejs=" temporaryRange " pulumi-lang-dotnet=" TemporaryRange " pulumi-lang-go=" temporaryRange " pulumi-lang-python=" temporary_range " pulumi-lang-yaml=" temporaryRange " pulumi-lang-java=" temporaryRange " pulumi-lang-hcl=" temporary_range "> temporaryRange </span>and temporary_access_start_time
+     */
+    temporaryAccessEndTime: string;
+    /**
+     * ISO time for which temporary access should begin. The current time is used by default.
+     */
+    temporaryAccessStartTime: string;
+    /**
+     * Type of temporary access given. Types: relative. Default: relative
+     */
+    temporaryMode: string;
+    /**
+     * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
+     */
+    temporaryRange: string;
 }
 
 export interface ProjectTemplateEnvironment {

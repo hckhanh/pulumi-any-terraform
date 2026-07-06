@@ -57,7 +57,7 @@ export class OrganizationMember extends pulumi.CustomResource {
      */
     declare public readonly level: pulumi.Output<string>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -65,7 +65,7 @@ export class OrganizationMember extends pulumi.CustomResource {
      */
     declare public readonly retainOnDestroy: pulumi.Output<boolean | undefined>;
     /**
-     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser "> posthog.getUser </span>data source to look up users by email.
+     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser " pulumi-lang-hcl=" data.posthog_user "> posthog.getUser </span>data source to look up users by email.
      */
     declare public readonly userUuid: pulumi.Output<string>;
 
@@ -118,39 +118,39 @@ export interface OrganizationMemberState {
     /**
      * The email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Whether two-factor authentication is enabled for the user.
      */
-    is2faEnabled?: pulumi.Input<boolean>;
+    is2faEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp when the user joined the organization.
      */
-    joinedAt?: pulumi.Input<string>;
+    joinedAt?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The access level for the member. Valid values are 'member', 'admin', or 'owner'. Defaults to 'member'.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * If true, the user will remain in the organization when this resource is destroyed. Defaults to false.
      */
-    retainOnDestroy?: pulumi.Input<boolean>;
+    retainOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
-     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser "> posthog.getUser </span>data source to look up users by email.
+     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser " pulumi-lang-hcl=" data.posthog_user "> posthog.getUser </span>data source to look up users by email.
      */
-    userUuid?: pulumi.Input<string>;
+    userUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,17 +160,17 @@ export interface OrganizationMemberArgs {
     /**
      * The access level for the member. Valid values are 'member', 'admin', or 'owner'. Defaults to 'member'.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * If true, the user will remain in the organization when this resource is destroyed. Defaults to false.
      */
-    retainOnDestroy?: pulumi.Input<boolean>;
+    retainOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
-     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser "> posthog.getUser </span>data source to look up users by email.
+     * The UUID of the user. Use the<span pulumi-lang-nodejs=" posthog.getUser " pulumi-lang-dotnet=" posthog.getUser " pulumi-lang-go=" getUser " pulumi-lang-python=" get_user " pulumi-lang-yaml=" posthog.getUser " pulumi-lang-java=" posthog.getUser " pulumi-lang-hcl=" data.posthog_user "> posthog.getUser </span>data source to look up users by email.
      */
     userUuid: pulumi.Input<string>;
 }

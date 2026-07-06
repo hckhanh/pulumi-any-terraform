@@ -81,11 +81,11 @@ export class Survey extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly internalTargetingFlagJson: pulumi.Output<string>;
     /**
-     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
     declare public readonly iterationCount: pulumi.Output<number | undefined>;
     /**
-     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
     declare public readonly iterationFrequencyDays: pulumi.Output<number | undefined>;
     /**
@@ -121,7 +121,7 @@ export class Survey extends pulumi.CustomResource {
      */
     declare public readonly responseSamplingInterval: pulumi.Output<number | undefined>;
     /**
-     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`">`month`</span>.
+     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`" pulumi-lang-hcl="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`" pulumi-lang-hcl="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`" pulumi-lang-hcl="`month`">`month`</span>.
      */
     declare public readonly responseSamplingIntervalType: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export class Survey extends pulumi.CustomResource {
      */
     declare public readonly responsesLimit: pulumi.Output<number | undefined>;
     /**
-     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`">`always`</span>.
+     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`" pulumi-lang-hcl="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`" pulumi-lang-hcl="`always`">`always`</span>.
      */
     declare public readonly schedule: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export class Survey extends pulumi.CustomResource {
      */
     declare public readonly translationsJson: pulumi.Output<string | undefined>;
     /**
-     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`">`external_survey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`">`api`</span>.
+     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`" pulumi-lang-hcl="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`" pulumi-lang-hcl="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`" pulumi-lang-hcl="`external_survey`">`externalSurvey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`" pulumi-lang-hcl="`api`">`api`</span>.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -265,135 +265,135 @@ export interface SurveyState {
     /**
      * JSON object describing survey appearance settings.
      */
-    appearanceJson?: pulumi.Input<string>;
+    appearanceJson?: pulumi.Input<string | undefined>;
     /**
      * Whether the survey is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * JSON object describing survey display and targeting conditions.
      */
-    conditionsJson?: pulumi.Input<string>;
+    conditionsJson?: pulumi.Input<string | undefined>;
     /**
      * Folder identifier used only during survey creation.
      */
-    createInFolder?: pulumi.Input<string>;
+    createInFolder?: pulumi.Input<string | undefined>;
     /**
      * RFC3339 creation timestamp of the survey.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing the survey creator.
      */
-    createdByJson?: pulumi.Input<string>;
+    createdByJson?: pulumi.Input<string | undefined>;
     /**
      * Survey description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the survey is embeddable in an iframe.
      */
-    enableIframeEmbedding?: pulumi.Input<boolean>;
+    enableIframeEmbedding?: pulumi.Input<boolean | undefined>;
     /**
      * Whether partial responses are stored when a respondent exits early.
      */
-    enablePartialResponses?: pulumi.Input<boolean>;
+    enablePartialResponses?: pulumi.Input<boolean | undefined>;
     /**
      * RFC3339 end date for the survey.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing custom form content.
      */
-    formContentJson?: pulumi.Input<string>;
+    formContentJson?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing the internal targeting feature flag returned by the API.
      */
-    internalTargetingFlagJson?: pulumi.Input<string>;
+    internalTargetingFlagJson?: pulumi.Input<string | undefined>;
     /**
-     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
-    iterationCount?: pulumi.Input<number>;
+    iterationCount?: pulumi.Input<number | undefined>;
     /**
-     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
-    iterationFrequencyDays?: pulumi.Input<number>;
+    iterationFrequencyDays?: pulumi.Input<number | undefined>;
     /**
      * Feature flag ID linked to the survey. Remove this attribute to unlink the flag from the survey.
      */
-    linkedFlagId?: pulumi.Input<number>;
+    linkedFlagId?: pulumi.Input<number | undefined>;
     /**
      * JSON object describing the linked feature flag returned by the API.
      */
-    linkedFlagJson?: pulumi.Input<string>;
+    linkedFlagJson?: pulumi.Input<string | undefined>;
     /**
      * Insight ID linked to the survey. This field is write-only in the PostHog API and is preserved from Terraform state when configured.
      */
-    linkedInsightId?: pulumi.Input<number>;
+    linkedInsightId?: pulumi.Input<number | undefined>;
     /**
      * Survey name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * JSON array describing the survey questions.
      */
-    questionsJson?: pulumi.Input<string>;
+    questionsJson?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing daily response sampling limits.
      */
-    responseSamplingDailyLimitsJson?: pulumi.Input<string>;
+    responseSamplingDailyLimitsJson?: pulumi.Input<string | undefined>;
     /**
      * Response sampling interval value.
      */
-    responseSamplingInterval?: pulumi.Input<number>;
+    responseSamplingInterval?: pulumi.Input<number | undefined>;
     /**
-     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`">`month`</span>.
+     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`" pulumi-lang-hcl="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`" pulumi-lang-hcl="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`" pulumi-lang-hcl="`month`">`month`</span>.
      */
-    responseSamplingIntervalType?: pulumi.Input<string>;
+    responseSamplingIntervalType?: pulumi.Input<string | undefined>;
     /**
      * Maximum responses allowed during each sampling interval.
      */
-    responseSamplingLimit?: pulumi.Input<number>;
+    responseSamplingLimit?: pulumi.Input<number | undefined>;
     /**
      * RFC3339 date when response sampling starts.
      */
-    responseSamplingStartDate?: pulumi.Input<string>;
+    responseSamplingStartDate?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of responses allowed for the survey.
      */
-    responsesLimit?: pulumi.Input<number>;
+    responsesLimit?: pulumi.Input<number | undefined>;
     /**
-     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`">`always`</span>.
+     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`" pulumi-lang-hcl="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`" pulumi-lang-hcl="`always`">`always`</span>.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * RFC3339 start date for the survey.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing targeting flag filters. This input is write-only in the PostHog API and is preserved from Terraform state when configured.
      */
-    targetingFlagFiltersJson?: pulumi.Input<string>;
+    targetingFlagFiltersJson?: pulumi.Input<string | undefined>;
     /**
      * Existing targeting feature flag ID to use for this survey. Remove this attribute to detach the targeting flag.
      */
-    targetingFlagId?: pulumi.Input<number>;
+    targetingFlagId?: pulumi.Input<number | undefined>;
     /**
      * JSON object describing the targeting feature flag returned by the API.
      */
-    targetingFlagJson?: pulumi.Input<string>;
+    targetingFlagJson?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing translated survey content.
      */
-    translationsJson?: pulumi.Input<string>;
+    translationsJson?: pulumi.Input<string | undefined>;
     /**
-     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`">`external_survey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`">`api`</span>.
+     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`" pulumi-lang-hcl="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`" pulumi-lang-hcl="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`" pulumi-lang-hcl="`external_survey`">`externalSurvey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`" pulumi-lang-hcl="`api`">`api`</span>.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,63 +403,63 @@ export interface SurveyArgs {
     /**
      * JSON object describing survey appearance settings.
      */
-    appearanceJson?: pulumi.Input<string>;
+    appearanceJson?: pulumi.Input<string | undefined>;
     /**
      * Whether the survey is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * JSON object describing survey display and targeting conditions.
      */
-    conditionsJson?: pulumi.Input<string>;
+    conditionsJson?: pulumi.Input<string | undefined>;
     /**
      * Folder identifier used only during survey creation.
      */
-    createInFolder?: pulumi.Input<string>;
+    createInFolder?: pulumi.Input<string | undefined>;
     /**
      * Survey description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the survey is embeddable in an iframe.
      */
-    enableIframeEmbedding?: pulumi.Input<boolean>;
+    enableIframeEmbedding?: pulumi.Input<boolean | undefined>;
     /**
      * Whether partial responses are stored when a respondent exits early.
      */
-    enablePartialResponses?: pulumi.Input<boolean>;
+    enablePartialResponses?: pulumi.Input<boolean | undefined>;
     /**
      * RFC3339 end date for the survey.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing custom form content.
      */
-    formContentJson?: pulumi.Input<string>;
+    formContentJson?: pulumi.Input<string | undefined>;
     /**
-     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of survey recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
-    iterationCount?: pulumi.Input<number>;
+    iterationCount?: pulumi.Input<number | undefined>;
     /**
-     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>.
+     * Number of days between recurrences when <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`" pulumi-lang-hcl="`schedule`">`schedule`</span> is <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>.
      */
-    iterationFrequencyDays?: pulumi.Input<number>;
+    iterationFrequencyDays?: pulumi.Input<number | undefined>;
     /**
      * Feature flag ID linked to the survey. Remove this attribute to unlink the flag from the survey.
      */
-    linkedFlagId?: pulumi.Input<number>;
+    linkedFlagId?: pulumi.Input<number | undefined>;
     /**
      * Insight ID linked to the survey. This field is write-only in the PostHog API and is preserved from Terraform state when configured.
      */
-    linkedInsightId?: pulumi.Input<number>;
+    linkedInsightId?: pulumi.Input<number | undefined>;
     /**
      * Survey name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * JSON array describing the survey questions.
      */
@@ -467,49 +467,49 @@ export interface SurveyArgs {
     /**
      * JSON object describing daily response sampling limits.
      */
-    responseSamplingDailyLimitsJson?: pulumi.Input<string>;
+    responseSamplingDailyLimitsJson?: pulumi.Input<string | undefined>;
     /**
      * Response sampling interval value.
      */
-    responseSamplingInterval?: pulumi.Input<number>;
+    responseSamplingInterval?: pulumi.Input<number | undefined>;
     /**
-     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`">`month`</span>.
+     * Response sampling interval type. Supported values are <span pulumi-lang-nodejs="`day`" pulumi-lang-dotnet="`Day`" pulumi-lang-go="`day`" pulumi-lang-python="`day`" pulumi-lang-yaml="`day`" pulumi-lang-java="`day`" pulumi-lang-hcl="`day`">`day`</span>, <span pulumi-lang-nodejs="`week`" pulumi-lang-dotnet="`Week`" pulumi-lang-go="`week`" pulumi-lang-python="`week`" pulumi-lang-yaml="`week`" pulumi-lang-java="`week`" pulumi-lang-hcl="`week`">`week`</span>, and <span pulumi-lang-nodejs="`month`" pulumi-lang-dotnet="`Month`" pulumi-lang-go="`month`" pulumi-lang-python="`month`" pulumi-lang-yaml="`month`" pulumi-lang-java="`month`" pulumi-lang-hcl="`month`">`month`</span>.
      */
-    responseSamplingIntervalType?: pulumi.Input<string>;
+    responseSamplingIntervalType?: pulumi.Input<string | undefined>;
     /**
      * Maximum responses allowed during each sampling interval.
      */
-    responseSamplingLimit?: pulumi.Input<number>;
+    responseSamplingLimit?: pulumi.Input<number | undefined>;
     /**
      * RFC3339 date when response sampling starts.
      */
-    responseSamplingStartDate?: pulumi.Input<string>;
+    responseSamplingStartDate?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of responses allowed for the survey.
      */
-    responsesLimit?: pulumi.Input<number>;
+    responsesLimit?: pulumi.Input<number | undefined>;
     /**
-     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`">`always`</span>.
+     * Survey schedule. Supported values are <span pulumi-lang-nodejs="`once`" pulumi-lang-dotnet="`Once`" pulumi-lang-go="`once`" pulumi-lang-python="`once`" pulumi-lang-yaml="`once`" pulumi-lang-java="`once`" pulumi-lang-hcl="`once`">`once`</span>, <span pulumi-lang-nodejs="`recurring`" pulumi-lang-dotnet="`Recurring`" pulumi-lang-go="`recurring`" pulumi-lang-python="`recurring`" pulumi-lang-yaml="`recurring`" pulumi-lang-java="`recurring`" pulumi-lang-hcl="`recurring`">`recurring`</span>, and <span pulumi-lang-nodejs="`always`" pulumi-lang-dotnet="`Always`" pulumi-lang-go="`always`" pulumi-lang-python="`always`" pulumi-lang-yaml="`always`" pulumi-lang-java="`always`" pulumi-lang-hcl="`always`">`always`</span>.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * RFC3339 start date for the survey.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * JSON object describing targeting flag filters. This input is write-only in the PostHog API and is preserved from Terraform state when configured.
      */
-    targetingFlagFiltersJson?: pulumi.Input<string>;
+    targetingFlagFiltersJson?: pulumi.Input<string | undefined>;
     /**
      * Existing targeting feature flag ID to use for this survey. Remove this attribute to detach the targeting flag.
      */
-    targetingFlagId?: pulumi.Input<number>;
+    targetingFlagId?: pulumi.Input<number | undefined>;
     /**
      * JSON object describing translated survey content.
      */
-    translationsJson?: pulumi.Input<string>;
+    translationsJson?: pulumi.Input<string | undefined>;
     /**
-     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`">`external_survey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`">`api`</span>.
+     * Survey type. Supported values are <span pulumi-lang-nodejs="`popover`" pulumi-lang-dotnet="`Popover`" pulumi-lang-go="`popover`" pulumi-lang-python="`popover`" pulumi-lang-yaml="`popover`" pulumi-lang-java="`popover`" pulumi-lang-hcl="`popover`">`popover`</span>, <span pulumi-lang-nodejs="`widget`" pulumi-lang-dotnet="`Widget`" pulumi-lang-go="`widget`" pulumi-lang-python="`widget`" pulumi-lang-yaml="`widget`" pulumi-lang-java="`widget`" pulumi-lang-hcl="`widget`">`widget`</span>, <span pulumi-lang-nodejs="`externalSurvey`" pulumi-lang-dotnet="`ExternalSurvey`" pulumi-lang-go="`externalSurvey`" pulumi-lang-python="`external_survey`" pulumi-lang-yaml="`externalSurvey`" pulumi-lang-java="`externalSurvey`" pulumi-lang-hcl="`external_survey`">`externalSurvey`</span>, and <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`" pulumi-lang-hcl="`api`">`api`</span>.
      */
     type: pulumi.Input<string>;
 }

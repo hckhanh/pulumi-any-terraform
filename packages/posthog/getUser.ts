@@ -49,5 +49,5 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetUserOutputArgs {
     email: pulumi.Input<string>;
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }

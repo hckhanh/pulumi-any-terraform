@@ -92,7 +92,7 @@ export class Monitor extends pulumi.CustomResource {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     declare public readonly ipVersion: pulumi.Output<string>;
@@ -124,15 +124,15 @@ export class Monitor extends pulumi.CustomResource {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
-     *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
-     *
+     *     
+     *     <span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
+     *     
      *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *
@@ -442,7 +442,7 @@ export interface MonitorState {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string | undefined>;
@@ -474,15 +474,15 @@ export interface MonitorState {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
-     *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
-     *
+     *     
+     *     <span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
+     *     
      *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *
@@ -669,7 +669,7 @@ export interface MonitorArgs {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`" pulumi-lang-hcl="`ipv4`">`ipv4`</span> Use IPv4 only,
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`" pulumi-lang-hcl="`ipv6`">`ipv6`</span> Use IPv6 only.
      */
     ipVersion?: pulumi.Input<string | undefined>;
@@ -697,15 +697,15 @@ export interface MonitorArgs {
      * Valid values:
      *
      *     <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span> We will check your website for 2XX HTTP status code.
-     *
-     * 	<span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
-     *
+     *     
+     *     <span pulumi-lang-nodejs="`expectedStatusCode`" pulumi-lang-dotnet="`ExpectedStatusCode`" pulumi-lang-go="`expectedStatusCode`" pulumi-lang-python="`expected_status_code`" pulumi-lang-yaml="`expectedStatusCode`" pulumi-lang-java="`expectedStatusCode`" pulumi-lang-hcl="`expected_status_code`">`expectedStatusCode`</span> We will check if your website returned one of the values in expected_status_codes.
+     *     
      *     <span pulumi-lang-nodejs="`keyword`" pulumi-lang-dotnet="`Keyword`" pulumi-lang-go="`keyword`" pulumi-lang-python="`keyword`" pulumi-lang-yaml="`keyword`" pulumi-lang-java="`keyword`" pulumi-lang-hcl="`keyword`">`keyword`</span> We will check if your website contains the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`keywordAbsence`" pulumi-lang-dotnet="`KeywordAbsence`" pulumi-lang-go="`keywordAbsence`" pulumi-lang-python="`keyword_absence`" pulumi-lang-yaml="`keywordAbsence`" pulumi-lang-java="`keywordAbsence`" pulumi-lang-hcl="`keyword_absence`">`keywordAbsence`</span> We will check if your website doesn't contain the required_keyword.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`ping`" pulumi-lang-dotnet="`Ping`" pulumi-lang-go="`ping`" pulumi-lang-python="`ping`" pulumi-lang-yaml="`ping`" pulumi-lang-java="`ping`" pulumi-lang-hcl="`ping`">`ping`</span> We will ping your host specified in the url parameter.
-     *
+     *     
      *     <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`" pulumi-lang-hcl="`tcp`">`tcp`</span> We will test a TCP port at your host specified in the url parameter
      * (port is required).
      *

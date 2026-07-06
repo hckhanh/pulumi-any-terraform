@@ -37,6 +37,7 @@
         "project.ts",
         "projectDefaultAccess.ts",
         "projectMember.ts",
+        "projectSettings.ts",
         "provider.ts",
         "proxyRecord.ts",
         "role.ts",

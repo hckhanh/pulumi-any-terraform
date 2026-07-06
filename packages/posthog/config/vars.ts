@@ -30,7 +30,7 @@ Object.defineProperty(exports, "host", {
 });
 
 /**
- * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+ * Default organization to target. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization). Slugs and `@current` are resolved to a UUID for API calls. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
  */
 export declare const organizationId: string | undefined;
 Object.defineProperty(exports, "organizationId", {

@@ -41,6 +41,10 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly deleted: pulumi.Output<boolean>;
     /**
+     * Whether to persist the flag across authentication steps (PostHog's UI labels this as 'Persist flag across authentication steps'). Flags with experience continuity enabled cannot be evaluated by server-side local evaluation; set this to false for flags that must be evaluated locally.
+     */
+    declare public readonly ensureExperienceContinuity: pulumi.Output<boolean>;
+    /**
      * Feature Flag ID
      */
     declare public /*out*/ readonly featureFlagId: pulumi.Output<number>;
@@ -84,6 +88,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["active"] = state?.active;
             resourceInputs["deleted"] = state?.deleted;
+            resourceInputs["ensureExperienceContinuity"] = state?.ensureExperienceContinuity;
             resourceInputs["featureFlagId"] = state?.featureFlagId;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["key"] = state?.key;
@@ -98,6 +103,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             }
             resourceInputs["active"] = args?.active;
             resourceInputs["deleted"] = args?.deleted;
+            resourceInputs["ensureExperienceContinuity"] = args?.ensureExperienceContinuity;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
@@ -118,39 +124,43 @@ export interface FeatureFlagState {
     /**
      * Whether the feature flag is active
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to persist the flag across authentication steps (PostHog's UI labels this as 'Persist flag across authentication steps'). Flags with experience continuity enabled cannot be evaluated by server-side local evaluation; set this to false for flags that must be evaluated locally.
+     */
+    ensureExperienceContinuity?: pulumi.Input<boolean | undefined>;
     /**
      * Feature Flag ID
      */
-    featureFlagId?: pulumi.Input<number>;
+    featureFlagId?: pulumi.Input<number | undefined>;
     /**
      * Feature flag filters as JSON
      */
-    filters?: pulumi.Input<string>;
+    filters?: pulumi.Input<string | undefined>;
     /**
      * Feature flag key (unique identifier)
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Rollout percentage (0-100)
      */
-    rolloutPercentage?: pulumi.Input<number>;
+    rolloutPercentage?: pulumi.Input<number | undefined>;
     /**
      * Set of tags for the feature flag
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -160,15 +170,19 @@ export interface FeatureFlagArgs {
     /**
      * Whether the feature flag is active
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to persist the flag across authentication steps (PostHog's UI labels this as 'Persist flag across authentication steps'). Flags with experience continuity enabled cannot be evaluated by server-side local evaluation; set this to false for flags that must be evaluated locally.
+     */
+    ensureExperienceContinuity?: pulumi.Input<boolean | undefined>;
     /**
      * Feature flag filters as JSON
      */
-    filters?: pulumi.Input<string>;
+    filters?: pulumi.Input<string | undefined>;
     /**
      * Feature flag key (unique identifier)
      */
@@ -176,17 +190,17 @@ export interface FeatureFlagArgs {
     /**
      * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Rollout percentage (0-100)
      */
-    rolloutPercentage?: pulumi.Input<number>;
+    rolloutPercentage?: pulumi.Input<number | undefined>;
     /**
      * Set of tags for the feature flag
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

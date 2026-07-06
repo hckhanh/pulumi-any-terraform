@@ -34,7 +34,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
-     * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+     * Default organization to target. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization). Slugs and `@current` are resolved to a UUID for API calls. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
      */
     declare public readonly organizationId: pulumi.Output<string | undefined>;
     /**
@@ -82,19 +82,19 @@ export interface ProviderArgs {
     /**
      * PostHog personal API key. Can be set via `POSTHOG_API_KEY` environment variable.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Base URL for the PostHog API. Defaults to `https://us.posthog.com`. Can be set via `POSTHOG_HOST`
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
-     * Default organization ID. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
+     * Default organization to target. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization). Slugs and `@current` are resolved to a UUID for API calls. Can be set via `POSTHOG_ORGANIZATION_ID` environment variable.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Default project ID (environment) to target. Can be set via `POSTHOG_PROJECT_ID` environment variable.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

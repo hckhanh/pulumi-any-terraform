@@ -121,43 +121,43 @@ export interface ActionState {
     /**
      * Action ID
      */
-    actionId?: pulumi.Input<number>;
+    actionId?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the action was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether the action is soft-deleted. Terraform will restore soft-deleted actions on apply.
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
     /**
      * Action description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Action name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to post to Slack when the action is triggered
      */
-    postToSlack?: pulumi.Input<boolean>;
+    postToSlack?: pulumi.Input<boolean | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Slack message format string
      */
-    slackMessageFormat?: pulumi.Input<string>;
+    slackMessageFormat?: pulumi.Input<string | undefined>;
     /**
      * JSON-encoded array of action step objects. See the [ActionStep schema](https://posthog.com/docs/api/actions) for available fields.
      */
-    stepsJson?: pulumi.Input<string>;
+    stepsJson?: pulumi.Input<string | undefined>;
     /**
      * Set of tags for the action
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -167,33 +167,33 @@ export interface ActionArgs {
     /**
      * Whether the action is soft-deleted. Terraform will restore soft-deleted actions on apply.
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
     /**
      * Action description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Action name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to post to Slack when the action is triggered
      */
-    postToSlack?: pulumi.Input<boolean>;
+    postToSlack?: pulumi.Input<boolean | undefined>;
     /**
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Slack message format string
      */
-    slackMessageFormat?: pulumi.Input<string>;
+    slackMessageFormat?: pulumi.Input<string | undefined>;
     /**
      * JSON-encoded array of action step objects. See the [ActionStep schema](https://posthog.com/docs/api/actions) for available fields.
      */
-    stepsJson?: pulumi.Input<string>;
+    stepsJson?: pulumi.Input<string | undefined>;
     /**
      * Set of tags for the action
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

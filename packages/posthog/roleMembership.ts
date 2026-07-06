@@ -37,7 +37,7 @@ export class RoleMembership extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly joinedAt: pulumi.Output<string>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -97,23 +97,23 @@ export interface RoleMembershipState {
     /**
      * Timestamp when the user joined the role.
      */
-    joinedAt?: pulumi.Input<string>;
+    joinedAt?: pulumi.Input<string | undefined>;
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the role.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the user to add to the role.
      */
-    userUuid?: pulumi.Input<string>;
+    userUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -121,9 +121,9 @@ export interface RoleMembershipState {
  */
 export interface RoleMembershipArgs {
     /**
-     * Organization ID for this resource. Overrides the provider-level organization_id.
+     * Organization for this resource. Overrides the provider-level organization_id. Accepts an organization UUID, an organization slug, or the literal `@current` (the authenticated user's organization); slugs and `@current` are resolved to a UUID for API calls while your original value is preserved in state.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the role.
      */

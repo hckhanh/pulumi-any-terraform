@@ -41,11 +41,11 @@ export class UserRoleAssignment extends pulumi.CustomResource {
      */
     declare public readonly scope: pulumi.Output<string | undefined>;
     /**
-     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     declare public readonly userId: pulumi.Output<string>;
     /**
-     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     declare public readonly username: pulumi.Output<string | undefined>;
 
@@ -94,11 +94,11 @@ export interface UserRoleAssignmentState {
      */
     scope?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     userId?: pulumi.Input<string | undefined>;
     /**
-     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -116,11 +116,11 @@ export interface UserRoleAssignmentArgs {
      */
     scope?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The ID of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     userId?: pulumi.Input<string | undefined>;
     /**
-     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId "> user_id </span>or username must be specified.
+     * The username of the user to assign the role to. Either<span pulumi-lang-nodejs=" userId " pulumi-lang-dotnet=" UserId " pulumi-lang-go=" userId " pulumi-lang-python=" user_id " pulumi-lang-yaml=" userId " pulumi-lang-java=" userId " pulumi-lang-hcl=" user_id "> userId </span>or username must be specified.
      */
     username?: pulumi.Input<string | undefined>;
 }

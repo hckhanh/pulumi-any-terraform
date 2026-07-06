@@ -52,7 +52,7 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public readonly dataRegion: pulumi.Output<string>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated - use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */
@@ -236,7 +236,7 @@ export interface CollectorState {
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated - use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */
@@ -341,7 +341,7 @@ export interface CollectorArgs {
      */
     dataRegion?: pulumi.Input<string | undefined>;
     /**
-     * Database connections for the collector. Deprecated — use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
+     * Database connections for the collector. Deprecated - use the <span pulumi-lang-nodejs="`logtail.CollectorTarget`" pulumi-lang-dotnet="`logtail.CollectorTarget`" pulumi-lang-go="`CollectorTarget`" pulumi-lang-python="`CollectorTarget`" pulumi-lang-yaml="`logtail.CollectorTarget`" pulumi-lang-java="`logtail.CollectorTarget`" pulumi-lang-hcl="`logtail_collector_target`">`logtail.CollectorTarget`</span> resource instead.
      *
      * @deprecated Deprecated
      */

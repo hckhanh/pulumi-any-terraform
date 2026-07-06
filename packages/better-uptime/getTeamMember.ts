@@ -35,6 +35,7 @@ export interface GetTeamMemberResult {
     readonly memberId: string;
     readonly mobileAppPlatforms: string[];
     readonly role: string;
+    readonly roleId: string;
     readonly teamName?: string;
 }
 export function getTeamMemberOutput(args: GetTeamMemberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeamMemberResult> {

@@ -35,6 +35,10 @@ export class Source extends pulumi.CustomResource {
     }
 
     /**
+     * Metric names to mark as spam (one entry per metric). Listed metrics are rejected during ingestion and not billed.
+     */
+    declare public readonly blockedMetrics: pulumi.Output<string[] | undefined>;
+    /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
     declare public readonly codeMappingSourceRoot: pulumi.Output<string | undefined>;
@@ -186,9 +190,19 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * VRL transformation that runs on Better Stack's servers during ingestion. Note: data has already left your infrastructure at this point. For transformations that must run before data leaves your network (e.g. PII redaction), use <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`" pulumi-lang-hcl="`logtail_collector`">`logtail.Collector`</span> with `configuration.vrl_transformation` instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     *
+     * @deprecated Deprecated
      */
     declare public readonly vrlTransformation: pulumi.Output<string | undefined>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationLogs: pulumi.Output<string | undefined>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationSpans: pulumi.Output<string | undefined>;
 
     /**
      * Create a Source resource with the given unique name, arguments, and options.
@@ -203,6 +217,7 @@ export class Source extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceState | undefined;
+            resourceInputs["blockedMetrics"] = state?.blockedMetrics;
             resourceInputs["codeMappingSourceRoot"] = state?.codeMappingSourceRoot;
             resourceInputs["codeMappingStackRoot"] = state?.codeMappingStackRoot;
             resourceInputs["createdAt"] = state?.createdAt;
@@ -228,11 +243,14 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["token"] = state?.token;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["vrlTransformation"] = state?.vrlTransformation;
+            resourceInputs["vrlTransformationLogs"] = state?.vrlTransformationLogs;
+            resourceInputs["vrlTransformationSpans"] = state?.vrlTransformationSpans;
         } else {
             const args = argsOrState as SourceArgs | undefined;
             if (args?.platform === undefined && !opts.urn) {
                 throw new Error("Missing required property 'platform'");
             }
+            resourceInputs["blockedMetrics"] = args?.blockedMetrics;
             resourceInputs["codeMappingSourceRoot"] = args?.codeMappingSourceRoot;
             resourceInputs["codeMappingStackRoot"] = args?.codeMappingStackRoot;
             resourceInputs["customBucket"] = args?.customBucket;
@@ -252,6 +270,8 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["sourceGroupId"] = args?.sourceGroupId;
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["vrlTransformation"] = args?.vrlTransformation;
+            resourceInputs["vrlTransformationLogs"] = args?.vrlTransformationLogs;
+            resourceInputs["vrlTransformationSpans"] = args?.vrlTransformationSpans;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
@@ -270,6 +290,10 @@ export class Source extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Source resources.
  */
 export interface SourceState {
+    /**
+     * Metric names to mark as spam (one entry per metric). Listed metrics are rejected during ingestion and not billed.
+     */
+    blockedMetrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
@@ -422,15 +446,29 @@ export interface SourceState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * VRL transformation that runs on Better Stack's servers during ingestion. Note: data has already left your infrastructure at this point. For transformations that must run before data leaves your network (e.g. PII redaction), use <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`" pulumi-lang-hcl="`logtail_collector`">`logtail.Collector`</span> with `configuration.vrl_transformation` instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     *
+     * @deprecated Deprecated
      */
     vrlTransformation?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationLogs?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationSpans?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Source resource.
  */
 export interface SourceArgs {
+    /**
+     * Metric names to mark as spam (one entry per metric). Listed metrics are rejected during ingestion and not billed.
+     */
+    blockedMetrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source code root path that replaces the stack trace root prefix. Used to map container or build paths to the corresponding repository paths for git blame.
      */
@@ -559,7 +597,17 @@ export interface SourceArgs {
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
-     * VRL transformation that runs on Better Stack's servers during ingestion. Note: data has already left your infrastructure at this point. For transformations that must run before data leaves your network (e.g. PII redaction), use <span pulumi-lang-nodejs="`logtail.Collector`" pulumi-lang-dotnet="`logtail.Collector`" pulumi-lang-go="`Collector`" pulumi-lang-python="`Collector`" pulumi-lang-yaml="`logtail.Collector`" pulumi-lang-java="`logtail.Collector`" pulumi-lang-hcl="`logtail_collector`">`logtail.Collector`</span> with `configuration.vrl_transformation` instead. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     *
+     * @deprecated Deprecated
      */
     vrlTransformation?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationLogs?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationSpans?: pulumi.Input<string | undefined>;
 }
