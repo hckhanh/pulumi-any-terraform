@@ -54,11 +54,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "parameterization": {
       "name": "logtail",
-      "version": "10.15.4",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIxMC4xNS40In19"
+      "version": "10.15.8",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIxMC4xNS44In19"
     }
   }
 }

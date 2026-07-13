@@ -106,6 +106,10 @@ export interface CollectorConfigurationComponents {
      */
     metricsNginx: boolean;
     /**
+     * Collect Traefik metrics.
+     */
+    metricsTraefik: boolean;
+    /**
      * Accept OpenTelemetry SDK traces on ports 4317 (gRPC) and 4318 (HTTP).
      */
     tracesOpentelemetry: boolean;
@@ -147,7 +151,7 @@ export interface CollectorCustomBucket {
      */
     accessKeyId: string;
     /**
-     * Bucket endpoint URL.
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: string;
     /**
@@ -155,7 +159,9 @@ export interface CollectorCustomBucket {
      */
     keepDataAfterRetention?: boolean;
     /**
-     * Bucket name.
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
     name: string;
     /**
@@ -285,7 +291,7 @@ export interface ErrorsApplicationCustomBucket {
      */
     accessKeyId: string;
     /**
-     * Bucket endpoint
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: string;
     /**
@@ -293,7 +299,9 @@ export interface ErrorsApplicationCustomBucket {
      */
     keepDataAfterRetention?: boolean;
     /**
-     * Bucket name
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
     name: string;
     /**
@@ -422,6 +430,7 @@ export interface GetCollectorConfigurationComponent {
     metricsApache?: boolean;
     metricsDatabases?: boolean;
     metricsNginx?: boolean;
+    metricsTraefik?: boolean;
     tracesOpentelemetry?: boolean;
 }
 
@@ -534,7 +543,7 @@ export interface SourceCustomBucket {
      */
     accessKeyId: string;
     /**
-     * Bucket endpoint
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: string;
     /**
@@ -542,7 +551,9 @@ export interface SourceCustomBucket {
      */
     keepDataAfterRetention?: boolean;
     /**
-     * Bucket name
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
     name: string;
     /**

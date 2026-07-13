@@ -51,7 +51,7 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the source. Can only be set when creating the source and cannot be added, changed, or removed afterwards - recreate the source to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     declare public readonly customBucket: pulumi.Output<outputs.SourceCustomBucket | undefined>;
     /**
@@ -307,7 +307,7 @@ export interface SourceState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the source. Can only be set when creating the source and cannot be added, changed, or removed afterwards - recreate the source to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.SourceCustomBucket | undefined>;
     /**
@@ -478,7 +478,7 @@ export interface SourceArgs {
      */
     codeMappingStackRoot?: pulumi.Input<string | undefined>;
     /**
-     * Optional custom bucket configuration for the source. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the source. Can only be set when creating the source and cannot be added, changed, or removed afterwards - recreate the source to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.SourceCustomBucket | undefined>;
     /**

@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.1.4",
+		baseProviderVersion: "1.2.0",
 		baseProviderDownloadUrl: "",
 		packageName: "namecheap",
-		packageVersion: "2.3.5",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi4zLjUifX0=",
+		packageVersion: "2.5.0",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi41LjAifX0=",
 	});
 }

@@ -5,6 +5,210 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DomainContactsAdmin {
+    /**
+     * The primary street address.
+     */
+    address1: pulumi.Input<string>;
+    /**
+     * The secondary street address.
+     */
+    address2?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's city.
+     */
+    city: pulumi.Input<string>;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: pulumi.Input<string>;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: pulumi.Input<string>;
+    /**
+     * The contact's first name.
+     */
+    firstName: pulumi.Input<string>;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's last name.
+     */
+    lastName: pulumi.Input<string>;
+    /**
+     * The contact's organization.
+     */
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: pulumi.Input<string>;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: pulumi.Input<string>;
+    /**
+     * The state or province.
+     */
+    stateProvince: pulumi.Input<string>;
+}
+
+export interface DomainContactsAuxBilling {
+    /**
+     * The primary street address.
+     */
+    address1: pulumi.Input<string>;
+    /**
+     * The secondary street address.
+     */
+    address2?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's city.
+     */
+    city: pulumi.Input<string>;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: pulumi.Input<string>;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: pulumi.Input<string>;
+    /**
+     * The contact's first name.
+     */
+    firstName: pulumi.Input<string>;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's last name.
+     */
+    lastName: pulumi.Input<string>;
+    /**
+     * The contact's organization.
+     */
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: pulumi.Input<string>;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: pulumi.Input<string>;
+    /**
+     * The state or province.
+     */
+    stateProvince: pulumi.Input<string>;
+}
+
+export interface DomainContactsRegistrant {
+    /**
+     * The primary street address.
+     */
+    address1: pulumi.Input<string>;
+    /**
+     * The secondary street address.
+     */
+    address2?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's city.
+     */
+    city: pulumi.Input<string>;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: pulumi.Input<string>;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: pulumi.Input<string>;
+    /**
+     * The contact's first name.
+     */
+    firstName: pulumi.Input<string>;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's last name.
+     */
+    lastName: pulumi.Input<string>;
+    /**
+     * The contact's organization.
+     */
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: pulumi.Input<string>;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: pulumi.Input<string>;
+    /**
+     * The state or province.
+     */
+    stateProvince: pulumi.Input<string>;
+}
+
+export interface DomainContactsTech {
+    /**
+     * The primary street address.
+     */
+    address1: pulumi.Input<string>;
+    /**
+     * The secondary street address.
+     */
+    address2?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's city.
+     */
+    city: pulumi.Input<string>;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: pulumi.Input<string>;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: pulumi.Input<string>;
+    /**
+     * The contact's first name.
+     */
+    firstName: pulumi.Input<string>;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: pulumi.Input<string | undefined>;
+    /**
+     * The contact's last name.
+     */
+    lastName: pulumi.Input<string>;
+    /**
+     * The contact's organization.
+     */
+    organization?: pulumi.Input<string | undefined>;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: pulumi.Input<string>;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: pulumi.Input<string>;
+    /**
+     * The state or province.
+     */
+    stateProvince: pulumi.Input<string>;
+}
+
 export interface DomainRecordsRecord {
     /**
      * Possible values are URL or IP address. The value for this parameter is based on record type
@@ -27,3 +231,4 @@ export interface DomainRecordsRecord {
      */
     type: pulumi.Input<string>;
 }
+

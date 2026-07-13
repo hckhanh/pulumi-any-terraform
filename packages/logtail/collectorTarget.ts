@@ -37,7 +37,7 @@ export class CollectorTarget extends pulumi.CustomResource {
      */
     declare public readonly apiKey: pulumi.Output<string | undefined>;
     /**
-     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
+     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus, traefik). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
      */
     declare public readonly collectorHost: pulumi.Output<string | undefined>;
     /**
@@ -65,11 +65,11 @@ export class CollectorTarget extends pulumi.CustomResource {
      */
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
-     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus, traefik.
      */
     declare public readonly kind: pulumi.Output<string>;
     /**
-     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka.
+     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka, traefik.
      */
     declare public readonly listenIp: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface CollectorTargetState {
      */
     apiKey?: pulumi.Input<string | undefined>;
     /**
-     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
+     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus, traefik). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
      */
     collectorHost?: pulumi.Input<string | undefined>;
     /**
@@ -213,11 +213,11 @@ export interface CollectorTargetState {
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus, traefik.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
-     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka.
+     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka, traefik.
      */
     listenIp?: pulumi.Input<string | undefined>;
     /**
@@ -267,7 +267,7 @@ export interface CollectorTargetArgs {
      */
     apiKey?: pulumi.Input<string | undefined>;
     /**
-     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
+     * Hostname of the collector host running this process. Use this for process kinds (nginx, apache, kafka, prometheus, traefik). Must match the hostname of a <span pulumi-lang-nodejs="`collectorHost`" pulumi-lang-dotnet="`CollectorHost`" pulumi-lang-go="`collectorHost`" pulumi-lang-python="`collector_host`" pulumi-lang-yaml="`collectorHost`" pulumi-lang-java="`collectorHost`" pulumi-lang-hcl="`collector_host`">`collectorHost`</span> reporting to this collector. For database kinds use <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`" pulumi-lang-hcl="`host`">`host`</span> instead.
      */
     collectorHost?: pulumi.Input<string | undefined>;
     /**
@@ -287,11 +287,11 @@ export interface CollectorTargetArgs {
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus.
+     * The target kind. One of: postgres, pgbouncer, mysql, redis, mongodb, memcached, elasticsearch, nginx, apache, kafka, prometheus, traefik.
      */
     kind: pulumi.Input<string>;
     /**
-     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka.
+     * IP address the process listens on, as seen from the collector host. Used for nginx, apache, kafka, traefik.
      */
     listenIp?: pulumi.Input<string | undefined>;
     /**

@@ -55,7 +55,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the application. Can only be set when creating the application and cannot be added, changed, or removed afterwards - recreate the application to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     declare public readonly customBucket: pulumi.Output<outputs.ErrorsApplicationCustomBucket | undefined>;
     /**
@@ -294,7 +294,7 @@ export interface ErrorsApplicationState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the application. Can only be set when creating the application and cannot be added, changed, or removed afterwards - recreate the application to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**
@@ -468,7 +468,7 @@ export interface ErrorsApplicationArgs {
      */
     correlateWithSourceId?: pulumi.Input<number | undefined>;
     /**
-     * Optional custom bucket configuration for the application. When provided, all fields (name, endpoint, access_key_id, secret_access_key) are required.
+     * Optional custom S3-compatible bucket configuration for the application. Can only be set when creating the application and cannot be added, changed, or removed afterwards - recreate the application to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.ErrorsApplicationCustomBucket | undefined>;
     /**

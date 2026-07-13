@@ -39,6 +39,10 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      */
     declare public readonly algorithms: pulumi.Output<outputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
+     * Basic constraints policy for the certificate policy, controlling whether issued certificates may act as certificate authorities.
+     */
+    declare public readonly basicConstraints: pulumi.Output<outputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
+    /**
      * The description of the certificate policy
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -59,7 +63,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      */
     declare public readonly sans: pulumi.Output<outputs.CertManagerCertificatePolicySan[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
      */
     declare public readonly subjects: pulumi.Output<outputs.CertManagerCertificatePolicySubject[] | undefined>;
     /**
@@ -81,6 +85,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CertManagerCertificatePolicyState | undefined;
             resourceInputs["algorithms"] = state?.algorithms;
+            resourceInputs["basicConstraints"] = state?.basicConstraints;
             resourceInputs["description"] = state?.description;
             resourceInputs["extendedKeyUsages"] = state?.extendedKeyUsages;
             resourceInputs["keyUsages"] = state?.keyUsages;
@@ -91,6 +96,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
         } else {
             const args = argsOrState as CertManagerCertificatePolicyArgs | undefined;
             resourceInputs["algorithms"] = args?.algorithms;
+            resourceInputs["basicConstraints"] = args?.basicConstraints;
             resourceInputs["description"] = args?.description;
             resourceInputs["extendedKeyUsages"] = args?.extendedKeyUsages;
             resourceInputs["keyUsages"] = args?.keyUsages;
@@ -113,6 +119,10 @@ export interface CertManagerCertificatePolicyState {
      */
     algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
+     * Basic constraints policy for the certificate policy, controlling whether issued certificates may act as certificate authorities.
+     */
+    basicConstraints?: pulumi.Input<inputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
+    /**
      * The description of the certificate policy
      */
     description?: pulumi.Input<string | undefined>;
@@ -133,7 +143,7 @@ export interface CertManagerCertificatePolicyState {
      */
     sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
      */
     subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**
@@ -151,6 +161,10 @@ export interface CertManagerCertificatePolicyArgs {
      */
     algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
+     * Basic constraints policy for the certificate policy, controlling whether issued certificates may act as certificate authorities.
+     */
+    basicConstraints?: pulumi.Input<inputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
+    /**
      * The description of the certificate policy
      */
     description?: pulumi.Input<string | undefined>;
@@ -171,7 +185,7 @@ export interface CertManagerCertificatePolicyArgs {
      */
     sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
      */
     subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**

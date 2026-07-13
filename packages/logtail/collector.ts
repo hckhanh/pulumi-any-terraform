@@ -43,7 +43,7 @@ export class Collector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Optional custom bucket configuration for the collector. Once set, it cannot be removed.
+     * Optional custom S3-compatible bucket configuration for the collector. Can only be set when creating the collector and cannot be added, changed, or removed afterwards - recreate the collector to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     declare public readonly customBucket: pulumi.Output<outputs.CollectorCustomBucket | undefined>;
     /**
@@ -227,7 +227,7 @@ export interface CollectorState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * Optional custom bucket configuration for the collector. Once set, it cannot be removed.
+     * Optional custom S3-compatible bucket configuration for the collector. Can only be set when creating the collector and cannot be added, changed, or removed afterwards - recreate the collector to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface CollectorArgs {
      */
     configuration?: pulumi.Input<inputs.CollectorConfiguration | undefined>;
     /**
-     * Optional custom bucket configuration for the collector. Once set, it cannot be removed.
+     * Optional custom S3-compatible bucket configuration for the collector. Can only be set when creating the collector and cannot be added, changed, or removed afterwards - recreate the collector to use a different bucket. Better Stack validates the credentials by writing and reading a test object in the bucket during creation.
      */
     customBucket?: pulumi.Input<inputs.CollectorCustomBucket | undefined>;
     /**

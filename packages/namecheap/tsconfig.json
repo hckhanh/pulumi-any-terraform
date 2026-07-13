@@ -21,8 +21,13 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "domainContacts.ts",
         "domainRecords.ts",
+        "getDomain.ts",
+        "getDomainRecords.ts",
+        "getDomains.ts",
         "index.ts",
+        "personalNameserver.ts",
         "provider.ts",
         "types/index.ts",
         "types/input.ts",

@@ -155,6 +155,21 @@ export interface AppConnectionDatabricksCredentials {
     workspaceUrl: pulumi.Input<string>;
 }
 
+export interface AppConnectionDatadogCredentials {
+    /**
+     * The Datadog API key used to authenticate requests. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/datadog
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * The Datadog application key used to authenticate requests. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/datadog
+     */
+    applicationKey: pulumi.Input<string>;
+    /**
+     * The Datadog API URL for your site (e.g. https://api.datadoghq.com). For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/datadog
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface AppConnectionFlyioCredentials {
     /**
      * The Fly.io access token for authentication.
@@ -514,6 +529,17 @@ export interface CertManagerCertificatePolicyAlgorithms {
     signatures: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface CertManagerCertificatePolicyBasicConstraints {
+    /**
+     * Policy for the CA flag (basic constraints CA:TRUE) on issued certificates. Possible values: allowed, required, denied
+     */
+    isCa?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum path length constraint for CA certificates. Use -1 for unlimited, or a non-negative integer to cap how many intermediate CAs may appear below a certificate issued under this policy. Only applies when<span pulumi-lang-nodejs=" isCa " pulumi-lang-dotnet=" IsCa " pulumi-lang-go=" isCa " pulumi-lang-python=" is_ca " pulumi-lang-yaml=" isCa " pulumi-lang-java=" isCa " pulumi-lang-hcl=" is_ca "> isCa </span>is allowed or required; it is ignored when<span pulumi-lang-nodejs=" isCa " pulumi-lang-dotnet=" IsCa " pulumi-lang-go=" isCa " pulumi-lang-python=" is_ca " pulumi-lang-yaml=" isCa " pulumi-lang-java=" isCa " pulumi-lang-hcl=" is_ca "> isCa </span>is denied.
+     */
+    maxPathLength?: pulumi.Input<number | undefined>;
+}
+
 export interface CertManagerCertificatePolicyExtendedKeyUsages {
     /**
      * List of allowed extended key usages. Possible values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
@@ -565,19 +591,19 @@ export interface CertManagerCertificatePolicySan {
 
 export interface CertManagerCertificatePolicySubject {
     /**
-     * List of allowed values for this subject attribute
+     * List of allowed values for this subject attribute. Supports the '*' wildcard.
      */
     alloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of denied values for this subject attribute
+     * List of denied values for this subject attribute. Supports the '*' wildcard.
      */
     denieds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of required values for this subject attribute
+     * List of required values for this subject attribute. Supports the '*' wildcard.
      */
     requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The subject attribute type. Possible values: common_name, organization, country
+     * The subject attribute type. Possible values: common_name, organization, organizational_unit, country, state, locality
      */
     type: pulumi.Input<string>;
 }

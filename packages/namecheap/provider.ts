@@ -34,9 +34,17 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly apiUser: pulumi.Output<string | undefined>;
     /**
-     * Client IP address
+     * The public IP address the Namecheap API sees as the caller; it must be whitelisted at https://ap.www.namecheap.com/settings/tools/apiaccess/whitelisted-ips. Leaving it unset now auto-detects this machine's public IP address via an outbound HTTPS request to api.ipify.org (previously it defaulted to the non-functional 0.0.0.0); if that request fails (for example on a host with no outbound network access), provider configuration fails with guidance to set<span pulumi-lang-nodejs=" clientIp " pulumi-lang-dotnet=" ClientIp " pulumi-lang-go=" clientIp " pulumi-lang-python=" client_ip " pulumi-lang-yaml=" clientIp " pulumi-lang-java=" clientIp " pulumi-lang-hcl=" client_ip "> clientIp </span>explicitly.
      */
     declare public readonly clientIp: pulumi.Output<string | undefined>;
+    /**
+     * Timeout applied to the underlying HTTP client for a single request to the Namecheap API, as a Go duration string (e.g. "30s", "1m"). Must parse and be greater than zero. Defaults to "30s".
+     */
+    declare public readonly requestTimeout: pulumi.Output<string | undefined>;
+    /**
+     * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
+     */
+    declare public readonly retryMaxElapsed: pulumi.Output<string | undefined>;
     /**
      * A registered user name for namecheap
      */
@@ -56,6 +64,10 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["apiUser"] = args?.apiUser ? pulumi.secret(args.apiUser) : undefined;
             resourceInputs["clientIp"] = args?.clientIp;
+            resourceInputs["maxRetries"] = pulumi.output(args?.maxRetries).apply(JSON.stringify);
+            resourceInputs["requestTimeout"] = args?.requestTimeout;
+            resourceInputs["requestsPerMinute"] = pulumi.output(args?.requestsPerMinute).apply(JSON.stringify);
+            resourceInputs["retryMaxElapsed"] = args?.retryMaxElapsed;
             resourceInputs["useSandbox"] = pulumi.output(args?.useSandbox).apply(JSON.stringify);
             resourceInputs["userName"] = args?.userName ? pulumi.secret(args.userName) : undefined;
         }
@@ -89,9 +101,25 @@ export interface ProviderArgs {
      */
     apiUser?: pulumi.Input<string | undefined>;
     /**
-     * Client IP address
+     * The public IP address the Namecheap API sees as the caller; it must be whitelisted at https://ap.www.namecheap.com/settings/tools/apiaccess/whitelisted-ips. Leaving it unset now auto-detects this machine's public IP address via an outbound HTTPS request to api.ipify.org (previously it defaulted to the non-functional 0.0.0.0); if that request fails (for example on a host with no outbound network access), provider configuration fails with guidance to set<span pulumi-lang-nodejs=" clientIp " pulumi-lang-dotnet=" ClientIp " pulumi-lang-go=" clientIp " pulumi-lang-python=" client_ip " pulumi-lang-yaml=" clientIp " pulumi-lang-java=" clientIp " pulumi-lang-hcl=" client_ip "> clientIp </span>explicitly.
      */
     clientIp?: pulumi.Input<string | undefined>;
+    /**
+     * Total number of attempts (including the first) for a single API call before giving up. Must be >= 0. Defaults to 4, matching the SDK's built-in retry policy. Note: because the underlying SDK treats a zero value as "unset", setting this to 0 falls back to the SDK default of 4 attempts rather than disabling retries.
+     */
+    maxRetries?: pulumi.Input<number | undefined>;
+    /**
+     * Timeout applied to the underlying HTTP client for a single request to the Namecheap API, as a Go duration string (e.g. "30s", "1m"). Must parse and be greater than zero. Defaults to "30s".
+     */
+    requestTimeout?: pulumi.Input<string | undefined>;
+    /**
+     * Client-side rate limit applied to the Namecheap API, in requests per minute. Must be between 1 and 20 (Namecheap's documented primary quota). Defaults to 20, matching the SDK's built-in limiter.
+     */
+    requestsPerMinute?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
+     */
+    retryMaxElapsed?: pulumi.Input<string | undefined>;
     /**
      * Use sandbox API endpoints
      */

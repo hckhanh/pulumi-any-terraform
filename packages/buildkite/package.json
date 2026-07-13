@@ -52,11 +52,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "parameterization": {
       "name": "buildkite",
-      "version": "1.34.2",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zNC4yIn19"
+      "version": "1.35.0",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zNS4wIn19"
     }
   }
 }

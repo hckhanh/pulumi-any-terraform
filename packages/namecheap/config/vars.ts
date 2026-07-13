@@ -30,12 +30,56 @@ Object.defineProperty(exports, "apiUser", {
 });
 
 /**
- * Client IP address
+ * The public IP address the Namecheap API sees as the caller; it must be whitelisted at https://ap.www.namecheap.com/settings/tools/apiaccess/whitelisted-ips. Leaving it unset now auto-detects this machine's public IP address via an outbound HTTPS request to api.ipify.org (previously it defaulted to the non-functional 0.0.0.0); if that request fails (for example on a host with no outbound network access), provider configuration fails with guidance to set<span pulumi-lang-nodejs=" clientIp " pulumi-lang-dotnet=" ClientIp " pulumi-lang-go=" clientIp " pulumi-lang-python=" client_ip " pulumi-lang-yaml=" clientIp " pulumi-lang-java=" clientIp " pulumi-lang-hcl=" client_ip "> clientIp </span>explicitly.
  */
 export declare const clientIp: string | undefined;
 Object.defineProperty(exports, "clientIp", {
     get() {
         return __config.get("clientIp");
+    },
+    enumerable: true,
+});
+
+/**
+ * Total number of attempts (including the first) for a single API call before giving up. Must be >= 0. Defaults to 4, matching the SDK's built-in retry policy. Note: because the underlying SDK treats a zero value as "unset", setting this to 0 falls back to the SDK default of 4 attempts rather than disabling retries.
+ */
+export declare const maxRetries: number | undefined;
+Object.defineProperty(exports, "maxRetries", {
+    get() {
+        return __config.getObject<number>("maxRetries");
+    },
+    enumerable: true,
+});
+
+/**
+ * Timeout applied to the underlying HTTP client for a single request to the Namecheap API, as a Go duration string (e.g. "30s", "1m"). Must parse and be greater than zero. Defaults to "30s".
+ */
+export declare const requestTimeout: string | undefined;
+Object.defineProperty(exports, "requestTimeout", {
+    get() {
+        return __config.get("requestTimeout");
+    },
+    enumerable: true,
+});
+
+/**
+ * Client-side rate limit applied to the Namecheap API, in requests per minute. Must be between 1 and 20 (Namecheap's documented primary quota). Defaults to 20, matching the SDK's built-in limiter.
+ */
+export declare const requestsPerMinute: number | undefined;
+Object.defineProperty(exports, "requestsPerMinute", {
+    get() {
+        return __config.getObject<number>("requestsPerMinute");
+    },
+    enumerable: true,
+});
+
+/**
+ * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
+ */
+export declare const retryMaxElapsed: string | undefined;
+Object.defineProperty(exports, "retryMaxElapsed", {
+    get() {
+        return __config.get("retryMaxElapsed");
     },
     enumerable: true,
 });

@@ -106,6 +106,10 @@ export interface CollectorConfigurationComponents {
      */
     metricsNginx?: pulumi.Input<boolean | undefined>;
     /**
+     * Collect Traefik metrics.
+     */
+    metricsTraefik?: pulumi.Input<boolean | undefined>;
+    /**
      * Accept OpenTelemetry SDK traces on ports 4317 (gRPC) and 4318 (HTTP).
      */
     tracesOpentelemetry?: pulumi.Input<boolean | undefined>;
@@ -147,7 +151,7 @@ export interface CollectorCustomBucket {
      */
     accessKeyId: pulumi.Input<string>;
     /**
-     * Bucket endpoint URL.
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: pulumi.Input<string>;
     /**
@@ -155,9 +159,11 @@ export interface CollectorCustomBucket {
      */
     keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
-     * Bucket name.
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Secret access key for the bucket.
      */
@@ -285,7 +291,7 @@ export interface ErrorsApplicationCustomBucket {
      */
     accessKeyId: pulumi.Input<string>;
     /**
-     * Bucket endpoint
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: pulumi.Input<string>;
     /**
@@ -293,9 +299,11 @@ export interface ErrorsApplicationCustomBucket {
      */
     keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
-     * Bucket name
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Secret access key
      */
@@ -400,7 +408,7 @@ export interface SourceCustomBucket {
      */
     accessKeyId: pulumi.Input<string>;
     /**
-     * Bucket endpoint
+     * Bucket endpoint including the bucket name, e.g. `https://s3.us-east-1.amazonaws.com/my-bucket` or `https://my-bucket.s3.us-east-1.amazonaws.com`.
      */
     endpoint: pulumi.Input<string>;
     /**
@@ -408,9 +416,11 @@ export interface SourceCustomBucket {
      */
     keepDataAfterRetention?: pulumi.Input<boolean | undefined>;
     /**
-     * Bucket name
+     * Bucket name derived from <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`" pulumi-lang-hcl="`endpoint`">`endpoint`</span>. Deprecated - do not set this attribute.
+     *
+     * @deprecated Deprecated
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Secret access key
      */

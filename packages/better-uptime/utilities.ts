@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.1.4",
+		baseProviderVersion: "1.2.0",
 		baseProviderDownloadUrl: "",
 		packageName: "better-uptime",
-		packageVersion: "0.21.6",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIxLjYifX0=",
+		packageVersion: "0.21.9",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIxLjkifX0=",
 	});
 }

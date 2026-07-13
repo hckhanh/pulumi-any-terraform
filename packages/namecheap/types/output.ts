@@ -5,6 +5,210 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DomainContactsAdmin {
+    /**
+     * The primary street address.
+     */
+    address1: string;
+    /**
+     * The secondary street address.
+     */
+    address2?: string;
+    /**
+     * The contact's city.
+     */
+    city: string;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: string;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: string;
+    /**
+     * The contact's first name.
+     */
+    firstName: string;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: string;
+    /**
+     * The contact's last name.
+     */
+    lastName: string;
+    /**
+     * The contact's organization.
+     */
+    organization?: string;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: string;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: string;
+    /**
+     * The state or province.
+     */
+    stateProvince: string;
+}
+
+export interface DomainContactsAuxBilling {
+    /**
+     * The primary street address.
+     */
+    address1: string;
+    /**
+     * The secondary street address.
+     */
+    address2?: string;
+    /**
+     * The contact's city.
+     */
+    city: string;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: string;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: string;
+    /**
+     * The contact's first name.
+     */
+    firstName: string;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: string;
+    /**
+     * The contact's last name.
+     */
+    lastName: string;
+    /**
+     * The contact's organization.
+     */
+    organization?: string;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: string;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: string;
+    /**
+     * The state or province.
+     */
+    stateProvince: string;
+}
+
+export interface DomainContactsRegistrant {
+    /**
+     * The primary street address.
+     */
+    address1: string;
+    /**
+     * The secondary street address.
+     */
+    address2?: string;
+    /**
+     * The contact's city.
+     */
+    city: string;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: string;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: string;
+    /**
+     * The contact's first name.
+     */
+    firstName: string;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: string;
+    /**
+     * The contact's last name.
+     */
+    lastName: string;
+    /**
+     * The contact's organization.
+     */
+    organization?: string;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: string;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: string;
+    /**
+     * The state or province.
+     */
+    stateProvince: string;
+}
+
+export interface DomainContactsTech {
+    /**
+     * The primary street address.
+     */
+    address1: string;
+    /**
+     * The secondary street address.
+     */
+    address2?: string;
+    /**
+     * The contact's city.
+     */
+    city: string;
+    /**
+     * The two-letter ISO 3166-1 alpha-2 country code (e.g. US, PT).
+     */
+    country: string;
+    /**
+     * The contact e-mail address.
+     */
+    emailAddress: string;
+    /**
+     * The contact's first name.
+     */
+    firstName: string;
+    /**
+     * The contact's job title.
+     */
+    jobTitle?: string;
+    /**
+     * The contact's last name.
+     */
+    lastName: string;
+    /**
+     * The contact's organization.
+     */
+    organization?: string;
+    /**
+     * The phone number in +NNN.NNNNNNNNNN format (e.g. +1.6613102107).
+     */
+    phone: string;
+    /**
+     * The postal/ZIP code.
+     */
+    postalCode: string;
+    /**
+     * The state or province.
+     */
+    stateProvince: string;
+}
+
 export interface DomainRecordsRecord {
     /**
      * Possible values are URL or IP address. The value for this parameter is based on record type
@@ -26,5 +230,28 @@ export interface DomainRecordsRecord {
      * Possible values: A, AAAA, ALIAS, CAA, CNAME, MX, MXE, NS, TXT, URL, URL301, FRAME
      */
     type: string;
+}
+
+export interface GetDomainRecordsRecord {
+    address?: string;
+    hostname?: string;
+    mxPref?: number;
+    ttl?: number;
+    type?: string;
+}
+
+export interface GetDomainsDomain {
+    autoRenew?: boolean;
+    created?: string;
+    expires?: string;
+    expiresInDays?: number;
+    id?: string;
+    isExpired?: boolean;
+    isLocked?: boolean;
+    isOurDns?: boolean;
+    isPremium?: boolean;
+    name?: string;
+    user?: string;
+    whoisGuard?: string;
 }
 

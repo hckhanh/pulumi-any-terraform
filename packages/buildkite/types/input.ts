@@ -195,8 +195,8 @@ export interface PipelineProviderSettings {
      * 	- <span pulumi-lang-nodejs="`fork`" pulumi-lang-dotnet="`Fork`" pulumi-lang-go="`fork`" pulumi-lang-python="`fork`" pulumi-lang-yaml="`fork`" pulumi-lang-java="`fork`" pulumi-lang-hcl="`fork`">`fork`</span> will create builds when the GitHub repository is forked.
      * 	- <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span> will not create any builds based on GitHub activity.
      *
-     * 	> <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`" pulumi-lang-hcl="`trigger_mode`">`triggerMode`</span> is only valid if the pipeline uses a GitHub repository.
-     * 	> If not set, the default value is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`" pulumi-lang-hcl="`code`">`code`</span> and other provider settings defaults are applied.
+     *     > <span pulumi-lang-nodejs="`triggerMode`" pulumi-lang-dotnet="`TriggerMode`" pulumi-lang-go="`triggerMode`" pulumi-lang-python="`trigger_mode`" pulumi-lang-yaml="`triggerMode`" pulumi-lang-java="`triggerMode`" pulumi-lang-hcl="`trigger_mode`">`triggerMode`</span> is only valid if the pipeline uses a GitHub repository.
+     *     > If not set, the default value is <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`" pulumi-lang-hcl="`code`">`code`</span> and other provider settings defaults are applied.
      */
     triggerMode?: pulumi.Input<string | undefined>;
     /**

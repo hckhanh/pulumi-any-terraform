@@ -5,10 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { DomainContactsArgs, DomainContactsState } from "./domainContacts";
+export type DomainContacts = import("./domainContacts").DomainContacts;
+export const DomainContacts: typeof import("./domainContacts").DomainContacts = null as any;
+utilities.lazyLoad(exports, ["DomainContacts"], () => require("./domainContacts"));
+
 export { DomainRecordsArgs, DomainRecordsState } from "./domainRecords";
 export type DomainRecords = import("./domainRecords").DomainRecords;
 export const DomainRecords: typeof import("./domainRecords").DomainRecords = null as any;
 utilities.lazyLoad(exports, ["DomainRecords"], () => require("./domainRecords"));
+
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+
+export { GetDomainRecordsArgs, GetDomainRecordsResult, GetDomainRecordsOutputArgs } from "./getDomainRecords";
+export const getDomainRecords: typeof import("./getDomainRecords").getDomainRecords = null as any;
+export const getDomainRecordsOutput: typeof import("./getDomainRecords").getDomainRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainRecords","getDomainRecordsOutput"], () => require("./getDomainRecords"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { PersonalNameserverArgs, PersonalNameserverState } from "./personalNameserver";
+export type PersonalNameserver = import("./personalNameserver").PersonalNameserver;
+export const PersonalNameserver: typeof import("./personalNameserver").PersonalNameserver = null as any;
+utilities.lazyLoad(exports, ["PersonalNameserver"], () => require("./personalNameserver"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -27,14 +52,20 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "namecheap:index/domainContacts:DomainContacts":
+                return new DomainContacts(name, <any>undefined, { urn })
             case "namecheap:index/domainRecords:DomainRecords":
                 return new DomainRecords(name, <any>undefined, { urn })
+            case "namecheap:index/personalNameserver:PersonalNameserver":
+                return new PersonalNameserver(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("namecheap", "index/domainContacts", _module)
 pulumi.runtime.registerResourceModule("namecheap", "index/domainRecords", _module)
+pulumi.runtime.registerResourceModule("namecheap", "index/personalNameserver", _module)
 pulumi.runtime.registerResourcePackage("namecheap", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

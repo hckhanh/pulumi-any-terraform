@@ -55,6 +55,11 @@ export type AppConnectionDatabricks = import("./appConnectionDatabricks").AppCon
 export const AppConnectionDatabricks: typeof import("./appConnectionDatabricks").AppConnectionDatabricks = null as any;
 utilities.lazyLoad(exports, ["AppConnectionDatabricks"], () => require("./appConnectionDatabricks"));
 
+export { AppConnectionDatadogArgs, AppConnectionDatadogState } from "./appConnectionDatadog";
+export type AppConnectionDatadog = import("./appConnectionDatadog").AppConnectionDatadog;
+export const AppConnectionDatadog: typeof import("./appConnectionDatadog").AppConnectionDatadog = null as any;
+utilities.lazyLoad(exports, ["AppConnectionDatadog"], () => require("./appConnectionDatadog"));
+
 export { AppConnectionFlyioArgs, AppConnectionFlyioState } from "./appConnectionFlyio";
 export type AppConnectionFlyio = import("./appConnectionFlyio").AppConnectionFlyio;
 export const AppConnectionFlyio: typeof import("./appConnectionFlyio").AppConnectionFlyio = null as any;
@@ -578,6 +583,11 @@ export type SecretTag = import("./secretTag").SecretTag;
 export const SecretTag: typeof import("./secretTag").SecretTag = null as any;
 utilities.lazyLoad(exports, ["SecretTag"], () => require("./secretTag"));
 
+export { SubOrganizationArgs, SubOrganizationState } from "./subOrganization";
+export type SubOrganization = import("./subOrganization").SubOrganization;
+export const SubOrganization: typeof import("./subOrganization").SubOrganization = null as any;
+utilities.lazyLoad(exports, ["SubOrganization"], () => require("./subOrganization"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -617,6 +627,8 @@ const _module = {
                 return new AppConnectionCloudflare(name, <any>undefined, { urn })
             case "infisical:index/appConnectionDatabricks:AppConnectionDatabricks":
                 return new AppConnectionDatabricks(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionDatadog:AppConnectionDatadog":
+                return new AppConnectionDatadog(name, <any>undefined, { urn })
             case "infisical:index/appConnectionFlyio:AppConnectionFlyio":
                 return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
@@ -797,6 +809,8 @@ const _module = {
                 return new SecretSyncSupabase(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
                 return new SecretTag(name, <any>undefined, { urn })
+            case "infisical:index/subOrganization:SubOrganization":
+                return new SubOrganization(name, <any>undefined, { urn })
             case "infisical:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -814,6 +828,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureKeyV
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionBitbucket", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflare", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatadog", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", _module)
@@ -904,6 +919,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGitlab", _mo
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/subOrganization", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("infisical", {
     version: utilities.getVersion(),
