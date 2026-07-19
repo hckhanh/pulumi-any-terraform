@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@lucide/lab": "0.1.2",
-    "fumadocs-core": "16.11.4",
+    "fumadocs-core": "16.11.5",
     "fumadocs-mdx": "14.3.2",
-    "fumadocs-ui": "16.11.4",
+    "fumadocs-ui": "16.11.5",
     "lucide-react": "1.24.0",
     "next": "16.2.10",
     "react": "19.2.7",
