@@ -32,3 +32,14 @@ export interface DashboardLayoutTile {
     tileId: number;
 }
 
+export interface ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig {
+    /**
+     * Whether to record the bodies of network requests in session replay.
+     */
+    recordBody: boolean;
+    /**
+     * Whether to record the headers of network requests in session replay.
+     */
+    recordHeaders: boolean;
+}
+

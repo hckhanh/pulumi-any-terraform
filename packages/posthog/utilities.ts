@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.1.4",
+		baseProviderVersion: "1.2.0",
 		baseProviderDownloadUrl: "",
 		packageName: "posthog",
-		packageVersion: "1.0.13",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMTMifX0=",
+		packageVersion: "1.0.15",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMTUifX0=",
 	});
 }

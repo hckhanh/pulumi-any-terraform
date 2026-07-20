@@ -31,3 +31,14 @@ export interface DashboardLayoutTile {
      */
     tileId?: pulumi.Input<number | undefined>;
 }
+
+export interface ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig {
+    /**
+     * Whether to record the bodies of network requests in session replay.
+     */
+    recordBody: pulumi.Input<boolean>;
+    /**
+     * Whether to record the headers of network requests in session replay.
+     */
+    recordHeaders: pulumi.Input<boolean>;
+}

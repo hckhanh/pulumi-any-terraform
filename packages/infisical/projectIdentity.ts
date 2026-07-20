@@ -35,6 +35,10 @@ export class ProjectIdentity extends pulumi.CustomResource {
     }
 
     /**
+     * When true, if the identity is already a member of the project (e.g. auto-added by Infisical when the project was created by this identity), the existing membership is adopted and its roles are updated to match the desired state instead of returning an error. Defaults to false.
+     */
+    declare public readonly adoptExisting: pulumi.Output<boolean>;
+    /**
      * The identity details of the project identity
      */
     declare public /*out*/ readonly identity: pulumi.Output<outputs.ProjectIdentityIdentity>;
@@ -68,6 +72,7 @@ export class ProjectIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectIdentityState | undefined;
+            resourceInputs["adoptExisting"] = state?.adoptExisting;
             resourceInputs["identity"] = state?.identity;
             resourceInputs["identityId"] = state?.identityId;
             resourceInputs["membershipId"] = state?.membershipId;
@@ -84,6 +89,7 @@ export class ProjectIdentity extends pulumi.CustomResource {
             if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
+            resourceInputs["adoptExisting"] = args?.adoptExisting;
             resourceInputs["identityId"] = args?.identityId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["roles"] = args?.roles;
@@ -99,6 +105,10 @@ export class ProjectIdentity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectIdentity resources.
  */
 export interface ProjectIdentityState {
+    /**
+     * When true, if the identity is already a member of the project (e.g. auto-added by Infisical when the project was created by this identity), the existing membership is adopted and its roles are updated to match the desired state instead of returning an error. Defaults to false.
+     */
+    adoptExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The identity details of the project identity
      */
@@ -125,6 +135,10 @@ export interface ProjectIdentityState {
  * The set of arguments for constructing a ProjectIdentity resource.
  */
 export interface ProjectIdentityArgs {
+    /**
+     * When true, if the identity is already a member of the project (e.g. auto-added by Infisical when the project was created by this identity), the existing membership is adopted and its roles are updated to match the desired state instead of returning an error. Defaults to false.
+     */
+    adoptExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the identity.
      */

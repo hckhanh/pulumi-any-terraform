@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ProjectSettings extends pulumi.CustomResource {
@@ -45,6 +47,10 @@ export class ProjectSettings extends pulumi.CustomResource {
      */
     declare public readonly autocaptureWebVitalsOptIn: pulumi.Output<boolean>;
     /**
+     * Whether network performance capture is enabled for session replay. This must be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> for <span pulumi-lang-nodejs="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-dotnet="`SessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-go="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-python="`session_recording_network_payload_capture_config`" pulumi-lang-yaml="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-java="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-hcl="`session_recording_network_payload_capture_config`">`sessionRecordingNetworkPayloadCaptureConfig`</span> to have any effect — without it, session replay does not capture network requests at all.
+     */
+    declare public readonly capturePerformanceOptIn: pulumi.Output<boolean>;
+    /**
      * The cookieless server hash mode. Known values: <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> (disabled), <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span> (stateless), <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`" pulumi-lang-hcl="`2`">`2`</span> (stateful) — matching PostHog's `CookielessServerHashMode` enum. PostHog may add modes over time, so any non-negative value is accepted rather than a fixed set; consult the PostHog docs for the current options.
      */
     declare public readonly cookielessServerHashMode: pulumi.Output<number>;
@@ -60,6 +66,10 @@ export class ProjectSettings extends pulumi.CustomResource {
      * Authorized domains for session replay. Maps to the team <span pulumi-lang-nodejs="`recordingDomains`" pulumi-lang-dotnet="`RecordingDomains`" pulumi-lang-go="`recordingDomains`" pulumi-lang-python="`recording_domains`" pulumi-lang-yaml="`recordingDomains`" pulumi-lang-java="`recordingDomains`" pulumi-lang-hcl="`recording_domains`">`recordingDomains`</span> field. Order is preserved.
      */
     declare public readonly recordingDomains: pulumi.Output<string[]>;
+    /**
+     * Controls whether session replay records the headers and bodies of captured network requests. Only takes effect when <span pulumi-lang-nodejs="`capturePerformanceOptIn`" pulumi-lang-dotnet="`CapturePerformanceOptIn`" pulumi-lang-go="`capturePerformanceOptIn`" pulumi-lang-python="`capture_performance_opt_in`" pulumi-lang-yaml="`capturePerformanceOptIn`" pulumi-lang-java="`capturePerformanceOptIn`" pulumi-lang-hcl="`capture_performance_opt_in`">`capturePerformanceOptIn`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. **Security:** recorded headers and bodies can contain sensitive data such as `Authorization` tokens, cookies, and PII from request/response payloads — enable these deliberately and review PostHog's network-capture redaction options in your SDK configuration. PostHog replaces this JSON object wholesale on update, so both <span pulumi-lang-nodejs="`recordHeaders`" pulumi-lang-dotnet="`RecordHeaders`" pulumi-lang-go="`recordHeaders`" pulumi-lang-python="`record_headers`" pulumi-lang-yaml="`recordHeaders`" pulumi-lang-java="`recordHeaders`" pulumi-lang-hcl="`record_headers`">`recordHeaders`</span> and <span pulumi-lang-nodejs="`recordBody`" pulumi-lang-dotnet="`RecordBody`" pulumi-lang-go="`recordBody`" pulumi-lang-python="`record_body`" pulumi-lang-yaml="`recordBody`" pulumi-lang-java="`recordBody`" pulumi-lang-hcl="`record_body`">`recordBody`</span> must be set when the block is configured; omitting the whole block leaves the current PostHog value untouched.
+     */
+    declare public readonly sessionRecordingNetworkPayloadCaptureConfig: pulumi.Output<outputs.ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig>;
     /**
      * Whether session recording (recording user sessions) is enabled.
      */
@@ -85,10 +95,12 @@ export class ProjectSettings extends pulumi.CustomResource {
             resourceInputs["appUrls"] = state?.appUrls;
             resourceInputs["autocaptureExceptionsOptIn"] = state?.autocaptureExceptionsOptIn;
             resourceInputs["autocaptureWebVitalsOptIn"] = state?.autocaptureWebVitalsOptIn;
+            resourceInputs["capturePerformanceOptIn"] = state?.capturePerformanceOptIn;
             resourceInputs["cookielessServerHashMode"] = state?.cookielessServerHashMode;
             resourceInputs["heatmapsOptIn"] = state?.heatmapsOptIn;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["recordingDomains"] = state?.recordingDomains;
+            resourceInputs["sessionRecordingNetworkPayloadCaptureConfig"] = state?.sessionRecordingNetworkPayloadCaptureConfig;
             resourceInputs["sessionRecordingOptIn"] = state?.sessionRecordingOptIn;
             resourceInputs["surveysOptIn"] = state?.surveysOptIn;
         } else {
@@ -96,10 +108,12 @@ export class ProjectSettings extends pulumi.CustomResource {
             resourceInputs["appUrls"] = args?.appUrls;
             resourceInputs["autocaptureExceptionsOptIn"] = args?.autocaptureExceptionsOptIn;
             resourceInputs["autocaptureWebVitalsOptIn"] = args?.autocaptureWebVitalsOptIn;
+            resourceInputs["capturePerformanceOptIn"] = args?.capturePerformanceOptIn;
             resourceInputs["cookielessServerHashMode"] = args?.cookielessServerHashMode;
             resourceInputs["heatmapsOptIn"] = args?.heatmapsOptIn;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["recordingDomains"] = args?.recordingDomains;
+            resourceInputs["sessionRecordingNetworkPayloadCaptureConfig"] = args?.sessionRecordingNetworkPayloadCaptureConfig;
             resourceInputs["sessionRecordingOptIn"] = args?.sessionRecordingOptIn;
             resourceInputs["surveysOptIn"] = args?.surveysOptIn;
         }
@@ -125,6 +139,10 @@ export interface ProjectSettingsState {
      */
     autocaptureWebVitalsOptIn?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether network performance capture is enabled for session replay. This must be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> for <span pulumi-lang-nodejs="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-dotnet="`SessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-go="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-python="`session_recording_network_payload_capture_config`" pulumi-lang-yaml="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-java="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-hcl="`session_recording_network_payload_capture_config`">`sessionRecordingNetworkPayloadCaptureConfig`</span> to have any effect — without it, session replay does not capture network requests at all.
+     */
+    capturePerformanceOptIn?: pulumi.Input<boolean | undefined>;
+    /**
      * The cookieless server hash mode. Known values: <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> (disabled), <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span> (stateless), <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`" pulumi-lang-hcl="`2`">`2`</span> (stateful) — matching PostHog's `CookielessServerHashMode` enum. PostHog may add modes over time, so any non-negative value is accepted rather than a fixed set; consult the PostHog docs for the current options.
      */
     cookielessServerHashMode?: pulumi.Input<number | undefined>;
@@ -140,6 +158,10 @@ export interface ProjectSettingsState {
      * Authorized domains for session replay. Maps to the team <span pulumi-lang-nodejs="`recordingDomains`" pulumi-lang-dotnet="`RecordingDomains`" pulumi-lang-go="`recordingDomains`" pulumi-lang-python="`recording_domains`" pulumi-lang-yaml="`recordingDomains`" pulumi-lang-java="`recordingDomains`" pulumi-lang-hcl="`recording_domains`">`recordingDomains`</span> field. Order is preserved.
      */
     recordingDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Controls whether session replay records the headers and bodies of captured network requests. Only takes effect when <span pulumi-lang-nodejs="`capturePerformanceOptIn`" pulumi-lang-dotnet="`CapturePerformanceOptIn`" pulumi-lang-go="`capturePerformanceOptIn`" pulumi-lang-python="`capture_performance_opt_in`" pulumi-lang-yaml="`capturePerformanceOptIn`" pulumi-lang-java="`capturePerformanceOptIn`" pulumi-lang-hcl="`capture_performance_opt_in`">`capturePerformanceOptIn`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. **Security:** recorded headers and bodies can contain sensitive data such as `Authorization` tokens, cookies, and PII from request/response payloads — enable these deliberately and review PostHog's network-capture redaction options in your SDK configuration. PostHog replaces this JSON object wholesale on update, so both <span pulumi-lang-nodejs="`recordHeaders`" pulumi-lang-dotnet="`RecordHeaders`" pulumi-lang-go="`recordHeaders`" pulumi-lang-python="`record_headers`" pulumi-lang-yaml="`recordHeaders`" pulumi-lang-java="`recordHeaders`" pulumi-lang-hcl="`record_headers`">`recordHeaders`</span> and <span pulumi-lang-nodejs="`recordBody`" pulumi-lang-dotnet="`RecordBody`" pulumi-lang-go="`recordBody`" pulumi-lang-python="`record_body`" pulumi-lang-yaml="`recordBody`" pulumi-lang-java="`recordBody`" pulumi-lang-hcl="`record_body`">`recordBody`</span> must be set when the block is configured; omitting the whole block leaves the current PostHog value untouched.
+     */
+    sessionRecordingNetworkPayloadCaptureConfig?: pulumi.Input<inputs.ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig | undefined>;
     /**
      * Whether session recording (recording user sessions) is enabled.
      */
@@ -167,6 +189,10 @@ export interface ProjectSettingsArgs {
      */
     autocaptureWebVitalsOptIn?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether network performance capture is enabled for session replay. This must be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> for <span pulumi-lang-nodejs="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-dotnet="`SessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-go="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-python="`session_recording_network_payload_capture_config`" pulumi-lang-yaml="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-java="`sessionRecordingNetworkPayloadCaptureConfig`" pulumi-lang-hcl="`session_recording_network_payload_capture_config`">`sessionRecordingNetworkPayloadCaptureConfig`</span> to have any effect — without it, session replay does not capture network requests at all.
+     */
+    capturePerformanceOptIn?: pulumi.Input<boolean | undefined>;
+    /**
      * The cookieless server hash mode. Known values: <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`" pulumi-lang-hcl="`0`">`0`</span> (disabled), <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`" pulumi-lang-hcl="`1`">`1`</span> (stateless), <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`" pulumi-lang-hcl="`2`">`2`</span> (stateful) — matching PostHog's `CookielessServerHashMode` enum. PostHog may add modes over time, so any non-negative value is accepted rather than a fixed set; consult the PostHog docs for the current options.
      */
     cookielessServerHashMode?: pulumi.Input<number | undefined>;
@@ -182,6 +208,10 @@ export interface ProjectSettingsArgs {
      * Authorized domains for session replay. Maps to the team <span pulumi-lang-nodejs="`recordingDomains`" pulumi-lang-dotnet="`RecordingDomains`" pulumi-lang-go="`recordingDomains`" pulumi-lang-python="`recording_domains`" pulumi-lang-yaml="`recordingDomains`" pulumi-lang-java="`recordingDomains`" pulumi-lang-hcl="`recording_domains`">`recordingDomains`</span> field. Order is preserved.
      */
     recordingDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Controls whether session replay records the headers and bodies of captured network requests. Only takes effect when <span pulumi-lang-nodejs="`capturePerformanceOptIn`" pulumi-lang-dotnet="`CapturePerformanceOptIn`" pulumi-lang-go="`capturePerformanceOptIn`" pulumi-lang-python="`capture_performance_opt_in`" pulumi-lang-yaml="`capturePerformanceOptIn`" pulumi-lang-java="`capturePerformanceOptIn`" pulumi-lang-hcl="`capture_performance_opt_in`">`capturePerformanceOptIn`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. **Security:** recorded headers and bodies can contain sensitive data such as `Authorization` tokens, cookies, and PII from request/response payloads — enable these deliberately and review PostHog's network-capture redaction options in your SDK configuration. PostHog replaces this JSON object wholesale on update, so both <span pulumi-lang-nodejs="`recordHeaders`" pulumi-lang-dotnet="`RecordHeaders`" pulumi-lang-go="`recordHeaders`" pulumi-lang-python="`record_headers`" pulumi-lang-yaml="`recordHeaders`" pulumi-lang-java="`recordHeaders`" pulumi-lang-hcl="`record_headers`">`recordHeaders`</span> and <span pulumi-lang-nodejs="`recordBody`" pulumi-lang-dotnet="`RecordBody`" pulumi-lang-go="`recordBody`" pulumi-lang-python="`record_body`" pulumi-lang-yaml="`recordBody`" pulumi-lang-java="`recordBody`" pulumi-lang-hcl="`record_body`">`recordBody`</span> must be set when the block is configured; omitting the whole block leaves the current PostHog value untouched.
+     */
+    sessionRecordingNetworkPayloadCaptureConfig?: pulumi.Input<inputs.ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig | undefined>;
     /**
      * Whether session recording (recording user sessions) is enabled.
      */

@@ -57,8 +57,8 @@
     "version": "1.2.0",
     "parameterization": {
       "name": "better-uptime",
-      "version": "0.21.9",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIxLjkifX0="
+      "version": "0.21.10",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIxLjEwIn19"
     }
   }
 }

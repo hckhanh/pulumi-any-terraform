@@ -15,6 +15,11 @@ export type DomainRecords = import("./domainRecords").DomainRecords;
 export const DomainRecords: typeof import("./domainRecords").DomainRecords = null as any;
 utilities.lazyLoad(exports, ["DomainRecords"], () => require("./domainRecords"));
 
+export { EmailForwardingArgs, EmailForwardingState } from "./emailForwarding";
+export type EmailForwarding = import("./emailForwarding").EmailForwarding;
+export const EmailForwarding: typeof import("./emailForwarding").EmailForwarding = null as any;
+utilities.lazyLoad(exports, ["EmailForwarding"], () => require("./emailForwarding"));
+
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
@@ -56,6 +61,8 @@ const _module = {
                 return new DomainContacts(name, <any>undefined, { urn })
             case "namecheap:index/domainRecords:DomainRecords":
                 return new DomainRecords(name, <any>undefined, { urn })
+            case "namecheap:index/emailForwarding:EmailForwarding":
+                return new EmailForwarding(name, <any>undefined, { urn })
             case "namecheap:index/personalNameserver:PersonalNameserver":
                 return new PersonalNameserver(name, <any>undefined, { urn })
             default:
@@ -65,6 +72,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("namecheap", "index/domainContacts", _module)
 pulumi.runtime.registerResourceModule("namecheap", "index/domainRecords", _module)
+pulumi.runtime.registerResourceModule("namecheap", "index/emailForwarding", _module)
 pulumi.runtime.registerResourceModule("namecheap", "index/personalNameserver", _module)
 pulumi.runtime.registerResourcePackage("namecheap", {
     version: utilities.getVersion(),

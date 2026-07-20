@@ -57,7 +57,7 @@ export class ProxyRecord extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The PostHog-managed CNAME target that your DNS record must point to.
+     * The PostHog-managed CNAME target that your DNS record must point to. Normalised without a trailing dot, ready to use as DNS record content. If your DNS provider requires the DNS-canonical dotted form (e.g. `hashicorp/dns`), append it yourself: `"${posthog_proxy_record.example.target_cname}."`.
      */
     declare public /*out*/ readonly targetCname: pulumi.Output<string>;
     /**
@@ -134,7 +134,7 @@ export interface ProxyRecordState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The PostHog-managed CNAME target that your DNS record must point to.
+     * The PostHog-managed CNAME target that your DNS record must point to. Normalised without a trailing dot, ready to use as DNS record content. If your DNS provider requires the DNS-canonical dotted form (e.g. `hashicorp/dns`), append it yourself: `"${posthog_proxy_record.example.target_cname}."`.
      */
     targetCname?: pulumi.Input<string | undefined>;
     /**

@@ -135,6 +135,10 @@ export class StatusPage extends pulumi.CustomResource {
      */
     declare public readonly passwordEnabled: pulumi.Output<boolean>;
     /**
+     * Is your status page currently accessible?
+     */
+    declare public readonly published: pulumi.Output<boolean>;
+    /**
      * Require SSO sign-in to access your status page. Requires SSO to be configured for your organization and is mutually exclusive with password protection.
      */
     declare public readonly requireSso: pulumi.Output<boolean>;
@@ -205,6 +209,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["navigationLinks"] = state?.navigationLinks;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordEnabled"] = state?.passwordEnabled;
+            resourceInputs["published"] = state?.published;
             resourceInputs["requireSso"] = state?.requireSso;
             resourceInputs["statusPageGroupId"] = state?.statusPageGroupId;
             resourceInputs["subdomain"] = state?.subdomain;
@@ -250,6 +255,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["navigationLinks"] = args?.navigationLinks;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordEnabled"] = args?.passwordEnabled;
+            resourceInputs["published"] = args?.published;
             resourceInputs["requireSso"] = args?.requireSso;
             resourceInputs["statusPageGroupId"] = args?.statusPageGroupId;
             resourceInputs["subdomain"] = args?.subdomain;
@@ -372,6 +378,10 @@ export interface StatusPageState {
      * Do you want to enable password protection on your status page?
      */
     passwordEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Is your status page currently accessible?
+     */
+    published?: pulumi.Input<boolean | undefined>;
     /**
      * Require SSO sign-in to access your status page. Requires SSO to be configured for your organization and is mutually exclusive with password protection.
      */
@@ -502,6 +512,10 @@ export interface StatusPageArgs {
      * Do you want to enable password protection on your status page?
      */
     passwordEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Is your status page currently accessible?
+     */
+    published?: pulumi.Input<boolean | undefined>;
     /**
      * Require SSO sign-in to access your status page. Requires SSO to be configured for your organization and is mutually exclusive with password protection.
      */

@@ -63,7 +63,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      */
     declare public readonly sans: pulumi.Output<outputs.CertManagerCertificatePolicySan[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots).<span pulumi-lang-nodejs=" commonName " pulumi-lang-dotnet=" CommonName " pulumi-lang-go=" commonName " pulumi-lang-python=" common_name " pulumi-lang-yaml=" commonName " pulumi-lang-java=" commonName " pulumi-lang-hcl=" common_name "> commonName </span>matches the CN attribute only.<span pulumi-lang-nodejs=" domainComponent " pulumi-lang-dotnet=" DomainComponent " pulumi-lang-go=" domainComponent " pulumi-lang-python=" domain_component " pulumi-lang-yaml=" domainComponent " pulumi-lang-java=" domainComponent " pulumi-lang-hcl=" domain_component "> domainComponent </span>(DC) is an independent attribute matched separately from common_name: a certificate may carry multiple DC values, and each is matched individually against this block.
      */
     declare public readonly subjects: pulumi.Output<outputs.CertManagerCertificatePolicySubject[] | undefined>;
     /**
@@ -143,7 +143,7 @@ export interface CertManagerCertificatePolicyState {
      */
     sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots).<span pulumi-lang-nodejs=" commonName " pulumi-lang-dotnet=" CommonName " pulumi-lang-go=" commonName " pulumi-lang-python=" common_name " pulumi-lang-yaml=" commonName " pulumi-lang-java=" commonName " pulumi-lang-hcl=" common_name "> commonName </span>matches the CN attribute only.<span pulumi-lang-nodejs=" domainComponent " pulumi-lang-dotnet=" DomainComponent " pulumi-lang-go=" domainComponent " pulumi-lang-python=" domain_component " pulumi-lang-yaml=" domainComponent " pulumi-lang-java=" domainComponent " pulumi-lang-hcl=" domain_component "> domainComponent </span>(DC) is an independent attribute matched separately from common_name: a certificate may carry multiple DC values, and each is matched individually against this block.
      */
     subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface CertManagerCertificatePolicyArgs {
      */
     sans?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySan>[] | undefined>;
     /**
-     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots). For common_name, matching uses the CN attribute only, so domainComponent (DC) attributes are ignored.
+     * Subject attribute policies for the certificate policy. Each block constrains a single subject DN attribute (e.g. common_name, organization). Values are matched against the corresponding attribute parsed from the CSR; the '*' wildcard matches any sequence of characters (including dots).<span pulumi-lang-nodejs=" commonName " pulumi-lang-dotnet=" CommonName " pulumi-lang-go=" commonName " pulumi-lang-python=" common_name " pulumi-lang-yaml=" commonName " pulumi-lang-java=" commonName " pulumi-lang-hcl=" common_name "> commonName </span>matches the CN attribute only.<span pulumi-lang-nodejs=" domainComponent " pulumi-lang-dotnet=" DomainComponent " pulumi-lang-go=" domainComponent " pulumi-lang-python=" domain_component " pulumi-lang-yaml=" domainComponent " pulumi-lang-java=" domainComponent " pulumi-lang-hcl=" domain_component "> domainComponent </span>(DC) is an independent attribute matched separately from common_name: a certificate may carry multiple DC values, and each is matched individually against this block.
      */
     subjects?: pulumi.Input<pulumi.Input<inputs.CertManagerCertificatePolicySubject>[] | undefined>;
     /**

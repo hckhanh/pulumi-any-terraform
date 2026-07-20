@@ -23,6 +23,7 @@
         "config/vars.ts",
         "domainContacts.ts",
         "domainRecords.ts",
+        "emailForwarding.ts",
         "getDomain.ts",
         "getDomainRecords.ts",
         "getDomains.ts",

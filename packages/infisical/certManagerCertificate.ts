@@ -65,6 +65,10 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      */
     declare public readonly csr: pulumi.Output<string>;
     /**
+     * Domain components (DC) for the certificate. Multi-valued; each entry becomes a DC attribute in the subject.
+     */
+    declare public readonly domainComponents: pulumi.Output<string[]>;
+    /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
     declare public readonly extendedKeyUsages: pulumi.Output<string[]>;
@@ -150,6 +154,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
             resourceInputs["commonName"] = state?.commonName;
             resourceInputs["country"] = state?.country;
             resourceInputs["csr"] = state?.csr;
+            resourceInputs["domainComponents"] = state?.domainComponents;
             resourceInputs["extendedKeyUsages"] = state?.extendedKeyUsages;
             resourceInputs["keyAlgorithm"] = state?.keyAlgorithm;
             resourceInputs["keyUsages"] = state?.keyUsages;
@@ -179,6 +184,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
             resourceInputs["commonName"] = args?.commonName;
             resourceInputs["country"] = args?.country;
             resourceInputs["csr"] = args?.csr;
+            resourceInputs["domainComponents"] = args?.domainComponents;
             resourceInputs["extendedKeyUsages"] = args?.extendedKeyUsages;
             resourceInputs["keyAlgorithm"] = args?.keyAlgorithm;
             resourceInputs["keyUsages"] = args?.keyUsages;
@@ -242,6 +248,10 @@ export interface CertManagerCertificateState {
      * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr")).
      */
     csr?: pulumi.Input<string | undefined>;
+    /**
+     * Domain components (DC) for the certificate. Multi-valued; each entry becomes a DC attribute in the subject.
+     */
+    domainComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
@@ -332,6 +342,10 @@ export interface CertManagerCertificateArgs {
      * Certificate Signing Request (CSR) in PEM format. If provided, the certificate will be issued based on the CSR. Use Terraform's file() function to read from a file (e.g., file("./my-certificate.csr")).
      */
     csr?: pulumi.Input<string | undefined>;
+    /**
+     * Domain components (DC) for the certificate. Multi-valued; each entry becomes a DC attribute in the subject.
+     */
+    domainComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Extended key usages for the certificate. Supported: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */

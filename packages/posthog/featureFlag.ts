@@ -49,9 +49,13 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly featureFlagId: pulumi.Output<number>;
     /**
-     * Feature flag filters as JSON
+     * Feature flag filters as JSON. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. Fields present in the API response but absent from this config are kept in state so remote changes surface as drift — except the top-level keys listed in <span pulumi-lang-nodejs="`ignoreFilterFields`" pulumi-lang-dotnet="`IgnoreFilterFields`" pulumi-lang-go="`ignoreFilterFields`" pulumi-lang-python="`ignore_filter_fields`" pulumi-lang-yaml="`ignoreFilterFields`" pulumi-lang-java="`ignoreFilterFields`" pulumi-lang-hcl="`ignore_filter_fields`">`ignoreFilterFields`</span>.
      */
     declare public readonly filters: pulumi.Output<string>;
+    /**
+     * Top-level keys inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> that Terraform does not track for drift (state mirrors config for them, so changes made outside Terraform don't show as a diff). When unset, defaults to the keys other PostHog products wire into a flag — `[<span pulumi-lang-nodejs=""superGroups"" pulumi-lang-dotnet=""SuperGroups"" pulumi-lang-go=""superGroups"" pulumi-lang-python=""super_groups"" pulumi-lang-yaml=""superGroups"" pulumi-lang-java=""superGroups"" pulumi-lang-hcl=""super_groups"">"superGroups"</span>, <span pulumi-lang-nodejs=""holdoutGroups"" pulumi-lang-dotnet=""HoldoutGroups"" pulumi-lang-go=""holdoutGroups"" pulumi-lang-python=""holdout_groups"" pulumi-lang-yaml=""holdoutGroups"" pulumi-lang-java=""holdoutGroups"" pulumi-lang-hcl=""holdout_groups"">"holdoutGroups"</span>, "holdout"]` (Early Access Features and Experiments). Set to `[]` to track the entire filters blob — including any Early Access Feature or Experiment wiring, which will then show as drift if not declared in <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> — or provide your own set to replace the default. A key you also declare inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> is always tracked (explicit config wins over the ignore list).
+     */
+    declare public readonly ignoreFilterFields: pulumi.Output<string[] | undefined>;
     /**
      * Feature flag key (unique identifier)
      */
@@ -91,6 +95,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["ensureExperienceContinuity"] = state?.ensureExperienceContinuity;
             resourceInputs["featureFlagId"] = state?.featureFlagId;
             resourceInputs["filters"] = state?.filters;
+            resourceInputs["ignoreFilterFields"] = state?.ignoreFilterFields;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -105,6 +110,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["deleted"] = args?.deleted;
             resourceInputs["ensureExperienceContinuity"] = args?.ensureExperienceContinuity;
             resourceInputs["filters"] = args?.filters;
+            resourceInputs["ignoreFilterFields"] = args?.ignoreFilterFields;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -138,9 +144,13 @@ export interface FeatureFlagState {
      */
     featureFlagId?: pulumi.Input<number | undefined>;
     /**
-     * Feature flag filters as JSON
+     * Feature flag filters as JSON. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. Fields present in the API response but absent from this config are kept in state so remote changes surface as drift — except the top-level keys listed in <span pulumi-lang-nodejs="`ignoreFilterFields`" pulumi-lang-dotnet="`IgnoreFilterFields`" pulumi-lang-go="`ignoreFilterFields`" pulumi-lang-python="`ignore_filter_fields`" pulumi-lang-yaml="`ignoreFilterFields`" pulumi-lang-java="`ignoreFilterFields`" pulumi-lang-hcl="`ignore_filter_fields`">`ignoreFilterFields`</span>.
      */
     filters?: pulumi.Input<string | undefined>;
+    /**
+     * Top-level keys inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> that Terraform does not track for drift (state mirrors config for them, so changes made outside Terraform don't show as a diff). When unset, defaults to the keys other PostHog products wire into a flag — `[<span pulumi-lang-nodejs=""superGroups"" pulumi-lang-dotnet=""SuperGroups"" pulumi-lang-go=""superGroups"" pulumi-lang-python=""super_groups"" pulumi-lang-yaml=""superGroups"" pulumi-lang-java=""superGroups"" pulumi-lang-hcl=""super_groups"">"superGroups"</span>, <span pulumi-lang-nodejs=""holdoutGroups"" pulumi-lang-dotnet=""HoldoutGroups"" pulumi-lang-go=""holdoutGroups"" pulumi-lang-python=""holdout_groups"" pulumi-lang-yaml=""holdoutGroups"" pulumi-lang-java=""holdoutGroups"" pulumi-lang-hcl=""holdout_groups"">"holdoutGroups"</span>, "holdout"]` (Early Access Features and Experiments). Set to `[]` to track the entire filters blob — including any Early Access Feature or Experiment wiring, which will then show as drift if not declared in <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> — or provide your own set to replace the default. A key you also declare inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> is always tracked (explicit config wins over the ignore list).
+     */
+    ignoreFilterFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Feature flag key (unique identifier)
      */
@@ -180,9 +190,13 @@ export interface FeatureFlagArgs {
      */
     ensureExperienceContinuity?: pulumi.Input<boolean | undefined>;
     /**
-     * Feature flag filters as JSON
+     * Feature flag filters as JSON. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. Fields present in the API response but absent from this config are kept in state so remote changes surface as drift — except the top-level keys listed in <span pulumi-lang-nodejs="`ignoreFilterFields`" pulumi-lang-dotnet="`IgnoreFilterFields`" pulumi-lang-go="`ignoreFilterFields`" pulumi-lang-python="`ignore_filter_fields`" pulumi-lang-yaml="`ignoreFilterFields`" pulumi-lang-java="`ignoreFilterFields`" pulumi-lang-hcl="`ignore_filter_fields`">`ignoreFilterFields`</span>.
      */
     filters?: pulumi.Input<string | undefined>;
+    /**
+     * Top-level keys inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> that Terraform does not track for drift (state mirrors config for them, so changes made outside Terraform don't show as a diff). When unset, defaults to the keys other PostHog products wire into a flag — `[<span pulumi-lang-nodejs=""superGroups"" pulumi-lang-dotnet=""SuperGroups"" pulumi-lang-go=""superGroups"" pulumi-lang-python=""super_groups"" pulumi-lang-yaml=""superGroups"" pulumi-lang-java=""superGroups"" pulumi-lang-hcl=""super_groups"">"superGroups"</span>, <span pulumi-lang-nodejs=""holdoutGroups"" pulumi-lang-dotnet=""HoldoutGroups"" pulumi-lang-go=""holdoutGroups"" pulumi-lang-python=""holdout_groups"" pulumi-lang-yaml=""holdoutGroups"" pulumi-lang-java=""holdoutGroups"" pulumi-lang-hcl=""holdout_groups"">"holdoutGroups"</span>, "holdout"]` (Early Access Features and Experiments). Set to `[]` to track the entire filters blob — including any Early Access Feature or Experiment wiring, which will then show as drift if not declared in <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> — or provide your own set to replace the default. A key you also declare inside <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span> is always tracked (explicit config wins over the ignore list).
+     */
+    ignoreFilterFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Feature flag key (unique identifier)
      */

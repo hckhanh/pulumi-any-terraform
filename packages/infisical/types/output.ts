@@ -603,7 +603,7 @@ export interface CertManagerCertificatePolicySubject {
      */
     requireds?: string[];
     /**
-     * The subject attribute type. Possible values: common_name, organization, organizational_unit, country, state, locality
+     * The subject attribute type. Possible values: common_name, organization, organizational_unit, country, state, locality, domain_component
      */
     type: string;
 }
@@ -624,6 +624,10 @@ export interface CertManagerCertificateProfileDefaults {
      * Default country (C)
      */
     country?: string;
+    /**
+     * Default domain components (DC). Multi-valued; each entry becomes a DC attribute in the certificate subject.
+     */
+    domainComponents?: string[];
     /**
      * Default extended key usages. Supported values: client_auth, server_auth, code_signing, email_protection, ocsp_signing, time_stamping
      */
