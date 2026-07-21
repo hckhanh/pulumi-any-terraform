@@ -21,7 +21,7 @@
     "@types/node": "24.13.3",
     "nx": "23.1.0",
     "prettier": "3.8.4",
-    "syncpack": "14.3.1",
+    "syncpack": "15.3.2",
     "typescript": "6.0.3"
   },
   "keywords": [
