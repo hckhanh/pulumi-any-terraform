@@ -13,9 +13,20 @@ minimumReleaseAgeExclude:
   - next@16.2.6
   - tmp@0.2.7
   - form-data@4.0.6
+  - axios@1.18.0
+  - brace-expansion@5.0.7
+  - sharp@0.35.0
 overrides:
   # next (via docs) still resolves postcss@8.4.x without this; GHSA-qx2v-qp2m-jg93
+  axios@>=1.0.0 <1.18.0: ^1.18.0
+  axios@>=1.13.0 <1.18.0: ^1.18.0
+  axios@>=1.15.0 <1.18.0: ^1.18.0
+  axios@>=1.15.1 <1.18.0: ^1.18.0
+  axios@>=1.15.2 <1.18.0: ^1.18.0
+  axios@>=1.7.0 <1.18.0: ^1.18.0
+  brace-expansion@>=3.0.0 <5.0.7: ^5.0.7
   postcss@<8.5.10: '8.5.19'
+  sharp@<0.35.0: ^0.35.0
 auditConfig:
   # These two moderate advisories are intentionally ignored: their `pnpm audit --fix`
   # overrides break consumers, and neither code path is reachable in this repo.
