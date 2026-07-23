@@ -9,8 +9,8 @@ allowBuilds:
   sharp: true
 minimumReleaseAge: 2880
 minimumReleaseAgeExclude:
-  # Renovate security update: next@16.2.6
-  - next@16.2.6
+  # Renovate security update: next@16.2.6 || 16.2.11
+  - next@16.2.6 || 16.2.11
   - tmp@0.2.7
   - form-data@4.0.6
 overrides:
