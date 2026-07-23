@@ -15,7 +15,7 @@ minimumReleaseAgeExclude:
   - form-data@4.0.6
 overrides:
   # next (via docs) still resolves postcss@8.4.x without this; GHSA-qx2v-qp2m-jg93
-  postcss@<8.5.10: '8.5.19'
+  postcss@<8.5.10: '8.5.20'
 auditConfig:
   # These two moderate advisories are intentionally ignored: their `pnpm audit --fix`
   # overrides break consumers, and neither code path is reachable in this repo.
