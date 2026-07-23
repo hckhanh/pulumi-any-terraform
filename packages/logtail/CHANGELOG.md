@@ -1,3 +1,31 @@
+## 2.2.0
+
+### Minor Changes
+
+- Remove the chart/section overlap in the example dashboard layout by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/109
+- Look up dashboards by ID directly instead of scanning the paginated list by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/108
+- File existing example resources under the empty secondary groups by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/107
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.3...v10.15.4
+
+### Patch Changes
+
+- [T-17777] Add gitlab_repository_name field to logtail_errors_application by @SaltySkyPie in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/99
+
+#### New Contributors
+
+- @SaltySkyPie made their first contribution in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/99
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.14.3...v10.14.4
+
+- T-8648 Handle custom_bucket without apply loops by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/112
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.7...v10.15.8
+
+Update pulumi-logtail from 10.15.8 to 10.15.10
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.8...v10.15.10
+
 ## 2.1.2
 
 ### Patch Changes
