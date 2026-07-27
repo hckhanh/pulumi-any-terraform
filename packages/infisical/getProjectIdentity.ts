@@ -26,10 +26,6 @@ export interface GetProjectIdentityArgs {
  * A collection of values returned by getProjectIdentity.
  */
 export interface GetProjectIdentityResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly identityId: string;
     readonly membershipId: string;
     readonly projectId: string;

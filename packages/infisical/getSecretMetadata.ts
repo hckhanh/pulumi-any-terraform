@@ -34,10 +34,6 @@ export interface GetSecretMetadataArgs {
 export interface GetSecretMetadataResult {
     readonly environmentSlug: string;
     readonly folderPath: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly name: string;
     readonly projectId: string;
     readonly secretMetadatas: outputs.GetSecretMetadataSecretMetadata[];

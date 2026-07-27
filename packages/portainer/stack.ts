@@ -123,7 +123,7 @@ export class Stack extends pulumi.CustomResource {
      */
     declare public readonly registries: pulumi.Output<number[] | undefined>;
     /**
-     * ID of the Git credentials to use for authentication.
+     * ID of the shared Git credentials to use for authentication (Portainer < 2.43). Replaced by 'source_id' in Portainer 2.43 STS, which switched to the Sources model; on 2.43+ this field is ignored. Both are sent, so a single configuration stays compatible with old and new Portainer.
      */
     declare public readonly repositoryGitCredentialId: pulumi.Output<number | undefined>;
     /**
@@ -165,6 +165,10 @@ export class Stack extends pulumi.CustomResource {
      * Identifier of the Portainer resource control entry associated with the stack. Computed by Portainer.
      */
     declare public /*out*/ readonly resourceControlId: pulumi.Output<number>;
+    /**
+     * ID of a Portainer Source (Git source) providing the repository URL and credentials. Introduced in Portainer 2.43 STS, which replaced 'repository_git_credential_id'. When set (non-zero), Portainer resolves the repository URL/credentials from the referenced Source and ignores the inline repository_username/repository_password and<span pulumi-lang-nodejs=" repositoryGitCredentialId " pulumi-lang-dotnet=" RepositoryGitCredentialId " pulumi-lang-go=" repositoryGitCredentialId " pulumi-lang-python=" repository_git_credential_id " pulumi-lang-yaml=" repositoryGitCredentialId " pulumi-lang-java=" repositoryGitCredentialId " pulumi-lang-hcl=" repository_git_credential_id "> repositoryGitCredentialId </span>fields.
+     */
+    declare public readonly sourceId: pulumi.Output<number | undefined>;
     /**
      * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
      */
@@ -249,6 +253,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["repositoryUsernameWo"] = state?.repositoryUsernameWo;
             resourceInputs["repositoryWoVersion"] = state?.repositoryWoVersion;
             resourceInputs["resourceControlId"] = state?.resourceControlId;
+            resourceInputs["sourceId"] = state?.sourceId;
             resourceInputs["stackFileContent"] = state?.stackFileContent;
             resourceInputs["stackFilePath"] = state?.stackFilePath;
             resourceInputs["stackId"] = state?.stackId;
@@ -302,6 +307,7 @@ export class Stack extends pulumi.CustomResource {
             resourceInputs["repositoryUsername"] = args?.repositoryUsername;
             resourceInputs["repositoryUsernameWo"] = args?.repositoryUsernameWo ? pulumi.secret(args.repositoryUsernameWo) : undefined;
             resourceInputs["repositoryWoVersion"] = args?.repositoryWoVersion;
+            resourceInputs["sourceId"] = args?.sourceId;
             resourceInputs["stackFileContent"] = args?.stackFileContent;
             resourceInputs["stackFilePath"] = args?.stackFilePath;
             resourceInputs["stackId"] = args?.stackId;
@@ -415,7 +421,7 @@ export interface StackState {
      */
     registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * ID of the Git credentials to use for authentication.
+     * ID of the shared Git credentials to use for authentication (Portainer < 2.43). Replaced by 'source_id' in Portainer 2.43 STS, which switched to the Sources model; on 2.43+ this field is ignored. Both are sent, so a single configuration stays compatible with old and new Portainer.
      */
     repositoryGitCredentialId?: pulumi.Input<number | undefined>;
     /**
@@ -457,6 +463,10 @@ export interface StackState {
      * Identifier of the Portainer resource control entry associated with the stack. Computed by Portainer.
      */
     resourceControlId?: pulumi.Input<number | undefined>;
+    /**
+     * ID of a Portainer Source (Git source) providing the repository URL and credentials. Introduced in Portainer 2.43 STS, which replaced 'repository_git_credential_id'. When set (non-zero), Portainer resolves the repository URL/credentials from the referenced Source and ignores the inline repository_username/repository_password and<span pulumi-lang-nodejs=" repositoryGitCredentialId " pulumi-lang-dotnet=" RepositoryGitCredentialId " pulumi-lang-go=" repositoryGitCredentialId " pulumi-lang-python=" repository_git_credential_id " pulumi-lang-yaml=" repositoryGitCredentialId " pulumi-lang-java=" repositoryGitCredentialId " pulumi-lang-hcl=" repository_git_credential_id "> repositoryGitCredentialId </span>fields.
+     */
+    sourceId?: pulumi.Input<number | undefined>;
     /**
      * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
      */
@@ -590,7 +600,7 @@ export interface StackArgs {
      */
     registries?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * ID of the Git credentials to use for authentication.
+     * ID of the shared Git credentials to use for authentication (Portainer < 2.43). Replaced by 'source_id' in Portainer 2.43 STS, which switched to the Sources model; on 2.43+ this field is ignored. Both are sent, so a single configuration stays compatible with old and new Portainer.
      */
     repositoryGitCredentialId?: pulumi.Input<number | undefined>;
     /**
@@ -628,6 +638,10 @@ export interface StackArgs {
      * Version flag for write-only repository credentials; increment to trigger recreation.
      */
     repositoryWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * ID of a Portainer Source (Git source) providing the repository URL and credentials. Introduced in Portainer 2.43 STS, which replaced 'repository_git_credential_id'. When set (non-zero), Portainer resolves the repository URL/credentials from the referenced Source and ignores the inline repository_username/repository_password and<span pulumi-lang-nodejs=" repositoryGitCredentialId " pulumi-lang-dotnet=" RepositoryGitCredentialId " pulumi-lang-go=" repositoryGitCredentialId " pulumi-lang-python=" repository_git_credential_id " pulumi-lang-yaml=" repositoryGitCredentialId " pulumi-lang-java=" repositoryGitCredentialId " pulumi-lang-hcl=" repository_git_credential_id "> repositoryGitCredentialId </span>fields.
+     */
+    sourceId?: pulumi.Input<number | undefined>;
     /**
      * Inline Compose or Kubernetes manifest content used to deploy the stack. Required when method is 'string'; populated from<span pulumi-lang-nodejs=" stackFilePath " pulumi-lang-dotnet=" StackFilePath " pulumi-lang-go=" stackFilePath " pulumi-lang-python=" stack_file_path " pulumi-lang-yaml=" stackFilePath " pulumi-lang-java=" stackFilePath " pulumi-lang-hcl=" stack_file_path "> stackFilePath </span>when method is 'file'.
      */

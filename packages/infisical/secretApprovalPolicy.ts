@@ -43,6 +43,10 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly approvers: pulumi.Output<outputs.SecretApprovalPolicyApprover[]>;
     /**
+     * The bypassers who can bypass the approval policy
+     */
+    declare public readonly bypassers: pulumi.Output<outputs.SecretApprovalPolicyBypasser[] | undefined>;
+    /**
      * The enforcement level of the policy. This can either be hard or soft
      */
     declare public readonly enforcementLevel: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             const state = argsOrState as SecretApprovalPolicyState | undefined;
             resourceInputs["allowSelfApproval"] = state?.allowSelfApproval;
             resourceInputs["approvers"] = state?.approvers;
+            resourceInputs["bypassers"] = state?.bypassers;
             resourceInputs["enforcementLevel"] = state?.enforcementLevel;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
             resourceInputs["environmentSlugs"] = state?.environmentSlugs;
@@ -109,6 +114,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             }
             resourceInputs["allowSelfApproval"] = args?.allowSelfApproval;
             resourceInputs["approvers"] = args?.approvers;
+            resourceInputs["bypassers"] = args?.bypassers;
             resourceInputs["enforcementLevel"] = args?.enforcementLevel;
             resourceInputs["environmentSlug"] = args?.environmentSlug;
             resourceInputs["environmentSlugs"] = args?.environmentSlugs;
@@ -134,6 +140,10 @@ export interface SecretApprovalPolicyState {
      * The required approvers
      */
     approvers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[] | undefined>;
+    /**
+     * The bypassers who can bypass the approval policy
+     */
+    bypassers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyBypasser>[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
@@ -176,6 +186,10 @@ export interface SecretApprovalPolicyArgs {
      * The required approvers
      */
     approvers: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[]>;
+    /**
+     * The bypassers who can bypass the approval policy
+     */
+    bypassers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyBypasser>[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */

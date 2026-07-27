@@ -20,6 +20,21 @@ export interface AccessApprovalPolicyApprover {
     username?: pulumi.Input<string | undefined>;
 }
 
+export interface AccessApprovalPolicyBypasser {
+    /**
+     * The ID of the bypasser
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The type of bypasser. Either group or user
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The username of the bypasser. By default, this is the email
+     */
+    username?: pulumi.Input<string | undefined>;
+}
+
 export interface AppConnection1passwordCredentials {
     /**
      * The API token to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/1password
@@ -1570,6 +1585,21 @@ export interface SecretApprovalPolicyApprover {
     username?: pulumi.Input<string | undefined>;
 }
 
+export interface SecretApprovalPolicyBypasser {
+    /**
+     * The ID of the bypasser
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The type of bypasser. Either group or user
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The username of the bypasser. By default, this is the email
+     */
+    username?: pulumi.Input<string | undefined>;
+}
+
 export interface SecretRotationAwsIamUserSecretParameters {
     /**
      * The AWS region the client is present in.
@@ -2204,6 +2234,10 @@ export interface SecretSyncGcpSecretManagerDestinationConfig {
      * The scope of the sync with GCP Secret Manager. Supported options: global, region
      */
     scope?: pulumi.Input<string | undefined>;
+    /**
+     * The GCP regions to replicate secrets to (e.g. us-east1). Only applicable when scope is 'global'. When not defined, it will use the automatic replication policy
+     */
+    userReplicaLocationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SecretSyncGcpSecretManagerSyncOptions {

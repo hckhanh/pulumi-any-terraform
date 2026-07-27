@@ -45,6 +45,10 @@ export class DashboardSection extends pulumi.CustomResource {
      */
     declare public readonly dashboardId: pulumi.Output<string>;
     /**
+     * The explanation text shown for this section.
+     */
+    declare public readonly explanation: pulumi.Output<string>;
+    /**
      * The name of this section.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -73,6 +77,7 @@ export class DashboardSection extends pulumi.CustomResource {
             resourceInputs["collapsed"] = state?.collapsed;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["explanation"] = state?.explanation;
             resourceInputs["name"] = state?.name;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["y"] = state?.y;
@@ -86,6 +91,7 @@ export class DashboardSection extends pulumi.CustomResource {
             }
             resourceInputs["collapsed"] = args?.collapsed;
             resourceInputs["dashboardId"] = args?.dashboardId;
+            resourceInputs["explanation"] = args?.explanation;
             resourceInputs["name"] = args?.name;
             resourceInputs["y"] = args?.y;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -113,6 +119,10 @@ export interface DashboardSectionState {
      */
     dashboardId?: pulumi.Input<string | undefined>;
     /**
+     * The explanation text shown for this section.
+     */
+    explanation?: pulumi.Input<string | undefined>;
+    /**
      * The name of this section.
      */
     name?: pulumi.Input<string | undefined>;
@@ -138,6 +148,10 @@ export interface DashboardSectionArgs {
      * The ID of the dashboard this section belongs to.
      */
     dashboardId: pulumi.Input<string>;
+    /**
+     * The explanation text shown for this section.
+     */
+    explanation?: pulumi.Input<string | undefined>;
     /**
      * The name of this section.
      */

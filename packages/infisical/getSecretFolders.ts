@@ -31,10 +31,6 @@ export interface GetSecretFoldersResult {
     readonly environmentSlug: string;
     readonly folderPath: string;
     readonly folders: outputs.GetSecretFoldersFolder[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly projectId: string;
 }
 export function getSecretFoldersOutput(args: GetSecretFoldersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretFoldersResult> {

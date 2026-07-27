@@ -25,10 +25,6 @@ export interface GetProjectsListArgs {
  * A collection of values returned by getProjectsList.
  */
 export interface GetProjectsListResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly projects: outputs.GetProjectsListProject[];
     readonly slugs?: string[];
 }

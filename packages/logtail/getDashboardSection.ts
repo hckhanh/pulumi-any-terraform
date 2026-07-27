@@ -27,6 +27,7 @@ export interface GetDashboardSectionResult {
     readonly collapsed: boolean;
     readonly createdAt: string;
     readonly dashboardId: string;
+    readonly explanation: string;
     readonly id: string;
     readonly name: string;
     readonly updatedAt: string;

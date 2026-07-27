@@ -16,10 +16,6 @@ export function getIdentityDetails(opts?: pulumi.InvokeOptions): Promise<GetIden
  * A collection of values returned by getIdentityDetails.
  */
 export interface GetIdentityDetailsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly organization: outputs.GetIdentityDetailsOrganization;
 }
 export function getIdentityDetailsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityDetailsResult> {

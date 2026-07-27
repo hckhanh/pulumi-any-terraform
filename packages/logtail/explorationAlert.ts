@@ -47,6 +47,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly anomalySensitivity: pulumi.Output<number>;
     /**
+     * How many days of history to train the anomaly detection on, 1-30 (only for 'anomaly_rrcf' type).
+     */
+    declare public readonly anomalyTrainingRangeDays: pulumi.Output<number>;
+    /**
      * Anomaly trigger mode: 'any', 'higher', or 'lower' (only for 'anomaly_rrcf' type).
      */
     declare public readonly anomalyTrigger: pulumi.Output<string>;
@@ -99,6 +103,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * What to do when the monitored query returns no data: 'treat_as_zero', 'dont_fire', 'treat_as_previous', or 'start_incident'. Only for threshold and relative alerts.
+     */
+    declare public readonly onMissingData: pulumi.Output<string>;
+    /**
      * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     declare public readonly operator: pulumi.Output<string>;
@@ -123,9 +131,13 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly recoveryPeriod: pulumi.Output<number>;
     /**
-     * Specific series to monitor.
+     * Specific series to monitor. Conflicts with series_names_except; set to an empty list to alert on any series.
      */
     declare public readonly seriesNames: pulumi.Output<string[]>;
+    /**
+     * Monitor all series except these. Conflicts with series_names; set to an empty list to alert on any series.
+     */
+    declare public readonly seriesNamesExcepts: pulumi.Output<string[]>;
     /**
      * Enable SMS notifications.
      */
@@ -171,6 +183,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["aggregationInterval"] = state?.aggregationInterval;
             resourceInputs["alertType"] = state?.alertType;
             resourceInputs["anomalySensitivity"] = state?.anomalySensitivity;
+            resourceInputs["anomalyTrainingRangeDays"] = state?.anomalyTrainingRangeDays;
             resourceInputs["anomalyTrigger"] = state?.anomalyTrigger;
             resourceInputs["call"] = state?.call;
             resourceInputs["checkPeriod"] = state?.checkPeriod;
@@ -184,6 +197,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["incidentPerSeries"] = state?.incidentPerSeries;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
+            resourceInputs["onMissingData"] = state?.onMissingData;
             resourceInputs["operator"] = state?.operator;
             resourceInputs["paused"] = state?.paused;
             resourceInputs["pausedReason"] = state?.pausedReason;
@@ -191,6 +205,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["queryPeriod"] = state?.queryPeriod;
             resourceInputs["recoveryPeriod"] = state?.recoveryPeriod;
             resourceInputs["seriesNames"] = state?.seriesNames;
+            resourceInputs["seriesNamesExcepts"] = state?.seriesNamesExcepts;
             resourceInputs["sms"] = state?.sms;
             resourceInputs["sourceMode"] = state?.sourceMode;
             resourceInputs["sourcePlatforms"] = state?.sourcePlatforms;
@@ -209,6 +224,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["aggregationInterval"] = args?.aggregationInterval;
             resourceInputs["alertType"] = args?.alertType;
             resourceInputs["anomalySensitivity"] = args?.anomalySensitivity;
+            resourceInputs["anomalyTrainingRangeDays"] = args?.anomalyTrainingRangeDays;
             resourceInputs["anomalyTrigger"] = args?.anomalyTrigger;
             resourceInputs["call"] = args?.call;
             resourceInputs["checkPeriod"] = args?.checkPeriod;
@@ -221,12 +237,14 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["incidentPerSeries"] = args?.incidentPerSeries;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
+            resourceInputs["onMissingData"] = args?.onMissingData;
             resourceInputs["operator"] = args?.operator;
             resourceInputs["paused"] = args?.paused;
             resourceInputs["push"] = args?.push;
             resourceInputs["queryPeriod"] = args?.queryPeriod;
             resourceInputs["recoveryPeriod"] = args?.recoveryPeriod;
             resourceInputs["seriesNames"] = args?.seriesNames;
+            resourceInputs["seriesNamesExcepts"] = args?.seriesNamesExcepts;
             resourceInputs["sms"] = args?.sms;
             resourceInputs["sourceMode"] = args?.sourceMode;
             resourceInputs["sourcePlatforms"] = args?.sourcePlatforms;
@@ -258,6 +276,10 @@ export interface ExplorationAlertState {
      * Anomaly detection sensitivity 0-100 (only for 'anomaly_rrcf' type, lower = more sensitive).
      */
     anomalySensitivity?: pulumi.Input<number | undefined>;
+    /**
+     * How many days of history to train the anomaly detection on, 1-30 (only for 'anomaly_rrcf' type).
+     */
+    anomalyTrainingRangeDays?: pulumi.Input<number | undefined>;
     /**
      * Anomaly trigger mode: 'any', 'higher', or 'lower' (only for 'anomaly_rrcf' type).
      */
@@ -311,6 +333,10 @@ export interface ExplorationAlertState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * What to do when the monitored query returns no data: 'treat_as_zero', 'dont_fire', 'treat_as_previous', or 'start_incident'. Only for threshold and relative alerts.
+     */
+    onMissingData?: pulumi.Input<string | undefined>;
+    /**
      * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     operator?: pulumi.Input<string | undefined>;
@@ -335,9 +361,13 @@ export interface ExplorationAlertState {
      */
     recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
-     * Specific series to monitor.
+     * Specific series to monitor. Conflicts with series_names_except; set to an empty list to alert on any series.
      */
     seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Monitor all series except these. Conflicts with series_names; set to an empty list to alert on any series.
+     */
+    seriesNamesExcepts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable SMS notifications.
      */
@@ -384,6 +414,10 @@ export interface ExplorationAlertArgs {
      * Anomaly detection sensitivity 0-100 (only for 'anomaly_rrcf' type, lower = more sensitive).
      */
     anomalySensitivity?: pulumi.Input<number | undefined>;
+    /**
+     * How many days of history to train the anomaly detection on, 1-30 (only for 'anomaly_rrcf' type).
+     */
+    anomalyTrainingRangeDays?: pulumi.Input<number | undefined>;
     /**
      * Anomaly trigger mode: 'any', 'higher', or 'lower' (only for 'anomaly_rrcf' type).
      */
@@ -433,6 +467,10 @@ export interface ExplorationAlertArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * What to do when the monitored query returns no data: 'treat_as_zero', 'dont_fire', 'treat_as_previous', or 'start_incident'. Only for threshold and relative alerts.
+     */
+    onMissingData?: pulumi.Input<string | undefined>;
+    /**
      * The comparison operator. Required for threshold and relative alerts; not used for anomaly alerts. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
      */
     operator?: pulumi.Input<string | undefined>;
@@ -453,9 +491,13 @@ export interface ExplorationAlertArgs {
      */
     recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
-     * Specific series to monitor.
+     * Specific series to monitor. Conflicts with series_names_except; set to an empty list to alert on any series.
      */
     seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Monitor all series except these. Conflicts with series_names; set to an empty list to alert on any series.
+     */
+    seriesNamesExcepts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable SMS notifications.
      */

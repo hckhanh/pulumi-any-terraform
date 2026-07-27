@@ -30,10 +30,6 @@ export interface GetSecretsArgs {
 export interface GetSecretsResult {
     readonly envSlug: string;
     readonly folderPath: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly secrets: {[key: string]: outputs.GetSecretsSecrets};
     readonly workspaceId: string;
 }

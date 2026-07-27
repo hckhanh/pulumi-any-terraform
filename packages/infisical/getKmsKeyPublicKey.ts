@@ -23,10 +23,6 @@ export interface GetKmsKeyPublicKeyArgs {
  */
 export interface GetKmsKeyPublicKeyResult {
     readonly encryptionAlgorithm: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly keyId: string;
     readonly keyUsage: string;
     readonly name: string;

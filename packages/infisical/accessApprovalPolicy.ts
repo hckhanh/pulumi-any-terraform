@@ -35,9 +35,17 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to allow approvers to approve their own requests
+     */
+    declare public readonly allowSelfApproval: pulumi.Output<boolean>;
+    /**
      * The required approvers
      */
     declare public readonly approvers: pulumi.Output<outputs.AccessApprovalPolicyApprover[]>;
+    /**
+     * The bypassers who can bypass the approval policy
+     */
+    declare public readonly bypassers: pulumi.Output<outputs.AccessApprovalPolicyBypasser[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
@@ -51,6 +59,10 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly environmentSlugs: pulumi.Output<string[] | undefined>;
     /**
+     * The maximum time period for the access approval, specified as a duration string (e.g. '1h', '30m', '2d'). If omitted, the default behavior is 'permanent'.
+     */
+    declare public readonly maxTimePeriod: pulumi.Output<string | undefined>;
+    /**
      * The name of the access approval policy
      */
     declare public readonly name: pulumi.Output<string>;
@@ -58,6 +70,10 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
      * The ID of the project to add the access approval policy
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The time after which the access request expires, specified as a duration string (e.g. '1h', '3d', '72h'). Must be between 1 minute and 1 year. If omitted, the default behavior is 'never'.
+     */
+    declare public readonly requestExpirationTime: pulumi.Output<string | undefined>;
     /**
      * The number of required approvers
      */
@@ -80,12 +96,16 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApprovalPolicyState | undefined;
+            resourceInputs["allowSelfApproval"] = state?.allowSelfApproval;
             resourceInputs["approvers"] = state?.approvers;
+            resourceInputs["bypassers"] = state?.bypassers;
             resourceInputs["enforcementLevel"] = state?.enforcementLevel;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
             resourceInputs["environmentSlugs"] = state?.environmentSlugs;
+            resourceInputs["maxTimePeriod"] = state?.maxTimePeriod;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["requestExpirationTime"] = state?.requestExpirationTime;
             resourceInputs["requiredApprovals"] = state?.requiredApprovals;
             resourceInputs["secretPath"] = state?.secretPath;
         } else {
@@ -102,12 +122,16 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
             if (args?.secretPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretPath'");
             }
+            resourceInputs["allowSelfApproval"] = args?.allowSelfApproval;
             resourceInputs["approvers"] = args?.approvers;
+            resourceInputs["bypassers"] = args?.bypassers;
             resourceInputs["enforcementLevel"] = args?.enforcementLevel;
             resourceInputs["environmentSlug"] = args?.environmentSlug;
             resourceInputs["environmentSlugs"] = args?.environmentSlugs;
+            resourceInputs["maxTimePeriod"] = args?.maxTimePeriod;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["requestExpirationTime"] = args?.requestExpirationTime;
             resourceInputs["requiredApprovals"] = args?.requiredApprovals;
             resourceInputs["secretPath"] = args?.secretPath;
         }
@@ -121,9 +145,17 @@ export class AccessApprovalPolicy extends pulumi.CustomResource {
  */
 export interface AccessApprovalPolicyState {
     /**
+     * Whether to allow approvers to approve their own requests
+     */
+    allowSelfApproval?: pulumi.Input<boolean | undefined>;
+    /**
      * The required approvers
      */
     approvers?: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyApprover>[] | undefined>;
+    /**
+     * The bypassers who can bypass the approval policy
+     */
+    bypassers?: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyBypasser>[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
@@ -137,6 +169,10 @@ export interface AccessApprovalPolicyState {
      */
     environmentSlugs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The maximum time period for the access approval, specified as a duration string (e.g. '1h', '30m', '2d'). If omitted, the default behavior is 'permanent'.
+     */
+    maxTimePeriod?: pulumi.Input<string | undefined>;
+    /**
      * The name of the access approval policy
      */
     name?: pulumi.Input<string | undefined>;
@@ -144,6 +180,10 @@ export interface AccessApprovalPolicyState {
      * The ID of the project to add the access approval policy
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * The time after which the access request expires, specified as a duration string (e.g. '1h', '3d', '72h'). Must be between 1 minute and 1 year. If omitted, the default behavior is 'never'.
+     */
+    requestExpirationTime?: pulumi.Input<string | undefined>;
     /**
      * The number of required approvers
      */
@@ -159,9 +199,17 @@ export interface AccessApprovalPolicyState {
  */
 export interface AccessApprovalPolicyArgs {
     /**
+     * Whether to allow approvers to approve their own requests
+     */
+    allowSelfApproval?: pulumi.Input<boolean | undefined>;
+    /**
      * The required approvers
      */
     approvers: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyApprover>[]>;
+    /**
+     * The bypassers who can bypass the approval policy
+     */
+    bypassers?: pulumi.Input<pulumi.Input<inputs.AccessApprovalPolicyBypasser>[] | undefined>;
     /**
      * The enforcement level of the policy. This can either be hard or soft
      */
@@ -175,6 +223,10 @@ export interface AccessApprovalPolicyArgs {
      */
     environmentSlugs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The maximum time period for the access approval, specified as a duration string (e.g. '1h', '30m', '2d'). If omitted, the default behavior is 'permanent'.
+     */
+    maxTimePeriod?: pulumi.Input<string | undefined>;
+    /**
      * The name of the access approval policy
      */
     name?: pulumi.Input<string | undefined>;
@@ -182,6 +234,10 @@ export interface AccessApprovalPolicyArgs {
      * The ID of the project to add the access approval policy
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The time after which the access request expires, specified as a duration string (e.g. '1h', '3d', '72h'). Must be between 1 minute and 1 year. If omitted, the default behavior is 'never'.
+     */
+    requestExpirationTime?: pulumi.Input<string | undefined>;
     /**
      * The number of required approvers
      */

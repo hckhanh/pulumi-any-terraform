@@ -37,6 +37,7 @@ export interface GetErrorsApplicationResult {
     readonly id: string;
     readonly ingestingHost: string;
     readonly ingestingPaused: boolean;
+    readonly jsTagToken: string;
     readonly name: string;
     readonly platform: string;
     readonly tableName: string;

@@ -29,6 +29,7 @@ export interface GetExplorationAlertResult {
     readonly aggregationInterval: number;
     readonly alertType: string;
     readonly anomalySensitivity: number;
+    readonly anomalyTrainingRangeDays: number;
     readonly anomalyTrigger: string;
     readonly call: boolean;
     readonly checkPeriod: number;
@@ -43,6 +44,7 @@ export interface GetExplorationAlertResult {
     readonly incidentPerSeries: boolean;
     readonly metadata: {[key: string]: string};
     readonly name: string;
+    readonly onMissingData: string;
     readonly operator: string;
     readonly paused: boolean;
     readonly pausedReason: string;
@@ -50,6 +52,7 @@ export interface GetExplorationAlertResult {
     readonly queryPeriod: number;
     readonly recoveryPeriod: number;
     readonly seriesNames: string[];
+    readonly seriesNamesExcepts: string[];
     readonly sms: boolean;
     readonly sourceMode: string;
     readonly sourcePlatforms: string[];

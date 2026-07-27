@@ -26,10 +26,6 @@ export interface GetProjectUserArgs {
  * A collection of values returned by getProjectUser.
  */
 export interface GetProjectUserResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly membershipId: string;
     readonly projectId: string;
     readonly roles: outputs.GetProjectUserRole[];

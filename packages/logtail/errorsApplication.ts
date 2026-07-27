@@ -84,6 +84,10 @@ export class ErrorsApplication extends pulumi.CustomResource {
      */
     declare public readonly ingestingPaused: pulumi.Output<boolean>;
     /**
+     * The public JavaScript tag token embedded in the browser snippet for RUM and browser-side error tracking. Distinct from <span pulumi-lang-nodejs="`token`" pulumi-lang-dotnet="`Token`" pulumi-lang-go="`token`" pulumi-lang-python="`token`" pulumi-lang-yaml="`token`" pulumi-lang-java="`token`" pulumi-lang-hcl="`token`">`token`</span>, which is used for server-side data ingestion.
+     */
+    declare public /*out*/ readonly jsTagToken: pulumi.Output<string>;
+    /**
      * Application name. Must be unique within your team.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -232,6 +236,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["gitlabRepositoryName"] = state?.gitlabRepositoryName;
             resourceInputs["ingestingHost"] = state?.ingestingHost;
             resourceInputs["ingestingPaused"] = state?.ingestingPaused;
+            resourceInputs["jsTagToken"] = state?.jsTagToken;
             resourceInputs["name"] = state?.name;
             resourceInputs["platform"] = state?.platform;
             resourceInputs["tableName"] = state?.tableName;
@@ -259,6 +264,7 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["teamName"] = args?.teamName;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
+            resourceInputs["jsTagToken"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
@@ -322,6 +328,10 @@ export interface ErrorsApplicationState {
      * This property allows you to temporarily pause data ingesting for this application.
      */
     ingestingPaused?: pulumi.Input<boolean | undefined>;
+    /**
+     * The public JavaScript tag token embedded in the browser snippet for RUM and browser-side error tracking. Distinct from <span pulumi-lang-nodejs="`token`" pulumi-lang-dotnet="`Token`" pulumi-lang-go="`token`" pulumi-lang-python="`token`" pulumi-lang-yaml="`token`" pulumi-lang-java="`token`" pulumi-lang-hcl="`token`">`token`</span>, which is used for server-side data ingestion.
+     */
+    jsTagToken?: pulumi.Input<string | undefined>;
     /**
      * Application name. Must be unique within your team.
      */

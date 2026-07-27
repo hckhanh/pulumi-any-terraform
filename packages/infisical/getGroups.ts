@@ -17,10 +17,6 @@ export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult>
  */
 export interface GetGroupsResult {
     readonly groups: outputs.GetGroupsGroup[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 export function getGroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
