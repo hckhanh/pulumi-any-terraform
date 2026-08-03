@@ -22,9 +22,13 @@ export interface GetTestSuiteArgs {
  * A collection of values returned by getTestSuite.
  */
 export interface GetTestSuiteResult {
+    readonly applicationName: string;
+    readonly color: string;
     readonly defaultBranch: string;
+    readonly emoji: string;
     readonly id: string;
     readonly name: string;
+    readonly oidcPolicy: string;
     readonly slug: string;
     readonly uuid: string;
 }

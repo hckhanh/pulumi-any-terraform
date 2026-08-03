@@ -22,6 +22,7 @@ export interface GetPipelineArgs {
  * A collection of values returned by getPipeline.
  */
 export interface GetPipelineResult {
+    readonly cloneMirrorUrl: string;
     readonly clusterId: string;
     readonly clusterName: string;
     readonly defaultBranch: string;

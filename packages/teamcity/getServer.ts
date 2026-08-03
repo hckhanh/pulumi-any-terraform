@@ -14,10 +14,6 @@ export function getServer(opts?: pulumi.InvokeOptions): Promise<GetServerResult>
  * A collection of values returned by getServer.
  */
 export interface GetServerResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly version: string;
 }
 export function getServerOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {

@@ -20,6 +20,11 @@ export type EmailForwarding = import("./emailForwarding").EmailForwarding;
 export const EmailForwarding: typeof import("./emailForwarding").EmailForwarding = null as any;
 utilities.lazyLoad(exports, ["EmailForwarding"], () => require("./emailForwarding"));
 
+export { GetAccountBalanceArgs, GetAccountBalanceResult, GetAccountBalanceOutputArgs } from "./getAccountBalance";
+export const getAccountBalance: typeof import("./getAccountBalance").getAccountBalance = null as any;
+export const getAccountBalanceOutput: typeof import("./getAccountBalance").getAccountBalanceOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountBalance","getAccountBalanceOutput"], () => require("./getAccountBalance"));
+
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
@@ -34,6 +39,11 @@ export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDom
 export const getDomains: typeof import("./getDomains").getDomains = null as any;
 export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
 utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetTldPricingArgs, GetTldPricingResult, GetTldPricingOutputArgs } from "./getTldPricing";
+export const getTldPricing: typeof import("./getTldPricing").getTldPricing = null as any;
+export const getTldPricingOutput: typeof import("./getTldPricing").getTldPricingOutput = null as any;
+utilities.lazyLoad(exports, ["getTldPricing","getTldPricingOutput"], () => require("./getTldPricing"));
 
 export { PersonalNameserverArgs, PersonalNameserverState } from "./personalNameserver";
 export type PersonalNameserver = import("./personalNameserver").PersonalNameserver;

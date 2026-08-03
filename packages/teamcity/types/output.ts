@@ -71,6 +71,25 @@ export interface CleanupSettingsDaily {
     minute: number;
 }
 
+export interface CloudProfileImage {
+    /**
+     * The agent pool that receives agents started from this image.
+     */
+    agentPoolId?: number;
+    /**
+     * The TeamCity cloud image ID.
+     */
+    id: string;
+    /**
+     * The cloud image name displayed in TeamCity.
+     */
+    name: string;
+    /**
+     * Image-specific provider properties. The complete map is sensitive because it can contain secure values.
+     */
+    properties: {[key: string]: string};
+}
+
 export interface ConnectionGithubApp {
     appId: string;
     clientId: string;

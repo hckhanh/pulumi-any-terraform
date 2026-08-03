@@ -47,7 +47,13 @@ export class DomainRecords extends pulumi.CustomResource {
      * Possible values: MERGE (default), OVERWRITE
      */
     declare public readonly mode: pulumi.Output<string | undefined>;
+    /**
+     * Custom nameservers to delegate the domain to. Conflicts with <span pulumi-lang-nodejs="`emailType`" pulumi-lang-dotnet="`EmailType`" pulumi-lang-go="`emailType`" pulumi-lang-python="`email_type`" pulumi-lang-yaml="`emailType`" pulumi-lang-java="`emailType`" pulumi-lang-hcl="`email_type`">`emailType`</span> and <span pulumi-lang-nodejs="`record`" pulumi-lang-dotnet="`Record`" pulumi-lang-go="`record`" pulumi-lang-python="`record`" pulumi-lang-yaml="`record`" pulumi-lang-java="`record`" pulumi-lang-hcl="`record`">`record`</span>, which only apply while the domain uses Namecheap DNS.
+     */
     declare public readonly nameservers: pulumi.Output<string[] | undefined>;
+    /**
+     * One or more DNS host records for the domain. Conflicts with <span pulumi-lang-nodejs="`nameservers`" pulumi-lang-dotnet="`Nameservers`" pulumi-lang-go="`nameservers`" pulumi-lang-python="`nameservers`" pulumi-lang-yaml="`nameservers`" pulumi-lang-java="`nameservers`" pulumi-lang-hcl="`nameservers`">`nameservers`</span>, since a domain either uses Namecheap DNS with these records or delegates to custom nameservers.
+     */
     declare public readonly records: pulumi.Output<outputs.DomainRecordsRecord[] | undefined>;
 
     /**
@@ -103,7 +109,13 @@ export interface DomainRecordsState {
      * Possible values: MERGE (default), OVERWRITE
      */
     mode?: pulumi.Input<string | undefined>;
+    /**
+     * Custom nameservers to delegate the domain to. Conflicts with <span pulumi-lang-nodejs="`emailType`" pulumi-lang-dotnet="`EmailType`" pulumi-lang-go="`emailType`" pulumi-lang-python="`email_type`" pulumi-lang-yaml="`emailType`" pulumi-lang-java="`emailType`" pulumi-lang-hcl="`email_type`">`emailType`</span> and <span pulumi-lang-nodejs="`record`" pulumi-lang-dotnet="`Record`" pulumi-lang-go="`record`" pulumi-lang-python="`record`" pulumi-lang-yaml="`record`" pulumi-lang-java="`record`" pulumi-lang-hcl="`record`">`record`</span>, which only apply while the domain uses Namecheap DNS.
+     */
     nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * One or more DNS host records for the domain. Conflicts with <span pulumi-lang-nodejs="`nameservers`" pulumi-lang-dotnet="`Nameservers`" pulumi-lang-go="`nameservers`" pulumi-lang-python="`nameservers`" pulumi-lang-yaml="`nameservers`" pulumi-lang-java="`nameservers`" pulumi-lang-hcl="`nameservers`">`nameservers`</span>, since a domain either uses Namecheap DNS with these records or delegates to custom nameservers.
+     */
     records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[] | undefined>;
 }
 
@@ -124,6 +136,12 @@ export interface DomainRecordsArgs {
      * Possible values: MERGE (default), OVERWRITE
      */
     mode?: pulumi.Input<string | undefined>;
+    /**
+     * Custom nameservers to delegate the domain to. Conflicts with <span pulumi-lang-nodejs="`emailType`" pulumi-lang-dotnet="`EmailType`" pulumi-lang-go="`emailType`" pulumi-lang-python="`email_type`" pulumi-lang-yaml="`emailType`" pulumi-lang-java="`emailType`" pulumi-lang-hcl="`email_type`">`emailType`</span> and <span pulumi-lang-nodejs="`record`" pulumi-lang-dotnet="`Record`" pulumi-lang-go="`record`" pulumi-lang-python="`record`" pulumi-lang-yaml="`record`" pulumi-lang-java="`record`" pulumi-lang-hcl="`record`">`record`</span>, which only apply while the domain uses Namecheap DNS.
+     */
     nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * One or more DNS host records for the domain. Conflicts with <span pulumi-lang-nodejs="`nameservers`" pulumi-lang-dotnet="`Nameservers`" pulumi-lang-go="`nameservers`" pulumi-lang-python="`nameservers`" pulumi-lang-yaml="`nameservers`" pulumi-lang-java="`nameservers`" pulumi-lang-hcl="`nameservers`">`nameservers`</span>, since a domain either uses Namecheap DNS with these records or delegates to custom nameservers.
+     */
     records?: pulumi.Input<pulumi.Input<inputs.DomainRecordsRecord>[] | undefined>;
 }

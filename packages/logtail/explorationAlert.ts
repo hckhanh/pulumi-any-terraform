@@ -127,7 +127,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
      */
     declare public readonly queryPeriod: pulumi.Output<number>;
     /**
-     * The recovery delay in seconds.
+     * The duration in seconds that a condition must be resolved before an incident is recovered. A value of 0 recovers the alert immediately, a value of -1 means never automatically recover an incident.
      */
     declare public readonly recoveryPeriod: pulumi.Output<number>;
     /**
@@ -357,7 +357,7 @@ export interface ExplorationAlertState {
      */
     queryPeriod?: pulumi.Input<number | undefined>;
     /**
-     * The recovery delay in seconds.
+     * The duration in seconds that a condition must be resolved before an incident is recovered. A value of 0 recovers the alert immediately, a value of -1 means never automatically recover an incident.
      */
     recoveryPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -487,7 +487,7 @@ export interface ExplorationAlertArgs {
      */
     queryPeriod?: pulumi.Input<number | undefined>;
     /**
-     * The recovery delay in seconds.
+     * The duration in seconds that a condition must be resolved before an incident is recovered. A value of 0 recovers the alert immediately, a value of -1 means never automatically recover an incident.
      */
     recoveryPeriod?: pulumi.Input<number | undefined>;
     /**

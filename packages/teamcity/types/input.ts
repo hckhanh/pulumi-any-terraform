@@ -71,6 +71,25 @@ export interface CleanupSettingsDaily {
     minute: pulumi.Input<number>;
 }
 
+export interface CloudProfileImage {
+    /**
+     * The agent pool that receives agents started from this image.
+     */
+    agentPoolId?: pulumi.Input<number | undefined>;
+    /**
+     * The TeamCity cloud image ID.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The cloud image name displayed in TeamCity.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Image-specific provider properties. The complete map is sensitive because it can contain secure values.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+}
+
 export interface ConnectionGithubApp {
     appId: pulumi.Input<string>;
     clientId: pulumi.Input<string>;

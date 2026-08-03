@@ -17,10 +17,6 @@ export function getClusters(opts?: pulumi.InvokeOptions): Promise<GetClustersRes
  */
 export interface GetClustersResult {
     readonly clusters: outputs.GetClustersCluster[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 export function getClustersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -30,10 +30,6 @@ export interface GetSignedPipelineStepsArgs {
  * A collection of values returned by getSignedPipelineSteps.
  */
 export interface GetSignedPipelineStepsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly jwks?: string;
     readonly jwksFile?: string;
     readonly jwksKeyId?: string;

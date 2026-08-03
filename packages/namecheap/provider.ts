@@ -42,6 +42,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly requestTimeout: pulumi.Output<string | undefined>;
     /**
+     * First backoff delay before a retried API call, as a Go duration string (e.g. "500ms", "5s"). Subsequent delays double up to retry_max_delay, and each one is then jittered to between 50% and 100% of that value. Must parse, be greater than zero, and not exceed retry_max_delay. Defaults to "500ms", matching the SDK's built-in retry policy. Raise it when the API is rate-limiting: waiting longer between fewer attempts costs less quota than retrying quickly, because every attempt is itself a request.
+     */
+    declare public readonly retryBaseDelay: pulumi.Output<string | undefined>;
+    /**
+     * Cap on any single backoff delay between retried API calls, as a Go duration string (e.g. "30s", "1m"). Must parse, be greater than zero, and be at least retry_base_delay. Defaults to "30s", matching the SDK's built-in retry policy.
+     */
+    declare public readonly retryMaxDelay: pulumi.Output<string | undefined>;
+    /**
      * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
      */
     declare public readonly retryMaxElapsed: pulumi.Output<string | undefined>;
@@ -67,6 +75,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["maxRetries"] = pulumi.output(args?.maxRetries).apply(JSON.stringify);
             resourceInputs["requestTimeout"] = args?.requestTimeout;
             resourceInputs["requestsPerMinute"] = pulumi.output(args?.requestsPerMinute).apply(JSON.stringify);
+            resourceInputs["retryBaseDelay"] = args?.retryBaseDelay;
+            resourceInputs["retryMaxDelay"] = args?.retryMaxDelay;
             resourceInputs["retryMaxElapsed"] = args?.retryMaxElapsed;
             resourceInputs["useSandbox"] = pulumi.output(args?.useSandbox).apply(JSON.stringify);
             resourceInputs["userName"] = args?.userName ? pulumi.secret(args.userName) : undefined;
@@ -116,6 +126,14 @@ export interface ProviderArgs {
      * Client-side rate limit applied to the Namecheap API, in requests per minute. Must be between 1 and 20 (Namecheap's documented primary quota). Defaults to 20, matching the SDK's built-in limiter.
      */
     requestsPerMinute?: pulumi.Input<number | undefined>;
+    /**
+     * First backoff delay before a retried API call, as a Go duration string (e.g. "500ms", "5s"). Subsequent delays double up to retry_max_delay, and each one is then jittered to between 50% and 100% of that value. Must parse, be greater than zero, and not exceed retry_max_delay. Defaults to "500ms", matching the SDK's built-in retry policy. Raise it when the API is rate-limiting: waiting longer between fewer attempts costs less quota than retrying quickly, because every attempt is itself a request.
+     */
+    retryBaseDelay?: pulumi.Input<string | undefined>;
+    /**
+     * Cap on any single backoff delay between retried API calls, as a Go duration string (e.g. "30s", "1m"). Must parse, be greater than zero, and be at least retry_base_delay. Defaults to "30s", matching the SDK's built-in retry policy.
+     */
+    retryMaxDelay?: pulumi.Input<string | undefined>;
     /**
      * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
      */

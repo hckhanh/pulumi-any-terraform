@@ -33,15 +33,15 @@ export class PersonalNameserver extends pulumi.CustomResource {
     }
 
     /**
-     * The registered domain the personal nameserver belongs to (e.g. "example.com"). Must be a root domain present on the account, not a subdomain.
+     * The registered root domain the personal nameserver belongs to (e.g. `example.com`). Must be a root domain present on the account, not a subdomain. Changing this forces a new resource.
      */
     declare public readonly domain: pulumi.Output<string>;
     /**
-     * The IP address the personal nameserver resolves to (the glue record's address).
+     * The IP address the personal nameserver resolves to (the glue record's address). This value can be changed in place, which issues a `domains.ns.update`.
      */
     declare public readonly ip: pulumi.Output<string>;
     /**
-     * The fully qualified hostname of the personal nameserver to register (e.g. "ns1.example.com").
+     * The fully qualified hostname of the personal nameserver to register (e.g. `ns1.example.com`). Changing this forces a new resource.
      */
     declare public readonly nameserver: pulumi.Output<string>;
     declare public readonly personalNameserverId: pulumi.Output<string>;
@@ -89,15 +89,15 @@ export class PersonalNameserver extends pulumi.CustomResource {
  */
 export interface PersonalNameserverState {
     /**
-     * The registered domain the personal nameserver belongs to (e.g. "example.com"). Must be a root domain present on the account, not a subdomain.
+     * The registered root domain the personal nameserver belongs to (e.g. `example.com`). Must be a root domain present on the account, not a subdomain. Changing this forces a new resource.
      */
     domain?: pulumi.Input<string | undefined>;
     /**
-     * The IP address the personal nameserver resolves to (the glue record's address).
+     * The IP address the personal nameserver resolves to (the glue record's address). This value can be changed in place, which issues a `domains.ns.update`.
      */
     ip?: pulumi.Input<string | undefined>;
     /**
-     * The fully qualified hostname of the personal nameserver to register (e.g. "ns1.example.com").
+     * The fully qualified hostname of the personal nameserver to register (e.g. `ns1.example.com`). Changing this forces a new resource.
      */
     nameserver?: pulumi.Input<string | undefined>;
     personalNameserverId?: pulumi.Input<string | undefined>;
@@ -108,15 +108,15 @@ export interface PersonalNameserverState {
  */
 export interface PersonalNameserverArgs {
     /**
-     * The registered domain the personal nameserver belongs to (e.g. "example.com"). Must be a root domain present on the account, not a subdomain.
+     * The registered root domain the personal nameserver belongs to (e.g. `example.com`). Must be a root domain present on the account, not a subdomain. Changing this forces a new resource.
      */
     domain: pulumi.Input<string>;
     /**
-     * The IP address the personal nameserver resolves to (the glue record's address).
+     * The IP address the personal nameserver resolves to (the glue record's address). This value can be changed in place, which issues a `domains.ns.update`.
      */
     ip: pulumi.Input<string>;
     /**
-     * The fully qualified hostname of the personal nameserver to register (e.g. "ns1.example.com").
+     * The fully qualified hostname of the personal nameserver to register (e.g. `ns1.example.com`). Changing this forces a new resource.
      */
     nameserver: pulumi.Input<string>;
     personalNameserverId?: pulumi.Input<string | undefined>;

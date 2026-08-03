@@ -28,10 +28,6 @@ export interface GetPortalResult {
     readonly createdAt: string;
     readonly createdBy: outputs.GetPortalCreatedBy;
     readonly description: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly name: string;
     readonly query: string;
     readonly slug: string;

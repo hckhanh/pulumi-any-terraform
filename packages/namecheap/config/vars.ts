@@ -74,6 +74,28 @@ Object.defineProperty(exports, "requestsPerMinute", {
 });
 
 /**
+ * First backoff delay before a retried API call, as a Go duration string (e.g. "500ms", "5s"). Subsequent delays double up to retry_max_delay, and each one is then jittered to between 50% and 100% of that value. Must parse, be greater than zero, and not exceed retry_max_delay. Defaults to "500ms", matching the SDK's built-in retry policy. Raise it when the API is rate-limiting: waiting longer between fewer attempts costs less quota than retrying quickly, because every attempt is itself a request.
+ */
+export declare const retryBaseDelay: string | undefined;
+Object.defineProperty(exports, "retryBaseDelay", {
+    get() {
+        return __config.get("retryBaseDelay");
+    },
+    enumerable: true,
+});
+
+/**
+ * Cap on any single backoff delay between retried API calls, as a Go duration string (e.g. "30s", "1m"). Must parse, be greater than zero, and be at least retry_base_delay. Defaults to "30s", matching the SDK's built-in retry policy.
+ */
+export declare const retryMaxDelay: string | undefined;
+Object.defineProperty(exports, "retryMaxDelay", {
+    get() {
+        return __config.get("retryMaxDelay");
+    },
+    enumerable: true,
+});
+
+/**
  * Maximum total wall-clock time to spend retrying a single API call, as a Go duration string (e.g. "2m", "90s"). Must parse and be greater than zero. Defaults to "2m", matching the SDK's built-in retry policy.
  */
 export declare const retryMaxElapsed: string | undefined;

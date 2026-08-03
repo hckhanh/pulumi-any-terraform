@@ -31,6 +31,7 @@
         "buildConfigurationTrigger.ts",
         "buildConfigurationVcsRoot.ts",
         "cleanupSettings.ts",
+        "cloudProfile.ts",
         "config/index.ts",
         "config/vars.ts",
         "connection.ts",

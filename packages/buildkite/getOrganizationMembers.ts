@@ -16,10 +16,6 @@ export function getOrganizationMembers(opts?: pulumi.InvokeOptions): Promise<Get
  * A collection of values returned by getOrganizationMembers.
  */
 export interface GetOrganizationMembersResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly members: outputs.GetOrganizationMembersMember[];
 }
 export function getOrganizationMembersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationMembersResult> {

@@ -16,10 +16,6 @@ export function getTeams(opts?: pulumi.InvokeOptions): Promise<GetTeamsResult> {
  * A collection of values returned by getTeams.
  */
 export interface GetTeamsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly teams: outputs.GetTeamsTeam[];
 }
 export function getTeamsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTeamsResult> {

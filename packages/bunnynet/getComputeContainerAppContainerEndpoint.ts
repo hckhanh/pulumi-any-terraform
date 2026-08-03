@@ -31,9 +31,6 @@ export interface GetComputeContainerAppContainerEndpointResult {
     readonly app: string;
     readonly cdn: outputs.GetComputeContainerAppContainerEndpointCdn;
     readonly container: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly name: string;
     readonly publicHost: string;

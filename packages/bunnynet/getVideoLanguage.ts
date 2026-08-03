@@ -23,10 +23,6 @@ export interface GetVideoLanguageArgs {
  */
 export interface GetVideoLanguageResult {
     readonly code: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly name: string;
     readonly supportPlayerTranslation: boolean;
     readonly supportTranscribing: boolean;

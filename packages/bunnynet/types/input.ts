@@ -82,6 +82,10 @@ export interface ComputeContainerAppContainerEndpoint {
      */
     cdns?: pulumi.Input<pulumi.Input<inputs.ComputeContainerAppContainerEndpointCdn>[] | undefined>;
     /**
+     * The ID of the endpoint.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
      * The name of the endpoint.
      */
     name: pulumi.Input<string>;
@@ -374,6 +378,10 @@ export interface GetPullzoneOrigin {
      */
     script?: number;
     /**
+     * Indicates whether the script will execute ahead of the cache layer.
+     */
+    scriptExecuteBeforeCache?: boolean;
+    /**
      * The ID of the linked storage zone.
      */
     storagezone?: number;
@@ -428,6 +436,10 @@ export interface GetPullzoneOriginArgs {
      * The ID of the linked compute script.
      */
     script?: pulumi.Input<number | undefined>;
+    /**
+     * Indicates whether the script will execute ahead of the cache layer.
+     */
+    scriptExecuteBeforeCache?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the linked storage zone.
      */
@@ -544,6 +556,10 @@ export interface PullzoneOrigin {
      * The ID of the linked compute script.
      */
     script?: pulumi.Input<number | undefined>;
+    /**
+     * Indicates whether the script will execute ahead of the cache layer.
+     */
+    scriptExecuteBeforeCache?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the linked storage zone.
      */

@@ -16,10 +16,6 @@ export function getPortals(opts?: pulumi.InvokeOptions): Promise<GetPortalsResul
  * A collection of values returned by getPortals.
  */
 export interface GetPortalsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly portals: outputs.GetPortalsPortal[];
 }
 export function getPortalsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortalsResult> {

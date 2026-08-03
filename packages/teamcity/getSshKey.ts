@@ -24,10 +24,6 @@ export interface GetSshKeyArgs {
  * A collection of values returned by getSshKey.
  */
 export interface GetSshKeyResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly name: string;
     readonly projectId: string;
 }

@@ -82,6 +82,10 @@ export interface ComputeContainerAppContainerEndpoint {
      */
     cdns?: outputs.ComputeContainerAppContainerEndpointCdn[];
     /**
+     * The ID of the endpoint.
+     */
+    id: string;
+    /**
      * The name of the endpoint.
      */
     name: string;
@@ -390,6 +394,10 @@ export interface GetPullzoneOrigin {
      */
     script: number;
     /**
+     * Indicates whether the script will execute ahead of the cache layer.
+     */
+    scriptExecuteBeforeCache: boolean;
+    /**
      * The ID of the linked storage zone.
      */
     storagezone: number;
@@ -482,6 +490,10 @@ export interface PullzoneOrigin {
      * The ID of the linked compute script.
      */
     script?: number;
+    /**
+     * Indicates whether the script will execute ahead of the cache layer.
+     */
+    scriptExecuteBeforeCache: boolean;
     /**
      * The ID of the linked storage zone.
      */

@@ -37,6 +37,10 @@ export class StreamLibrary extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly apiKey: pulumi.Output<string>;
     /**
+     * The read-only API key for accessing the stream library.
+     */
+    declare public /*out*/ readonly apiKeyReadonly: pulumi.Output<string>;
+    /**
      * The bitrate used for encoding 1080p videos, in kilobits per second.
      */
     declare public readonly bitrate1080p: pulumi.Output<number>;
@@ -236,6 +240,7 @@ export class StreamLibrary extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StreamLibraryState | undefined;
             resourceInputs["apiKey"] = state?.apiKey;
+            resourceInputs["apiKeyReadonly"] = state?.apiKeyReadonly;
             resourceInputs["bitrate1080p"] = state?.bitrate1080p;
             resourceInputs["bitrate1440p"] = state?.bitrate1440p;
             resourceInputs["bitrate2160p"] = state?.bitrate2160p;
@@ -330,12 +335,13 @@ export class StreamLibrary extends pulumi.CustomResource {
             resourceInputs["watermarkWidth"] = args?.watermarkWidth;
             resourceInputs["webhookUrl"] = args?.webhookUrl;
             resourceInputs["apiKey"] = undefined /*out*/;
+            resourceInputs["apiKeyReadonly"] = undefined /*out*/;
             resourceInputs["pullzone"] = undefined /*out*/;
             resourceInputs["storageZone"] = undefined /*out*/;
             resourceInputs["streamLibraryId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["apiKey"] };
+        const secretOpts = { additionalSecretOutputs: ["apiKey", "apiKeyReadonly"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(StreamLibrary.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
     }
@@ -349,6 +355,10 @@ export interface StreamLibraryState {
      * The API key for accessing the stream library.
      */
     apiKey?: pulumi.Input<string | undefined>;
+    /**
+     * The read-only API key for accessing the stream library.
+     */
+    apiKeyReadonly?: pulumi.Input<string | undefined>;
     /**
      * The bitrate used for encoding 1080p videos, in kilobits per second.
      */

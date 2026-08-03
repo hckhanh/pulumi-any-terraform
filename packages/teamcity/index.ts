@@ -65,6 +65,11 @@ export type CleanupSettings = import("./cleanupSettings").CleanupSettings;
 export const CleanupSettings: typeof import("./cleanupSettings").CleanupSettings = null as any;
 utilities.lazyLoad(exports, ["CleanupSettings"], () => require("./cleanupSettings"));
 
+export { CloudProfileArgs, CloudProfileState } from "./cloudProfile";
+export type CloudProfile = import("./cloudProfile").CloudProfile;
+export const CloudProfile: typeof import("./cloudProfile").CloudProfile = null as any;
+utilities.lazyLoad(exports, ["CloudProfile"], () => require("./cloudProfile"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -226,6 +231,8 @@ const _module = {
                 return new BuildConfigurationVcsRoot(name, <any>undefined, { urn })
             case "teamcity:index/cleanupSettings:CleanupSettings":
                 return new CleanupSettings(name, <any>undefined, { urn })
+            case "teamcity:index/cloudProfile:CloudProfile":
+                return new CloudProfile(name, <any>undefined, { urn })
             case "teamcity:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "teamcity:index/contextParameters:ContextParameters":
@@ -279,6 +286,7 @@ pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationStep"
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationTrigger", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationVcsRoot", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/cleanupSettings", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/cloudProfile", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/connection", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/contextParameters", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/emailSettings", _module)

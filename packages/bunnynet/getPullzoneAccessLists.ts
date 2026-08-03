@@ -28,10 +28,6 @@ export interface GetPullzoneAccessListsArgs {
 export interface GetPullzoneAccessListsResult {
     readonly custom: boolean;
     readonly data: {[key: string]: outputs.GetPullzoneAccessListsData};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly pullzone: number;
 }
 export function getPullzoneAccessListsOutput(args: GetPullzoneAccessListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPullzoneAccessListsResult> {
