@@ -11,7 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@lucide/lab": "0.1.2",
+    "@lucide/lab": "0.2.0",
     "fumadocs-core": "16.14.0",
     "fumadocs-mdx": "14.3.2",
     "fumadocs-ui": "16.14.0",
