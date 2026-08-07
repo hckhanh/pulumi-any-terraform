@@ -1,5 +1,26 @@
 # pulumi-posthog
 
+## 1.0.8
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@a771afa: feat: add posthog_project_settings resource (PostHog/terraform-provider-posthog#94) (PostHog/terraform-provider-posthog#101) (@vdekrijger)
+- PostHog/terraform-provider-posthog@0ef1bb0: feat: resolve organization_id from slug or @current (PostHog/terraform-provider-posthog#99) (PostHog/terraform-provider-posthog#100) (@vdekrijger)
+
+#### Bug Fixes
+
+- PostHog/terraform-provider-posthog@7cf4be8: fix(hog_function): keep trailing whitespace in hog to avoid inconsistent-apply (PostHog/terraform-provider-posthog#91) (PostHog/terraform-provider-posthog#103) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@90d2d48: test(hog_function): add required series_index to alert webhook config (PostHog/terraform-provider-posthog#102) (@vdekrijger)
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@4ed8a53: feat(feature_flag): add ignore_filter_fields to control filter drift tracking (PostHog/terraform-provider-posthog#115) (@vdekrijger)
+
 ## 1.0.7
 
 ### Patch Changes
