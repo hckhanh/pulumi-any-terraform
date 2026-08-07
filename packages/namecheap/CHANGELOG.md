@@ -1,3 +1,37 @@
+## 2.4.0
+
+### Minor Changes
+
+#### [2.5.0](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.4.0...v2.5.0) (2026-07-10)
+
+#### Features
+
+- add namecheap_domain_contacts resource (WHOIS contact management) ([namecheap/terraform-provider-namecheap#285](https://github.com/namecheap/terraform-provider-namecheap/issues/285)) ([2006dc9](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@2006dc9))
+- add namecheap_domain, namecheap_domains, namecheap_domain_records data sources ([namecheap/terraform-provider-namecheap#286](https://github.com/namecheap/terraform-provider-namecheap/issues/286)) ([517b525](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@517b525))
+- add namecheap_nameserver resource (register personal nameservers) ([namecheap/terraform-provider-namecheap#284](https://github.com/namecheap/terraform-provider-namecheap/issues/284)) ([47a251f](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@47a251f))
+
+#### [2.6.0](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.5.0...v2.6.0) (2026-07-13)
+
+#### Features
+
+- add namecheap_email_forwarding resource ([namecheap/terraform-provider-namecheap#289](https://github.com/namecheap/terraform-provider-namecheap/issues/289)) ([66c8e65](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@66c8e65))
+- warn before OVERWRITE mode deletes unmanaged DNS records ([namecheap/terraform-provider-namecheap#288](https://github.com/namecheap/terraform-provider-namecheap/issues/288)) ([825256a](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@825256a))
+
+#### [2.7.0](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.6.2...v2.7.0) (2026-08-01)
+
+#### Features
+
+- add namecheap_account_balance and namecheap_tld_pricing data sources ([namecheap/terraform-provider-namecheap#305](https://github.com/namecheap/terraform-provider-namecheap/issues/305)) ([0a0328a](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@0a0328a))
+- expose retry_base_delay and retry_max_delay provider options ([namecheap/terraform-provider-namecheap#307](https://github.com/namecheap/terraform-provider-namecheap/issues/307)) ([6bee275](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@6bee275))
+
+### Patch Changes
+
+#### [2.6.1](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.6.0...v2.6.1) (2026-07-22)
+
+#### Bug Fixes
+
+- **deps:** bump golang.org/x/text to 0.39.0 and google.golang.org/grpc to 1.82.1 ([namecheap/terraform-provider-namecheap#296](https://github.com/namecheap/terraform-provider-namecheap/issues/296)) ([cffc8c5](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@cffc8c5))
+
 ## 2.3.3
 
 ### Patch Changes

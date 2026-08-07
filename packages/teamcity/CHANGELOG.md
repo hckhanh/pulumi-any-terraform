@@ -1,3 +1,15 @@
+## 0.2.1
+
+### Patch Changes
+
+Update pulumi-teamcity from 0.0.91 to 0.0.92
+
+**Full Changelog**: https://github.com/JetBrains/terraform-provider-teamcity/compare/v0.0.91...v0.0.92
+
+Update pulumi-teamcity from 0.0.92 to 0.0.93
+
+**Full Changelog**: https://github.com/JetBrains/terraform-provider-teamcity/compare/v0.0.92...v0.0.93
+
 ## 0.2.0
 
 ### Minor Changes
