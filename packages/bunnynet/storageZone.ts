@@ -41,9 +41,13 @@ export class StorageZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dateModified: pulumi.Output<string>;
     /**
-     * The hostname for accessing the storage zone.
+     * The hostname for accessing the storage zone over HTTP API.
      */
     declare public /*out*/ readonly hostname: pulumi.Output<string>;
+    /**
+     * The hostname for accessing the storage zone over S3.
+     */
+    declare public /*out*/ readonly hostnameS3: pulumi.Output<string>;
     /**
      * The name of the storage zone.
      */
@@ -97,6 +101,7 @@ export class StorageZone extends pulumi.CustomResource {
             resourceInputs["custom404FilePath"] = state?.custom404FilePath;
             resourceInputs["dateModified"] = state?.dateModified;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["hostnameS3"] = state?.hostnameS3;
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordReadonly"] = state?.passwordReadonly;
@@ -123,6 +128,7 @@ export class StorageZone extends pulumi.CustomResource {
             resourceInputs["zoneTier"] = args?.zoneTier;
             resourceInputs["dateModified"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["hostnameS3"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["passwordReadonly"] = undefined /*out*/;
             resourceInputs["storageZoneId"] = undefined /*out*/;
@@ -147,9 +153,13 @@ export interface StorageZoneState {
      */
     dateModified?: pulumi.Input<string | undefined>;
     /**
-     * The hostname for accessing the storage zone.
+     * The hostname for accessing the storage zone over HTTP API.
      */
     hostname?: pulumi.Input<string | undefined>;
+    /**
+     * The hostname for accessing the storage zone over S3.
+     */
+    hostnameS3?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage zone.
      */

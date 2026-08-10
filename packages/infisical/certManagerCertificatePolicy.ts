@@ -35,7 +35,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Algorithm constraints for the certificate policy. At least one signature algorithm and one key algorithm must be specified.
+     * Algorithm constraints for the certificate policy. Omit the block to accept any algorithm; each list restricts its own kind independently and needs at least one value when set.
      */
     declare public readonly algorithms: pulumi.Output<outputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
@@ -43,19 +43,19 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
      */
     declare public readonly basicConstraints: pulumi.Output<outputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
     /**
-     * The description of the certificate policy
+     * The description of the certificate policy (max 255 characters). Omit the attribute instead of passing an empty string.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Extended key usage policies for the certificate policy
+     * Extended key usage policies for the certificate policy. When this block is present, requested extended key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all extended key usages. Omit the block for no constraint.
      */
     declare public readonly extendedKeyUsages: pulumi.Output<outputs.CertManagerCertificatePolicyExtendedKeyUsages | undefined>;
     /**
-     * Key usage policies for the certificate policy
+     * Key usage policies for the certificate policy. When this block is present, requested key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all key usages. Omit the block for no constraint.
      */
     declare public readonly keyUsages: pulumi.Output<outputs.CertManagerCertificatePolicyKeyUsages | undefined>;
     /**
-     * The name of the certificate policy
+     * The name of the certificate policy. Must be in slug format: lowercase letters and numbers, separated by single hyphens (e.g. 'web-server-policy').
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export class CertManagerCertificatePolicy extends pulumi.CustomResource {
  */
 export interface CertManagerCertificatePolicyState {
     /**
-     * Algorithm constraints for the certificate policy. At least one signature algorithm and one key algorithm must be specified.
+     * Algorithm constraints for the certificate policy. Omit the block to accept any algorithm; each list restricts its own kind independently and needs at least one value when set.
      */
     algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
@@ -123,19 +123,19 @@ export interface CertManagerCertificatePolicyState {
      */
     basicConstraints?: pulumi.Input<inputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
     /**
-     * The description of the certificate policy
+     * The description of the certificate policy (max 255 characters). Omit the attribute instead of passing an empty string.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Extended key usage policies for the certificate policy
+     * Extended key usage policies for the certificate policy. When this block is present, requested extended key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all extended key usages. Omit the block for no constraint.
      */
     extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages | undefined>;
     /**
-     * Key usage policies for the certificate policy
+     * Key usage policies for the certificate policy. When this block is present, requested key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all key usages. Omit the block for no constraint.
      */
     keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages | undefined>;
     /**
-     * The name of the certificate policy
+     * The name of the certificate policy. Must be in slug format: lowercase letters and numbers, separated by single hyphens (e.g. 'web-server-policy').
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -157,7 +157,7 @@ export interface CertManagerCertificatePolicyState {
  */
 export interface CertManagerCertificatePolicyArgs {
     /**
-     * Algorithm constraints for the certificate policy. At least one signature algorithm and one key algorithm must be specified.
+     * Algorithm constraints for the certificate policy. Omit the block to accept any algorithm; each list restricts its own kind independently and needs at least one value when set.
      */
     algorithms?: pulumi.Input<inputs.CertManagerCertificatePolicyAlgorithms | undefined>;
     /**
@@ -165,19 +165,19 @@ export interface CertManagerCertificatePolicyArgs {
      */
     basicConstraints?: pulumi.Input<inputs.CertManagerCertificatePolicyBasicConstraints | undefined>;
     /**
-     * The description of the certificate policy
+     * The description of the certificate policy (max 255 characters). Omit the attribute instead of passing an empty string.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Extended key usage policies for the certificate policy
+     * Extended key usage policies for the certificate policy. When this block is present, requested extended key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all extended key usages. Omit the block for no constraint.
      */
     extendedKeyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyExtendedKeyUsages | undefined>;
     /**
-     * Key usage policies for the certificate policy
+     * Key usage policies for the certificate policy. When this block is present, requested key usages must be within the union of allowed and required; setting allowed and required to empty lists denies all key usages. Omit the block for no constraint.
      */
     keyUsages?: pulumi.Input<inputs.CertManagerCertificatePolicyKeyUsages | undefined>;
     /**
-     * The name of the certificate policy
+     * The name of the certificate policy. Must be in slug format: lowercase letters and numbers, separated by single hyphens (e.g. 'web-server-policy').
      */
     name?: pulumi.Input<string | undefined>;
     /**

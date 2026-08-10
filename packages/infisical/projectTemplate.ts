@@ -43,6 +43,14 @@ export class ProjectTemplate extends pulumi.CustomResource {
      */
     declare public readonly environments: pulumi.Output<outputs.ProjectTemplateEnvironment[]>;
     /**
+     * The groups assigned to projects created from this template
+     */
+    declare public readonly groups: pulumi.Output<outputs.ProjectTemplateGroup[] | undefined>;
+    /**
+     * The identities assigned to projects created from this template
+     */
+    declare public readonly identities: pulumi.Output<outputs.ProjectTemplateIdentity[] | undefined>;
+    /**
      * The name of the project template
      */
     declare public readonly name: pulumi.Output<string>;
@@ -54,6 +62,10 @@ export class ProjectTemplate extends pulumi.CustomResource {
      * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     declare public readonly type: pulumi.Output<string>;
+    /**
+     * The users assigned to projects created from this template
+     */
+    declare public readonly users: pulumi.Output<outputs.ProjectTemplateUser[] | undefined>;
 
     /**
      * Create a ProjectTemplate resource with the given unique name, arguments, and options.
@@ -70,9 +82,12 @@ export class ProjectTemplate extends pulumi.CustomResource {
             const state = argsOrState as ProjectTemplateState | undefined;
             resourceInputs["description"] = state?.description;
             resourceInputs["environments"] = state?.environments;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["identities"] = state?.identities;
             resourceInputs["name"] = state?.name;
             resourceInputs["roles"] = state?.roles;
             resourceInputs["type"] = state?.type;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as ProjectTemplateArgs | undefined;
             if (args?.type === undefined && !opts.urn) {
@@ -80,9 +95,12 @@ export class ProjectTemplate extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["environments"] = args?.environments;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["identities"] = args?.identities;
             resourceInputs["name"] = args?.name;
             resourceInputs["roles"] = args?.roles;
             resourceInputs["type"] = args?.type;
+            resourceInputs["users"] = args?.users;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectTemplate.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -102,6 +120,14 @@ export interface ProjectTemplateState {
      */
     environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[] | undefined>;
     /**
+     * The groups assigned to projects created from this template
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateGroup>[] | undefined>;
+    /**
+     * The identities assigned to projects created from this template
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateIdentity>[] | undefined>;
+    /**
      * The name of the project template
      */
     name?: pulumi.Input<string | undefined>;
@@ -113,6 +139,10 @@ export interface ProjectTemplateState {
      * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     type?: pulumi.Input<string | undefined>;
+    /**
+     * The users assigned to projects created from this template
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateUser>[] | undefined>;
 }
 
 /**
@@ -128,6 +158,14 @@ export interface ProjectTemplateArgs {
      */
     environments?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateEnvironment>[] | undefined>;
     /**
+     * The groups assigned to projects created from this template
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateGroup>[] | undefined>;
+    /**
+     * The identities assigned to projects created from this template
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateIdentity>[] | undefined>;
+    /**
      * The name of the project template
      */
     name?: pulumi.Input<string | undefined>;
@@ -139,4 +177,8 @@ export interface ProjectTemplateArgs {
      * The type of the project template. Refer to the documentation here https://infisical.com/docs/api-reference/endpoints/project-templates/create#body-type for the available options
      */
     type: pulumi.Input<string>;
+    /**
+     * The users assigned to projects created from this template
+     */
+    users?: pulumi.Input<pulumi.Input<inputs.ProjectTemplateUser>[] | undefined>;
 }

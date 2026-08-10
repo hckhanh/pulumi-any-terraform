@@ -35,6 +35,91 @@ export interface AccessApprovalPolicyBypasser {
     username?: string;
 }
 
+export interface AlertChannels {
+    /**
+     * Notifies principals of your organization or project by email.
+     */
+    email?: outputs.AlertChannelsEmail;
+    /**
+     * Whether the channel delivers notifications. Defaults to true.
+     */
+    enabled: boolean;
+    /**
+     * The ID of the channel in Infisical.
+     */
+    id: string;
+    /**
+     * The name the channel is shown under in Infisical.
+     */
+    name: string;
+    /**
+     * Creates PagerDuty incidents through the Events API v2.
+     */
+    pagerduty?: outputs.AlertChannelsPagerduty;
+    /**
+     * Posts notifications to a Slack channel through an incoming webhook.
+     */
+    slack?: outputs.AlertChannelsSlack;
+    /**
+     * Sends notifications to an HTTPS endpoint as a CloudEvents payload.
+     */
+    webhook?: outputs.AlertChannelsWebhook;
+}
+
+export interface AlertChannelsEmail {
+    /**
+     * The principals to notify. At least one and at most 20 are allowed.
+     */
+    recipients: outputs.AlertChannelsEmailRecipient[];
+}
+
+export interface AlertChannelsEmailRecipient {
+    /**
+     * The ID of the recipient user or group. The principal must belong to the scope the alert is created in.
+     */
+    id: string;
+    /**
+     * The type of the recipient. Options: user, group.
+     */
+    type: string;
+}
+
+export interface AlertChannelsPagerduty {
+    /**
+     * The PagerDuty Events API v2 integration key incidents are created with, a 32 character hex string. Write-only: it is never returned by the API, so it cannot be imported.
+     */
+    integrationKey: string;
+}
+
+export interface AlertChannelsSlack {
+    /**
+     * The Slack incoming webhook URL notifications are posted to. Must be a https://hooks.slack.com URL. Write-only: it is never returned by the API, so it cannot be imported.
+     */
+    webhookUrl: string;
+}
+
+export interface AlertChannelsWebhook {
+    /**
+     * The secret used to sign the payload so the receiver can verify it. Write-only: it is never returned by the API, so an imported channel keeps the secret it was created with until one is set here.
+     */
+    signingSecret?: string;
+    /**
+     * The HTTPS URL the CloudEvents payload is sent to.
+     */
+    url: string;
+}
+
+export interface AlertExpiry {
+    /**
+     * How many days before the watched resource expires the alert fires. Must be between 1 and 90.
+     */
+    alertBeforeDays: number;
+    /**
+     * Whether to keep notifying once a day until the watched resource expires, instead of notifying once. Defaults to false.
+     */
+    dailyReminder: boolean;
+}
+
 export interface AppConnection1passwordCredentials {
     /**
      * The API token to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/1password
@@ -535,13 +620,13 @@ export interface CertManagerApplicationProfileScepConfig {
 
 export interface CertManagerCertificatePolicyAlgorithms {
     /**
-     * List of allowed key algorithms (at least one required). Supported values: RSA-2048, RSA-3072, RSA-4096, ECDSA-P256, ECDSA-P521, ECDSA-P384
+     * List of allowed key algorithms (at least one value when set). Supported values: RSA-2048, RSA-3072, RSA-4096, ECDSA-P256, ECDSA-P521, ECDSA-P384
      */
-    keyAlgorithms: string[];
+    keyAlgorithms?: string[];
     /**
-     * List of allowed signature algorithms (at least one required). Supported values: SHA256-RSA, SHA512-RSA, SHA384-ECDSA, SHA384-RSA, SHA256-ECDSA, SHA512-ECDSA
+     * List of allowed signature algorithms (at least one value when set). Supported values: SHA256-RSA, SHA512-RSA, SHA384-ECDSA, SHA384-RSA, SHA256-ECDSA, SHA512-ECDSA
      */
-    signatures: string[];
+    signatures?: string[];
 }
 
 export interface CertManagerCertificatePolicyBasicConstraints {
@@ -679,6 +764,32 @@ export interface CertManagerCertificateProfileDefaults {
      * Default certificate validity in days
      */
     ttlDays?: number;
+}
+
+export interface CertificateSyncAwsCertificateManagerDestinationConfig {
+    /**
+     * The AWS region to sync certificates to (e.g. us-east-1).
+     */
+    awsRegion: string;
+}
+
+export interface CertificateSyncAwsCertificateManagerSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from AWS Certificate Manager when they are no longer managed in Infisical.
+     */
+    canRemoveCertificates: boolean;
+    /**
+     * The naming scheme for synced certificates. Must include the {{certificateId}} or {{shortCertificateId}} placeholder. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: string;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain.
+     */
+    includeRootCa: boolean;
+    /**
+     * Whether to preserve the AWS Certificate Manager ARN when a certificate is renewed, reimporting into the existing certificate instead of creating a new one.
+     */
+    preserveArn: boolean;
 }
 
 export interface DynamicSecretAwsIamConfiguration {
@@ -1355,6 +1466,10 @@ export interface IdentityOidcAuthAccessTokenTrustedIp {
     ipAddress: string;
 }
 
+export interface IdentityTlsCertAuthAccessTokenTrustedIp {
+    ipAddress: string;
+}
+
 export interface IdentityTokenAuthAccessTokenTrustedIp {
     ipAddress: string;
 }
@@ -1665,6 +1780,28 @@ export interface ProjectTemplateEnvironment {
     slug: string;
 }
 
+export interface ProjectTemplateGroup {
+    /**
+     * The slug of the group
+     */
+    groupSlug: string;
+    /**
+     * The role slugs to assign to the group. Must reference roles defined in this template or predefined role slugs (admin, member, viewer, no-access).
+     */
+    roles: string[];
+}
+
+export interface ProjectTemplateIdentity {
+    /**
+     * The ID of the identity
+     */
+    identityId: string;
+    /**
+     * The role slugs to assign to the identity. Must reference roles defined in this template or predefined role slugs (admin, member, viewer, no-access).
+     */
+    roles: string[];
+}
+
 export interface ProjectTemplateRole {
     /**
      * The name of the role
@@ -1697,6 +1834,17 @@ export interface ProjectTemplateRolePermission {
      * Describe the entity the permission pertains to.
      */
     subject: string;
+}
+
+export interface ProjectTemplateUser {
+    /**
+     * The role slugs to assign to the user. Must reference roles defined in this template or predefined role slugs (admin, member, viewer, no-access).
+     */
+    roles: string[];
+    /**
+     * The username of the user.
+     */
+    username: string;
 }
 
 export interface ProjectUserRole {

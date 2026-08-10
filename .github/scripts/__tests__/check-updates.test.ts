@@ -20,7 +20,7 @@ import {
 // ---------------------------------------------------------------------------
 
 interface MockedFetch {
-  mock: MockFunctionContext<typeof fetch>;
+  mock: MockFunctionContext<typeof fetch>
 
   (...args: Parameters<typeof fetch>): ReturnType<typeof fetch>
 }

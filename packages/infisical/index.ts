@@ -10,6 +10,11 @@ export type AccessApprovalPolicy = import("./accessApprovalPolicy").AccessApprov
 export const AccessApprovalPolicy: typeof import("./accessApprovalPolicy").AccessApprovalPolicy = null as any;
 utilities.lazyLoad(exports, ["AccessApprovalPolicy"], () => require("./accessApprovalPolicy"));
 
+export { AlertArgs, AlertState } from "./alert";
+export type Alert = import("./alert").Alert;
+export const Alert: typeof import("./alert").Alert = null as any;
+utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
+
 export { AppConnection1passwordArgs, AppConnection1passwordState } from "./appConnection1password";
 export type AppConnection1password = import("./appConnection1password").AppConnection1password;
 export const AppConnection1password: typeof import("./appConnection1password").AppConnection1password = null as any;
@@ -195,6 +200,16 @@ export type CertManagerUser = import("./certManagerUser").CertManagerUser;
 export const CertManagerUser: typeof import("./certManagerUser").CertManagerUser = null as any;
 utilities.lazyLoad(exports, ["CertManagerUser"], () => require("./certManagerUser"));
 
+export { CertificateSyncAwsCertificateManagerArgs, CertificateSyncAwsCertificateManagerState } from "./certificateSyncAwsCertificateManager";
+export type CertificateSyncAwsCertificateManager = import("./certificateSyncAwsCertificateManager").CertificateSyncAwsCertificateManager;
+export const CertificateSyncAwsCertificateManager: typeof import("./certificateSyncAwsCertificateManager").CertificateSyncAwsCertificateManager = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncAwsCertificateManager"], () => require("./certificateSyncAwsCertificateManager"));
+
+export { CertificateSyncCertificateArgs, CertificateSyncCertificateState } from "./certificateSyncCertificate";
+export type CertificateSyncCertificate = import("./certificateSyncCertificate").CertificateSyncCertificate;
+export const CertificateSyncCertificate: typeof import("./certificateSyncCertificate").CertificateSyncCertificate = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncCertificate"], () => require("./certificateSyncCertificate"));
+
 export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
 export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
 export const DynamicSecretAwsIam: typeof import("./dynamicSecretAwsIam").DynamicSecretAwsIam = null as any;
@@ -244,6 +259,11 @@ export { GetKmsKeyPublicKeyArgs, GetKmsKeyPublicKeyResult, GetKmsKeyPublicKeyOut
 export const getKmsKeyPublicKey: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKey = null as any;
 export const getKmsKeyPublicKeyOutput: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getKmsKeyPublicKey","getKmsKeyPublicKeyOutput"], () => require("./getKmsKeyPublicKey"));
+
+export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
+export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
+export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
 
 export { GetProjectEnvironmentArgs, GetProjectEnvironmentResult, GetProjectEnvironmentOutputArgs } from "./getProjectEnvironment";
 export const getProjectEnvironment: typeof import("./getProjectEnvironment").getProjectEnvironment = null as any;
@@ -339,6 +359,11 @@ export { IdentityOidcAuthArgs, IdentityOidcAuthState } from "./identityOidcAuth"
 export type IdentityOidcAuth = import("./identityOidcAuth").IdentityOidcAuth;
 export const IdentityOidcAuth: typeof import("./identityOidcAuth").IdentityOidcAuth = null as any;
 utilities.lazyLoad(exports, ["IdentityOidcAuth"], () => require("./identityOidcAuth"));
+
+export { IdentityTlsCertAuthArgs, IdentityTlsCertAuthState } from "./identityTlsCertAuth";
+export type IdentityTlsCertAuth = import("./identityTlsCertAuth").IdentityTlsCertAuth;
+export const IdentityTlsCertAuth: typeof import("./identityTlsCertAuth").IdentityTlsCertAuth = null as any;
+utilities.lazyLoad(exports, ["IdentityTlsCertAuth"], () => require("./identityTlsCertAuth"));
 
 export { IdentityTokenAuthArgs, IdentityTokenAuthState } from "./identityTokenAuth";
 export type IdentityTokenAuth = import("./identityTokenAuth").IdentityTokenAuth;
@@ -609,6 +634,8 @@ const _module = {
         switch (type) {
             case "infisical:index/accessApprovalPolicy:AccessApprovalPolicy":
                 return new AccessApprovalPolicy(name, <any>undefined, { urn })
+            case "infisical:index/alert:Alert":
+                return new Alert(name, <any>undefined, { urn })
             case "infisical:index/appConnection1password:AppConnection1password":
                 return new AppConnection1password(name, <any>undefined, { urn })
             case "infisical:index/appConnectionAws:AppConnectionAws":
@@ -683,6 +710,10 @@ const _module = {
                 return new CertManagerInternalCa(name, <any>undefined, { urn })
             case "infisical:index/certManagerUser:CertManagerUser":
                 return new CertManagerUser(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncAwsCertificateManager:CertificateSyncAwsCertificateManager":
+                return new CertificateSyncAwsCertificateManager(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncCertificate:CertificateSyncCertificate":
+                return new CertificateSyncCertificate(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
@@ -713,6 +744,8 @@ const _module = {
                 return new IdentityKubernetesAuth(name, <any>undefined, { urn })
             case "infisical:index/identityOidcAuth:IdentityOidcAuth":
                 return new IdentityOidcAuth(name, <any>undefined, { urn })
+            case "infisical:index/identityTlsCertAuth:IdentityTlsCertAuth":
+                return new IdentityTlsCertAuth(name, <any>undefined, { urn })
             case "infisical:index/identityTokenAuth:IdentityTokenAuth":
                 return new IdentityTokenAuth(name, <any>undefined, { urn })
             case "infisical:index/identityTokenAuthToken:IdentityTokenAuthToken":
@@ -819,6 +852,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("infisical", "index/accessApprovalPolicy", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/alert", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnection1password", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAws", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureAppConfiguration", _module)
@@ -856,6 +890,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/certManagerGroup", _mo
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerInternalCa", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerUser", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncAwsCertificateManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncCertificate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)
@@ -871,6 +907,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/identityGcpAuth", _mod
 pulumi.runtime.registerResourceModule("infisical", "index/identityJwtAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityKubernetesAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityOidcAuth", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/identityTlsCertAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuthToken", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityUniversalAuth", _module)
