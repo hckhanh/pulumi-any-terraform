@@ -20,20 +20,26 @@
       "{workspaceRoot}/.syncpackrc.json",
       { "externalDependencies": ["syncpack"] }
     ],
-    "prettier": [
+    "oxfmt": [
       "sources:all",
-      "{workspaceRoot}/.prettierrc",
-      "{workspaceRoot}/.prettierignore",
-      "{workspaceRoot}/root.prettierignore",
+      "{workspaceRoot}/.oxfmtrc.json",
       "{projectRoot}/**/*.{yml,yaml,json,md,html,css}",
       "!{projectRoot}/package.json",
-      { "externalDependencies": ["prettier"] }
+      { "externalDependencies": ["oxfmt"] }
     ],
-    "prettier:root": ["prettier", "!{workspaceRoot}/packages/**"],
+    "oxfmt:root": ["oxfmt", "!{workspaceRoot}/packages/**"],
     "biome": [
       "sources:all",
       "{projectRoot}/biome.json",
       { "externalDependencies": ["@biomejs/biome"] }
+    ],
+    "gha": [
+      "{workspaceRoot}/.github/workflows/**/*.{yml,yaml}",
+      "{workspaceRoot}/.github/actions/**/*.{yml,yaml}",
+      "{workspaceRoot}/.github/actionlint.{yml,yaml}",
+      "{workspaceRoot}/zizmor.yml",
+      "{workspaceRoot}/.github/zizmor.yml",
+      "{workspaceRoot}/mise.toml"
     ]
   },
   "plugins": [
@@ -52,7 +58,7 @@
     "./tools/biome.ts",
     "./tools/build.ts",
     "./tools/linter.ts",
-    "./tools/prettier.ts"
+    "./tools/oxfmt.ts"
   ],
   "sync": {
     "disabledTaskSyncGenerators": ["@nx/js:typescript-sync"]

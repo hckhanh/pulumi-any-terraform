@@ -40,11 +40,13 @@
         "typecheck",
         "syncpack:format:check",
         "syncpack:lint",
-        "prettier:check"
+        "oxfmt:check",
+        "actionlint",
+        "zizmor"
       ]
     },
     "fix": {
-      "dependsOn": ["syncpack:format", "prettier:write"]
+      "dependsOn": ["syncpack:format", "oxfmt:write"]
     },
     "syncpack:fix": {
       "command": "syncpack fix",
@@ -86,16 +88,34 @@
         "technologies": ["node"]
       }
     },
-    "prettier:check": {
-      "inputs": ["prettier:root"],
-      "options": {
-        "ignore-path": "root.prettierignore"
+    "actionlint": {
+      "command": "actionlint",
+      "inputs": ["gha"],
+      "cache": true,
+      "metadata": {
+        "description": "Lint GitHub Actions workflow files for syntax and type errors.",
+        "technologies": ["github-actions"]
       }
     },
-    "prettier:write": {
-      "inputs": ["prettier:root"],
+    "zizmor": {
+      "command": "zizmor .",
+      "inputs": ["gha"],
+      "cache": true,
+      "metadata": {
+        "description": "Audit GitHub Actions workflows and composite actions for security issues.",
+        "technologies": ["github-actions"]
+      }
+    },
+    "oxfmt:check": {
+      "inputs": ["oxfmt:root"],
       "options": {
-        "ignore-path": "root.prettierignore"
+        "command": "pnpm oxfmt --check --no-error-on-unmatched-pattern . '!packages/**' '!docs/**'"
+      }
+    },
+    "oxfmt:write": {
+      "inputs": ["oxfmt:root"],
+      "options": {
+        "command": "pnpm oxfmt --no-error-on-unmatched-pattern . '!packages/**' '!docs/**'"
       }
     }
   }

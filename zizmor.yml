@@ -1,0 +1,20 @@
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        '*': hash-pin
+  # These jobs push with the checkout credential (`git push`, autofix.ci,
+  # and `changeset publish` git tags via changesets/action).
+  artipacked:
+    ignore:
+      - autofix.yml
+      - publish.yml
+      - update.yml
+  # Publish is intentionally chained off the weekly Update workflow.
+  dangerous-triggers:
+    ignore:
+      - publish.yml
+  # npm is bumped only for the Changesets publish job, not the repo lockfile.
+  adhoc-packages:
+    ignore:
+      - publish.yml

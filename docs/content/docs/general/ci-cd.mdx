@@ -57,7 +57,7 @@ jobs:
 
 **What it does**:
 - Installs dependencies with pnpm
-- Runs formatters (Prettier) on affected packages
+- Runs formatters (Oxfmt) on affected packages
 - Runs linters (Biome) on affected packages
 - Auto-commits fixes via Autofix.ci
 
@@ -80,6 +80,7 @@ jobs:
 **What it does**:
 - Type checks TypeScript code
 - Lints with Biome
+- Lints GitHub Actions workflows with actionlint and zizmor
 - Builds all affected packages
 - Validates package.json files
 - Checks dependency versions with Syncpack
@@ -244,7 +245,7 @@ Automatically fixes and commits:
 ```
 
 **Fixes**:
-- Code formatting (Prettier)
+- Code formatting (Oxfmt)
 - Linting issues (Biome)
 - Package.json formatting
 - Import sorting

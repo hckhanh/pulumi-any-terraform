@@ -2,7 +2,7 @@ import type { CreateNodesResult } from '@nx/devkit'
 import { Plugin } from './utils/plugin.ts'
 import { dirname } from 'node:path'
 
-class PrettierPlugin extends Plugin {
+class OxfmtPlugin extends Plugin {
   constructor() {
     super('**/project.json')
   }
@@ -15,23 +15,24 @@ class PrettierPlugin extends Plugin {
         [projectRoot]: {
           root: projectRoot,
           targets: {
-            'prettier:check': {
-              command: 'pnpm prettier --check {projectRoot}',
-              inputs: ['prettier'],
+            'oxfmt:check': {
+              command:
+                'pnpm oxfmt --check --no-error-on-unmatched-pattern {projectRoot}',
+              inputs: ['oxfmt'],
               cache: true,
               metadata: {
                 description: 'Check source files for formatting issues.',
-                technologies: ['prettier'],
+                technologies: ['oxfmt'],
               },
             },
-            'prettier:write': {
-              command: 'pnpm prettier --write {projectRoot}',
-              inputs: ['prettier'],
-              dependsOn: ['oxlint:fix'],
+            'oxfmt:write': {
+              command:
+                'pnpm oxfmt --no-error-on-unmatched-pattern {projectRoot}',
+              inputs: ['oxfmt'],
               cache: true,
               metadata: {
                 description: 'Fix formatting issues in source files.',
-                technologies: ['prettier'],
+                technologies: ['oxfmt'],
               },
             },
           },
@@ -41,5 +42,5 @@ class PrettierPlugin extends Plugin {
   }
 }
 
-const plugin = new PrettierPlugin()
+const plugin = new OxfmtPlugin()
 export const { createNodes } = plugin

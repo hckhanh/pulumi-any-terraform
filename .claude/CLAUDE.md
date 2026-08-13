@@ -33,7 +33,7 @@ Hand-written code lives only in:
 │   ├── build.ts               # Matches **/*/tsconfig.json -- adds `build` target
 │   ├── biome.ts               # Matches **/biome.json -- adds `biome:check` / `biome:check:fix`
 │   ├── linter.ts              # Matches **/project.json -- adds aggregate `check`/`fix`
-│   ├── prettier.ts            # Matches **/project.json -- adds `prettier:check`/`prettier:write`
+│   ├── oxfmt.ts               # Matches **/project.json -- adds `oxfmt:check`/`oxfmt:write`
 │   └── utils/plugin.ts        # Abstract Plugin base class for all of the above
 ├── docs/                      # Fumadocs documentation site (Next.js, has its own biome.json)
 ├── .github/
@@ -54,7 +54,7 @@ Hand-written code lives only in:
 ├── mise.toml                  # Toolchain pin (Node 24.15.0, pnpm 10.33.2)
 ├── .prototools                # mise settings (auto-install, auto-clean, telemetry off)
 ├── tsconfig.json              # Hand-written TS config (covers tools/ + .github/scripts)
-└── project.json               # Root Nx project (root-level targets like syncpack, prettier:root)
+└── project.json               # Root Nx project (root-level targets like syncpack, oxfmt:root)
 ```
 
 ## Common Commands
@@ -66,7 +66,7 @@ pnpm install
 # Build everything
 pnpm nx run-many -t build
 
-# Run all checks (build + typecheck + test:scripts + syncpack + prettier)
+# Run all checks (build + typecheck + test:scripts + syncpack + oxfmt + actionlint + zizmor)
 pnpm nx run-many -t check
 
 # Faster: only affected projects (used in CI)
@@ -76,7 +76,7 @@ pnpm nx affected -t check
 pnpm nx run-many -t fix
 
 # Root-only formatters / sync
-pnpm nx run root:prettier:write
+pnpm nx run root:oxfmt:write
 pnpm nx run root:syncpack:format
 pnpm nx run root:syncpack:fix
 
@@ -85,6 +85,10 @@ pnpm nx run root:typecheck
 
 # Run check-updates.ts unit tests
 pnpm nx run root:test:scripts
+
+# GitHub Actions lint / security audit
+pnpm nx run root:actionlint
+pnpm nx run root:zizmor
 
 # Audit
 pnpm nx run root:audit
@@ -110,12 +114,12 @@ pnpm release
 
 All build orchestration runs through custom Nx plugins in `tools/` that extend the abstract `Plugin` base class (`tools/utils/plugin.ts`). Each plugin matches a file glob and contributes targets:
 
-| Plugin              | Glob                 | Targets contributed                            |
-| ------------------- | -------------------- | ---------------------------------------------- |
-| `tools/build.ts`    | `**/*/tsconfig.json` | `build` (runs `node ./scripts/postinstall.js`) |
-| `tools/biome.ts`    | `**/biome.json`      | `biome:check`, `biome:check:fix`               |
-| `tools/linter.ts`   | `**/project.json`    | aggregate `check`, `fix`                       |
-| `tools/prettier.ts` | `**/project.json`    | `prettier:check`, `prettier:write`             |
+| Plugin            | Glob                 | Targets contributed                            |
+| ----------------- | -------------------- | ---------------------------------------------- |
+| `tools/build.ts`  | `**/*/tsconfig.json` | `build` (runs `node ./scripts/postinstall.js`) |
+| `tools/biome.ts`  | `**/biome.json`      | `biome:check`, `biome:check:fix`               |
+| `tools/linter.ts` | `**/project.json`    | aggregate `check`, `fix`                       |
+| `tools/oxfmt.ts`  | `**/project.json`    | `oxfmt:check`, `oxfmt:write`                   |
 
 `@nx/js/typescript` is also registered in `nx.json` for typed project graph awareness, with `typecheck` disabled (we run a single workspace-level `typecheck` instead). Nx caching is local-only; CI relies on Nx input-hashing for correctness -- there is no remote/shared cache.
 
@@ -136,7 +140,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 2. Fetches latest versions from the Terraform / OpenTofu registry and GitHub releases for each provider in `packages/`.
 3. For any package that's outdated, runs `pulumi package add terraform-provider <registry-url> <version>` in a temp dir to regenerate the SDK.
 4. Copies regenerated files back over `packages/<name>/`.
-5. Normalizes the upstream changelog (demotes headings, shortens SHAs, prettier-formats markdown) and writes a Changesets entry.
+5. Normalizes the upstream changelog (demotes headings, shortens SHAs, oxfmt-formats markdown) and writes a Changesets entry.
 6. Runs `pnpm nx run-many -t fix` and refreshes `pnpm-lock.yaml` before commit.
 7. Commits **directly to `main`** as `chore(release): update packages to match upstream terraform providers`.
 8. The `publish.yml` workflow then triggers off the `Update` `workflow_run` and runs `changesets/action` to release the new package versions to npm.
@@ -147,20 +151,20 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 ## Code Conventions
 
-### Formatting (Biome + Prettier, enforced in CI)
+### Formatting (Biome + Oxfmt, enforced in CI)
 
-| Rule         | Value                                           |
-| ------------ | ----------------------------------------------- |
-| Indentation  | 2 spaces                                        |
-| Semicolons   | `asNeeded` (Biome) / `false` (Prettier) -- omit |
-| Quotes       | Single (`'`)                                    |
-| JSX quotes   | Single                                          |
-| Line endings | LF                                              |
-| Encoding     | UTF-8, trailing newline                         |
+| Rule         | Value                                        |
+| ------------ | -------------------------------------------- |
+| Indentation  | 2 spaces                                     |
+| Semicolons   | `asNeeded` (Biome) / `false` (Oxfmt) -- omit |
+| Quotes       | Single (`'`)                                 |
+| JSX quotes   | Single                                       |
+| Line endings | LF                                           |
+| Encoding     | UTF-8, trailing newline                      |
 
 - **Biome** formats and lints JS/TS/JSON/CSS (only where a `biome.json` exists -- currently `docs/`).
-- **Prettier** formats YAML/Markdown/HTML/CSS/JSON workspace-wide.
-- `.prettierignore` (full) and `root.prettierignore` (root scope) exclude generated `packages/`, `pnpm-lock.yaml`, all `package.json`, `CHANGELOG.md`, `docs/`, and skills.
+- **Oxfmt** formats YAML/Markdown/HTML/CSS and hand-written JS/TS workspace-wide.
+- `.oxfmtrc.json` `ignorePatterns` exclude generated `packages/` sources, `pnpm-lock.yaml`, all `package.json`, `CHANGELOG.md`, `docs/`, and skills. Root `oxfmt:*` targets also skip `packages/` and `docs/`.
 
 ### TypeScript (hand-written `tools/` + `.github/scripts/`)
 
@@ -210,7 +214,7 @@ Workflow conventions:
 ## When working in this repo
 
 - **Never** edit a file that contains the `*** WARNING: this file was generated ***` header. Update the upstream Terraform provider or the generation tooling instead.
-- Before claiming a build works, run `pnpm nx affected -t check` -- it covers typecheck, build, prettier, and syncpack.
+- Before claiming a build works, run `pnpm nx affected -t check` -- it covers typecheck, build, oxfmt, syncpack, actionlint, and zizmor.
 - New user-facing changes need a changeset (`pnpm changeset`) staged in `.changeset/`. **Never edit `version` in a package's `package.json` manually** -- changesets manages versions. The only exception is the very first add of a brand-new package (see "Adding a new provider package" below).
 - When adding root-level Nx targets, edit `project.json` (root). When adding per-project targets, prefer adding them through a `tools/*.ts` plugin so they apply uniformly.
 - If you change `pnpm-workspace.yaml`, `.syncpackrc.json`, or any `package.json`, re-run `pnpm install` and `pnpm nx run root:syncpack:format` before committing.
@@ -247,7 +251,7 @@ Use this checklist when bridging a new Terraform provider into a new `packages/<
 
 12. `pnpm install` (links the new package into the workspace).
 13. `pnpm nx run <name>:build` (runs `postinstall.js` -> tsc + copies `package.json` to `bin/`).
-14. `pnpm nx affected -t check` (typecheck, syncpack format/lint, prettier, build, test:scripts, docs build). The docs build should pre-render `/docs/providers/<name>.html`.
+14. `pnpm nx affected -t check` (typecheck, syncpack format/lint, oxfmt, build, test:scripts, docs build). The docs build should pre-render `/docs/providers/<name>.html`.
 15. `node -e "console.log(Buffer.from(require('./packages/<name>/package.json').pulumi.parameterization.value,'base64').toString())"` should round-trip to the expected `{"remote":{"url":"...","version":"..."}}` JSON.
 
 **No top-level files need editing** -- `pnpm-workspace.yaml`'s `packages/*` glob, the Nx plugin globs in `nx.json`, syncpack, and `.github/scripts/check-updates.ts`'s `fs.readdirSync(packagesDir)` all auto-discover the new package.

@@ -55,7 +55,7 @@ pulumi-any-terraform/
 ├── tools/                       # Build system plugins
 │   ├── build.ts                # Build orchestration
 │   ├── linter.ts               # Linting plugin
-│   ├── prettier.ts             # Code formatting
+│   ├── oxfmt.ts                # Code formatting
 │   └── syncpack.ts             # Dependency sync
 ├── docs/                        # Documentation site (Next.js)
 ├── .github/                     # CI/CD workflows
@@ -190,7 +190,7 @@ The project uses **Nx** for monorepo management and build orchestration:
     "./tools/audit.ts",
     "./tools/build.ts",
     "./tools/linter.ts",
-    "./tools/prettier.ts",
+    "./tools/oxfmt.ts",
     "./tools/syncpack.ts"
   ]
 }
@@ -202,7 +202,7 @@ Custom Nx plugins in `/tools/` provide:
 
 1. **Build Plugin** (`build.ts`): TypeScript compilation orchestration
 2. **Linter Plugin** (`linter.ts`): Code quality checks
-3. **Prettier Plugin** (`prettier.ts`): Code formatting
+3. **Oxfmt Plugin** (`oxfmt.ts`): Code formatting
 4. **Syncpack Plugin** (`syncpack.ts`): Dependency synchronization
 5. **Audit Plugin** (`audit.ts`): Security vulnerability scanning
 
