@@ -28,6 +28,7 @@ This document defines the coding standards, style conventions, and contribution 
 │   └── utils/plugin.ts
 ├── docs/             # Fumadocs documentation site
 └── .github/
+    ├── actions/      # Reusable composite actions
     ├── scripts/      # CI automation scripts (JavaScript)
     └── workflows/    # GitHub Actions workflows
 ```
@@ -120,7 +121,7 @@ Scripts in `.github/scripts/` and `packages/*/scripts/`:
 
 ### Supply chain security
 
-- **Aikido Safe Chain** is installed in all CI workflows
+- **Aikido Safe Chain** is installed in all CI workflows via `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified before run)
 - **pnpm `minimumReleaseAge`** is set to 2880 minutes (48 hours), matching the Aikido Safe Chain default
 - **Renovate** is configured with `security:minimumReleaseAgeNpm` preset
 - `pnpm-workspace.yaml` `allowBuilds` explicitly lists packages permitted to run install scripts

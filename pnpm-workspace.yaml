@@ -13,18 +13,15 @@ minimumReleaseAgeExclude:
   - next@16.2.6 || 16.2.11
   - tmp@0.2.7
   - form-data@4.0.6
+  # Changesets v3 published 2026-08-11; under the 48h window until 2026-08-13 12:09 UTC
+  - '@changesets/*'
 overrides:
   # next (via docs) still resolves postcss@8.4.x without this; GHSA-qx2v-qp2m-jg93
   postcss@<8.5.10: '8.5.26'
 auditConfig:
-  # These two moderate advisories are intentionally ignored: their `pnpm audit --fix`
-  # overrides break consumers, and neither code path is reachable in this repo.
+  # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
+  # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled
+  # (analytics: false), so this path is never exercised.
   ignoreGhsas:
-    # js-yaml: quadratic-complexity DoS via YAML merge keys. Only reached by
-    # read-yaml-file@1.1.0 (transitive of @manypkg/get-packages) reading our own trusted
-    # pnpm-workspace.yaml. read-yaml-file@1.1.0 uses js-yaml.safeLoad() (removed in js-yaml 4),
-    # so the audit fix (force >=4.1.2) crashes `changeset publish`.
-    - GHSA-h67p-54hq-rp68
-    # @opentelemetry/core: W3C trace-context DoS. nx telemetry is disabled (analytics: false),
-    # so this path is never exercised; the audit fix forces core 2.x into a 1.30.x OTel stack.
+    # @opentelemetry/core: W3C trace-context DoS.
     - GHSA-8988-4f7v-96qf

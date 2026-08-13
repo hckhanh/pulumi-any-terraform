@@ -13,6 +13,7 @@
     "syncpack": [
       "{workspaceRoot}/**/package.json",
       "{workspaceRoot}/.syncpackrc.json",
+      "{workspaceRoot}/pnpm-workspace.yaml",
       { "externalDependencies": ["syncpack"] }
     ],
     "syncpack:format": [

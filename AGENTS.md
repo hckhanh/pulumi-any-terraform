@@ -37,6 +37,8 @@ Hand-written code lives only in:
 │   └── utils/plugin.ts        # Abstract Plugin base class for all of the above
 ├── docs/                      # Fumadocs documentation site (Next.js, has its own biome.json)
 ├── .github/
+│   ├── actions/
+│   │   └── setup-safe-chain/       # Shared Aikido Safe Chain installer (checksummed)
 │   ├── scripts/
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
 │   │   └── __tests__/              # node:test suite for check-updates.ts
@@ -162,7 +164,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 ### Dependencies
 
-- All dependency versions are **pinned exactly** (no ranges), enforced by Syncpack via the `semverGroups` rule in `.syncpackrc.json`. Peer deps are exempt.
+- All dependency versions are **pinned exactly** (no ranges), enforced by Syncpack via the `semverGroups` rule in `.syncpackrc.json`. Peer deps are exempt. `pnpmOverrides` is read from `pnpm-workspace.yaml` (Syncpack 15) and is also exempt so security-patch ranges stay valid.
 - `package.json` field order is also enforced by Syncpack (`sortFirst`, `sortAz`).
 - pnpm `overrides` in `pnpm-workspace.yaml` apply security patches to transitive deps.
 - `allowBuilds` whitelists which packages may run install scripts: `@swc/core`, `esbuild`, `nx`, `protobufjs`, `sharp`.
@@ -192,7 +194,7 @@ Workflow conventions:
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
 - `pnpm` store and `.nx/cache` are cached on `pnpm-lock.yaml` hash.
-- **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection.
+- **Aikido Safe Chain** is installed before `pnpm install` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`). Renovate updates `SAFE_CHAIN_VERSION` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource.
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops.
 

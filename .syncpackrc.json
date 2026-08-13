@@ -40,11 +40,17 @@
       "dependencyTypes": ["peer"],
       "packages": ["**"],
       "isIgnored": true
+    },
+    {
+      "label": "Root workspace package is private and unversioned",
+      "dependencyTypes": ["local"],
+      "packages": ["pulumi-any-terraform"],
+      "isIgnored": true
     }
   ],
   "semverGroups": [
     {
-      "label": "All dependencies must be pinned, except non-peer and pnpmOverrides dependencies",
+      "label": "All dependencies must be pinned, except resolutions and pnpm-workspace.yaml overrides",
       "dependencyTypes": ["!resolutions", "!pnpmOverrides"],
       "dependencies": ["**"],
       "packages": ["**"],

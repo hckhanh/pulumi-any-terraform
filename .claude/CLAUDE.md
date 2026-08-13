@@ -40,8 +40,10 @@ Hand-written code lives only in:
 │   ├── scripts/
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
 │   │   └── __tests__/              # node:test suite for check-updates.ts
+│   ├── actions/
+│   │   └── setup-safe-chain/       # Shared Aikido Safe Chain installer (checksummed)
 │   └── workflows/             # test.yml, autofix.yml, publish.yml, update.yml
-├── .changeset/                # Changesets state, config.json, and custom changelog.cjs
+├── .changeset/                # Changesets state, config.json, and custom changelog.js
 ├── .claude/                   # CLAUDE.md (this file) + bundled skills
 ├── .agents/                   # Skills shared with non-Claude AI agents
 ├── .junie/                    # JetBrains Junie guidelines
@@ -143,7 +145,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 `pulumi.parameterization` in each package's `package.json` is what tells the dynamic provider which Terraform provider/version to bridge -- it must stay in sync with the generated TypeScript.
 
-`.changeset/config.json` sets `access: restricted` and uses `./changelog.cjs`, a custom renderer that emits the changeset summary verbatim and suppresses dependency-bump lines. Each provider package overrides publishability via `publishConfig.access: public`, and is published under `homepage: https://pulumi.khanh.id/docs/providers/<name>` (the Fumadocs site in `docs/`).
+`.changeset/config.json` sets `access: restricted` and uses `./changelog.js`, a custom ESM renderer that emits the changeset summary verbatim and suppresses dependency-bump lines. Each provider package overrides publishability via `publishConfig.access: public`, and is published under `homepage: https://pulumi.khanh.id/docs/providers/<name>` (the Fumadocs site in `docs/`). Private packages (the `docs` site) are not versioned — Changesets v3's default.
 
 ## Code Conventions
 
@@ -172,7 +174,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 ### Dependencies
 
-- All dependency versions are **pinned exactly** (no ranges), enforced by Syncpack via the `semverGroups` rule in `.syncpackrc.json`. Peer deps are exempt.
+- All dependency versions are **pinned exactly** (no ranges), enforced by Syncpack via the `semverGroups` rule in `.syncpackrc.json`. Peer deps are exempt. `pnpmOverrides` is read from `pnpm-workspace.yaml` (Syncpack 15) and is also exempt so security-patch ranges stay valid.
 - `package.json` field order is also enforced by Syncpack (`sortFirst`, `sortAz`).
 - pnpm `overrides` in `pnpm-workspace.yaml` apply security patches to transitive deps.
 - `allowBuilds` whitelists which packages may run install scripts: `@swc/core`, `esbuild`, `nx`, `protobufjs`, `sharp`.
@@ -202,8 +204,8 @@ Workflow conventions:
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
 - The `pnpm` store is cached on the `pnpm-lock.yaml` hash; `.nx/cache` is intentionally **not** cached across runners (the Nx 22 database cache is machine-bound and errors on foreign artifacts).
-- **Aikido Safe Chain** is installed before `pnpm install` in every workflow for supply-chain protection. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
-- `publish.yml` uses `commitMode: 'github-api'` for the changesets release commit so it's signed by GitHub.
+- **Aikido Safe Chain** is installed before `pnpm install` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`). Renovate updates `SAFE_CHAIN_VERSION` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
+- `publish.yml` uses `changesets/action@v2`, which pushes release commits and tags via the GitHub API by default so they are signed by GitHub.
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops; `autofix.yml` also skips Renovate-authored commits and its own `[autofix.ci]` commits.
 
