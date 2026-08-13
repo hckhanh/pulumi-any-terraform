@@ -9,6 +9,8 @@ on:
 
 env:
   NX_DAEMON: 'false'
+  # Changesets v3 published 2026-08-11; under the 48h window until 2026-08-13 12:09 UTC
+  SAFE_CHAIN_MINIMUM_PACKAGE_AGE_EXCLUSIONS: '@changesets/*'
 
 permissions:
   contents: read
