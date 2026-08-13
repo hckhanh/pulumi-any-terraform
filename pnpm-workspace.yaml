@@ -15,9 +15,13 @@ minimumReleaseAgeExclude:
   - form-data@4.0.6
   # Changesets v3 published 2026-08-11; under the 48h window until 2026-08-13 12:09 UTC
   - '@changesets/*'
+  - sharp@0.35.0
+  - brace-expansion@5.0.9
 overrides:
   # next (via docs) still resolves postcss@8.4.x without this; GHSA-qx2v-qp2m-jg93
+  brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
   postcss@<8.5.10: '8.5.26'
+  sharp@<0.35.0: ^0.35.0
 auditConfig:
   # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
   # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled
