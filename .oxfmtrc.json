@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": false,
+  "endOfLine": "lf",
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "printWidth": 80,
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    ".pnpm-store/",
+    "pnpm-lock.yaml",
+    "**/package.json",
+    "packages/**/*.ts",
+    "packages/**/*.js",
+    "packages/**/tsconfig.json",
+    "/.nx/cache",
+    "/.nx/workspace-data",
+    "**/CHANGELOG.md",
+    "docs",
+    "skills"
+  ]
+}

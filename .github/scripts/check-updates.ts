@@ -4,7 +4,7 @@ import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import * as prettier from 'prettier'
+import { format } from 'oxfmt'
 
 interface ProviderInfo {
   url: string
@@ -93,9 +93,9 @@ async function normalizeChangelog(content: string): Promise<string> {
     (_, repo, sha) => `${repo}@${sha.slice(0, 7)}`,
   )
 
-  // Use prettier to format markdown (handles blank lines around headings,
+  // Use oxfmt to format markdown (handles blank lines around headings,
   // preserves code fences, and ensures consistent formatting)
-  normalized = await prettier.format(normalized, { parser: 'markdown' })
+  normalized = (await format('changelog.md', normalized)).code
 
   return normalized.trim()
 }

@@ -145,7 +145,7 @@ pnpm nx run-many -t build
 pnpm run syncpack:fix
 
 # Format all code
-pnpm run prettier:write
+pnpm nx run root:oxfmt:write
 ```
 
 ### Adding a New Provider
@@ -174,7 +174,7 @@ pulumi-any-terraform/
 ├── tools/                 # Build system plugins
 │   ├── build.ts
 │   ├── linter.ts
-│   └── prettier.ts
+│   └── oxfmt.ts
 ├── docs/                  # Documentation site (Next.js)
 ├── .github/              # CI/CD workflows
 ├── nx.json               # Nx configuration
@@ -186,7 +186,7 @@ pulumi-any-terraform/
 Automated workflows handle:
 
 - **Testing**: Linting, type checking, and builds
-- **Auto-fixing**: Prettier and Biome fixes
+- **Auto-fixing**: Oxfmt and Biome fixes
 - **Dependency Updates**: Automated PRs for updates
 - **Publishing**: Automatic releases to NPM
 - **Security**: Aikido Safe Chain and vulnerability scanning

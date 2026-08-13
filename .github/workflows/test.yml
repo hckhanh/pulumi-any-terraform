@@ -26,6 +26,9 @@ jobs:
         with:
           fetch-depth: 0
           filter: tree:0
+          # Safe: this job never git-pushes. nx-set-shas only runs local git
+          # (merge-base / rev-parse) and uses GITHUB_TOKEN for the GitHub API.
+          persist-credentials: false
       - name: Setup toolchains
         uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
       - name: Get pnpm store directory

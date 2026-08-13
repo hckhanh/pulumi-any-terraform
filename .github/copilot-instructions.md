@@ -122,7 +122,7 @@ This is a Pulumi provider collection repository that dynamically bridges Terrafo
 - `pnpm install` - Install dependencies
 - `npx nx run-many --target=check` - Run quality checks across all packages
 - `npx nx run-many --target=build` - Build all packages
-- `npx nx run root:prettier:write` - Format all code
+- `npx nx run root:oxfmt:write` - Format all code
 - `npx nx run root:syncpack:format` - Fix dependency version mismatches
 
 ## Working with Generated Code

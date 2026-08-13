@@ -49,7 +49,7 @@ pulumi-any-terraform/
 ├── tools/                 # Build system plugins
 │   ├── build.ts          # Build orchestration
 │   ├── linter.ts         # Code linting
-│   └── prettier.ts       # Code formatting
+│   └── oxfmt.ts          # Code formatting
 ├── docs/                  # Documentation site
 │   ├── content/          # MDX documentation
 │   └── src/              # Next.js app
@@ -182,7 +182,7 @@ git checkout -b feature/your-feature-name
 3. **Format your code**:
 
 ```bash
-pnpm run prettier:write
+pnpm nx run root:oxfmt:write
 ```
 
 4. **Check for issues**:
