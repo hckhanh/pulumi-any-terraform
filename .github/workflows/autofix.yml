@@ -26,23 +26,14 @@ jobs:
           filter: tree:0
           # Required: autofix-ci/action pushes the formatted commit with this token.
           persist-credentials: true
-      - name: Setup toolchains
-        uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4.2.4
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
-      - name: Setup cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      - name: Setup pnpm
+        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
+          version: 11.20.0
+          runtime: node@24.19.0
+          cache: true
       - name: Setup Aikido Safe Chain
         uses: ./.github/actions/setup-safe-chain
-      - name: Install dependencies
-        run: pnpm install
       - name: Fix dependencies audit
         run: |
           pnpm audit --fix override

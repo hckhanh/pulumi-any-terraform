@@ -196,9 +196,9 @@ Workflow conventions:
 
 - All `uses:` actions are **pinned by full SHA** (not tags).
 - Top-level `permissions: contents: read`; jobs escalate as needed.
-- Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
-- `pnpm` store and `.nx/cache` are cached on `pnpm-lock.yaml` hash.
-- **Aikido Safe Chain** is installed before `pnpm install` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`). Renovate updates `SAFE_CHAIN_RELEASE` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. Do not set `SAFE_CHAIN_VERSION` (the installer treats that env var as deprecated).
+- Node, pnpm, the store cache, and `pnpm install` come from SHA-pinned `pnpm/setup` (v11+; not `pnpm/action-setup`). Renovate regex managers track `version` / `runtime: node@` and group those bumps with `mise.toml`.
+- `jdx/mise-action` is only used where extra CLIs are needed (`test.yml` installs `actionlint` and `zizmor` via `install_args` + `MISE_ENABLE_TOOLS`). Do not install the full `mise.toml` toolset in CI.
+- **Aikido Safe Chain** is installed after `pnpm/setup` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`) so later `pnpm` commands use the wrapped binary. Renovate updates `SAFE_CHAIN_RELEASE` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. Do not set `SAFE_CHAIN_VERSION` (the installer treats that env var as deprecated).
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops.
 
