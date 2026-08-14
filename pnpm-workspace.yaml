@@ -13,8 +13,6 @@ minimumReleaseAgeExclude:
   - next@16.2.6 || 16.2.11
   - tmp@0.2.7
   - form-data@4.0.6
-  # Changesets v3 published 2026-08-11; under the 48h window until 2026-08-13 12:09 UTC
-  - '@changesets/*'
   - sharp@0.35.0
   - brace-expansion@5.0.9
 overrides:
