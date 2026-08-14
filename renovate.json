@@ -21,6 +21,18 @@
       "groupName": "fumadocs monorepo",
       "matchPackageNames": ["/^fumadocs-/"],
       "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+    },
+    {
+      "description": "Keep mise.toml and pnpm/setup workflow pins in the same PR",
+      "groupName": "node",
+      "matchDatasources": ["node-version"],
+      "matchPackageNames": ["node"]
+    },
+    {
+      "description": "Keep mise.toml and pnpm/setup workflow pins in the same PR",
+      "groupName": "pnpm",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["pnpm"]
     }
   ],
   "customManagers": [
@@ -31,7 +43,7 @@
         "/^\\.github/actions/setup-safe-chain/action\\.ya?ml$/"
       ],
       "matchStrings": [
-        "SAFE_CHAIN_VERSION: (?<currentValue>\\S+)\\n\\s+SAFE_CHAIN_SHA256: (?<currentDigest>[a-f0-9]{64})"
+        "SAFE_CHAIN_RELEASE: (?<currentValue>\\S+)\\n\\s+SAFE_CHAIN_SHA256: (?<currentDigest>[a-f0-9]{64})"
       ],
       "datasourceTemplate": "github-release-attachments",
       "depNameTemplate": "AikidoSec/safe-chain",
@@ -44,6 +56,24 @@
       "matchStrings": ["run: npm install -g npm@(?<currentValue>\\S+)"],
       "datasourceTemplate": "npm",
       "depNameTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "description": "Track pnpm version in pnpm/setup workflow inputs",
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
+      "matchStrings": ["version: (?<currentValue>\\S+)\\n\\s+runtime: node@"],
+      "datasourceTemplate": "npm",
+      "depNameTemplate": "pnpm",
+      "versioningTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "description": "Track Node.js version in pnpm/setup runtime inputs",
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
+      "matchStrings": ["runtime: node@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "node-version",
+      "depNameTemplate": "node",
+      "versioningTemplate": "node"
     }
   ]
 }

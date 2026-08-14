@@ -166,7 +166,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 - **Biome** formats and lints JS/TS/JSON/CSS (only where a `biome.json` exists -- currently `docs/`).
 - **Oxfmt** formats YAML/Markdown/HTML/CSS and hand-written JS/TS workspace-wide.
-- `.oxfmtrc.json` `ignorePatterns` exclude generated `packages/` sources, `pnpm-lock.yaml`, all `package.json`, `CHANGELOG.md`, `docs/`, and skills. Root `oxfmt:*` targets also skip `packages/` and `docs/`.
+- `.oxfmtrc.json` `ignorePatterns` exclude generated `packages/` sources, `pnpm-lock.yaml`, all `package.json`, `docs/`, and skills. Root `oxfmt:*` targets also skip `packages/` and `docs/`. Package `CHANGELOG.md` files are formatted by oxfmt (Changesets v3 runs `oxfmt --write` on them during version).
 
 ### TypeScript (hand-written `tools/` + `.github/scripts/`)
 
@@ -195,20 +195,21 @@ Conventional commits: `type(scope): description`. Common automated patterns:
 
 ### CI workflows
 
-| Workflow      | Trigger                            | Purpose                                                                                      |
-| ------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
-| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)                                       |
-| `autofix.yml` | PRs, push to `main`                | Regen lockfile, `pnpm audit --fix`, `nx affected -t fix`, `pnpm dedupe`, `autofix-ci/action` |
-| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (per-package `publishConfig.access: public`)           |
-| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers                                            |
+| Workflow      | Trigger                            | Purpose                                                                            |
+| ------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| `test.yml`    | PRs, push to `main`                | `pnpm nx affected -t check` (lint + typecheck + build)                             |
+| `autofix.yml` | PRs, push to `main`                | `pnpm audit --fix`, `nx affected -t fix`, `pnpm dedupe`, `autofix-ci/action`       |
+| `publish.yml` | push to `main`, after `Update` run | `changesets/action` -> publish to npm (per-package `publishConfig.access: public`) |
+| `update.yml`  | weekly Mon 00:00 UTC               | Regenerate SDKs from upstream Terraform providers                                  |
 
 Workflow conventions:
 
 - All `uses:` actions are **pinned by full SHA** (not tags).
 - Top-level `permissions: contents: read`; jobs escalate as needed.
-- Toolchain set up via `jdx/mise-action` (reads `mise.toml`).
-- The `pnpm` store is cached on the `pnpm-lock.yaml` hash; `.nx/cache` is intentionally **not** cached across runners (the Nx 22 database cache is machine-bound and errors on foreign artifacts).
-- **Aikido Safe Chain** is installed before `pnpm install` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`). Renovate updates `SAFE_CHAIN_VERSION` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
+- Node, pnpm, the store cache, and `pnpm install` come from SHA-pinned `pnpm/setup` (v11+; not `pnpm/action-setup`). Renovate regex managers track `version` / `runtime: node@` and group those bumps with `mise.toml`.
+- `jdx/mise-action` is only used where extra CLIs are needed (`test.yml` installs `actionlint` and `zizmor` via `install_args` + `MISE_ENABLE_TOOLS`). Do not install the full `mise.toml` toolset in CI.
+- The `pnpm` store is cached by `pnpm/setup` (`cache: true`); `.nx/cache` is intentionally **not** cached across runners (the Nx 22 database cache is machine-bound and errors on foreign artifacts).
+- **Aikido Safe Chain** is installed after `pnpm/setup` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`) so later `pnpm` commands use the wrapped binary. Renovate updates `SAFE_CHAIN_RELEASE` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. Do not set `SAFE_CHAIN_VERSION` (the installer treats that env var as deprecated). `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
 - `publish.yml` uses `changesets/action@v2`, which pushes release commits and tags via the GitHub API by default so they are signed by GitHub.
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops; `autofix.yml` also skips Renovate-authored commits and its own `[autofix.ci]` commits.
