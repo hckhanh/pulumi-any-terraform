@@ -31,7 +31,7 @@
         "/^\\.github/actions/setup-safe-chain/action\\.ya?ml$/"
       ],
       "matchStrings": [
-        "SAFE_CHAIN_VERSION: (?<currentValue>\\S+)\\n\\s+SAFE_CHAIN_SHA256: (?<currentDigest>[a-f0-9]{64})"
+        "SAFE_CHAIN_RELEASE: (?<currentValue>\\S+)\\n\\s+SAFE_CHAIN_SHA256: (?<currentDigest>[a-f0-9]{64})"
       ],
       "datasourceTemplate": "github-release-attachments",
       "depNameTemplate": "AikidoSec/safe-chain",
