@@ -41,10 +41,8 @@ jobs:
             ${{ runner.os }}-pnpm-
       - name: Setup Aikido Safe Chain
         uses: ./.github/actions/setup-safe-chain
-      - name: Update package lock file
-        run: |
-          rm -rf -- **/node_modules pnpm-lock.yaml
-          pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install
       - name: Fix dependencies audit
         run: |
           pnpm audit --fix override
