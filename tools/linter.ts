@@ -18,24 +18,26 @@ class LinterPlugin extends Plugin {
             check: {
               dependsOn: [
                 'build',
-                'prettier:check',
+                'oxfmt:check',
                 'root:syncpack:lint',
                 'root:syncpack:format:check',
+                'root:actionlint',
+                'root:zizmor',
               ],
               metadata: {
                 description: 'Run all linters and checks for the project.',
-                technologies: ['node', 'prettier', 'typescript'],
+                technologies: ['node', 'oxfmt', 'typescript'],
               },
             },
             fix: {
               dependsOn: [
                 'biome:check:fix',
-                'prettier:write',
+                'oxfmt:write',
                 'root:syncpack:format',
               ],
               metadata: {
                 description: 'Run all auto-fixable linters for the project.',
-                technologies: ['node', 'prettier', 'typescript'],
+                technologies: ['node', 'oxfmt', 'typescript'],
               },
             },
           },

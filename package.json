@@ -12,7 +12,7 @@
     "release": "nx run-many -t build && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "2.31.1",
+    "@changesets/cli": "3.0.0",
     "@nx/devkit": "23.1.1",
     "@nx/js": "23.1.1",
     "@swc-node/register": "1.12.1",
@@ -20,8 +20,8 @@
     "@swc/helpers": "0.5.23",
     "@types/node": "24.13.3",
     "nx": "23.1.1",
-    "prettier": "3.9.6",
-    "syncpack": "14.3.1",
+    "oxfmt": "0.63.0",
+    "syncpack": "15.3.3",
     "typescript": "6.0.3"
   },
   "keywords": [
