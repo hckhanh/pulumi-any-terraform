@@ -16,7 +16,7 @@
     "@nx/devkit": "23.1.1",
     "@nx/js": "23.1.1",
     "@swc-node/register": "1.12.1",
-    "@swc/core": "1.15.47",
+    "@swc/core": "1.16.0",
     "@swc/helpers": "0.5.23",
     "@types/node": "24.13.3",
     "nx": "23.1.1",
