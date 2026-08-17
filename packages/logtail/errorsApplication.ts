@@ -210,6 +210,26 @@ export class ErrorsApplication extends pulumi.CustomResource {
      * The time when this application was updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    /**
+     * VRL transformation applied to exceptions on Better Stack's servers during ingestion. This is what controls how exceptions are grouped into errors. Leave unset to keep the grouping unmanaged - the attribute reads back the effective program, including the default grouping for the application's platform. Set to an empty string to remove the grouping program entirely (exceptions stop being grouped by it - this is rarely what you want; to return to the default grouping, use the application's Exception grouping editor). Read more about [customizing exception grouping](https://betterstack.com/docs/errors/using-the-product/exception-grouping/#customize-exception-grouping).
+     */
+    declare public readonly vrlTransformationExceptions: pulumi.Output<string>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationLogs: pulumi.Output<string>;
+    /**
+     * VRL transformation applied to session replays on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationReplays: pulumi.Output<string>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationSpans: pulumi.Output<string>;
+    /**
+     * VRL transformation applied to web events (page views and web vitals) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    declare public readonly vrlTransformationWebEvents: pulumi.Output<string>;
 
     /**
      * Create a ErrorsApplication resource with the given unique name, arguments, and options.
@@ -244,6 +264,11 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["token"] = state?.token;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vrlTransformationExceptions"] = state?.vrlTransformationExceptions;
+            resourceInputs["vrlTransformationLogs"] = state?.vrlTransformationLogs;
+            resourceInputs["vrlTransformationReplays"] = state?.vrlTransformationReplays;
+            resourceInputs["vrlTransformationSpans"] = state?.vrlTransformationSpans;
+            resourceInputs["vrlTransformationWebEvents"] = state?.vrlTransformationWebEvents;
         } else {
             const args = argsOrState as ErrorsApplicationArgs | undefined;
             if (args?.platform === undefined && !opts.urn) {
@@ -262,6 +287,11 @@ export class ErrorsApplication extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["platform"] = args?.platform;
             resourceInputs["teamName"] = args?.teamName;
+            resourceInputs["vrlTransformationExceptions"] = args?.vrlTransformationExceptions;
+            resourceInputs["vrlTransformationLogs"] = args?.vrlTransformationLogs;
+            resourceInputs["vrlTransformationReplays"] = args?.vrlTransformationReplays;
+            resourceInputs["vrlTransformationSpans"] = args?.vrlTransformationSpans;
+            resourceInputs["vrlTransformationWebEvents"] = args?.vrlTransformationWebEvents;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ingestingHost"] = undefined /*out*/;
             resourceInputs["jsTagToken"] = undefined /*out*/;
@@ -455,6 +485,26 @@ export interface ErrorsApplicationState {
      * The time when this application was updated.
      */
     updatedAt?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to exceptions on Better Stack's servers during ingestion. This is what controls how exceptions are grouped into errors. Leave unset to keep the grouping unmanaged - the attribute reads back the effective program, including the default grouping for the application's platform. Set to an empty string to remove the grouping program entirely (exceptions stop being grouped by it - this is rarely what you want; to return to the default grouping, use the application's Exception grouping editor). Read more about [customizing exception grouping](https://betterstack.com/docs/errors/using-the-product/exception-grouping/#customize-exception-grouping).
+     */
+    vrlTransformationExceptions?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationLogs?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to session replays on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationReplays?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationSpans?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to web events (page views and web vitals) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationWebEvents?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -609,4 +659,24 @@ export interface ErrorsApplicationArgs {
      * Used to specify the team the resource should be created in when using global tokens. You can't update this value later.
      */
     teamName?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to exceptions on Better Stack's servers during ingestion. This is what controls how exceptions are grouped into errors. Leave unset to keep the grouping unmanaged - the attribute reads back the effective program, including the default grouping for the application's platform. Set to an empty string to remove the grouping program entirely (exceptions stop being grouped by it - this is rarely what you want; to return to the default grouping, use the application's Exception grouping editor). Read more about [customizing exception grouping](https://betterstack.com/docs/errors/using-the-product/exception-grouping/#customize-exception-grouping).
+     */
+    vrlTransformationExceptions?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationLogs?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to session replays on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationReplays?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationSpans?: pulumi.Input<string | undefined>;
+    /**
+     * VRL transformation applied to web events (page views and web vitals) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     */
+    vrlTransformationWebEvents?: pulumi.Input<string | undefined>;
 }

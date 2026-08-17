@@ -45,6 +45,11 @@ export interface GetErrorsApplicationResult {
     readonly teamName: string;
     readonly token: string;
     readonly updatedAt: string;
+    readonly vrlTransformationExceptions: string;
+    readonly vrlTransformationLogs: string;
+    readonly vrlTransformationReplays: string;
+    readonly vrlTransformationSpans: string;
+    readonly vrlTransformationWebEvents: string;
 }
 export function getErrorsApplicationOutput(args: GetErrorsApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetErrorsApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

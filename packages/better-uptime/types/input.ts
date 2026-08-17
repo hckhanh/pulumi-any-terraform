@@ -817,6 +817,10 @@ export interface OutgoingWebhookCustomWebhookTemplateAttributesHeadersTemplate {
 
 export interface PolicyStep {
     /**
+     * The action to take. Required when step type is<span pulumi-lang-nodejs=" resolveRemove " pulumi-lang-dotnet=" ResolveRemove " pulumi-lang-go=" resolveRemove " pulumi-lang-python=" resolve_remove " pulumi-lang-yaml=" resolveRemove " pulumi-lang-java=" resolveRemove " pulumi-lang-hcl=" resolve_remove "> resolveRemove </span>- use<span pulumi-lang-nodejs=" resolveIncident " pulumi-lang-dotnet=" ResolveIncident " pulumi-lang-go=" resolveIncident " pulumi-lang-python=" resolve_incident " pulumi-lang-yaml=" resolveIncident " pulumi-lang-java=" resolveIncident " pulumi-lang-hcl=" resolve_incident "> resolveIncident </span>or remove_incident. Optional when step type is<span pulumi-lang-nodejs=" timeBranching " pulumi-lang-dotnet=" TimeBranching " pulumi-lang-go=" timeBranching " pulumi-lang-python=" time_branching " pulumi-lang-yaml=" timeBranching " pulumi-lang-java=" timeBranching " pulumi-lang-hcl=" time_branching "> timeBranching </span>or<span pulumi-lang-nodejs=" metadataBranching " pulumi-lang-dotnet=" MetadataBranching " pulumi-lang-go=" metadataBranching " pulumi-lang-python=" metadata_branching " pulumi-lang-yaml=" metadataBranching " pulumi-lang-java=" metadataBranching " pulumi-lang-hcl=" metadata_branching "> metadataBranching </span>- use escalate_to_policy, resolve_incident, remove_incident, or do_not_escalate. When omitted on branching steps, the action defaults to<span pulumi-lang-nodejs=" escalateToPolicy " pulumi-lang-dotnet=" EscalateToPolicy " pulumi-lang-go=" escalateToPolicy " pulumi-lang-python=" escalate_to_policy " pulumi-lang-yaml=" escalateToPolicy " pulumi-lang-java=" escalateToPolicy " pulumi-lang-hcl=" escalate_to_policy "> escalateToPolicy </span>if<span pulumi-lang-nodejs=" policyId " pulumi-lang-dotnet=" PolicyId " pulumi-lang-go=" policyId " pulumi-lang-python=" policy_id " pulumi-lang-yaml=" policyId " pulumi-lang-java=" policyId " pulumi-lang-hcl=" policy_id "> policyId </span>or<span pulumi-lang-nodejs=" policyMetadataKey " pulumi-lang-dotnet=" PolicyMetadataKey " pulumi-lang-go=" policyMetadataKey " pulumi-lang-python=" policy_metadata_key " pulumi-lang-yaml=" policyMetadataKey " pulumi-lang-java=" policyMetadataKey " pulumi-lang-hcl=" policy_metadata_key "> policyMetadataKey </span>is set, and to<span pulumi-lang-nodejs=" doNotEscalate " pulumi-lang-dotnet=" DoNotEscalate " pulumi-lang-go=" doNotEscalate " pulumi-lang-python=" do_not_escalate " pulumi-lang-yaml=" doNotEscalate " pulumi-lang-java=" doNotEscalate " pulumi-lang-hcl=" do_not_escalate "> doNotEscalate </span>otherwise; the resolved value is stored in state, so change it by setting an explicit value.
+     */
+    actionType?: pulumi.Input<string | undefined>;
+    /**
      * Post instructions as a comment into the incident timeline. You can use Markdown, reference metadata as `{server_region}`, and interactive checkboxes like `- [ ] Step 1`. Used when step type is instructions.
      */
     comment?: pulumi.Input<string | undefined>;
@@ -871,7 +875,7 @@ export interface PolicyStep {
      */
     timezone?: pulumi.Input<string | undefined>;
     /**
-     * The type of the step. Can be either escalation, time_branching, metadata_branching, or instructions.
+     * The type of the step. Can be either escalation, time_branching, metadata_branching, instructions, or resolve_remove.
      */
     type: pulumi.Input<string>;
     /**

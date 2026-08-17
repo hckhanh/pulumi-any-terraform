@@ -26,10 +26,6 @@ export interface GetUserArgs {
 export interface GetUserResult {
     readonly email: string;
     readonly firstName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly isEmailVerified: boolean;
     readonly lastName: string;
     readonly organizationId: string;

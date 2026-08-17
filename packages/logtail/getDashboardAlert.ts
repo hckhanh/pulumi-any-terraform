@@ -28,6 +28,7 @@ export interface GetDashboardAlertArgs {
  * A collection of values returned by getDashboardAlert.
  */
 export interface GetDashboardAlertResult {
+    readonly additionalConditions: outputs.GetDashboardAlertAdditionalCondition[];
     readonly aggregationInterval: number;
     readonly alertType: string;
     readonly anomalySensitivity: number;

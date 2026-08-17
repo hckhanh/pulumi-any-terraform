@@ -20,6 +20,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { CohortArgs, CohortState } from "./cohort";
+export type Cohort = import("./cohort").Cohort;
+export const Cohort: typeof import("./cohort").Cohort = null as any;
+utilities.lazyLoad(exports, ["Cohort"], () => require("./cohort"));
+
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
@@ -30,6 +35,11 @@ export type DashboardLayout = import("./dashboardLayout").DashboardLayout;
 export const DashboardLayout: typeof import("./dashboardLayout").DashboardLayout = null as any;
 utilities.lazyLoad(exports, ["DashboardLayout"], () => require("./dashboardLayout"));
 
+export { ExperimentArgs, ExperimentState } from "./experiment";
+export type Experiment = import("./experiment").Experiment;
+export const Experiment: typeof import("./experiment").Experiment = null as any;
+utilities.lazyLoad(exports, ["Experiment"], () => require("./experiment"));
+
 export { ExternalDataSourceArgs, ExternalDataSourceState } from "./externalDataSource";
 export type ExternalDataSource = import("./externalDataSource").ExternalDataSource;
 export const ExternalDataSource: typeof import("./externalDataSource").ExternalDataSource = null as any;
@@ -39,6 +49,11 @@ export { FeatureFlagArgs, FeatureFlagState } from "./featureFlag";
 export type FeatureFlag = import("./featureFlag").FeatureFlag;
 export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
 utilities.lazyLoad(exports, ["FeatureFlag"], () => require("./featureFlag"));
+
+export { GetInsightArgs, GetInsightResult, GetInsightOutputArgs } from "./getInsight";
+export const getInsight: typeof import("./getInsight").getInsight = null as any;
+export const getInsightOutput: typeof import("./getInsight").getInsightOutput = null as any;
+utilities.lazyLoad(exports, ["getInsight","getInsightOutput"], () => require("./getInsight"));
 
 export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
 export const getRole: typeof import("./getRole").getRole = null as any;
@@ -59,6 +74,11 @@ export { InsightArgs, InsightState } from "./insight";
 export type Insight = import("./insight").Insight;
 export const Insight: typeof import("./insight").Insight = null as any;
 utilities.lazyLoad(exports, ["Insight"], () => require("./insight"));
+
+export { InsightVariableArgs, InsightVariableState } from "./insightVariable";
+export type InsightVariable = import("./insightVariable").InsightVariable;
+export const InsightVariable: typeof import("./insightVariable").InsightVariable = null as any;
+utilities.lazyLoad(exports, ["InsightVariable"], () => require("./insightVariable"));
 
 export { OrganizationMemberArgs, OrganizationMemberState } from "./organizationMember";
 export type OrganizationMember = import("./organizationMember").OrganizationMember;
@@ -103,6 +123,11 @@ export type RoleMembership = import("./roleMembership").RoleMembership;
 export const RoleMembership: typeof import("./roleMembership").RoleMembership = null as any;
 utilities.lazyLoad(exports, ["RoleMembership"], () => require("./roleMembership"));
 
+export { SubscriptionArgs, SubscriptionState } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+
 export { SurveyArgs, SurveyState } from "./survey";
 export type Survey = import("./survey").Survey;
 export const Survey: typeof import("./survey").Survey = null as any;
@@ -128,10 +153,14 @@ const _module = {
                 return new Action(name, <any>undefined, { urn })
             case "posthog:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "posthog:index/cohort:Cohort":
+                return new Cohort(name, <any>undefined, { urn })
             case "posthog:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
             case "posthog:index/dashboardLayout:DashboardLayout":
                 return new DashboardLayout(name, <any>undefined, { urn })
+            case "posthog:index/experiment:Experiment":
+                return new Experiment(name, <any>undefined, { urn })
             case "posthog:index/externalDataSource:ExternalDataSource":
                 return new ExternalDataSource(name, <any>undefined, { urn })
             case "posthog:index/featureFlag:FeatureFlag":
@@ -140,6 +169,8 @@ const _module = {
                 return new HogFunction(name, <any>undefined, { urn })
             case "posthog:index/insight:Insight":
                 return new Insight(name, <any>undefined, { urn })
+            case "posthog:index/insightVariable:InsightVariable":
+                return new InsightVariable(name, <any>undefined, { urn })
             case "posthog:index/organizationMember:OrganizationMember":
                 return new OrganizationMember(name, <any>undefined, { urn })
             case "posthog:index/project:Project":
@@ -156,6 +187,8 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "posthog:index/roleMembership:RoleMembership":
                 return new RoleMembership(name, <any>undefined, { urn })
+            case "posthog:index/subscription:Subscription":
+                return new Subscription(name, <any>undefined, { urn })
             case "posthog:index/survey:Survey":
                 return new Survey(name, <any>undefined, { urn })
             default:
@@ -166,12 +199,15 @@ const _module = {
 pulumi.runtime.registerResourceModule("posthog", "index/accessControl", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/action", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/alert", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/cohort", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboardLayout", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/experiment", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/externalDataSource", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/hogFunction", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/insight", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/insightVariable", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/organizationMember", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/project", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectDefaultAccess", _module)
@@ -180,6 +216,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/projectSettings", _modul
 pulumi.runtime.registerResourceModule("posthog", "index/proxyRecord", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/role", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/roleMembership", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/subscription", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/survey", _module)
 pulumi.runtime.registerResourcePackage("posthog", {
     version: utilities.getVersion(),

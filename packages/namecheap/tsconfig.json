@@ -22,6 +22,7 @@
         "config/index.ts",
         "config/vars.ts",
         "domainContacts.ts",
+        "domainHostRecord.ts",
         "domainRecords.ts",
         "emailForwarding.ts",
         "getAccountBalance.ts",

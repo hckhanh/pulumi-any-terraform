@@ -28,16 +28,30 @@ export interface GetDomainResult {
     readonly created: string;
     readonly dnsProviderType: string;
     readonly domain: string;
+    readonly dynamicDnsStatus: boolean;
+    readonly emailType: string;
     readonly expires: string;
     readonly expiresInDays: number;
+    readonly hostCount: number;
     readonly id: string;
     readonly isExpired: boolean;
+    readonly isFailover: boolean;
     readonly isLocked: boolean;
     readonly isOurDns: boolean;
+    readonly isOwner: boolean;
     readonly isPremium: boolean;
     readonly isPremiumDns: boolean;
+    readonly modificationRights: {[key: string]: string};
+    readonly modificationRightsAll: boolean;
     readonly nameservers: string[];
+    readonly ownerName: string;
+    readonly premiumDnsAutoRenew: boolean;
+    readonly premiumDnsExpires: string;
+    readonly status: string;
     readonly whoisGuard: string;
+    readonly whoisGuardEmail: string;
+    readonly whoisGuardExpires: string;
+    readonly whoisGuardForwardedTo: string;
 }
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

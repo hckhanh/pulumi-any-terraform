@@ -56,6 +56,14 @@ export class PullzoneShield extends pulumi.CustomResource {
      */
     declare public readonly tier: pulumi.Output<string>;
     /**
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     */
+    declare public readonly uploadScanningAntivirus: pulumi.Output<string>;
+    /**
+     * Scan file uploads for Child Sexual Abuse Material.
+     */
+    declare public readonly uploadScanningCsam: pulumi.Output<string>;
+    /**
      * Configures WAF settings.
      */
     declare public readonly waf: pulumi.Output<outputs.PullzoneShieldWaf | undefined>;
@@ -63,6 +71,18 @@ export class PullzoneShield extends pulumi.CustomResource {
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
     declare public readonly whitelabel: pulumi.Output<boolean>;
+    /**
+     * Customized Response Page for requests blocked by WAF, access list or bot detection.
+     */
+    declare public readonly whitelabelBlock: pulumi.Output<string>;
+    /**
+     * Customized Response Page for challenged requests.
+     */
+    declare public readonly whitelabelChallenge: pulumi.Output<string>;
+    /**
+     * Customized Response Page for requests after a rate limit is breached.
+     */
+    declare public readonly whitelabelRateLimit: pulumi.Output<string>;
 
     /**
      * Create a PullzoneShield resource with the given unique name, arguments, and options.
@@ -83,8 +103,13 @@ export class PullzoneShield extends pulumi.CustomResource {
             resourceInputs["pullzone"] = state?.pullzone;
             resourceInputs["pullzoneShieldId"] = state?.pullzoneShieldId;
             resourceInputs["tier"] = state?.tier;
+            resourceInputs["uploadScanningAntivirus"] = state?.uploadScanningAntivirus;
+            resourceInputs["uploadScanningCsam"] = state?.uploadScanningCsam;
             resourceInputs["waf"] = state?.waf;
             resourceInputs["whitelabel"] = state?.whitelabel;
+            resourceInputs["whitelabelBlock"] = state?.whitelabelBlock;
+            resourceInputs["whitelabelChallenge"] = state?.whitelabelChallenge;
+            resourceInputs["whitelabelRateLimit"] = state?.whitelabelRateLimit;
         } else {
             const args = argsOrState as PullzoneShieldArgs | undefined;
             if (args?.pullzone === undefined && !opts.urn) {
@@ -95,8 +120,13 @@ export class PullzoneShield extends pulumi.CustomResource {
             resourceInputs["ddos"] = args?.ddos;
             resourceInputs["pullzone"] = args?.pullzone;
             resourceInputs["tier"] = args?.tier;
+            resourceInputs["uploadScanningAntivirus"] = args?.uploadScanningAntivirus;
+            resourceInputs["uploadScanningCsam"] = args?.uploadScanningCsam;
             resourceInputs["waf"] = args?.waf;
             resourceInputs["whitelabel"] = args?.whitelabel;
+            resourceInputs["whitelabelBlock"] = args?.whitelabelBlock;
+            resourceInputs["whitelabelChallenge"] = args?.whitelabelChallenge;
+            resourceInputs["whitelabelRateLimit"] = args?.whitelabelRateLimit;
             resourceInputs["pullzoneShieldId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +160,14 @@ export interface PullzoneShieldState {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     */
+    uploadScanningAntivirus?: pulumi.Input<string | undefined>;
+    /**
+     * Scan file uploads for Child Sexual Abuse Material.
+     */
+    uploadScanningCsam?: pulumi.Input<string | undefined>;
+    /**
      * Configures WAF settings.
      */
     waf?: pulumi.Input<inputs.PullzoneShieldWaf | undefined>;
@@ -137,6 +175,18 @@ export interface PullzoneShieldState {
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
     whitelabel?: pulumi.Input<boolean | undefined>;
+    /**
+     * Customized Response Page for requests blocked by WAF, access list or bot detection.
+     */
+    whitelabelBlock?: pulumi.Input<string | undefined>;
+    /**
+     * Customized Response Page for challenged requests.
+     */
+    whitelabelChallenge?: pulumi.Input<string | undefined>;
+    /**
+     * Customized Response Page for requests after a rate limit is breached.
+     */
+    whitelabelRateLimit?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,6 +211,14 @@ export interface PullzoneShieldArgs {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     */
+    uploadScanningAntivirus?: pulumi.Input<string | undefined>;
+    /**
+     * Scan file uploads for Child Sexual Abuse Material.
+     */
+    uploadScanningCsam?: pulumi.Input<string | undefined>;
+    /**
      * Configures WAF settings.
      */
     waf?: pulumi.Input<inputs.PullzoneShieldWaf | undefined>;
@@ -168,4 +226,16 @@ export interface PullzoneShieldArgs {
      * Replace our bunny.net branded block and challenge pages with a white-labelled experience.
      */
     whitelabel?: pulumi.Input<boolean | undefined>;
+    /**
+     * Customized Response Page for requests blocked by WAF, access list or bot detection.
+     */
+    whitelabelBlock?: pulumi.Input<string | undefined>;
+    /**
+     * Customized Response Page for challenged requests.
+     */
+    whitelabelChallenge?: pulumi.Input<string | undefined>;
+    /**
+     * Customized Response Page for requests after a rate limit is breached.
+     */
+    whitelabelRateLimit?: pulumi.Input<string | undefined>;
 }

@@ -613,10 +613,6 @@ export interface PullzoneShieldDdos {
      * Options: `Asleep`, `Extreme`, `High`, `Low`, `Medium`
      */
     level: string;
-    /**
-     * Indicates the mode the engine is running. Options: `Block`, `Log`
-     */
-    mode: string;
 }
 
 export interface PullzoneShieldWaf {

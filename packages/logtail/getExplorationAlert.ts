@@ -26,6 +26,7 @@ export interface GetExplorationAlertArgs {
  * A collection of values returned by getExplorationAlert.
  */
 export interface GetExplorationAlertResult {
+    readonly additionalConditions: outputs.GetExplorationAlertAdditionalCondition[];
     readonly aggregationInterval: number;
     readonly alertType: string;
     readonly anomalySensitivity: number;

@@ -37,6 +37,10 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly active: pulumi.Output<boolean>;
     /**
+     * Whether PostHog should auto-create a "Generated Dashboard: <key> Usage" dashboard when the flag is created. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>: PostHog's API defaults this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>, which silently creates one usage dashboard per flag — for Terraform-managed flag fleets that quickly clutters the dashboard list. Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> to keep the API's auto-generation. Create-time only; changing it later has no effect and a usage dashboard can always be generated on demand from the flag's Usage tab.
+     */
+    declare public readonly createUsageDashboard: pulumi.Output<boolean | undefined>;
+    /**
      * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
      */
     declare public readonly deleted: pulumi.Output<boolean>;
@@ -91,6 +95,7 @@ export class FeatureFlag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["active"] = state?.active;
+            resourceInputs["createUsageDashboard"] = state?.createUsageDashboard;
             resourceInputs["deleted"] = state?.deleted;
             resourceInputs["ensureExperienceContinuity"] = state?.ensureExperienceContinuity;
             resourceInputs["featureFlagId"] = state?.featureFlagId;
@@ -107,6 +112,7 @@ export class FeatureFlag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'key'");
             }
             resourceInputs["active"] = args?.active;
+            resourceInputs["createUsageDashboard"] = args?.createUsageDashboard;
             resourceInputs["deleted"] = args?.deleted;
             resourceInputs["ensureExperienceContinuity"] = args?.ensureExperienceContinuity;
             resourceInputs["filters"] = args?.filters;
@@ -131,6 +137,10 @@ export interface FeatureFlagState {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether PostHog should auto-create a "Generated Dashboard: <key> Usage" dashboard when the flag is created. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>: PostHog's API defaults this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>, which silently creates one usage dashboard per flag — for Terraform-managed flag fleets that quickly clutters the dashboard list. Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> to keep the API's auto-generation. Create-time only; changing it later has no effect and a usage dashboard can always be generated on demand from the flag's Usage tab.
+     */
+    createUsageDashboard?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
      */
@@ -181,6 +191,10 @@ export interface FeatureFlagArgs {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether PostHog should auto-create a "Generated Dashboard: <key> Usage" dashboard when the flag is created. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>: PostHog's API defaults this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>, which silently creates one usage dashboard per flag — for Terraform-managed flag fleets that quickly clutters the dashboard list. Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> to keep the API's auto-generation. Create-time only; changing it later has no effect and a usage dashboard can always be generated on demand from the flag's Usage tab.
+     */
+    createUsageDashboard?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the feature flag is soft-deleted. Terraform will restore soft-deleted flags on apply.
      */

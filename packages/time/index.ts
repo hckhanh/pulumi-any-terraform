@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { DurationParseResult } from "./durationParse";
+export const durationParse: typeof import("./durationParse").durationParse = null as any;
+export const durationParseOutput: typeof import("./durationParse").durationParseOutput = null as any;
+utilities.lazyLoad(exports, ["durationParse","durationParseOutput"], () => require("./durationParse"));
+
 export { OffsetArgs, OffsetState } from "./offset";
 export type Offset = import("./offset").Offset;
 export const Offset: typeof import("./offset").Offset = null as any;
@@ -12,6 +17,11 @@ utilities.lazyLoad(exports, ["Offset"], () => require("./offset"));
 
 export * from "./provider";
 import { Provider } from "./provider";
+
+export { Rfc3339ParseResult } from "./rfc3339Parse";
+export const rfc3339Parse: typeof import("./rfc3339Parse").rfc3339Parse = null as any;
+export const rfc3339ParseOutput: typeof import("./rfc3339Parse").rfc3339ParseOutput = null as any;
+utilities.lazyLoad(exports, ["rfc3339Parse","rfc3339ParseOutput"], () => require("./rfc3339Parse"));
 
 export { RotatingArgs, RotatingState } from "./rotating";
 export type Rotating = import("./rotating").Rotating;
@@ -27,6 +37,11 @@ export { StaticArgs, StaticState } from "./static";
 export type Static = import("./static").Static;
 export const Static: typeof import("./static").Static = null as any;
 utilities.lazyLoad(exports, ["Static"], () => require("./static"));
+
+export { UnixTimestampParseResult } from "./unixTimestampParse";
+export const unixTimestampParse: typeof import("./unixTimestampParse").unixTimestampParse = null as any;
+export const unixTimestampParseOutput: typeof import("./unixTimestampParse").unixTimestampParseOutput = null as any;
+utilities.lazyLoad(exports, ["unixTimestampParse","unixTimestampParseOutput"], () => require("./unixTimestampParse"));
 
 
 const _module = {

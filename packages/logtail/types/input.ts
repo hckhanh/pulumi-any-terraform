@@ -212,6 +212,33 @@ export interface ConnectionDataSource {
     teamName?: pulumi.Input<string | undefined>;
 }
 
+export interface DashboardAlertAdditionalCondition {
+    /**
+     * The type of this condition: 'threshold' or 'relative'. Anomaly detection is only available as the main alert condition.
+     */
+    alertType: pulumi.Input<string>;
+    /**
+     * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * Specific series this condition applies to. Conflicts with series_names_except; omit to apply to any series.
+     */
+    seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Apply this condition to all series except these. Conflicts with series_names; omit to apply to any series.
+     */
+    seriesNamesExcepts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The string threshold value of this condition (only with 'equal' or 'not_equal' operators). Set exactly one of value and string_value.
+     */
+    stringValue?: pulumi.Input<string | undefined>;
+    /**
+     * The numeric threshold value of this condition.
+     */
+    value?: pulumi.Input<number | undefined>;
+}
+
 export interface DashboardAlertEscalationTarget {
     /**
      * The Better Stack escalation policy ID.
@@ -308,6 +335,33 @@ export interface ErrorsApplicationCustomBucket {
      * Secret access key
      */
     secretAccessKey: pulumi.Input<string>;
+}
+
+export interface ExplorationAlertAdditionalCondition {
+    /**
+     * The type of this condition: 'threshold' or 'relative'. Anomaly detection is only available as the main alert condition.
+     */
+    alertType: pulumi.Input<string>;
+    /**
+     * The comparison operator. For threshold: 'equal', 'not_equal', 'higher_than', 'higher_than_or_equal', 'lower_than', 'lower_than_or_equal'. For relative: 'increases_by', 'decreases_by', 'changes_by'.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * Specific series this condition applies to. Conflicts with series_names_except; omit to apply to any series.
+     */
+    seriesNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Apply this condition to all series except these. Conflicts with series_names; omit to apply to any series.
+     */
+    seriesNamesExcepts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The string threshold value of this condition (only with 'equal' or 'not_equal' operators). Set exactly one of value and string_value.
+     */
+    stringValue?: pulumi.Input<string | undefined>;
+    /**
+     * The numeric threshold value of this condition.
+     */
+    value?: pulumi.Input<number | undefined>;
 }
 
 export interface ExplorationAlertEscalationTarget {

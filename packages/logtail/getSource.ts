@@ -50,10 +50,6 @@ export interface GetSourceResult {
     readonly teamName: string;
     readonly token: string;
     readonly updatedAt: string;
-    /**
-     * @deprecated Deprecated
-     */
-    readonly vrlTransformation: string;
     readonly vrlTransformationLogs: string;
     readonly vrlTransformationSpans: string;
 }

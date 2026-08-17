@@ -35,6 +35,10 @@ export class DashboardAlert extends pulumi.CustomResource {
     }
 
     /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    declare public readonly additionalConditions: pulumi.Output<outputs.DashboardAlertAdditionalCondition[] | undefined>;
+    /**
      * The data aggregation interval in seconds.
      */
     declare public readonly aggregationInterval: pulumi.Output<number>;
@@ -184,6 +188,7 @@ export class DashboardAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardAlertState | undefined;
+            resourceInputs["additionalConditions"] = state?.additionalConditions;
             resourceInputs["aggregationInterval"] = state?.aggregationInterval;
             resourceInputs["alertType"] = state?.alertType;
             resourceInputs["anomalySensitivity"] = state?.anomalySensitivity;
@@ -229,6 +234,7 @@ export class DashboardAlert extends pulumi.CustomResource {
             if (args?.dashboardId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardId'");
             }
+            resourceInputs["additionalConditions"] = args?.additionalConditions;
             resourceInputs["aggregationInterval"] = args?.aggregationInterval;
             resourceInputs["alertType"] = args?.alertType;
             resourceInputs["anomalySensitivity"] = args?.anomalySensitivity;
@@ -273,6 +279,10 @@ export class DashboardAlert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DashboardAlert resources.
  */
 export interface DashboardAlertState {
+    /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    additionalConditions?: pulumi.Input<pulumi.Input<inputs.DashboardAlertAdditionalCondition>[] | undefined>;
     /**
      * The data aggregation interval in seconds.
      */
@@ -415,6 +425,10 @@ export interface DashboardAlertState {
  * The set of arguments for constructing a DashboardAlert resource.
  */
 export interface DashboardAlertArgs {
+    /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    additionalConditions?: pulumi.Input<pulumi.Input<inputs.DashboardAlertAdditionalCondition>[] | undefined>;
     /**
      * The data aggregation interval in seconds.
      */

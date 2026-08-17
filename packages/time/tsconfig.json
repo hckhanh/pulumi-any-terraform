@@ -19,12 +19,15 @@
         "skipLibCheck": true
     },
     "files": [
+        "durationParse.ts",
         "index.ts",
         "offset.ts",
         "provider.ts",
+        "rfc3339Parse.ts",
         "rotating.ts",
         "sleep.ts",
         "static.ts",
+        "unixTimestampParse.ts",
         "utilities.ts"
     ]
 }

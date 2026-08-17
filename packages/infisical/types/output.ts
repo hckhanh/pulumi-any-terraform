@@ -949,9 +949,18 @@ export interface DynamicSecretKubernetesMetadata {
 
 export interface DynamicSecretMongoAtlasConfiguration {
     /**
-     * Admin user private API key
+     * Admin user private API key. This value is stored in the Terraform state; use<span pulumi-lang-nodejs=" adminPrivateKeyWo " pulumi-lang-dotnet=" AdminPrivateKeyWo " pulumi-lang-go=" adminPrivateKeyWo " pulumi-lang-python=" admin_private_key_wo " pulumi-lang-yaml=" adminPrivateKeyWo " pulumi-lang-java=" adminPrivateKeyWo " pulumi-lang-hcl=" admin_private_key_wo "> adminPrivateKeyWo </span>to keep it out of state. Exactly one of<span pulumi-lang-nodejs=" adminPrivateKey " pulumi-lang-dotnet=" AdminPrivateKey " pulumi-lang-go=" adminPrivateKey " pulumi-lang-python=" admin_private_key " pulumi-lang-yaml=" adminPrivateKey " pulumi-lang-java=" adminPrivateKey " pulumi-lang-hcl=" admin_private_key "> adminPrivateKey </span>or<span pulumi-lang-nodejs=" adminPrivateKeyWo " pulumi-lang-dotnet=" AdminPrivateKeyWo " pulumi-lang-go=" adminPrivateKeyWo " pulumi-lang-python=" admin_private_key_wo " pulumi-lang-yaml=" adminPrivateKeyWo " pulumi-lang-java=" adminPrivateKeyWo " pulumi-lang-hcl=" admin_private_key_wo "> adminPrivateKeyWo </span>must be set.
      */
-    adminPrivateKey: string;
+    adminPrivateKey?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Admin user private API key (write-only). This value is never stored in the Terraform state and can accept ephemeral values. Because it is not stored, changes to it are not detected; increment<span pulumi-lang-nodejs=" adminPrivateKeyWoVersion " pulumi-lang-dotnet=" AdminPrivateKeyWoVersion " pulumi-lang-go=" adminPrivateKeyWoVersion " pulumi-lang-python=" admin_private_key_wo_version " pulumi-lang-yaml=" adminPrivateKeyWoVersion " pulumi-lang-java=" adminPrivateKeyWoVersion " pulumi-lang-hcl=" admin_private_key_wo_version "> adminPrivateKeyWoVersion </span>to push a new value. Requires Terraform 1.11+.
+     */
+    adminPrivateKeyWo?: string;
+    /**
+     * The version of the<span pulumi-lang-nodejs=" adminPrivateKeyWo " pulumi-lang-dotnet=" AdminPrivateKeyWo " pulumi-lang-go=" adminPrivateKeyWo " pulumi-lang-python=" admin_private_key_wo " pulumi-lang-yaml=" adminPrivateKeyWo " pulumi-lang-java=" adminPrivateKeyWo " pulumi-lang-hcl=" admin_private_key_wo "> adminPrivateKeyWo </span>value. Increment this to trigger an update of the private key.
+     */
+    adminPrivateKeyWoVersion?: number;
     /**
      * Admin user public API key
      */
@@ -1069,13 +1078,22 @@ export interface DynamicSecretSqlDatabaseConfiguration {
      */
     host: string;
     /**
-     * The password to use to connect to the database.
+     * The password to use to connect to the database. This value is stored in the Terraform state; use<span pulumi-lang-nodejs=" passwordWo " pulumi-lang-dotnet=" PasswordWo " pulumi-lang-go=" passwordWo " pulumi-lang-python=" password_wo " pulumi-lang-yaml=" passwordWo " pulumi-lang-java=" passwordWo " pulumi-lang-hcl=" password_wo "> passwordWo </span>to keep it out of state. Exactly one of password or<span pulumi-lang-nodejs=" passwordWo " pulumi-lang-dotnet=" PasswordWo " pulumi-lang-go=" passwordWo " pulumi-lang-python=" password_wo " pulumi-lang-yaml=" passwordWo " pulumi-lang-java=" passwordWo " pulumi-lang-hcl=" password_wo "> passwordWo </span>must be set.
      */
-    password: string;
+    password?: string;
     /**
      * The password requirements to use to create the dynamic secret lease.
      */
     passwordRequirements?: outputs.DynamicSecretSqlDatabaseConfigurationPasswordRequirements;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password to use to connect to the database (write-only). This value is never stored in the Terraform state and can accept ephemeral values. Because it is not stored, changes to it are not detected; increment<span pulumi-lang-nodejs=" passwordWoVersion " pulumi-lang-dotnet=" PasswordWoVersion " pulumi-lang-go=" passwordWoVersion " pulumi-lang-python=" password_wo_version " pulumi-lang-yaml=" passwordWoVersion " pulumi-lang-java=" passwordWoVersion " pulumi-lang-hcl=" password_wo_version "> passwordWoVersion </span>to push a new value. Requires Terraform 1.11+.
+     */
+    passwordWo?: string;
+    /**
+     * The version of the<span pulumi-lang-nodejs=" passwordWo " pulumi-lang-dotnet=" PasswordWo " pulumi-lang-go=" passwordWo " pulumi-lang-python=" password_wo " pulumi-lang-yaml=" passwordWo " pulumi-lang-java=" passwordWo " pulumi-lang-hcl=" password_wo "> passwordWo </span>value. Increment this to trigger an update of the password.
+     */
+    passwordWoVersion?: number;
     /**
      * The port of the database server.
      */

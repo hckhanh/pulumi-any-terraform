@@ -74,7 +74,7 @@ Object.defineProperty(exports, "apiTimeout", {
 });
 
 /**
- * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team.
+ * Better Stack Uptime API token. The value can be omitted if `BETTERUPTIME_API_TOKEN` environment variable is set. See https://betterstack.com/docs/uptime/api/getting-started-with-uptime-api/#obtaining-an-uptime-api-token on how to obtain the API token for your team. Managing a <span pulumi-lang-nodejs="`better-uptime.TeamMember`" pulumi-lang-dotnet="`better-uptime.TeamMember`" pulumi-lang-go="`TeamMember`" pulumi-lang-python="`TeamMember`" pulumi-lang-yaml="`better-uptime.TeamMember`" pulumi-lang-java="`better-uptime.TeamMember`" pulumi-lang-hcl="`betteruptime_team_member`">`better-uptime.TeamMember`</span> whose role is <span pulumi-lang-nodejs="`billingAdmin`" pulumi-lang-dotnet="`BillingAdmin`" pulumi-lang-go="`billingAdmin`" pulumi-lang-python="`billing_admin`" pulumi-lang-yaml="`billingAdmin`" pulumi-lang-java="`billingAdmin`" pulumi-lang-hcl="`billing_admin`">`billingAdmin`</span> requires a global API token rather than a team-scoped one.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {

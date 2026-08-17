@@ -65,9 +65,17 @@ export class Insight extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
+     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`). Mutually exclusive with <span pulumi-lang-nodejs="`querySql`" pulumi-lang-dotnet="`QuerySql`" pulumi-lang-go="`querySql`" pulumi-lang-python="`query_sql`" pulumi-lang-yaml="`querySql`" pulumi-lang-java="`querySql`" pulumi-lang-hcl="`query_sql`">`querySql`</span>; exactly one must be set.
      */
-    declare public readonly queryJson: pulumi.Output<string>;
+    declare public readonly queryJson: pulumi.Output<string | undefined>;
+    /**
+     * Raw HogQL SQL for the insight (for example `SELECT count() FROM events`). The provider wraps it in a `DataVisualizationNode`/`HogQLQuery` query. Use `file("queries/x.sql")` to load from a `.sql` file. Mutually exclusive with <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span>; exactly one must be set. For chart or column display options, use <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span> instead.
+     */
+    declare public readonly querySql: pulumi.Output<string | undefined>;
+    /**
+     * Short ID of the insight (the value shown in the insight's URL). Use this with the <span pulumi-lang-nodejs="`posthog.Insight`" pulumi-lang-dotnet="`posthog.Insight`" pulumi-lang-go="`Insight`" pulumi-lang-python="`Insight`" pulumi-lang-yaml="`posthog.Insight`" pulumi-lang-java="`posthog.Insight`" pulumi-lang-hcl="`posthog_insight`">`posthog.Insight`</span> data source to look up the insight.
+     */
+    declare public /*out*/ readonly shortId: pulumi.Output<string>;
     /**
      * List of tags to apply to the insight.
      */
@@ -80,7 +88,7 @@ export class Insight extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InsightArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: InsightArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InsightArgs | InsightState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -95,12 +103,11 @@ export class Insight extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["queryJson"] = state?.queryJson;
+            resourceInputs["querySql"] = state?.querySql;
+            resourceInputs["shortId"] = state?.shortId;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as InsightArgs | undefined;
-            if (args?.queryJson === undefined && !opts.urn) {
-                throw new Error("Missing required property 'queryJson'");
-            }
             resourceInputs["createInFolder"] = args?.createInFolder;
             resourceInputs["dashboardIds"] = args?.dashboardIds;
             resourceInputs["deleted"] = args?.deleted;
@@ -109,8 +116,10 @@ export class Insight extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["queryJson"] = args?.queryJson;
+            resourceInputs["querySql"] = args?.querySql;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["insightId"] = undefined /*out*/;
+            resourceInputs["shortId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Insight.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -154,9 +163,17 @@ export interface InsightState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
+     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`). Mutually exclusive with <span pulumi-lang-nodejs="`querySql`" pulumi-lang-dotnet="`QuerySql`" pulumi-lang-go="`querySql`" pulumi-lang-python="`query_sql`" pulumi-lang-yaml="`querySql`" pulumi-lang-java="`querySql`" pulumi-lang-hcl="`query_sql`">`querySql`</span>; exactly one must be set.
      */
     queryJson?: pulumi.Input<string | undefined>;
+    /**
+     * Raw HogQL SQL for the insight (for example `SELECT count() FROM events`). The provider wraps it in a `DataVisualizationNode`/`HogQLQuery` query. Use `file("queries/x.sql")` to load from a `.sql` file. Mutually exclusive with <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span>; exactly one must be set. For chart or column display options, use <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span> instead.
+     */
+    querySql?: pulumi.Input<string | undefined>;
+    /**
+     * Short ID of the insight (the value shown in the insight's URL). Use this with the <span pulumi-lang-nodejs="`posthog.Insight`" pulumi-lang-dotnet="`posthog.Insight`" pulumi-lang-go="`Insight`" pulumi-lang-python="`Insight`" pulumi-lang-yaml="`posthog.Insight`" pulumi-lang-java="`posthog.Insight`" pulumi-lang-hcl="`posthog_insight`">`posthog.Insight`</span> data source to look up the insight.
+     */
+    shortId?: pulumi.Input<string | undefined>;
     /**
      * List of tags to apply to the insight.
      */
@@ -196,9 +213,13 @@ export interface InsightArgs {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`).
+     * Raw JSON serialized query payload accepted by PostHog (for example an `InsightVizNode` with a `TrendsQuery`). Mutually exclusive with <span pulumi-lang-nodejs="`querySql`" pulumi-lang-dotnet="`QuerySql`" pulumi-lang-go="`querySql`" pulumi-lang-python="`query_sql`" pulumi-lang-yaml="`querySql`" pulumi-lang-java="`querySql`" pulumi-lang-hcl="`query_sql`">`querySql`</span>; exactly one must be set.
      */
-    queryJson: pulumi.Input<string>;
+    queryJson?: pulumi.Input<string | undefined>;
+    /**
+     * Raw HogQL SQL for the insight (for example `SELECT count() FROM events`). The provider wraps it in a `DataVisualizationNode`/`HogQLQuery` query. Use `file("queries/x.sql")` to load from a `.sql` file. Mutually exclusive with <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span>; exactly one must be set. For chart or column display options, use <span pulumi-lang-nodejs="`queryJson`" pulumi-lang-dotnet="`QueryJson`" pulumi-lang-go="`queryJson`" pulumi-lang-python="`query_json`" pulumi-lang-yaml="`queryJson`" pulumi-lang-java="`queryJson`" pulumi-lang-hcl="`query_json`">`queryJson`</span> instead.
+     */
+    querySql?: pulumi.Input<string | undefined>;
     /**
      * List of tags to apply to the insight.
      */

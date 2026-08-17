@@ -61,7 +61,7 @@ export class Static extends pulumi.CustomResource {
      */
     declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`" pulumi-lang-hcl="`1581489373`">`1581489373`</span>.
      */
     declare public /*out*/ readonly unix: pulumi.Output<number>;
     /**
@@ -141,7 +141,7 @@ export interface StaticState {
      */
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`">`1581489373`</span>.
+     * Number of seconds since epoch time, e.g. <span pulumi-lang-nodejs="`1581489373`" pulumi-lang-dotnet="`1581489373`" pulumi-lang-go="`1581489373`" pulumi-lang-python="`1581489373`" pulumi-lang-yaml="`1581489373`" pulumi-lang-java="`1581489373`" pulumi-lang-hcl="`1581489373`">`1581489373`</span>.
      */
     unix?: pulumi.Input<number | undefined>;
     /**

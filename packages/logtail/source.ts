@@ -191,19 +191,13 @@ export class Source extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
-     *
-     * @deprecated Deprecated
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged (reading back whatever is configured, including platform defaults); set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    declare public readonly vrlTransformation: pulumi.Output<string | undefined>;
+    declare public readonly vrlTransformationLogs: pulumi.Output<string>;
     /**
-     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
-    declare public readonly vrlTransformationLogs: pulumi.Output<string | undefined>;
-    /**
-     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
-     */
-    declare public readonly vrlTransformationSpans: pulumi.Output<string | undefined>;
+    declare public readonly vrlTransformationSpans: pulumi.Output<string>;
 
     /**
      * Create a Source resource with the given unique name, arguments, and options.
@@ -243,7 +237,6 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["teamName"] = state?.teamName;
             resourceInputs["token"] = state?.token;
             resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["vrlTransformation"] = state?.vrlTransformation;
             resourceInputs["vrlTransformationLogs"] = state?.vrlTransformationLogs;
             resourceInputs["vrlTransformationSpans"] = state?.vrlTransformationSpans;
         } else {
@@ -270,7 +263,6 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["skipSslVerify"] = args?.skipSslVerify;
             resourceInputs["sourceGroupId"] = args?.sourceGroupId;
             resourceInputs["teamName"] = args?.teamName;
-            resourceInputs["vrlTransformation"] = args?.vrlTransformation;
             resourceInputs["vrlTransformationLogs"] = args?.vrlTransformationLogs;
             resourceInputs["vrlTransformationSpans"] = args?.vrlTransformationSpans;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -448,17 +440,11 @@ export interface SourceState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
-     *
-     * @deprecated Deprecated
-     */
-    vrlTransformation?: pulumi.Input<string | undefined>;
-    /**
-     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged (reading back whatever is configured, including platform defaults); set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformationLogs?: pulumi.Input<string | undefined>;
     /**
-     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformationSpans?: pulumi.Input<string | undefined>;
 }
@@ -600,17 +586,11 @@ export interface SourceArgs {
      */
     teamName?: pulumi.Input<string | undefined>;
     /**
-     * Deprecated alias for <span pulumi-lang-nodejs="`vrlTransformationLogs`" pulumi-lang-dotnet="`VrlTransformationLogs`" pulumi-lang-go="`vrlTransformationLogs`" pulumi-lang-python="`vrl_transformation_logs`" pulumi-lang-yaml="`vrlTransformationLogs`" pulumi-lang-java="`vrlTransformationLogs`" pulumi-lang-hcl="`vrl_transformation_logs`">`vrlTransformationLogs`</span>. VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
-     *
-     * @deprecated Deprecated
-     */
-    vrlTransformation?: pulumi.Input<string | undefined>;
-    /**
-     * VRL transformation applied to logs on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation applied to logs on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged (reading back whatever is configured, including platform defaults); set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformationLogs?: pulumi.Input<string | undefined>;
     /**
-     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
+     * VRL transformation applied to traces (spans) on Better Stack's servers during ingestion. Leave unset to keep the transformation unmanaged; set to an empty string to remove it. Read more about [VRL transformations](https://betterstack.com/docs/logs/using-logtail/transforming-ingested-data/logs-vrl/).
      */
     vrlTransformationSpans?: pulumi.Input<string | undefined>;
 }

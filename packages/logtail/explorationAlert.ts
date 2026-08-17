@@ -35,6 +35,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
     }
 
     /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    declare public readonly additionalConditions: pulumi.Output<outputs.ExplorationAlertAdditionalCondition[] | undefined>;
+    /**
      * The data aggregation interval in seconds.
      */
     declare public readonly aggregationInterval: pulumi.Output<number>;
@@ -180,6 +184,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExplorationAlertState | undefined;
+            resourceInputs["additionalConditions"] = state?.additionalConditions;
             resourceInputs["aggregationInterval"] = state?.aggregationInterval;
             resourceInputs["alertType"] = state?.alertType;
             resourceInputs["anomalySensitivity"] = state?.anomalySensitivity;
@@ -221,6 +226,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             if (args?.explorationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'explorationId'");
             }
+            resourceInputs["additionalConditions"] = args?.additionalConditions;
             resourceInputs["aggregationInterval"] = args?.aggregationInterval;
             resourceInputs["alertType"] = args?.alertType;
             resourceInputs["anomalySensitivity"] = args?.anomalySensitivity;
@@ -264,6 +270,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ExplorationAlert resources.
  */
 export interface ExplorationAlertState {
+    /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    additionalConditions?: pulumi.Input<pulumi.Input<inputs.ExplorationAlertAdditionalCondition>[] | undefined>;
     /**
      * The data aggregation interval in seconds.
      */
@@ -402,6 +412,10 @@ export interface ExplorationAlertState {
  * The set of arguments for constructing a ExplorationAlert resource.
  */
 export interface ExplorationAlertArgs {
+    /**
+     * Additional conditions that must all be met together with the main alert condition for the alert to fire (logical AND, evaluated per series on the same time bucket). Up to 4 additional conditions; 'threshold' and 'relative' types only.
+     */
+    additionalConditions?: pulumi.Input<pulumi.Input<inputs.ExplorationAlertAdditionalCondition>[] | undefined>;
     /**
      * The data aggregation interval in seconds.
      */

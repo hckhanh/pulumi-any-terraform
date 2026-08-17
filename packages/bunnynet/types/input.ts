@@ -679,10 +679,6 @@ export interface PullzoneShieldDdos {
      * Options: `Asleep`, `Extreme`, `High`, `Low`, `Medium`
      */
     level: pulumi.Input<string>;
-    /**
-     * Indicates the mode the engine is running. Options: `Block`, `Log`
-     */
-    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneShieldWaf {

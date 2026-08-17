@@ -32,6 +32,36 @@ export interface DashboardLayoutTile {
     tileId?: pulumi.Input<number | undefined>;
 }
 
+export interface ExperimentStatus {
+    /**
+     * Desired lifecycle state — one of <span pulumi-lang-nodejs="`draft`" pulumi-lang-dotnet="`Draft`" pulumi-lang-go="`draft`" pulumi-lang-python="`draft`" pulumi-lang-yaml="`draft`" pulumi-lang-java="`draft`" pulumi-lang-hcl="`draft`">`draft`</span>, <span pulumi-lang-nodejs="`running`" pulumi-lang-dotnet="`Running`" pulumi-lang-go="`running`" pulumi-lang-python="`running`" pulumi-lang-yaml="`running`" pulumi-lang-java="`running`" pulumi-lang-hcl="`running`">`running`</span>, <span pulumi-lang-nodejs="`paused`" pulumi-lang-dotnet="`Paused`" pulumi-lang-go="`paused`" pulumi-lang-python="`paused`" pulumi-lang-yaml="`paused`" pulumi-lang-java="`paused`" pulumi-lang-hcl="`paused`">`paused`</span>, or <span pulumi-lang-nodejs="`stopped`" pulumi-lang-dotnet="`Stopped`" pulumi-lang-go="`stopped`" pulumi-lang-python="`stopped`" pulumi-lang-yaml="`stopped`" pulumi-lang-java="`stopped`" pulumi-lang-hcl="`stopped`">`stopped`</span> (required; use <span pulumi-lang-nodejs="`draft`" pulumi-lang-dotnet="`Draft`" pulumi-lang-go="`draft`" pulumi-lang-python="`draft`" pulumi-lang-yaml="`draft`" pulumi-lang-java="`draft`" pulumi-lang-hcl="`draft`">`draft`</span> for a not-yet-launched experiment). The lifecycle is forward-only.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Metadata applied when stopping the experiment (read only when `state = "stopped"`, ignored otherwise).
+     */
+    stopped?: pulumi.Input<inputs.ExperimentStatusStopped | undefined>;
+}
+
+export interface ExperimentStatusStopped {
+    /**
+     * Conclusion recorded when the experiment is stopped — one of <span pulumi-lang-nodejs="`won`" pulumi-lang-dotnet="`Won`" pulumi-lang-go="`won`" pulumi-lang-python="`won`" pulumi-lang-yaml="`won`" pulumi-lang-java="`won`" pulumi-lang-hcl="`won`">`won`</span>, <span pulumi-lang-nodejs="`lost`" pulumi-lang-dotnet="`Lost`" pulumi-lang-go="`lost`" pulumi-lang-python="`lost`" pulumi-lang-yaml="`lost`" pulumi-lang-java="`lost`" pulumi-lang-hcl="`lost`">`lost`</span>, <span pulumi-lang-nodejs="`inconclusive`" pulumi-lang-dotnet="`Inconclusive`" pulumi-lang-go="`inconclusive`" pulumi-lang-python="`inconclusive`" pulumi-lang-yaml="`inconclusive`" pulumi-lang-java="`inconclusive`" pulumi-lang-hcl="`inconclusive`">`inconclusive`</span>, <span pulumi-lang-nodejs="`stoppedEarly`" pulumi-lang-dotnet="`StoppedEarly`" pulumi-lang-go="`stoppedEarly`" pulumi-lang-python="`stopped_early`" pulumi-lang-yaml="`stoppedEarly`" pulumi-lang-java="`stoppedEarly`" pulumi-lang-hcl="`stopped_early`">`stoppedEarly`</span>, <span pulumi-lang-nodejs="`invalid`" pulumi-lang-dotnet="`Invalid`" pulumi-lang-go="`invalid`" pulumi-lang-python="`invalid`" pulumi-lang-yaml="`invalid`" pulumi-lang-java="`invalid`" pulumi-lang-hcl="`invalid`">`invalid`</span>. Fully managed: applied at stop time and editable afterwards (an edit on an already-stopped experiment is PATCHed and read back).
+     */
+    conclusion?: pulumi.Input<string | undefined>;
+    /**
+     * Free-text note recorded alongside the conclusion. Fully managed (sent on stop/update and read back).
+     */
+    conclusionComment?: pulumi.Input<string | undefined>;
+    /**
+     * When shipping, prepend a catch-all release condition (roll out to everyone) instead of only flipping the variant distribution. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>. Config-only.
+     */
+    releaseToEveryone?: pulumi.Input<boolean | undefined>;
+    /**
+     * Key of the winning variant to ship. Rewrites the linked flag's distribution so this variant gets 100% and ends the experiment. If the flag is managed by a <span pulumi-lang-nodejs="`posthog.FeatureFlag`" pulumi-lang-dotnet="`posthog.FeatureFlag`" pulumi-lang-go="`FeatureFlag`" pulumi-lang-python="`FeatureFlag`" pulumi-lang-yaml="`posthog.FeatureFlag`" pulumi-lang-java="`posthog.FeatureFlag`" pulumi-lang-hcl="`posthog_feature_flag`">`posthog.FeatureFlag`</span> resource, set `lifecycle {<span pulumi-lang-nodejs=" ignoreChanges " pulumi-lang-dotnet=" IgnoreChanges " pulumi-lang-go=" ignoreChanges " pulumi-lang-python=" ignore_changes " pulumi-lang-yaml=" ignoreChanges " pulumi-lang-java=" ignoreChanges " pulumi-lang-hcl=" ignore_changes "> ignoreChanges </span>= [filters] }` on it so it does not revert the shipped distribution. Config-only; re-ships only when this value changes; clearing it does not un-ship.
+     */
+    shipVariant?: pulumi.Input<string | undefined>;
+}
+
 export interface ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig {
     /**
      * Whether to record the bodies of network requests in session replay.

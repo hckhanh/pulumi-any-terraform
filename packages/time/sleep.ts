@@ -33,11 +33,11 @@ export class Sleep extends pulumi.CustomResource {
     }
 
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
     declare public readonly createDuration: pulumi.Output<string | undefined>;
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
     declare public readonly destroyDuration: pulumi.Output<string | undefined>;
     /**
@@ -77,11 +77,11 @@ export class Sleep extends pulumi.CustomResource {
  */
 export interface SleepState {
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
     createDuration?: pulumi.Input<string | undefined>;
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
     destroyDuration?: pulumi.Input<string | undefined>;
     /**
@@ -95,11 +95,11 @@ export interface SleepState {
  */
 export interface SleepArgs {
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource creation. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay.
      */
     createDuration?: pulumi.Input<string | undefined>;
     /**
-     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
+     * [Time duration](https://golang.org/pkg/time/#ParseDuration) to delay resource destroy. For example, <span pulumi-lang-nodejs="`30s`" pulumi-lang-dotnet="`30s`" pulumi-lang-go="`30s`" pulumi-lang-python="`30s`" pulumi-lang-yaml="`30s`" pulumi-lang-java="`30s`" pulumi-lang-hcl="`30s`">`30s`</span> for 30 seconds or <span pulumi-lang-nodejs="`5m`" pulumi-lang-dotnet="`5m`" pulumi-lang-go="`5m`" pulumi-lang-python="`5m`" pulumi-lang-yaml="`5m`" pulumi-lang-java="`5m`" pulumi-lang-hcl="`5m`">`5m`</span> for 5 minutes. Updating this value by itself will not trigger a delay. This value or any updates to it must be successfully applied into the Terraform state before destroying this resource to take effect.
      */
     destroyDuration?: pulumi.Input<string | undefined>;
     /**

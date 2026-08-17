@@ -78,6 +78,14 @@ export class ProjectSettings extends pulumi.CustomResource {
      * Whether surveys are enabled.
      */
     declare public readonly surveysOptIn: pulumi.Output<boolean>;
+    /**
+     * The **internal and test users** filter list as a JSON array of filter objects — the definition every managed insight and hog function references through <span pulumi-lang-nodejs="`filterTestAccounts`" pulumi-lang-dotnet="`FilterTestAccounts`" pulumi-lang-go="`filterTestAccounts`" pulumi-lang-python="`filter_test_accounts`" pulumi-lang-yaml="`filterTestAccounts`" pulumi-lang-java="`filterTestAccounts`" pulumi-lang-hcl="`filter_test_accounts`">`filterTestAccounts`</span>. Managing it here makes that shared definition owned by Terraform, so a UI edit surfaces as drift instead of silently changing what all filtered insights measure. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. A filter object may reference a cohort (`{"key":"id","type":"cohort","value":<cohort_id>,"operator":"in"}`); PostHog injects a read-only <span pulumi-lang-nodejs="`cohortName`" pulumi-lang-dotnet="`CohortName`" pulumi-lang-go="`cohortName`" pulumi-lang-python="`cohort_name`" pulumi-lang-yaml="`cohortName`" pulumi-lang-java="`cohortName`" pulumi-lang-hcl="`cohort_name`">`cohortName`</span> into such objects, which this provider strips from state so the filter round-trips without a perpetual diff.
+     */
+    declare public readonly testAccountFilters: pulumi.Output<string>;
+    /**
+     * Whether the **internal and test users** filters (<span pulumi-lang-nodejs="`testAccountFilters`" pulumi-lang-dotnet="`TestAccountFilters`" pulumi-lang-go="`testAccountFilters`" pulumi-lang-python="`test_account_filters`" pulumi-lang-yaml="`testAccountFilters`" pulumi-lang-java="`testAccountFilters`" pulumi-lang-hcl="`test_account_filters`">`testAccountFilters`</span>) are applied by default across the project. PostHog may report this as null until it is first set.
+     */
+    declare public readonly testAccountFiltersDefaultChecked: pulumi.Output<boolean>;
 
     /**
      * Create a ProjectSettings resource with the given unique name, arguments, and options.
@@ -103,6 +111,8 @@ export class ProjectSettings extends pulumi.CustomResource {
             resourceInputs["sessionRecordingNetworkPayloadCaptureConfig"] = state?.sessionRecordingNetworkPayloadCaptureConfig;
             resourceInputs["sessionRecordingOptIn"] = state?.sessionRecordingOptIn;
             resourceInputs["surveysOptIn"] = state?.surveysOptIn;
+            resourceInputs["testAccountFilters"] = state?.testAccountFilters;
+            resourceInputs["testAccountFiltersDefaultChecked"] = state?.testAccountFiltersDefaultChecked;
         } else {
             const args = argsOrState as ProjectSettingsArgs | undefined;
             resourceInputs["appUrls"] = args?.appUrls;
@@ -116,6 +126,8 @@ export class ProjectSettings extends pulumi.CustomResource {
             resourceInputs["sessionRecordingNetworkPayloadCaptureConfig"] = args?.sessionRecordingNetworkPayloadCaptureConfig;
             resourceInputs["sessionRecordingOptIn"] = args?.sessionRecordingOptIn;
             resourceInputs["surveysOptIn"] = args?.surveysOptIn;
+            resourceInputs["testAccountFilters"] = args?.testAccountFilters;
+            resourceInputs["testAccountFiltersDefaultChecked"] = args?.testAccountFiltersDefaultChecked;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectSettings.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -170,6 +182,14 @@ export interface ProjectSettingsState {
      * Whether surveys are enabled.
      */
     surveysOptIn?: pulumi.Input<boolean | undefined>;
+    /**
+     * The **internal and test users** filter list as a JSON array of filter objects — the definition every managed insight and hog function references through <span pulumi-lang-nodejs="`filterTestAccounts`" pulumi-lang-dotnet="`FilterTestAccounts`" pulumi-lang-go="`filterTestAccounts`" pulumi-lang-python="`filter_test_accounts`" pulumi-lang-yaml="`filterTestAccounts`" pulumi-lang-java="`filterTestAccounts`" pulumi-lang-hcl="`filter_test_accounts`">`filterTestAccounts`</span>. Managing it here makes that shared definition owned by Terraform, so a UI edit surfaces as drift instead of silently changing what all filtered insights measure. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. A filter object may reference a cohort (`{"key":"id","type":"cohort","value":<cohort_id>,"operator":"in"}`); PostHog injects a read-only <span pulumi-lang-nodejs="`cohortName`" pulumi-lang-dotnet="`CohortName`" pulumi-lang-go="`cohortName`" pulumi-lang-python="`cohort_name`" pulumi-lang-yaml="`cohortName`" pulumi-lang-java="`cohortName`" pulumi-lang-hcl="`cohort_name`">`cohortName`</span> into such objects, which this provider strips from state so the filter round-trips without a perpetual diff.
+     */
+    testAccountFilters?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the **internal and test users** filters (<span pulumi-lang-nodejs="`testAccountFilters`" pulumi-lang-dotnet="`TestAccountFilters`" pulumi-lang-go="`testAccountFilters`" pulumi-lang-python="`test_account_filters`" pulumi-lang-yaml="`testAccountFilters`" pulumi-lang-java="`testAccountFilters`" pulumi-lang-hcl="`test_account_filters`">`testAccountFilters`</span>) are applied by default across the project. PostHog may report this as null until it is first set.
+     */
+    testAccountFiltersDefaultChecked?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -220,4 +240,12 @@ export interface ProjectSettingsArgs {
      * Whether surveys are enabled.
      */
     surveysOptIn?: pulumi.Input<boolean | undefined>;
+    /**
+     * The **internal and test users** filter list as a JSON array of filter objects — the definition every managed insight and hog function references through <span pulumi-lang-nodejs="`filterTestAccounts`" pulumi-lang-dotnet="`FilterTestAccounts`" pulumi-lang-go="`filterTestAccounts`" pulumi-lang-python="`filter_test_accounts`" pulumi-lang-yaml="`filterTestAccounts`" pulumi-lang-java="`filterTestAccounts`" pulumi-lang-hcl="`filter_test_accounts`">`filterTestAccounts`</span>. Managing it here makes that shared definition owned by Terraform, so a UI edit surfaces as drift instead of silently changing what all filtered insights measure. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. A filter object may reference a cohort (`{"key":"id","type":"cohort","value":<cohort_id>,"operator":"in"}`); PostHog injects a read-only <span pulumi-lang-nodejs="`cohortName`" pulumi-lang-dotnet="`CohortName`" pulumi-lang-go="`cohortName`" pulumi-lang-python="`cohort_name`" pulumi-lang-yaml="`cohortName`" pulumi-lang-java="`cohortName`" pulumi-lang-hcl="`cohort_name`">`cohortName`</span> into such objects, which this provider strips from state so the filter round-trips without a perpetual diff.
+     */
+    testAccountFilters?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the **internal and test users** filters (<span pulumi-lang-nodejs="`testAccountFilters`" pulumi-lang-dotnet="`TestAccountFilters`" pulumi-lang-go="`testAccountFilters`" pulumi-lang-python="`test_account_filters`" pulumi-lang-yaml="`testAccountFilters`" pulumi-lang-java="`testAccountFilters`" pulumi-lang-hcl="`test_account_filters`">`testAccountFilters`</span>) are applied by default across the project. PostHog may report this as null until it is first set.
+     */
+    testAccountFiltersDefaultChecked?: pulumi.Input<boolean | undefined>;
 }
