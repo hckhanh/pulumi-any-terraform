@@ -30,7 +30,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
-          version: 11.21.0
+          version: 11.22.0
           runtime: node@24.19.0
           cache: true
       - name: Setup Aikido Safe Chain
