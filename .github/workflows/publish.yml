@@ -1,3 +1,5 @@
+# This workflow is managed by gh actions-lock.
+
 name: Publish
 
 on:
@@ -29,22 +31,22 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           filter: tree:0
       - name: Setup pnpm
-        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
+        uses: pnpm/setup@v2.0.2
         with:
           version: 11.22.0
           runtime: node@24.19.0
           cache: true
       - name: Setup Aikido Safe Chain
-        uses: ./.github/actions/setup-safe-chain
+        uses: $/.github/actions/setup-safe-chain
       - name: Update npm
         run: npm install -g npm@11.19.0
       - name: Publish to npm
-        uses: changesets/action@8488615a623b1b9c987934bb89eae8af6a946ac1 # v2.1.1
+        uses: changesets/action@v2.1.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore(release): release packages'

@@ -22,6 +22,7 @@ class LinterPlugin extends Plugin {
                 'root:syncpack:lint',
                 'root:syncpack:format:check',
                 'root:actionlint',
+                'root:actions-lock',
                 'root:zizmor',
               ],
               metadata: {

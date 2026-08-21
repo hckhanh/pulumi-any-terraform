@@ -16,7 +16,15 @@
   ],
   "postUpdateOptions": ["pnpmDedupe"],
   "timezone": "Asia/Ho_Chi_Minh",
+  "constraints": {
+    "ghActionsLock": "v0.1.6"
+  },
   "packageRules": [
+    {
+      "description": "Prefer tag refs; Renovate regenerates actions.lock (SHA pins) after github-actions updates",
+      "matchManagers": ["github-actions"],
+      "pinDigests": false
+    },
     {
       "groupName": "fumadocs monorepo",
       "matchPackageNames": ["/^fumadocs-/"],

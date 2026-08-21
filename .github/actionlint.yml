@@ -1,0 +1,6 @@
+# actionlint does not yet understand GitHub's self-repository `$/` syntax
+# (used by `gh actions-lock` for in-repo composite actions).
+paths:
+  .github/workflows/**/*.{yml,yaml}:
+    ignore:
+      - 'specifying action "\$/\.github/actions/.+" in invalid format because ref is missing'
