@@ -1,3 +1,47 @@
+## 0.20.0
+
+### Minor Changes
+
+- feat: add project-scoped identity resource and related examples by @victorvhs017 in https://github.com/Infisical/terraform-provider-infisical/pull/312
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.17.0...v0.18.0
+
+- feat: add basic_constraints and extra subject types by @carlosmonastyrski in https://github.com/Infisical/terraform-provider-infisical/pull/317
+- feat: new resource to add datadog app connections by @adilsitos in https://github.com/Infisical/terraform-provider-infisical/pull/323
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.1...v0.19.2
+
+### Patch Changes
+
+- feat(project_group): support custom role slugs in project group resource by @victorvhs017 in https://github.com/Infisical/terraform-provider-infisical/pull/307
+- feat(datasource): add data sources for project environment, identity, role and user by @stefan-fast in https://github.com/Infisical/terraform-provider-infisical/pull/297
+- feat(data-source): list projects by @adilsitos in https://github.com/Infisical/terraform-provider-infisical/pull/309
+
+#### New Contributors
+
+- @stefan-fast made their first contribution in https://github.com/Infisical/terraform-provider-infisical/pull/297
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.16.34...v0.16.35
+
+- feat: add domain_component to PKI resources by @carlosmonastyrski in https://github.com/Infisical/terraform-provider-infisical/pull/324
+- feat(resource): add adopt_existing flag to infisical_project_identity to adopt auto-created admin by @stefan-fast in https://github.com/Infisical/terraform-provider-infisical/pull/298
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.3...v0.19.4
+
+- fix: crossplane build by @mathnogueira in https://github.com/Infisical/terraform-provider-infisical/pull/330
+- improvement(secret-syncs): add support for user region defined replication policy on GCP by @adilsitos in https://github.com/Infisical/terraform-provider-infisical/pull/328
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.5...v0.19.6
+
+- feat: add resource for AWS Certificate Manager sync by @carlosmonastyrski in https://github.com/Infisical/terraform-provider-infisical/pull/332
+- feat: add infisical_alert resource by @Thiago-AS in https://github.com/Infisical/terraform-provider-infisical/pull/342
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.9...v0.19.20
+
+- fix: explicit sequence and approval steps by @mathnogueira in https://github.com/Infisical/terraform-provider-infisical/pull/347
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.22...v0.19.23
+
 ## 0.19.0
 
 ### Minor Changes

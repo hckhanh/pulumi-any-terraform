@@ -1,3 +1,13 @@
+## 0.14.1
+
+### Patch Changes
+
+#### 0.14.1 (August 14, 2026)
+
+NOTES:
+
+- Dependency updates ([hashicorp/terraform-provider-time#498](https://github.com/hashicorp/terraform-provider-time/issues/498))
+
 ## 0.14.0
 
 ### Minor Changes
