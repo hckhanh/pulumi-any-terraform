@@ -1,3 +1,79 @@
+## 1.28.0
+
+### Minor Changes
+
+#### Highlights
+
+- **Kubernetes brownfield adoption** - `terraform import` and drift/deletion
+  detection are now available for all 17 Kubernetes resources.
+- **Fix:** `portainer_stack` Kubernetes deployments no longer fail with
+  `Object not found (key=0)` after a successful create (portainer/terraform-provider-portainer#130).
+
+#### Added
+
+- Read + `Importer` implemented for all 17 Kubernetes resources: `application`,
+  `clusterrole`, `clusterrolebinding`, `configmap`, `cronjob`, `helm`, `ingress`,
+  `job`, `namespace`, `namespace_system`, `role`, `rolebinding`, `secret`,
+  `service`, `serviceaccount`, `storage`, `volume`. This enables importing
+  existing infrastructure and detects out-of-band deletion (404 → resource is
+  recreated on the next plan). A shared `k8sConfirmExistsByGET` helper backs the
+  13 manifest-based resources.
+
+#### Fixed
+
+- `portainer_stack` with `deployment_type = "kubernetes"` failed during the
+  finalize step with `404 Object not found (key=0)` when Portainer's create
+  response did not include a usable stack `Id` (observed on Portainer 2.21.x).
+  The provider now resolves the real stack ID by name + endpoint before
+  finalizing.
+
+#### Changed
+
+- Bump `go.mongodb.org/mongo-driver` 1.17.6 -> 1.17.7.
+
+#### Upgrade notes
+
+- `Read` for the Kubernetes resources intentionally does **not** refresh the
+  authored `manifest` / `values` / spec fields (the K8s API returns
+  server-expanded objects that would cause permanent diffs and, since Update is
+  delete+recreate, churn workloads). After `terraform import`, set those fields
+  in config to match the live object, otherwise the next apply will recreate it.
+  Per-resource import IDs and the fields you must set are documented in each
+  resource's docs page.
+
+#### Bug Fixes
+
+- **`portainer_stack`: honor `active = false` on create (portainer/terraform-provider-portainer#134)** — a stack created
+  with `active = false` is now stopped right after deployment instead of coming up
+  running. Previously the flag was only applied on _update_, so a new stack always
+  started, and with `ignore_changes = [active]` it never stopped at all.
+
+#### Internal / Maintenance
+
+- Unify direct-HTTP call sites behind a single `doJSON` helper (auth + status +
+  JSON decode) across 97 files, with typed API errors and 404 handling.
+- Add a table-driven CRUD test harness (`crudCase`).
+- Add a schema↔docs drift-check linter as a new CI guard.
+- Parallelize the e2e CI pipeline (shared composite setup action + split
+  docker/kubernetes/swarm, edge and ssl jobs).
+
+#### Documentation
+
+- Document previously-missing schema fields: `portainer_edge_stack.always_clone`,
+  `portainer_settings.black_listed_labels`, `portainer_settings.edge_portainer_url`.
+
+### Patch Changes
+
+#### Bug Fixes
+
+- **`portainer_stack`: `active = false` now persists on repository stacks (portainer/terraform-provider-portainer#139)** -
+  the update path stopped the stack _before_ the git redeploy, which restarted it,
+  so `active = false` never took effect (perpetual `true -> false` diff). The stop
+  now runs _after_ the redeploy.
+- **`portainer_environment`: `type = 4` creates a Docker Edge Agent, not Kubernetes
+  (portainer/terraform-provider-portainer#140)** - an Edge Agent create now sends `ContainerEngine=docker`, so Portainer
+  provisions the requested Docker edge (type 4) instead of a Kubernetes edge (type 7).
+
 ## 1.27.0
 
 ### Minor Changes

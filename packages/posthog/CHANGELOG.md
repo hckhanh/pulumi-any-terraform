@@ -1,5 +1,38 @@
 # pulumi-posthog
 
+## 1.0.8
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@a771afa: feat: add posthog_project_settings resource (PostHog/terraform-provider-posthog#94) (PostHog/terraform-provider-posthog#101) (@vdekrijger)
+- PostHog/terraform-provider-posthog@0ef1bb0: feat: resolve organization_id from slug or @current (PostHog/terraform-provider-posthog#99) (PostHog/terraform-provider-posthog#100) (@vdekrijger)
+
+#### Bug Fixes
+
+- PostHog/terraform-provider-posthog@7cf4be8: fix(hog_function): keep trailing whitespace in hog to avoid inconsistent-apply (PostHog/terraform-provider-posthog#91) (PostHog/terraform-provider-posthog#103) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@90d2d48: test(hog_function): add required series_index to alert webhook config (PostHog/terraform-provider-posthog#102) (@vdekrijger)
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@4ed8a53: feat(feature_flag): add ignore_filter_fields to control filter drift tracking (PostHog/terraform-provider-posthog#115) (@vdekrijger)
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@9b18761: feat(hog_function): document insight-alert Slack/webhook notifications (PostHog/terraform-provider-posthog#130) (PostHog/terraform-provider-posthog#140) (@vdekrijger)
+- PostHog/terraform-provider-posthog@32b74ed: feat(insight): add posthog_insight data source (lookup by short_id) (PostHog/terraform-provider-posthog#142) (@vdekrijger)
+- PostHog/terraform-provider-posthog@40a2ee3: feat(insight): add query_sql for HogQL SQL insights (PostHog/terraform-provider-posthog#132) (PostHog/terraform-provider-posthog#141) (@vdekrijger)
+- PostHog/terraform-provider-posthog@64f8f78: feat(project_settings): expose test_account_filters (PostHog/terraform-provider-posthog#137) (@vdekrijger)
+- PostHog/terraform-provider-posthog@afc6b71: feat(subscription): add posthog_subscription resource (PostHog/terraform-provider-posthog#138) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@c95f29f: docs(hog_function): manage error-tracking alerts via internal_destination (PostHog/terraform-provider-posthog#131) (PostHog/terraform-provider-posthog#139) (@vdekrijger)
+
 ## 1.0.7
 
 ### Patch Changes
