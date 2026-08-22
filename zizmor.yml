@@ -1,8 +1,11 @@
 rules:
+  # SHA pins live in `.github/workflows/actions.lock` (enforced by GitHub at
+  # runtime for workflows managed by `gh actions-lock`). Workflow YAML keeps
+  # readable tag refs, so require ref-pin here instead of hash-pin.
   unpinned-uses:
     config:
       policies:
-        '*': hash-pin
+        '*': ref-pin
   # These jobs push with the checkout credential (`git push`, autofix.ci,
   # and `changeset publish` git tags via changesets/action).
   artipacked:

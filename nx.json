@@ -36,6 +36,7 @@
     ],
     "gha": [
       "{workspaceRoot}/.github/workflows/**/*.{yml,yaml}",
+      "{workspaceRoot}/.github/workflows/actions.lock",
       "{workspaceRoot}/.github/actions/**/*.{yml,yaml}",
       "{workspaceRoot}/.github/actionlint.{yml,yaml}",
       "{workspaceRoot}/zizmor.yml",
