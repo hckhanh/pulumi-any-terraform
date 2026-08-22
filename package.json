@@ -12,7 +12,7 @@
     "release": "nx run-many -t build && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "3.0.0",
+    "@changesets/cli": "3.0.1",
     "@nx/devkit": "23.1.1",
     "@nx/js": "23.1.1",
     "@swc-node/register": "1.12.1",
