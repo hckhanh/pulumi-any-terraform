@@ -229,6 +229,17 @@ export interface AppConnectionBitbucketCredentials {
     email: pulumi.Input<string>;
 }
 
+export interface AppConnectionCircleciCredentials {
+    /**
+     * The CircleCI API token for authentication.
+     */
+    apiToken: pulumi.Input<string>;
+    /**
+     * The CircleCI host to connect with, for self-hosted instances. (default: https://circleci.com)
+     */
+    host?: pulumi.Input<string | undefined>;
+}
+
 export interface AppConnectionCloudflareCredentials {
     /**
      * The Cloudflare Account ID. This can be found in the sidebar of your Cloudflare dashboard.
@@ -2291,6 +2302,36 @@ export interface SecretSyncBitbucketSyncOptions {
     initialSyncBehavior: pulumi.Input<string>;
     /**
      * The format to use for structuring secret keys in the Bitbucket destination.
+     */
+    keySchema?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretSyncCircleciDestinationConfig {
+    /**
+     * The name of the CircleCI organization to sync secrets to.
+     */
+    orgName: pulumi.Input<string>;
+    /**
+     * The ID of the CircleCI project to sync secrets to.
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * The name of the CircleCI project to sync secrets to.
+     */
+    projectName: pulumi.Input<string>;
+}
+
+export interface SecretSyncCircleciSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from CircleCI. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: pulumi.Input<string>;
+    /**
+     * The format to use for structuring secret keys in the CircleCI destination.
      */
     keySchema?: pulumi.Input<string | undefined>;
 }

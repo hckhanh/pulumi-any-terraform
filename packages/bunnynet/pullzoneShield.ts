@@ -56,11 +56,11 @@ export class PullzoneShield extends pulumi.CustomResource {
      */
     declare public readonly tier: pulumi.Output<string>;
     /**
-     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware. Options: `Block`, `Disable`, `Log`
      */
     declare public readonly uploadScanningAntivirus: pulumi.Output<string>;
     /**
-     * Scan file uploads for Child Sexual Abuse Material.
+     * Scan file uploads for Child Sexual Abuse Material. Options: `Block`, `Disable`, `Log`
      */
     declare public readonly uploadScanningCsam: pulumi.Output<string>;
     /**
@@ -160,11 +160,11 @@ export interface PullzoneShieldState {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
-     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware. Options: `Block`, `Disable`, `Log`
      */
     uploadScanningAntivirus?: pulumi.Input<string | undefined>;
     /**
-     * Scan file uploads for Child Sexual Abuse Material.
+     * Scan file uploads for Child Sexual Abuse Material. Options: `Block`, `Disable`, `Log`
      */
     uploadScanningCsam?: pulumi.Input<string | undefined>;
     /**
@@ -211,11 +211,11 @@ export interface PullzoneShieldArgs {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
-     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware.
+     * Scan file uploads for viruses, trojans, ransomware, and other forms of malware. Options: `Block`, `Disable`, `Log`
      */
     uploadScanningAntivirus?: pulumi.Input<string | undefined>;
     /**
-     * Scan file uploads for Child Sexual Abuse Material.
+     * Scan file uploads for Child Sexual Abuse Material. Options: `Block`, `Disable`, `Log`
      */
     uploadScanningCsam?: pulumi.Input<string | undefined>;
     /**

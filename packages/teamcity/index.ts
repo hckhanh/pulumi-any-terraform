@@ -50,6 +50,11 @@ export type BuildConfigurationStep = import("./buildConfigurationStep").BuildCon
 export const BuildConfigurationStep: typeof import("./buildConfigurationStep").BuildConfigurationStep = null as any;
 utilities.lazyLoad(exports, ["BuildConfigurationStep"], () => require("./buildConfigurationStep"));
 
+export { BuildConfigurationTemplateArgs, BuildConfigurationTemplateState } from "./buildConfigurationTemplate";
+export type BuildConfigurationTemplate = import("./buildConfigurationTemplate").BuildConfigurationTemplate;
+export const BuildConfigurationTemplate: typeof import("./buildConfigurationTemplate").BuildConfigurationTemplate = null as any;
+utilities.lazyLoad(exports, ["BuildConfigurationTemplate"], () => require("./buildConfigurationTemplate"));
+
 export { BuildConfigurationTriggerArgs, BuildConfigurationTriggerState } from "./buildConfigurationTrigger";
 export type BuildConfigurationTrigger = import("./buildConfigurationTrigger").BuildConfigurationTrigger;
 export const BuildConfigurationTrigger: typeof import("./buildConfigurationTrigger").BuildConfigurationTrigger = null as any;
@@ -173,6 +178,11 @@ export type SshKey = import("./sshKey").SshKey;
 export const SshKey: typeof import("./sshKey").SshKey = null as any;
 utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
 
+export { TemplateArgs, TemplateState } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
+
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -225,6 +235,8 @@ const _module = {
                 return new BuildConfigurationSnapshotDependency(name, <any>undefined, { urn })
             case "teamcity:index/buildConfigurationStep:BuildConfigurationStep":
                 return new BuildConfigurationStep(name, <any>undefined, { urn })
+            case "teamcity:index/buildConfigurationTemplate:BuildConfigurationTemplate":
+                return new BuildConfigurationTemplate(name, <any>undefined, { urn })
             case "teamcity:index/buildConfigurationTrigger:BuildConfigurationTrigger":
                 return new BuildConfigurationTrigger(name, <any>undefined, { urn })
             case "teamcity:index/buildConfigurationVcsRoot:BuildConfigurationVcsRoot":
@@ -261,6 +273,8 @@ const _module = {
                 return new SecureToken(name, <any>undefined, { urn })
             case "teamcity:index/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
+            case "teamcity:index/template:Template":
+                return new Template(name, <any>undefined, { urn })
             case "teamcity:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "teamcity:index/userRoleAssignment:UserRoleAssignment":
@@ -283,6 +297,7 @@ pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationParam
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationSettings", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationSnapshotDependency", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationStep", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationTemplate", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationTrigger", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/buildConfigurationVcsRoot", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/cleanupSettings", _module)
@@ -301,6 +316,7 @@ pulumi.runtime.registerResourceModule("teamcity", "index/projectParameter", _mod
 pulumi.runtime.registerResourceModule("teamcity", "index/role", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/secureToken", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/sshKey", _module)
+pulumi.runtime.registerResourceModule("teamcity", "index/template", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/user", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/userRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("teamcity", "index/vcsroot", _module)

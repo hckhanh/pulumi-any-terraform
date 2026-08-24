@@ -168,6 +168,11 @@ export type SourceAwsAccount = import("./sourceAwsAccount").SourceAwsAccount;
 export const SourceAwsAccount: typeof import("./sourceAwsAccount").SourceAwsAccount = null as any;
 utilities.lazyLoad(exports, ["SourceAwsAccount"], () => require("./sourceAwsAccount"));
 
+export { SourceAwsLogGroupArgs, SourceAwsLogGroupState } from "./sourceAwsLogGroup";
+export type SourceAwsLogGroup = import("./sourceAwsLogGroup").SourceAwsLogGroup;
+export const SourceAwsLogGroup: typeof import("./sourceAwsLogGroup").SourceAwsLogGroup = null as any;
+utilities.lazyLoad(exports, ["SourceAwsLogGroup"], () => require("./sourceAwsLogGroup"));
+
 export { SourceGcpProjectArgs, SourceGcpProjectState } from "./sourceGcpProject";
 export type SourceGcpProject = import("./sourceGcpProject").SourceGcpProject;
 export const SourceGcpProject: typeof import("./sourceGcpProject").SourceGcpProject = null as any;
@@ -224,6 +229,8 @@ const _module = {
                 return new Source(name, <any>undefined, { urn })
             case "logtail:index/sourceAwsAccount:SourceAwsAccount":
                 return new SourceAwsAccount(name, <any>undefined, { urn })
+            case "logtail:index/sourceAwsLogGroup:SourceAwsLogGroup":
+                return new SourceAwsLogGroup(name, <any>undefined, { urn })
             case "logtail:index/sourceGcpProject:SourceGcpProject":
                 return new SourceGcpProject(name, <any>undefined, { urn })
             case "logtail:index/sourceGroup:SourceGroup":
@@ -249,6 +256,7 @@ pulumi.runtime.registerResourceModule("logtail", "index/explorationGroup", _modu
 pulumi.runtime.registerResourceModule("logtail", "index/metric", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/source", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceAwsAccount", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/sourceAwsLogGroup", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceGcpProject", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/sourceGroup", _module)
 pulumi.runtime.registerResourcePackage("logtail", {

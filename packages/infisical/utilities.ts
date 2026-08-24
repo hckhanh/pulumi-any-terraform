@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.3.0",
 		baseProviderDownloadUrl: "",
 		packageName: "infisical",
-		packageVersion: "0.19.23",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xOS4yMyJ9fQ==",
+		packageVersion: "0.19.24",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4xOS4yNCJ9fQ==",
 	});
 }

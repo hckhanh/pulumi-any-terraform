@@ -55,6 +55,7 @@
         "provider.ts",
         "source.ts",
         "sourceAwsAccount.ts",
+        "sourceAwsLogGroup.ts",
         "sourceGcpProject.ts",
         "sourceGroup.ts",
         "types/index.ts",

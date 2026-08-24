@@ -229,6 +229,17 @@ export interface AppConnectionBitbucketCredentials {
     email: string;
 }
 
+export interface AppConnectionCircleciCredentials {
+    /**
+     * The CircleCI API token for authentication.
+     */
+    apiToken: string;
+    /**
+     * The CircleCI host to connect with, for self-hosted instances. (default: https://circleci.com)
+     */
+    host?: string;
+}
+
 export interface AppConnectionCloudflareCredentials {
     /**
      * The Cloudflare Account ID. This can be found in the sidebar of your Cloudflare dashboard.
@@ -2474,6 +2485,36 @@ export interface SecretSyncBitbucketSyncOptions {
     initialSyncBehavior: string;
     /**
      * The format to use for structuring secret keys in the Bitbucket destination.
+     */
+    keySchema?: string;
+}
+
+export interface SecretSyncCircleciDestinationConfig {
+    /**
+     * The name of the CircleCI organization to sync secrets to.
+     */
+    orgName: string;
+    /**
+     * The ID of the CircleCI project to sync secrets to.
+     */
+    projectId: string;
+    /**
+     * The name of the CircleCI project to sync secrets to.
+     */
+    projectName: string;
+}
+
+export interface SecretSyncCircleciSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from CircleCI. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Specify how Infisical should resolve the initial sync to the destination. Supported options: overwrite-destination
+     */
+    initialSyncBehavior: string;
+    /**
+     * The format to use for structuring secret keys in the CircleCI destination.
      */
     keySchema?: string;
 }

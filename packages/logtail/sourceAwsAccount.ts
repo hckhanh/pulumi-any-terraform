@@ -33,6 +33,10 @@ export class SourceAwsAccount extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Better Stack automatically subscribes CloudWatch log groups without an explicit override. When omitted, the current API setting is preserved.
+     */
+    declare public readonly autoSubscribeLogGroups: pulumi.Output<boolean>;
+    /**
      * The ID of an existing connected AWS account to link this source to. Provide this instead of <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>/<span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span> to reuse an account you've already connected. Write-only: the API does not return it, so it isn't refreshed from state.
      */
     declare public readonly awsAccountId: pulumi.Output<string | undefined>;
@@ -63,6 +67,7 @@ export class SourceAwsAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceAwsAccountState | undefined;
+            resourceInputs["autoSubscribeLogGroups"] = state?.autoSubscribeLogGroups;
             resourceInputs["awsAccountId"] = state?.awsAccountId;
             resourceInputs["awsExternalId"] = state?.awsExternalId;
             resourceInputs["awsRoleArn"] = state?.awsRoleArn;
@@ -73,6 +78,7 @@ export class SourceAwsAccount extends pulumi.CustomResource {
             if (args?.sourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
+            resourceInputs["autoSubscribeLogGroups"] = args?.autoSubscribeLogGroups;
             resourceInputs["awsAccountId"] = args?.awsAccountId;
             resourceInputs["awsExternalId"] = args?.awsExternalId ? pulumi.secret(args.awsExternalId) : undefined;
             resourceInputs["awsRoleArn"] = args?.awsRoleArn;
@@ -90,6 +96,10 @@ export class SourceAwsAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SourceAwsAccount resources.
  */
 export interface SourceAwsAccountState {
+    /**
+     * Whether Better Stack automatically subscribes CloudWatch log groups without an explicit override. When omitted, the current API setting is preserved.
+     */
+    autoSubscribeLogGroups?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of an existing connected AWS account to link this source to. Provide this instead of <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>/<span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span> to reuse an account you've already connected. Write-only: the API does not return it, so it isn't refreshed from state.
      */
@@ -113,6 +123,10 @@ export interface SourceAwsAccountState {
  * The set of arguments for constructing a SourceAwsAccount resource.
  */
 export interface SourceAwsAccountArgs {
+    /**
+     * Whether Better Stack automatically subscribes CloudWatch log groups without an explicit override. When omitted, the current API setting is preserved.
+     */
+    autoSubscribeLogGroups?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of an existing connected AWS account to link this source to. Provide this instead of <span pulumi-lang-nodejs="`awsRoleArn`" pulumi-lang-dotnet="`AwsRoleArn`" pulumi-lang-go="`awsRoleArn`" pulumi-lang-python="`aws_role_arn`" pulumi-lang-yaml="`awsRoleArn`" pulumi-lang-java="`awsRoleArn`" pulumi-lang-hcl="`aws_role_arn`">`awsRoleArn`</span>/<span pulumi-lang-nodejs="`awsExternalId`" pulumi-lang-dotnet="`AwsExternalId`" pulumi-lang-go="`awsExternalId`" pulumi-lang-python="`aws_external_id`" pulumi-lang-yaml="`awsExternalId`" pulumi-lang-java="`awsExternalId`" pulumi-lang-hcl="`aws_external_id`">`awsExternalId`</span> to reuse an account you've already connected. Write-only: the API does not return it, so it isn't refreshed from state.
      */
