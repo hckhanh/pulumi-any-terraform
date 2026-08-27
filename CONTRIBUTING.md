@@ -125,6 +125,7 @@ Scripts in `.github/scripts/` and `packages/*/scripts/`:
 - **pnpm `minimumReleaseAge`** is set to 2880 minutes (48 hours), matching the Aikido Safe Chain default
 - **Renovate** is configured with `security:minimumReleaseAgeNpm` preset
 - `pnpm-workspace.yaml` `allowBuilds` explicitly lists packages permitted to run install scripts
+- **GitHub Actions** dependencies are locked with [`gh actions-lock`](https://github.com/github/gh-actions-lock) (`.github/workflows/actions.lock`). After changing workflow `uses:`, run `gh actions-lock` and commit the lockfile. CI runs `gh actions-lock --verify`. Renovate regenerates the lockfile on action updates.
 
 ## 8. Linting and Formatting
 
@@ -137,6 +138,7 @@ The project uses a multi-tool pipeline orchestrated by **Nx**:
 | Syncpack           | `package.json` consistency            | Workspace-wide                             |
 | TypeScript (`tsc`) | Type checking                         | `tools/`, `packages/` (via postinstall)    |
 | actionlint         | GitHub Actions workflow syntax        | `.github/workflows/`                       |
+| actions-lock       | Verify workflows vs `actions.lock`    | `.github/workflows/`                       |
 | zizmor             | GitHub Actions security audit         | `.github/workflows/` and composite actions |
 
 ### Running checks

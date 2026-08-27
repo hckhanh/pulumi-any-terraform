@@ -42,6 +42,7 @@
         "syncpack:lint",
         "oxfmt:check",
         "actionlint",
+        "actions-lock",
         "zizmor"
       ]
     },
@@ -94,6 +95,15 @@
       "cache": true,
       "metadata": {
         "description": "Lint GitHub Actions workflow files for syntax and type errors.",
+        "technologies": ["github-actions"]
+      }
+    },
+    "actions-lock": {
+      "command": "gh actions-lock --verify",
+      "inputs": ["gha"],
+      "cache": false,
+      "metadata": {
+        "description": "Verify workflow action refs against .github/workflows/actions.lock (full re-verification).",
         "technologies": ["github-actions"]
       }
     },

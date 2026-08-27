@@ -1,3 +1,5 @@
+# This workflow is managed by gh actions-lock.
+
 name: autofix.ci
 
 on:
@@ -20,26 +22,26 @@ jobs:
     if: ${{ github.actor != 'renovate[bot]' && github.actor != 'autofix-ci[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') && ! contains(github.event.head_commit.message , '[autofix.ci]') }}
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           filter: tree:0
           # Required: autofix-ci/action pushes the formatted commit with this token.
           persist-credentials: true
       - name: Setup pnpm
-        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
+        uses: pnpm/setup@v2.0.2
         with:
           version: 11.22.0
           runtime: node@24.19.0
           cache: true
       - name: Setup Aikido Safe Chain
-        uses: ./.github/actions/setup-safe-chain
+        uses: $/.github/actions/setup-safe-chain
       - name: Fix dependencies audit
         run: |
           pnpm audit --fix override
           pnpm install --no-frozen-lockfile
       - name: Set SHAs
-        uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5.0.1
+        uses: nrwl/nx-set-shas@v5.0.1
       - name: Fix
         run: pnpm nx affected -t fix
       - name: Update lock file
@@ -48,4 +50,4 @@ jobs:
           pnpm update baseline-browser-mapping
           pnpm dedupe
       - name: Submit autofix
-        uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1.3.4
+        uses: autofix-ci/action@v1.3.4
