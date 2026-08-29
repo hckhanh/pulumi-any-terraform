@@ -27,7 +27,7 @@ jobs:
           # Required: autofix-ci/action pushes the formatted commit with this token.
           persist-credentials: true
       - name: Setup pnpm
-        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
+        uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
         with:
           version: 11.24.0
           runtime: node@24.20.0
