@@ -258,6 +258,21 @@ export interface DashboardAlertEscalationTarget {
     teamName?: pulumi.Input<string | undefined>;
 }
 
+export interface DashboardAlertVariableValue {
+    /**
+     * The name of an existing non-source dashboard or exploration variable.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The selected label for a predefined SQL variable.
+     */
+    selectedLabel?: pulumi.Input<string | undefined>;
+    /**
+     * The values to use when evaluating this alert.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface DashboardChartQuery {
     /**
      * The ID of this query (read-only).
@@ -381,6 +396,21 @@ export interface ExplorationAlertEscalationTarget {
      * The Better Stack team name to escalate to.
      */
     teamName?: pulumi.Input<string | undefined>;
+}
+
+export interface ExplorationAlertVariableValue {
+    /**
+     * The name of an existing non-source dashboard or exploration variable.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The selected label for a predefined SQL variable.
+     */
+    selectedLabel?: pulumi.Input<string | undefined>;
+    /**
+     * The values to use when evaluating this alert.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ExplorationChart {

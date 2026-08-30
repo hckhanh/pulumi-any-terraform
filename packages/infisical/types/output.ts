@@ -2032,6 +2032,38 @@ export interface SecretRotationAzureClientSecretSecretsMapping {
 export interface SecretRotationAzureClientSecretTemporaryParameters {
 }
 
+export interface SecretRotationDatadogApiKeyParameters {
+    /**
+     * The name for the generated Datadog API keys.
+     */
+    name: string;
+}
+
+export interface SecretRotationDatadogApiKeyRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationDatadogApiKeySecretsMapping {
+    /**
+     * The name of the secret that the rotated Datadog API key will be mapped to.
+     */
+    apiKey: string;
+    /**
+     * The name of the secret that the Datadog API key ID will be mapped to.
+     */
+    apiKeyId: string;
+}
+
+export interface SecretRotationDatadogApiKeyTemporaryParameters {
+}
+
 export interface SecretRotationLdapPasswordParameters {
     /**
      * The Distinguished Name (DN) of the LDAP entry to rotate the password for.

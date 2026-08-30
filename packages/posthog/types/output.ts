@@ -5,6 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlertScheduleRestriction {
+    /**
+     * Blocked time windows, half-open `[start, end)`. Windows must not overlap or touch, except that one may end at `00:00` where another starts. A window may wrap midnight (<span pulumi-lang-nodejs="`end`" pulumi-lang-dotnet="`End`" pulumi-lang-go="`end`" pulumi-lang-python="`end`" pulumi-lang-yaml="`end`" pulumi-lang-java="`end`" pulumi-lang-hcl="`end`">`end`</span> before <span pulumi-lang-nodejs="`start`" pulumi-lang-dotnet="`Start`" pulumi-lang-go="`start`" pulumi-lang-python="`start`" pulumi-lang-yaml="`start`" pulumi-lang-java="`start`" pulumi-lang-hcl="`start`">`start`</span>), but only as the sole window, and two windows meeting at midnight are only allowed alongside a third. PostHog enforces its own limits on window length and count and reports them on apply. Remove <span pulumi-lang-nodejs="`scheduleRestriction`" pulumi-lang-dotnet="`ScheduleRestriction`" pulumi-lang-go="`scheduleRestriction`" pulumi-lang-python="`schedule_restriction`" pulumi-lang-yaml="`scheduleRestriction`" pulumi-lang-java="`scheduleRestriction`" pulumi-lang-hcl="`schedule_restriction`">`scheduleRestriction`</span> to disable quiet hours.
+     */
+    blockedWindows: outputs.AlertScheduleRestrictionBlockedWindow[];
+}
+
+export interface AlertScheduleRestrictionBlockedWindow {
+    /**
+     * End time `HH:MM` (24-hour, project timezone). Exclusive.
+     */
+    end: string;
+    /**
+     * Start time `HH:MM` (24-hour, project timezone). Inclusive.
+     */
+    start: string;
+}
+
 export interface DashboardLayoutTile {
     /**
      * Background color of the tile. Valid values are defined by the PostHog API; see [InsightColor in types.ts](https://github.com/PostHog/posthog/blob/master/frontend/src/types.ts#L2154) for the current list.
@@ -60,6 +78,17 @@ export interface ExperimentStatusStopped {
      * Key of the winning variant to ship. Rewrites the linked flag's distribution so this variant gets 100% and ends the experiment. If the flag is managed by a <span pulumi-lang-nodejs="`posthog.FeatureFlag`" pulumi-lang-dotnet="`posthog.FeatureFlag`" pulumi-lang-go="`FeatureFlag`" pulumi-lang-python="`FeatureFlag`" pulumi-lang-yaml="`posthog.FeatureFlag`" pulumi-lang-java="`posthog.FeatureFlag`" pulumi-lang-hcl="`posthog_feature_flag`">`posthog.FeatureFlag`</span> resource, set `lifecycle {<span pulumi-lang-nodejs=" ignoreChanges " pulumi-lang-dotnet=" IgnoreChanges " pulumi-lang-go=" ignoreChanges " pulumi-lang-python=" ignore_changes " pulumi-lang-yaml=" ignoreChanges " pulumi-lang-java=" ignoreChanges " pulumi-lang-hcl=" ignore_changes "> ignoreChanges </span>= [filters] }` on it so it does not revert the shipped distribution. Config-only; re-ships only when this value changes; clearing it does not un-ship.
      */
     shipVariant?: string;
+}
+
+export interface LogsAlertBlockedWindow {
+    /**
+     * End time as `HH:MM` (24-hour, project timezone). Exclusive.
+     */
+    end: string;
+    /**
+     * Start time as `HH:MM` (24-hour, project timezone). Inclusive.
+     */
+    start: string;
 }
 
 export interface ProjectSettingsSessionRecordingNetworkPayloadCaptureConfig {

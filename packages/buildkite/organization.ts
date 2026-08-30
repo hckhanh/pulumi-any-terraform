@@ -43,6 +43,14 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public readonly enforce2fa: pulumi.Output<boolean>;
     /**
+     * Whether only organization administrators can create new API access tokens for this organization. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes.
+     */
+    declare public readonly restrictUserApiTokenCreation: pulumi.Output<boolean>;
+    /**
+     * The period of inactivity after which user API access tokens are revoked. Valid values are `NEVER`, `DAYS_30`, `DAYS_60`, `DAYS_90`, `DAYS_180` and `DAYS_365`. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes and the inactive API token revocation feature on the organization's plan.
+     */
+    declare public readonly revokeInactiveTokensAfter: pulumi.Output<string>;
+    /**
      * The UUID of the organization.
      */
     declare public /*out*/ readonly uuid: pulumi.Output<string>;
@@ -62,11 +70,15 @@ export class Organization extends pulumi.CustomResource {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["allowedApiIpAddresses"] = state?.allowedApiIpAddresses;
             resourceInputs["enforce2fa"] = state?.enforce2fa;
+            resourceInputs["restrictUserApiTokenCreation"] = state?.restrictUserApiTokenCreation;
+            resourceInputs["revokeInactiveTokensAfter"] = state?.revokeInactiveTokensAfter;
             resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             resourceInputs["allowedApiIpAddresses"] = args?.allowedApiIpAddresses;
             resourceInputs["enforce2fa"] = args?.enforce2fa;
+            resourceInputs["restrictUserApiTokenCreation"] = args?.restrictUserApiTokenCreation;
+            resourceInputs["revokeInactiveTokensAfter"] = args?.revokeInactiveTokensAfter;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -89,6 +101,14 @@ export interface OrganizationState {
      */
     enforce2fa?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether only organization administrators can create new API access tokens for this organization. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes.
+     */
+    restrictUserApiTokenCreation?: pulumi.Input<boolean | undefined>;
+    /**
+     * The period of inactivity after which user API access tokens are revoked. Valid values are `NEVER`, `DAYS_30`, `DAYS_60`, `DAYS_90`, `DAYS_180` and `DAYS_365`. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes and the inactive API token revocation feature on the organization's plan.
+     */
+    revokeInactiveTokensAfter?: pulumi.Input<string | undefined>;
+    /**
      * The UUID of the organization.
      */
     uuid?: pulumi.Input<string | undefined>;
@@ -108,4 +128,12 @@ export interface OrganizationArgs {
      * Sets whether the organization requires two-factor authentication for all members.
      */
     enforce2fa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether only organization administrators can create new API access tokens for this organization. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes.
+     */
+    restrictUserApiTokenCreation?: pulumi.Input<boolean | undefined>;
+    /**
+     * The period of inactivity after which user API access tokens are revoked. Valid values are `NEVER`, `DAYS_30`, `DAYS_60`, `DAYS_90`, `DAYS_180` and `DAYS_365`. If omitted, the current setting is left unchanged. Requires an API token with the <span pulumi-lang-nodejs="`readOrganizationSettings`" pulumi-lang-dotnet="`ReadOrganizationSettings`" pulumi-lang-go="`readOrganizationSettings`" pulumi-lang-python="`read_organization_settings`" pulumi-lang-yaml="`readOrganizationSettings`" pulumi-lang-java="`readOrganizationSettings`" pulumi-lang-hcl="`read_organization_settings`">`readOrganizationSettings`</span> and <span pulumi-lang-nodejs="`writeOrganizationSettings`" pulumi-lang-dotnet="`WriteOrganizationSettings`" pulumi-lang-go="`writeOrganizationSettings`" pulumi-lang-python="`write_organization_settings`" pulumi-lang-yaml="`writeOrganizationSettings`" pulumi-lang-java="`writeOrganizationSettings`" pulumi-lang-hcl="`write_organization_settings`">`writeOrganizationSettings`</span> scopes and the inactive API token revocation feature on the organization's plan.
+     */
+    revokeInactiveTokensAfter?: pulumi.Input<string | undefined>;
 }

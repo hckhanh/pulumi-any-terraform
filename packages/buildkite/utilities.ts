@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.2.1",
+		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "buildkite",
-		packageVersion: "1.38.0",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zOC4wIn19",
+		packageVersion: "1.39.1",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zOS4xIn19",
 	});
 }

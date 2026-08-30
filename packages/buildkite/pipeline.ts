@@ -95,6 +95,10 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly emoji: pulumi.Output<string | undefined>;
     /**
+     * Whether GitHub webhook processing is enabled for the pipeline. Only applies to GitHub and GitHub Enterprise repositories and requires the organization to be enrolled in the newer webhook triggers. If omitted, the setting is left unchanged and is not read.
+     */
+    declare public readonly githubWebhooksEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Set pipeline wide maximum timeout for command steps.
      */
     declare public readonly maximumTimeoutInMinutes: pulumi.Output<number>;
@@ -175,6 +179,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["defaultTimeoutInMinutes"] = state?.defaultTimeoutInMinutes;
             resourceInputs["description"] = state?.description;
             resourceInputs["emoji"] = state?.emoji;
+            resourceInputs["githubWebhooksEnabled"] = state?.githubWebhooksEnabled;
             resourceInputs["maximumTimeoutInMinutes"] = state?.maximumTimeoutInMinutes;
             resourceInputs["name"] = state?.name;
             resourceInputs["pipelineTemplateId"] = state?.pipelineTemplateId;
@@ -206,6 +211,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["defaultTimeoutInMinutes"] = args?.defaultTimeoutInMinutes;
             resourceInputs["description"] = args?.description;
             resourceInputs["emoji"] = args?.emoji;
+            resourceInputs["githubWebhooksEnabled"] = args?.githubWebhooksEnabled;
             resourceInputs["maximumTimeoutInMinutes"] = args?.maximumTimeoutInMinutes;
             resourceInputs["name"] = args?.name;
             resourceInputs["pipelineTemplateId"] = args?.pipelineTemplateId;
@@ -291,6 +297,10 @@ export interface PipelineState {
      * An emoji that represents this pipeline.
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether GitHub webhook processing is enabled for the pipeline. Only applies to GitHub and GitHub Enterprise repositories and requires the organization to be enrolled in the newer webhook triggers. If omitted, the setting is left unchanged and is not read.
+     */
+    githubWebhooksEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set pipeline wide maximum timeout for command steps.
      */
@@ -401,6 +411,10 @@ export interface PipelineArgs {
      * An emoji that represents this pipeline.
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether GitHub webhook processing is enabled for the pipeline. Only applies to GitHub and GitHub Enterprise repositories and requires the organization to be enrolled in the newer webhook triggers. If omitted, the setting is left unchanged and is not read.
+     */
+    githubWebhooksEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set pipeline wide maximum timeout for command steps.
      */

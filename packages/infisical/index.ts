@@ -508,6 +508,11 @@ export type SecretRotationAzureClientSecret = import("./secretRotationAzureClien
 export const SecretRotationAzureClientSecret: typeof import("./secretRotationAzureClientSecret").SecretRotationAzureClientSecret = null as any;
 utilities.lazyLoad(exports, ["SecretRotationAzureClientSecret"], () => require("./secretRotationAzureClientSecret"));
 
+export { SecretRotationDatadogApiKeyArgs, SecretRotationDatadogApiKeyState } from "./secretRotationDatadogApiKey";
+export type SecretRotationDatadogApiKey = import("./secretRotationDatadogApiKey").SecretRotationDatadogApiKey;
+export const SecretRotationDatadogApiKey: typeof import("./secretRotationDatadogApiKey").SecretRotationDatadogApiKey = null as any;
+utilities.lazyLoad(exports, ["SecretRotationDatadogApiKey"], () => require("./secretRotationDatadogApiKey"));
+
 export { SecretRotationLdapPasswordArgs, SecretRotationLdapPasswordState } from "./secretRotationLdapPassword";
 export type SecretRotationLdapPassword = import("./secretRotationLdapPassword").SecretRotationLdapPassword;
 export const SecretRotationLdapPassword: typeof import("./secretRotationLdapPassword").SecretRotationLdapPassword = null as any;
@@ -815,6 +820,8 @@ const _module = {
                 return new SecretRotationAwsIamUserSecret(name, <any>undefined, { urn })
             case "infisical:index/secretRotationAzureClientSecret:SecretRotationAzureClientSecret":
                 return new SecretRotationAzureClientSecret(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationDatadogApiKey:SecretRotationDatadogApiKey":
+                return new SecretRotationDatadogApiKey(name, <any>undefined, { urn })
             case "infisical:index/secretRotationLdapPassword:SecretRotationLdapPassword":
                 return new SecretRotationLdapPassword(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMssqlCredentials:SecretRotationMssqlCredentials":
@@ -954,6 +961,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretFolder", _module
 pulumi.runtime.registerResourceModule("infisical", "index/secretImport", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUserSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationDatadogApiKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLdapPassword", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)

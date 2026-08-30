@@ -174,6 +174,10 @@ export class DashboardAlert extends pulumi.CustomResource {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     declare public readonly value: pulumi.Output<number>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    declare public readonly variableValues: pulumi.Output<outputs.DashboardAlertVariableValue[] | undefined>;
 
     /**
      * Create a DashboardAlert resource with the given unique name, arguments, and options.
@@ -223,6 +227,7 @@ export class DashboardAlert extends pulumi.CustomResource {
             resourceInputs["stringValue"] = state?.stringValue;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["value"] = state?.value;
+            resourceInputs["variableValues"] = state?.variableValues;
         } else {
             const args = argsOrState as DashboardAlertArgs | undefined;
             if (args?.alertType === undefined && !opts.urn) {
@@ -266,6 +271,7 @@ export class DashboardAlert extends pulumi.CustomResource {
             resourceInputs["sourceVariable"] = args?.sourceVariable;
             resourceInputs["stringValue"] = args?.stringValue;
             resourceInputs["value"] = args?.value;
+            resourceInputs["variableValues"] = args?.variableValues;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["pausedReason"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -419,6 +425,10 @@ export interface DashboardAlertState {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     value?: pulumi.Input<number | undefined>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    variableValues?: pulumi.Input<pulumi.Input<inputs.DashboardAlertVariableValue>[] | undefined>;
 }
 
 /**
@@ -553,4 +563,8 @@ export interface DashboardAlertArgs {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     value?: pulumi.Input<number | undefined>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    variableValues?: pulumi.Input<pulumi.Input<inputs.DashboardAlertVariableValue>[] | undefined>;
 }

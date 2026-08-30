@@ -123,6 +123,7 @@
         "secretImport.ts",
         "secretRotationAwsIamUserSecret.ts",
         "secretRotationAzureClientSecret.ts",
+        "secretRotationDatadogApiKey.ts",
         "secretRotationLdapPassword.ts",
         "secretRotationMssqlCredentials.ts",
         "secretRotationMysqlCredentials.ts",

@@ -258,6 +258,21 @@ export interface DashboardAlertEscalationTarget {
     teamName?: string;
 }
 
+export interface DashboardAlertVariableValue {
+    /**
+     * The name of an existing non-source dashboard or exploration variable.
+     */
+    name: string;
+    /**
+     * The selected label for a predefined SQL variable.
+     */
+    selectedLabel?: string;
+    /**
+     * The values to use when evaluating this alert.
+     */
+    values?: string[];
+}
+
 export interface DashboardChartQuery {
     /**
      * The ID of this query (read-only).
@@ -381,6 +396,21 @@ export interface ExplorationAlertEscalationTarget {
      * The Better Stack team name to escalate to.
      */
     teamName?: string;
+}
+
+export interface ExplorationAlertVariableValue {
+    /**
+     * The name of an existing non-source dashboard or exploration variable.
+     */
+    name: string;
+    /**
+     * The selected label for a predefined SQL variable.
+     */
+    selectedLabel?: string;
+    /**
+     * The values to use when evaluating this alert.
+     */
+    values?: string[];
 }
 
 export interface ExplorationChart {
@@ -542,6 +572,12 @@ export interface GetDashboardAlertEscalationTarget {
     teamName?: string;
 }
 
+export interface GetDashboardAlertVariableValue {
+    name?: string;
+    selectedLabel?: string;
+    values?: string[];
+}
+
 export interface GetDashboardChartQuery {
     id?: number;
     name?: string;
@@ -574,6 +610,12 @@ export interface GetExplorationAlertEscalationTarget {
     policyName?: string;
     teamId?: number;
     teamName?: string;
+}
+
+export interface GetExplorationAlertVariableValue {
+    name?: string;
+    selectedLabel?: string;
+    values?: string[];
 }
 
 export interface GetExplorationChart {

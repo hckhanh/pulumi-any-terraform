@@ -170,6 +170,10 @@ export class ExplorationAlert extends pulumi.CustomResource {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     declare public readonly value: pulumi.Output<number>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    declare public readonly variableValues: pulumi.Output<outputs.ExplorationAlertVariableValue[] | undefined>;
 
     /**
      * Create a ExplorationAlert resource with the given unique name, arguments, and options.
@@ -218,6 +222,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["stringValue"] = state?.stringValue;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["value"] = state?.value;
+            resourceInputs["variableValues"] = state?.variableValues;
         } else {
             const args = argsOrState as ExplorationAlertArgs | undefined;
             if (args?.alertType === undefined && !opts.urn) {
@@ -257,6 +262,7 @@ export class ExplorationAlert extends pulumi.CustomResource {
             resourceInputs["sourceVariable"] = args?.sourceVariable;
             resourceInputs["stringValue"] = args?.stringValue;
             resourceInputs["value"] = args?.value;
+            resourceInputs["variableValues"] = args?.variableValues;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["pausedReason"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -406,6 +412,10 @@ export interface ExplorationAlertState {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     value?: pulumi.Input<number | undefined>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    variableValues?: pulumi.Input<pulumi.Input<inputs.ExplorationAlertVariableValue>[] | undefined>;
 }
 
 /**
@@ -536,4 +546,8 @@ export interface ExplorationAlertArgs {
      * The numeric threshold value. Required for threshold and relative alerts.
      */
     value?: pulumi.Input<number | undefined>;
+    /**
+     * Values pinned for a dashboard or exploration variable when evaluating this alert.
+     */
+    variableValues?: pulumi.Input<pulumi.Input<inputs.ExplorationAlertVariableValue>[] | undefined>;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Alert extends pulumi.CustomResource {
@@ -61,6 +63,10 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * Quiet hours: local time windows during which the alert is not evaluated. Times use the project timezone.
+     */
+    declare public readonly scheduleRestriction: pulumi.Output<outputs.AlertScheduleRestriction | undefined>;
+    /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
     declare public readonly seriesIndex: pulumi.Output<number>;
@@ -105,6 +111,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["insight"] = state?.insight;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["scheduleRestriction"] = state?.scheduleRestriction;
             resourceInputs["seriesIndex"] = state?.seriesIndex;
             resourceInputs["skipWeekend"] = state?.skipWeekend;
             resourceInputs["subscribedUsers"] = state?.subscribedUsers;
@@ -135,6 +142,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["insight"] = args?.insight;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["scheduleRestriction"] = args?.scheduleRestriction;
             resourceInputs["seriesIndex"] = args?.seriesIndex;
             resourceInputs["skipWeekend"] = args?.skipWeekend;
             resourceInputs["subscribedUsers"] = args?.subscribedUsers;
@@ -179,6 +187,10 @@ export interface AlertState {
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * Quiet hours: local time windows during which the alert is not evaluated. Times use the project timezone.
+     */
+    scheduleRestriction?: pulumi.Input<inputs.AlertScheduleRestriction | undefined>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */
@@ -237,6 +249,10 @@ export interface AlertArgs {
      * Project ID (environment) for this resource. Overrides the provider-level project_id.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * Quiet hours: local time windows during which the alert is not evaluated. Times use the project timezone.
+     */
+    scheduleRestriction?: pulumi.Input<inputs.AlertScheduleRestriction | undefined>;
     /**
      * Index of the trend series to monitor (0-based). Used for trends alerts.
      */

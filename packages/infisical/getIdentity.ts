@@ -6,10 +6,12 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getIdentity(args: GetIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityResult> {
+export function getIdentity(args?: GetIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("infisical:index/getIdentity:getIdentity", {
         "id": args.id,
+        "name": args.name,
     }, opts, utilities.getPackage());
 }
 
@@ -17,7 +19,8 @@ export function getIdentity(args: GetIdentityArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getIdentity.
  */
 export interface GetIdentityArgs {
-    id: string;
+    id?: string;
+    name?: string;
 }
 
 /**
@@ -33,10 +36,12 @@ export interface GetIdentityResult {
     readonly orgId: string;
     readonly role: string;
 }
-export function getIdentityOutput(args: GetIdentityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityResult> {
+export function getIdentityOutput(args?: GetIdentityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("infisical:index/getIdentity:getIdentity", {
         "id": args.id,
+        "name": args.name,
     }, opts, utilities.getPackage());
 }
 
@@ -44,5 +49,6 @@ export function getIdentityOutput(args: GetIdentityOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getIdentity.
  */
 export interface GetIdentityOutputArgs {
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

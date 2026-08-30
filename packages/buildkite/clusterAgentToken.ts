@@ -49,6 +49,10 @@ export class ClusterAgentToken extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * The time at which the token expires, in RFC 3339 format with up to millisecond precision (e.g. `2030-01-01T00:00:00Z`) and at least 10 minutes in the future. If not set, the token never expires. Changing this value replaces the token, since the expiry cannot be updated.
+     */
+    declare public readonly expiresAt: pulumi.Output<string | undefined>;
+    /**
      * The token value used by an agent to register with the API.
      */
     declare public /*out*/ readonly token: pulumi.Output<string>;
@@ -74,6 +78,7 @@ export class ClusterAgentToken extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["clusterUuid"] = state?.clusterUuid;
             resourceInputs["description"] = state?.description;
+            resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["token"] = state?.token;
             resourceInputs["uuid"] = state?.uuid;
         } else {
@@ -87,6 +92,7 @@ export class ClusterAgentToken extends pulumi.CustomResource {
             resourceInputs["allowedIpAddresses"] = args?.allowedIpAddresses;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["clusterUuid"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export interface ClusterAgentTokenState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * The time at which the token expires, in RFC 3339 format with up to millisecond precision (e.g. `2030-01-01T00:00:00Z`) and at least 10 minutes in the future. If not set, the token never expires. Changing this value replaces the token, since the expiry cannot be updated.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
+    /**
      * The token value used by an agent to register with the API.
      */
     token?: pulumi.Input<string | undefined>;
@@ -144,4 +154,8 @@ export interface ClusterAgentTokenArgs {
      * A description about what this cluster agent token is used for.
      */
     description: pulumi.Input<string>;
+    /**
+     * The time at which the token expires, in RFC 3339 format with up to millisecond precision (e.g. `2030-01-01T00:00:00Z`) and at least 10 minutes in the future. If not set, the token never expires. Changing this value replaces the token, since the expiry cannot be updated.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
 }

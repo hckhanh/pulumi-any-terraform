@@ -45,6 +45,11 @@ export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
+export { GetClusterNetworkRangesArgs, GetClusterNetworkRangesResult, GetClusterNetworkRangesOutputArgs } from "./getClusterNetworkRanges";
+export const getClusterNetworkRanges: typeof import("./getClusterNetworkRanges").getClusterNetworkRanges = null as any;
+export const getClusterNetworkRangesOutput: typeof import("./getClusterNetworkRanges").getClusterNetworkRangesOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterNetworkRanges","getClusterNetworkRangesOutput"], () => require("./getClusterNetworkRanges"));
+
 export { GetClustersResult } from "./getClusters";
 export const getClusters: typeof import("./getClusters").getClusters = null as any;
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
@@ -120,6 +125,11 @@ export const getTestSuite: typeof import("./getTestSuite").getTestSuite = null a
 export const getTestSuiteOutput: typeof import("./getTestSuite").getTestSuiteOutput = null as any;
 utilities.lazyLoad(exports, ["getTestSuite","getTestSuiteOutput"], () => require("./getTestSuite"));
 
+export { NotificationServiceArgs, NotificationServiceState } from "./notificationService";
+export type NotificationService = import("./notificationService").NotificationService;
+export const NotificationService: typeof import("./notificationService").NotificationService = null as any;
+utilities.lazyLoad(exports, ["NotificationService"], () => require("./notificationService"));
+
 export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
@@ -129,6 +139,11 @@ export { OrganizationBannerArgs, OrganizationBannerState } from "./organizationB
 export type OrganizationBanner = import("./organizationBanner").OrganizationBanner;
 export const OrganizationBanner: typeof import("./organizationBanner").OrganizationBanner = null as any;
 utilities.lazyLoad(exports, ["OrganizationBanner"], () => require("./organizationBanner"));
+
+export { OrganizationPipelineSettingsArgs, OrganizationPipelineSettingsState } from "./organizationPipelineSettings";
+export type OrganizationPipelineSettings = import("./organizationPipelineSettings").OrganizationPipelineSettings;
+export const OrganizationPipelineSettings: typeof import("./organizationPipelineSettings").OrganizationPipelineSettings = null as any;
+utilities.lazyLoad(exports, ["OrganizationPipelineSettings"], () => require("./organizationPipelineSettings"));
 
 export { OrganizationRuleArgs, OrganizationRuleState } from "./organizationRule";
 export type OrganizationRule = import("./organizationRule").OrganizationRule;
@@ -183,6 +198,11 @@ export type TeamMember = import("./teamMember").TeamMember;
 export const TeamMember: typeof import("./teamMember").TeamMember = null as any;
 utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
 
+export { TeamRegistryArgs, TeamRegistryState } from "./teamRegistry";
+export type TeamRegistry = import("./teamRegistry").TeamRegistry;
+export const TeamRegistry: typeof import("./teamRegistry").TeamRegistry = null as any;
+utilities.lazyLoad(exports, ["TeamRegistry"], () => require("./teamRegistry"));
+
 export { TestSuiteArgs, TestSuiteState } from "./testSuite";
 export type TestSuite = import("./testSuite").TestSuite;
 export const TestSuite: typeof import("./testSuite").TestSuite = null as any;
@@ -221,10 +241,14 @@ const _module = {
                 return new ClusterQueue(name, <any>undefined, { urn })
             case "buildkite:index/clusterSecret:ClusterSecret":
                 return new ClusterSecret(name, <any>undefined, { urn })
+            case "buildkite:index/notificationService:NotificationService":
+                return new NotificationService(name, <any>undefined, { urn })
             case "buildkite:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
             case "buildkite:index/organizationBanner:OrganizationBanner":
                 return new OrganizationBanner(name, <any>undefined, { urn })
+            case "buildkite:index/organizationPipelineSettings:OrganizationPipelineSettings":
+                return new OrganizationPipelineSettings(name, <any>undefined, { urn })
             case "buildkite:index/organizationRule:OrganizationRule":
                 return new OrganizationRule(name, <any>undefined, { urn })
             case "buildkite:index/pipeline:Pipeline":
@@ -245,6 +269,8 @@ const _module = {
                 return new Team(name, <any>undefined, { urn })
             case "buildkite:index/teamMember:TeamMember":
                 return new TeamMember(name, <any>undefined, { urn })
+            case "buildkite:index/teamRegistry:TeamRegistry":
+                return new TeamRegistry(name, <any>undefined, { urn })
             case "buildkite:index/testSuite:TestSuite":
                 return new TestSuite(name, <any>undefined, { urn })
             case "buildkite:index/testSuiteTeam:TestSuiteTeam":
@@ -261,8 +287,10 @@ pulumi.runtime.registerResourceModule("buildkite", "index/clusterDefaultQueue", 
 pulumi.runtime.registerResourceModule("buildkite", "index/clusterMaintainer", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/clusterQueue", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/clusterSecret", _module)
+pulumi.runtime.registerResourceModule("buildkite", "index/notificationService", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/organization", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/organizationBanner", _module)
+pulumi.runtime.registerResourceModule("buildkite", "index/organizationPipelineSettings", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/organizationRule", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/pipelineSchedule", _module)
@@ -273,6 +301,7 @@ pulumi.runtime.registerResourceModule("buildkite", "index/portal", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/registry", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/team", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/teamMember", _module)
+pulumi.runtime.registerResourceModule("buildkite", "index/teamRegistry", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/testSuite", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/testSuiteTeam", _module)
 pulumi.runtime.registerResourcePackage("buildkite", {

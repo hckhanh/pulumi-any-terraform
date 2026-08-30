@@ -37,6 +37,8 @@
         "index.ts",
         "insight.ts",
         "insightVariable.ts",
+        "logsAlert.ts",
+        "logsAlertDestination.ts",
         "organizationMember.ts",
         "project.ts",
         "projectDefaultAccess.ts",

@@ -15,10 +15,14 @@ export interface ClusterQueueHostedAgents {
      * - LINUX_AMD64_4X16
      * - LINUX_AMD64_8X32
      * - LINUX_AMD64_16X64
+     * - LINUX_AMD64_32X128
+     * - LINUX_AMD64_64X256
      * - LINUX_ARM64_2X4
      * - LINUX_ARM64_4X16
      * - LINUX_ARM64_8X32
      * - LINUX_ARM64_16X64
+     * - LINUX_ARM64_32X128
+     * - LINUX_ARM64_64X256
      */
     instanceShape: pulumi.Input<string>;
     linux?: pulumi.Input<inputs.ClusterQueueHostedAgentsLinux | undefined>;
@@ -34,13 +38,93 @@ export interface ClusterQueueHostedAgentsLinux {
 
 export interface ClusterQueueHostedAgentsMac {
     /**
-     * Optional selection of a specific macOS version to be selected for jobs in the queue to have available. Please note that this value is currently experimental and may not function as expected.
+     * The macOS version available to jobs in this queue. Buildkite selects the current default when this is omitted. This setting is experimental and may not work as expected.
      */
     macosVersion?: pulumi.Input<string | undefined>;
     /**
      * Required selection of a specific XCode version to be selected for jobs in the queue to have available. Please note that this value is currently experimental and may not function as expected.
      */
     xcodeVersion: pulumi.Input<string>;
+}
+
+export interface NotificationServiceAwsEventBridge {
+    /**
+     * The AWS account ID for the partner event source. Required on create, immutable, and masked by the API.
+     */
+    awsAccountId?: pulumi.Input<string | undefined>;
+    /**
+     * The AWS region for the partner event source. Required on create and immutable.
+     */
+    awsRegion?: pulumi.Input<string | undefined>;
+    /**
+     * The AWS partner event source created for this service.
+     */
+    eventSourceName?: pulumi.Input<string | undefined>;
+    /**
+     * A build meta-data pattern to include in EventBridge payloads.
+     */
+    includeBuildMetaData?: pulumi.Input<string | undefined>;
+}
+
+export interface NotificationServiceDatadogPipelineVisibility {
+    /**
+     * The Datadog API key. Required on create and masked by the API.
+     */
+    apiKey?: pulumi.Input<string | undefined>;
+    /**
+     * The Datadog site, such as `datadoghq.com` or `datadoghq.eu`.
+     */
+    datadogSite?: pulumi.Input<string | undefined>;
+    /**
+     * Newline-delimited `key:value` tags attached to Datadog events.
+     */
+    datadogTags?: pulumi.Input<string | undefined>;
+}
+
+export interface NotificationServiceOpenTelemetryTracing {
+    /**
+     * The OTLP HTTP endpoint. Required on create.
+     */
+    endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Headers sent to the OTLP endpoint. Buildkite never returns these values, so they are preserved only in Terraform state.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Additional OpenTelemetry resource attributes.
+     */
+    resourceAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The OpenTelemetry service name. Defaults to <span pulumi-lang-nodejs="`buildkite`" pulumi-lang-dotnet="`Buildkite`" pulumi-lang-go="`buildkite`" pulumi-lang-python="`buildkite`" pulumi-lang-yaml="`buildkite`" pulumi-lang-java="`buildkite`" pulumi-lang-hcl="`buildkite`">`buildkite`</span>.
+     */
+    serviceName?: pulumi.Input<string | undefined>;
+}
+
+export interface NotificationServiceWebhook {
+    /**
+     * The webhook event names to deliver.
+     */
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether to verify the webhook endpoint's TLS certificate.
+     */
+    tlsVerify?: pulumi.Input<boolean | undefined>;
+    /**
+     * The token used to authenticate webhook deliveries. The API generates one when omitted.
+     */
+    token?: pulumi.Input<string | undefined>;
+    /**
+     * How the webhook token authenticates deliveries.
+     */
+    tokenMode?: pulumi.Input<string | undefined>;
+    /**
+     * The URL that receives webhook deliveries. Required when creating a webhook service.
+     */
+    url?: pulumi.Input<string | undefined>;
+    /**
+     * The webhook payload version. New services must use the API's latest version, and existing services can only be upgraded to it, never downgraded.
+     */
+    version?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineProviderSettings {
@@ -77,6 +161,10 @@ export interface PipelineProviderSettings {
      */
     buildPullRequestConvertedToDraft?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to create builds when a pull request is removed from a merge queue. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
+     */
+    buildPullRequestDequeued?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to create builds for pull requests from third-party forks.
      */
     buildPullRequestForks?: pulumi.Input<boolean | undefined>;
@@ -92,6 +180,14 @@ export interface PipelineProviderSettings {
      * Whether to create a build when a pull request changes to "Ready for review".
      */
     buildPullRequestReadyForReview?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to create builds when a pull request is reopened. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
+     */
+    buildPullRequestReopened?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to create builds when an inline review comment is created on a pull request. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
+     */
+    buildPullRequestReviewCommentCreated?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a build when a pull request review is dismissed.
      */
@@ -176,6 +272,14 @@ export interface PipelineProviderSettings {
      * Filter pull request builds.
      */
     pullRequestBranchFilterEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The command word used to trigger builds from inline pull request review comments (e.g. "/bk"). Only review comments starting with or containing this word will trigger builds.
+     */
+    reviewCommentCommandWord?: pulumi.Input<string | undefined>;
+    /**
+     * The match mode for the review comment command word. Valid values are "exact" and "contains".
+     */
+    reviewCommentMatchMode?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a separate status for pull request builds, allowing you to require a passing pull request build in your [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) in GitHub.
      */

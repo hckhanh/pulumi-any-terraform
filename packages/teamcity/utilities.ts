@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.3.0",
+		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "teamcity",
-		packageVersion: "0.0.94",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTQifX0=",
+		packageVersion: "0.0.95",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTUifX0=",
 	});
 }

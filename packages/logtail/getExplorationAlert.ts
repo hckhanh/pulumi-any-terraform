@@ -61,6 +61,7 @@ export interface GetExplorationAlertResult {
     readonly stringValue: string;
     readonly updatedAt: string;
     readonly value: number;
+    readonly variableValues: outputs.GetExplorationAlertVariableValue[];
 }
 export function getExplorationAlertOutput(args: GetExplorationAlertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExplorationAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

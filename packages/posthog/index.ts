@@ -80,6 +80,16 @@ export type InsightVariable = import("./insightVariable").InsightVariable;
 export const InsightVariable: typeof import("./insightVariable").InsightVariable = null as any;
 utilities.lazyLoad(exports, ["InsightVariable"], () => require("./insightVariable"));
 
+export { LogsAlertArgs, LogsAlertState } from "./logsAlert";
+export type LogsAlert = import("./logsAlert").LogsAlert;
+export const LogsAlert: typeof import("./logsAlert").LogsAlert = null as any;
+utilities.lazyLoad(exports, ["LogsAlert"], () => require("./logsAlert"));
+
+export { LogsAlertDestinationArgs, LogsAlertDestinationState } from "./logsAlertDestination";
+export type LogsAlertDestination = import("./logsAlertDestination").LogsAlertDestination;
+export const LogsAlertDestination: typeof import("./logsAlertDestination").LogsAlertDestination = null as any;
+utilities.lazyLoad(exports, ["LogsAlertDestination"], () => require("./logsAlertDestination"));
+
 export { OrganizationMemberArgs, OrganizationMemberState } from "./organizationMember";
 export type OrganizationMember = import("./organizationMember").OrganizationMember;
 export const OrganizationMember: typeof import("./organizationMember").OrganizationMember = null as any;
@@ -171,6 +181,10 @@ const _module = {
                 return new Insight(name, <any>undefined, { urn })
             case "posthog:index/insightVariable:InsightVariable":
                 return new InsightVariable(name, <any>undefined, { urn })
+            case "posthog:index/logsAlert:LogsAlert":
+                return new LogsAlert(name, <any>undefined, { urn })
+            case "posthog:index/logsAlertDestination:LogsAlertDestination":
+                return new LogsAlertDestination(name, <any>undefined, { urn })
             case "posthog:index/organizationMember:OrganizationMember":
                 return new OrganizationMember(name, <any>undefined, { urn })
             case "posthog:index/project:Project":
@@ -208,6 +222,8 @@ pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/hogFunction", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/insight", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/insightVariable", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/logsAlert", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/logsAlertDestination", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/organizationMember", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/project", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/projectDefaultAccess", _module)
