@@ -1,3 +1,52 @@
+## 2.2.0
+
+### Minor Changes
+
+- Remove the chart/section overlap in the example dashboard layout by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/109
+- Look up dashboards by ID directly instead of scanning the paginated list by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/108
+- File existing example resources under the empty secondary groups by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/107
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.3...v10.15.4
+
+- T-19631 Add per-type VRL transformations to errors_application by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/127
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.16.0...v10.17.0
+
+Update pulumi-logtail from 10.17.0 to 10.18.1
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.17.0...v10.18.1
+
+### Patch Changes
+
+- [T-17777] Add gitlab_repository_name field to logtail_errors_application by @SaltySkyPie in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/99
+
+#### New Contributors
+
+- @SaltySkyPie made their first contribution in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/99
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.14.3...v10.14.4
+
+- T-8648 Handle custom_bucket without apply loops by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/112
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.7...v10.15.8
+
+Update pulumi-logtail from 10.15.8 to 10.15.10
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.8...v10.15.10
+
+- SH-1029 Add series_names_except, on_missing_data, and anomaly_training_range_days to alerts by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/120
+- SH-1029 Add explanation to logtail_dashboard_section by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/119
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.11...v10.15.12
+
+- T-19128: Fix logtail_metric import via composite source_id/metric_id ID by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/123
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.13...v10.15.14
+
+- T-19811 Add logtail_source_gcp_project resource to connect a GCP project to a source by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/126
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v10.15.14...v10.15.15
+
 ## 2.1.2
 
 ### Patch Changes
