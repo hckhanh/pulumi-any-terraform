@@ -49,7 +49,7 @@ jobs:
           git add .
       - name: Update lockfile
         run: |
-          pnpm install --no-frozen-lockfile
+          pnpm install --no-frozen-lockfile --ignore-scripts
           git add .
       - name: Commit and push changes to main
         if: steps.check.outputs.has_updates == 'true'
