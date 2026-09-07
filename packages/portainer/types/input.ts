@@ -201,6 +201,25 @@ export interface EdgeStackTimeouts {
     update?: pulumi.Input<string | undefined>;
 }
 
+export interface EndpointRelationsRelation {
+    /**
+     * Edge group identifiers the environment belongs to, replacing whatever it had. Omit the attribute to leave its edge groups alone; there is no way to clear them here, because Portainer cannot tell an intentional "none" from "do not touch".
+     */
+    edgeGroupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Identifier of the environment the relations apply to.
+     */
+    endpointId: pulumi.Input<number>;
+    /**
+     * Environment group the environment is moved to. Zero, the default, leaves its group untouched — Portainer only applies a non-zero value.
+     */
+    groupId?: pulumi.Input<number | undefined>;
+    /**
+     * Tag identifiers assigned to the environment, replacing whatever it had. Omit the attribute to leave its tags alone; use <span pulumi-lang-nodejs="`portainer.Environment`" pulumi-lang-dotnet="`portainer.Environment`" pulumi-lang-go="`Environment`" pulumi-lang-python="`Environment`" pulumi-lang-yaml="`portainer.Environment`" pulumi-lang-java="`portainer.Environment`" pulumi-lang-hcl="`portainer_environment`">`portainer.Environment`</span> to clear them.
+     */
+    tagIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+}
+
 export interface EndpointSettingsChangeWindow {
     /**
      * Whether the change window is enabled.

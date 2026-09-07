@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.2.1",
+		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "portainer",
-		packageVersion: "1.34.3",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4zNC4zIn19",
+		packageVersion: "1.35.0",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4zNS4wIn19",
 	});
 }

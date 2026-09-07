@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "logtail",
-		packageVersion: "11.0.0",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIxMS4wLjAifX0=",
+		packageVersion: "11.2.0",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvbG9ndGFpbCIsInZlcnNpb24iOiIxMS4yLjAifX0=",
 	});
 }

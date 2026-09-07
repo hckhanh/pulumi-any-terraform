@@ -201,6 +201,25 @@ export interface EdgeStackTimeouts {
     update?: string;
 }
 
+export interface EndpointRelationsRelation {
+    /**
+     * Edge group identifiers the environment belongs to, replacing whatever it had. Omit the attribute to leave its edge groups alone; there is no way to clear them here, because Portainer cannot tell an intentional "none" from "do not touch".
+     */
+    edgeGroupIds?: number[];
+    /**
+     * Identifier of the environment the relations apply to.
+     */
+    endpointId: number;
+    /**
+     * Environment group the environment is moved to. Zero, the default, leaves its group untouched — Portainer only applies a non-zero value.
+     */
+    groupId?: number;
+    /**
+     * Tag identifiers assigned to the environment, replacing whatever it had. Omit the attribute to leave its tags alone; use <span pulumi-lang-nodejs="`portainer.Environment`" pulumi-lang-dotnet="`portainer.Environment`" pulumi-lang-go="`Environment`" pulumi-lang-python="`Environment`" pulumi-lang-yaml="`portainer.Environment`" pulumi-lang-java="`portainer.Environment`" pulumi-lang-hcl="`portainer_environment`">`portainer.Environment`</span> to clear them.
+     */
+    tagIds?: number[];
+}
+
 export interface EndpointSettingsChangeWindow {
     /**
      * Whether the change window is enabled.
@@ -285,6 +304,105 @@ export interface EndpointSettingsSecuritySettings {
     enableHostManagement?: boolean;
 }
 
+export interface GetAppTemplatesTemplate {
+    categories?: string[];
+    description?: string;
+    id?: number;
+    image?: string;
+    platform?: string;
+    repositoryUrl?: string;
+    title?: string;
+    type?: number;
+}
+
+export interface GetDockerImagesImage {
+    created?: number;
+    id?: string;
+    nodeName?: string;
+    size?: number;
+    tags?: string[];
+    used?: boolean;
+}
+
+export interface GetEdgeJobTasksTask {
+    endpointId?: number;
+    endpointName?: string;
+    id?: string;
+    logsCollected?: boolean;
+    logsStatus?: number;
+}
+
+export interface GetEndpointRegistriesRegistry {
+    authentication?: boolean;
+    baseUrl?: string;
+    id?: number;
+    name?: string;
+    type?: number;
+    url?: string;
+    username?: string;
+}
+
+export interface GetEndpointsSummaryByGroup {
+    count?: number;
+    groupId?: number;
+    groupName?: string;
+}
+
+export interface GetGitopsSourceWorkflow {
+    creationDate?: number;
+    edgeGroupIds?: number[];
+    endpointId?: number;
+    id?: number;
+    lastSyncDate?: number;
+    name?: string;
+    namespace?: string;
+    platform?: string;
+    type?: string;
+}
+
+export interface GetGitopsSourcesSource {
+    environments?: number;
+    id?: number;
+    interval?: string;
+    lastSync?: number;
+    name?: string;
+    status?: string;
+    statusError?: string;
+    type?: string;
+    url?: string;
+    usedBy?: number;
+}
+
+export interface GetGitopsSourcesSummary {
+    error?: number;
+    healthy?: number;
+    paused?: number;
+    syncing?: number;
+    unknown?: number;
+}
+
+export interface GetGitopsWorkflowsSummary {
+    error?: number;
+    healthy?: number;
+    paused?: number;
+    syncing?: number;
+    unknown?: number;
+}
+
+export interface GetGitopsWorkflowsWorkflow {
+    artifactError?: string;
+    artifactStatus?: string;
+    creationDate?: number;
+    healthy?: boolean;
+    id?: number;
+    lastSyncDate?: number;
+    name?: string;
+    sourceError?: string;
+    sourceStatus?: string;
+    targetError?: string;
+    targetStatus?: string;
+}
+
 export interface GetHelmReleaseHistoryRevision {
     appVersion?: string;
     chart?: string;
@@ -306,11 +424,163 @@ export interface GetKubernetesCrdCrd {
     scope?: string;
 }
 
+export interface GetKubernetesDeploymentsDeployment {
+    availableReplicas?: number;
+    creationTimestamp?: string;
+    generation?: number;
+    images?: string[];
+    labels?: {[key: string]: string};
+    name?: string;
+    namespace?: string;
+    observedGeneration?: number;
+    readyReplicas?: number;
+    replicas?: number;
+    unavailableReplicas?: number;
+    updatedReplicas?: number;
+}
+
+export interface GetKubernetesEventsEvent {
+    count?: number;
+    firstTimestamp?: string;
+    kind?: string;
+    lastTimestamp?: string;
+    message?: string;
+    name?: string;
+    namespace?: string;
+    reason?: string;
+    type?: string;
+    uid?: string;
+}
+
+export interface GetKubernetesIngressClassesIngressClass {
+    annotations?: {[key: string]: string};
+    controller?: string;
+    isDefault?: boolean;
+    name?: string;
+}
+
+export interface GetKubernetesManifestDryRunResult {
+    documentIndex?: number;
+    kind?: string;
+    message?: string;
+    name?: string;
+    namespace?: string;
+    status?: string;
+}
+
+export interface GetKubernetesNodesNode {
+    availableCpu?: number;
+    availableMemory?: number;
+    capacityCpu?: string;
+    capacityMemory?: string;
+    internalIp?: string;
+    kubeletVersion?: string;
+    labels?: {[key: string]: string};
+    name?: string;
+    osImage?: string;
+    ready?: boolean;
+    unschedulable?: boolean;
+    usageCpu?: string;
+    usageMemory?: string;
+}
+
+export interface GetKubernetesPersistentVolumesPersistentVolume {
+    accessModes?: string[];
+    capacity?: string;
+    claimRef?: string;
+    name?: string;
+    phase?: string;
+    reclaimPolicy?: string;
+    storageClass?: string;
+}
+
+export interface GetKubernetesPodMetricsPod {
+    containers?: outputs.GetKubernetesPodMetricsPodContainer[];
+    name?: string;
+    timestamp?: string;
+    window?: string;
+}
+
+export interface GetKubernetesPodMetricsPodContainer {
+    cpu?: string;
+    memory?: string;
+    name?: string;
+}
+
+export interface GetKubernetesPodsPod {
+    containers?: outputs.GetKubernetesPodsPodContainer[];
+    hostIp?: string;
+    labels?: {[key: string]: string};
+    name?: string;
+    namespace?: string;
+    nodeName?: string;
+    phase?: string;
+    podIp?: string;
+    ready?: boolean;
+    restartCount?: number;
+    serviceAccount?: string;
+    startTime?: string;
+}
+
+export interface GetKubernetesPodsPodContainer {
+    image?: string;
+    name?: string;
+    ready?: boolean;
+    restartCount?: number;
+}
+
+export interface GetKubernetesReplicasetsReplicaset {
+    availableReplicas?: number;
+    creationTimestamp?: string;
+    fullyLabeledReplicas?: number;
+    images?: string[];
+    labels?: {[key: string]: string};
+    name?: string;
+    namespace?: string;
+    readyReplicas?: number;
+    replicas?: number;
+    revision?: number;
+}
+
+export interface GetKubernetesResourceQuotasResourceQuota {
+    creationTimestamp?: string;
+    hard?: {[key: string]: string};
+    name?: string;
+    namespace?: string;
+    scopes?: string[];
+    used?: {[key: string]: string};
+}
+
 export interface GetRoleRole {
     description?: string;
     id?: number;
     name?: string;
     priority?: number;
+}
+
+export interface GetTeamMembershipsMembership {
+    id?: number;
+    role?: number;
+    userId?: number;
+}
+
+export interface GetUserAccessEffectiveAccess {
+    accessLocation?: string;
+    endpointId?: number;
+    endpointName?: string;
+    groupId?: number;
+    groupName?: string;
+    roleId?: number;
+    roleName?: string;
+    rolePriority?: number;
+    teamId?: number;
+    teamName?: string;
+}
+
+export interface GetUserAccessMembership {
+    id?: number;
+    role?: number;
+    teamId?: number;
 }
 
 export interface GetUserActivityActivityLog {

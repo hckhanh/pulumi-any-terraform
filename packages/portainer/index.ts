@@ -125,6 +125,11 @@ export type EdgeJob = import("./edgeJob").EdgeJob;
 export const EdgeJob: typeof import("./edgeJob").EdgeJob = null as any;
 utilities.lazyLoad(exports, ["EdgeJob"], () => require("./edgeJob"));
 
+export { EdgeJobTaskLogsArgs, EdgeJobTaskLogsState } from "./edgeJobTaskLogs";
+export type EdgeJobTaskLogs = import("./edgeJobTaskLogs").EdgeJobTaskLogs;
+export const EdgeJobTaskLogs: typeof import("./edgeJobTaskLogs").EdgeJobTaskLogs = null as any;
+utilities.lazyLoad(exports, ["EdgeJobTaskLogs"], () => require("./edgeJobTaskLogs"));
+
 export { EdgeStackArgs, EdgeStackState } from "./edgeStack";
 export type EdgeStack = import("./edgeStack").EdgeStack;
 export const EdgeStack: typeof import("./edgeStack").EdgeStack = null as any;
@@ -155,6 +160,16 @@ export type EndpointGroupAccess = import("./endpointGroupAccess").EndpointGroupA
 export const EndpointGroupAccess: typeof import("./endpointGroupAccess").EndpointGroupAccess = null as any;
 utilities.lazyLoad(exports, ["EndpointGroupAccess"], () => require("./endpointGroupAccess"));
 
+export { EndpointGroupMembershipArgs, EndpointGroupMembershipState } from "./endpointGroupMembership";
+export type EndpointGroupMembership = import("./endpointGroupMembership").EndpointGroupMembership;
+export const EndpointGroupMembership: typeof import("./endpointGroupMembership").EndpointGroupMembership = null as any;
+utilities.lazyLoad(exports, ["EndpointGroupMembership"], () => require("./endpointGroupMembership"));
+
+export { EndpointRelationsArgs, EndpointRelationsState } from "./endpointRelations";
+export type EndpointRelations = import("./endpointRelations").EndpointRelations;
+export const EndpointRelations: typeof import("./endpointRelations").EndpointRelations = null as any;
+utilities.lazyLoad(exports, ["EndpointRelations"], () => require("./endpointRelations"));
+
 export { EndpointServiceUpdateArgs, EndpointServiceUpdateState } from "./endpointServiceUpdate";
 export type EndpointServiceUpdate = import("./endpointServiceUpdate").EndpointServiceUpdate;
 export const EndpointServiceUpdate: typeof import("./endpointServiceUpdate").EndpointServiceUpdate = null as any;
@@ -180,6 +195,11 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { GetAppTemplatesArgs, GetAppTemplatesResult, GetAppTemplatesOutputArgs } from "./getAppTemplates";
+export const getAppTemplates: typeof import("./getAppTemplates").getAppTemplates = null as any;
+export const getAppTemplatesOutput: typeof import("./getAppTemplates").getAppTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAppTemplates","getAppTemplatesOutput"], () => require("./getAppTemplates"));
+
 export { GetCloudCredentialsArgs, GetCloudCredentialsResult, GetCloudCredentialsOutputArgs } from "./getCloudCredentials";
 export const getCloudCredentials: typeof import("./getCloudCredentials").getCloudCredentials = null as any;
 export const getCloudCredentialsOutput: typeof import("./getCloudCredentials").getCloudCredentialsOutput = null as any;
@@ -190,15 +210,35 @@ export const getCustomTemplate: typeof import("./getCustomTemplate").getCustomTe
 export const getCustomTemplateOutput: typeof import("./getCustomTemplate").getCustomTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomTemplate","getCustomTemplateOutput"], () => require("./getCustomTemplate"));
 
+export { GetCustomTemplateFileArgs, GetCustomTemplateFileResult, GetCustomTemplateFileOutputArgs } from "./getCustomTemplateFile";
+export const getCustomTemplateFile: typeof import("./getCustomTemplateFile").getCustomTemplateFile = null as any;
+export const getCustomTemplateFileOutput: typeof import("./getCustomTemplateFile").getCustomTemplateFileOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomTemplateFile","getCustomTemplateFileOutput"], () => require("./getCustomTemplateFile"));
+
 export { GetDockerConfigArgs, GetDockerConfigResult, GetDockerConfigOutputArgs } from "./getDockerConfig";
 export const getDockerConfig: typeof import("./getDockerConfig").getDockerConfig = null as any;
 export const getDockerConfigOutput: typeof import("./getDockerConfig").getDockerConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getDockerConfig","getDockerConfigOutput"], () => require("./getDockerConfig"));
 
+export { GetDockerContainerGpusArgs, GetDockerContainerGpusResult, GetDockerContainerGpusOutputArgs } from "./getDockerContainerGpus";
+export const getDockerContainerGpus: typeof import("./getDockerContainerGpus").getDockerContainerGpus = null as any;
+export const getDockerContainerGpusOutput: typeof import("./getDockerContainerGpus").getDockerContainerGpusOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerContainerGpus","getDockerContainerGpusOutput"], () => require("./getDockerContainerGpus"));
+
+export { GetDockerDashboardArgs, GetDockerDashboardResult, GetDockerDashboardOutputArgs } from "./getDockerDashboard";
+export const getDockerDashboard: typeof import("./getDockerDashboard").getDockerDashboard = null as any;
+export const getDockerDashboardOutput: typeof import("./getDockerDashboard").getDockerDashboardOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerDashboard","getDockerDashboardOutput"], () => require("./getDockerDashboard"));
+
 export { GetDockerImageArgs, GetDockerImageResult, GetDockerImageOutputArgs } from "./getDockerImage";
 export const getDockerImage: typeof import("./getDockerImage").getDockerImage = null as any;
 export const getDockerImageOutput: typeof import("./getDockerImage").getDockerImageOutput = null as any;
 utilities.lazyLoad(exports, ["getDockerImage","getDockerImageOutput"], () => require("./getDockerImage"));
+
+export { GetDockerImagesArgs, GetDockerImagesResult, GetDockerImagesOutputArgs } from "./getDockerImages";
+export const getDockerImages: typeof import("./getDockerImages").getDockerImages = null as any;
+export const getDockerImagesOutput: typeof import("./getDockerImages").getDockerImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerImages","getDockerImagesOutput"], () => require("./getDockerImages"));
 
 export { GetDockerNetworkArgs, GetDockerNetworkResult, GetDockerNetworkOutputArgs } from "./getDockerNetwork";
 export const getDockerNetwork: typeof import("./getDockerNetwork").getDockerNetwork = null as any;
@@ -235,10 +275,30 @@ export const getEdgeJob: typeof import("./getEdgeJob").getEdgeJob = null as any;
 export const getEdgeJobOutput: typeof import("./getEdgeJob").getEdgeJobOutput = null as any;
 utilities.lazyLoad(exports, ["getEdgeJob","getEdgeJobOutput"], () => require("./getEdgeJob"));
 
+export { GetEdgeJobFileArgs, GetEdgeJobFileResult, GetEdgeJobFileOutputArgs } from "./getEdgeJobFile";
+export const getEdgeJobFile: typeof import("./getEdgeJobFile").getEdgeJobFile = null as any;
+export const getEdgeJobFileOutput: typeof import("./getEdgeJobFile").getEdgeJobFileOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeJobFile","getEdgeJobFileOutput"], () => require("./getEdgeJobFile"));
+
+export { GetEdgeJobTaskLogsArgs, GetEdgeJobTaskLogsResult, GetEdgeJobTaskLogsOutputArgs } from "./getEdgeJobTaskLogs";
+export const getEdgeJobTaskLogs: typeof import("./getEdgeJobTaskLogs").getEdgeJobTaskLogs = null as any;
+export const getEdgeJobTaskLogsOutput: typeof import("./getEdgeJobTaskLogs").getEdgeJobTaskLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeJobTaskLogs","getEdgeJobTaskLogsOutput"], () => require("./getEdgeJobTaskLogs"));
+
+export { GetEdgeJobTasksArgs, GetEdgeJobTasksResult, GetEdgeJobTasksOutputArgs } from "./getEdgeJobTasks";
+export const getEdgeJobTasks: typeof import("./getEdgeJobTasks").getEdgeJobTasks = null as any;
+export const getEdgeJobTasksOutput: typeof import("./getEdgeJobTasks").getEdgeJobTasksOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeJobTasks","getEdgeJobTasksOutput"], () => require("./getEdgeJobTasks"));
+
 export { GetEdgeStackArgs, GetEdgeStackResult, GetEdgeStackOutputArgs } from "./getEdgeStack";
 export const getEdgeStack: typeof import("./getEdgeStack").getEdgeStack = null as any;
 export const getEdgeStackOutput: typeof import("./getEdgeStack").getEdgeStackOutput = null as any;
 utilities.lazyLoad(exports, ["getEdgeStack","getEdgeStackOutput"], () => require("./getEdgeStack"));
+
+export { GetEdgeStackFileArgs, GetEdgeStackFileResult, GetEdgeStackFileOutputArgs } from "./getEdgeStackFile";
+export const getEdgeStackFile: typeof import("./getEdgeStackFile").getEdgeStackFile = null as any;
+export const getEdgeStackFileOutput: typeof import("./getEdgeStackFile").getEdgeStackFileOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeStackFile","getEdgeStackFileOutput"], () => require("./getEdgeStackFile"));
 
 export { GetEndpointGroupArgs, GetEndpointGroupResult, GetEndpointGroupOutputArgs } from "./getEndpointGroup";
 export const getEndpointGroup: typeof import("./getEndpointGroup").getEndpointGroup = null as any;
@@ -249,6 +309,16 @@ export { GetEndpointGroupAccessArgs, GetEndpointGroupAccessResult, GetEndpointGr
 export const getEndpointGroupAccess: typeof import("./getEndpointGroupAccess").getEndpointGroupAccess = null as any;
 export const getEndpointGroupAccessOutput: typeof import("./getEndpointGroupAccess").getEndpointGroupAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpointGroupAccess","getEndpointGroupAccessOutput"], () => require("./getEndpointGroupAccess"));
+
+export { GetEndpointRegistriesArgs, GetEndpointRegistriesResult, GetEndpointRegistriesOutputArgs } from "./getEndpointRegistries";
+export const getEndpointRegistries: typeof import("./getEndpointRegistries").getEndpointRegistries = null as any;
+export const getEndpointRegistriesOutput: typeof import("./getEndpointRegistries").getEndpointRegistriesOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointRegistries","getEndpointRegistriesOutput"], () => require("./getEndpointRegistries"));
+
+export { GetEndpointsSummaryArgs, GetEndpointsSummaryResult, GetEndpointsSummaryOutputArgs } from "./getEndpointsSummary";
+export const getEndpointsSummary: typeof import("./getEndpointsSummary").getEndpointsSummary = null as any;
+export const getEndpointsSummaryOutput: typeof import("./getEndpointsSummary").getEndpointsSummaryOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointsSummary","getEndpointsSummaryOutput"], () => require("./getEndpointsSummary"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
@@ -265,6 +335,36 @@ export const getGitopsRepoRefs: typeof import("./getGitopsRepoRefs").getGitopsRe
 export const getGitopsRepoRefsOutput: typeof import("./getGitopsRepoRefs").getGitopsRepoRefsOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsRepoRefs","getGitopsRepoRefsOutput"], () => require("./getGitopsRepoRefs"));
 
+export { GetGitopsSourceArgs, GetGitopsSourceResult, GetGitopsSourceOutputArgs } from "./getGitopsSource";
+export const getGitopsSource: typeof import("./getGitopsSource").getGitopsSource = null as any;
+export const getGitopsSourceOutput: typeof import("./getGitopsSource").getGitopsSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsSource","getGitopsSourceOutput"], () => require("./getGitopsSource"));
+
+export { GetGitopsSourceConnectionArgs, GetGitopsSourceConnectionResult, GetGitopsSourceConnectionOutputArgs } from "./getGitopsSourceConnection";
+export const getGitopsSourceConnection: typeof import("./getGitopsSourceConnection").getGitopsSourceConnection = null as any;
+export const getGitopsSourceConnectionOutput: typeof import("./getGitopsSourceConnection").getGitopsSourceConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsSourceConnection","getGitopsSourceConnectionOutput"], () => require("./getGitopsSourceConnection"));
+
+export { GetGitopsSourcesArgs, GetGitopsSourcesResult, GetGitopsSourcesOutputArgs } from "./getGitopsSources";
+export const getGitopsSources: typeof import("./getGitopsSources").getGitopsSources = null as any;
+export const getGitopsSourcesOutput: typeof import("./getGitopsSources").getGitopsSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsSources","getGitopsSourcesOutput"], () => require("./getGitopsSources"));
+
+export { GetGitopsWorkflowArgs, GetGitopsWorkflowResult, GetGitopsWorkflowOutputArgs } from "./getGitopsWorkflow";
+export const getGitopsWorkflow: typeof import("./getGitopsWorkflow").getGitopsWorkflow = null as any;
+export const getGitopsWorkflowOutput: typeof import("./getGitopsWorkflow").getGitopsWorkflowOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsWorkflow","getGitopsWorkflowOutput"], () => require("./getGitopsWorkflow"));
+
+export { GetGitopsWorkflowsArgs, GetGitopsWorkflowsResult, GetGitopsWorkflowsOutputArgs } from "./getGitopsWorkflows";
+export const getGitopsWorkflows: typeof import("./getGitopsWorkflows").getGitopsWorkflows = null as any;
+export const getGitopsWorkflowsOutput: typeof import("./getGitopsWorkflows").getGitopsWorkflowsOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsWorkflows","getGitopsWorkflowsOutput"], () => require("./getGitopsWorkflows"));
+
+export { GetHelmChartArgs, GetHelmChartResult, GetHelmChartOutputArgs } from "./getHelmChart";
+export const getHelmChart: typeof import("./getHelmChart").getHelmChart = null as any;
+export const getHelmChartOutput: typeof import("./getHelmChart").getHelmChartOutput = null as any;
+utilities.lazyLoad(exports, ["getHelmChart","getHelmChartOutput"], () => require("./getHelmChart"));
+
 export { GetHelmGitDryrunArgs, GetHelmGitDryrunResult, GetHelmGitDryrunOutputArgs } from "./getHelmGitDryrun";
 export const getHelmGitDryrun: typeof import("./getHelmGitDryrun").getHelmGitDryrun = null as any;
 export const getHelmGitDryrunOutput: typeof import("./getHelmGitDryrun").getHelmGitDryrunOutput = null as any;
@@ -275,10 +375,100 @@ export const getHelmReleaseHistory: typeof import("./getHelmReleaseHistory").get
 export const getHelmReleaseHistoryOutput: typeof import("./getHelmReleaseHistory").getHelmReleaseHistoryOutput = null as any;
 utilities.lazyLoad(exports, ["getHelmReleaseHistory","getHelmReleaseHistoryOutput"], () => require("./getHelmReleaseHistory"));
 
+export { GetKubernetesApplicationResourcesArgs, GetKubernetesApplicationResourcesResult, GetKubernetesApplicationResourcesOutputArgs } from "./getKubernetesApplicationResources";
+export const getKubernetesApplicationResources: typeof import("./getKubernetesApplicationResources").getKubernetesApplicationResources = null as any;
+export const getKubernetesApplicationResourcesOutput: typeof import("./getKubernetesApplicationResources").getKubernetesApplicationResourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesApplicationResources","getKubernetesApplicationResourcesOutput"], () => require("./getKubernetesApplicationResources"));
+
+export { GetKubernetesClusterArgs, GetKubernetesClusterResult, GetKubernetesClusterOutputArgs } from "./getKubernetesCluster";
+export const getKubernetesCluster: typeof import("./getKubernetesCluster").getKubernetesCluster = null as any;
+export const getKubernetesClusterOutput: typeof import("./getKubernetesCluster").getKubernetesClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCluster","getKubernetesClusterOutput"], () => require("./getKubernetesCluster"));
+
+export { GetKubernetesConfigArgs, GetKubernetesConfigResult, GetKubernetesConfigOutputArgs } from "./getKubernetesConfig";
+export const getKubernetesConfig: typeof import("./getKubernetesConfig").getKubernetesConfig = null as any;
+export const getKubernetesConfigOutput: typeof import("./getKubernetesConfig").getKubernetesConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesConfig","getKubernetesConfigOutput"], () => require("./getKubernetesConfig"));
+
 export { GetKubernetesCrdArgs, GetKubernetesCrdResult, GetKubernetesCrdOutputArgs } from "./getKubernetesCrd";
 export const getKubernetesCrd: typeof import("./getKubernetesCrd").getKubernetesCrd = null as any;
 export const getKubernetesCrdOutput: typeof import("./getKubernetesCrd").getKubernetesCrdOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesCrd","getKubernetesCrdOutput"], () => require("./getKubernetesCrd"));
+
+export { GetKubernetesDeploymentsArgs, GetKubernetesDeploymentsResult, GetKubernetesDeploymentsOutputArgs } from "./getKubernetesDeployments";
+export const getKubernetesDeployments: typeof import("./getKubernetesDeployments").getKubernetesDeployments = null as any;
+export const getKubernetesDeploymentsOutput: typeof import("./getKubernetesDeployments").getKubernetesDeploymentsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesDeployments","getKubernetesDeploymentsOutput"], () => require("./getKubernetesDeployments"));
+
+export { GetKubernetesDescribeArgs, GetKubernetesDescribeResult, GetKubernetesDescribeOutputArgs } from "./getKubernetesDescribe";
+export const getKubernetesDescribe: typeof import("./getKubernetesDescribe").getKubernetesDescribe = null as any;
+export const getKubernetesDescribeOutput: typeof import("./getKubernetesDescribe").getKubernetesDescribeOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesDescribe","getKubernetesDescribeOutput"], () => require("./getKubernetesDescribe"));
+
+export { GetKubernetesEventsArgs, GetKubernetesEventsResult, GetKubernetesEventsOutputArgs } from "./getKubernetesEvents";
+export const getKubernetesEvents: typeof import("./getKubernetesEvents").getKubernetesEvents = null as any;
+export const getKubernetesEventsOutput: typeof import("./getKubernetesEvents").getKubernetesEventsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesEvents","getKubernetesEventsOutput"], () => require("./getKubernetesEvents"));
+
+export { GetKubernetesIngressClassesArgs, GetKubernetesIngressClassesResult, GetKubernetesIngressClassesOutputArgs } from "./getKubernetesIngressClasses";
+export const getKubernetesIngressClasses: typeof import("./getKubernetesIngressClasses").getKubernetesIngressClasses = null as any;
+export const getKubernetesIngressClassesOutput: typeof import("./getKubernetesIngressClasses").getKubernetesIngressClassesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesIngressClasses","getKubernetesIngressClassesOutput"], () => require("./getKubernetesIngressClasses"));
+
+export { GetKubernetesManifestDryRunArgs, GetKubernetesManifestDryRunResult, GetKubernetesManifestDryRunOutputArgs } from "./getKubernetesManifestDryRun";
+export const getKubernetesManifestDryRun: typeof import("./getKubernetesManifestDryRun").getKubernetesManifestDryRun = null as any;
+export const getKubernetesManifestDryRunOutput: typeof import("./getKubernetesManifestDryRun").getKubernetesManifestDryRunOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesManifestDryRun","getKubernetesManifestDryRunOutput"], () => require("./getKubernetesManifestDryRun"));
+
+export { GetKubernetesNodeMetricsArgs, GetKubernetesNodeMetricsResult, GetKubernetesNodeMetricsOutputArgs } from "./getKubernetesNodeMetrics";
+export const getKubernetesNodeMetrics: typeof import("./getKubernetesNodeMetrics").getKubernetesNodeMetrics = null as any;
+export const getKubernetesNodeMetricsOutput: typeof import("./getKubernetesNodeMetrics").getKubernetesNodeMetricsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesNodeMetrics","getKubernetesNodeMetricsOutput"], () => require("./getKubernetesNodeMetrics"));
+
+export { GetKubernetesNodesArgs, GetKubernetesNodesResult, GetKubernetesNodesOutputArgs } from "./getKubernetesNodes";
+export const getKubernetesNodes: typeof import("./getKubernetesNodes").getKubernetesNodes = null as any;
+export const getKubernetesNodesOutput: typeof import("./getKubernetesNodes").getKubernetesNodesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesNodes","getKubernetesNodesOutput"], () => require("./getKubernetesNodes"));
+
+export { GetKubernetesPersistentVolumesArgs, GetKubernetesPersistentVolumesResult, GetKubernetesPersistentVolumesOutputArgs } from "./getKubernetesPersistentVolumes";
+export const getKubernetesPersistentVolumes: typeof import("./getKubernetesPersistentVolumes").getKubernetesPersistentVolumes = null as any;
+export const getKubernetesPersistentVolumesOutput: typeof import("./getKubernetesPersistentVolumes").getKubernetesPersistentVolumesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPersistentVolumes","getKubernetesPersistentVolumesOutput"], () => require("./getKubernetesPersistentVolumes"));
+
+export { GetKubernetesPodLogsArgs, GetKubernetesPodLogsResult, GetKubernetesPodLogsOutputArgs } from "./getKubernetesPodLogs";
+export const getKubernetesPodLogs: typeof import("./getKubernetesPodLogs").getKubernetesPodLogs = null as any;
+export const getKubernetesPodLogsOutput: typeof import("./getKubernetesPodLogs").getKubernetesPodLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPodLogs","getKubernetesPodLogsOutput"], () => require("./getKubernetesPodLogs"));
+
+export { GetKubernetesPodMetricsArgs, GetKubernetesPodMetricsResult, GetKubernetesPodMetricsOutputArgs } from "./getKubernetesPodMetrics";
+export const getKubernetesPodMetrics: typeof import("./getKubernetesPodMetrics").getKubernetesPodMetrics = null as any;
+export const getKubernetesPodMetricsOutput: typeof import("./getKubernetesPodMetrics").getKubernetesPodMetricsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPodMetrics","getKubernetesPodMetricsOutput"], () => require("./getKubernetesPodMetrics"));
+
+export { GetKubernetesPodsArgs, GetKubernetesPodsResult, GetKubernetesPodsOutputArgs } from "./getKubernetesPods";
+export const getKubernetesPods: typeof import("./getKubernetesPods").getKubernetesPods = null as any;
+export const getKubernetesPodsOutput: typeof import("./getKubernetesPods").getKubernetesPodsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPods","getKubernetesPodsOutput"], () => require("./getKubernetesPods"));
+
+export { GetKubernetesReplicasetsArgs, GetKubernetesReplicasetsResult, GetKubernetesReplicasetsOutputArgs } from "./getKubernetesReplicasets";
+export const getKubernetesReplicasets: typeof import("./getKubernetesReplicasets").getKubernetesReplicasets = null as any;
+export const getKubernetesReplicasetsOutput: typeof import("./getKubernetesReplicasets").getKubernetesReplicasetsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesReplicasets","getKubernetesReplicasetsOutput"], () => require("./getKubernetesReplicasets"));
+
+export { GetKubernetesResourceQuotasArgs, GetKubernetesResourceQuotasResult, GetKubernetesResourceQuotasOutputArgs } from "./getKubernetesResourceQuotas";
+export const getKubernetesResourceQuotas: typeof import("./getKubernetesResourceQuotas").getKubernetesResourceQuotas = null as any;
+export const getKubernetesResourceQuotasOutput: typeof import("./getKubernetesResourceQuotas").getKubernetesResourceQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesResourceQuotas","getKubernetesResourceQuotasOutput"], () => require("./getKubernetesResourceQuotas"));
+
+export { GetLdapCheckArgs, GetLdapCheckResult, GetLdapCheckOutputArgs } from "./getLdapCheck";
+export const getLdapCheck: typeof import("./getLdapCheck").getLdapCheck = null as any;
+export const getLdapCheckOutput: typeof import("./getLdapCheck").getLdapCheckOutput = null as any;
+utilities.lazyLoad(exports, ["getLdapCheck","getLdapCheckOutput"], () => require("./getLdapCheck"));
+
+export { GetMotdArgs, GetMotdResult, GetMotdOutputArgs } from "./getMotd";
+export const getMotd: typeof import("./getMotd").getMotd = null as any;
+export const getMotdOutput: typeof import("./getMotd").getMotdOutput = null as any;
+utilities.lazyLoad(exports, ["getMotd","getMotdOutput"], () => require("./getMotd"));
 
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
@@ -300,10 +490,20 @@ export const getRegistryAccess: typeof import("./getRegistryAccess").getRegistry
 export const getRegistryAccessOutput: typeof import("./getRegistryAccess").getRegistryAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistryAccess","getRegistryAccessOutput"], () => require("./getRegistryAccess"));
 
+export { GetRegistryConnectionArgs, GetRegistryConnectionResult, GetRegistryConnectionOutputArgs } from "./getRegistryConnection";
+export const getRegistryConnection: typeof import("./getRegistryConnection").getRegistryConnection = null as any;
+export const getRegistryConnectionOutput: typeof import("./getRegistryConnection").getRegistryConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryConnection","getRegistryConnectionOutput"], () => require("./getRegistryConnection"));
+
 export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
 export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetSettingsPublicArgs, GetSettingsPublicResult, GetSettingsPublicOutputArgs } from "./getSettingsPublic";
+export const getSettingsPublic: typeof import("./getSettingsPublic").getSettingsPublic = null as any;
+export const getSettingsPublicOutput: typeof import("./getSettingsPublic").getSettingsPublicOutput = null as any;
+utilities.lazyLoad(exports, ["getSettingsPublic","getSettingsPublicOutput"], () => require("./getSettingsPublic"));
 
 export { GetSharedGitCredentialArgs, GetSharedGitCredentialResult, GetSharedGitCredentialOutputArgs } from "./getSharedGitCredential";
 export const getSharedGitCredential: typeof import("./getSharedGitCredential").getSharedGitCredential = null as any;
@@ -314,6 +514,11 @@ export { GetStackArgs, GetStackResult, GetStackOutputArgs } from "./getStack";
 export const getStack: typeof import("./getStack").getStack = null as any;
 export const getStackOutput: typeof import("./getStack").getStackOutput = null as any;
 utilities.lazyLoad(exports, ["getStack","getStackOutput"], () => require("./getStack"));
+
+export { GetSystemArgs, GetSystemResult, GetSystemOutputArgs } from "./getSystem";
+export const getSystem: typeof import("./getSystem").getSystem = null as any;
+export const getSystemOutput: typeof import("./getSystem").getSystemOutput = null as any;
+utilities.lazyLoad(exports, ["getSystem","getSystemOutput"], () => require("./getSystem"));
 
 export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
 export const getTag: typeof import("./getTag").getTag = null as any;
@@ -330,10 +535,20 @@ export const getTeamMembership: typeof import("./getTeamMembership").getTeamMemb
 export const getTeamMembershipOutput: typeof import("./getTeamMembership").getTeamMembershipOutput = null as any;
 utilities.lazyLoad(exports, ["getTeamMembership","getTeamMembershipOutput"], () => require("./getTeamMembership"));
 
+export { GetTeamMembershipsArgs, GetTeamMembershipsResult, GetTeamMembershipsOutputArgs } from "./getTeamMemberships";
+export const getTeamMemberships: typeof import("./getTeamMemberships").getTeamMemberships = null as any;
+export const getTeamMembershipsOutput: typeof import("./getTeamMemberships").getTeamMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamMemberships","getTeamMembershipsOutput"], () => require("./getTeamMemberships"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUserAccessArgs, GetUserAccessResult, GetUserAccessOutputArgs } from "./getUserAccess";
+export const getUserAccess: typeof import("./getUserAccess").getUserAccess = null as any;
+export const getUserAccessOutput: typeof import("./getUserAccess").getUserAccessOutput = null as any;
+utilities.lazyLoad(exports, ["getUserAccess","getUserAccessOutput"], () => require("./getUserAccess"));
 
 export { GetUserActivityArgs, GetUserActivityResult, GetUserActivityOutputArgs } from "./getUserActivity";
 export const getUserActivity: typeof import("./getUserActivity").getUserActivity = null as any;
@@ -344,6 +559,11 @@ export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWeb
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
+
+export { GitopsSourceArgs, GitopsSourceState } from "./gitopsSource";
+export type GitopsSource = import("./gitopsSource").GitopsSource;
+export const GitopsSource: typeof import("./gitopsSource").GitopsSource = null as any;
+utilities.lazyLoad(exports, ["GitopsSource"], () => require("./gitopsSource"));
 
 export { HelmRollbackArgs, HelmRollbackState } from "./helmRollback";
 export type HelmRollback = import("./helmRollback").HelmRollback;
@@ -385,6 +605,16 @@ export type KubernetesDeleteObject = import("./kubernetesDeleteObject").Kubernet
 export const KubernetesDeleteObject: typeof import("./kubernetesDeleteObject").KubernetesDeleteObject = null as any;
 utilities.lazyLoad(exports, ["KubernetesDeleteObject"], () => require("./kubernetesDeleteObject"));
 
+export { KubernetesDeploymentRollbackArgs, KubernetesDeploymentRollbackState } from "./kubernetesDeploymentRollback";
+export type KubernetesDeploymentRollback = import("./kubernetesDeploymentRollback").KubernetesDeploymentRollback;
+export const KubernetesDeploymentRollback: typeof import("./kubernetesDeploymentRollback").KubernetesDeploymentRollback = null as any;
+utilities.lazyLoad(exports, ["KubernetesDeploymentRollback"], () => require("./kubernetesDeploymentRollback"));
+
+export { KubernetesDeploymentScaleArgs, KubernetesDeploymentScaleState } from "./kubernetesDeploymentScale";
+export type KubernetesDeploymentScale = import("./kubernetesDeploymentScale").KubernetesDeploymentScale;
+export const KubernetesDeploymentScale: typeof import("./kubernetesDeploymentScale").KubernetesDeploymentScale = null as any;
+utilities.lazyLoad(exports, ["KubernetesDeploymentScale"], () => require("./kubernetesDeploymentScale"));
+
 export { KubernetesHelmArgs, KubernetesHelmState } from "./kubernetesHelm";
 export type KubernetesHelm = import("./kubernetesHelm").KubernetesHelm;
 export const KubernetesHelm: typeof import("./kubernetesHelm").KubernetesHelm = null as any;
@@ -424,6 +654,16 @@ export { KubernetesNamespaceSystemArgs, KubernetesNamespaceSystemState } from ".
 export type KubernetesNamespaceSystem = import("./kubernetesNamespaceSystem").KubernetesNamespaceSystem;
 export const KubernetesNamespaceSystem: typeof import("./kubernetesNamespaceSystem").KubernetesNamespaceSystem = null as any;
 utilities.lazyLoad(exports, ["KubernetesNamespaceSystem"], () => require("./kubernetesNamespaceSystem"));
+
+export { KubernetesNodeDrainArgs, KubernetesNodeDrainState } from "./kubernetesNodeDrain";
+export type KubernetesNodeDrain = import("./kubernetesNodeDrain").KubernetesNodeDrain;
+export const KubernetesNodeDrain: typeof import("./kubernetesNodeDrain").KubernetesNodeDrain = null as any;
+utilities.lazyLoad(exports, ["KubernetesNodeDrain"], () => require("./kubernetesNodeDrain"));
+
+export { KubernetesPersistentVolumeArgs, KubernetesPersistentVolumeState } from "./kubernetesPersistentVolume";
+export type KubernetesPersistentVolume = import("./kubernetesPersistentVolume").KubernetesPersistentVolume;
+export const KubernetesPersistentVolume: typeof import("./kubernetesPersistentVolume").KubernetesPersistentVolume = null as any;
+utilities.lazyLoad(exports, ["KubernetesPersistentVolume"], () => require("./kubernetesPersistentVolume"));
 
 export { KubernetesRoleArgs, KubernetesRoleState } from "./kubernetesRole";
 export type KubernetesRole = import("./kubernetesRole").KubernetesRole;
@@ -508,10 +748,20 @@ export type RegistryAccess = import("./registryAccess").RegistryAccess;
 export const RegistryAccess: typeof import("./registryAccess").RegistryAccess = null as any;
 utilities.lazyLoad(exports, ["RegistryAccess"], () => require("./registryAccess"));
 
+export { RegistryConfigureArgs, RegistryConfigureState } from "./registryConfigure";
+export type RegistryConfigure = import("./registryConfigure").RegistryConfigure;
+export const RegistryConfigure: typeof import("./registryConfigure").RegistryConfigure = null as any;
+utilities.lazyLoad(exports, ["RegistryConfigure"], () => require("./registryConfigure"));
+
 export { ResourceControlArgs, ResourceControlState } from "./resourceControl";
 export type ResourceControl = import("./resourceControl").ResourceControl;
 export const ResourceControl: typeof import("./resourceControl").ResourceControl = null as any;
 utilities.lazyLoad(exports, ["ResourceControl"], () => require("./resourceControl"));
+
+export { RestoreArgs, RestoreState } from "./restore";
+export type Restore = import("./restore").Restore;
+export const Restore: typeof import("./restore").Restore = null as any;
+utilities.lazyLoad(exports, ["Restore"], () => require("./restore"));
 
 export { SettingsArgs, SettingsState } from "./settings";
 export type Settings = import("./settings").Settings;
@@ -547,6 +797,11 @@ export { StackAssociateArgs, StackAssociateState } from "./stackAssociate";
 export type StackAssociate = import("./stackAssociate").StackAssociate;
 export const StackAssociate: typeof import("./stackAssociate").StackAssociate = null as any;
 utilities.lazyLoad(exports, ["StackAssociate"], () => require("./stackAssociate"));
+
+export { StackDeleteByNameArgs, StackDeleteByNameState } from "./stackDeleteByName";
+export type StackDeleteByName = import("./stackDeleteByName").StackDeleteByName;
+export const StackDeleteByName: typeof import("./stackDeleteByName").StackDeleteByName = null as any;
+utilities.lazyLoad(exports, ["StackDeleteByName"], () => require("./stackDeleteByName"));
 
 export { StackMigrateArgs, StackMigrateState } from "./stackMigrate";
 export type StackMigrate = import("./stackMigrate").StackMigrate;
@@ -592,6 +847,11 @@ export { UserAdminArgs, UserAdminState } from "./userAdmin";
 export type UserAdmin = import("./userAdmin").UserAdmin;
 export const UserAdmin: typeof import("./userAdmin").UserAdmin = null as any;
 utilities.lazyLoad(exports, ["UserAdmin"], () => require("./userAdmin"));
+
+export { UserApiKeyArgs, UserApiKeyState } from "./userApiKey";
+export type UserApiKey = import("./userApiKey").UserApiKey;
+export const UserApiKey: typeof import("./userApiKey").UserApiKey = null as any;
+utilities.lazyLoad(exports, ["UserApiKey"], () => require("./userApiKey"));
 
 export { UserGitCredentialArgs, UserGitCredentialState } from "./userGitCredential";
 export type UserGitCredential = import("./userGitCredential").UserGitCredential;
@@ -670,6 +930,8 @@ const _module = {
                 return new EdgeGroup(name, <any>undefined, { urn })
             case "portainer:index/edgeJob:EdgeJob":
                 return new EdgeJob(name, <any>undefined, { urn })
+            case "portainer:index/edgeJobTaskLogs:EdgeJobTaskLogs":
+                return new EdgeJobTaskLogs(name, <any>undefined, { urn })
             case "portainer:index/edgeStack:EdgeStack":
                 return new EdgeStack(name, <any>undefined, { urn })
             case "portainer:index/edgeStackWebhook:EdgeStackWebhook":
@@ -682,6 +944,10 @@ const _module = {
                 return new EndpointGroup(name, <any>undefined, { urn })
             case "portainer:index/endpointGroupAccess:EndpointGroupAccess":
                 return new EndpointGroupAccess(name, <any>undefined, { urn })
+            case "portainer:index/endpointGroupMembership:EndpointGroupMembership":
+                return new EndpointGroupMembership(name, <any>undefined, { urn })
+            case "portainer:index/endpointRelations:EndpointRelations":
+                return new EndpointRelations(name, <any>undefined, { urn })
             case "portainer:index/endpointServiceUpdate:EndpointServiceUpdate":
                 return new EndpointServiceUpdate(name, <any>undefined, { urn })
             case "portainer:index/endpointSettings:EndpointSettings":
@@ -692,6 +958,8 @@ const _module = {
                 return new EndpointsEdgeGenerateKey(name, <any>undefined, { urn })
             case "portainer:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "portainer:index/gitopsSource:GitopsSource":
+                return new GitopsSource(name, <any>undefined, { urn })
             case "portainer:index/helmRollback:HelmRollback":
                 return new HelmRollback(name, <any>undefined, { urn })
             case "portainer:index/helmUserRepository:HelmUserRepository":
@@ -708,6 +976,10 @@ const _module = {
                 return new KubernetesCronjob(name, <any>undefined, { urn })
             case "portainer:index/kubernetesDeleteObject:KubernetesDeleteObject":
                 return new KubernetesDeleteObject(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesDeploymentRollback:KubernetesDeploymentRollback":
+                return new KubernetesDeploymentRollback(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesDeploymentScale:KubernetesDeploymentScale":
+                return new KubernetesDeploymentScale(name, <any>undefined, { urn })
             case "portainer:index/kubernetesHelm:KubernetesHelm":
                 return new KubernetesHelm(name, <any>undefined, { urn })
             case "portainer:index/kubernetesIngresscontrollers:KubernetesIngresscontrollers":
@@ -724,6 +996,10 @@ const _module = {
                 return new KubernetesNamespaceIngresscontrollers(name, <any>undefined, { urn })
             case "portainer:index/kubernetesNamespaceSystem:KubernetesNamespaceSystem":
                 return new KubernetesNamespaceSystem(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesNodeDrain:KubernetesNodeDrain":
+                return new KubernetesNodeDrain(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesPersistentVolume:KubernetesPersistentVolume":
+                return new KubernetesPersistentVolume(name, <any>undefined, { urn })
             case "portainer:index/kubernetesRole:KubernetesRole":
                 return new KubernetesRole(name, <any>undefined, { urn })
             case "portainer:index/kubernetesRolebinding:KubernetesRolebinding":
@@ -756,8 +1032,12 @@ const _module = {
                 return new Registry(name, <any>undefined, { urn })
             case "portainer:index/registryAccess:RegistryAccess":
                 return new RegistryAccess(name, <any>undefined, { urn })
+            case "portainer:index/registryConfigure:RegistryConfigure":
+                return new RegistryConfigure(name, <any>undefined, { urn })
             case "portainer:index/resourceControl:ResourceControl":
                 return new ResourceControl(name, <any>undefined, { urn })
+            case "portainer:index/restore:Restore":
+                return new Restore(name, <any>undefined, { urn })
             case "portainer:index/settings:Settings":
                 return new Settings(name, <any>undefined, { urn })
             case "portainer:index/settingsExperimental:SettingsExperimental":
@@ -772,6 +1052,8 @@ const _module = {
                 return new Stack(name, <any>undefined, { urn })
             case "portainer:index/stackAssociate:StackAssociate":
                 return new StackAssociate(name, <any>undefined, { urn })
+            case "portainer:index/stackDeleteByName:StackDeleteByName":
+                return new StackDeleteByName(name, <any>undefined, { urn })
             case "portainer:index/stackMigrate:StackMigrate":
                 return new StackMigrate(name, <any>undefined, { urn })
             case "portainer:index/stackWebhook:StackWebhook":
@@ -790,6 +1072,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "portainer:index/userAdmin:UserAdmin":
                 return new UserAdmin(name, <any>undefined, { urn })
+            case "portainer:index/userApiKey:UserApiKey":
+                return new UserApiKey(name, <any>undefined, { urn })
             case "portainer:index/userGitCredential:UserGitCredential":
                 return new UserGitCredential(name, <any>undefined, { urn })
             case "portainer:index/webhook:Webhook":
@@ -825,17 +1109,21 @@ pulumi.runtime.registerResourceModule("portainer", "index/dockerVolume", _module
 pulumi.runtime.registerResourceModule("portainer", "index/edgeConfigurations", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/edgeGroup", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/edgeJob", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/edgeJobTaskLogs", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/edgeStack", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/edgeStackWebhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/edgeUpdateSchedules", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointAssociation", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointGroup", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointGroupAccess", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/endpointGroupMembership", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/endpointRelations", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointServiceUpdate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSnapshot", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointsEdgeGenerateKey", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/environment", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/gitopsSource", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/helmRollback", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/helmUserRepository", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesApplication", _module)
@@ -844,6 +1132,8 @@ pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterroleb
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesConfigmaps", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesCronjob", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesDeleteObject", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesDeploymentRollback", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesDeploymentScale", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesHelm", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesIngresscontrollers", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesIngresses", _module)
@@ -852,6 +1142,8 @@ pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespace", 
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespaceAccess", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespaceIngresscontrollers", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespaceSystem", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNodeDrain", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesPersistentVolume", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesRole", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesRolebinding", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesSecret", _module)
@@ -868,7 +1160,9 @@ pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesFeatures
 pulumi.runtime.registerResourceModule("portainer", "index/policy", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/registry", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/registryAccess", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/registryConfigure", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/resourceControl", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/restore", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settingsExperimental", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/sharedGitCredential", _module)
@@ -876,6 +1170,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/sshkeygen", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/ssl", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stack", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackAssociate", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/stackDeleteByName", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackMigrate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackWebhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/supportDebugLog", _module)
@@ -885,6 +1180,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/teamMembership", _modu
 pulumi.runtime.registerResourceModule("portainer", "index/tls", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/user", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userAdmin", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/userApiKey", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userGitCredential", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhookExecute", _module)

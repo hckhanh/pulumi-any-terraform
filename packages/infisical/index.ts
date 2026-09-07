@@ -70,6 +70,11 @@ export type AppConnectionDatadog = import("./appConnectionDatadog").AppConnectio
 export const AppConnectionDatadog: typeof import("./appConnectionDatadog").AppConnectionDatadog = null as any;
 utilities.lazyLoad(exports, ["AppConnectionDatadog"], () => require("./appConnectionDatadog"));
 
+export { AppConnectionDigicertArgs, AppConnectionDigicertState } from "./appConnectionDigicert";
+export type AppConnectionDigicert = import("./appConnectionDigicert").AppConnectionDigicert;
+export const AppConnectionDigicert: typeof import("./appConnectionDigicert").AppConnectionDigicert = null as any;
+utilities.lazyLoad(exports, ["AppConnectionDigicert"], () => require("./appConnectionDigicert"));
+
 export { AppConnectionFlyioArgs, AppConnectionFlyioState } from "./appConnectionFlyio";
 export type AppConnectionFlyio = import("./appConnectionFlyio").AppConnectionFlyio;
 export const AppConnectionFlyio: typeof import("./appConnectionFlyio").AppConnectionFlyio = null as any;
@@ -184,6 +189,11 @@ export { CertManagerExternalCaAdcsArgs, CertManagerExternalCaAdcsState } from ".
 export type CertManagerExternalCaAdcs = import("./certManagerExternalCaAdcs").CertManagerExternalCaAdcs;
 export const CertManagerExternalCaAdcs: typeof import("./certManagerExternalCaAdcs").CertManagerExternalCaAdcs = null as any;
 utilities.lazyLoad(exports, ["CertManagerExternalCaAdcs"], () => require("./certManagerExternalCaAdcs"));
+
+export { CertManagerExternalCaDigicertArgs, CertManagerExternalCaDigicertState } from "./certManagerExternalCaDigicert";
+export type CertManagerExternalCaDigicert = import("./certManagerExternalCaDigicert").CertManagerExternalCaDigicert;
+export const CertManagerExternalCaDigicert: typeof import("./certManagerExternalCaDigicert").CertManagerExternalCaDigicert = null as any;
+utilities.lazyLoad(exports, ["CertManagerExternalCaDigicert"], () => require("./certManagerExternalCaDigicert"));
 
 export { CertManagerGroupArgs, CertManagerGroupState } from "./certManagerGroup";
 export type CertManagerGroup = import("./certManagerGroup").CertManagerGroup;
@@ -678,6 +688,8 @@ const _module = {
                 return new AppConnectionDatabricks(name, <any>undefined, { urn })
             case "infisical:index/appConnectionDatadog:AppConnectionDatadog":
                 return new AppConnectionDatadog(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionDigicert:AppConnectionDigicert":
+                return new AppConnectionDigicert(name, <any>undefined, { urn })
             case "infisical:index/appConnectionFlyio:AppConnectionFlyio":
                 return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
@@ -724,6 +736,8 @@ const _module = {
                 return new CertManagerExternalCaAcme(name, <any>undefined, { urn })
             case "infisical:index/certManagerExternalCaAdcs:CertManagerExternalCaAdcs":
                 return new CertManagerExternalCaAdcs(name, <any>undefined, { urn })
+            case "infisical:index/certManagerExternalCaDigicert:CertManagerExternalCaDigicert":
+                return new CertManagerExternalCaDigicert(name, <any>undefined, { urn })
             case "infisical:index/certManagerGroup:CertManagerGroup":
                 return new CertManagerGroup(name, <any>undefined, { urn })
             case "infisical:index/certManagerIdentity:CertManagerIdentity":
@@ -890,6 +904,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCircleci"
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflare", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatadog", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDigicert", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", _module)
@@ -913,6 +928,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificate
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerCertificateProfile", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAcme", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaAdcs", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerExternalCaDigicert", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerGroup", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerInternalCa", _module)

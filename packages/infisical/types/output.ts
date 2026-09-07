@@ -281,6 +281,17 @@ export interface AppConnectionDatadogCredentials {
     url: string;
 }
 
+export interface AppConnectionDigicertCredentials {
+    /**
+     * The DigiCert CertCentral API key used to authenticate requests. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/digicert
+     */
+    apiKey: string;
+    /**
+     * The DigiCert CertCentral region your account belongs to. Possible values are: us, eu
+     */
+    region: string;
+}
+
 export interface AppConnectionFlyioCredentials {
     /**
      * The Fly.io access token for authentication.
@@ -775,6 +786,29 @@ export interface CertManagerCertificateProfileDefaults {
      * Default certificate validity in days
      */
     ttlDays?: number;
+}
+
+export interface CertManagerExternalCaDigicertVerifiedContact {
+    /**
+     * The email address of the verified contact
+     */
+    email: string;
+    /**
+     * The first name of the verified contact
+     */
+    firstName: string;
+    /**
+     * The job title of the verified contact
+     */
+    jobTitle: string;
+    /**
+     * The last name of the verified contact
+     */
+    lastName: string;
+    /**
+     * The telephone number of the verified contact
+     */
+    telephone: string;
 }
 
 export interface CertificateSyncAwsCertificateManagerDestinationConfig {

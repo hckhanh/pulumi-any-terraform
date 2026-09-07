@@ -98,13 +98,35 @@ export interface CollectorConfigurationComponents {
      */
     metricsApache?: pulumi.Input<boolean | undefined>;
     /**
-     * Collect database metrics via the cluster agent.
+     * Run the cluster agent for database metrics. Takes precedence over <span pulumi-lang-nodejs="`metricsDatabases`" pulumi-lang-dotnet="`MetricsDatabases`" pulumi-lang-go="`metricsDatabases`" pulumi-lang-python="`metrics_databases`" pulumi-lang-yaml="`metricsDatabases`" pulumi-lang-java="`metricsDatabases`" pulumi-lang-hcl="`metrics_databases`">`metricsDatabases`</span> when both are set.
+     */
+    metricsCluster?: pulumi.Input<boolean | undefined>;
+    /**
+     * Run the cluster agent for database metrics.
+     *
+     * @deprecated Deprecated
      */
     metricsDatabases?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable the Elasticsearch metrics exporter. Defaults to true.
+     */
+    metricsElasticsearch?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable the MySQL metrics exporter. Defaults to true.
+     */
+    metricsMysql?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Nginx metrics.
      */
     metricsNginx?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable the PgBouncer metrics exporter. Defaults to true.
+     */
+    metricsPgbouncer?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable the PostgreSQL metrics exporter. Defaults to true.
+     */
+    metricsPostgres?: pulumi.Input<boolean | undefined>;
     /**
      * Collect Traefik metrics.
      */

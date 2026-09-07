@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "teamcity",
-		packageVersion: "0.0.95",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTUifX0=",
+		packageVersion: "0.0.96",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTYifX0=",
 	});
 }

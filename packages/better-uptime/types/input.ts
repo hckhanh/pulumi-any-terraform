@@ -29,7 +29,7 @@ export interface CatalogRecordAttribute {
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
@@ -737,7 +737,7 @@ export interface MetadataMetadataValue {
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
@@ -912,7 +912,7 @@ export interface PolicyStepMetadataValue {
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
@@ -995,7 +995,7 @@ export interface StatusPageResourceMarkAsDegradedMetadataRuleMetadataValue {
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
@@ -1040,7 +1040,7 @@ export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *

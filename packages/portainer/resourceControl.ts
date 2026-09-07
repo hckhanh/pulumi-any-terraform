@@ -50,6 +50,10 @@ export class ResourceControl extends pulumi.CustomResource {
      */
     declare public readonly resourceId: pulumi.Output<string | undefined>;
     /**
+     * Identifiers of sub-resources covered by the same control, such as the services and volumes of a stack. Only used when the control is created by this resource.
+     */
+    declare public readonly subResourceIds: pulumi.Output<string[] | undefined>;
+    /**
      * List of Portainer team identifiers granted access to the resource.
      */
     declare public readonly teams: pulumi.Output<number[] | undefined>;
@@ -80,6 +84,7 @@ export class ResourceControl extends pulumi.CustomResource {
             resourceInputs["public"] = state?.public;
             resourceInputs["resourceControlId"] = state?.resourceControlId;
             resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["subResourceIds"] = state?.subResourceIds;
             resourceInputs["teams"] = state?.teams;
             resourceInputs["type"] = state?.type;
             resourceInputs["users"] = state?.users;
@@ -90,6 +95,7 @@ export class ResourceControl extends pulumi.CustomResource {
             resourceInputs["public"] = args?.public;
             resourceInputs["resourceControlId"] = args?.resourceControlId;
             resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["subResourceIds"] = args?.subResourceIds;
             resourceInputs["teams"] = args?.teams;
             resourceInputs["type"] = args?.type;
             resourceInputs["users"] = args?.users;
@@ -120,6 +126,10 @@ export interface ResourceControlState {
      * Identifier of the underlying Portainer resource (e.g. stack ID) the resource control applies to.
      */
     resourceId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifiers of sub-resources covered by the same control, such as the services and volumes of a stack. Only used when the control is created by this resource.
+     */
+    subResourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Portainer team identifiers granted access to the resource.
      */
@@ -155,6 +165,10 @@ export interface ResourceControlArgs {
      * Identifier of the underlying Portainer resource (e.g. stack ID) the resource control applies to.
      */
     resourceId?: pulumi.Input<string | undefined>;
+    /**
+     * Identifiers of sub-resources covered by the same control, such as the services and volumes of a stack. Only used when the control is created by this resource.
+     */
+    subResourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Portainer team identifiers granted access to the resource.
      */

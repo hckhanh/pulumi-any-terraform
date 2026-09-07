@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "namecheap",
-		packageVersion: "2.9.1",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi45LjEifX0=",
+		packageVersion: "2.9.2",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL25hbWVjaGVhcC9uYW1lY2hlYXAiLCJ2ZXJzaW9uIjoiMi45LjIifX0=",
 	});
 }

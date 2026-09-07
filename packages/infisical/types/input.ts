@@ -281,6 +281,17 @@ export interface AppConnectionDatadogCredentials {
     url: pulumi.Input<string>;
 }
 
+export interface AppConnectionDigicertCredentials {
+    /**
+     * The DigiCert CertCentral API key used to authenticate requests. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/digicert
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * The DigiCert CertCentral region your account belongs to. Possible values are: us, eu
+     */
+    region: pulumi.Input<string>;
+}
+
 export interface AppConnectionFlyioCredentials {
     /**
      * The Fly.io access token for authentication.
@@ -775,6 +786,29 @@ export interface CertManagerCertificateProfileDefaults {
      * Default certificate validity in days
      */
     ttlDays?: pulumi.Input<number | undefined>;
+}
+
+export interface CertManagerExternalCaDigicertVerifiedContact {
+    /**
+     * The email address of the verified contact
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The first name of the verified contact
+     */
+    firstName: pulumi.Input<string>;
+    /**
+     * The job title of the verified contact
+     */
+    jobTitle: pulumi.Input<string>;
+    /**
+     * The last name of the verified contact
+     */
+    lastName: pulumi.Input<string>;
+    /**
+     * The telephone number of the verified contact
+     */
+    telephone: pulumi.Input<string>;
 }
 
 export interface CertificateSyncAwsCertificateManagerDestinationConfig {

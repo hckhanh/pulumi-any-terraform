@@ -98,13 +98,35 @@ export interface CollectorConfigurationComponents {
      */
     metricsApache: boolean;
     /**
-     * Collect database metrics via the cluster agent.
+     * Run the cluster agent for database metrics. Takes precedence over <span pulumi-lang-nodejs="`metricsDatabases`" pulumi-lang-dotnet="`MetricsDatabases`" pulumi-lang-go="`metricsDatabases`" pulumi-lang-python="`metrics_databases`" pulumi-lang-yaml="`metricsDatabases`" pulumi-lang-java="`metricsDatabases`" pulumi-lang-hcl="`metrics_databases`">`metricsDatabases`</span> when both are set.
+     */
+    metricsCluster: boolean;
+    /**
+     * Run the cluster agent for database metrics.
+     *
+     * @deprecated Deprecated
      */
     metricsDatabases: boolean;
+    /**
+     * Enable the Elasticsearch metrics exporter. Defaults to true.
+     */
+    metricsElasticsearch: boolean;
+    /**
+     * Enable the MySQL metrics exporter. Defaults to true.
+     */
+    metricsMysql: boolean;
     /**
      * Collect Nginx metrics.
      */
     metricsNginx: boolean;
+    /**
+     * Enable the PgBouncer metrics exporter. Defaults to true.
+     */
+    metricsPgbouncer: boolean;
+    /**
+     * Enable the PostgreSQL metrics exporter. Defaults to true.
+     */
+    metricsPostgres: boolean;
     /**
      * Collect Traefik metrics.
      */
@@ -512,8 +534,13 @@ export interface GetCollectorConfigurationComponent {
     logsHost?: boolean;
     logsKubernetes?: boolean;
     metricsApache?: boolean;
+    metricsCluster?: boolean;
     metricsDatabases?: boolean;
+    metricsElasticsearch?: boolean;
+    metricsMysql?: boolean;
     metricsNginx?: boolean;
+    metricsPgbouncer?: boolean;
+    metricsPostgres?: boolean;
     metricsTraefik?: boolean;
     tracesOpentelemetry?: boolean;
 }

@@ -6,9 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getProjects(args: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
+export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("infisical:index/getProjects:getProjects", {
+        "id": args.id,
         "slug": args.slug,
     }, opts, utilities.getPackage());
 }
@@ -17,7 +19,8 @@ export function getProjects(args: GetProjectsArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsArgs {
-    slug: string;
+    id?: string;
+    slug?: string;
 }
 
 /**
@@ -36,9 +39,11 @@ export interface GetProjectsResult {
     readonly upgradeStatus: string;
     readonly version: number;
 }
-export function getProjectsOutput(args: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("infisical:index/getProjects:getProjects", {
+        "id": args.id,
         "slug": args.slug,
     }, opts, utilities.getPackage());
 }
@@ -47,5 +52,6 @@ export function getProjectsOutput(args: GetProjectsOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsOutputArgs {
-    slug: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

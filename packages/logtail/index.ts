@@ -55,6 +55,11 @@ export type ErrorsApplicationGroup = import("./errorsApplicationGroup").ErrorsAp
 export const ErrorsApplicationGroup: typeof import("./errorsApplicationGroup").ErrorsApplicationGroup = null as any;
 utilities.lazyLoad(exports, ["ErrorsApplicationGroup"], () => require("./errorsApplicationGroup"));
 
+export { ErrorsReleaseArgs, ErrorsReleaseState } from "./errorsRelease";
+export type ErrorsRelease = import("./errorsRelease").ErrorsRelease;
+export const ErrorsRelease: typeof import("./errorsRelease").ErrorsRelease = null as any;
+utilities.lazyLoad(exports, ["ErrorsRelease"], () => require("./errorsRelease"));
+
 export { ExplorationArgs, ExplorationState } from "./exploration";
 export type Exploration = import("./exploration").Exploration;
 export const Exploration: typeof import("./exploration").Exploration = null as any;
@@ -217,6 +222,8 @@ const _module = {
                 return new ErrorsApplication(name, <any>undefined, { urn })
             case "logtail:index/errorsApplicationGroup:ErrorsApplicationGroup":
                 return new ErrorsApplicationGroup(name, <any>undefined, { urn })
+            case "logtail:index/errorsRelease:ErrorsRelease":
+                return new ErrorsRelease(name, <any>undefined, { urn })
             case "logtail:index/exploration:Exploration":
                 return new Exploration(name, <any>undefined, { urn })
             case "logtail:index/explorationAlert:ExplorationAlert":
@@ -250,6 +257,7 @@ pulumi.runtime.registerResourceModule("logtail", "index/dashboardGroup", _module
 pulumi.runtime.registerResourceModule("logtail", "index/dashboardSection", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplication", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/errorsApplicationGroup", _module)
+pulumi.runtime.registerResourceModule("logtail", "index/errorsRelease", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/exploration", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/explorationAlert", _module)
 pulumi.runtime.registerResourceModule("logtail", "index/explorationGroup", _module)
