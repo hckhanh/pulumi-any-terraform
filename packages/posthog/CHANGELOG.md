@@ -1,5 +1,17 @@
 # pulumi-posthog
 
+## 1.0.10
+
+### Patch Changes
+
+#### Bug Fixes
+
+- PostHog/terraform-provider-posthog@f0888cc: fix(httpclient): retry timed-out requests, stop replaying POST and PATCH (PostHog/terraform-provider-posthog#157) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@5188681: chore(deps): bump the github-actions group with 2 updates (PostHog/terraform-provider-posthog#158) (@dependabot[bot])
+
 ## 1.0.9
 
 ### Patch Changes
