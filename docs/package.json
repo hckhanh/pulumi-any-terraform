@@ -11,11 +11,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "@lucide/lab": "0.2.0",
+    "@lucide/lab": "0.6.0",
     "fumadocs-core": "16.15.8",
     "fumadocs-mdx": "14.3.2",
     "fumadocs-ui": "16.15.8",
-    "lucide-react": "1.43.0",
+    "lucide-react": "1.44.0",
     "next": "16.2.12",
     "react": "19.3.0",
     "react-dom": "19.3.0",
