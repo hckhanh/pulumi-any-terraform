@@ -1,3 +1,15 @@
+## 3.1.0
+
+### Minor Changes
+
+- Add the logtail_errors_release resource by @mupkoo in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/135
+
+#### New Contributors
+
+- @mupkoo made their first contribution in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/135
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v11.1.0...v11.2.0
+
 ## 3.0.0
 
 ### Major Changes
