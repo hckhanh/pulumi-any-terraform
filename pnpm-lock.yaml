@@ -50,8 +50,8 @@ importers:
   docs:
     dependencies:
       '@lucide/lab':
-        specifier: 0.6.0
-        version: 0.6.0
+        specifier: 0.7.0
+        version: 0.7.0
       fumadocs-core:
         specifier: 16.15.9
         version: 16.15.9(@mdx-js/mdx@3.1.1(supports-color@7.2.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.44.0(react@19.3.0))(next@16.2.12(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.1)(@types/node@24.13.4)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@7.2.0)(zod@4.5.4)
@@ -1397,8 +1397,8 @@ packages:
     resolution: {integrity: sha512-XGSsWDweP80Fks16lwkAUIr54ICyBs6PsI4mpfTLQaWgEJRtY9xEV+PeyDpJ+sJEGZxqINlpmAwe/6tS1pP8Ng==}
     engines: {node: '>=10.3.0'}
 
-  '@lucide/lab@0.6.0':
-    resolution: {integrity: sha512-PtFa85YvpI+gg61vufkGk+2Kszq0hki1VZtRXNWDHb2+WTf6fbIY9TMlJRWhUCJ2+2x+4SaVvNtuiBan8HwzuA==}
+  '@lucide/lab@0.7.0':
+    resolution: {integrity: sha512-Cy4z/LUtre/XnnWTIRfgAxSB2+OGF4oqZczgYr05iRa7ecNtDKVDmTbPc4Ak8LkJYj7jGGN+AfkR9MYgXmdRRA==}
 
   '@manypkg/find-root@3.1.0':
     resolution: {integrity: sha512-BcSqCyKhBVZ5YkSzOiheMCV41kqAFptW6xGqYSTjkVTl9XQpr+pqHhwgGCOHQtjDCv7Is6EFyA14Sm5GVbVABA==}
@@ -6042,7 +6042,7 @@ snapshots:
 
   '@logdna/tail-file@2.2.0': {}
 
-  '@lucide/lab@0.6.0': {}
+  '@lucide/lab@0.7.0': {}
 
   '@manypkg/find-root@3.1.0':
     dependencies:
