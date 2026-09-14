@@ -508,6 +508,11 @@ export type SecretImport = import("./secretImport").SecretImport;
 export const SecretImport: typeof import("./secretImport").SecretImport = null as any;
 utilities.lazyLoad(exports, ["SecretImport"], () => require("./secretImport"));
 
+export { SecretRotationAuth0ClientSecretArgs, SecretRotationAuth0ClientSecretState } from "./secretRotationAuth0ClientSecret";
+export type SecretRotationAuth0ClientSecret = import("./secretRotationAuth0ClientSecret").SecretRotationAuth0ClientSecret;
+export const SecretRotationAuth0ClientSecret: typeof import("./secretRotationAuth0ClientSecret").SecretRotationAuth0ClientSecret = null as any;
+utilities.lazyLoad(exports, ["SecretRotationAuth0ClientSecret"], () => require("./secretRotationAuth0ClientSecret"));
+
 export { SecretRotationAwsIamUserSecretArgs, SecretRotationAwsIamUserSecretState } from "./secretRotationAwsIamUserSecret";
 export type SecretRotationAwsIamUserSecret = import("./secretRotationAwsIamUserSecret").SecretRotationAwsIamUserSecret;
 export const SecretRotationAwsIamUserSecret: typeof import("./secretRotationAwsIamUserSecret").SecretRotationAwsIamUserSecret = null as any;
@@ -830,6 +835,8 @@ const _module = {
                 return new SecretFolder(name, <any>undefined, { urn })
             case "infisical:index/secretImport:SecretImport":
                 return new SecretImport(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationAuth0ClientSecret:SecretRotationAuth0ClientSecret":
+                return new SecretRotationAuth0ClientSecret(name, <any>undefined, { urn })
             case "infisical:index/secretRotationAwsIamUserSecret:SecretRotationAwsIamUserSecret":
                 return new SecretRotationAwsIamUserSecret(name, <any>undefined, { urn })
             case "infisical:index/secretRotationAzureClientSecret:SecretRotationAzureClientSecret":
@@ -975,6 +982,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretApprovalPolicy", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretFolder", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretImport", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAuth0ClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUserSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationDatadogApiKey", _module)

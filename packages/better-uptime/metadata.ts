@@ -51,7 +51,7 @@ export class Metadata extends pulumi.CustomResource {
      */
     declare public readonly ownerId: pulumi.Output<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
      */
     declare public readonly ownerType: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface MetadataState {
      */
     ownerId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
      */
     ownerType?: pulumi.Input<string | undefined>;
     /**
@@ -176,7 +176,7 @@ export interface MetadataArgs {
      */
     ownerId: pulumi.Input<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
      */
     ownerType: pulumi.Input<string>;
     /**

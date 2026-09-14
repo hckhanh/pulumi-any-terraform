@@ -34,10 +34,6 @@ export interface GetCommandResult {
     readonly arguments?: string[];
     readonly command: string;
     readonly exitCode: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly stderr: string;
     readonly stdin?: string;
     readonly stdout: string;

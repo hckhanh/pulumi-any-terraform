@@ -77,7 +77,7 @@ export class StatusPageResource extends pulumi.CustomResource {
      */
     declare public readonly resourceId: pulumi.Output<number>;
     /**
-     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, AmazonSnsIntegration, ResourceGroup, LogsChart, CatalogReference.
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface StatusPageResourceState {
      */
     resourceId?: pulumi.Input<number | undefined>;
     /**
-     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, AmazonSnsIntegration, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +278,7 @@ export interface StatusPageResourceArgs {
      */
     resourceId?: pulumi.Input<number | undefined>;
     /**
-     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, ResourceGroup, LogsChart, CatalogReference.
+     * The type of the resource you are adding. Available values: ManuallyTrackedItem, Monitor, MonitorGroup, Heartbeat, HeartbeatGroup, WebhookIntegration, EmailIntegration, IncomingWebhook, AmazonSnsIntegration, ResourceGroup, LogsChart, CatalogReference.
      */
     resourceType: pulumi.Input<string>;
     /**

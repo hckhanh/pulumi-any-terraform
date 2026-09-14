@@ -19,6 +19,7 @@
         "skipLibCheck": true
     },
     "files": [
+        "amazonSnsIntegration.ts",
         "awsCloudwatchIntegration.ts",
         "azureIntegration.ts",
         "catalogAttribute.ts",
@@ -29,6 +30,7 @@
         "datadogIntegration.ts",
         "elasticIntegration.ts",
         "emailIntegration.ts",
+        "getAmazonSnsIntegration.ts",
         "getIncomingWebhook.ts",
         "getIpList.ts",
         "getMonitor.ts",

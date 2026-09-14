@@ -411,6 +411,10 @@ export interface PipelineProviderSettings {
      */
     buildIssueCommentCreated: boolean;
     /**
+     * Whether authenticated GitHub <span pulumi-lang-nodejs="`issues`" pulumi-lang-dotnet="`Issues`" pulumi-lang-go="`issues`" pulumi-lang-python="`issues`" pulumi-lang-yaml="`issues`" pulumi-lang-java="`issues`" pulumi-lang-hcl="`issues`">`issues`</span> webhook deliveries create builds. Supported for GitHub.com pipelines only. Defaults to false.
+     */
+    buildIssues: boolean;
+    /**
      * Whether to create merge queue builds for a merge queue enabled GitHub repository with required status checks
      */
     buildMergeGroupChecksRequested: boolean;
@@ -426,6 +430,10 @@ export interface PipelineProviderSettings {
      * Whether to create builds when a pull request is removed from a merge queue. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
      */
     buildPullRequestDequeued: boolean;
+    /**
+     * Whether to create a build when a pull request is edited (i.e. its title or description).
+     */
+    buildPullRequestEdited: boolean;
     /**
      * Whether to create builds for pull requests from third-party forks.
      */

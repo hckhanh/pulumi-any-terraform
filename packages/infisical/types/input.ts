@@ -1811,6 +1811,38 @@ export interface SecretApprovalPolicyBypasser {
     username?: pulumi.Input<string | undefined>;
 }
 
+export interface SecretRotationAuth0ClientSecretParameters {
+    /**
+     * The client ID of the Auth0 application to rotate the client secret for.
+     */
+    clientId: pulumi.Input<string>;
+}
+
+export interface SecretRotationAuth0ClientSecretRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours?: pulumi.Input<number | undefined>;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes?: pulumi.Input<number | undefined>;
+}
+
+export interface SecretRotationAuth0ClientSecretSecretsMapping {
+    /**
+     * The name of the secret that the client ID will be mapped to.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The name of the secret that the rotated client secret will be mapped to.
+     */
+    clientSecret: pulumi.Input<string>;
+}
+
+export interface SecretRotationAuth0ClientSecretTemporaryParameters {
+}
+
 export interface SecretRotationAwsIamUserSecretParameters {
     /**
      * The AWS region the client is present in.

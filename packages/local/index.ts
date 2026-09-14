@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export const direxists: typeof import("./direxists").direxists = null as any;
+export const direxistsOutput: typeof import("./direxists").direxistsOutput = null as any;
+utilities.lazyLoad(exports, ["direxists","direxistsOutput"], () => require("./direxists"));
+
 export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;

@@ -123,6 +123,7 @@
         "secretApprovalPolicy.ts",
         "secretFolder.ts",
         "secretImport.ts",
+        "secretRotationAuth0ClientSecret.ts",
         "secretRotationAwsIamUserSecret.ts",
         "secretRotationAzureClientSecret.ts",
         "secretRotationDatadogApiKey.ts",

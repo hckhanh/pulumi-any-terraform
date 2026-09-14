@@ -1994,6 +1994,38 @@ export interface SecretApprovalPolicyBypasser {
     username?: string;
 }
 
+export interface SecretRotationAuth0ClientSecretParameters {
+    /**
+     * The client ID of the Auth0 application to rotate the client secret for.
+     */
+    clientId: string;
+}
+
+export interface SecretRotationAuth0ClientSecretRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationAuth0ClientSecretSecretsMapping {
+    /**
+     * The name of the secret that the client ID will be mapped to.
+     */
+    clientId: string;
+    /**
+     * The name of the secret that the rotated client secret will be mapped to.
+     */
+    clientSecret: string;
+}
+
+export interface SecretRotationAuth0ClientSecretTemporaryParameters {
+}
+
 export interface SecretRotationAwsIamUserSecretParameters {
     /**
      * The AWS region the client is present in.

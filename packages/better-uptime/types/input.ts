@@ -5,6 +5,343 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AmazonSnsIntegrationAcknowledgedAlertIdField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationAcknowledgedRule {
+    /**
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the rule. Can be any of the following: contains, contains_not, matches_regex, matches_regex_not, equals, or equals_not.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    ruleTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationCauseField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationOtherAcknowledgedField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationOtherResolvedField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationOtherStartedField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationResolvedAlertIdField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationResolvedRule {
+    /**
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the rule. Can be any of the following: contains, contains_not, matches_regex, matches_regex_not, equals, or equals_not.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    ruleTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationStartedAlertIdField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationStartedRule {
+    /**
+     * The content we should match to satisfy the rule. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is matches_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the rule. Can be any of the following: contains, contains_not, matches_regex, matches_regex_not, equals, or equals_not.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    ruleTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
+export interface AmazonSnsIntegrationTitleField {
+    /**
+     * The content to match. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_before, match_after, or match_regex. Should be a valid regular expression when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_regex.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * When should we start extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentAfter?: pulumi.Input<string | undefined>;
+    /**
+     * When should we stop extracting content for the field. Required when<span pulumi-lang-nodejs=" matchType " pulumi-lang-dotnet=" MatchType " pulumi-lang-go=" matchType " pulumi-lang-python=" match_type " pulumi-lang-yaml=" matchType " pulumi-lang-java=" matchType " pulumi-lang-hcl=" match_type "> matchType </span>is match_between.
+     */
+    contentBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml for the HTTP request Amazon SNS delivers, or<span pulumi-lang-nodejs=" snsEnvelope " pulumi-lang-dotnet=" SnsEnvelope " pulumi-lang-go=" snsEnvelope " pulumi-lang-python=" sns_envelope " pulumi-lang-yaml=" snsEnvelope " pulumi-lang-java=" snsEnvelope " pulumi-lang-hcl=" sns_envelope "> snsEnvelope </span>for the TopicArn, MessageId and Subject of the notification envelope.
+     */
+    fieldTarget?: pulumi.Input<string | undefined>;
+    /**
+     * The match type of the field. Can be any of the following: match_before, match_after, match_between, match_regex, or match_everything.
+     */
+    matchType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * A special type of the field. Can be<span pulumi-lang-nodejs=" alertId " pulumi-lang-dotnet=" AlertId " pulumi-lang-go=" alertId " pulumi-lang-python=" alert_id " pulumi-lang-yaml=" alertId " pulumi-lang-java=" alertId " pulumi-lang-hcl=" alert_id "> alertId </span>or cause or otherwise null for a custom field.
+     */
+    specialType?: pulumi.Input<string | undefined>;
+    /**
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, the parameter name when it is query_string, or one of TopicArn, MessageId and Subject when it is sns_envelope.
+     */
+    targetField?: pulumi.Input<string | undefined>;
+}
+
 export interface CatalogRecordAttribute {
     /**
      * ID of the target Catalog attribute.
@@ -61,7 +398,7 @@ export interface EmailIntegrationAcknowledgedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -77,7 +414,7 @@ export interface EmailIntegrationAcknowledgedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -92,11 +429,11 @@ export interface EmailIntegrationAcknowledgedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: from_email, subject, or body.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -115,7 +452,7 @@ export interface EmailIntegrationCauseField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -131,7 +468,7 @@ export interface EmailIntegrationCauseField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -150,7 +487,7 @@ export interface EmailIntegrationOtherAcknowledgedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -166,7 +503,7 @@ export interface EmailIntegrationOtherAcknowledgedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -185,7 +522,7 @@ export interface EmailIntegrationOtherResolvedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -201,7 +538,7 @@ export interface EmailIntegrationOtherResolvedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -220,7 +557,7 @@ export interface EmailIntegrationOtherStartedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -236,7 +573,7 @@ export interface EmailIntegrationOtherStartedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -255,7 +592,7 @@ export interface EmailIntegrationResolvedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -271,7 +608,7 @@ export interface EmailIntegrationResolvedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -286,11 +623,11 @@ export interface EmailIntegrationResolvedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: from_email, subject, or body.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -309,7 +646,7 @@ export interface EmailIntegrationStartedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -325,7 +662,7 @@ export interface EmailIntegrationStartedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -340,11 +677,11 @@ export interface EmailIntegrationStartedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: from_email, subject, or body.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -363,7 +700,7 @@ export interface EmailIntegrationTitleField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: from_email, subject, or body.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -379,7 +716,7 @@ export interface EmailIntegrationTitleField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -398,7 +735,7 @@ export interface IncomingWebhookAcknowledgedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -414,7 +751,7 @@ export interface IncomingWebhookAcknowledgedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -429,11 +766,11 @@ export interface IncomingWebhookAcknowledgedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -452,7 +789,7 @@ export interface IncomingWebhookCauseField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -468,7 +805,7 @@ export interface IncomingWebhookCauseField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -487,7 +824,7 @@ export interface IncomingWebhookOtherAcknowledgedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -503,7 +840,7 @@ export interface IncomingWebhookOtherAcknowledgedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -522,7 +859,7 @@ export interface IncomingWebhookOtherResolvedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -538,7 +875,7 @@ export interface IncomingWebhookOtherResolvedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -557,7 +894,7 @@ export interface IncomingWebhookOtherStartedField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -573,7 +910,7 @@ export interface IncomingWebhookOtherStartedField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -592,7 +929,7 @@ export interface IncomingWebhookResolvedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -608,7 +945,7 @@ export interface IncomingWebhookResolvedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -623,11 +960,11 @@ export interface IncomingWebhookResolvedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -646,7 +983,7 @@ export interface IncomingWebhookStartedAlertIdField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -662,7 +999,7 @@ export interface IncomingWebhookStartedAlertIdField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -677,11 +1014,11 @@ export interface IncomingWebhookStartedRule {
      */
     matchType?: pulumi.Input<string | undefined>;
     /**
-     * The target of the rule. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the rule. Can be any of the following: query_string, header, body, json, or xml.
      */
     ruleTarget?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the rule_target. Should be a JSON key when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" ruleTarget " pulumi-lang-dotnet=" RuleTarget " pulumi-lang-go=" ruleTarget " pulumi-lang-python=" rule_target " pulumi-lang-yaml=" ruleTarget " pulumi-lang-java=" ruleTarget " pulumi-lang-hcl=" rule_target "> ruleTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the rule_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }
@@ -700,7 +1037,7 @@ export interface IncomingWebhookTitleField {
      */
     contentBefore?: pulumi.Input<string | undefined>;
     /**
-     * The target of the field. Can be any of the following: from_email, subject, or body for email integrations or query_string, header, body, json and xml for incoming webhooks.
+     * The target of the field. Can be any of the following: query_string, header, body, json, or xml.
      */
     fieldTarget?: pulumi.Input<string | undefined>;
     /**
@@ -716,7 +1053,7 @@ export interface IncomingWebhookTitleField {
      */
     specialType?: pulumi.Input<string | undefined>;
     /**
-     * The target field within the content of the field_target. Should be a JSON key when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is json, a CSS selector when<span pulumi-lang-nodejs=" fieldTarget " pulumi-lang-dotnet=" FieldTarget " pulumi-lang-go=" fieldTarget " pulumi-lang-python=" field_target " pulumi-lang-yaml=" fieldTarget " pulumi-lang-java=" fieldTarget " pulumi-lang-hcl=" field_target "> fieldTarget </span>is XML, name of the header for headers or a parameter name for query parameters
+     * The target field within the content of the field_target. Should be a JSON key when the target is json, a CSS selector when it is xml, the header name when it is header, or the parameter name when it is query_string.
      */
     targetField?: pulumi.Input<string | undefined>;
 }

@@ -33,7 +33,7 @@ export class Insight extends pulumi.CustomResource {
     }
 
     /**
-     * The folder where the insight is created.
+     * Folder identifier used only during insight creation.
      */
     declare public readonly createInFolder: pulumi.Output<string | undefined>;
     /**
@@ -131,7 +131,7 @@ export class Insight extends pulumi.CustomResource {
  */
 export interface InsightState {
     /**
-     * The folder where the insight is created.
+     * Folder identifier used only during insight creation.
      */
     createInFolder?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface InsightState {
  */
 export interface InsightArgs {
     /**
-     * The folder where the insight is created.
+     * Folder identifier used only during insight creation.
      */
     createInFolder?: pulumi.Input<string | undefined>;
     /**

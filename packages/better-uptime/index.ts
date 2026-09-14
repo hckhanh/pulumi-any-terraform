@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AmazonSnsIntegrationArgs, AmazonSnsIntegrationState } from "./amazonSnsIntegration";
+export type AmazonSnsIntegration = import("./amazonSnsIntegration").AmazonSnsIntegration;
+export const AmazonSnsIntegration: typeof import("./amazonSnsIntegration").AmazonSnsIntegration = null as any;
+utilities.lazyLoad(exports, ["AmazonSnsIntegration"], () => require("./amazonSnsIntegration"));
+
 export { AwsCloudwatchIntegrationArgs, AwsCloudwatchIntegrationState } from "./awsCloudwatchIntegration";
 export type AwsCloudwatchIntegration = import("./awsCloudwatchIntegration").AwsCloudwatchIntegration;
 export const AwsCloudwatchIntegration: typeof import("./awsCloudwatchIntegration").AwsCloudwatchIntegration = null as any;
@@ -44,6 +49,11 @@ export { EmailIntegrationArgs, EmailIntegrationState } from "./emailIntegration"
 export type EmailIntegration = import("./emailIntegration").EmailIntegration;
 export const EmailIntegration: typeof import("./emailIntegration").EmailIntegration = null as any;
 utilities.lazyLoad(exports, ["EmailIntegration"], () => require("./emailIntegration"));
+
+export { GetAmazonSnsIntegrationArgs, GetAmazonSnsIntegrationResult, GetAmazonSnsIntegrationOutputArgs } from "./getAmazonSnsIntegration";
+export const getAmazonSnsIntegration: typeof import("./getAmazonSnsIntegration").getAmazonSnsIntegration = null as any;
+export const getAmazonSnsIntegrationOutput: typeof import("./getAmazonSnsIntegration").getAmazonSnsIntegrationOutput = null as any;
+utilities.lazyLoad(exports, ["getAmazonSnsIntegration","getAmazonSnsIntegrationOutput"], () => require("./getAmazonSnsIntegration"));
 
 export { GetIncomingWebhookArgs, GetIncomingWebhookResult, GetIncomingWebhookOutputArgs } from "./getIncomingWebhook";
 export const getIncomingWebhook: typeof import("./getIncomingWebhook").getIncomingWebhook = null as any;
@@ -227,6 +237,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "better-uptime:index/amazonSnsIntegration:AmazonSnsIntegration":
+                return new AmazonSnsIntegration(name, <any>undefined, { urn })
             case "better-uptime:index/awsCloudwatchIntegration:AwsCloudwatchIntegration":
                 return new AwsCloudwatchIntegration(name, <any>undefined, { urn })
             case "better-uptime:index/azureIntegration:AzureIntegration":
@@ -296,6 +308,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("better-uptime", "index/amazonSnsIntegration", _module)
 pulumi.runtime.registerResourceModule("better-uptime", "index/awsCloudwatchIntegration", _module)
 pulumi.runtime.registerResourceModule("better-uptime", "index/azureIntegration", _module)
 pulumi.runtime.registerResourceModule("better-uptime", "index/catalogAttribute", _module)

@@ -35,6 +35,10 @@ export class ProjectSettings extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to discard the client IP address at ingestion (shown in PostHog as **Discard client IP data**). Enabling this degrades IP-based event matching for destinations that rely on it (for example Meta Conversions API), since `$ip` is never stored.
+     */
+    declare public readonly anonymizeIps: pulumi.Output<boolean>;
+    /**
      * The project's authorized domains — shown in PostHog settings as **Web analytics domains** (and used as the toolbar's Authorized URLs). These are the domains tracked in web analytics and where the toolbar is enabled. Maps to the team <span pulumi-lang-nodejs="`appUrls`" pulumi-lang-dotnet="`AppUrls`" pulumi-lang-go="`appUrls`" pulumi-lang-python="`app_urls`" pulumi-lang-yaml="`appUrls`" pulumi-lang-java="`appUrls`" pulumi-lang-hcl="`app_urls`">`appUrls`</span> field. Wildcards are not allowed; order is preserved.
      */
     declare public readonly appUrls: pulumi.Output<string[]>;
@@ -100,6 +104,7 @@ export class ProjectSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectSettingsState | undefined;
+            resourceInputs["anonymizeIps"] = state?.anonymizeIps;
             resourceInputs["appUrls"] = state?.appUrls;
             resourceInputs["autocaptureExceptionsOptIn"] = state?.autocaptureExceptionsOptIn;
             resourceInputs["autocaptureWebVitalsOptIn"] = state?.autocaptureWebVitalsOptIn;
@@ -115,6 +120,7 @@ export class ProjectSettings extends pulumi.CustomResource {
             resourceInputs["testAccountFiltersDefaultChecked"] = state?.testAccountFiltersDefaultChecked;
         } else {
             const args = argsOrState as ProjectSettingsArgs | undefined;
+            resourceInputs["anonymizeIps"] = args?.anonymizeIps;
             resourceInputs["appUrls"] = args?.appUrls;
             resourceInputs["autocaptureExceptionsOptIn"] = args?.autocaptureExceptionsOptIn;
             resourceInputs["autocaptureWebVitalsOptIn"] = args?.autocaptureWebVitalsOptIn;
@@ -138,6 +144,10 @@ export class ProjectSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectSettings resources.
  */
 export interface ProjectSettingsState {
+    /**
+     * Whether to discard the client IP address at ingestion (shown in PostHog as **Discard client IP data**). Enabling this degrades IP-based event matching for destinations that rely on it (for example Meta Conversions API), since `$ip` is never stored.
+     */
+    anonymizeIps?: pulumi.Input<boolean | undefined>;
     /**
      * The project's authorized domains — shown in PostHog settings as **Web analytics domains** (and used as the toolbar's Authorized URLs). These are the domains tracked in web analytics and where the toolbar is enabled. Maps to the team <span pulumi-lang-nodejs="`appUrls`" pulumi-lang-dotnet="`AppUrls`" pulumi-lang-go="`appUrls`" pulumi-lang-python="`app_urls`" pulumi-lang-yaml="`appUrls`" pulumi-lang-java="`appUrls`" pulumi-lang-hcl="`app_urls`">`appUrls`</span> field. Wildcards are not allowed; order is preserved.
      */
@@ -196,6 +206,10 @@ export interface ProjectSettingsState {
  * The set of arguments for constructing a ProjectSettings resource.
  */
 export interface ProjectSettingsArgs {
+    /**
+     * Whether to discard the client IP address at ingestion (shown in PostHog as **Discard client IP data**). Enabling this degrades IP-based event matching for destinations that rely on it (for example Meta Conversions API), since `$ip` is never stored.
+     */
+    anonymizeIps?: pulumi.Input<boolean | undefined>;
     /**
      * The project's authorized domains — shown in PostHog settings as **Web analytics domains** (and used as the toolbar's Authorized URLs). These are the domains tracked in web analytics and where the toolbar is enabled. Maps to the team <span pulumi-lang-nodejs="`appUrls`" pulumi-lang-dotnet="`AppUrls`" pulumi-lang-go="`appUrls`" pulumi-lang-python="`app_urls`" pulumi-lang-yaml="`appUrls`" pulumi-lang-java="`appUrls`" pulumi-lang-hcl="`app_urls`">`appUrls`</span> field. Wildcards are not allowed; order is preserved.
      */
