@@ -1,3 +1,17 @@
+## 0.22.0
+
+### Minor Changes
+
+Update pulumi-better-uptime from 0.21.14 to 0.22.0
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-better-uptime/compare/v0.21.14...v0.22.0
+
+### Patch Changes
+
+- U-8487 Add Source to the typed metadata value types by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-better-uptime/pull/236
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-better-uptime/compare/v0.21.13...v0.21.14
+
 ## 0.21.3
 
 ### Patch Changes
