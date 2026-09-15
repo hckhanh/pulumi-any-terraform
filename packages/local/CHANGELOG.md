@@ -1,5 +1,15 @@
 # pulumi-local
 
+## 2.9.1
+
+### Patch Changes
+
+#### 2.9.1 (September 10, 2026)
+
+NOTES:
+
+- Upgrade the Go toolchain to 1.26.8. ([hashicorp/terraform-provider-local#526](https://github.com/hashicorp/terraform-provider-local/issues/526))
+
 ## 2.9.0
 
 ### Minor Changes

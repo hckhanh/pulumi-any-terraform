@@ -1,3 +1,19 @@
+## 0.20.2
+
+### Patch Changes
+
+Update pulumi-infisical from 0.19.28 to 0.19.30
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.28...v0.19.30
+
+- feat: auth0 client secret rotation resource by @lobocv in https://github.com/Infisical/terraform-provider-infisical/pull/354
+
+#### New Contributors
+
+- @lobocv made their first contribution in https://github.com/Infisical/terraform-provider-infisical/pull/354
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.30...v0.19.31
+
 ## 0.20.1
 
 ### Patch Changes
