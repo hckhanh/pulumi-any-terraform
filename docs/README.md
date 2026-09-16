@@ -30,7 +30,7 @@ In the project, you can see:
 
 ### Fumadocs MDX
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+Collections are defined with `defineDocs` from `fumadocs-mdx/macro` in `src/lib/source.ts`. Shared route constants live in `src/lib/shared.ts`. Markdown negotiation for LLM clients is handled by `proxy.ts`.
 
 Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
 

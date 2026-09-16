@@ -7,19 +7,17 @@
     "dev": "next dev",
     "format": "biome format --write",
     "lint": "biome check",
-    "postinstall": "fumadocs-mdx",
     "start": "next start"
   },
   "dependencies": {
     "@lucide/lab": "0.7.0",
-    "fumadocs-core": "16.15.9",
+    "fumadocs-core": "16.15.10",
     "fumadocs-mdx": "15.4.0",
-    "fumadocs-ui": "16.15.9",
+    "fumadocs-ui": "16.15.10",
     "lucide-react": "1.45.0",
     "next": "16.2.12",
     "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "tailwind-merge": "3.6.0"
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.13",
@@ -31,6 +29,6 @@
     "babel-plugin-react-compiler": "1.0.0",
     "postcss": "8.5.28",
     "tailwindcss": "4.3.3",
-    "typescript": "6.0.3"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   }
 }

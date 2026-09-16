@@ -1,5 +1,19 @@
 {
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "name": "docs",
-  "projectType": "application"
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "command": "next build",
+      "cache": true,
+      "inputs": ["{projectRoot}/**/*", "!{projectRoot}/.next/**"],
+      "outputs": ["{projectRoot}/.next"],
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "metadata": {
+        "description": "Build the documentation site with Next.js."
+      }
+    }
+  }
 }

@@ -19,10 +19,11 @@
     "@swc/core": "1.16.2",
     "@swc/helpers": "0.5.23",
     "@types/node": "24.13.4",
+    "@typescript/native": "npm:typescript@7.0.2",
     "nx": "23.2.1",
     "oxfmt": "0.67.0",
     "syncpack": "15.3.3",
-    "typescript": "6.0.3"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "keywords": [
     "pulumi",
