@@ -1,12 +1,27 @@
-import { docs } from 'fumadocs-mdx:collections/server'
 import { hedgehog } from '@lucide/lab'
-import { type InferPageType, loader } from 'fumadocs-core/source'
+import { llms, loader } from 'fumadocs-core/source'
+import { metaSchema, pageSchema } from 'fumadocs-core/source/schema'
+import { defineDocs } from 'fumadocs-mdx/macro'
 import { Icon, icons } from 'lucide-react'
 import { createElement } from 'react'
+import { docsRoute } from './shared'
+
+const docs = defineDocs({
+  dir: 'content/docs',
+  docs: {
+    schema: pageSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
+  },
+  meta: {
+    schema: metaSchema,
+  },
+})
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: '/docs',
+  baseUrl: docsRoute,
   source: docs.toFumadocsSource(),
   icon(icon) {
     const LucideIcon = icons[icon as keyof typeof icons]
@@ -18,24 +33,12 @@ export const source = loader({
       return createElement(Icon, { iconNode: hedgehog })
     }
 
-    // Return null or a default icon if not found
     return null
   },
 })
 
-export function getPageImage(page: InferPageType<typeof source>) {
-  const segments = [...page.slugs, 'image.png']
+export const docsLlms = llms(source, {
+  renderPage: async (page) => `# ${page.data.title} (${page.url})
 
-  return {
-    segments,
-    url: `/og/docs/${segments.join('/')}`,
-  }
-}
-
-export async function getLLMText(page: InferPageType<typeof source>) {
-  const processed = await page.data.getText('processed')
-
-  return `# ${page.data.title}
-
-${processed}`
-}
+${await page.data.getText('processed')}`,
+})
