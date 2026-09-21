@@ -43,7 +43,7 @@ export class Metadata extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * An array of typed metadata values of this Metadata.
+     * An array of typed metadata values of this Metadata. All values of one key must share the same type and must not repeat.
      */
     declare public readonly metadataValues: pulumi.Output<outputs.MetadataMetadataValue[] | undefined>;
     /**
@@ -51,7 +51,7 @@ export class Metadata extends pulumi.CustomResource {
      */
     declare public readonly ownerId: pulumi.Output<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`
      */
     declare public readonly ownerType: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export interface MetadataState {
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * An array of typed metadata values of this Metadata.
+     * An array of typed metadata values of this Metadata. All values of one key must share the same type and must not repeat.
      */
     metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[] | undefined>;
     /**
@@ -138,7 +138,7 @@ export interface MetadataState {
      */
     ownerId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`
      */
     ownerType?: pulumi.Input<string | undefined>;
     /**
@@ -168,7 +168,7 @@ export interface MetadataArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * An array of typed metadata values of this Metadata.
+     * An array of typed metadata values of this Metadata. All values of one key must share the same type and must not repeat.
      */
     metadataValues?: pulumi.Input<pulumi.Input<inputs.MetadataMetadataValue>[] | undefined>;
     /**
@@ -176,7 +176,7 @@ export interface MetadataArgs {
      */
     ownerId: pulumi.Input<string>;
     /**
-     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`, `CallRouting`
+     * The type of the owner of this Metadata. Valid values: `Monitor`, `Heartbeat`, `Incident`, `WebhookIntegration`, `EmailIntegration`, `IncomingWebhook`, `AmazonSnsIntegration`
      */
     ownerType: pulumi.Input<string>;
     /**

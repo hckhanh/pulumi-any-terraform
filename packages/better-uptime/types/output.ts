@@ -360,20 +360,20 @@ export interface CatalogRecordAttribute {
      */
     itemId?: string;
     /**
-     * Name of the referenced item when type is different than `String`.
+     * Name of the referenced item when type is different than `String`. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      */
     name?: string;
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Endpoint`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
-     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
@@ -944,7 +944,15 @@ export interface GetOnCallCalendarOnCallRotation {
     rotationInterval?: string;
     rotationLength?: number;
     startRotationsAt?: string;
+    timezone?: string;
     users?: string[];
+    workingHours?: outputs.GetOnCallCalendarOnCallRotationWorkingHour[];
+}
+
+export interface GetOnCallCalendarOnCallRotationWorkingHour {
+    day?: string;
+    endTime?: string;
+    startTime?: string;
 }
 
 export interface GetOnCallCalendarOnCallUser {
@@ -1340,20 +1348,20 @@ export interface MetadataMetadataValue {
      */
     itemId?: string;
     /**
-     * Name of the referenced item when type is different than `String`.
+     * Name of the referenced item when type is different than `String`. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      */
     name?: string;
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Endpoint`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
-     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
@@ -1382,9 +1390,32 @@ export interface OnCallCalendarOnCallRotation {
      */
     startRotationsAt: string;
     /**
+     * Time zone the rotation's working hours are written in and its handovers follow across daylight-saving changes, an IANA name such as `Europe/Prague`. The offset in <span pulumi-lang-nodejs="`startRotationsAt`" pulumi-lang-dotnet="`StartRotationsAt`" pulumi-lang-go="`startRotationsAt`" pulumi-lang-python="`start_rotations_at`" pulumi-lang-yaml="`startRotationsAt`" pulumi-lang-java="`startRotationsAt`" pulumi-lang-hcl="`start_rotations_at`">`startRotationsAt`</span> still fixes the instant of the first shift, so write it in this time zone's offset. Omit to keep the time zone the rotation already has; a new rotation with working hours and no time zone uses UTC.
+     */
+    timezone: string;
+    /**
      * List of email addresses for users participating in the rotation.
      */
     users: string[];
+    /**
+     * Windows during which the rotation pages anyone, one block per day and window. Omit for a rotation that is active around the clock; omitting it on an existing rotation removes its working hours. A window whose <span pulumi-lang-nodejs="`endTime`" pulumi-lang-dotnet="`EndTime`" pulumi-lang-go="`endTime`" pulumi-lang-python="`end_time`" pulumi-lang-yaml="`endTime`" pulumi-lang-java="`endTime`" pulumi-lang-hcl="`end_time`">`endTime`</span> is not after <span pulumi-lang-nodejs="`startTime`" pulumi-lang-dotnet="`StartTime`" pulumi-lang-go="`startTime`" pulumi-lang-python="`start_time`" pulumi-lang-yaml="`startTime`" pulumi-lang-java="`startTime`" pulumi-lang-hcl="`start_time`">`startTime`</span> runs overnight.
+     */
+    workingHours?: outputs.OnCallCalendarOnCallRotationWorkingHour[];
+}
+
+export interface OnCallCalendarOnCallRotationWorkingHour {
+    /**
+     * Day of the week. Must be one of: <span pulumi-lang-nodejs="`sunday`" pulumi-lang-dotnet="`Sunday`" pulumi-lang-go="`sunday`" pulumi-lang-python="`sunday`" pulumi-lang-yaml="`sunday`" pulumi-lang-java="`sunday`" pulumi-lang-hcl="`sunday`">`sunday`</span>, <span pulumi-lang-nodejs="`monday`" pulumi-lang-dotnet="`Monday`" pulumi-lang-go="`monday`" pulumi-lang-python="`monday`" pulumi-lang-yaml="`monday`" pulumi-lang-java="`monday`" pulumi-lang-hcl="`monday`">`monday`</span>, <span pulumi-lang-nodejs="`tuesday`" pulumi-lang-dotnet="`Tuesday`" pulumi-lang-go="`tuesday`" pulumi-lang-python="`tuesday`" pulumi-lang-yaml="`tuesday`" pulumi-lang-java="`tuesday`" pulumi-lang-hcl="`tuesday`">`tuesday`</span>, <span pulumi-lang-nodejs="`wednesday`" pulumi-lang-dotnet="`Wednesday`" pulumi-lang-go="`wednesday`" pulumi-lang-python="`wednesday`" pulumi-lang-yaml="`wednesday`" pulumi-lang-java="`wednesday`" pulumi-lang-hcl="`wednesday`">`wednesday`</span>, <span pulumi-lang-nodejs="`thursday`" pulumi-lang-dotnet="`Thursday`" pulumi-lang-go="`thursday`" pulumi-lang-python="`thursday`" pulumi-lang-yaml="`thursday`" pulumi-lang-java="`thursday`" pulumi-lang-hcl="`thursday`">`thursday`</span>, <span pulumi-lang-nodejs="`friday`" pulumi-lang-dotnet="`Friday`" pulumi-lang-go="`friday`" pulumi-lang-python="`friday`" pulumi-lang-yaml="`friday`" pulumi-lang-java="`friday`" pulumi-lang-hcl="`friday`">`friday`</span>, <span pulumi-lang-nodejs="`saturday`" pulumi-lang-dotnet="`Saturday`" pulumi-lang-go="`saturday`" pulumi-lang-python="`saturday`" pulumi-lang-yaml="`saturday`" pulumi-lang-java="`saturday`" pulumi-lang-hcl="`saturday`">`saturday`</span>.
+     */
+    day: string;
+    /**
+     * End of the window as `HH:MM` on a 24-hour clock (e.g. `17:00`). Ends at midnight when omitted, so a block with both times omitted covers the whole day.
+     */
+    endTime?: string;
+    /**
+     * Start of the window as `HH:MM` on a 24-hour clock (e.g. `09:00`). Starts at midnight when omitted.
+     */
+    startTime?: string;
 }
 
 export interface OnCallCalendarOnCallUser {
@@ -1515,20 +1546,20 @@ export interface PolicyStepMetadataValue {
      */
     itemId?: string;
     /**
-     * Name of the referenced item when type is different than `String`.
+     * Name of the referenced item when type is different than `String`. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      */
     name?: string;
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Endpoint`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
-     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      *
@@ -1598,20 +1629,20 @@ export interface StatusPageResourceMarkAsDegradedMetadataRuleMetadataValue {
      */
     itemId?: string;
     /**
-     * Name of the referenced item when type is different than `String`.
+     * Name of the referenced item when type is different than `String`. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      */
     name?: string;
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Endpoint`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
-     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
@@ -1643,20 +1674,20 @@ export interface StatusPageResourceMarkAsDownMetadataRuleMetadataValue {
      */
     itemId?: string;
     /**
-     * Name of the referenced item when type is different than `String`.
+     * Name of the referenced item when type is different than `String`. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      */
     name?: string;
     /**
      * Value types can be grouped into 2 main categories:
      *   - **Scalar**: `String`
-     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
+     *   - **Reference**: `User`, `Team`, `Policy`, `Schedule`, `Endpoint`, `Source`, `SlackIntegration`, `LinearIntegration`, `JiraIntegration`, `MicrosoftTeamsWebhook`, `ZapierWebhook`, `NativeWebhook`, `PagerDutyWebhook`
      *
      *   The value of a **Scalar** type is defined using the value field.
      *
      *   The value of a **Reference** type is defined using one of the following fields:
      *   - <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span> - great choice when you know the ID of the target item.
      *   - <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span> - your go-to choice when you're referencing users.
-     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc.
+     *   - <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span> - can be used to reference other items like teams, policies, etc. Not available for `Endpoint`, `SlackIntegration`, and `ZapierWebhook`, which are referenced by <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>.
      *
      *   **The reference types require the presence of at least one of the three fields: <span pulumi-lang-nodejs="`itemId`" pulumi-lang-dotnet="`ItemId`" pulumi-lang-go="`itemId`" pulumi-lang-python="`item_id`" pulumi-lang-yaml="`itemId`" pulumi-lang-java="`itemId`" pulumi-lang-hcl="`item_id`">`itemId`</span>, <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`" pulumi-lang-hcl="`name`">`name`</span>, <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`" pulumi-lang-hcl="`email`">`email`</span>.**
      */
