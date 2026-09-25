@@ -7,8 +7,8 @@ runs:
       shell: bash
       env:
         # The installer warns if SAFE_CHAIN_VERSION is set; pin via the download URL instead.
-        SAFE_CHAIN_RELEASE: 1.5.20
-        SAFE_CHAIN_SHA256: 0ad25efe15d1fa56105157a454d647223e78eb0c53d1f85e3d10afcd722e7bfd
+        SAFE_CHAIN_RELEASE: 1.5.21
+        SAFE_CHAIN_SHA256: 03641bfdf4d5e3b5f0450120543579d578ed6354a8cff64bcfba8c8485f14474
       run: |
         curl --proto '=https' --tlsv1.2 -fsSL "https://github.com/AikidoSec/safe-chain/releases/download/${SAFE_CHAIN_RELEASE}/install-safe-chain.sh" -o /tmp/install-safe-chain.sh
         echo "${SAFE_CHAIN_SHA256}  /tmp/install-safe-chain.sh" | sha256sum -c -
