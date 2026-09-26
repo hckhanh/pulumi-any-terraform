@@ -21,7 +21,7 @@
     "async-mutex": "0.5.0"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.263.0",
+    "@pulumi/pulumi": "3.264.0",
     "@types/node": "24.13.6",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
