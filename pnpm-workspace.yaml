@@ -1,5 +1,7 @@
 packages:
   - packages/*
+autoDedupe: true
+catalogPrune: true
 allowBuilds:
   '@swc/core': true
   esbuild: true
@@ -7,12 +9,10 @@ allowBuilds:
   protobufjs: true
   sharp: true
 minimumReleaseAge: 2880
+minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
-  # Renovate security update: next@16.2.6 || 16.2.11 || 16.3.6
-  - next@16.2.6 || 16.2.11 || 16.3.6
   - tmp@0.2.7
   - form-data@4.0.6
-  - sharp@0.35.0
   - brace-expansion@5.0.9
 overrides:
   # Pin postcss below 8.5.10; GHSA-qx2v-qp2m-jg93
@@ -21,6 +21,7 @@ overrides:
   postcss@<8.5.10: '8.5.28'
   sharp@<0.35.0: ^0.35.0
   smol-toml@<=1.7.0: ^1.7.1
+trustPolicyExcludePrune: true
 auditConfig:
   # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
   # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled

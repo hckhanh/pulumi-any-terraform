@@ -16,6 +16,7 @@
   ],
   "postUpdateOptions": ["pnpmDedupe"],
   "timezone": "Asia/Ho_Chi_Minh",
+  "internalChecksFilter": "strict",
   "packageRules": [
     {
       "description": "Keep mise.toml and pnpm/setup workflow pins in the same PR",
@@ -28,6 +29,13 @@
       "groupName": "pnpm",
       "matchDatasources": ["npm"],
       "matchPackageNames": ["pnpm"]
+    },
+    {
+      "description": "Match pnpm minimumReleaseAge of 2880 minutes so lockfile updates are not attempted before pnpm will accept them",
+      "matchDatasources": ["npm"],
+      "matchUpdateTypes": ["major", "minor", "patch", "digest", "pinDigest"],
+      "minimumReleaseAge": "2 days",
+      "internalChecksFilter": "strict"
     }
   ],
   "customManagers": [
