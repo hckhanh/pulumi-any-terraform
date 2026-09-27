@@ -5,9 +5,59 @@ echo "building packages"
 pnpm exec nx run-many -t build
 
 echo "publishing packages"
-# Trusted publishing exchanges the GitHub OIDC token. NPM_TOKEN skips that
-# exchange, and this repository's token is rejected with a registry 404.
+# A stored NPM_TOKEN skips GitHub OIDC. This repository's token is rejected.
 unset NPM_TOKEN NODE_AUTH_TOKEN
+
+echo "npm $(npm --version)"
+if [ -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] || [ -z "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
+  echo "github oidc credentials are missing"
+  exit 1
+fi
+echo "github oidc credentials are present"
+
+# Exchange the GitHub OIDC token for a short-lived npm token. npm's own
+# exchange fails quietly and then reports ENEEDAUTH, so do it here and
+# print only the registry's error text.
+exchange_token() {
+  local package_name="$1"
+  node --input-type=module -e '
+    const packageName = process.argv[1]
+    const requestUrl = new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL)
+    requestUrl.searchParams.append("audience", "npm:registry.npmjs.org")
+    const idResponse = await fetch(requestUrl, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`,
+      },
+    })
+    const idBody = await idResponse.json()
+    if (!idResponse.ok || !idBody.value) {
+      console.error(`github oidc token request failed with HTTP ${idResponse.status}`)
+      process.exit(1)
+    }
+    const exchangeUrl = `https://registry.npmjs.org/-/npm/v1/oidc/token/exchange/package/${encodeURIComponent(packageName)}`
+    const exchangeResponse = await fetch(exchangeUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${idBody.value}`,
+      },
+    })
+    const exchangeText = await exchangeResponse.text()
+    let exchangeBody = {}
+    try {
+      exchangeBody = JSON.parse(exchangeText)
+    } catch {
+      exchangeBody = { message: exchangeText.slice(0, 500) }
+    }
+    if (!exchangeResponse.ok || !exchangeBody.token) {
+      const message = exchangeBody.message || exchangeBody.error || exchangeText.slice(0, 500)
+      console.error(`oidc exchange for ${packageName} failed with HTTP ${exchangeResponse.status}: ${message}`)
+      process.exit(1)
+    }
+    process.stdout.write(exchangeBody.token)
+  ' "$package_name"
+}
 
 for dir in packages/*; do
   name="$(node -p "require('./${dir}/package.json').name")"
@@ -18,5 +68,10 @@ for dir in packages/*; do
     continue
   fi
   echo "publish ${name}@${version}"
-  (cd "$dir" && npm publish --ignore-scripts --access public)
+  token="$(exchange_token "$name")"
+  echo "::add-mask::${token}"
+  (
+    cd "$dir"
+    npm publish --ignore-scripts --access public --"//registry.npmjs.org/:_authToken=${token}"
+  )
 done
