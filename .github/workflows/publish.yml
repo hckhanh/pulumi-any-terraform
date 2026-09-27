@@ -49,7 +49,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore(release): release packages'
           pr-title: 'Release packages'
-          publish-script: pnpm exec nx run-many -t build && bash .github/scripts/publish-packages.sh
+          publish-script: bash .github/scripts/publish-packages.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+echo "building packages"
+pnpm exec nx run-many -t build
+
+echo "publishing packages"
 npm config set registry https://registry.npmjs.org/
 npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
 
