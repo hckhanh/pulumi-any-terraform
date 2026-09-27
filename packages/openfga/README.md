@@ -266,7 +266,7 @@ const store = new openfga.Store(
 
 ## API Reference
 
-For detailed API documentation, see the generated TypeScript definitions in your IDE, the [provider documentation site](https://pulumi.khanh.id/docs/providers/openfga), or the [upstream Terraform provider docs](https://registry.opentofu.org/openfga/openfga/latest/docs).
+For detailed API documentation, see the generated TypeScript definitions in your IDE, the [provider documentation site](https://docs.khanh.id/pulumi-any-terraform/providers/openfga), or the [upstream Terraform provider docs](https://registry.opentofu.org/openfga/openfga/latest/docs).
 
 ## Authentication Setup
 

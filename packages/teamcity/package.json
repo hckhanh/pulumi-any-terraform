@@ -1,8 +1,8 @@
 {
   "name": "pulumi-teamcity",
   "description": "A Pulumi provider for managing TeamCity CI/CD platform, dynamically bridged from the Terraform TeamCity provider with support for projects, build configurations, VCS roots, users, and team management.",
-  "version": "0.2.3",
-  "homepage": "https://pulumi.khanh.id/docs/providers/teamcity",
+  "version": "0.2.4",
+  "homepage": "https://docs.khanh.id/pulumi-any-terraform/providers/teamcity",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hckhanh/pulumi-any-terraform.git",

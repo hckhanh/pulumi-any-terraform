@@ -5,6 +5,12 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "computedHash": "784f0dbb7403b0f00324bce9a112f715342777a0daee7bbb7385f9c6f0a170ea"
+    },
+    "nx-run-tasks": {
+      "source": "nrwl/nx",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/nx-run-tasks/SKILL.md",
+      "computedHash": "e42dec15f588268887d88d606187b0fab9cbb3f90fd4ce41d66d2faffc9295c4"
     }
   }
 }

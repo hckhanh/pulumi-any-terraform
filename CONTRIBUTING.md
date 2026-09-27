@@ -26,7 +26,6 @@ This document defines the coding standards, style conventions, and contribution 
 │   ├── linter.ts
 │   ├── oxfmt.ts
 │   └── utils/plugin.ts
-├── docs/             # Fumadocs documentation site
 └── .github/
     ├── actions/      # Reusable composite actions
     ├── scripts/      # CI automation scripts (JavaScript)
@@ -46,7 +45,7 @@ This document defines the coding standards, style conventions, and contribution 
 
 ## 4. Formatting Rules
 
-Formatting is enforced automatically by **Biome** (JS/TS/JSON/CSS in `docs/`) and **Oxfmt** (YAML, Markdown, HTML, and hand-written JS/TS).
+Formatting is enforced automatically by **Oxfmt** (YAML, Markdown, HTML, and hand-written JS/TS) and **Biome** where a project includes a `biome.json`.
 
 | Rule            | Value                              |
 | --------------- | ---------------------------------- |
@@ -132,7 +131,7 @@ The project uses a multi-tool pipeline orchestrated by **Nx**:
 
 | Tool               | Purpose                               | Scope                                      |
 | ------------------ | ------------------------------------- | ------------------------------------------ |
-| Biome              | Linting + formatting (JS/TS/JSON/CSS) | `docs/`                                    |
+| Biome              | Linting + formatting (JS/TS/JSON/CSS) | Projects that include a `biome.json`       |
 | Oxfmt              | Formatting (YAML, Markdown, HTML, TS) | Workspace-wide (except generated packages) |
 | Syncpack           | `package.json` consistency            | Workspace-wide                             |
 | TypeScript (`tsc`) | Type checking                         | `tools/`, `packages/` (via postinstall)    |

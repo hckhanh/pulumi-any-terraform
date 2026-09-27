@@ -1,5 +1,9 @@
 # Pulumi Any Terraform
 
+<p align="center">
+  <img src="docs/images/logo.svg" alt="Pulumi Any Terraform" width="128" />
+</p>
+
 > **Use any Terraform provider with Pulumi**  
 > Full type safety • Multi-language support • Seamless integration
 
@@ -80,12 +84,12 @@ pulumi up       # Deploy infrastructure
 
 Comprehensive documentation is available covering:
 
-- **[Getting Started](docs/)** - Installation, configuration, and first steps
-- **[Architecture](docs/)** - How the bridge works internally
-- **[Provider Guides](docs/)** - Detailed guides for each provider
-- **[Contributing](docs/)** - How to contribute new providers
-- **[Troubleshooting](docs/)** - Common issues and solutions
-- **[FAQ](docs/)** - Frequently asked questions
+- **[Getting Started](https://docs.khanh.id/pulumi-any-terraform/getting-started)** - Installation, configuration, and first steps
+- **[Architecture](https://docs.khanh.id/pulumi-any-terraform/architecture)** - How the bridge works internally
+- **[Provider Guides](https://docs.khanh.id/pulumi-any-terraform)** - Detailed guides for each provider
+- **[Contributing](https://docs.khanh.id/pulumi-any-terraform/contributing)** - How to contribute new providers
+- **[Troubleshooting](https://docs.khanh.id/pulumi-any-terraform/troubleshooting)** - Common issues and solutions
+- **[FAQ](https://docs.khanh.id/pulumi-any-terraform/faq)** - Frequently asked questions
 
 ## 🏗️ Architecture
 
@@ -156,7 +160,7 @@ pnpm nx run root:oxfmt:write
 4. Write comprehensive documentation
 5. Submit pull request
 
-See the [Contributing Guide](docs/) for detailed instructions.
+See the [Contributing Guide](https://docs.khanh.id/pulumi-any-terraform/contributing) for detailed instructions.
 
 ### Project Structure
 
@@ -175,7 +179,6 @@ pulumi-any-terraform/
 │   ├── build.ts
 │   ├── linter.ts
 │   └── oxfmt.ts
-├── docs/                  # Documentation site (Next.js)
 ├── .github/              # CI/CD workflows
 ├── nx.json               # Nx configuration
 └── pnpm-workspace.yaml   # Workspace config
@@ -201,7 +204,7 @@ We welcome contributions! Here's how you can help:
 4. **Test** thoroughly
 5. **Submit** a pull request
 
-Please read our [Contributing Guide](docs/) for details on:
+Please read our [Contributing Guide](https://docs.khanh.id/pulumi-any-terraform/contributing) for details on:
 
 - Code standards
 - Development workflow
@@ -218,7 +221,7 @@ Common issues and solutions:
 - **Authentication errors**: Check credentials and environment variables
 - **Build failures**: Clear Nx cache with `pnpm nx reset`
 
-See our [Troubleshooting Guide](docs/) for more help.
+See our [Troubleshooting Guide](https://docs.khanh.id/pulumi-any-terraform/troubleshooting) for more help.
 
 ## 🔗 External Connections
 
@@ -290,7 +293,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🔗 Links
 
-- [Documentation](docs/)
+- [Documentation](https://docs.khanh.id/pulumi-any-terraform)
 - [NPM Packages](https://www.npmjs.com/search?q=pulumi-)
 - [GitHub Repository](https://github.com/hckhanh/pulumi-any-terraform)
 - [Issue Tracker](https://github.com/hckhanh/pulumi-any-terraform/issues)
