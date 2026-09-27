@@ -1,12 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
+    <linearGradient id="pat-tile" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#2E1065"/>
+    </linearGradient>
     <linearGradient id="pat-blue" x1="12" y1="16" x2="34" y2="48" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#60A5FA"/>
-      <stop offset="1" stop-color="#2563EB"/>
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="1" stop-color="#60A5FA"/>
     </linearGradient>
     <linearGradient id="pat-violet" x1="32" y1="14" x2="54" y2="50" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#C4B5FD"/>
-      <stop offset="1" stop-color="#7C3AED"/>
+      <stop stop-color="#EDE9FE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
     </linearGradient>
     <linearGradient id="pat-joint" x1="26" y1="24" x2="40" y2="42" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ECFEFF"/>
@@ -21,7 +25,7 @@
       </feMerge>
     </filter>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#070B14"/>
+  <rect width="64" height="64" rx="16" fill="url(#pat-tile)"/>
   <path
     d="M33 15.5 14.5 32 33 48.5"
     stroke="url(#pat-blue)"
