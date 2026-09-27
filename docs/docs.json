@@ -3,6 +3,31 @@
   "theme": "mint",
   "name": "Pulumi Any Terraform",
   "description": "Bridge any Terraform provider to Pulumi",
+  "seo": {
+    "indexing": "navigable",
+    "trailingSlash": false,
+    "metatags": {
+      "canonical": "https://pulumi.khanh.id/docs",
+      "robots": "index, follow",
+      "og:site_name": "Pulumi Any Terraform",
+      "og:locale": "en_US"
+    },
+    "organization": {
+      "name": "Pulumi Any Terraform",
+      "url": "https://pulumi.khanh.id",
+      "id": "https://pulumi.khanh.id/#organization",
+      "sameAs": ["https://github.com/hckhanh/pulumi-any-terraform"]
+    }
+  },
+  "markdown": {
+    "instructions": [
+      "These docs describe Pulumi packages that bridge Terraform providers. The npm package name is pulumi-<provider>, for example pulumi-namecheap.",
+      "Use only the resources, arguments, and provider configuration fields written on that provider's pages. Do not invent fields.",
+      "A provider's pages start at /providers/<provider>/overview. The Markdown for a page is that path with .md appended.",
+      "If a URL is missing, follow the suggested pages or search /search?q= instead of guessing another path.",
+      "The published documentation site is https://pulumi.khanh.id/docs."
+    ]
+  },
   "colors": {
     "primary": "#2563EB"
   },
@@ -30,9 +55,9 @@
     }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Documentation",
+        "tab": "Documentation",
         "pages": [
           "index",
           "getting-started",
@@ -42,147 +67,185 @@
           "faq",
           "ci-cd"
         ],
-        "icon": "book-open"
-      },
-      {
-        "group": "Providers",
-        "pages": [
+        "productGroups": [
           {
-            "group": "Better Uptime",
-            "pages": [
-              "providers/better-uptime/overview",
-              "providers/better-uptime/configuration",
+            "group": "Providers",
+            "products": [
               {
-                "group": "Resources",
-                "pages": [
-                  "providers/better-uptime/monitor",
-                  "providers/better-uptime/status-page",
-                  "providers/better-uptime/heartbeat"
-                ]
-              }
-            ],
-            "icon": "activity"
-          },
-          {
-            "group": "Buildkite",
-            "pages": [
-              "providers/buildkite/overview",
-              "providers/buildkite/configuration"
-            ],
-            "icon": "hammer"
-          },
-          {
-            "group": "Bunny",
-            "pages": [
-              "providers/bunnynet/overview",
-              "providers/bunnynet/configuration"
-            ],
-            "icon": "rabbit"
-          },
-          {
-            "group": "Infisical",
-            "pages": [
-              "providers/infisical/overview"
-            ],
-            "icon": "key"
-          },
-          {
-            "group": "Local",
-            "pages": [
-              "providers/local/overview",
-              "providers/local/configuration"
-            ],
-            "icon": "file-text"
-          },
-          {
-            "group": "Logtail",
-            "pages": [
-              "providers/logtail/overview"
-            ],
-            "icon": "file-text"
-          },
-          {
-            "group": "Namecheap",
-            "pages": [
-              "providers/namecheap/overview",
-              "providers/namecheap/configuration",
-              {
-                "group": "Resources",
-                "pages": [
-                  "providers/namecheap/domain-records"
+                "product": "Better Uptime",
+                "icon": "/images/providers/better-stack.svg",
+                "description": "Monitor websites and services with Better Uptime using Pulumi",
+                "groups": [
+                  {
+                    "group": "Better Uptime",
+                    "pages": [
+                      "providers/better-uptime/overview",
+                      "providers/better-uptime/configuration"
+                    ]
+                  },
+                  {
+                    "group": "Resources",
+                    "pages": [
+                      "providers/better-uptime/monitor",
+                      "providers/better-uptime/status-page",
+                      "providers/better-uptime/heartbeat"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Guides",
+                "product": "Buildkite",
+                "icon": "/images/providers/buildkite.svg",
+                "description": "Manage Buildkite CI/CD pipelines, agents, clusters, and teams with Pulumi",
                 "pages": [
-                  "providers/namecheap/dns-guide",
-                  "providers/namecheap/migration-guide"
-                ]
-              }
-            ],
-            "icon": "globe"
-          },
-          {
-            "group": "OpenFGA",
-            "pages": [
-              "providers/openfga/overview"
-            ],
-            "icon": "shield-check"
-          },
-          {
-            "group": "Portainer",
-            "pages": [
-              "providers/portainer/overview"
-            ],
-            "icon": "container"
-          },
-          {
-            "group": "PostHog",
-            "pages": [
-              "providers/posthog/overview",
-              "providers/posthog/configuration",
-              {
-                "group": "Resources",
-                "pages": [
-                  "providers/posthog/feature-flag",
-                  "providers/posthog/dashboard",
-                  "providers/posthog/insight",
-                  "providers/posthog/alert",
-                  "providers/posthog/hog-function"
-                ]
-              }
-            ],
-            "icon": "chart-line"
-          },
-          {
-            "group": "TeamCity",
-            "pages": [
-              "providers/teamcity/overview"
-            ],
-            "icon": "workflow"
-          },
-          {
-            "group": "Time",
-            "pages": [
-              "providers/time/overview",
-              "providers/time/configuration",
-              {
-                "group": "Resources",
-                "pages": [
-                  "providers/time/offset",
-                  "providers/time/rotating",
-                  "providers/time/sleep",
-                  "providers/time/static"
+                  "providers/buildkite/overview",
+                  "providers/buildkite/configuration"
                 ]
               },
               {
-                "group": "Guides",
+                "product": "Bunny",
+                "icon": "/images/providers/bunnynet.svg",
+                "description": "Manage Bunny.net CDN and edge computing resources with Pulumi",
                 "pages": [
-                  "providers/time/time-guide"
+                  "providers/bunnynet/overview",
+                  "providers/bunnynet/configuration"
+                ]
+              },
+              {
+                "product": "Infisical",
+                "icon": "/images/providers/infisical.svg",
+                "description": "Manage secrets with Infisical using Pulumi",
+                "pages": [
+                  "providers/infisical/overview"
+                ]
+              },
+              {
+                "product": "Logtail",
+                "icon": "/images/providers/better-stack.svg",
+                "description": "Manage Logtail log management resources with Pulumi",
+                "pages": [
+                  "providers/logtail/overview"
+                ]
+              },
+              {
+                "product": "Namecheap",
+                "icon": "/images/providers/namecheap.svg",
+                "description": "Manage DNS records and domains with Namecheap using Pulumi",
+                "groups": [
+                  {
+                    "group": "Namecheap",
+                    "pages": [
+                      "providers/namecheap/overview",
+                      "providers/namecheap/configuration"
+                    ]
+                  },
+                  {
+                    "group": "Resources",
+                    "pages": [
+                      "providers/namecheap/domain-records"
+                    ]
+                  },
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "providers/namecheap/dns-guide",
+                      "providers/namecheap/migration-guide"
+                    ]
+                  }
+                ]
+              },
+              {
+                "product": "OpenFGA",
+                "icon": "/images/providers/openfga.svg",
+                "description": "Manage OpenFGA stores, authorization models, and relationship tuples with Pulumi",
+                "pages": [
+                  "providers/openfga/overview"
+                ]
+              },
+              {
+                "product": "Portainer",
+                "icon": "/images/providers/portainer.svg",
+                "description": "Manage container environments with Portainer using Pulumi",
+                "pages": [
+                  "providers/portainer/overview"
+                ]
+              },
+              {
+                "product": "PostHog",
+                "icon": "/images/providers/posthog.svg",
+                "description": "Manage PostHog analytics, feature flags, and product insights with Pulumi",
+                "groups": [
+                  {
+                    "group": "PostHog",
+                    "pages": [
+                      "providers/posthog/overview",
+                      "providers/posthog/configuration"
+                    ]
+                  },
+                  {
+                    "group": "Resources",
+                    "pages": [
+                      "providers/posthog/feature-flag",
+                      "providers/posthog/dashboard",
+                      "providers/posthog/insight",
+                      "providers/posthog/alert",
+                      "providers/posthog/hog-function"
+                    ]
+                  }
+                ]
+              },
+              {
+                "product": "TeamCity",
+                "icon": "/images/providers/teamcity.png",
+                "description": "Manage TeamCity CI/CD resources with Pulumi",
+                "pages": [
+                  "providers/teamcity/overview"
                 ]
               }
-            ],
-            "icon": "clock"
+            ]
+          },
+          {
+            "group": "Utilities",
+            "products": [
+              {
+                "product": "Local",
+                "icon": "/images/providers/terraform.svg",
+                "description": "Manage local files, directories, and sensitive files with Pulumi",
+                "pages": [
+                  "providers/local/overview",
+                  "providers/local/configuration"
+                ]
+              },
+              {
+                "product": "Time",
+                "icon": "/images/providers/terraform.svg",
+                "description": "Manage time-based resources and operations with Pulumi",
+                "groups": [
+                  {
+                    "group": "Time",
+                    "pages": [
+                      "providers/time/overview",
+                      "providers/time/configuration"
+                    ]
+                  },
+                  {
+                    "group": "Resources",
+                    "pages": [
+                      "providers/time/offset",
+                      "providers/time/rotating",
+                      "providers/time/sleep",
+                      "providers/time/static"
+                    ]
+                  },
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "providers/time/time-guide"
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
