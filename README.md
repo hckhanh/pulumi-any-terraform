@@ -80,12 +80,12 @@ pulumi up       # Deploy infrastructure
 
 Comprehensive documentation is available covering:
 
-- **[Getting Started](docs/)** - Installation, configuration, and first steps
-- **[Architecture](docs/)** - How the bridge works internally
-- **[Provider Guides](docs/)** - Detailed guides for each provider
-- **[Contributing](docs/)** - How to contribute new providers
-- **[Troubleshooting](docs/)** - Common issues and solutions
-- **[FAQ](docs/)** - Frequently asked questions
+- **[Getting Started](docs/getting-started.mdx)** - Installation, configuration, and first steps
+- **[Architecture](docs/architecture.mdx)** - How the bridge works internally
+- **[Provider Guides](docs/providers)** - Detailed guides for each provider
+- **[Contributing](docs/contributing.mdx)** - How to contribute new providers
+- **[Troubleshooting](docs/troubleshooting.mdx)** - Common issues and solutions
+- **[FAQ](docs/faq.mdx)** - Frequently asked questions
 
 ## 🏗️ Architecture
 
@@ -156,7 +156,7 @@ pnpm nx run root:oxfmt:write
 4. Write comprehensive documentation
 5. Submit pull request
 
-See the [Contributing Guide](docs/) for detailed instructions.
+See the [Contributing Guide](docs/contributing.mdx) for detailed instructions.
 
 ### Project Structure
 
@@ -175,7 +175,7 @@ pulumi-any-terraform/
 │   ├── build.ts
 │   ├── linter.ts
 │   └── oxfmt.ts
-├── docs/                  # Documentation site (Next.js)
+├── docs/                  # Docs7 site (docs.json + MDX)
 ├── .github/              # CI/CD workflows
 ├── nx.json               # Nx configuration
 └── pnpm-workspace.yaml   # Workspace config
@@ -186,7 +186,7 @@ pulumi-any-terraform/
 Automated workflows handle:
 
 - **Testing**: Linting, type checking, and builds
-- **Auto-fixing**: Oxfmt and Biome fixes
+- **Auto-fixing**: Oxfmt fixes
 - **Dependency Updates**: Automated PRs for updates
 - **Publishing**: Automatic releases to NPM
 - **Security**: Aikido Safe Chain and vulnerability scanning
@@ -201,7 +201,7 @@ We welcome contributions! Here's how you can help:
 4. **Test** thoroughly
 5. **Submit** a pull request
 
-Please read our [Contributing Guide](docs/) for details on:
+Please read our [Contributing Guide](docs/contributing.mdx) for details on:
 
 - Code standards
 - Development workflow
@@ -218,7 +218,7 @@ Common issues and solutions:
 - **Authentication errors**: Check credentials and environment variables
 - **Build failures**: Clear Nx cache with `pnpm nx reset`
 
-See our [Troubleshooting Guide](docs/) for more help.
+See our [Troubleshooting Guide](docs/troubleshooting.mdx) for more help.
 
 ## 🔗 External Connections
 
@@ -290,7 +290,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🔗 Links
 
-- [Documentation](docs/)
+- [Documentation](docs/index.mdx)
 - [NPM Packages](https://www.npmjs.com/search?q=pulumi-)
 - [GitHub Repository](https://github.com/hckhanh/pulumi-any-terraform)
 - [Issue Tracker](https://github.com/hckhanh/pulumi-any-terraform/issues)

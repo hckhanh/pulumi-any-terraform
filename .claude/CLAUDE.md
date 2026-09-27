@@ -13,7 +13,7 @@ Hand-written code lives only in:
 - `tools/` -- Nx plugins (TypeScript, ES2022)
 - `.github/scripts/` -- CI automation (TypeScript, run with `node` via `--experimental-strip-types`)
 - `packages/*/scripts/postinstall.js` -- per-package build template (rarely changes)
-- `docs/` -- Fumadocs (Next.js) site
+- `docs/` -- Docs7 site (`docs.json` + MDX). Do not add a docs framework app here.
 - Top-level config (`nx.json`, `package.json`, `.syncpackrc.json`, etc.)
 
 ## Repository Layout
@@ -35,7 +35,7 @@ Hand-written code lives only in:
 │   ├── linter.ts              # Matches **/project.json -- adds aggregate `check`/`fix`
 │   ├── oxfmt.ts               # Matches **/project.json -- adds `oxfmt:check`/`oxfmt:write`
 │   └── utils/plugin.ts        # Abstract Plugin base class for all of the above
-├── docs/                      # Fumadocs documentation site (Next.js, has its own biome.json)
+├── docs/                      # Docs7 site (docs.json + MDX)
 ├── .github/
 │   ├── scripts/
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
@@ -110,7 +110,7 @@ pnpm release
 | `packages/*/scripts/postinstall.js` | Build template (`tsc` + copy json)                    | Rare; keep all in sync |
 | `tools/*.ts`                        | Hand-written Nx plugins                               | Yes                    |
 | `.github/scripts/check-updates.ts`  | Weekly upstream sync automation                       | Yes                    |
-| `docs/`                             | Fumadocs site                                         | Yes                    |
+| `docs/`                             | Docs7 content (`docs.json` + MDX)                     | Yes                    |
 
 ### Nx plugin system
 
@@ -129,7 +129,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 ### Package build pipeline
 
-1. `tools/build.ts` finds every `*/tsconfig.json` (so each generated package and `docs/` becomes an Nx project).
+1. `tools/build.ts` finds every `*/tsconfig.json` (so each generated package becomes an Nx project).
 2. Its `build` target runs `node ./scripts/postinstall.js` from each `projectRoot`.
 3. `postinstall.js` invokes `tsc`, then copies the package's `package.json` into `bin/` (so `getVersion()` can resolve it at runtime).
 4. Output `bin/` is the published artifact (declared in `package.json#files`).
@@ -149,7 +149,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 
 `pulumi.parameterization` in each package's `package.json` is what tells the dynamic provider which Terraform provider/version to bridge -- it must stay in sync with the generated TypeScript.
 
-`.changeset/config.json` sets `access: restricted` and uses `./changelog.js`, a custom ESM renderer that emits the changeset summary verbatim and suppresses dependency-bump lines. Each provider package overrides publishability via `publishConfig.access: public`, and is published under `homepage: https://pulumi.khanh.id/docs/providers/<name>` (the Fumadocs site in `docs/`). Private packages (the `docs` site) are not versioned — Changesets v3's default.
+`.changeset/config.json` sets `access: restricted` and uses `./changelog.js`, a custom ESM renderer that emits the changeset summary verbatim and suppresses dependency-bump lines. Each provider package overrides publishability via `publishConfig.access: public`, and is published under `homepage: https://pulumi.khanh.id/docs/providers/<name>` (the Docs7 site in `docs/`).
 
 ## Code Conventions
 
@@ -164,7 +164,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 | Line endings | LF                                           |
 | Encoding     | UTF-8, trailing newline                      |
 
-- **Biome** formats and lints JS/TS/JSON/CSS (only where a `biome.json` exists -- currently `docs/`).
+- **Biome** formats and lints JS/TS/JSON/CSS only where a project includes a `biome.json`.
 - **Oxfmt** formats YAML/Markdown/HTML/CSS and hand-written JS/TS workspace-wide.
 - `.oxfmtrc.json` `ignorePatterns` exclude generated `packages/` sources, `pnpm-lock.yaml`, all `package.json`, `docs/`, and skills. Root `oxfmt:*` targets also skip `packages/` and `docs/`. Package `CHANGELOG.md` files are formatted by oxfmt (Changesets v3 runs `oxfmt --write` on them during version).
 
@@ -242,8 +242,8 @@ Use this checklist when bridging a new Terraform provider into a new `packages/<
 
 **Docs site**
 
-8. `docs/content/docs/providers/<name>/index.mdx` -- frontmatter with `title` + `description`, body modeled on `docs/content/docs/providers/infisical/index.mdx`. Use real config field names from the generated `provider.ts`.
-9. `docs/content/docs/providers/<name>/meta.json` -- `{ "title": "...", "description": "...", "root": true, "icon": "<lucide-icon>", "pages": ["index"] }`.
+8. `docs/providers/<name>/overview.mdx` -- frontmatter with `title` + `description`, body modeled on `docs/providers/infisical/overview.mdx`. Use real config field names from the generated `provider.ts`. Use Docs7 MDX components (`<Tabs>`, `<Tab title="...">`, `<Columns>`, `<Card>`).
+9. `docs/docs.json` -- add a Providers group entry whose `pages` include `providers/<name>/overview`, and a redirect from `/providers/<name>` to `/providers/<name>/overview`.
 
 **Versioning + changeset (the rule depends on whether the package is already on npm)**
 
@@ -254,7 +254,7 @@ Use this checklist when bridging a new Terraform provider into a new `packages/<
 
 12. `pnpm install` (links the new package into the workspace).
 13. `pnpm nx run <name>:build` (runs `postinstall.js` -> tsc + copies `package.json` to `bin/`).
-14. `pnpm nx affected -t check` (typecheck, syncpack format/lint, oxfmt, build, test:scripts, docs build). The docs build should pre-render `/docs/providers/<name>.html`.
+14. `pnpm nx affected -t check` (typecheck, syncpack format/lint, oxfmt, build, test:scripts). Preview the docs with `npx @upstash/docs7 dev` from `docs/` and open `/providers/<name>/overview`.
 15. `node -e "console.log(Buffer.from(require('./packages/<name>/package.json').pulumi.parameterization.value,'base64').toString())"` should round-trip to the expected `{"remote":{"url":"...","version":"..."}}` JSON.
 
 **No top-level files need editing** -- `pnpm-workspace.yaml`'s `packages/*` glob, the Nx plugin globs in `nx.json`, syncpack, and `.github/scripts/check-updates.ts`'s `fs.readdirSync(packagesDir)` all auto-discover the new package.

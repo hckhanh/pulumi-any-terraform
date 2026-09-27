@@ -1,0 +1,151 @@
+---
+title: TeamCity Provider
+description: Manage TeamCity CI/CD resources with Pulumi
+---
+
+The TeamCity provider enables you to manage projects, build configurations, VCS roots, and team resources in TeamCity using Pulumi. This provider is dynamically bridged from the [Terraform TeamCity Provider](https://github.com/JetBrains/terraform-provider-teamcity).
+
+## Installation
+
+Install the TeamCity provider package using your preferred package manager:
+
+<Tabs>
+  <Tab title="bun">
+    ```bash
+    bun add pulumi-teamcity
+    ```
+  </Tab>
+  <Tab title="pnpm">
+    ```bash
+    pnpm add pulumi-teamcity
+    ```
+  </Tab>
+  <Tab title="yarn">
+    ```bash
+    yarn add pulumi-teamcity
+    ```
+  </Tab>
+  <Tab title="npm">
+    ```bash
+    npm install pulumi-teamcity
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+### Provider Setup
+
+```bash
+pulumi config set teamcity:url https://teamcity.example.com
+pulumi config set teamcity:username admin
+pulumi config set teamcity:password YOUR_PASSWORD --secret
+```
+
+Or using environment variables:
+
+```bash
+export TEAMCITY_URL="https://teamcity.example.com"
+export TEAMCITY_USERNAME="admin"
+export TEAMCITY_PASSWORD="your-password"
+```
+
+## Quick Start
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as teamcity from "pulumi-teamcity";
+
+// Create a project
+const project = new teamcity.Project("web-project", {
+    name: "Web Application",
+    projectId: "WebApp",
+});
+
+// Create a VCS root
+const vcsRoot = new teamcity.Vcsroot("git-repo", {
+    name: "Main Repository",
+    projectId: project.projectId,
+    git: {
+        url: "https://github.com/example/repo.git",
+        branch: "refs/heads/main",
+    },
+});
+
+// Create a build configuration
+const buildConfig = new teamcity.BuildConfiguration("build", {
+    name: "Build",
+    projectId: project.projectId,
+});
+
+// Attach the VCS root to the build configuration
+new teamcity.BuildConfigurationVcsRoot("build-vcs", {
+    buildConfigurationId: buildConfig.buildConfigurationId,
+    vcsRootId: vcsRoot.vcsrootId,
+    checkoutRules: "+:. => source",
+});
+
+export const projectId = project.projectId;
+```
+
+## Key Features
+
+### Project Management
+
+```typescript
+const project = new teamcity.Project("project", {
+    name: "Web Application",
+    projectId: "WebApp",
+});
+```
+
+### Build Configurations
+
+A TeamCity build configuration is composed of several resources that all reference the parent `BuildConfiguration` by `buildConfigurationId`:
+
+```typescript
+const build = new teamcity.BuildConfiguration("build", {
+    name: "CI Build",
+    projectId: project.projectId,
+    buildType: "regular",
+});
+
+// Build configuration settings (artifact rules, build number format, etc.)
+new teamcity.BuildConfigurationSettings("build-settings", {
+    buildConfigurationId: build.buildConfigurationId,
+    buildNumberPattern: "%build.counter%",
+});
+
+// Add a build step
+new teamcity.BuildConfigurationStep("build-step", {
+    buildConfigurationId: build.buildConfigurationId,
+    name: "Compile",
+    type: "simpleRunner",
+    properties: {
+        "script.content": "npm install && npm run build",
+        "use.custom.script": "true",
+    },
+});
+
+// Add a VCS trigger
+new teamcity.BuildConfigurationTrigger("vcs-trigger", {
+    buildConfigurationId: build.buildConfigurationId,
+    type: "vcsTrigger",
+    properties: {
+        branchFilter: "+:*",
+    },
+});
+```
+
+### VCS Roots
+
+```typescript
+const vcs = new teamcity.Vcsroot("repo", {
+    name: "Repository",
+    projectId: project.projectId,
+    git: {
+        url: "https://github.com/example/repo.git",
+        branch: "refs/heads/main",
+    },
+});
+```

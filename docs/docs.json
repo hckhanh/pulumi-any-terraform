@@ -1,0 +1,241 @@
+{
+  "$schema": "https://context7.com/schema/docs7.json",
+  "theme": "mint",
+  "name": "Pulumi Any Terraform",
+  "description": "Bridge any Terraform provider to Pulumi",
+  "colors": {
+    "primary": "#2563EB"
+  },
+  "filterSidebar": true,
+  "poweredByDocs7": true,
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/hckhanh/pulumi-any-terraform"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/hckhanh/pulumi-any-terraform"
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Documentation",
+        "pages": [
+          "index",
+          "getting-started",
+          "architecture",
+          "contributing",
+          "troubleshooting",
+          "faq",
+          "ci-cd"
+        ],
+        "icon": "book-open"
+      },
+      {
+        "group": "Providers",
+        "pages": [
+          {
+            "group": "Better Uptime",
+            "pages": [
+              "providers/better-uptime/overview",
+              "providers/better-uptime/configuration",
+              {
+                "group": "Resources",
+                "pages": [
+                  "providers/better-uptime/monitor",
+                  "providers/better-uptime/status-page",
+                  "providers/better-uptime/heartbeat"
+                ]
+              }
+            ],
+            "icon": "activity"
+          },
+          {
+            "group": "Buildkite",
+            "pages": [
+              "providers/buildkite/overview",
+              "providers/buildkite/configuration"
+            ],
+            "icon": "hammer"
+          },
+          {
+            "group": "Bunny",
+            "pages": [
+              "providers/bunnynet/overview",
+              "providers/bunnynet/configuration"
+            ],
+            "icon": "rabbit"
+          },
+          {
+            "group": "Infisical",
+            "pages": [
+              "providers/infisical/overview"
+            ],
+            "icon": "key"
+          },
+          {
+            "group": "Local",
+            "pages": [
+              "providers/local/overview",
+              "providers/local/configuration"
+            ],
+            "icon": "file-text"
+          },
+          {
+            "group": "Logtail",
+            "pages": [
+              "providers/logtail/overview"
+            ],
+            "icon": "file-text"
+          },
+          {
+            "group": "Namecheap",
+            "pages": [
+              "providers/namecheap/overview",
+              "providers/namecheap/configuration",
+              {
+                "group": "Resources",
+                "pages": [
+                  "providers/namecheap/domain-records"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "providers/namecheap/dns-guide",
+                  "providers/namecheap/migration-guide"
+                ]
+              }
+            ],
+            "icon": "globe"
+          },
+          {
+            "group": "OpenFGA",
+            "pages": [
+              "providers/openfga/overview"
+            ],
+            "icon": "shield-check"
+          },
+          {
+            "group": "Portainer",
+            "pages": [
+              "providers/portainer/overview"
+            ],
+            "icon": "container"
+          },
+          {
+            "group": "PostHog",
+            "pages": [
+              "providers/posthog/overview",
+              "providers/posthog/configuration",
+              {
+                "group": "Resources",
+                "pages": [
+                  "providers/posthog/feature-flag",
+                  "providers/posthog/dashboard",
+                  "providers/posthog/insight",
+                  "providers/posthog/alert",
+                  "providers/posthog/hog-function"
+                ]
+              }
+            ],
+            "icon": "chart-line"
+          },
+          {
+            "group": "TeamCity",
+            "pages": [
+              "providers/teamcity/overview"
+            ],
+            "icon": "workflow"
+          },
+          {
+            "group": "Time",
+            "pages": [
+              "providers/time/overview",
+              "providers/time/configuration",
+              {
+                "group": "Resources",
+                "pages": [
+                  "providers/time/offset",
+                  "providers/time/rotating",
+                  "providers/time/sleep",
+                  "providers/time/static"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "providers/time/time-guide"
+                ]
+              }
+            ],
+            "icon": "clock"
+          }
+        ]
+      }
+    ]
+  },
+  "redirects": [
+    {
+      "source": "/providers/better-uptime",
+      "destination": "/providers/better-uptime/overview"
+    },
+    {
+      "source": "/providers/buildkite",
+      "destination": "/providers/buildkite/overview"
+    },
+    {
+      "source": "/providers/bunnynet",
+      "destination": "/providers/bunnynet/overview"
+    },
+    {
+      "source": "/providers/infisical",
+      "destination": "/providers/infisical/overview"
+    },
+    {
+      "source": "/providers/local",
+      "destination": "/providers/local/overview"
+    },
+    {
+      "source": "/providers/logtail",
+      "destination": "/providers/logtail/overview"
+    },
+    {
+      "source": "/providers/namecheap",
+      "destination": "/providers/namecheap/overview"
+    },
+    {
+      "source": "/providers/openfga",
+      "destination": "/providers/openfga/overview"
+    },
+    {
+      "source": "/providers/portainer",
+      "destination": "/providers/portainer/overview"
+    },
+    {
+      "source": "/providers/posthog",
+      "destination": "/providers/posthog/overview"
+    },
+    {
+      "source": "/providers/teamcity",
+      "destination": "/providers/teamcity/overview"
+    },
+    {
+      "source": "/providers/time",
+      "destination": "/providers/time/overview"
+    }
+  ]
+}
