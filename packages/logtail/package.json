@@ -17,9 +17,6 @@
     ".": "./bin/index.js",
     "./package.json": "./package.json"
   },
-  "dependencies": {
-    "async-mutex": "0.5.0"
-  },
   "devDependencies": {
     "@pulumi/pulumi": "3.264.0",
     "@types/node": "24.13.6",
