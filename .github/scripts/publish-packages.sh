@@ -17,5 +17,5 @@ for dir in packages/*; do
     continue
   fi
   echo "publish ${name}@${version}"
-  npm publish --ignore-scripts --access public "$dir"
+  (cd "$dir" && npm publish --ignore-scripts --access public)
 done
