@@ -5,6 +5,10 @@ description: A collection of dynamically bridged Pulumi providers that enable yo
 
 Welcome to the Pulumi Any Terraform documentation! This project provides seamless integration between Terraform providers and Pulumi, allowing you to leverage the extensive Terraform provider ecosystem while enjoying Pulumi's modern infrastructure-as-code experience.
 
+<Visibility for="agents">
+Each provider is an npm package named `pulumi-` plus the provider name, for example `pulumi-namecheap`. Use only the resources, arguments, and configuration fields written on that provider's pages. Provider pages start at `/providers/namecheap/overview` for Namecheap, and the Markdown for any page is its path with `.md` appended. If a URL is missing, follow the suggested pages or search `/search?q=` instead of guessing another path. The published site is https://pulumi.khanh.id/docs.
+</Visibility>
+
 ## What is Pulumi Any Terraform?
 
 Pulumi Any Terraform is a collection of **dynamically bridged Pulumi providers** that automatically converts Terraform providers into fully-typed Pulumi packages. This means you can:
@@ -34,28 +38,60 @@ Full integration with Pulumi's state management, stack outputs, secrets, and dep
 ## Available Providers
 
 <Columns cols={2}>
-  <Card title="Better Uptime" href="/providers/better-uptime/overview">
+  <Card
+    title="Better Uptime"
+    href="/providers/better-uptime/overview"
+    icon={<img src="/images/providers/better-stack.svg" alt="" />}
+  >
     Monitoring, alerting, and incident management
   </Card>
-  <Card title="Bunnynet" href="/providers/bunnynet/overview">
+  <Card
+    title="Bunnynet"
+    href="/providers/bunnynet/overview"
+    icon={<img src="/images/providers/bunnynet.svg" alt="" />}
+  >
     CDN and edge computing platform
   </Card>
-  <Card title="Infisical" href="/providers/infisical/overview">
+  <Card
+    title="Infisical"
+    href="/providers/infisical/overview"
+    icon={<img src="/images/providers/infisical.svg" alt="" />}
+  >
     Secrets management platform
   </Card>
-  <Card title="Logtail" href="/providers/logtail/overview">
+  <Card
+    title="Logtail"
+    href="/providers/logtail/overview"
+    icon={<img src="/images/providers/better-stack.svg" alt="" />}
+  >
     Log management and analytics
   </Card>
-  <Card title="Namecheap" href="/providers/namecheap/overview">
+  <Card
+    title="Namecheap"
+    href="/providers/namecheap/overview"
+    icon={<img src="/images/providers/namecheap.svg" alt="" />}
+  >
     Domain and DNS management
   </Card>
-  <Card title="Portainer" href="/providers/portainer/overview">
+  <Card
+    title="Portainer"
+    href="/providers/portainer/overview"
+    icon={<img src="/images/providers/portainer.svg" alt="" />}
+  >
     Container management platform
   </Card>
-  <Card title="TeamCity" href="/providers/teamcity/overview">
+  <Card
+    title="TeamCity"
+    href="/providers/teamcity/overview"
+    icon={<img src="/images/providers/teamcity.png" alt="" />}
+  >
     CI/CD platform
   </Card>
-  <Card title="Time" href="/providers/time/overview">
+  <Card
+    title="Time"
+    href="/providers/time/overview"
+    icon={<img src="/images/providers/terraform.svg" alt="" />}
+  >
     Time-based resources and operations
   </Card>
 </Columns>

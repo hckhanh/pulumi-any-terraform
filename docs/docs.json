@@ -2,6 +2,7 @@
   "$schema": "https://context7.com/schema/docs7.json",
   "theme": "mint",
   "name": "Pulumi Any Terraform",
+  "favicon": "/images/logo.svg",
   "description": "Bridge any Terraform provider to Pulumi",
   "seo": {
     "indexing": "navigable",
