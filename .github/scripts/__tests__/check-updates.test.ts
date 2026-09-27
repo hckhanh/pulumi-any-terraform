@@ -46,58 +46,41 @@ function setSpawnSync(fn: unknown): void {
   childProcess.spawnSync = fn
 }
 
+function commandFrom(
+  cmd: string,
+  args: string[] = [],
+): { command: string; args: string[] } {
+  if (cmd === '/usr/bin/env') {
+    return { command: args[0] ?? '', args: args.slice(1) }
+  }
+  return { command: cmd, args }
+}
+
 // ---------------------------------------------------------------------------
 // determineBumpType
 // ---------------------------------------------------------------------------
 
 describe('determineBumpType', () => {
-  it('returns major when major version increases', () => {
-    assert.equal(determineBumpType('1.2.3', '2.0.0'), 'major')
-  })
+  const cases: Array<[string, string, 'major' | 'minor' | 'patch']> = [
+    ['1.2.3', '2.0.0', 'major'],
+    ['1.2.3', '1.3.0', 'minor'],
+    ['1.2.3', '1.2.4', 'patch'],
+    ['v1.2.3', '2.0.0', 'major'],
+    ['1.2.3', 'v2.0.0', 'major'],
+    ['v1.2.3', 'v1.3.0', 'minor'],
+    ['1.2.3', '1.2.3', 'patch'],
+    ['0.0.0', '0.0.1', 'patch'],
+    ['1.99.99', '2.0.0', 'major'],
+    ['1.2', '1.3', 'minor'],
+    ['1', '2', 'major'],
+    ['1.2.3', '2.1.0', 'major'],
+  ]
 
-  it('returns minor when minor version increases', () => {
-    assert.equal(determineBumpType('1.2.3', '1.3.0'), 'minor')
-  })
-
-  it('returns patch when only patch version increases', () => {
-    assert.equal(determineBumpType('1.2.3', '1.2.4'), 'patch')
-  })
-
-  it('strips v-prefix from old version', () => {
-    assert.equal(determineBumpType('v1.2.3', '2.0.0'), 'major')
-  })
-
-  it('strips v-prefix from new version', () => {
-    assert.equal(determineBumpType('1.2.3', 'v2.0.0'), 'major')
-  })
-
-  it('strips v-prefix from both versions', () => {
-    assert.equal(determineBumpType('v1.2.3', 'v1.3.0'), 'minor')
-  })
-
-  it('returns patch when versions are identical', () => {
-    assert.equal(determineBumpType('1.2.3', '1.2.3'), 'patch')
-  })
-
-  it('handles zero versions', () => {
-    assert.equal(determineBumpType('0.0.0', '0.0.1'), 'patch')
-  })
-
-  it('handles large version numbers', () => {
-    assert.equal(determineBumpType('1.99.99', '2.0.0'), 'major')
-  })
-
-  it('handles two-part versions (missing patch)', () => {
-    assert.equal(determineBumpType('1.2', '1.3'), 'minor')
-  })
-
-  it('handles single-part versions (missing minor+patch)', () => {
-    assert.equal(determineBumpType('1', '2'), 'major')
-  })
-
-  it('returns major when both major and minor change', () => {
-    assert.equal(determineBumpType('1.2.3', '2.1.0'), 'major')
-  })
+  for (const [from, to, expected] of cases) {
+    it(`maps ${from} to ${to} as ${expected}`, () => {
+      assert.equal(determineBumpType(from, to), expected)
+    })
+  }
 })
 
 // ---------------------------------------------------------------------------
@@ -306,38 +289,27 @@ describe('getLatestGitHubRelease', () => {
 
   // --- URL parsing ---
 
-  it('parses standard GitHub URL', async () => {
-    const fn = mockFetch(async () => ({
-      ok: true,
-      json: async () => ({ tag_name: 'v1.0.0', body: null }),
-    }))
+  const releaseUrls = [
+    'https://github.com/owner/repo',
+    'https://github.com/owner/repo.git',
+    'https://github.com/owner/repo/tree/main',
+  ]
 
-    await getLatestGitHubRelease('https://github.com/owner/repo')
-    const [url] = fn.mock.calls[0].arguments
-    assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
-  })
+  for (const sourceUrl of releaseUrls) {
+    it(`requests the latest release for ${sourceUrl}`, async () => {
+      const fn = mockFetch(async () => ({
+        ok: true,
+        json: async () => ({ tag_name: 'v1.0.0', body: null }),
+      }))
 
-  it('handles URL with .git suffix', async () => {
-    const fn = mockFetch(async () => ({
-      ok: true,
-      json: async () => ({ tag_name: 'v1.0.0', body: null }),
-    }))
-
-    await getLatestGitHubRelease('https://github.com/owner/repo.git')
-    const [url] = fn.mock.calls[0].arguments
-    assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
-  })
-
-  it('handles URL with trailing path', async () => {
-    const fn = mockFetch(async () => ({
-      ok: true,
-      json: async () => ({ tag_name: 'v1.0.0', body: null }),
-    }))
-
-    await getLatestGitHubRelease('https://github.com/owner/repo/tree/main')
-    const [url] = fn.mock.calls[0].arguments
-    assert.equal(url, 'https://api.github.com/repos/owner/repo/releases/latest')
-  })
+      await getLatestGitHubRelease(sourceUrl)
+      const [url] = fn.mock.calls[0].arguments
+      assert.equal(
+        url,
+        'https://api.github.com/repos/owner/repo/releases/latest',
+      )
+    })
+  }
 
   it('returns null for non-GitHub URL', async () => {
     const result = await getLatestGitHubRelease('https://gitlab.com/owner/repo')
@@ -612,11 +584,17 @@ describe('updatePackage', () => {
 
     setSpawnSync(
       mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'new') {
+        if (
+          commandFrom(cmd, args).command === 'pulumi' &&
+          commandFrom(cmd, args).args[0] === 'new'
+        ) {
           return { status: 0 }
         }
 
-        if (cmd === 'pulumi' && args[0] === 'package') {
+        if (
+          commandFrom(cmd, args).command === 'pulumi' &&
+          commandFrom(cmd, args).args[0] === 'package'
+        ) {
           const sdksDir = path.join(options.cwd, 'sdks')
           const pkgDir = path.join(sdksDir, 'nodejs')
           fs.mkdirSync(pkgDir, { recursive: true })
@@ -753,7 +731,10 @@ describe('updatePackage', () => {
   it('throws when SDKs directory has no subdirectories', () => {
     setSpawnSync(
       mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'package') {
+        if (
+          commandFrom(cmd, args).command === 'pulumi' &&
+          commandFrom(cmd, args).args[0] === 'package'
+        ) {
           fs.mkdirSync(path.join(options.cwd, 'sdks'), { recursive: true })
         }
         return { status: 0 }
@@ -773,7 +754,10 @@ describe('updatePackage', () => {
   it('uses first directory when no package name matches', () => {
     setSpawnSync(
       mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'package') {
+        if (
+          commandFrom(cmd, args).command === 'pulumi' &&
+          commandFrom(cmd, args).args[0] === 'package'
+        ) {
           const sdksDir = path.join(options.cwd, 'sdks')
           const pkgDir = path.join(sdksDir, 'first-pkg')
           fs.mkdirSync(pkgDir, { recursive: true })
@@ -799,7 +783,10 @@ describe('updatePackage', () => {
   it('selects matching package among multiple directories', () => {
     setSpawnSync(
       mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'package') {
+        if (
+          commandFrom(cmd, args).command === 'pulumi' &&
+          commandFrom(cmd, args).args[0] === 'package'
+        ) {
           const sdksDir = path.join(options.cwd, 'sdks')
 
           const wrongDir = path.join(sdksDir, 'aaa-wrong')
@@ -945,30 +932,86 @@ describe('main', () => {
     return pkgDir
   }
 
-  it('reports no updates when packages directory is empty', async () => {
+  function captureOutput(): string {
     const outputFile = path.join(tempBase, 'github-output')
     fs.writeFileSync(outputFile, '')
     process.env.GITHUB_OUTPUT = outputFile
+    return outputFile
+  }
 
+  async function expectNoUpdates(): Promise<void> {
+    const outputFile = captureOutput()
     await main()
+    assert.ok(fs.readFileSync(outputFile, 'utf8').includes('has_updates=false'))
+  }
 
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+  function mockRegistry(
+    source: string | null,
+    release: { tag_name: string; body: string | null } | { status: number },
+  ) {
+    mockFetch(async (url: string) => {
+      if (String(url).includes('registry.terraform.io')) {
+        return {
+          ok: true,
+          json: async () => (source === null ? {} : { source }),
+        }
+      }
+      if ('status' in release) {
+        return { ok: false, status: release.status }
+      }
+      return { ok: true, json: async () => release }
+    })
+  }
+
+  function writeGeneratedPackage(
+    cwd: string,
+    packageName: string,
+    pulumiFields: Record<string, string>,
+  ) {
+    const pkgDir = path.join(cwd, 'sdks', 'nodejs')
+    fs.mkdirSync(pkgDir, { recursive: true })
+    fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
+    fs.writeFileSync(
+      path.join(pkgDir, 'package.json'),
+      JSON.stringify({
+        name: packageName,
+        pulumi: pulumiFields,
+      }),
+    )
+  }
+
+  function mockPublish(
+    packageName: string,
+    pulumiFields: Record<string, string>,
+    gitStatus = 0,
+  ) {
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        const invoked = commandFrom(cmd, args)
+        if (invoked.command === 'pulumi' && invoked.args[0] === 'new') {
+          return { status: 0 }
+        }
+        if (invoked.command === 'pulumi' && invoked.args[0] === 'package') {
+          writeGeneratedPackage(options.cwd, packageName, pulumiFields)
+          return { status: 0 }
+        }
+        if (invoked.command === 'git') {
+          return { status: gitStatus }
+        }
+        return { status: 0 }
+      }),
+    )
+  }
+
+  it('reports no updates when packages directory is empty', async () => {
+    await expectNoUpdates()
   })
 
   it('skips packages without package.json', async () => {
     fs.mkdirSync(path.join(tempBase, 'packages', 'empty-pkg'), {
       recursive: true,
     })
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('skips packages without parameterization', async () => {
@@ -978,15 +1021,7 @@ describe('main', () => {
       path.join(pkgDir, 'package.json'),
       JSON.stringify({ name: 'some-package', version: '1.0.0' }),
     )
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('skips packages with invalid base64 parameterization', async () => {
@@ -997,26 +1032,15 @@ describe('main', () => {
       JSON.stringify({
         name: 'bad-pkg',
         version: '1.0.0',
-        pulumi: {
-          parameterization: { value: 'not-valid-base64!!!' },
-        },
+        pulumi: { parameterization: { value: 'not-valid-base64!!!' } },
       }),
     )
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('skips packages with missing remote field in parameterization', async () => {
     const pkgDir = path.join(tempBase, 'packages', 'no-remote')
     fs.mkdirSync(pkgDir, { recursive: true })
-
     const paramValue = Buffer.from(JSON.stringify({ local: true })).toString(
       'base64',
     )
@@ -1028,146 +1052,49 @@ describe('main', () => {
         pulumi: { parameterization: { value: paramValue } },
       }),
     )
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('skips when version is already up to date', async () => {
     createPackage('myprovider', { version: '1.0.0' })
-
-    mockFetch(async (url: string) => {
-      if (url.includes('registry.terraform.io')) {
-        return {
-          ok: true,
-          json: async () => ({
-            source: 'https://github.com/ns/terraform-provider-myprovider',
-          }),
-        }
-      }
-      return {
-        ok: true,
-        json: async () => ({ tag_name: 'v1.0.0', body: null }),
-      }
+    mockRegistry('https://github.com/ns/terraform-provider-myprovider', {
+      tag_name: 'v1.0.0',
+      body: null,
     })
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('skips when registry returns no GitHub repo', async () => {
     createPackage('noreg', { version: '1.0.0' })
-
-    mockFetch(async () => ({
-      ok: true,
-      json: async () => ({}),
-    }))
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    mockRegistry(null, { tag_name: 'v1.0.0', body: null })
+    await expectNoUpdates()
   })
 
   it('skips when GitHub returns no release', async () => {
     createPackage('norel', { version: '1.0.0' })
-
-    mockFetch(async (url: string) => {
-      if (url.includes('registry.terraform.io')) {
-        return {
-          ok: true,
-          json: async () => ({
-            source: 'https://github.com/ns/terraform-provider-norel',
-          }),
-        }
-      }
-      return { ok: false, status: 404 }
+    mockRegistry('https://github.com/ns/terraform-provider-norel', {
+      status: 404,
     })
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
-    await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=false'))
+    await expectNoUpdates()
   })
 
   it('creates changeset and sets has_updates=true when update found', async () => {
     createPackage('updatable', { version: '1.0.0' })
-
-    mockFetch(async (url: string) => {
-      if (url.includes('registry.terraform.io')) {
-        return {
-          ok: true,
-          json: async () => ({
-            source: 'https://github.com/ns/terraform-provider-updatable',
-          }),
-        }
-      }
-      return {
-        ok: true,
-        json: async () => ({ tag_name: 'v2.0.0', body: 'Fixed #42 and #99' }),
-      }
+    mockRegistry('https://github.com/ns/terraform-provider-updatable', {
+      tag_name: 'v2.0.0',
+      body: 'Fixed #42 and #99',
     })
-    setSpawnSync(
-      mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'new') {
-          return { status: 0 }
-        }
-        if (cmd === 'pulumi' && args[0] === 'package') {
-          const sdksDir = path.join(options.cwd, 'sdks')
-          const pkgDir = path.join(sdksDir, 'nodejs')
-          fs.mkdirSync(pkgDir, { recursive: true })
-          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-          fs.writeFileSync(
-            path.join(pkgDir, 'package.json'),
-            JSON.stringify({
-              name: 'pulumi-updatable',
-              pulumi: { name: 'updatable', version: '2.0.0' },
-            }),
-          )
-          return { status: 0 }
-        }
-        if (cmd === 'git') {
-          return { status: 0 }
-        }
-        return { status: 0 }
-      }),
-    )
+    mockPublish('pulumi-updatable', { name: 'updatable', version: '2.0.0' })
 
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
+    const outputFile = captureOutput()
     await main()
-
-    const output = fs.readFileSync(outputFile, 'utf8')
-    assert.ok(output.includes('has_updates=true'))
+    assert.ok(fs.readFileSync(outputFile, 'utf8').includes('has_updates=true'))
 
     const changesetDir = path.join(tempBase, '.changeset')
     const changesetFiles = fs
       .readdirSync(changesetDir)
       .filter((f) => f.endsWith('.md'))
     assert.ok(changesetFiles.length > 0, 'Should have created a changeset file')
-
     const changesetContent = fs.readFileSync(
       path.join(changesetDir, changesetFiles[0]),
       'utf8',
@@ -1181,43 +1108,12 @@ describe('main', () => {
 
   it('uses default message when changelog is null', async () => {
     createPackage('nolog', { version: '1.0.0' })
-
-    mockFetch(async (url: string) => {
-      if (url.includes('registry.terraform.io')) {
-        return {
-          ok: true,
-          json: async () => ({
-            source: 'https://github.com/ns/terraform-provider-nolog',
-          }),
-        }
-      }
-      return {
-        ok: true,
-        json: async () => ({ tag_name: 'v1.0.1', body: null }),
-      }
+    mockRegistry('https://github.com/ns/terraform-provider-nolog', {
+      tag_name: 'v1.0.1',
+      body: null,
     })
-    setSpawnSync(
-      mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
-        if (cmd === 'pulumi' && args[0] === 'package') {
-          const sdksDir = path.join(options.cwd, 'sdks')
-          const pkgDir = path.join(sdksDir, 'nodejs')
-          fs.mkdirSync(pkgDir, { recursive: true })
-          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-          fs.writeFileSync(
-            path.join(pkgDir, 'package.json'),
-            JSON.stringify({ name: 'pulumi-nolog', pulumi: { name: 'nolog' } }),
-          )
-          return { status: 0 }
-        }
-        return { status: 0 }
-      }),
-    )
-
-    const outputFile = path.join(tempBase, 'github-output')
-    fs.writeFileSync(outputFile, '')
-    process.env.GITHUB_OUTPUT = outputFile
-
+    mockPublish('pulumi-nolog', { name: 'nolog' })
+    captureOutput()
     await main()
 
     const changesetDir = path.join(tempBase, '.changeset')
@@ -1241,50 +1137,16 @@ describe('main', () => {
 
   it('does not throw when GITHUB_OUTPUT is not set', async () => {
     delete process.env.GITHUB_OUTPUT
-
     await assert.doesNotReject(() => main())
   })
 
   it('calls process.exit(1) when git add fails', async () => {
     createPackage('gitfail', { version: '1.0.0' })
-
-    mockFetch(async (url: string) => {
-      if (url.includes('registry.terraform.io')) {
-        return {
-          ok: true,
-          json: async () => ({
-            source: 'https://github.com/ns/terraform-provider-gitfail',
-          }),
-        }
-      }
-      return {
-        ok: true,
-        json: async () => ({ tag_name: 'v2.0.0', body: null }),
-      }
+    mockRegistry('https://github.com/ns/terraform-provider-gitfail', {
+      tag_name: 'v2.0.0',
+      body: null,
     })
-    setSpawnSync(
-      mock.fn((cmd: string, args: string[], options: any) => {
-        if (cmd === 'pulumi' && args[0] === 'new') return { status: 0 }
-        if (cmd === 'pulumi' && args[0] === 'package') {
-          const sdksDir = path.join(options.cwd, 'sdks')
-          const pkgDir = path.join(sdksDir, 'nodejs')
-          fs.mkdirSync(pkgDir, { recursive: true })
-          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// gen')
-          fs.writeFileSync(
-            path.join(pkgDir, 'package.json'),
-            JSON.stringify({
-              name: 'pulumi-gitfail',
-              pulumi: { name: 'gitfail' },
-            }),
-          )
-          return { status: 0 }
-        }
-        if (cmd === 'git') {
-          return { status: 1 }
-        }
-        return { status: 0 }
-      }),
-    )
+    mockPublish('pulumi-gitfail', { name: 'gitfail' }, 1)
 
     let exitCode: number | null = null
     process.exit = mock.fn((code: number) => {

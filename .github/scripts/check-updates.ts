@@ -19,6 +19,14 @@ interface ReleaseInfo {
 
 type BumpType = 'major' | 'minor' | 'patch'
 
+function spawnCommand(
+  command: string,
+  args: string[],
+  options: childProcess.SpawnSyncOptions,
+) {
+  return childProcess.spawnSync('/usr/bin/env', [command, ...args], options)
+}
+
 interface UpdateInfo {
   name: string
   projectName: string
@@ -238,7 +246,7 @@ function updatePackage(
   try {
     console.log(`  Creating temporary Pulumi project in ${tempDir}`)
 
-    const initResult = childProcess.spawnSync(
+    const initResult = spawnCommand(
       'pulumi',
       ['new', 'typescript', '--yes', '--force'],
       {
@@ -260,7 +268,7 @@ function updatePackage(
     console.log(
       `  Running: pulumi package add terraform-provider ${namespace}/${providerName} ${newVersion}`,
     )
-    const addResult = childProcess.spawnSync(
+    const addResult = spawnCommand(
       'pulumi',
       ['package', 'add', 'terraform-provider', currentProvider.url, newVersion],
       {
@@ -501,7 +509,7 @@ ${changesetMessage}
         console.log(`  Created changeset: ${changesetFilename}`)
       }
 
-      const gitResult = childProcess.spawnSync('git', ['add', '.'], {
+      const gitResult = spawnCommand('git', ['add', '.'], {
         stdio: 'inherit',
         cwd: process.cwd(),
       })
