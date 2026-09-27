@@ -1,5 +1,9 @@
 # Pulumi Any Terraform
 
+<p align="center">
+  <img src="docs/images/logo.svg" alt="Pulumi Any Terraform" width="128" />
+</p>
+
 > **Use any Terraform provider with Pulumi**  
 > Full type safety • Multi-language support • Seamless integration
 
