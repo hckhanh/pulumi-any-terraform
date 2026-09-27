@@ -5,8 +5,9 @@ echo "building packages"
 pnpm exec nx run-many -t build
 
 echo "publishing packages"
-npm config set registry https://registry.npmjs.org/
-npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
+# Trusted publishing exchanges the GitHub OIDC token. NPM_TOKEN skips that
+# exchange, and this repository's token is rejected with a registry 404.
+unset NPM_TOKEN NODE_AUTH_TOKEN
 
 for dir in packages/*; do
   name="$(node -p "require('./${dir}/package.json').name")"
