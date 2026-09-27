@@ -1,5 +1,11 @@
 # pulumi-openfga
 
+## 0.5.3
+
+### Patch Changes
+
+Point provider documentation at https://docs.khanh.id/pulumi-any-terraform.
+
 ## 0.5.2
 
 ### Patch Changes

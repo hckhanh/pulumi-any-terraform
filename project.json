@@ -109,13 +109,13 @@
     "oxfmt:check": {
       "inputs": ["oxfmt:root"],
       "options": {
-        "command": "pnpm oxfmt --check --no-error-on-unmatched-pattern . '!packages/**' '!docs/**'"
+        "command": "pnpm oxfmt --check --no-error-on-unmatched-pattern . '!packages/**'"
       }
     },
     "oxfmt:write": {
       "inputs": ["oxfmt:root"],
       "options": {
-        "command": "pnpm oxfmt --no-error-on-unmatched-pattern . '!packages/**' '!docs/**'"
+        "command": "pnpm oxfmt --no-error-on-unmatched-pattern . '!packages/**'"
       }
     }
   }

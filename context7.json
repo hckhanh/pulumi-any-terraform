@@ -1,4 +1,15 @@
 {
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Pulumi Any Terraform",
+  "description": "Pulumi packages that bridge Terraform providers, including Namecheap, PostHog, and Time.",
+  "folders": [],
+  "excludeFolders": ["node_modules", "dist", "coverage", "bin"],
+  "excludeFiles": ["CHANGELOG.md"],
+  "rules": [
+    "Documentation is published at https://docs.khanh.id/pulumi-any-terraform.",
+    "npm package names are pulumi-<provider>, for example pulumi-namecheap.",
+    "Use only resources and config fields written on that provider's pages."
+  ],
   "url": "https://context7.com/hckhanh/pulumi-any-terraform",
   "public_key": "pk_5wVhL0PTjFlXiZPBk058C"
 }

@@ -1,5 +1,11 @@
 # pulumi-posthog
 
+## 1.0.11
+
+### Patch Changes
+
+Point provider documentation at https://docs.khanh.id/pulumi-any-terraform.
+
 ## 1.0.10
 
 ### Patch Changes
