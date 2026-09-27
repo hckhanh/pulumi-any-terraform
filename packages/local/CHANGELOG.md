@@ -1,5 +1,11 @@
 # pulumi-local
 
+## 2.9.2
+
+### Patch Changes
+
+Point provider documentation at https://docs.khanh.id/pulumi-any-terraform.
+
 ## 2.9.1
 
 ### Patch Changes

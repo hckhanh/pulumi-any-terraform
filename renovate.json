@@ -18,11 +18,6 @@
   "timezone": "Asia/Ho_Chi_Minh",
   "packageRules": [
     {
-      "groupName": "fumadocs monorepo",
-      "matchPackageNames": ["/^fumadocs-/"],
-      "matchUpdateTypes": ["digest", "patch", "minor", "major"]
-    },
-    {
       "description": "Keep mise.toml and pnpm/setup workflow pins in the same PR",
       "groupName": "node",
       "matchDatasources": ["node-version"],

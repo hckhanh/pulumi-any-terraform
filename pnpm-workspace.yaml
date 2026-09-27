@@ -1,6 +1,5 @@
 packages:
   - packages/*
-  - docs
 allowBuilds:
   '@swc/core': true
   esbuild: true
@@ -16,7 +15,7 @@ minimumReleaseAgeExclude:
   - sharp@0.35.0
   - brace-expansion@5.0.9
 overrides:
-  # next (via docs) still resolves postcss@8.4.x without this; GHSA-qx2v-qp2m-jg93
+  # Pin postcss below 8.5.10; GHSA-qx2v-qp2m-jg93
   brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
   next@>=16.0.0 <16.3.3: ^16.3.3
   postcss@<8.5.10: '8.5.28'

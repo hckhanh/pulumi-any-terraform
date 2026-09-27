@@ -1,3 +1,9 @@
+## 0.15.2
+
+### Patch Changes
+
+Point provider documentation at https://docs.khanh.id/pulumi-any-terraform.
+
 ## 0.15.1
 
 ### Patch Changes

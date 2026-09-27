@@ -1,5 +1,11 @@
 # pulumi-buildkite
 
+## 1.36.2
+
+### Patch Changes
+
+Point provider documentation at https://docs.khanh.id/pulumi-any-terraform.
+
 ## 1.36.1
 
 ### Patch Changes
