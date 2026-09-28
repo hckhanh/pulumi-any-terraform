@@ -43,6 +43,10 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly approvers: pulumi.Output<outputs.SecretApprovalPolicyApprover[]>;
     /**
+     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     */
+    declare public readonly bypassApprovalsForMachineIdentities: pulumi.Output<boolean>;
+    /**
      * The bypassers who can bypass the approval policy
      */
     declare public readonly bypassers: pulumi.Output<outputs.SecretApprovalPolicyBypasser[] | undefined>;
@@ -90,6 +94,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             const state = argsOrState as SecretApprovalPolicyState | undefined;
             resourceInputs["allowSelfApproval"] = state?.allowSelfApproval;
             resourceInputs["approvers"] = state?.approvers;
+            resourceInputs["bypassApprovalsForMachineIdentities"] = state?.bypassApprovalsForMachineIdentities;
             resourceInputs["bypassers"] = state?.bypassers;
             resourceInputs["enforcementLevel"] = state?.enforcementLevel;
             resourceInputs["environmentSlug"] = state?.environmentSlug;
@@ -114,6 +119,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
             }
             resourceInputs["allowSelfApproval"] = args?.allowSelfApproval;
             resourceInputs["approvers"] = args?.approvers;
+            resourceInputs["bypassApprovalsForMachineIdentities"] = args?.bypassApprovalsForMachineIdentities;
             resourceInputs["bypassers"] = args?.bypassers;
             resourceInputs["enforcementLevel"] = args?.enforcementLevel;
             resourceInputs["environmentSlug"] = args?.environmentSlug;
@@ -140,6 +146,10 @@ export interface SecretApprovalPolicyState {
      * The required approvers
      */
     approvers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[] | undefined>;
+    /**
+     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     */
+    bypassApprovalsForMachineIdentities?: pulumi.Input<boolean | undefined>;
     /**
      * The bypassers who can bypass the approval policy
      */
@@ -186,6 +196,10 @@ export interface SecretApprovalPolicyArgs {
      * The required approvers
      */
     approvers: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[]>;
+    /**
+     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     */
+    bypassApprovalsForMachineIdentities?: pulumi.Input<boolean | undefined>;
     /**
      * The bypassers who can bypass the approval policy
      */

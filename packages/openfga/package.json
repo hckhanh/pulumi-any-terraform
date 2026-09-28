@@ -52,7 +52,7 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.1.1",
+    "version": "1.4.0",
     "parameterization": {
       "name": "openfga",
       "version": "0.5.1",

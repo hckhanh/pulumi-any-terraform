@@ -26,10 +26,6 @@ export interface GetRelationshipTuplesArgs {
  * A collection of values returned by getRelationshipTuples.
  */
 export interface GetRelationshipTuplesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly query?: outputs.GetRelationshipTuplesQuery;
     readonly relationshipTuples: outputs.GetRelationshipTuplesRelationshipTuple[];
     readonly storeId: string;
@@ -46,6 +42,6 @@ export function getRelationshipTuplesOutput(args: GetRelationshipTuplesOutputArg
  * A collection of arguments for invoking getRelationshipTuples.
  */
 export interface GetRelationshipTuplesOutputArgs {
-    query?: pulumi.Input<inputs.GetRelationshipTuplesQueryArgs>;
+    query?: pulumi.Input<inputs.GetRelationshipTuplesQueryArgs | undefined>;
     storeId: pulumi.Input<string>;
 }

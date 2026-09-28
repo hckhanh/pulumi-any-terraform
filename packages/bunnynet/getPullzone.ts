@@ -117,6 +117,7 @@ export interface GetPullzoneResult {
     readonly safehopRetryReasons: string[];
     readonly sortQuerystring: boolean;
     readonly stripCookies: boolean;
+    readonly tlsLevel: string;
     readonly tlsSupports: string[];
     readonly tokenAuthEnabled: boolean;
     readonly tokenAuthIpValidation: boolean;

@@ -5,6 +5,58 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AddonAccessTeamAccess {
+    /**
+     * Identifier of the role the team is granted on the addon.
+     */
+    roleId: number;
+    /**
+     * Identifier of the team granted access.
+     */
+    teamId: number;
+}
+
+export interface AddonAccessUserAccess {
+    /**
+     * Identifier of the role the user is granted on the addon.
+     */
+    roleId: number;
+    /**
+     * Identifier of the user granted access.
+     */
+    userId: number;
+}
+
+export interface AddonConfigEntry {
+    /**
+     * Name of the configuration entry, for example `BASE_DOMAIN`.
+     */
+    key: string;
+    /**
+     * Whether Portainer should treat the value as a secret, which keeps it out of API responses and makes clients display it carefully.
+     */
+    sensitive?: boolean;
+    /**
+     * Value of the configuration entry.
+     */
+    value: string;
+}
+
+export interface AlertingRuleTiersTier {
+    /**
+     * Whether this tier is evaluated.
+     */
+    enabled?: boolean;
+    /**
+     * Severity this tier raises: <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span>, <span pulumi-lang-nodejs="`warning`" pulumi-lang-dotnet="`Warning`" pulumi-lang-go="`warning`" pulumi-lang-python="`warning`" pulumi-lang-yaml="`warning`" pulumi-lang-java="`warning`" pulumi-lang-hcl="`warning`">`warning`</span> or <span pulumi-lang-nodejs="`info`" pulumi-lang-dotnet="`Info`" pulumi-lang-go="`info`" pulumi-lang-python="`info`" pulumi-lang-yaml="`info`" pulumi-lang-java="`info`" pulumi-lang-hcl="`info`">`info`</span>.
+     */
+    severity: string;
+    /**
+     * Value the metric is compared against for this tier.
+     */
+    threshold: number;
+}
+
 export interface AlertingSettingsNotificationChannel {
     /**
      * Notification channel identifier.
@@ -195,6 +247,37 @@ export interface DockerVolumeClusterVolumeSpecSecret {
     secret: string;
 }
 
+export interface EdgeStackHelmConfig {
+    /**
+     * Whether a failed deployment is rolled back automatically, the equivalent of `helm --atomic`.
+     */
+    atomic?: boolean;
+    /**
+     * Name of the Helm chart within the repository.
+     */
+    chartName: string;
+    /**
+     * URL of the Helm chart repository.
+     */
+    chartUrl: string;
+    /**
+     * Version of the chart to deploy. Leave unset to deploy the latest published version - note that Portainer then picks the version, so a re-apply can move the stack.
+     */
+    chartVersion?: string;
+    /**
+     * Kubernetes namespace to deploy the chart into.
+     */
+    namespace?: string;
+    /**
+     * Deadline for Helm operations, the equivalent of `helm --timeout` (for example <span pulumi-lang-nodejs="`5m0s`" pulumi-lang-dotnet="`5m0s`" pulumi-lang-go="`5m0s`" pulumi-lang-python="`5m0s`" pulumi-lang-yaml="`5m0s`" pulumi-lang-java="`5m0s`" pulumi-lang-hcl="`5m0s`">`5m0s`</span>).
+     */
+    timeout?: string;
+    /**
+     * Helm values as an inline YAML string, the equivalent of a values file passed to `helm install`.
+     */
+    valuesInline?: string;
+}
+
 export interface EdgeStackTimeouts {
     create?: string;
     delete?: string;
@@ -304,6 +387,39 @@ export interface EndpointSettingsSecuritySettings {
     enableHostManagement?: boolean;
 }
 
+export interface GetAddonsAddon {
+    availableVersions?: string[];
+    chartVersion?: string;
+    description?: string;
+    displayName?: string;
+    enabled?: boolean;
+    healthMessage?: string;
+    healthStatus?: string;
+    icon?: string;
+    id?: string;
+    lifecycleStatus?: string;
+    lifecycleStatusMessage?: string;
+    path?: string;
+    shortDescription?: string;
+    upgradeAvailable?: boolean;
+}
+
+export interface GetAlertingRuleEnvironmentsGroup {
+    endpointGroupId?: number;
+    endpointGroupName?: string;
+    environments?: outputs.GetAlertingRuleEnvironmentsGroupEnvironment[];
+    size?: number;
+}
+
+export interface GetAlertingRuleEnvironmentsGroupEnvironment {
+    endpointId?: number;
+    message?: string;
+    name?: string;
+    reasonCode?: string;
+    status?: string;
+    updatedAt?: number;
+}
+
 export interface GetAppTemplatesTemplate {
     categories?: string[];
     description?: string;
@@ -315,6 +431,18 @@ export interface GetAppTemplatesTemplate {
     type?: number;
 }
 
+export interface GetAutoUpdatesAutoUpdate {
+    doneAt?: number;
+    startedAt?: number;
+    status?: string;
+    version?: string;
+}
+
+export interface GetCurrentUserAuthorizationsNamespaceAuthorization {
+    authorizations?: string[];
+    namespace?: string;
+}
+
 export interface GetDockerImagesImage {
     created?: number;
     id?: string;
@@ -324,12 +452,53 @@ export interface GetDockerImagesImage {
     used?: boolean;
 }
 
+export interface GetDockerSnapshotContainersContainer {
+    command?: string;
+    created?: number;
+    id?: string;
+    image?: string;
+    imageId?: string;
+    labels?: {[key: string]: string};
+    names?: string[];
+    ports?: outputs.GetDockerSnapshotContainersContainerPort[];
+    state?: string;
+    status?: string;
+}
+
+export interface GetDockerSnapshotContainersContainerPort {
+    ip?: string;
+    privatePort?: number;
+    publicPort?: number;
+    type?: string;
+}
+
 export interface GetEdgeJobTasksTask {
     endpointId?: number;
     endpointName?: string;
     id?: string;
     logsCollected?: boolean;
     logsStatus?: number;
+}
+
+export interface GetEdgeUpdatePreviousVersionsPreviousVersion {
+    endpointId?: string;
+    version?: string;
+}
+
+export interface GetEdgeUpdateSchedulesActiveSchedule {
+    edgeStackId?: number;
+    endpointId?: number;
+    scheduleId?: number;
+    targetVersion?: string;
+}
+
+export interface GetEdgeWaitingRoomEnvironment {
+    edgeId?: string;
+    groupId?: number;
+    id?: number;
+    lastCheckIn?: number;
+    name?: string;
+    type?: number;
 }
 
 export interface GetEndpointRegistriesRegistry {
@@ -346,6 +515,14 @@ export interface GetEndpointsSummaryByGroup {
     count?: number;
     groupId?: number;
     groupName?: string;
+}
+
+export interface GetEnvironmentLogsLog {
+    labels?: {[key: string]: string};
+    message?: string;
+    severity?: string;
+    source?: string;
+    time?: string;
 }
 
 export interface GetGitopsSourceWorkflow {
@@ -424,6 +601,35 @@ export interface GetKubernetesCrdCrd {
     scope?: string;
 }
 
+export interface GetKubernetesCronJobsCronJob {
+    command?: string;
+    id?: string;
+    isSystem?: boolean;
+    name?: string;
+    namespace?: string;
+    schedule?: string;
+    suspend?: boolean;
+    timezone?: string;
+}
+
+export interface GetKubernetesCustomResourceDefinitionsDefinition {
+    creationDate?: string;
+    group?: string;
+    name?: string;
+    releaseName?: string;
+    releaseNamespace?: string;
+    releaseVersion?: string;
+    scope?: string;
+}
+
+export interface GetKubernetesCustomResourcesResource {
+    creationDate?: string;
+    definitionName?: string;
+    name?: string;
+    namespace?: string;
+    uid?: string;
+}
+
 export interface GetKubernetesDeploymentsDeployment {
     availableReplicas?: number;
     creationTimestamp?: string;
@@ -439,6 +645,20 @@ export interface GetKubernetesDeploymentsDeployment {
     updatedReplicas?: number;
 }
 
+export interface GetKubernetesEndpointsEndpoint {
+    addresses?: string[];
+    name?: string;
+    namespace?: string;
+    ports?: outputs.GetKubernetesEndpointsEndpointPort[];
+    uid?: string;
+}
+
+export interface GetKubernetesEndpointsEndpointPort {
+    name?: string;
+    port?: number;
+    protocol?: string;
+}
+
 export interface GetKubernetesEventsEvent {
     count?: number;
     firstTimestamp?: string;
@@ -450,6 +670,26 @@ export interface GetKubernetesEventsEvent {
     reason?: string;
     type?: string;
     uid?: string;
+}
+
+export interface GetKubernetesGpuNode {
+    allocatable?: {[key: string]: number};
+    allocated?: {[key: string]: number};
+    capacity?: {[key: string]: number};
+    name?: string;
+    status?: string;
+    statusReason?: string;
+}
+
+export interface GetKubernetesGpuWorkload {
+    gpuRequests?: {[key: string]: number};
+    namespace?: string;
+    nodeName?: string;
+    ownerKind?: string;
+    ownerName?: string;
+    podName?: string;
+    podPhase?: string;
+    schedulingIssue?: string;
 }
 
 export interface GetKubernetesIngressClassesIngressClass {
@@ -482,6 +722,23 @@ export interface GetKubernetesNodesNode {
     unschedulable?: boolean;
     usageCpu?: string;
     usageMemory?: string;
+}
+
+export interface GetKubernetesPersistentVolumeClaimsClaim {
+    accessModes?: string[];
+    creationDate?: string;
+    humanReadableAccessModes?: string[];
+    id?: string;
+    labels?: {[key: string]: string};
+    name?: string;
+    namespace?: string;
+    owningApplications?: string[];
+    phase?: string;
+    storage?: number;
+    storageClass?: string;
+    storageRequest?: string;
+    volumeMode?: string;
+    volumeName?: string;
 }
 
 export interface GetKubernetesPersistentVolumesPersistentVolume {
@@ -551,6 +808,163 @@ export interface GetKubernetesResourceQuotasResourceQuota {
     used?: {[key: string]: string};
 }
 
+export interface GetKubernetesStorageClassesStorageClass {
+    allowVolumeExpansion?: boolean;
+    annotations?: {[key: string]: string};
+    creationDate?: string;
+    isDefault?: boolean;
+    labels?: {[key: string]: string};
+    mountOptions?: string[];
+    name?: string;
+    parameters?: {[key: string]: string};
+    provisioner?: string;
+    reclaimPolicy?: string;
+}
+
+export interface GetLdapAdminGroupsAdminGroupSearch {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: string;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: string;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: string;
+}
+
+export interface GetLdapGroupsEntry {
+    groups?: string[];
+    name?: string;
+}
+
+export interface GetLdapGroupsGroupSearch {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: string;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: string;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: string;
+}
+
+export interface GetLdapLoginTestSearch {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: string;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: string;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: string;
+}
+
+export interface GetLdapUsersEntry {
+    groups?: string[];
+    name?: string;
+}
+
+export interface GetLdapUsersSearch {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: string;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: string;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: string;
+}
+
+export interface GetOmniMachineBlockDevice {
+    linuxName?: string;
+    model?: string;
+    size?: number;
+    systemDisk?: boolean;
+    type?: string;
+}
+
+export interface GetOmniMachineMemoryModule {
+    description?: string;
+    sizeMb?: number;
+}
+
+export interface GetOmniMachineNetworkLink {
+    hardwareAddress?: string;
+    linkUp?: boolean;
+    linuxName?: string;
+    speedMbps?: number;
+}
+
+export interface GetOmniMachineProcessor {
+    coreCount?: number;
+    description?: string;
+    frequency?: number;
+    manufacturer?: string;
+    threadCount?: number;
+}
+
+export interface GetOmniMachinesMachine {
+    cluster?: string;
+    connected?: boolean;
+    labels?: {[key: string]: string};
+    lastError?: string;
+    machineName?: string;
+    maintenance?: boolean;
+    managementAddress?: string;
+    powerState?: string;
+    role?: string;
+    talosVersion?: string;
+}
+
+export interface GetOmniTalosVersionsCompatibility {
+    kubernetesVersions?: string[];
+    talosVersion?: string;
+}
+
+export interface GetPolicyConflictsConflict {
+    environmentCount?: number;
+    environmentGroupId?: number;
+    environmentGroupName?: string;
+    existingPolicyId?: number;
+    existingPolicyName?: string;
+    supportedEnvironments?: number;
+    unsupportedEnvironments?: number;
+}
+
+export interface GetPolicyConflictsNewGroup {
+    environmentCount?: number;
+    environmentGroupId?: number;
+    environmentGroupName?: string;
+    supportedEnvironments?: number;
+    unsupportedEnvironments?: number;
+}
+
+export interface GetRecommendationsRecommendation {
+    actionLabel?: string;
+    actionUrl?: string;
+    category?: string;
+    description?: string;
+    severity?: string;
+    title?: string;
+    typeId?: string;
+}
+
 export interface GetRoleRole {
     description?: string;
     id?: number;
@@ -598,6 +1012,128 @@ export interface GetUserActivityAuthLog {
     timestamp?: number;
     type?: number;
     username?: string;
+}
+
+export interface GetUserNamespacesNamespace {
+    authorizations?: string[];
+    endpointId?: string;
+    namespace?: string;
+}
+
+export interface GitopsWorkflowArtifact {
+    /**
+     * Identifier Portainer assigned to the artifact, which the update call needs.
+     */
+    artifactId: number;
+    /**
+     * Deployment options for the artifact.
+     */
+    config?: outputs.GitopsWorkflowArtifactConfig;
+    /**
+     * Deployment type of the artifact, for example <span pulumi-lang-nodejs="`compose`" pulumi-lang-dotnet="`Compose`" pulumi-lang-go="`compose`" pulumi-lang-python="`compose`" pulumi-lang-yaml="`compose`" pulumi-lang-java="`compose`" pulumi-lang-hcl="`compose`">`compose`</span> or <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`" pulumi-lang-hcl="`kubernetes`">`kubernetes`</span>.
+     */
+    deploymentType: string;
+    /**
+     * Edge groups the artifact is deployed to.
+     */
+    edgeGroupIds: number[];
+    /**
+     * Files in a GitOps source the artifact is built from. Repeatable.
+     */
+    files: outputs.GitopsWorkflowArtifactFile[];
+    /**
+     * Name of the artifact. Portainer cannot rename an artifact, so changing it forces a new resource.
+     */
+    name: string;
+    /**
+     * What the artifact deploys as: <span pulumi-lang-nodejs="`stack`" pulumi-lang-dotnet="`Stack`" pulumi-lang-go="`stack`" pulumi-lang-python="`stack`" pulumi-lang-yaml="`stack`" pulumi-lang-java="`stack`" pulumi-lang-hcl="`stack`">`stack`</span> or `edgeStack`. Defaults to `edgeStack`.
+     */
+    type?: string;
+}
+
+export interface GitopsWorkflowArtifactConfig {
+    /**
+     * Whether the agent always clones the git repository for relative paths.
+     */
+    alwaysCloneGitRepo?: boolean;
+    /**
+     * Environment variables injected into the deployment.
+     */
+    environment?: {[key: string]: string};
+    /**
+     * Path on the agent used for relative path volumes.
+     */
+    localFilesystemPath?: string;
+    /**
+     * Staggered rollout settings.
+     */
+    parallel?: outputs.GitopsWorkflowArtifactConfigParallel;
+    /**
+     * How per-device group configurations are matched: <span pulumi-lang-nodejs="`file`" pulumi-lang-dotnet="`File`" pulumi-lang-go="`file`" pulumi-lang-python="`file`" pulumi-lang-yaml="`file`" pulumi-lang-java="`file`" pulumi-lang-hcl="`file`">`file`</span> or <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`" pulumi-lang-hcl="`dir`">`dir`</span>.
+     */
+    perDeviceConfigsGroupMatchType?: string;
+    /**
+     * How per-device configurations are matched: <span pulumi-lang-nodejs="`file`" pulumi-lang-dotnet="`File`" pulumi-lang-go="`file`" pulumi-lang-python="`file`" pulumi-lang-yaml="`file`" pulumi-lang-java="`file`" pulumi-lang-hcl="`file`">`file`</span> or <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`" pulumi-lang-hcl="`dir`">`dir`</span>.
+     */
+    perDeviceConfigsMatchType?: string;
+    /**
+     * Path within the repository holding per-device configurations.
+     */
+    perDeviceConfigsPath?: string;
+    /**
+     * Whether agents pull the images before deploying.
+     */
+    prePullImage?: boolean;
+    /**
+     * Registries the deployment pulls images from.
+     */
+    registryIds?: number[];
+    /**
+     * How long an agent keeps retrying a failed deployment, in seconds.
+     */
+    retryPeriod?: number;
+    /**
+     * Whether to use the namespaces in the manifest rather than the default one.
+     */
+    useManifestNamespaces?: boolean;
+}
+
+export interface GitopsWorkflowArtifactConfigParallel {
+    /**
+     * Devices updated at once. A value above zero turns parallel deployment on.
+     */
+    batchCount?: number;
+    /**
+     * How much the batch grows each round, for an incremental rollout.
+     */
+    batchIncrementBy?: number;
+    /**
+     * Pause between batches.
+     */
+    delay?: string;
+    /**
+     * What happens when a batch fails.
+     */
+    failureAction?: string;
+    /**
+     * How long a batch may take before it is given up on.
+     */
+    timeout?: string;
+}
+
+export interface GitopsWorkflowArtifactFile {
+    /**
+     * Path of the file within the source, for example `portainer.yaml`.
+     */
+    path: string;
+    /**
+     * Git reference to read the file at, for example `refs/heads/main`.
+     */
+    ref: string;
+    /**
+     * Identifier of the GitOps source the file comes from.
+     */
+    sourceId: number;
 }
 
 export interface KubernetesApplicationTimeouts {
@@ -699,6 +1235,269 @@ export interface KubernetesNamespaceIngresscontrollersController {
     used: boolean;
 }
 
+export interface KubernetesPodSecurityRuleAllowFlexVolumes {
+    /**
+     * FlexVolume drivers a pod may use.
+     */
+    allowedVolumes?: string[];
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+}
+
+export interface KubernetesPodSecurityRuleAllowProcMount {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * The proc mount type to permit, for example `Default` or `Unmasked`.
+     */
+    procMountType?: string;
+}
+
+export interface KubernetesPodSecurityRuleAppArmor {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * AppArmor profiles a pod may use.
+     */
+    types?: string[];
+}
+
+export interface KubernetesPodSecurityRuleCapabilities {
+    /**
+     * Capabilities a container may add.
+     */
+    alloweds?: string[];
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * Capabilities every container has to drop.
+     */
+    requiredDrops?: string[];
+}
+
+export interface KubernetesPodSecurityRuleForbiddenSysctls {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * Sysctls a pod may not set.
+     */
+    sysctls?: string[];
+}
+
+export interface KubernetesPodSecurityRuleHostFilesystem {
+    /**
+     * Host paths a pod may mount. Repeatable.
+     */
+    allowedPaths?: outputs.KubernetesPodSecurityRuleHostFilesystemAllowedPath[];
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+}
+
+export interface KubernetesPodSecurityRuleHostFilesystemAllowedPath {
+    /**
+     * Path prefix that may be mounted.
+     */
+    pathPrefix: string;
+    /**
+     * Whether the mount has to be read-only.
+     */
+    readonly?: boolean;
+}
+
+export interface KubernetesPodSecurityRuleHostPorts {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * Whether a pod may use the host's network namespace.
+     */
+    hostNetwork?: boolean;
+    /**
+     * Highest host port a pod may bind.
+     */
+    max?: number;
+    /**
+     * Lowest host port a pod may bind.
+     */
+    min?: number;
+}
+
+export interface KubernetesPodSecurityRuleSecComp {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * Seccomp profiles a pod may use.
+     */
+    types?: string[];
+}
+
+export interface KubernetesPodSecurityRuleSelinux {
+    /**
+     * SELinux contexts a pod may run under. Repeatable.
+     */
+    allowedContexts?: outputs.KubernetesPodSecurityRuleSelinuxAllowedContext[];
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+}
+
+export interface KubernetesPodSecurityRuleSelinuxAllowedContext {
+    /**
+     * SELinux level.
+     */
+    level?: string;
+    /**
+     * SELinux role.
+     */
+    role?: string;
+    /**
+     * SELinux type.
+     */
+    type?: string;
+    /**
+     * SELinux user.
+     */
+    user?: string;
+}
+
+export interface KubernetesPodSecurityRuleUsers {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+    /**
+     * Strategy and ranges for the pod's filesystem groups.
+     */
+    fsGroups?: outputs.KubernetesPodSecurityRuleUsersFsGroups;
+    /**
+     * Strategy and ranges for the group a container runs as.
+     */
+    runAsGroup?: outputs.KubernetesPodSecurityRuleUsersRunAsGroup;
+    /**
+     * Strategy and ranges for the user a container runs as.
+     */
+    runAsUser?: outputs.KubernetesPodSecurityRuleUsersRunAsUser;
+    /**
+     * Strategy and ranges for the pod's supplemental groups.
+     */
+    supplementalGroups?: outputs.KubernetesPodSecurityRuleUsersSupplementalGroups;
+}
+
+export interface KubernetesPodSecurityRuleUsersFsGroups {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: outputs.KubernetesPodSecurityRuleUsersFsGroupsIdRange[];
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: string;
+}
+
+export interface KubernetesPodSecurityRuleUsersFsGroupsIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: number;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: number;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsGroup {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: outputs.KubernetesPodSecurityRuleUsersRunAsGroupIdRange[];
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: string;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsGroupIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: number;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: number;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsUser {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: outputs.KubernetesPodSecurityRuleUsersRunAsUserIdRange[];
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: string;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsUserIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: number;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: number;
+}
+
+export interface KubernetesPodSecurityRuleUsersSupplementalGroups {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: outputs.KubernetesPodSecurityRuleUsersSupplementalGroupsIdRange[];
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: string;
+}
+
+export interface KubernetesPodSecurityRuleUsersSupplementalGroupsIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: number;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: number;
+}
+
+export interface KubernetesPodSecurityRuleVolumeTypes {
+    /**
+     * Volume types a pod may use, for example `configMap` or `emptyDir`.
+     */
+    allowedTypes?: string[];
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: boolean;
+}
+
 export interface LdapSettingsAdminGroupSearchSetting {
     /**
      * LDAP attribute used to identify group membership for admin users (e.g. <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>).
@@ -765,6 +1564,229 @@ export interface LdapSettingsTlsConfig {
      * Skip TLS verification
      */
     tlsSkipVerify: boolean;
+}
+
+export interface OmniClusterClusterPatch {
+    /**
+     * Name annotation Omni shows for the patch.
+     */
+    annotationName?: string;
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: string;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: string;
+}
+
+export interface OmniClusterControlPlane {
+    /**
+     * Omni resource kind of the control plane. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: string;
+    /**
+     * Machines that make up the cluster's control plane.
+     */
+    machines?: outputs.OmniClusterControlPlaneMachine[];
+}
+
+export interface OmniClusterControlPlaneMachine {
+    /**
+     * Hostname to configure on the machine.
+     */
+    hostname?: string;
+    /**
+     * Block device Talos is installed onto, for example `/dev/sda`.
+     */
+    installDisk?: string;
+    /**
+     * Network interfaces to configure on the machine.
+     */
+    interfaces?: outputs.OmniClusterControlPlaneMachineInterface[];
+    /**
+     * Omni resource kind of the machine. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: string;
+    /**
+     * Name of the machine as Omni knows it.
+     */
+    name: string;
+    /**
+     * DNS servers to configure on the machine.
+     */
+    nameservers?: string[];
+    /**
+     * Talos machine configuration patches to apply.
+     */
+    patches?: outputs.OmniClusterControlPlaneMachinePatch[];
+    /**
+     * Size of the ephemeral system volume in GiB. Omni turns this into a volume configuration patch.
+     */
+    systemDiskSize?: number;
+    /**
+     * A user volume to carve out of the remaining disk space.
+     */
+    userDisk?: outputs.OmniClusterControlPlaneMachineUserDisk;
+}
+
+export interface OmniClusterControlPlaneMachineInterface {
+    /**
+     * Static addresses in CIDR notation, for example `10.0.0.10/24`.
+     */
+    addresses?: string[];
+    /**
+     * Whether the interface takes its address from DHCP. Leave <span pulumi-lang-nodejs="`addresses`" pulumi-lang-dotnet="`Addresses`" pulumi-lang-go="`addresses`" pulumi-lang-python="`addresses`" pulumi-lang-yaml="`addresses`" pulumi-lang-java="`addresses`" pulumi-lang-hcl="`addresses`">`addresses`</span> unset when it does.
+     */
+    dhcp?: boolean;
+    /**
+     * Name of the interface, for example <span pulumi-lang-nodejs="`eth0`" pulumi-lang-dotnet="`Eth0`" pulumi-lang-go="`eth0`" pulumi-lang-python="`eth0`" pulumi-lang-yaml="`eth0`" pulumi-lang-java="`eth0`" pulumi-lang-hcl="`eth0`">`eth0`</span>.
+     */
+    interface: string;
+    /**
+     * Static routes to add through the interface.
+     */
+    routes?: outputs.OmniClusterControlPlaneMachineInterfaceRoute[];
+}
+
+export interface OmniClusterControlPlaneMachineInterfaceRoute {
+    /**
+     * Gateway the route goes through.
+     */
+    gateway: string;
+    /**
+     * Destination network in CIDR notation. Use `0.0.0.0/0` for a default route.
+     */
+    network: string;
+}
+
+export interface OmniClusterControlPlaneMachinePatch {
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: string;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: string;
+}
+
+export interface OmniClusterControlPlaneMachineUserDisk {
+    /**
+     * Size of the volume in GiB. Zero means take all the space that is left.
+     */
+    size?: number;
+    /**
+     * Name of the volume.
+     */
+    volumeName: string;
+}
+
+export interface OmniClusterWorker {
+    /**
+     * Omni resource kind of the worker pool. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: string;
+    /**
+     * Machines that make up this worker pool.
+     */
+    machines?: outputs.OmniClusterWorkerMachine[];
+    /**
+     * Name of the worker pool.
+     */
+    name?: string;
+}
+
+export interface OmniClusterWorkerMachine {
+    /**
+     * Hostname to configure on the machine.
+     */
+    hostname?: string;
+    /**
+     * Block device Talos is installed onto, for example `/dev/sda`.
+     */
+    installDisk?: string;
+    /**
+     * Network interfaces to configure on the machine.
+     */
+    interfaces?: outputs.OmniClusterWorkerMachineInterface[];
+    /**
+     * Omni resource kind of the machine. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: string;
+    /**
+     * Name of the machine as Omni knows it.
+     */
+    name: string;
+    /**
+     * DNS servers to configure on the machine.
+     */
+    nameservers?: string[];
+    /**
+     * Talos machine configuration patches to apply.
+     */
+    patches?: outputs.OmniClusterWorkerMachinePatch[];
+    /**
+     * Size of the ephemeral system volume in GiB. Omni turns this into a volume configuration patch.
+     */
+    systemDiskSize?: number;
+    /**
+     * A user volume to carve out of the remaining disk space.
+     */
+    userDisk?: outputs.OmniClusterWorkerMachineUserDisk;
+}
+
+export interface OmniClusterWorkerMachineInterface {
+    /**
+     * Static addresses in CIDR notation, for example `10.0.0.10/24`.
+     */
+    addresses?: string[];
+    /**
+     * Whether the interface takes its address from DHCP. Leave <span pulumi-lang-nodejs="`addresses`" pulumi-lang-dotnet="`Addresses`" pulumi-lang-go="`addresses`" pulumi-lang-python="`addresses`" pulumi-lang-yaml="`addresses`" pulumi-lang-java="`addresses`" pulumi-lang-hcl="`addresses`">`addresses`</span> unset when it does.
+     */
+    dhcp?: boolean;
+    /**
+     * Name of the interface, for example <span pulumi-lang-nodejs="`eth0`" pulumi-lang-dotnet="`Eth0`" pulumi-lang-go="`eth0`" pulumi-lang-python="`eth0`" pulumi-lang-yaml="`eth0`" pulumi-lang-java="`eth0`" pulumi-lang-hcl="`eth0`">`eth0`</span>.
+     */
+    interface: string;
+    /**
+     * Static routes to add through the interface.
+     */
+    routes?: outputs.OmniClusterWorkerMachineInterfaceRoute[];
+}
+
+export interface OmniClusterWorkerMachineInterfaceRoute {
+    /**
+     * Gateway the route goes through.
+     */
+    gateway: string;
+    /**
+     * Destination network in CIDR notation. Use `0.0.0.0/0` for a default route.
+     */
+    network: string;
+}
+
+export interface OmniClusterWorkerMachinePatch {
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: string;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: string;
+}
+
+export interface OmniClusterWorkerMachineUserDisk {
+    /**
+     * Size of the volume in GiB. Zero means take all the space that is left.
+     */
+    size?: number;
+    /**
+     * Name of the volume.
+     */
+    volumeName: string;
 }
 
 export interface SettingsBlackListedLabel {

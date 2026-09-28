@@ -35,6 +35,7 @@ export class PullzoneShield extends pulumi.CustomResource {
     }
 
     declare public readonly accessLists: pulumi.Output<outputs.PullzoneShieldAccessList[] | undefined>;
+    declare public readonly botCategorizations: pulumi.Output<outputs.PullzoneShieldBotCategorization[]>;
     /**
      * Configures Bot Detection settings.
      */
@@ -98,6 +99,7 @@ export class PullzoneShield extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PullzoneShieldState | undefined;
             resourceInputs["accessLists"] = state?.accessLists;
+            resourceInputs["botCategorizations"] = state?.botCategorizations;
             resourceInputs["botDetection"] = state?.botDetection;
             resourceInputs["ddos"] = state?.ddos;
             resourceInputs["pullzone"] = state?.pullzone;
@@ -116,6 +118,7 @@ export class PullzoneShield extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pullzone'");
             }
             resourceInputs["accessLists"] = args?.accessLists;
+            resourceInputs["botCategorizations"] = args?.botCategorizations;
             resourceInputs["botDetection"] = args?.botDetection;
             resourceInputs["ddos"] = args?.ddos;
             resourceInputs["pullzone"] = args?.pullzone;
@@ -139,6 +142,7 @@ export class PullzoneShield extends pulumi.CustomResource {
  */
 export interface PullzoneShieldState {
     accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[] | undefined>;
+    botCategorizations?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldBotCategorization>[] | undefined>;
     /**
      * Configures Bot Detection settings.
      */
@@ -194,6 +198,7 @@ export interface PullzoneShieldState {
  */
 export interface PullzoneShieldArgs {
     accessLists?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldAccessList>[] | undefined>;
+    botCategorizations?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldBotCategorization>[] | undefined>;
     /**
      * Configures Bot Detection settings.
      */

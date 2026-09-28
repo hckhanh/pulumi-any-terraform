@@ -111,27 +111,27 @@ export interface RelationshipTupleState {
     /**
      * The unique ID of the authorization model this relationship tuple is related with. Can be left blank to refer to the latest authorization model.
      */
-    authorizationModelId?: pulumi.Input<string>;
+    authorizationModelId?: pulumi.Input<string | undefined>;
     /**
      * A condition of the relationship tuple.
      */
-    condition?: pulumi.Input<inputs.RelationshipTupleCondition>;
+    condition?: pulumi.Input<inputs.RelationshipTupleCondition | undefined>;
     /**
      * The object of the relationship tuple.
      */
-    object?: pulumi.Input<string>;
+    object?: pulumi.Input<string | undefined>;
     /**
      * The relation of the relationship tuple.
      */
-    relation?: pulumi.Input<string>;
+    relation?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the store this relationship tuple belongs to.
      */
-    storeId?: pulumi.Input<string>;
+    storeId?: pulumi.Input<string | undefined>;
     /**
      * The user of the relationship tuple.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,11 +141,11 @@ export interface RelationshipTupleArgs {
     /**
      * The unique ID of the authorization model this relationship tuple is related with. Can be left blank to refer to the latest authorization model.
      */
-    authorizationModelId?: pulumi.Input<string>;
+    authorizationModelId?: pulumi.Input<string | undefined>;
     /**
      * A condition of the relationship tuple.
      */
-    condition?: pulumi.Input<inputs.RelationshipTupleCondition>;
+    condition?: pulumi.Input<inputs.RelationshipTupleCondition | undefined>;
     /**
      * The object of the relationship tuple.
      */

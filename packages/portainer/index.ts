@@ -5,10 +5,40 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AddonArgs, AddonState } from "./addon";
+export type Addon = import("./addon").Addon;
+export const Addon: typeof import("./addon").Addon = null as any;
+utilities.lazyLoad(exports, ["Addon"], () => require("./addon"));
+
+export { AddonAccessArgs, AddonAccessState } from "./addonAccess";
+export type AddonAccess = import("./addonAccess").AddonAccess;
+export const AddonAccess: typeof import("./addonAccess").AddonAccess = null as any;
+utilities.lazyLoad(exports, ["AddonAccess"], () => require("./addonAccess"));
+
+export { AddonConfigArgs, AddonConfigState } from "./addonConfig";
+export type AddonConfig = import("./addonConfig").AddonConfig;
+export const AddonConfig: typeof import("./addonConfig").AddonConfig = null as any;
+utilities.lazyLoad(exports, ["AddonConfig"], () => require("./addonConfig"));
+
+export { AddonRepairArgs, AddonRepairState } from "./addonRepair";
+export type AddonRepair = import("./addonRepair").AddonRepair;
+export const AddonRepair: typeof import("./addonRepair").AddonRepair = null as any;
+utilities.lazyLoad(exports, ["AddonRepair"], () => require("./addonRepair"));
+
 export { AlertingRuleArgs, AlertingRuleState } from "./alertingRule";
 export type AlertingRule = import("./alertingRule").AlertingRule;
 export const AlertingRule: typeof import("./alertingRule").AlertingRule = null as any;
 utilities.lazyLoad(exports, ["AlertingRule"], () => require("./alertingRule"));
+
+export { AlertingRuleGroupsArgs, AlertingRuleGroupsState } from "./alertingRuleGroups";
+export type AlertingRuleGroups = import("./alertingRuleGroups").AlertingRuleGroups;
+export const AlertingRuleGroups: typeof import("./alertingRuleGroups").AlertingRuleGroups = null as any;
+utilities.lazyLoad(exports, ["AlertingRuleGroups"], () => require("./alertingRuleGroups"));
+
+export { AlertingRuleTiersArgs, AlertingRuleTiersState } from "./alertingRuleTiers";
+export type AlertingRuleTiers = import("./alertingRuleTiers").AlertingRuleTiers;
+export const AlertingRuleTiers: typeof import("./alertingRuleTiers").AlertingRuleTiers = null as any;
+utilities.lazyLoad(exports, ["AlertingRuleTiers"], () => require("./alertingRuleTiers"));
 
 export { AlertingSettingsArgs, AlertingSettingsState } from "./alertingSettings";
 export type AlertingSettings = import("./alertingSettings").AlertingSettings;
@@ -30,10 +60,40 @@ export type Backup = import("./backup").Backup;
 export const Backup: typeof import("./backup").Backup = null as any;
 utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 
+export { BackupAzureExecuteArgs, BackupAzureExecuteState } from "./backupAzureExecute";
+export type BackupAzureExecute = import("./backupAzureExecute").BackupAzureExecute;
+export const BackupAzureExecute: typeof import("./backupAzureExecute").BackupAzureExecute = null as any;
+utilities.lazyLoad(exports, ["BackupAzureExecute"], () => require("./backupAzureExecute"));
+
+export { BackupAzureRestoreArgs, BackupAzureRestoreState } from "./backupAzureRestore";
+export type BackupAzureRestore = import("./backupAzureRestore").BackupAzureRestore;
+export const BackupAzureRestore: typeof import("./backupAzureRestore").BackupAzureRestore = null as any;
+utilities.lazyLoad(exports, ["BackupAzureRestore"], () => require("./backupAzureRestore"));
+
+export { BackupAzureSettingsArgs, BackupAzureSettingsState } from "./backupAzureSettings";
+export type BackupAzureSettings = import("./backupAzureSettings").BackupAzureSettings;
+export const BackupAzureSettings: typeof import("./backupAzureSettings").BackupAzureSettings = null as any;
+utilities.lazyLoad(exports, ["BackupAzureSettings"], () => require("./backupAzureSettings"));
+
+export { BackupLocalRunArgs, BackupLocalRunState } from "./backupLocalRun";
+export type BackupLocalRun = import("./backupLocalRun").BackupLocalRun;
+export const BackupLocalRun: typeof import("./backupLocalRun").BackupLocalRun = null as any;
+utilities.lazyLoad(exports, ["BackupLocalRun"], () => require("./backupLocalRun"));
+
+export { BackupLocalSettingsArgs, BackupLocalSettingsState } from "./backupLocalSettings";
+export type BackupLocalSettings = import("./backupLocalSettings").BackupLocalSettings;
+export const BackupLocalSettings: typeof import("./backupLocalSettings").BackupLocalSettings = null as any;
+utilities.lazyLoad(exports, ["BackupLocalSettings"], () => require("./backupLocalSettings"));
+
 export { BackupS3Args, BackupS3State } from "./backupS3";
 export type BackupS3 = import("./backupS3").BackupS3;
 export const BackupS3: typeof import("./backupS3").BackupS3 = null as any;
 utilities.lazyLoad(exports, ["BackupS3"], () => require("./backupS3"));
+
+export { BackupS3RestoreArgs, BackupS3RestoreState } from "./backupS3Restore";
+export type BackupS3Restore = import("./backupS3Restore").BackupS3Restore;
+export const BackupS3Restore: typeof import("./backupS3Restore").BackupS3Restore = null as any;
+utilities.lazyLoad(exports, ["BackupS3Restore"], () => require("./backupS3Restore"));
 
 export { ChatArgs, ChatState } from "./chat";
 export type Chat = import("./chat").Chat;
@@ -185,6 +245,11 @@ export type EndpointSnapshot = import("./endpointSnapshot").EndpointSnapshot;
 export const EndpointSnapshot: typeof import("./endpointSnapshot").EndpointSnapshot = null as any;
 utilities.lazyLoad(exports, ["EndpointSnapshot"], () => require("./endpointSnapshot"));
 
+export { EndpointTrustArgs, EndpointTrustState } from "./endpointTrust";
+export type EndpointTrust = import("./endpointTrust").EndpointTrust;
+export const EndpointTrust: typeof import("./endpointTrust").EndpointTrust = null as any;
+utilities.lazyLoad(exports, ["EndpointTrust"], () => require("./endpointTrust"));
+
 export { EndpointsEdgeGenerateKeyArgs, EndpointsEdgeGenerateKeyState } from "./endpointsEdgeGenerateKey";
 export type EndpointsEdgeGenerateKey = import("./endpointsEdgeGenerateKey").EndpointsEdgeGenerateKey;
 export const EndpointsEdgeGenerateKey: typeof import("./endpointsEdgeGenerateKey").EndpointsEdgeGenerateKey = null as any;
@@ -195,15 +260,55 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { GetAddonChartSourceArgs, GetAddonChartSourceResult, GetAddonChartSourceOutputArgs } from "./getAddonChartSource";
+export const getAddonChartSource: typeof import("./getAddonChartSource").getAddonChartSource = null as any;
+export const getAddonChartSourceOutput: typeof import("./getAddonChartSource").getAddonChartSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getAddonChartSource","getAddonChartSourceOutput"], () => require("./getAddonChartSource"));
+
+export { GetAddonsArgs, GetAddonsResult, GetAddonsOutputArgs } from "./getAddons";
+export const getAddons: typeof import("./getAddons").getAddons = null as any;
+export const getAddonsOutput: typeof import("./getAddons").getAddonsOutput = null as any;
+utilities.lazyLoad(exports, ["getAddons","getAddonsOutput"], () => require("./getAddons"));
+
+export { GetAgentVersionsArgs, GetAgentVersionsResult, GetAgentVersionsOutputArgs } from "./getAgentVersions";
+export const getAgentVersions: typeof import("./getAgentVersions").getAgentVersions = null as any;
+export const getAgentVersionsOutput: typeof import("./getAgentVersions").getAgentVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentVersions","getAgentVersionsOutput"], () => require("./getAgentVersions"));
+
+export { GetAlertingConnectivityArgs, GetAlertingConnectivityResult, GetAlertingConnectivityOutputArgs } from "./getAlertingConnectivity";
+export const getAlertingConnectivity: typeof import("./getAlertingConnectivity").getAlertingConnectivity = null as any;
+export const getAlertingConnectivityOutput: typeof import("./getAlertingConnectivity").getAlertingConnectivityOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertingConnectivity","getAlertingConnectivityOutput"], () => require("./getAlertingConnectivity"));
+
+export { GetAlertingRuleEnvironmentsArgs, GetAlertingRuleEnvironmentsResult, GetAlertingRuleEnvironmentsOutputArgs } from "./getAlertingRuleEnvironments";
+export const getAlertingRuleEnvironments: typeof import("./getAlertingRuleEnvironments").getAlertingRuleEnvironments = null as any;
+export const getAlertingRuleEnvironmentsOutput: typeof import("./getAlertingRuleEnvironments").getAlertingRuleEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertingRuleEnvironments","getAlertingRuleEnvironmentsOutput"], () => require("./getAlertingRuleEnvironments"));
+
 export { GetAppTemplatesArgs, GetAppTemplatesResult, GetAppTemplatesOutputArgs } from "./getAppTemplates";
 export const getAppTemplates: typeof import("./getAppTemplates").getAppTemplates = null as any;
 export const getAppTemplatesOutput: typeof import("./getAppTemplates").getAppTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAppTemplates","getAppTemplatesOutput"], () => require("./getAppTemplates"));
 
+export { GetAutoUpdatesArgs, GetAutoUpdatesResult, GetAutoUpdatesOutputArgs } from "./getAutoUpdates";
+export const getAutoUpdates: typeof import("./getAutoUpdates").getAutoUpdates = null as any;
+export const getAutoUpdatesOutput: typeof import("./getAutoUpdates").getAutoUpdatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoUpdates","getAutoUpdatesOutput"], () => require("./getAutoUpdates"));
+
+export { GetBackupAzureConnectionArgs, GetBackupAzureConnectionResult, GetBackupAzureConnectionOutputArgs } from "./getBackupAzureConnection";
+export const getBackupAzureConnection: typeof import("./getBackupAzureConnection").getBackupAzureConnection = null as any;
+export const getBackupAzureConnectionOutput: typeof import("./getBackupAzureConnection").getBackupAzureConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupAzureConnection","getBackupAzureConnectionOutput"], () => require("./getBackupAzureConnection"));
+
 export { GetCloudCredentialsArgs, GetCloudCredentialsResult, GetCloudCredentialsOutputArgs } from "./getCloudCredentials";
 export const getCloudCredentials: typeof import("./getCloudCredentials").getCloudCredentials = null as any;
 export const getCloudCredentialsOutput: typeof import("./getCloudCredentials").getCloudCredentialsOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudCredentials","getCloudCredentialsOutput"], () => require("./getCloudCredentials"));
+
+export { GetCurrentUserAuthorizationsArgs, GetCurrentUserAuthorizationsResult, GetCurrentUserAuthorizationsOutputArgs } from "./getCurrentUserAuthorizations";
+export const getCurrentUserAuthorizations: typeof import("./getCurrentUserAuthorizations").getCurrentUserAuthorizations = null as any;
+export const getCurrentUserAuthorizationsOutput: typeof import("./getCurrentUserAuthorizations").getCurrentUserAuthorizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentUserAuthorizations","getCurrentUserAuthorizationsOutput"], () => require("./getCurrentUserAuthorizations"));
 
 export { GetCustomTemplateArgs, GetCustomTemplateResult, GetCustomTemplateOutputArgs } from "./getCustomTemplate";
 export const getCustomTemplate: typeof import("./getCustomTemplate").getCustomTemplate = null as any;
@@ -255,6 +360,21 @@ export const getDockerSecret: typeof import("./getDockerSecret").getDockerSecret
 export const getDockerSecretOutput: typeof import("./getDockerSecret").getDockerSecretOutput = null as any;
 utilities.lazyLoad(exports, ["getDockerSecret","getDockerSecretOutput"], () => require("./getDockerSecret"));
 
+export { GetDockerSnapshotArgs, GetDockerSnapshotResult, GetDockerSnapshotOutputArgs } from "./getDockerSnapshot";
+export const getDockerSnapshot: typeof import("./getDockerSnapshot").getDockerSnapshot = null as any;
+export const getDockerSnapshotOutput: typeof import("./getDockerSnapshot").getDockerSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerSnapshot","getDockerSnapshotOutput"], () => require("./getDockerSnapshot"));
+
+export { GetDockerSnapshotContainerArgs, GetDockerSnapshotContainerResult, GetDockerSnapshotContainerOutputArgs } from "./getDockerSnapshotContainer";
+export const getDockerSnapshotContainer: typeof import("./getDockerSnapshotContainer").getDockerSnapshotContainer = null as any;
+export const getDockerSnapshotContainerOutput: typeof import("./getDockerSnapshotContainer").getDockerSnapshotContainerOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerSnapshotContainer","getDockerSnapshotContainerOutput"], () => require("./getDockerSnapshotContainer"));
+
+export { GetDockerSnapshotContainersArgs, GetDockerSnapshotContainersResult, GetDockerSnapshotContainersOutputArgs } from "./getDockerSnapshotContainers";
+export const getDockerSnapshotContainers: typeof import("./getDockerSnapshotContainers").getDockerSnapshotContainers = null as any;
+export const getDockerSnapshotContainersOutput: typeof import("./getDockerSnapshotContainers").getDockerSnapshotContainersOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerSnapshotContainers","getDockerSnapshotContainersOutput"], () => require("./getDockerSnapshotContainers"));
+
 export { GetDockerVolumeArgs, GetDockerVolumeResult, GetDockerVolumeOutputArgs } from "./getDockerVolume";
 export const getDockerVolume: typeof import("./getDockerVolume").getDockerVolume = null as any;
 export const getDockerVolumeOutput: typeof import("./getDockerVolume").getDockerVolumeOutput = null as any;
@@ -264,6 +384,11 @@ export { GetEdgeConfigurationArgs, GetEdgeConfigurationResult, GetEdgeConfigurat
 export const getEdgeConfiguration: typeof import("./getEdgeConfiguration").getEdgeConfiguration = null as any;
 export const getEdgeConfigurationOutput: typeof import("./getEdgeConfiguration").getEdgeConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getEdgeConfiguration","getEdgeConfigurationOutput"], () => require("./getEdgeConfiguration"));
+
+export { GetEdgeConfigurationFilesArgs, GetEdgeConfigurationFilesResult, GetEdgeConfigurationFilesOutputArgs } from "./getEdgeConfigurationFiles";
+export const getEdgeConfigurationFiles: typeof import("./getEdgeConfigurationFiles").getEdgeConfigurationFiles = null as any;
+export const getEdgeConfigurationFilesOutput: typeof import("./getEdgeConfigurationFiles").getEdgeConfigurationFilesOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeConfigurationFiles","getEdgeConfigurationFilesOutput"], () => require("./getEdgeConfigurationFiles"));
 
 export { GetEdgeGroupArgs, GetEdgeGroupResult, GetEdgeGroupOutputArgs } from "./getEdgeGroup";
 export const getEdgeGroup: typeof import("./getEdgeGroup").getEdgeGroup = null as any;
@@ -290,6 +415,16 @@ export const getEdgeJobTasks: typeof import("./getEdgeJobTasks").getEdgeJobTasks
 export const getEdgeJobTasksOutput: typeof import("./getEdgeJobTasks").getEdgeJobTasksOutput = null as any;
 utilities.lazyLoad(exports, ["getEdgeJobTasks","getEdgeJobTasksOutput"], () => require("./getEdgeJobTasks"));
 
+export { GetEdgeMtlsCaCertificateArgs, GetEdgeMtlsCaCertificateResult, GetEdgeMtlsCaCertificateOutputArgs } from "./getEdgeMtlsCaCertificate";
+export const getEdgeMtlsCaCertificate: typeof import("./getEdgeMtlsCaCertificate").getEdgeMtlsCaCertificate = null as any;
+export const getEdgeMtlsCaCertificateOutput: typeof import("./getEdgeMtlsCaCertificate").getEdgeMtlsCaCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeMtlsCaCertificate","getEdgeMtlsCaCertificateOutput"], () => require("./getEdgeMtlsCaCertificate"));
+
+export { GetEdgeMtlsCertificateArgs, GetEdgeMtlsCertificateResult, GetEdgeMtlsCertificateOutputArgs } from "./getEdgeMtlsCertificate";
+export const getEdgeMtlsCertificate: typeof import("./getEdgeMtlsCertificate").getEdgeMtlsCertificate = null as any;
+export const getEdgeMtlsCertificateOutput: typeof import("./getEdgeMtlsCertificate").getEdgeMtlsCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeMtlsCertificate","getEdgeMtlsCertificateOutput"], () => require("./getEdgeMtlsCertificate"));
+
 export { GetEdgeStackArgs, GetEdgeStackResult, GetEdgeStackOutputArgs } from "./getEdgeStack";
 export const getEdgeStack: typeof import("./getEdgeStack").getEdgeStack = null as any;
 export const getEdgeStackOutput: typeof import("./getEdgeStack").getEdgeStackOutput = null as any;
@@ -300,6 +435,31 @@ export const getEdgeStackFile: typeof import("./getEdgeStackFile").getEdgeStackF
 export const getEdgeStackFileOutput: typeof import("./getEdgeStackFile").getEdgeStackFileOutput = null as any;
 utilities.lazyLoad(exports, ["getEdgeStackFile","getEdgeStackFileOutput"], () => require("./getEdgeStackFile"));
 
+export { GetEdgeStackStaggerStatusArgs, GetEdgeStackStaggerStatusResult, GetEdgeStackStaggerStatusOutputArgs } from "./getEdgeStackStaggerStatus";
+export const getEdgeStackStaggerStatus: typeof import("./getEdgeStackStaggerStatus").getEdgeStackStaggerStatus = null as any;
+export const getEdgeStackStaggerStatusOutput: typeof import("./getEdgeStackStaggerStatus").getEdgeStackStaggerStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeStackStaggerStatus","getEdgeStackStaggerStatusOutput"], () => require("./getEdgeStackStaggerStatus"));
+
+export { GetEdgeUpdatePreviousVersionsArgs, GetEdgeUpdatePreviousVersionsResult, GetEdgeUpdatePreviousVersionsOutputArgs } from "./getEdgeUpdatePreviousVersions";
+export const getEdgeUpdatePreviousVersions: typeof import("./getEdgeUpdatePreviousVersions").getEdgeUpdatePreviousVersions = null as any;
+export const getEdgeUpdatePreviousVersionsOutput: typeof import("./getEdgeUpdatePreviousVersions").getEdgeUpdatePreviousVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeUpdatePreviousVersions","getEdgeUpdatePreviousVersionsOutput"], () => require("./getEdgeUpdatePreviousVersions"));
+
+export { GetEdgeUpdateScheduleInfoArgs, GetEdgeUpdateScheduleInfoResult, GetEdgeUpdateScheduleInfoOutputArgs } from "./getEdgeUpdateScheduleInfo";
+export const getEdgeUpdateScheduleInfo: typeof import("./getEdgeUpdateScheduleInfo").getEdgeUpdateScheduleInfo = null as any;
+export const getEdgeUpdateScheduleInfoOutput: typeof import("./getEdgeUpdateScheduleInfo").getEdgeUpdateScheduleInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeUpdateScheduleInfo","getEdgeUpdateScheduleInfoOutput"], () => require("./getEdgeUpdateScheduleInfo"));
+
+export { GetEdgeUpdateSchedulesActiveArgs, GetEdgeUpdateSchedulesActiveResult, GetEdgeUpdateSchedulesActiveOutputArgs } from "./getEdgeUpdateSchedulesActive";
+export const getEdgeUpdateSchedulesActive: typeof import("./getEdgeUpdateSchedulesActive").getEdgeUpdateSchedulesActive = null as any;
+export const getEdgeUpdateSchedulesActiveOutput: typeof import("./getEdgeUpdateSchedulesActive").getEdgeUpdateSchedulesActiveOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeUpdateSchedulesActive","getEdgeUpdateSchedulesActiveOutput"], () => require("./getEdgeUpdateSchedulesActive"));
+
+export { GetEdgeWaitingRoomArgs, GetEdgeWaitingRoomResult, GetEdgeWaitingRoomOutputArgs } from "./getEdgeWaitingRoom";
+export const getEdgeWaitingRoom: typeof import("./getEdgeWaitingRoom").getEdgeWaitingRoom = null as any;
+export const getEdgeWaitingRoomOutput: typeof import("./getEdgeWaitingRoom").getEdgeWaitingRoomOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeWaitingRoom","getEdgeWaitingRoomOutput"], () => require("./getEdgeWaitingRoom"));
+
 export { GetEndpointGroupArgs, GetEndpointGroupResult, GetEndpointGroupOutputArgs } from "./getEndpointGroup";
 export const getEndpointGroup: typeof import("./getEndpointGroup").getEndpointGroup = null as any;
 export const getEndpointGroupOutput: typeof import("./getEndpointGroup").getEndpointGroupOutput = null as any;
@@ -309,6 +469,16 @@ export { GetEndpointGroupAccessArgs, GetEndpointGroupAccessResult, GetEndpointGr
 export const getEndpointGroupAccess: typeof import("./getEndpointGroupAccess").getEndpointGroupAccess = null as any;
 export const getEndpointGroupAccessOutput: typeof import("./getEndpointGroupAccess").getEndpointGroupAccessOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpointGroupAccess","getEndpointGroupAccessOutput"], () => require("./getEndpointGroupAccess"));
+
+export { GetEndpointMtlsCertificateArgs, GetEndpointMtlsCertificateResult, GetEndpointMtlsCertificateOutputArgs } from "./getEndpointMtlsCertificate";
+export const getEndpointMtlsCertificate: typeof import("./getEndpointMtlsCertificate").getEndpointMtlsCertificate = null as any;
+export const getEndpointMtlsCertificateOutput: typeof import("./getEndpointMtlsCertificate").getEndpointMtlsCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointMtlsCertificate","getEndpointMtlsCertificateOutput"], () => require("./getEndpointMtlsCertificate"));
+
+export { GetEndpointMtlsCertificateErrorArgs, GetEndpointMtlsCertificateErrorResult, GetEndpointMtlsCertificateErrorOutputArgs } from "./getEndpointMtlsCertificateError";
+export const getEndpointMtlsCertificateError: typeof import("./getEndpointMtlsCertificateError").getEndpointMtlsCertificateError = null as any;
+export const getEndpointMtlsCertificateErrorOutput: typeof import("./getEndpointMtlsCertificateError").getEndpointMtlsCertificateErrorOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointMtlsCertificateError","getEndpointMtlsCertificateErrorOutput"], () => require("./getEndpointMtlsCertificateError"));
 
 export { GetEndpointRegistriesArgs, GetEndpointRegistriesResult, GetEndpointRegistriesOutputArgs } from "./getEndpointRegistries";
 export const getEndpointRegistries: typeof import("./getEndpointRegistries").getEndpointRegistries = null as any;
@@ -325,10 +495,30 @@ export const getEnvironment: typeof import("./getEnvironment").getEnvironment = 
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
+export { GetEnvironmentLogsArgs, GetEnvironmentLogsResult, GetEnvironmentLogsOutputArgs } from "./getEnvironmentLogs";
+export const getEnvironmentLogs: typeof import("./getEnvironmentLogs").getEnvironmentLogs = null as any;
+export const getEnvironmentLogsOutput: typeof import("./getEnvironmentLogs").getEnvironmentLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentLogs","getEnvironmentLogsOutput"], () => require("./getEnvironmentLogs"));
+
+export { GetEnvironmentMetricsArgs, GetEnvironmentMetricsResult, GetEnvironmentMetricsOutputArgs } from "./getEnvironmentMetrics";
+export const getEnvironmentMetrics: typeof import("./getEnvironmentMetrics").getEnvironmentMetrics = null as any;
+export const getEnvironmentMetricsOutput: typeof import("./getEnvironmentMetrics").getEnvironmentMetricsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentMetrics","getEnvironmentMetricsOutput"], () => require("./getEnvironmentMetrics"));
+
+export { GetGitopsHelmValuesArgs, GetGitopsHelmValuesResult, GetGitopsHelmValuesOutputArgs } from "./getGitopsHelmValues";
+export const getGitopsHelmValues: typeof import("./getGitopsHelmValues").getGitopsHelmValues = null as any;
+export const getGitopsHelmValuesOutput: typeof import("./getGitopsHelmValues").getGitopsHelmValuesOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsHelmValues","getGitopsHelmValuesOutput"], () => require("./getGitopsHelmValues"));
+
 export { GetGitopsRepoFileArgs, GetGitopsRepoFileResult, GetGitopsRepoFileOutputArgs } from "./getGitopsRepoFile";
 export const getGitopsRepoFile: typeof import("./getGitopsRepoFile").getGitopsRepoFile = null as any;
 export const getGitopsRepoFileOutput: typeof import("./getGitopsRepoFile").getGitopsRepoFileOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsRepoFile","getGitopsRepoFileOutput"], () => require("./getGitopsRepoFile"));
+
+export { GetGitopsRepoFileSearchArgs, GetGitopsRepoFileSearchResult, GetGitopsRepoFileSearchOutputArgs } from "./getGitopsRepoFileSearch";
+export const getGitopsRepoFileSearch: typeof import("./getGitopsRepoFileSearch").getGitopsRepoFileSearch = null as any;
+export const getGitopsRepoFileSearchOutput: typeof import("./getGitopsRepoFileSearch").getGitopsRepoFileSearchOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsRepoFileSearch","getGitopsRepoFileSearchOutput"], () => require("./getGitopsRepoFileSearch"));
 
 export { GetGitopsRepoRefsArgs, GetGitopsRepoRefsResult, GetGitopsRepoRefsOutputArgs } from "./getGitopsRepoRefs";
 export const getGitopsRepoRefs: typeof import("./getGitopsRepoRefs").getGitopsRepoRefs = null as any;
@@ -375,6 +565,16 @@ export const getHelmReleaseHistory: typeof import("./getHelmReleaseHistory").get
 export const getHelmReleaseHistoryOutput: typeof import("./getHelmReleaseHistory").getHelmReleaseHistoryOutput = null as any;
 utilities.lazyLoad(exports, ["getHelmReleaseHistory","getHelmReleaseHistoryOutput"], () => require("./getHelmReleaseHistory"));
 
+export { GetImageStatusArgs, GetImageStatusResult, GetImageStatusOutputArgs } from "./getImageStatus";
+export const getImageStatus: typeof import("./getImageStatus").getImageStatus = null as any;
+export const getImageStatusOutput: typeof import("./getImageStatus").getImageStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getImageStatus","getImageStatusOutput"], () => require("./getImageStatus"));
+
+export { GetKubernetesApplicationArgs, GetKubernetesApplicationResult, GetKubernetesApplicationOutputArgs } from "./getKubernetesApplication";
+export const getKubernetesApplication: typeof import("./getKubernetesApplication").getKubernetesApplication = null as any;
+export const getKubernetesApplicationOutput: typeof import("./getKubernetesApplication").getKubernetesApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesApplication","getKubernetesApplicationOutput"], () => require("./getKubernetesApplication"));
+
 export { GetKubernetesApplicationResourcesArgs, GetKubernetesApplicationResourcesResult, GetKubernetesApplicationResourcesOutputArgs } from "./getKubernetesApplicationResources";
 export const getKubernetesApplicationResources: typeof import("./getKubernetesApplicationResources").getKubernetesApplicationResources = null as any;
 export const getKubernetesApplicationResourcesOutput: typeof import("./getKubernetesApplicationResources").getKubernetesApplicationResourcesOutput = null as any;
@@ -395,6 +595,31 @@ export const getKubernetesCrd: typeof import("./getKubernetesCrd").getKubernetes
 export const getKubernetesCrdOutput: typeof import("./getKubernetesCrd").getKubernetesCrdOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesCrd","getKubernetesCrdOutput"], () => require("./getKubernetesCrd"));
 
+export { GetKubernetesCronJobsArgs, GetKubernetesCronJobsResult, GetKubernetesCronJobsOutputArgs } from "./getKubernetesCronJobs";
+export const getKubernetesCronJobs: typeof import("./getKubernetesCronJobs").getKubernetesCronJobs = null as any;
+export const getKubernetesCronJobsOutput: typeof import("./getKubernetesCronJobs").getKubernetesCronJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCronJobs","getKubernetesCronJobsOutput"], () => require("./getKubernetesCronJobs"));
+
+export { GetKubernetesCustomResourceArgs, GetKubernetesCustomResourceResult, GetKubernetesCustomResourceOutputArgs } from "./getKubernetesCustomResource";
+export const getKubernetesCustomResource: typeof import("./getKubernetesCustomResource").getKubernetesCustomResource = null as any;
+export const getKubernetesCustomResourceOutput: typeof import("./getKubernetesCustomResource").getKubernetesCustomResourceOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCustomResource","getKubernetesCustomResourceOutput"], () => require("./getKubernetesCustomResource"));
+
+export { GetKubernetesCustomResourceDefinitionArgs, GetKubernetesCustomResourceDefinitionResult, GetKubernetesCustomResourceDefinitionOutputArgs } from "./getKubernetesCustomResourceDefinition";
+export const getKubernetesCustomResourceDefinition: typeof import("./getKubernetesCustomResourceDefinition").getKubernetesCustomResourceDefinition = null as any;
+export const getKubernetesCustomResourceDefinitionOutput: typeof import("./getKubernetesCustomResourceDefinition").getKubernetesCustomResourceDefinitionOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCustomResourceDefinition","getKubernetesCustomResourceDefinitionOutput"], () => require("./getKubernetesCustomResourceDefinition"));
+
+export { GetKubernetesCustomResourceDefinitionsArgs, GetKubernetesCustomResourceDefinitionsResult, GetKubernetesCustomResourceDefinitionsOutputArgs } from "./getKubernetesCustomResourceDefinitions";
+export const getKubernetesCustomResourceDefinitions: typeof import("./getKubernetesCustomResourceDefinitions").getKubernetesCustomResourceDefinitions = null as any;
+export const getKubernetesCustomResourceDefinitionsOutput: typeof import("./getKubernetesCustomResourceDefinitions").getKubernetesCustomResourceDefinitionsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCustomResourceDefinitions","getKubernetesCustomResourceDefinitionsOutput"], () => require("./getKubernetesCustomResourceDefinitions"));
+
+export { GetKubernetesCustomResourcesArgs, GetKubernetesCustomResourcesResult, GetKubernetesCustomResourcesOutputArgs } from "./getKubernetesCustomResources";
+export const getKubernetesCustomResources: typeof import("./getKubernetesCustomResources").getKubernetesCustomResources = null as any;
+export const getKubernetesCustomResourcesOutput: typeof import("./getKubernetesCustomResources").getKubernetesCustomResourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesCustomResources","getKubernetesCustomResourcesOutput"], () => require("./getKubernetesCustomResources"));
+
 export { GetKubernetesDeploymentsArgs, GetKubernetesDeploymentsResult, GetKubernetesDeploymentsOutputArgs } from "./getKubernetesDeployments";
 export const getKubernetesDeployments: typeof import("./getKubernetesDeployments").getKubernetesDeployments = null as any;
 export const getKubernetesDeploymentsOutput: typeof import("./getKubernetesDeployments").getKubernetesDeploymentsOutput = null as any;
@@ -405,10 +630,20 @@ export const getKubernetesDescribe: typeof import("./getKubernetesDescribe").get
 export const getKubernetesDescribeOutput: typeof import("./getKubernetesDescribe").getKubernetesDescribeOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesDescribe","getKubernetesDescribeOutput"], () => require("./getKubernetesDescribe"));
 
+export { GetKubernetesEndpointsArgs, GetKubernetesEndpointsResult, GetKubernetesEndpointsOutputArgs } from "./getKubernetesEndpoints";
+export const getKubernetesEndpoints: typeof import("./getKubernetesEndpoints").getKubernetesEndpoints = null as any;
+export const getKubernetesEndpointsOutput: typeof import("./getKubernetesEndpoints").getKubernetesEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesEndpoints","getKubernetesEndpointsOutput"], () => require("./getKubernetesEndpoints"));
+
 export { GetKubernetesEventsArgs, GetKubernetesEventsResult, GetKubernetesEventsOutputArgs } from "./getKubernetesEvents";
 export const getKubernetesEvents: typeof import("./getKubernetesEvents").getKubernetesEvents = null as any;
 export const getKubernetesEventsOutput: typeof import("./getKubernetesEvents").getKubernetesEventsOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesEvents","getKubernetesEventsOutput"], () => require("./getKubernetesEvents"));
+
+export { GetKubernetesGpuArgs, GetKubernetesGpuResult, GetKubernetesGpuOutputArgs } from "./getKubernetesGpu";
+export const getKubernetesGpu: typeof import("./getKubernetesGpu").getKubernetesGpu = null as any;
+export const getKubernetesGpuOutput: typeof import("./getKubernetesGpu").getKubernetesGpuOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesGpu","getKubernetesGpuOutput"], () => require("./getKubernetesGpu"));
 
 export { GetKubernetesIngressClassesArgs, GetKubernetesIngressClassesResult, GetKubernetesIngressClassesOutputArgs } from "./getKubernetesIngressClasses";
 export const getKubernetesIngressClasses: typeof import("./getKubernetesIngressClasses").getKubernetesIngressClasses = null as any;
@@ -429,6 +664,16 @@ export { GetKubernetesNodesArgs, GetKubernetesNodesResult, GetKubernetesNodesOut
 export const getKubernetesNodes: typeof import("./getKubernetesNodes").getKubernetesNodes = null as any;
 export const getKubernetesNodesOutput: typeof import("./getKubernetesNodes").getKubernetesNodesOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesNodes","getKubernetesNodesOutput"], () => require("./getKubernetesNodes"));
+
+export { GetKubernetesPersistentVolumeClaimArgs, GetKubernetesPersistentVolumeClaimResult, GetKubernetesPersistentVolumeClaimOutputArgs } from "./getKubernetesPersistentVolumeClaim";
+export const getKubernetesPersistentVolumeClaim: typeof import("./getKubernetesPersistentVolumeClaim").getKubernetesPersistentVolumeClaim = null as any;
+export const getKubernetesPersistentVolumeClaimOutput: typeof import("./getKubernetesPersistentVolumeClaim").getKubernetesPersistentVolumeClaimOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPersistentVolumeClaim","getKubernetesPersistentVolumeClaimOutput"], () => require("./getKubernetesPersistentVolumeClaim"));
+
+export { GetKubernetesPersistentVolumeClaimsArgs, GetKubernetesPersistentVolumeClaimsResult, GetKubernetesPersistentVolumeClaimsOutputArgs } from "./getKubernetesPersistentVolumeClaims";
+export const getKubernetesPersistentVolumeClaims: typeof import("./getKubernetesPersistentVolumeClaims").getKubernetesPersistentVolumeClaims = null as any;
+export const getKubernetesPersistentVolumeClaimsOutput: typeof import("./getKubernetesPersistentVolumeClaims").getKubernetesPersistentVolumeClaimsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPersistentVolumeClaims","getKubernetesPersistentVolumeClaimsOutput"], () => require("./getKubernetesPersistentVolumeClaims"));
 
 export { GetKubernetesPersistentVolumesArgs, GetKubernetesPersistentVolumesResult, GetKubernetesPersistentVolumesOutputArgs } from "./getKubernetesPersistentVolumes";
 export const getKubernetesPersistentVolumes: typeof import("./getKubernetesPersistentVolumes").getKubernetesPersistentVolumes = null as any;
@@ -455,30 +700,135 @@ export const getKubernetesReplicasets: typeof import("./getKubernetesReplicasets
 export const getKubernetesReplicasetsOutput: typeof import("./getKubernetesReplicasets").getKubernetesReplicasetsOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesReplicasets","getKubernetesReplicasetsOutput"], () => require("./getKubernetesReplicasets"));
 
+export { GetKubernetesResourceCountsArgs, GetKubernetesResourceCountsResult, GetKubernetesResourceCountsOutputArgs } from "./getKubernetesResourceCounts";
+export const getKubernetesResourceCounts: typeof import("./getKubernetesResourceCounts").getKubernetesResourceCounts = null as any;
+export const getKubernetesResourceCountsOutput: typeof import("./getKubernetesResourceCounts").getKubernetesResourceCountsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesResourceCounts","getKubernetesResourceCountsOutput"], () => require("./getKubernetesResourceCounts"));
+
 export { GetKubernetesResourceQuotasArgs, GetKubernetesResourceQuotasResult, GetKubernetesResourceQuotasOutputArgs } from "./getKubernetesResourceQuotas";
 export const getKubernetesResourceQuotas: typeof import("./getKubernetesResourceQuotas").getKubernetesResourceQuotas = null as any;
 export const getKubernetesResourceQuotasOutput: typeof import("./getKubernetesResourceQuotas").getKubernetesResourceQuotasOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesResourceQuotas","getKubernetesResourceQuotasOutput"], () => require("./getKubernetesResourceQuotas"));
+
+export { GetKubernetesServiceAccountArgs, GetKubernetesServiceAccountResult, GetKubernetesServiceAccountOutputArgs } from "./getKubernetesServiceAccount";
+export const getKubernetesServiceAccount: typeof import("./getKubernetesServiceAccount").getKubernetesServiceAccount = null as any;
+export const getKubernetesServiceAccountOutput: typeof import("./getKubernetesServiceAccount").getKubernetesServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesServiceAccount","getKubernetesServiceAccountOutput"], () => require("./getKubernetesServiceAccount"));
+
+export { GetKubernetesStorageClassArgs, GetKubernetesStorageClassResult, GetKubernetesStorageClassOutputArgs } from "./getKubernetesStorageClass";
+export const getKubernetesStorageClass: typeof import("./getKubernetesStorageClass").getKubernetesStorageClass = null as any;
+export const getKubernetesStorageClassOutput: typeof import("./getKubernetesStorageClass").getKubernetesStorageClassOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesStorageClass","getKubernetesStorageClassOutput"], () => require("./getKubernetesStorageClass"));
+
+export { GetKubernetesStorageClassesArgs, GetKubernetesStorageClassesResult, GetKubernetesStorageClassesOutputArgs } from "./getKubernetesStorageClasses";
+export const getKubernetesStorageClasses: typeof import("./getKubernetesStorageClasses").getKubernetesStorageClasses = null as any;
+export const getKubernetesStorageClassesOutput: typeof import("./getKubernetesStorageClasses").getKubernetesStorageClassesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesStorageClasses","getKubernetesStorageClassesOutput"], () => require("./getKubernetesStorageClasses"));
+
+export { GetKubernetesVolumeArgs, GetKubernetesVolumeResult, GetKubernetesVolumeOutputArgs } from "./getKubernetesVolume";
+export const getKubernetesVolume: typeof import("./getKubernetesVolume").getKubernetesVolume = null as any;
+export const getKubernetesVolumeOutput: typeof import("./getKubernetesVolume").getKubernetesVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesVolume","getKubernetesVolumeOutput"], () => require("./getKubernetesVolume"));
+
+export { GetKubernetesVolumesArgs, GetKubernetesVolumesResult, GetKubernetesVolumesOutputArgs } from "./getKubernetesVolumes";
+export const getKubernetesVolumes: typeof import("./getKubernetesVolumes").getKubernetesVolumes = null as any;
+export const getKubernetesVolumesOutput: typeof import("./getKubernetesVolumes").getKubernetesVolumesOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesVolumes","getKubernetesVolumesOutput"], () => require("./getKubernetesVolumes"));
+
+export { GetLdapAdminGroupsArgs, GetLdapAdminGroupsResult, GetLdapAdminGroupsOutputArgs } from "./getLdapAdminGroups";
+export const getLdapAdminGroups: typeof import("./getLdapAdminGroups").getLdapAdminGroups = null as any;
+export const getLdapAdminGroupsOutput: typeof import("./getLdapAdminGroups").getLdapAdminGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getLdapAdminGroups","getLdapAdminGroupsOutput"], () => require("./getLdapAdminGroups"));
 
 export { GetLdapCheckArgs, GetLdapCheckResult, GetLdapCheckOutputArgs } from "./getLdapCheck";
 export const getLdapCheck: typeof import("./getLdapCheck").getLdapCheck = null as any;
 export const getLdapCheckOutput: typeof import("./getLdapCheck").getLdapCheckOutput = null as any;
 utilities.lazyLoad(exports, ["getLdapCheck","getLdapCheckOutput"], () => require("./getLdapCheck"));
 
+export { GetLdapGroupsArgs, GetLdapGroupsResult, GetLdapGroupsOutputArgs } from "./getLdapGroups";
+export const getLdapGroups: typeof import("./getLdapGroups").getLdapGroups = null as any;
+export const getLdapGroupsOutput: typeof import("./getLdapGroups").getLdapGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getLdapGroups","getLdapGroupsOutput"], () => require("./getLdapGroups"));
+
+export { GetLdapLoginTestArgs, GetLdapLoginTestResult, GetLdapLoginTestOutputArgs } from "./getLdapLoginTest";
+export const getLdapLoginTest: typeof import("./getLdapLoginTest").getLdapLoginTest = null as any;
+export const getLdapLoginTestOutput: typeof import("./getLdapLoginTest").getLdapLoginTestOutput = null as any;
+utilities.lazyLoad(exports, ["getLdapLoginTest","getLdapLoginTestOutput"], () => require("./getLdapLoginTest"));
+
+export { GetLdapUsersArgs, GetLdapUsersResult, GetLdapUsersOutputArgs } from "./getLdapUsers";
+export const getLdapUsers: typeof import("./getLdapUsers").getLdapUsers = null as any;
+export const getLdapUsersOutput: typeof import("./getLdapUsers").getLdapUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getLdapUsers","getLdapUsersOutput"], () => require("./getLdapUsers"));
+
+export { GetLicensesInfoArgs, GetLicensesInfoResult, GetLicensesInfoOutputArgs } from "./getLicensesInfo";
+export const getLicensesInfo: typeof import("./getLicensesInfo").getLicensesInfo = null as any;
+export const getLicensesInfoOutput: typeof import("./getLicensesInfo").getLicensesInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getLicensesInfo","getLicensesInfoOutput"], () => require("./getLicensesInfo"));
+
 export { GetMotdArgs, GetMotdResult, GetMotdOutputArgs } from "./getMotd";
 export const getMotd: typeof import("./getMotd").getMotd = null as any;
 export const getMotdOutput: typeof import("./getMotd").getMotdOutput = null as any;
 utilities.lazyLoad(exports, ["getMotd","getMotdOutput"], () => require("./getMotd"));
+
+export { GetOmniMachineArgs, GetOmniMachineResult, GetOmniMachineOutputArgs } from "./getOmniMachine";
+export const getOmniMachine: typeof import("./getOmniMachine").getOmniMachine = null as any;
+export const getOmniMachineOutput: typeof import("./getOmniMachine").getOmniMachineOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniMachine","getOmniMachineOutput"], () => require("./getOmniMachine"));
+
+export { GetOmniMachineLogsArgs, GetOmniMachineLogsResult, GetOmniMachineLogsOutputArgs } from "./getOmniMachineLogs";
+export const getOmniMachineLogs: typeof import("./getOmniMachineLogs").getOmniMachineLogs = null as any;
+export const getOmniMachineLogsOutput: typeof import("./getOmniMachineLogs").getOmniMachineLogsOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniMachineLogs","getOmniMachineLogsOutput"], () => require("./getOmniMachineLogs"));
+
+export { GetOmniMachinesArgs, GetOmniMachinesResult, GetOmniMachinesOutputArgs } from "./getOmniMachines";
+export const getOmniMachines: typeof import("./getOmniMachines").getOmniMachines = null as any;
+export const getOmniMachinesOutput: typeof import("./getOmniMachines").getOmniMachinesOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniMachines","getOmniMachinesOutput"], () => require("./getOmniMachines"));
+
+export { GetOmniServiceAccountArgs, GetOmniServiceAccountResult, GetOmniServiceAccountOutputArgs } from "./getOmniServiceAccount";
+export const getOmniServiceAccount: typeof import("./getOmniServiceAccount").getOmniServiceAccount = null as any;
+export const getOmniServiceAccountOutput: typeof import("./getOmniServiceAccount").getOmniServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniServiceAccount","getOmniServiceAccountOutput"], () => require("./getOmniServiceAccount"));
+
+export { GetOmniTalosVersionsArgs, GetOmniTalosVersionsResult, GetOmniTalosVersionsOutputArgs } from "./getOmniTalosVersions";
+export const getOmniTalosVersions: typeof import("./getOmniTalosVersions").getOmniTalosVersions = null as any;
+export const getOmniTalosVersionsOutput: typeof import("./getOmniTalosVersions").getOmniTalosVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniTalosVersions","getOmniTalosVersionsOutput"], () => require("./getOmniTalosVersions"));
+
+export { GetOmniUpgradeStatusArgs, GetOmniUpgradeStatusResult, GetOmniUpgradeStatusOutputArgs } from "./getOmniUpgradeStatus";
+export const getOmniUpgradeStatus: typeof import("./getOmniUpgradeStatus").getOmniUpgradeStatus = null as any;
+export const getOmniUpgradeStatusOutput: typeof import("./getOmniUpgradeStatus").getOmniUpgradeStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getOmniUpgradeStatus","getOmniUpgradeStatusOutput"], () => require("./getOmniUpgradeStatus"));
 
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
 
+export { GetPolicyConflictsArgs, GetPolicyConflictsResult, GetPolicyConflictsOutputArgs } from "./getPolicyConflicts";
+export const getPolicyConflicts: typeof import("./getPolicyConflicts").getPolicyConflicts = null as any;
+export const getPolicyConflictsOutput: typeof import("./getPolicyConflicts").getPolicyConflictsOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyConflicts","getPolicyConflictsOutput"], () => require("./getPolicyConflicts"));
+
+export { GetPolicyMetadataArgs, GetPolicyMetadataResult, GetPolicyMetadataOutputArgs } from "./getPolicyMetadata";
+export const getPolicyMetadata: typeof import("./getPolicyMetadata").getPolicyMetadata = null as any;
+export const getPolicyMetadataOutput: typeof import("./getPolicyMetadata").getPolicyMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyMetadata","getPolicyMetadataOutput"], () => require("./getPolicyMetadata"));
+
+export { GetPolicyObservabilityTestArgs, GetPolicyObservabilityTestResult, GetPolicyObservabilityTestOutputArgs } from "./getPolicyObservabilityTest";
+export const getPolicyObservabilityTest: typeof import("./getPolicyObservabilityTest").getPolicyObservabilityTest = null as any;
+export const getPolicyObservabilityTestOutput: typeof import("./getPolicyObservabilityTest").getPolicyObservabilityTestOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyObservabilityTest","getPolicyObservabilityTestOutput"], () => require("./getPolicyObservabilityTest"));
+
 export { GetPolicyTemplateArgs, GetPolicyTemplateResult, GetPolicyTemplateOutputArgs } from "./getPolicyTemplate";
 export const getPolicyTemplate: typeof import("./getPolicyTemplate").getPolicyTemplate = null as any;
 export const getPolicyTemplateOutput: typeof import("./getPolicyTemplate").getPolicyTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyTemplate","getPolicyTemplateOutput"], () => require("./getPolicyTemplate"));
+
+export { GetRecommendationsArgs, GetRecommendationsResult, GetRecommendationsOutputArgs } from "./getRecommendations";
+export const getRecommendations: typeof import("./getRecommendations").getRecommendations = null as any;
+export const getRecommendationsOutput: typeof import("./getRecommendations").getRecommendationsOutput = null as any;
+utilities.lazyLoad(exports, ["getRecommendations","getRecommendationsOutput"], () => require("./getRecommendations"));
 
 export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
@@ -514,6 +864,11 @@ export { GetStackArgs, GetStackResult, GetStackOutputArgs } from "./getStack";
 export const getStack: typeof import("./getStack").getStack = null as any;
 export const getStackOutput: typeof import("./getStack").getStackOutput = null as any;
 utilities.lazyLoad(exports, ["getStack","getStackOutput"], () => require("./getStack"));
+
+export { GetStackConversionArgs, GetStackConversionResult, GetStackConversionOutputArgs } from "./getStackConversion";
+export const getStackConversion: typeof import("./getStackConversion").getStackConversion = null as any;
+export const getStackConversionOutput: typeof import("./getStackConversion").getStackConversionOutput = null as any;
+utilities.lazyLoad(exports, ["getStackConversion","getStackConversionOutput"], () => require("./getStackConversion"));
 
 export { GetSystemArgs, GetSystemResult, GetSystemOutputArgs } from "./getSystem";
 export const getSystem: typeof import("./getSystem").getSystem = null as any;
@@ -555,6 +910,11 @@ export const getUserActivity: typeof import("./getUserActivity").getUserActivity
 export const getUserActivityOutput: typeof import("./getUserActivity").getUserActivityOutput = null as any;
 utilities.lazyLoad(exports, ["getUserActivity","getUserActivityOutput"], () => require("./getUserActivity"));
 
+export { GetUserNamespacesArgs, GetUserNamespacesResult, GetUserNamespacesOutputArgs } from "./getUserNamespaces";
+export const getUserNamespaces: typeof import("./getUserNamespaces").getUserNamespaces = null as any;
+export const getUserNamespacesOutput: typeof import("./getUserNamespaces").getUserNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getUserNamespaces","getUserNamespacesOutput"], () => require("./getUserNamespaces"));
+
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
@@ -564,6 +924,11 @@ export { GitopsSourceArgs, GitopsSourceState } from "./gitopsSource";
 export type GitopsSource = import("./gitopsSource").GitopsSource;
 export const GitopsSource: typeof import("./gitopsSource").GitopsSource = null as any;
 utilities.lazyLoad(exports, ["GitopsSource"], () => require("./gitopsSource"));
+
+export { GitopsWorkflowArgs, GitopsWorkflowState } from "./gitopsWorkflow";
+export type GitopsWorkflow = import("./gitopsWorkflow").GitopsWorkflow;
+export const GitopsWorkflow: typeof import("./gitopsWorkflow").GitopsWorkflow = null as any;
+utilities.lazyLoad(exports, ["GitopsWorkflow"], () => require("./gitopsWorkflow"));
 
 export { HelmRollbackArgs, HelmRollbackState } from "./helmRollback";
 export type HelmRollback = import("./helmRollback").HelmRollback;
@@ -579,6 +944,11 @@ export { KubernetesApplicationArgs, KubernetesApplicationState } from "./kuberne
 export type KubernetesApplication = import("./kubernetesApplication").KubernetesApplication;
 export const KubernetesApplication: typeof import("./kubernetesApplication").KubernetesApplication = null as any;
 utilities.lazyLoad(exports, ["KubernetesApplication"], () => require("./kubernetesApplication"));
+
+export { KubernetesClusterUpgradeArgs, KubernetesClusterUpgradeState } from "./kubernetesClusterUpgrade";
+export type KubernetesClusterUpgrade = import("./kubernetesClusterUpgrade").KubernetesClusterUpgrade;
+export const KubernetesClusterUpgrade: typeof import("./kubernetesClusterUpgrade").KubernetesClusterUpgrade = null as any;
+utilities.lazyLoad(exports, ["KubernetesClusterUpgrade"], () => require("./kubernetesClusterUpgrade"));
 
 export { KubernetesClusterroleArgs, KubernetesClusterroleState } from "./kubernetesClusterrole";
 export type KubernetesClusterrole = import("./kubernetesClusterrole").KubernetesClusterrole;
@@ -665,6 +1035,11 @@ export type KubernetesPersistentVolume = import("./kubernetesPersistentVolume").
 export const KubernetesPersistentVolume: typeof import("./kubernetesPersistentVolume").KubernetesPersistentVolume = null as any;
 utilities.lazyLoad(exports, ["KubernetesPersistentVolume"], () => require("./kubernetesPersistentVolume"));
 
+export { KubernetesPodSecurityRuleArgs, KubernetesPodSecurityRuleState } from "./kubernetesPodSecurityRule";
+export type KubernetesPodSecurityRule = import("./kubernetesPodSecurityRule").KubernetesPodSecurityRule;
+export const KubernetesPodSecurityRule: typeof import("./kubernetesPodSecurityRule").KubernetesPodSecurityRule = null as any;
+utilities.lazyLoad(exports, ["KubernetesPodSecurityRule"], () => require("./kubernetesPodSecurityRule"));
+
 export { KubernetesRoleArgs, KubernetesRoleState } from "./kubernetesRole";
 export type KubernetesRole = import("./kubernetesRole").KubernetesRole;
 export const KubernetesRole: typeof import("./kubernetesRole").KubernetesRole = null as any;
@@ -709,6 +1084,16 @@ export { LicensesArgs, LicensesState } from "./licenses";
 export type Licenses = import("./licenses").Licenses;
 export const Licenses: typeof import("./licenses").Licenses = null as any;
 utilities.lazyLoad(exports, ["Licenses"], () => require("./licenses"));
+
+export { OmniClusterArgs, OmniClusterState } from "./omniCluster";
+export type OmniCluster = import("./omniCluster").OmniCluster;
+export const OmniCluster: typeof import("./omniCluster").OmniCluster = null as any;
+utilities.lazyLoad(exports, ["OmniCluster"], () => require("./omniCluster"));
+
+export { OmniNodeRebootArgs, OmniNodeRebootState } from "./omniNodeReboot";
+export type OmniNodeReboot = import("./omniNodeReboot").OmniNodeReboot;
+export const OmniNodeReboot: typeof import("./omniNodeReboot").OmniNodeReboot = null as any;
+utilities.lazyLoad(exports, ["OmniNodeReboot"], () => require("./omniNodeReboot"));
 
 export { OpenAmtArgs, OpenAmtState } from "./openAmt";
 export type OpenAmt = import("./openAmt").OpenAmt;
@@ -768,6 +1153,16 @@ export type Settings = import("./settings").Settings;
 export const Settings: typeof import("./settings").Settings = null as any;
 utilities.lazyLoad(exports, ["Settings"], () => require("./settings"));
 
+export { SettingsAdditionalFunctionalityArgs, SettingsAdditionalFunctionalityState } from "./settingsAdditionalFunctionality";
+export type SettingsAdditionalFunctionality = import("./settingsAdditionalFunctionality").SettingsAdditionalFunctionality;
+export const SettingsAdditionalFunctionality: typeof import("./settingsAdditionalFunctionality").SettingsAdditionalFunctionality = null as any;
+utilities.lazyLoad(exports, ["SettingsAdditionalFunctionality"], () => require("./settingsAdditionalFunctionality"));
+
+export { SettingsDefaultRegistryArgs, SettingsDefaultRegistryState } from "./settingsDefaultRegistry";
+export type SettingsDefaultRegistry = import("./settingsDefaultRegistry").SettingsDefaultRegistry;
+export const SettingsDefaultRegistry: typeof import("./settingsDefaultRegistry").SettingsDefaultRegistry = null as any;
+utilities.lazyLoad(exports, ["SettingsDefaultRegistry"], () => require("./settingsDefaultRegistry"));
+
 export { SettingsExperimentalArgs, SettingsExperimentalState } from "./settingsExperimental";
 export type SettingsExperimental = import("./settingsExperimental").SettingsExperimental;
 export const SettingsExperimental: typeof import("./settingsExperimental").SettingsExperimental = null as any;
@@ -787,6 +1182,11 @@ export { SslArgs, SslState } from "./ssl";
 export type Ssl = import("./ssl").Ssl;
 export const Ssl: typeof import("./ssl").Ssl = null as any;
 utilities.lazyLoad(exports, ["Ssl"], () => require("./ssl"));
+
+export { SsrfAllowlistArgs, SsrfAllowlistState } from "./ssrfAllowlist";
+export type SsrfAllowlist = import("./ssrfAllowlist").SsrfAllowlist;
+export const SsrfAllowlist: typeof import("./ssrfAllowlist").SsrfAllowlist = null as any;
+utilities.lazyLoad(exports, ["SsrfAllowlist"], () => require("./ssrfAllowlist"));
 
 export { StackArgs, StackState } from "./stack";
 export type Stack = import("./stack").Stack;
@@ -858,6 +1258,11 @@ export type UserGitCredential = import("./userGitCredential").UserGitCredential;
 export const UserGitCredential: typeof import("./userGitCredential").UserGitCredential = null as any;
 utilities.lazyLoad(exports, ["UserGitCredential"], () => require("./userGitCredential"));
 
+export { UserMembershipsSyncArgs, UserMembershipsSyncState } from "./userMembershipsSync";
+export type UserMembershipsSync = import("./userMembershipsSync").UserMembershipsSync;
+export const UserMembershipsSync: typeof import("./userMembershipsSync").UserMembershipsSync = null as any;
+utilities.lazyLoad(exports, ["UserMembershipsSync"], () => require("./userMembershipsSync"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -882,8 +1287,20 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "portainer:index/addon:Addon":
+                return new Addon(name, <any>undefined, { urn })
+            case "portainer:index/addonAccess:AddonAccess":
+                return new AddonAccess(name, <any>undefined, { urn })
+            case "portainer:index/addonConfig:AddonConfig":
+                return new AddonConfig(name, <any>undefined, { urn })
+            case "portainer:index/addonRepair:AddonRepair":
+                return new AddonRepair(name, <any>undefined, { urn })
             case "portainer:index/alertingRule:AlertingRule":
                 return new AlertingRule(name, <any>undefined, { urn })
+            case "portainer:index/alertingRuleGroups:AlertingRuleGroups":
+                return new AlertingRuleGroups(name, <any>undefined, { urn })
+            case "portainer:index/alertingRuleTiers:AlertingRuleTiers":
+                return new AlertingRuleTiers(name, <any>undefined, { urn })
             case "portainer:index/alertingSettings:AlertingSettings":
                 return new AlertingSettings(name, <any>undefined, { urn })
             case "portainer:index/alertingSilence:AlertingSilence":
@@ -892,8 +1309,20 @@ const _module = {
                 return new Auth(name, <any>undefined, { urn })
             case "portainer:index/backup:Backup":
                 return new Backup(name, <any>undefined, { urn })
+            case "portainer:index/backupAzureExecute:BackupAzureExecute":
+                return new BackupAzureExecute(name, <any>undefined, { urn })
+            case "portainer:index/backupAzureRestore:BackupAzureRestore":
+                return new BackupAzureRestore(name, <any>undefined, { urn })
+            case "portainer:index/backupAzureSettings:BackupAzureSettings":
+                return new BackupAzureSettings(name, <any>undefined, { urn })
+            case "portainer:index/backupLocalRun:BackupLocalRun":
+                return new BackupLocalRun(name, <any>undefined, { urn })
+            case "portainer:index/backupLocalSettings:BackupLocalSettings":
+                return new BackupLocalSettings(name, <any>undefined, { urn })
             case "portainer:index/backupS3:BackupS3":
                 return new BackupS3(name, <any>undefined, { urn })
+            case "portainer:index/backupS3Restore:BackupS3Restore":
+                return new BackupS3Restore(name, <any>undefined, { urn })
             case "portainer:index/chat:Chat":
                 return new Chat(name, <any>undefined, { urn })
             case "portainer:index/check:Check":
@@ -954,18 +1383,24 @@ const _module = {
                 return new EndpointSettings(name, <any>undefined, { urn })
             case "portainer:index/endpointSnapshot:EndpointSnapshot":
                 return new EndpointSnapshot(name, <any>undefined, { urn })
+            case "portainer:index/endpointTrust:EndpointTrust":
+                return new EndpointTrust(name, <any>undefined, { urn })
             case "portainer:index/endpointsEdgeGenerateKey:EndpointsEdgeGenerateKey":
                 return new EndpointsEdgeGenerateKey(name, <any>undefined, { urn })
             case "portainer:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "portainer:index/gitopsSource:GitopsSource":
                 return new GitopsSource(name, <any>undefined, { urn })
+            case "portainer:index/gitopsWorkflow:GitopsWorkflow":
+                return new GitopsWorkflow(name, <any>undefined, { urn })
             case "portainer:index/helmRollback:HelmRollback":
                 return new HelmRollback(name, <any>undefined, { urn })
             case "portainer:index/helmUserRepository:HelmUserRepository":
                 return new HelmUserRepository(name, <any>undefined, { urn })
             case "portainer:index/kubernetesApplication:KubernetesApplication":
                 return new KubernetesApplication(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesClusterUpgrade:KubernetesClusterUpgrade":
+                return new KubernetesClusterUpgrade(name, <any>undefined, { urn })
             case "portainer:index/kubernetesClusterrole:KubernetesClusterrole":
                 return new KubernetesClusterrole(name, <any>undefined, { urn })
             case "portainer:index/kubernetesClusterrolebinding:KubernetesClusterrolebinding":
@@ -1000,6 +1435,8 @@ const _module = {
                 return new KubernetesNodeDrain(name, <any>undefined, { urn })
             case "portainer:index/kubernetesPersistentVolume:KubernetesPersistentVolume":
                 return new KubernetesPersistentVolume(name, <any>undefined, { urn })
+            case "portainer:index/kubernetesPodSecurityRule:KubernetesPodSecurityRule":
+                return new KubernetesPodSecurityRule(name, <any>undefined, { urn })
             case "portainer:index/kubernetesRole:KubernetesRole":
                 return new KubernetesRole(name, <any>undefined, { urn })
             case "portainer:index/kubernetesRolebinding:KubernetesRolebinding":
@@ -1018,6 +1455,10 @@ const _module = {
                 return new LdapSettings(name, <any>undefined, { urn })
             case "portainer:index/licenses:Licenses":
                 return new Licenses(name, <any>undefined, { urn })
+            case "portainer:index/omniCluster:OmniCluster":
+                return new OmniCluster(name, <any>undefined, { urn })
+            case "portainer:index/omniNodeReboot:OmniNodeReboot":
+                return new OmniNodeReboot(name, <any>undefined, { urn })
             case "portainer:index/openAmt:OpenAmt":
                 return new OpenAmt(name, <any>undefined, { urn })
             case "portainer:index/openAmtActivate:OpenAmtActivate":
@@ -1040,6 +1481,10 @@ const _module = {
                 return new Restore(name, <any>undefined, { urn })
             case "portainer:index/settings:Settings":
                 return new Settings(name, <any>undefined, { urn })
+            case "portainer:index/settingsAdditionalFunctionality:SettingsAdditionalFunctionality":
+                return new SettingsAdditionalFunctionality(name, <any>undefined, { urn })
+            case "portainer:index/settingsDefaultRegistry:SettingsDefaultRegistry":
+                return new SettingsDefaultRegistry(name, <any>undefined, { urn })
             case "portainer:index/settingsExperimental:SettingsExperimental":
                 return new SettingsExperimental(name, <any>undefined, { urn })
             case "portainer:index/sharedGitCredential:SharedGitCredential":
@@ -1048,6 +1493,8 @@ const _module = {
                 return new Sshkeygen(name, <any>undefined, { urn })
             case "portainer:index/ssl:Ssl":
                 return new Ssl(name, <any>undefined, { urn })
+            case "portainer:index/ssrfAllowlist:SsrfAllowlist":
+                return new SsrfAllowlist(name, <any>undefined, { urn })
             case "portainer:index/stack:Stack":
                 return new Stack(name, <any>undefined, { urn })
             case "portainer:index/stackAssociate:StackAssociate":
@@ -1076,6 +1523,8 @@ const _module = {
                 return new UserApiKey(name, <any>undefined, { urn })
             case "portainer:index/userGitCredential:UserGitCredential":
                 return new UserGitCredential(name, <any>undefined, { urn })
+            case "portainer:index/userMembershipsSync:UserMembershipsSync":
+                return new UserMembershipsSync(name, <any>undefined, { urn })
             case "portainer:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             case "portainer:index/webhookExecute:WebhookExecute":
@@ -1085,12 +1534,24 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("portainer", "index/addon", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/addonAccess", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/addonConfig", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/addonRepair", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/alertingRule", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/alertingRuleGroups", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/alertingRuleTiers", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/alertingSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/alertingSilence", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/auth", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backup", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupAzureExecute", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupAzureRestore", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupAzureSettings", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupLocalRun", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupLocalSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/backupS3", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/backupS3Restore", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/chat", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/check", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/cloudCredentials", _module)
@@ -1121,12 +1582,15 @@ pulumi.runtime.registerResourceModule("portainer", "index/endpointRelations", _m
 pulumi.runtime.registerResourceModule("portainer", "index/endpointServiceUpdate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointSnapshot", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/endpointTrust", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/endpointsEdgeGenerateKey", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/environment", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/gitopsSource", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/gitopsWorkflow", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/helmRollback", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/helmUserRepository", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesApplication", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterUpgrade", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterrole", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesClusterrolebinding", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesConfigmaps", _module)
@@ -1144,6 +1608,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespaceIng
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNamespaceSystem", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesNodeDrain", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesPersistentVolume", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/kubernetesPodSecurityRule", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesRole", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesRolebinding", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesSecret", _module)
@@ -1153,6 +1618,8 @@ pulumi.runtime.registerResourceModule("portainer", "index/kubernetesStorage", _m
 pulumi.runtime.registerResourceModule("portainer", "index/kubernetesVolume", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/ldapSettings", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/licenses", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/omniCluster", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/omniNodeReboot", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmt", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtActivate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/openAmtDevicesAction", _module)
@@ -1164,10 +1631,13 @@ pulumi.runtime.registerResourceModule("portainer", "index/registryConfigure", _m
 pulumi.runtime.registerResourceModule("portainer", "index/resourceControl", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/restore", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settings", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/settingsAdditionalFunctionality", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/settingsDefaultRegistry", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/settingsExperimental", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/sharedGitCredential", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/sshkeygen", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/ssl", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/ssrfAllowlist", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stack", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackAssociate", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/stackDeleteByName", _module)
@@ -1182,6 +1652,7 @@ pulumi.runtime.registerResourceModule("portainer", "index/user", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userAdmin", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userApiKey", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/userGitCredential", _module)
+pulumi.runtime.registerResourceModule("portainer", "index/userMembershipsSync", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhook", _module)
 pulumi.runtime.registerResourceModule("portainer", "index/webhookExecute", _module)
 pulumi.runtime.registerResourcePackage("portainer", {

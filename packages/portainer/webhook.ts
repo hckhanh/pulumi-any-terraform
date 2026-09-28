@@ -37,11 +37,15 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly endpointId: pulumi.Output<number>;
     /**
+     * Whether changing <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> or <span pulumi-lang-nodejs="`webhookType`" pulumi-lang-dotnet="`WebhookType`" pulumi-lang-go="`webhookType`" pulumi-lang-python="`webhook_type`" pulumi-lang-yaml="`webhookType`" pulumi-lang-java="`webhookType`" pulumi-lang-hcl="`webhook_type`">`webhookType`</span> reassigns the existing webhook instead of replacing it, keeping its token and every URL already handed out. **Business Edition only**; leave it off on CE, which has no reassign endpoint. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    declare public readonly reassignOnChange: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the Portainer registry associated with this webhook. Used when the webhook triggers actions on images from that registry.
      */
     declare public readonly registryId: pulumi.Output<number | undefined>;
     /**
-     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value forces resource recreation.
+     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -50,7 +54,7 @@ export class Webhook extends pulumi.CustomResource {
     declare public /*out*/ readonly token: pulumi.Output<string>;
     declare public readonly webhookId: pulumi.Output<string>;
     /**
-     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value forces resource recreation.
+     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     declare public readonly webhookType: pulumi.Output<number>;
 
@@ -68,6 +72,7 @@ export class Webhook extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
             resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["reassignOnChange"] = state?.reassignOnChange;
             resourceInputs["registryId"] = state?.registryId;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["token"] = state?.token;
@@ -85,6 +90,7 @@ export class Webhook extends pulumi.CustomResource {
                 throw new Error("Missing required property 'webhookType'");
             }
             resourceInputs["endpointId"] = args?.endpointId;
+            resourceInputs["reassignOnChange"] = args?.reassignOnChange;
             resourceInputs["registryId"] = args?.registryId;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["webhookId"] = args?.webhookId;
@@ -107,11 +113,15 @@ export interface WebhookState {
      */
     endpointId?: pulumi.Input<number | undefined>;
     /**
+     * Whether changing <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> or <span pulumi-lang-nodejs="`webhookType`" pulumi-lang-dotnet="`WebhookType`" pulumi-lang-go="`webhookType`" pulumi-lang-python="`webhook_type`" pulumi-lang-yaml="`webhookType`" pulumi-lang-java="`webhookType`" pulumi-lang-hcl="`webhook_type`">`webhookType`</span> reassigns the existing webhook instead of replacing it, keeping its token and every URL already handed out. **Business Edition only**; leave it off on CE, which has no reassign endpoint. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    reassignOnChange?: pulumi.Input<boolean | undefined>;
+    /**
      * Identifier of the Portainer registry associated with this webhook. Used when the webhook triggers actions on images from that registry.
      */
     registryId?: pulumi.Input<number | undefined>;
     /**
-     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value forces resource recreation.
+     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     resourceId?: pulumi.Input<string | undefined>;
     /**
@@ -120,7 +130,7 @@ export interface WebhookState {
     token?: pulumi.Input<string | undefined>;
     webhookId?: pulumi.Input<string | undefined>;
     /**
-     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value forces resource recreation.
+     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     webhookType?: pulumi.Input<number | undefined>;
 }
@@ -134,16 +144,20 @@ export interface WebhookArgs {
      */
     endpointId: pulumi.Input<number>;
     /**
+     * Whether changing <span pulumi-lang-nodejs="`resourceId`" pulumi-lang-dotnet="`ResourceId`" pulumi-lang-go="`resourceId`" pulumi-lang-python="`resource_id`" pulumi-lang-yaml="`resourceId`" pulumi-lang-java="`resourceId`" pulumi-lang-hcl="`resource_id`">`resourceId`</span> or <span pulumi-lang-nodejs="`webhookType`" pulumi-lang-dotnet="`WebhookType`" pulumi-lang-go="`webhookType`" pulumi-lang-python="`webhook_type`" pulumi-lang-yaml="`webhookType`" pulumi-lang-java="`webhookType`" pulumi-lang-hcl="`webhook_type`">`webhookType`</span> reassigns the existing webhook instead of replacing it, keeping its token and every URL already handed out. **Business Edition only**; leave it off on CE, which has no reassign endpoint. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    reassignOnChange?: pulumi.Input<boolean | undefined>;
+    /**
      * Identifier of the Portainer registry associated with this webhook. Used when the webhook triggers actions on images from that registry.
      */
     registryId?: pulumi.Input<number | undefined>;
     /**
-     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value forces resource recreation.
+     * Identifier of the target resource (e.g. service ID) the webhook will act upon. Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     resourceId: pulumi.Input<string>;
     webhookId?: pulumi.Input<string | undefined>;
     /**
-     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value forces resource recreation.
+     * Type of webhook in Portainer (e.g. 1 = service webhook, 2 = container webhook). Changing this value replaces the webhook unless <span pulumi-lang-nodejs="`reassignOnChange`" pulumi-lang-dotnet="`ReassignOnChange`" pulumi-lang-go="`reassignOnChange`" pulumi-lang-python="`reassign_on_change`" pulumi-lang-yaml="`reassignOnChange`" pulumi-lang-java="`reassignOnChange`" pulumi-lang-hcl="`reassign_on_change`">`reassignOnChange`</span> is set.
      */
     webhookType: pulumi.Input<number>;
 }

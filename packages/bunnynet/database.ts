@@ -39,6 +39,10 @@ export class Database extends pulumi.CustomResource {
     declare public readonly regionsPrimaries: pulumi.Output<string[]>;
     declare public readonly regionsReplicas: pulumi.Output<string[]>;
     /**
+     * Options: `eu-west-1`, `us-east-1`
+     */
+    declare public readonly storageRegion: pulumi.Output<string>;
+    /**
      * The connection URL for the database.
      */
     declare public /*out*/ readonly url: pulumi.Output<string>;
@@ -59,6 +63,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["regionsPrimaries"] = state?.regionsPrimaries;
             resourceInputs["regionsReplicas"] = state?.regionsReplicas;
+            resourceInputs["storageRegion"] = state?.storageRegion;
             resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
@@ -68,6 +73,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["regionsPrimaries"] = args?.regionsPrimaries;
             resourceInputs["regionsReplicas"] = args?.regionsReplicas;
+            resourceInputs["storageRegion"] = args?.storageRegion;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -86,6 +92,10 @@ export interface DatabaseState {
     regionsPrimaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     regionsReplicas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Options: `eu-west-1`, `us-east-1`
+     */
+    storageRegion?: pulumi.Input<string | undefined>;
+    /**
      * The connection URL for the database.
      */
     url?: pulumi.Input<string | undefined>;
@@ -101,4 +111,8 @@ export interface DatabaseArgs {
     name?: pulumi.Input<string | undefined>;
     regionsPrimaries: pulumi.Input<pulumi.Input<string>[]>;
     regionsReplicas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Options: `eu-west-1`, `us-east-1`
+     */
+    storageRegion?: pulumi.Input<string | undefined>;
 }

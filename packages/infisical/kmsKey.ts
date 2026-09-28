@@ -49,6 +49,10 @@ export class KmsKey extends pulumi.CustomResource {
      */
     declare public readonly isDisabled: pulumi.Output<boolean>;
     /**
+     * Whether the raw key material can be exported. Defaults to true. Changing this value requires replacing the key.
+     */
+    declare public readonly isExportable: pulumi.Output<boolean>;
+    /**
      * The usage of the key. Options: encrypt-decrypt, sign-verify. Defaults to 'encrypt-decrypt'.
      */
     declare public readonly keyUsage: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class KmsKey extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["encryptionAlgorithm"] = state?.encryptionAlgorithm;
             resourceInputs["isDisabled"] = state?.isDisabled;
+            resourceInputs["isExportable"] = state?.isExportable;
             resourceInputs["keyUsage"] = state?.keyUsage;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -104,6 +109,7 @@ export class KmsKey extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["encryptionAlgorithm"] = args?.encryptionAlgorithm;
             resourceInputs["isDisabled"] = args?.isDisabled;
+            resourceInputs["isExportable"] = args?.isExportable;
             resourceInputs["keyUsage"] = args?.keyUsage;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -137,6 +143,10 @@ export interface KmsKeyState {
      * Whether the key is disabled. Defaults to false.
      */
     isDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the raw key material can be exported. Defaults to true. Changing this value requires replacing the key.
+     */
+    isExportable?: pulumi.Input<boolean | undefined>;
     /**
      * The usage of the key. Options: encrypt-decrypt, sign-verify. Defaults to 'encrypt-decrypt'.
      */
@@ -179,6 +189,10 @@ export interface KmsKeyArgs {
      * Whether the key is disabled. Defaults to false.
      */
     isDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the raw key material can be exported. Defaults to true. Changing this value requires replacing the key.
+     */
+    isExportable?: pulumi.Input<boolean | undefined>;
     /**
      * The usage of the key. Options: encrypt-decrypt, sign-verify. Defaults to 'encrypt-decrypt'.
      */

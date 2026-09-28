@@ -67,7 +67,7 @@ export interface StoreState {
     /**
      * The name of the store.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -77,5 +77,5 @@ export interface StoreArgs {
     /**
      * The name of the store.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

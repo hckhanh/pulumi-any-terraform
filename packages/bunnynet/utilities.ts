@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "bunnynet",
-		packageVersion: "0.18.2",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuMTguMiJ9fQ==",
+		packageVersion: "0.19.1",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuMTkuMSJ9fQ==",
 	});
 }

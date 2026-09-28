@@ -97,31 +97,31 @@ export interface ProviderArgs {
     /**
      * Audience for client credentials authentication. This can also be sourced from the `FGA_API_AUDIENCE` environment variable.
      */
-    apiAudience?: pulumi.Input<string>;
+    apiAudience?: pulumi.Input<string | undefined>;
     /**
      * Scopes for client credentials authentication. This can also be sourced from the `FGA_API_SCOPES` environment variable.
      */
-    apiScopes?: pulumi.Input<string>;
+    apiScopes?: pulumi.Input<string | undefined>;
     /**
      * Access token for authentication to the OpenFGA server. This can also be sourced from the `FGA_API_TOKEN` environment variable.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * The issuer URL or full token endpoint URL for client credentials authentication. If only the issuer URL is provided, the `oauth/token` path is used to retrieve an access token. This can also be sourced from the `FGA_API_TOKEN_ISSUER` environment variable.
      */
-    apiTokenIssuer?: pulumi.Input<string>;
+    apiTokenIssuer?: pulumi.Input<string | undefined>;
     /**
      * URL of the OpenFGA server. This can also be sourced from the `FGA_API_URL` environment variable.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Client ID for client credentials authentication. This can also be sourced from the `FGA_CLIENT_ID` environment variable.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Client secret for client credentials authentication. This can also be sourced from the `FGA_CLIENT_SECRET` environment variable.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

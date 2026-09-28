@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "portainer",
-		packageVersion: "1.35.0",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMS4zNS4wIn19",
+		packageVersion: "2.0.0",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL3BvcnRhaW5lci9wb3J0YWluZXIiLCJ2ZXJzaW9uIjoiMi4wLjAifX0=",
 	});
 }

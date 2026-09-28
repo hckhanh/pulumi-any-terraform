@@ -5,6 +5,58 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AddonAccessTeamAccess {
+    /**
+     * Identifier of the role the team is granted on the addon.
+     */
+    roleId: pulumi.Input<number>;
+    /**
+     * Identifier of the team granted access.
+     */
+    teamId: pulumi.Input<number>;
+}
+
+export interface AddonAccessUserAccess {
+    /**
+     * Identifier of the role the user is granted on the addon.
+     */
+    roleId: pulumi.Input<number>;
+    /**
+     * Identifier of the user granted access.
+     */
+    userId: pulumi.Input<number>;
+}
+
+export interface AddonConfigEntry {
+    /**
+     * Name of the configuration entry, for example `BASE_DOMAIN`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Whether Portainer should treat the value as a secret, which keeps it out of API responses and makes clients display it carefully.
+     */
+    sensitive?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value of the configuration entry.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface AlertingRuleTiersTier {
+    /**
+     * Whether this tier is evaluated.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Severity this tier raises: <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span>, <span pulumi-lang-nodejs="`warning`" pulumi-lang-dotnet="`Warning`" pulumi-lang-go="`warning`" pulumi-lang-python="`warning`" pulumi-lang-yaml="`warning`" pulumi-lang-java="`warning`" pulumi-lang-hcl="`warning`">`warning`</span> or <span pulumi-lang-nodejs="`info`" pulumi-lang-dotnet="`Info`" pulumi-lang-go="`info`" pulumi-lang-python="`info`" pulumi-lang-yaml="`info`" pulumi-lang-java="`info`" pulumi-lang-hcl="`info`">`info`</span>.
+     */
+    severity: pulumi.Input<string>;
+    /**
+     * Value the metric is compared against for this tier.
+     */
+    threshold: pulumi.Input<number>;
+}
+
 export interface AlertingSettingsNotificationChannel {
     /**
      * Notification channel identifier.
@@ -195,6 +247,37 @@ export interface DockerVolumeClusterVolumeSpecSecret {
     secret: pulumi.Input<string>;
 }
 
+export interface EdgeStackHelmConfig {
+    /**
+     * Whether a failed deployment is rolled back automatically, the equivalent of `helm --atomic`.
+     */
+    atomic?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the Helm chart within the repository.
+     */
+    chartName: pulumi.Input<string>;
+    /**
+     * URL of the Helm chart repository.
+     */
+    chartUrl: pulumi.Input<string>;
+    /**
+     * Version of the chart to deploy. Leave unset to deploy the latest published version - note that Portainer then picks the version, so a re-apply can move the stack.
+     */
+    chartVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace to deploy the chart into.
+     */
+    namespace?: pulumi.Input<string | undefined>;
+    /**
+     * Deadline for Helm operations, the equivalent of `helm --timeout` (for example <span pulumi-lang-nodejs="`5m0s`" pulumi-lang-dotnet="`5m0s`" pulumi-lang-go="`5m0s`" pulumi-lang-python="`5m0s`" pulumi-lang-yaml="`5m0s`" pulumi-lang-java="`5m0s`" pulumi-lang-hcl="`5m0s`">`5m0s`</span>).
+     */
+    timeout?: pulumi.Input<string | undefined>;
+    /**
+     * Helm values as an inline YAML string, the equivalent of a values file passed to `helm install`.
+     */
+    valuesInline?: pulumi.Input<string | undefined>;
+}
+
 export interface EdgeStackTimeouts {
     create?: pulumi.Input<string | undefined>;
     delete?: pulumi.Input<string | undefined>;
@@ -304,6 +387,242 @@ export interface EndpointSettingsSecuritySettings {
     enableHostManagement?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GetLdapAdminGroupsAdminGroupSearch {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: string;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: string;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: string;
+}
+
+export interface GetLdapAdminGroupsAdminGroupSearchArgs {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: pulumi.Input<string | undefined>;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: pulumi.Input<string>;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLdapGroupsGroupSearch {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: string;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: string;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: string;
+}
+
+export interface GetLdapGroupsGroupSearchArgs {
+    /**
+     * Attribute on a group entry listing its members.
+     */
+    groupAttribute?: pulumi.Input<string | undefined>;
+    /**
+     * Distinguished name the group search starts from.
+     */
+    groupBaseDn: pulumi.Input<string>;
+    /**
+     * LDAP filter narrowing the group search.
+     */
+    groupFilter?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLdapLoginTestSearch {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: string;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: string;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: string;
+}
+
+export interface GetLdapLoginTestSearchArgs {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: pulumi.Input<string>;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: pulumi.Input<string | undefined>;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLdapUsersSearch {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: string;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: string;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: string;
+}
+
+export interface GetLdapUsersSearchArgs {
+    /**
+     * Distinguished name the search starts from.
+     */
+    baseDn: pulumi.Input<string>;
+    /**
+     * LDAP filter narrowing the search, for example `(objectClass=person)`.
+     */
+    filter?: pulumi.Input<string | undefined>;
+    /**
+     * Attribute holding the login name, for example <span pulumi-lang-nodejs="`uid`" pulumi-lang-dotnet="`Uid`" pulumi-lang-go="`uid`" pulumi-lang-python="`uid`" pulumi-lang-yaml="`uid`" pulumi-lang-java="`uid`" pulumi-lang-hcl="`uid`">`uid`</span> or `sAMAccountName`.
+     */
+    userNameAttribute?: pulumi.Input<string | undefined>;
+}
+
+export interface GitopsWorkflowArtifact {
+    /**
+     * Identifier Portainer assigned to the artifact, which the update call needs.
+     */
+    artifactId?: pulumi.Input<number | undefined>;
+    /**
+     * Deployment options for the artifact.
+     */
+    config?: pulumi.Input<inputs.GitopsWorkflowArtifactConfig | undefined>;
+    /**
+     * Deployment type of the artifact, for example <span pulumi-lang-nodejs="`compose`" pulumi-lang-dotnet="`Compose`" pulumi-lang-go="`compose`" pulumi-lang-python="`compose`" pulumi-lang-yaml="`compose`" pulumi-lang-java="`compose`" pulumi-lang-hcl="`compose`">`compose`</span> or <span pulumi-lang-nodejs="`kubernetes`" pulumi-lang-dotnet="`Kubernetes`" pulumi-lang-go="`kubernetes`" pulumi-lang-python="`kubernetes`" pulumi-lang-yaml="`kubernetes`" pulumi-lang-java="`kubernetes`" pulumi-lang-hcl="`kubernetes`">`kubernetes`</span>.
+     */
+    deploymentType: pulumi.Input<string>;
+    /**
+     * Edge groups the artifact is deployed to.
+     */
+    edgeGroupIds: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Files in a GitOps source the artifact is built from. Repeatable.
+     */
+    files: pulumi.Input<pulumi.Input<inputs.GitopsWorkflowArtifactFile>[]>;
+    /**
+     * Name of the artifact. Portainer cannot rename an artifact, so changing it forces a new resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * What the artifact deploys as: <span pulumi-lang-nodejs="`stack`" pulumi-lang-dotnet="`Stack`" pulumi-lang-go="`stack`" pulumi-lang-python="`stack`" pulumi-lang-yaml="`stack`" pulumi-lang-java="`stack`" pulumi-lang-hcl="`stack`">`stack`</span> or `edgeStack`. Defaults to `edgeStack`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface GitopsWorkflowArtifactConfig {
+    /**
+     * Whether the agent always clones the git repository for relative paths.
+     */
+    alwaysCloneGitRepo?: pulumi.Input<boolean | undefined>;
+    /**
+     * Environment variables injected into the deployment.
+     */
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Path on the agent used for relative path volumes.
+     */
+    localFilesystemPath?: pulumi.Input<string | undefined>;
+    /**
+     * Staggered rollout settings.
+     */
+    parallel?: pulumi.Input<inputs.GitopsWorkflowArtifactConfigParallel | undefined>;
+    /**
+     * How per-device group configurations are matched: <span pulumi-lang-nodejs="`file`" pulumi-lang-dotnet="`File`" pulumi-lang-go="`file`" pulumi-lang-python="`file`" pulumi-lang-yaml="`file`" pulumi-lang-java="`file`" pulumi-lang-hcl="`file`">`file`</span> or <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`" pulumi-lang-hcl="`dir`">`dir`</span>.
+     */
+    perDeviceConfigsGroupMatchType?: pulumi.Input<string | undefined>;
+    /**
+     * How per-device configurations are matched: <span pulumi-lang-nodejs="`file`" pulumi-lang-dotnet="`File`" pulumi-lang-go="`file`" pulumi-lang-python="`file`" pulumi-lang-yaml="`file`" pulumi-lang-java="`file`" pulumi-lang-hcl="`file`">`file`</span> or <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`" pulumi-lang-hcl="`dir`">`dir`</span>.
+     */
+    perDeviceConfigsMatchType?: pulumi.Input<string | undefined>;
+    /**
+     * Path within the repository holding per-device configurations.
+     */
+    perDeviceConfigsPath?: pulumi.Input<string | undefined>;
+    /**
+     * Whether agents pull the images before deploying.
+     */
+    prePullImage?: pulumi.Input<boolean | undefined>;
+    /**
+     * Registries the deployment pulls images from.
+     */
+    registryIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * How long an agent keeps retrying a failed deployment, in seconds.
+     */
+    retryPeriod?: pulumi.Input<number | undefined>;
+    /**
+     * Whether to use the namespaces in the manifest rather than the default one.
+     */
+    useManifestNamespaces?: pulumi.Input<boolean | undefined>;
+}
+
+export interface GitopsWorkflowArtifactConfigParallel {
+    /**
+     * Devices updated at once. A value above zero turns parallel deployment on.
+     */
+    batchCount?: pulumi.Input<number | undefined>;
+    /**
+     * How much the batch grows each round, for an incremental rollout.
+     */
+    batchIncrementBy?: pulumi.Input<number | undefined>;
+    /**
+     * Pause between batches.
+     */
+    delay?: pulumi.Input<string | undefined>;
+    /**
+     * What happens when a batch fails.
+     */
+    failureAction?: pulumi.Input<string | undefined>;
+    /**
+     * How long a batch may take before it is given up on.
+     */
+    timeout?: pulumi.Input<string | undefined>;
+}
+
+export interface GitopsWorkflowArtifactFile {
+    /**
+     * Path of the file within the source, for example `portainer.yaml`.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * Git reference to read the file at, for example `refs/heads/main`.
+     */
+    ref: pulumi.Input<string>;
+    /**
+     * Identifier of the GitOps source the file comes from.
+     */
+    sourceId: pulumi.Input<number>;
+}
+
 export interface KubernetesApplicationTimeouts {
     create?: pulumi.Input<string | undefined>;
     delete?: pulumi.Input<string | undefined>;
@@ -403,6 +722,269 @@ export interface KubernetesNamespaceIngresscontrollersController {
     used: pulumi.Input<boolean>;
 }
 
+export interface KubernetesPodSecurityRuleAllowFlexVolumes {
+    /**
+     * FlexVolume drivers a pod may use.
+     */
+    allowedVolumes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleAllowProcMount {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The proc mount type to permit, for example `Default` or `Unmasked`.
+     */
+    procMountType?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleAppArmor {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * AppArmor profiles a pod may use.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleCapabilities {
+    /**
+     * Capabilities a container may add.
+     */
+    alloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Capabilities every container has to drop.
+     */
+    requiredDrops?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleForbiddenSysctls {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sysctls a pod may not set.
+     */
+    sysctls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleHostFilesystem {
+    /**
+     * Host paths a pod may mount. Repeatable.
+     */
+    allowedPaths?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleHostFilesystemAllowedPath>[] | undefined>;
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleHostFilesystemAllowedPath {
+    /**
+     * Path prefix that may be mounted.
+     */
+    pathPrefix: pulumi.Input<string>;
+    /**
+     * Whether the mount has to be read-only.
+     */
+    readonly?: pulumi.Input<boolean | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleHostPorts {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether a pod may use the host's network namespace.
+     */
+    hostNetwork?: pulumi.Input<boolean | undefined>;
+    /**
+     * Highest host port a pod may bind.
+     */
+    max?: pulumi.Input<number | undefined>;
+    /**
+     * Lowest host port a pod may bind.
+     */
+    min?: pulumi.Input<number | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleSecComp {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Seccomp profiles a pod may use.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleSelinux {
+    /**
+     * SELinux contexts a pod may run under. Repeatable.
+     */
+    allowedContexts?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleSelinuxAllowedContext>[] | undefined>;
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleSelinuxAllowedContext {
+    /**
+     * SELinux level.
+     */
+    level?: pulumi.Input<string | undefined>;
+    /**
+     * SELinux role.
+     */
+    role?: pulumi.Input<string | undefined>;
+    /**
+     * SELinux type.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
+     * SELinux user.
+     */
+    user?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsers {
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Strategy and ranges for the pod's filesystem groups.
+     */
+    fsGroups?: pulumi.Input<inputs.KubernetesPodSecurityRuleUsersFsGroups | undefined>;
+    /**
+     * Strategy and ranges for the group a container runs as.
+     */
+    runAsGroup?: pulumi.Input<inputs.KubernetesPodSecurityRuleUsersRunAsGroup | undefined>;
+    /**
+     * Strategy and ranges for the user a container runs as.
+     */
+    runAsUser?: pulumi.Input<inputs.KubernetesPodSecurityRuleUsersRunAsUser | undefined>;
+    /**
+     * Strategy and ranges for the pod's supplemental groups.
+     */
+    supplementalGroups?: pulumi.Input<inputs.KubernetesPodSecurityRuleUsersSupplementalGroups | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsersFsGroups {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleUsersFsGroupsIdRange>[] | undefined>;
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsersFsGroupsIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: pulumi.Input<number>;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsGroup {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleUsersRunAsGroupIdRange>[] | undefined>;
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsGroupIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: pulumi.Input<number>;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsUser {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleUsersRunAsUserIdRange>[] | undefined>;
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsersRunAsUserIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: pulumi.Input<number>;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface KubernetesPodSecurityRuleUsersSupplementalGroups {
+    /**
+     * Permitted identifier ranges. Repeatable.
+     */
+    idRanges?: pulumi.Input<pulumi.Input<inputs.KubernetesPodSecurityRuleUsersSupplementalGroupsIdRange>[] | undefined>;
+    /**
+     * Strategy, for example `MustRunAs` or `RunAsAny`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface KubernetesPodSecurityRuleUsersSupplementalGroupsIdRange {
+    /**
+     * Highest identifier in the range.
+     */
+    max: pulumi.Input<number>;
+    /**
+     * Lowest identifier in the range.
+     */
+    min: pulumi.Input<number>;
+}
+
+export interface KubernetesPodSecurityRuleVolumeTypes {
+    /**
+     * Volume types a pod may use, for example `configMap` or `emptyDir`.
+     */
+    allowedTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether this section is enforced.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
 export interface LdapSettingsAdminGroupSearchSetting {
     /**
      * LDAP attribute used to identify group membership for admin users (e.g. <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>).
@@ -469,6 +1051,229 @@ export interface LdapSettingsTlsConfig {
      * Skip TLS verification
      */
     tlsSkipVerify?: pulumi.Input<boolean | undefined>;
+}
+
+export interface OmniClusterClusterPatch {
+    /**
+     * Name annotation Omni shows for the patch.
+     */
+    annotationName?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: pulumi.Input<string | undefined>;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: pulumi.Input<string | undefined>;
+}
+
+export interface OmniClusterControlPlane {
+    /**
+     * Omni resource kind of the control plane. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Machines that make up the cluster's control plane.
+     */
+    machines?: pulumi.Input<pulumi.Input<inputs.OmniClusterControlPlaneMachine>[] | undefined>;
+}
+
+export interface OmniClusterControlPlaneMachine {
+    /**
+     * Hostname to configure on the machine.
+     */
+    hostname?: pulumi.Input<string | undefined>;
+    /**
+     * Block device Talos is installed onto, for example `/dev/sda`.
+     */
+    installDisk?: pulumi.Input<string | undefined>;
+    /**
+     * Network interfaces to configure on the machine.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<inputs.OmniClusterControlPlaneMachineInterface>[] | undefined>;
+    /**
+     * Omni resource kind of the machine. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the machine as Omni knows it.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * DNS servers to configure on the machine.
+     */
+    nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Talos machine configuration patches to apply.
+     */
+    patches?: pulumi.Input<pulumi.Input<inputs.OmniClusterControlPlaneMachinePatch>[] | undefined>;
+    /**
+     * Size of the ephemeral system volume in GiB. Omni turns this into a volume configuration patch.
+     */
+    systemDiskSize?: pulumi.Input<number | undefined>;
+    /**
+     * A user volume to carve out of the remaining disk space.
+     */
+    userDisk?: pulumi.Input<inputs.OmniClusterControlPlaneMachineUserDisk | undefined>;
+}
+
+export interface OmniClusterControlPlaneMachineInterface {
+    /**
+     * Static addresses in CIDR notation, for example `10.0.0.10/24`.
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the interface takes its address from DHCP. Leave <span pulumi-lang-nodejs="`addresses`" pulumi-lang-dotnet="`Addresses`" pulumi-lang-go="`addresses`" pulumi-lang-python="`addresses`" pulumi-lang-yaml="`addresses`" pulumi-lang-java="`addresses`" pulumi-lang-hcl="`addresses`">`addresses`</span> unset when it does.
+     */
+    dhcp?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the interface, for example <span pulumi-lang-nodejs="`eth0`" pulumi-lang-dotnet="`Eth0`" pulumi-lang-go="`eth0`" pulumi-lang-python="`eth0`" pulumi-lang-yaml="`eth0`" pulumi-lang-java="`eth0`" pulumi-lang-hcl="`eth0`">`eth0`</span>.
+     */
+    interface: pulumi.Input<string>;
+    /**
+     * Static routes to add through the interface.
+     */
+    routes?: pulumi.Input<pulumi.Input<inputs.OmniClusterControlPlaneMachineInterfaceRoute>[] | undefined>;
+}
+
+export interface OmniClusterControlPlaneMachineInterfaceRoute {
+    /**
+     * Gateway the route goes through.
+     */
+    gateway: pulumi.Input<string>;
+    /**
+     * Destination network in CIDR notation. Use `0.0.0.0/0` for a default route.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface OmniClusterControlPlaneMachinePatch {
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: pulumi.Input<string | undefined>;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: pulumi.Input<string | undefined>;
+}
+
+export interface OmniClusterControlPlaneMachineUserDisk {
+    /**
+     * Size of the volume in GiB. Zero means take all the space that is left.
+     */
+    size?: pulumi.Input<number | undefined>;
+    /**
+     * Name of the volume.
+     */
+    volumeName: pulumi.Input<string>;
+}
+
+export interface OmniClusterWorker {
+    /**
+     * Omni resource kind of the worker pool. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Machines that make up this worker pool.
+     */
+    machines?: pulumi.Input<pulumi.Input<inputs.OmniClusterWorkerMachine>[] | undefined>;
+    /**
+     * Name of the worker pool.
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface OmniClusterWorkerMachine {
+    /**
+     * Hostname to configure on the machine.
+     */
+    hostname?: pulumi.Input<string | undefined>;
+    /**
+     * Block device Talos is installed onto, for example `/dev/sda`.
+     */
+    installDisk?: pulumi.Input<string | undefined>;
+    /**
+     * Network interfaces to configure on the machine.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<inputs.OmniClusterWorkerMachineInterface>[] | undefined>;
+    /**
+     * Omni resource kind of the machine. Leave unset unless Omni asks for a specific one.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the machine as Omni knows it.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * DNS servers to configure on the machine.
+     */
+    nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Talos machine configuration patches to apply.
+     */
+    patches?: pulumi.Input<pulumi.Input<inputs.OmniClusterWorkerMachinePatch>[] | undefined>;
+    /**
+     * Size of the ephemeral system volume in GiB. Omni turns this into a volume configuration patch.
+     */
+    systemDiskSize?: pulumi.Input<number | undefined>;
+    /**
+     * A user volume to carve out of the remaining disk space.
+     */
+    userDisk?: pulumi.Input<inputs.OmniClusterWorkerMachineUserDisk | undefined>;
+}
+
+export interface OmniClusterWorkerMachineInterface {
+    /**
+     * Static addresses in CIDR notation, for example `10.0.0.10/24`.
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the interface takes its address from DHCP. Leave <span pulumi-lang-nodejs="`addresses`" pulumi-lang-dotnet="`Addresses`" pulumi-lang-go="`addresses`" pulumi-lang-python="`addresses`" pulumi-lang-yaml="`addresses`" pulumi-lang-java="`addresses`" pulumi-lang-hcl="`addresses`">`addresses`</span> unset when it does.
+     */
+    dhcp?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the interface, for example <span pulumi-lang-nodejs="`eth0`" pulumi-lang-dotnet="`Eth0`" pulumi-lang-go="`eth0`" pulumi-lang-python="`eth0`" pulumi-lang-yaml="`eth0`" pulumi-lang-java="`eth0`" pulumi-lang-hcl="`eth0`">`eth0`</span>.
+     */
+    interface: pulumi.Input<string>;
+    /**
+     * Static routes to add through the interface.
+     */
+    routes?: pulumi.Input<pulumi.Input<inputs.OmniClusterWorkerMachineInterfaceRoute>[] | undefined>;
+}
+
+export interface OmniClusterWorkerMachineInterfaceRoute {
+    /**
+     * Gateway the route goes through.
+     */
+    gateway: pulumi.Input<string>;
+    /**
+     * Destination network in CIDR notation. Use `0.0.0.0/0` for a default route.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface OmniClusterWorkerMachinePatch {
+    /**
+     * Identifier Omni stores the patch under, instead of the generated one.
+     */
+    idOverride?: pulumi.Input<string | undefined>;
+    /**
+     * Patch body as a JSON object. Use `jsonencode({...})`.
+     */
+    inline?: pulumi.Input<string | undefined>;
+}
+
+export interface OmniClusterWorkerMachineUserDisk {
+    /**
+     * Size of the volume in GiB. Zero means take all the space that is left.
+     */
+    size?: pulumi.Input<number | undefined>;
+    /**
+     * Name of the volume.
+     */
+    volumeName: pulumi.Input<string>;
 }
 
 export interface SettingsBlackListedLabel {

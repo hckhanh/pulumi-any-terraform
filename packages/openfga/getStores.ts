@@ -16,10 +16,6 @@ export function getStores(opts?: pulumi.InvokeOptions): Promise<GetStoresResult>
  * A collection of values returned by getStores.
  */
 export interface GetStoresResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly stores: outputs.GetStoresStore[];
 }
 export function getStoresOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStoresResult> {

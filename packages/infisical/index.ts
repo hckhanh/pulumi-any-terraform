@@ -255,6 +255,16 @@ export type ExternalKmsAws = import("./externalKmsAws").ExternalKmsAws;
 export const ExternalKmsAws: typeof import("./externalKmsAws").ExternalKmsAws = null as any;
 utilities.lazyLoad(exports, ["ExternalKmsAws"], () => require("./externalKmsAws"));
 
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GatewayEnrollmentTokenArgs, GatewayEnrollmentTokenState } from "./gatewayEnrollmentToken";
+export type GatewayEnrollmentToken = import("./gatewayEnrollmentToken").GatewayEnrollmentToken;
+export const GatewayEnrollmentToken: typeof import("./gatewayEnrollmentToken").GatewayEnrollmentToken = null as any;
+utilities.lazyLoad(exports, ["GatewayEnrollmentToken"], () => require("./gatewayEnrollmentToken"));
+
 export { GetGatewayArgs, GetGatewayResult, GetGatewayOutputArgs } from "./getGateway";
 export const getGateway: typeof import("./getGateway").getGateway = null as any;
 export const getGatewayOutput: typeof import("./getGateway").getGatewayOutput = null as any;
@@ -767,6 +777,10 @@ const _module = {
                 return new DynamicSecretSqlDatabase(name, <any>undefined, { urn })
             case "infisical:index/externalKmsAws:ExternalKmsAws":
                 return new ExternalKmsAws(name, <any>undefined, { urn })
+            case "infisical:index/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
+            case "infisical:index/gatewayEnrollmentToken:GatewayEnrollmentToken":
+                return new GatewayEnrollmentToken(name, <any>undefined, { urn })
             case "infisical:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "infisical:index/groupMachineIdentity:GroupMachineIdentity":
@@ -948,6 +962,8 @@ pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtla
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoDb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretSqlDatabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/externalKmsAws", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/gateway", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/gatewayEnrollmentToken", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/group", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/groupMachineIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identity", _module)

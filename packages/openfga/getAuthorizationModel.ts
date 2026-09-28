@@ -40,6 +40,6 @@ export function getAuthorizationModelOutput(args: GetAuthorizationModelOutputArg
  * A collection of arguments for invoking getAuthorizationModel.
  */
 export interface GetAuthorizationModelOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     storeId: pulumi.Input<string>;
 }

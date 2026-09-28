@@ -68,6 +68,10 @@ export class EdgeStack extends pulumi.CustomResource {
      */
     declare public readonly gitRepositoryAuthentication: pulumi.Output<boolean | undefined>;
     /**
+     * Deploy the stack from a Helm chart repository instead of a compose file or a git repository. Business Edition only.
+     */
+    declare public readonly helmConfig: pulumi.Output<outputs.EdgeStackHelmConfig | undefined>;
+    /**
      * Name of the Portainer Edge stack.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -163,6 +167,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["filePathInRepository"] = state?.filePathInRepository;
             resourceInputs["forceUpdate"] = state?.forceUpdate;
             resourceInputs["gitRepositoryAuthentication"] = state?.gitRepositoryAuthentication;
+            resourceInputs["helmConfig"] = state?.helmConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["prePullImage"] = state?.prePullImage;
             resourceInputs["pullImage"] = state?.pullImage;
@@ -199,6 +204,7 @@ export class EdgeStack extends pulumi.CustomResource {
             resourceInputs["filePathInRepository"] = args?.filePathInRepository;
             resourceInputs["forceUpdate"] = args?.forceUpdate;
             resourceInputs["gitRepositoryAuthentication"] = args?.gitRepositoryAuthentication;
+            resourceInputs["helmConfig"] = args?.helmConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["prePullImage"] = args?.prePullImage;
             resourceInputs["pullImage"] = args?.pullImage;
@@ -263,6 +269,10 @@ export interface EdgeStackState {
      * Whether authentication is required to clone the Git repository.
      */
     gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Deploy the stack from a Helm chart repository instead of a compose file or a git repository. Business Edition only.
+     */
+    helmConfig?: pulumi.Input<inputs.EdgeStackHelmConfig | undefined>;
     /**
      * Name of the Portainer Edge stack.
      */
@@ -375,6 +385,10 @@ export interface EdgeStackArgs {
      * Whether authentication is required to clone the Git repository.
      */
     gitRepositoryAuthentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Deploy the stack from a Helm chart repository instead of a compose file or a git repository. Business Edition only.
+     */
+    helmConfig?: pulumi.Input<inputs.EdgeStackHelmConfig | undefined>;
     /**
      * Name of the Portainer Edge stack.
      */

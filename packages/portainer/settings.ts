@@ -35,6 +35,10 @@ export class Settings extends pulumi.CustomResource {
     }
 
     /**
+     * URL the add-on catalog is fetched from. Business Edition only. Leave unset to keep the built-in catalog.
+     */
+    declare public readonly addonsCatalogUrl: pulumi.Output<string>;
+    /**
      * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
      */
     declare public readonly authenticationMethod: pulumi.Output<number>;
@@ -149,6 +153,7 @@ export class Settings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingsState | undefined;
+            resourceInputs["addonsCatalogUrl"] = state?.addonsCatalogUrl;
             resourceInputs["authenticationMethod"] = state?.authenticationMethod;
             resourceInputs["blackListedLabels"] = state?.blackListedLabels;
             resourceInputs["disableKubeRolesSync"] = state?.disableKubeRolesSync;
@@ -177,6 +182,7 @@ export class Settings extends pulumi.CustomResource {
             resourceInputs["userSessionTimeout"] = state?.userSessionTimeout;
         } else {
             const args = argsOrState as SettingsArgs | undefined;
+            resourceInputs["addonsCatalogUrl"] = args?.addonsCatalogUrl;
             resourceInputs["authenticationMethod"] = args?.authenticationMethod;
             resourceInputs["blackListedLabels"] = args?.blackListedLabels;
             resourceInputs["disableKubeRolesSync"] = args?.disableKubeRolesSync;
@@ -213,6 +219,10 @@ export class Settings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Settings resources.
  */
 export interface SettingsState {
+    /**
+     * URL the add-on catalog is fetched from. Business Edition only. Leave unset to keep the built-in catalog.
+     */
+    addonsCatalogUrl?: pulumi.Input<string | undefined>;
     /**
      * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
      */
@@ -320,6 +330,10 @@ export interface SettingsState {
  * The set of arguments for constructing a Settings resource.
  */
 export interface SettingsArgs {
+    /**
+     * URL the add-on catalog is fetched from. Business Edition only. Leave unset to keep the built-in catalog.
+     */
+    addonsCatalogUrl?: pulumi.Input<string | undefined>;
     /**
      * Authentication method used by Portainer. 1 = internal, 2 = LDAP, 3 = OAuth.
      */

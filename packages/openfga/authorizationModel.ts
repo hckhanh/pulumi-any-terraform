@@ -33,7 +33,7 @@ export class AuthorizationModel extends pulumi.CustomResource {
     }
 
     /**
-     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`">`openfga.getAuthorizationModelDocument`</span> to set this field.
+     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`" pulumi-lang-hcl="`data.openfga_authorization_model_document`">`openfga.getAuthorizationModelDocument`</span> to set this field.
      */
     declare public readonly modelJson: pulumi.Output<string>;
     /**
@@ -77,13 +77,13 @@ export class AuthorizationModel extends pulumi.CustomResource {
  */
 export interface AuthorizationModelState {
     /**
-     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`">`openfga.getAuthorizationModelDocument`</span> to set this field.
+     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`" pulumi-lang-hcl="`data.openfga_authorization_model_document`">`openfga.getAuthorizationModelDocument`</span> to set this field.
      */
-    modelJson?: pulumi.Input<string>;
+    modelJson?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the store this authorization model belongs to.
      */
-    storeId?: pulumi.Input<string>;
+    storeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface AuthorizationModelState {
  */
 export interface AuthorizationModelArgs {
     /**
-     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`">`openfga.getAuthorizationModelDocument`</span> to set this field.
+     * The authorization model definition in JSON format. Consider using <span pulumi-lang-nodejs="`openfga.getAuthorizationModelDocument`" pulumi-lang-dotnet="`openfga.getAuthorizationModelDocument`" pulumi-lang-go="`getAuthorizationModelDocument`" pulumi-lang-python="`get_authorization_model_document`" pulumi-lang-yaml="`openfga.getAuthorizationModelDocument`" pulumi-lang-java="`openfga.getAuthorizationModelDocument`" pulumi-lang-hcl="`data.openfga_authorization_model_document`">`openfga.getAuthorizationModelDocument`</span> to set this field.
      */
     modelJson: pulumi.Input<string>;
     /**

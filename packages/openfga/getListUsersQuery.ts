@@ -39,10 +39,6 @@ export interface GetListUsersQueryResult {
     readonly authorizationModelId?: string;
     readonly contextJson?: string;
     readonly contextualTuples?: outputs.GetListUsersQueryContextualTuple[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly object: string;
     readonly relation: string;
     readonly results: string[];
@@ -66,9 +62,9 @@ export function getListUsersQueryOutput(args: GetListUsersQueryOutputArgs, opts?
  * A collection of arguments for invoking getListUsersQuery.
  */
 export interface GetListUsersQueryOutputArgs {
-    authorizationModelId?: pulumi.Input<string>;
-    contextJson?: pulumi.Input<string>;
-    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetListUsersQueryContextualTupleArgs>[]>;
+    authorizationModelId?: pulumi.Input<string | undefined>;
+    contextJson?: pulumi.Input<string | undefined>;
+    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetListUsersQueryContextualTupleArgs>[] | undefined>;
     object: pulumi.Input<string>;
     relation: pulumi.Input<string>;
     storeId: pulumi.Input<string>;

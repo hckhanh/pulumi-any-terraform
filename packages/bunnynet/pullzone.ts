@@ -370,6 +370,10 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly stripCookies: pulumi.Output<boolean>;
     /**
+     * Options: `Compatible`, `Legacy`, `ModernOnly`
+     */
+    declare public readonly tlsLevel: pulumi.Output<string>;
+    /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */
     declare public readonly tlsSupports: pulumi.Output<string[]>;
@@ -497,6 +501,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["safehopRetryReasons"] = state?.safehopRetryReasons;
             resourceInputs["sortQuerystring"] = state?.sortQuerystring;
             resourceInputs["stripCookies"] = state?.stripCookies;
+            resourceInputs["tlsLevel"] = state?.tlsLevel;
             resourceInputs["tlsSupports"] = state?.tlsSupports;
             resourceInputs["tokenAuthEnabled"] = state?.tokenAuthEnabled;
             resourceInputs["tokenAuthIpValidation"] = state?.tokenAuthIpValidation;
@@ -590,6 +595,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["safehopRetryReasons"] = args?.safehopRetryReasons;
             resourceInputs["sortQuerystring"] = args?.sortQuerystring;
             resourceInputs["stripCookies"] = args?.stripCookies;
+            resourceInputs["tlsLevel"] = args?.tlsLevel;
             resourceInputs["tlsSupports"] = args?.tlsSupports;
             resourceInputs["tokenAuthEnabled"] = args?.tokenAuthEnabled;
             resourceInputs["tokenAuthIpValidation"] = args?.tokenAuthIpValidation;
@@ -946,6 +952,10 @@ export interface PullzoneState {
      * If enabled, bunny.net will strip all the Set-Cookie headers from the HTTP responses.
      */
     stripCookies?: pulumi.Input<boolean | undefined>;
+    /**
+     * Options: `Compatible`, `Legacy`, `ModernOnly`
+     */
+    tlsLevel?: pulumi.Input<string | undefined>;
     /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */
@@ -1307,6 +1317,10 @@ export interface PullzoneArgs {
      * If enabled, bunny.net will strip all the Set-Cookie headers from the HTTP responses.
      */
     stripCookies?: pulumi.Input<boolean | undefined>;
+    /**
+     * Options: `Compatible`, `Legacy`, `ModernOnly`
+     */
+    tlsLevel?: pulumi.Input<string | undefined>;
     /**
      * Options: `TLSv1.0`, `TLSv1.1`
      */

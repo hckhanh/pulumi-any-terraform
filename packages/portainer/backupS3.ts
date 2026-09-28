@@ -46,6 +46,14 @@ export class BackupS3 extends pulumi.CustomResource {
      */
     declare public readonly cronRule: pulumi.Output<string | undefined>;
     /**
+     * Whether the most recent scheduled S3 backup failed.
+     */
+    declare public /*out*/ readonly lastRunFailed: pulumi.Output<boolean>;
+    /**
+     * UTC timestamp of the most recent scheduled S3 backup, empty when none has run.
+     */
+    declare public /*out*/ readonly lastRunTimestamp: pulumi.Output<string>;
+    /**
      * Sensitive password used to encrypt the Portainer backup archive before upload.
      */
     declare public readonly password: pulumi.Output<string>;
@@ -79,6 +87,8 @@ export class BackupS3 extends pulumi.CustomResource {
             resourceInputs["backupS3Id"] = state?.backupS3Id;
             resourceInputs["bucketName"] = state?.bucketName;
             resourceInputs["cronRule"] = state?.cronRule;
+            resourceInputs["lastRunFailed"] = state?.lastRunFailed;
+            resourceInputs["lastRunTimestamp"] = state?.lastRunTimestamp;
             resourceInputs["password"] = state?.password;
             resourceInputs["region"] = state?.region;
             resourceInputs["s3CompatibleHost"] = state?.s3CompatibleHost;
@@ -111,6 +121,8 @@ export class BackupS3 extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["s3CompatibleHost"] = args?.s3CompatibleHost;
             resourceInputs["secretAccessKey"] = args?.secretAccessKey ? pulumi.secret(args.secretAccessKey) : undefined;
+            resourceInputs["lastRunFailed"] = undefined /*out*/;
+            resourceInputs["lastRunTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accessKeyId", "password", "secretAccessKey"] };
@@ -136,6 +148,14 @@ export interface BackupS3State {
      * Optional cron expression that schedules recurring S3 backups in Portainer.
      */
     cronRule?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the most recent scheduled S3 backup failed.
+     */
+    lastRunFailed?: pulumi.Input<boolean | undefined>;
+    /**
+     * UTC timestamp of the most recent scheduled S3 backup, empty when none has run.
+     */
+    lastRunTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Sensitive password used to encrypt the Portainer backup archive before upload.
      */

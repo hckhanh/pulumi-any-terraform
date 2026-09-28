@@ -464,7 +464,7 @@ export interface GetPullzoneRouting {
      */
     blockedCountries?: string[];
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eea`" pulumi-lang-dotnet="`Eea`" pulumi-lang-go="`eea`" pulumi-lang-python="`eea`" pulumi-lang-yaml="`eea`" pulumi-lang-java="`eea`" pulumi-lang-hcl="`eea`">`eea`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: string[];
     /**
@@ -487,7 +487,7 @@ export interface GetPullzoneRoutingArgs {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eea`" pulumi-lang-dotnet="`Eea`" pulumi-lang-go="`eea`" pulumi-lang-python="`eea`" pulumi-lang-yaml="`eea`" pulumi-lang-java="`eea`" pulumi-lang-hcl="`eea`">`eea`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -580,6 +580,10 @@ export interface PullzoneOrigin {
 
 export interface PullzoneRatelimitRuleCondition {
     /**
+     * Negates the condition result.
+     */
+    negated?: pulumi.Input<boolean | undefined>;
+    /**
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: pulumi.Input<string>;
@@ -589,9 +593,17 @@ export interface PullzoneRatelimitRuleCondition {
      */
     variable: pulumi.Input<string>;
     variableValue?: pulumi.Input<string | undefined>;
+    /**
+     * Indicated whether<span pulumi-lang-nodejs=" variableValue " pulumi-lang-dotnet=" VariableValue " pulumi-lang-go=" variableValue " pulumi-lang-python=" variable_value " pulumi-lang-yaml=" variableValue " pulumi-lang-java=" variableValue " pulumi-lang-hcl=" variable_value "> variableValue </span>is a regular expression.
+     */
+    variableValueRegex?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PullzoneRatelimitRuleLimit {
+    /**
+     * The request property used to group rate limit counters. Options: `ASN`, `City`, `Country`, `Host`, `IP`, `IP+JA4`, `JA4`, `Organization`
+     */
+    counterKey?: pulumi.Input<string | undefined>;
     /**
      * The interval, in seconds, to consider for to trigger the rate limit rule.
      */
@@ -604,6 +616,10 @@ export interface PullzoneRatelimitRuleLimit {
 
 export interface PullzoneRatelimitRuleResponse {
     /**
+     * The action to take once the rate limit is exceeded. Options: `Challenge`, `Log`, `RateLimit`
+     */
+    action?: pulumi.Input<string | undefined>;
+    /**
      * The interval, in seconds, that the rate limit will apply.
      */
     interval: pulumi.Input<number>;
@@ -615,7 +631,7 @@ export interface PullzoneRouting {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
+     * Options: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>, <span pulumi-lang-nodejs="`eea`" pulumi-lang-dotnet="`Eea`" pulumi-lang-go="`eea`" pulumi-lang-python="`eea`" pulumi-lang-yaml="`eea`" pulumi-lang-java="`eea`" pulumi-lang-hcl="`eea`">`eea`</span>, <span pulumi-lang-nodejs="`eu`" pulumi-lang-dotnet="`Eu`" pulumi-lang-go="`eu`" pulumi-lang-python="`eu`" pulumi-lang-yaml="`eu`" pulumi-lang-java="`eu`" pulumi-lang-hcl="`eu`">`eu`</span>, <span pulumi-lang-nodejs="`scripting`" pulumi-lang-dotnet="`Scripting`" pulumi-lang-go="`scripting`" pulumi-lang-python="`scripting`" pulumi-lang-yaml="`scripting`" pulumi-lang-java="`scripting`" pulumi-lang-hcl="`scripting`">`scripting`</span>
      */
     filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -641,6 +657,26 @@ export interface PullzoneShieldAccessList {
      * The ID of the Access List.
      */
     id: pulumi.Input<number>;
+}
+
+export interface PullzoneShieldBotCategorization {
+    /**
+     * Options: `Allow`, `Block`, `Ignore`
+     */
+    action: pulumi.Input<string>;
+    /**
+     * Options: `AIScraper`, `AITool`, `Ads`, `Preview`, `SEO`, `Social`, `Tool`
+     */
+    category: pulumi.Input<string>;
+    /**
+     * Override actions for specific bots.
+     */
+    overrides?: pulumi.Input<pulumi.Input<inputs.PullzoneShieldBotCategorizationOverride>[] | undefined>;
+}
+
+export interface PullzoneShieldBotCategorizationOverride {
+    action?: pulumi.Input<string | undefined>;
+    bot?: pulumi.Input<string | undefined>;
 }
 
 export interface PullzoneShieldBotDetection {
@@ -746,6 +782,10 @@ export interface PullzoneShieldWaf {
 
 export interface PullzoneWafRuleCondition {
     /**
+     * Negates the condition result.
+     */
+    negated?: pulumi.Input<boolean | undefined>;
+    /**
      * Options: `BEGINSWITH`, `CONTAINS`, `CONTAINSWORD`, `DETECTSQLI`, `DETECTXSS`, `ENDSWITH`, `EQ`, `GE`, `GT`, `LE`, `LT`, `RX`, `STREQ`, `STRMATCH`, `WITHIN`
      */
     operator: pulumi.Input<string>;
@@ -755,6 +795,10 @@ export interface PullzoneWafRuleCondition {
      */
     variable: pulumi.Input<string>;
     variableValue?: pulumi.Input<string | undefined>;
+    /**
+     * Indicated whether<span pulumi-lang-nodejs=" variableValue " pulumi-lang-dotnet=" VariableValue " pulumi-lang-go=" variableValue " pulumi-lang-python=" variable_value " pulumi-lang-yaml=" variableValue " pulumi-lang-java=" variableValue " pulumi-lang-hcl=" variable_value "> variableValue </span>is a regular expression.
+     */
+    variableValueRegex?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PullzoneWafRuleResponse {

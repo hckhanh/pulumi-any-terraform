@@ -39,10 +39,6 @@ export interface GetCheckQueryResult {
     readonly authorizationModelId?: string;
     readonly contextJson?: string;
     readonly contextualTuples?: outputs.GetCheckQueryContextualTuple[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly object: string;
     readonly relation: string;
     readonly result: boolean;
@@ -66,9 +62,9 @@ export function getCheckQueryOutput(args: GetCheckQueryOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getCheckQuery.
  */
 export interface GetCheckQueryOutputArgs {
-    authorizationModelId?: pulumi.Input<string>;
-    contextJson?: pulumi.Input<string>;
-    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetCheckQueryContextualTupleArgs>[]>;
+    authorizationModelId?: pulumi.Input<string | undefined>;
+    contextJson?: pulumi.Input<string | undefined>;
+    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetCheckQueryContextualTupleArgs>[] | undefined>;
     object: pulumi.Input<string>;
     relation: pulumi.Input<string>;
     storeId: pulumi.Input<string>;

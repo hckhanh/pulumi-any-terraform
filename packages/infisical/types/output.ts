@@ -638,6 +638,10 @@ export interface CertManagerApplicationProfileScepConfig {
      * The SCEP endpoint URL clients should use.
      */
     scepEndpointUrl: string;
+    /**
+     * Sign the RA certificate with the profile's CA instead of self-signing it, so it chains to the CA root. Required by strict clients such as Apple and Microsoft Intune. Only supported for internal CAs. Cannot be changed once SCEP enrollment is configured. To change it, remove<span pulumi-lang-nodejs=" scepConfig " pulumi-lang-dotnet=" ScepConfig " pulumi-lang-go=" scepConfig " pulumi-lang-python=" scep_config " pulumi-lang-yaml=" scepConfig " pulumi-lang-java=" scepConfig " pulumi-lang-hcl=" scep_config "> scepConfig </span>(or the whole resource) to disable SCEP enrollment in one apply, then add<span pulumi-lang-nodejs=" scepConfig " pulumi-lang-dotnet=" ScepConfig " pulumi-lang-go=" scepConfig " pulumi-lang-python=" scep_config " pulumi-lang-yaml=" scepConfig " pulumi-lang-java=" scepConfig " pulumi-lang-hcl=" scep_config "> scepConfig </span>back with the new value in a subsequent apply. Defaults to false.
+     */
+    signRaWithCa: boolean;
 }
 
 export interface CertManagerCertificatePolicyAlgorithms {
@@ -1238,6 +1242,86 @@ export interface ExternalKmsAwsConfigurationCredential {
      * The AWS Secret Access Key associated with the Access Key ID to authenticate requests to AWS services. Required for access-key type. For more details, refer to the documentation here https://infisical.com/docs/documentation/platform/kms-configuration/aws-kms#param-secret-access-key
      */
     secretAccessKey?: string;
+}
+
+export interface GatewayAwsAuth {
+    /**
+     * AWS account IDs allowed to authenticate as this gateway.
+     */
+    allowedAccountIds?: string[];
+    /**
+     * IAM principal ARNs allowed to authenticate as this gateway. Supports `*` wildcards.
+     */
+    allowedPrincipalArns?: string[];
+}
+
+export interface GatewayGcpAuth {
+    /**
+     * GCP project IDs whose Compute Engine instances are allowed to authenticate as this gateway. Only applies when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`" pulumi-lang-hcl="`type`">`type`</span> is <span pulumi-lang-nodejs="`gce`" pulumi-lang-dotnet="`Gce`" pulumi-lang-go="`gce`" pulumi-lang-python="`gce`" pulumi-lang-yaml="`gce`" pulumi-lang-java="`gce`" pulumi-lang-hcl="`gce`">`gce`</span>.
+     */
+    allowedProjects?: string[];
+    /**
+     * GCP service account emails allowed to authenticate as this gateway.
+     */
+    allowedServiceAccounts?: string[];
+    /**
+     * GCP zones whose Compute Engine instances are allowed to authenticate as this gateway. Only applies when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`" pulumi-lang-hcl="`type`">`type`</span> is <span pulumi-lang-nodejs="`gce`" pulumi-lang-dotnet="`Gce`" pulumi-lang-go="`gce`" pulumi-lang-python="`gce`" pulumi-lang-yaml="`gce`" pulumi-lang-java="`gce`" pulumi-lang-hcl="`gce`">`gce`</span>.
+     */
+    allowedZones?: string[];
+    /**
+     * How the gateway proves its identity. <span pulumi-lang-nodejs="`gce`" pulumi-lang-dotnet="`Gce`" pulumi-lang-go="`gce`" pulumi-lang-python="`gce`" pulumi-lang-yaml="`gce`" pulumi-lang-java="`gce`" pulumi-lang-hcl="`gce`">`gce`</span> verifies an ID token from the instance metadata server, which covers Compute Engine VMs and GKE workload identity. <span pulumi-lang-nodejs="`iam`" pulumi-lang-dotnet="`Iam`" pulumi-lang-go="`iam`" pulumi-lang-python="`iam`" pulumi-lang-yaml="`iam`" pulumi-lang-java="`iam`" pulumi-lang-hcl="`iam`">`iam`</span> verifies a JWT the service account signed through the IAM Credentials API, for hosts outside Compute Engine. Defaults to <span pulumi-lang-nodejs="`gce`" pulumi-lang-dotnet="`Gce`" pulumi-lang-go="`gce`" pulumi-lang-python="`gce`" pulumi-lang-yaml="`gce`" pulumi-lang-java="`gce`" pulumi-lang-hcl="`gce`">`gce`</span>.
+     */
+    type: string;
+}
+
+export interface GatewayKubernetesAuth {
+    /**
+     * The audience the service account token must carry. Leave empty to skip the audience check.
+     */
+    allowedAudience?: string;
+    /**
+     * Kubernetes namespaces whose service accounts are allowed to authenticate as this gateway. Supports `*` wildcards.
+     */
+    allowedNamespaces?: string[];
+    /**
+     * Kubernetes service account names allowed to authenticate as this gateway. Supports `*` wildcards.
+     */
+    allowedServiceAccountNames?: string[];
+    /**
+     * The PEM-encoded CA certificate that issued the Kubernetes API server's TLS certificate.
+     */
+    caCertificate?: string;
+    /**
+     * Whether Infisical holds a token reviewer JWT for this gateway. The JWT itself is never returned, so this is the only way to tell a stored one apart from none.
+     */
+    hasTokenReviewerJwt: boolean;
+    /**
+     * The URL of the Kubernetes API server, for example https://my-cluster.example.com:6443. Must be https with no path, and reachable from Infisical over the public internet. Required unless <span pulumi-lang-nodejs="`tokenReviewMode`" pulumi-lang-dotnet="`TokenReviewMode`" pulumi-lang-go="`tokenReviewMode`" pulumi-lang-python="`token_review_mode`" pulumi-lang-yaml="`tokenReviewMode`" pulumi-lang-java="`tokenReviewMode`" pulumi-lang-hcl="`token_review_mode`">`tokenReviewMode`</span> is <span pulumi-lang-nodejs="`gateway`" pulumi-lang-dotnet="`Gateway`" pulumi-lang-go="`gateway`" pulumi-lang-python="`gateway`" pulumi-lang-yaml="`gateway`" pulumi-lang-java="`gateway`" pulumi-lang-hcl="`gateway`">`gateway`</span>, where it must be omitted.
+     */
+    kubernetesHost: string;
+    /**
+     * The gateway that performs the TokenReview. Required when <span pulumi-lang-nodejs="`tokenReviewMode`" pulumi-lang-dotnet="`TokenReviewMode`" pulumi-lang-go="`tokenReviewMode`" pulumi-lang-python="`token_review_mode`" pulumi-lang-yaml="`tokenReviewMode`" pulumi-lang-java="`tokenReviewMode`" pulumi-lang-hcl="`token_review_mode`">`tokenReviewMode`</span> is <span pulumi-lang-nodejs="`gateway`" pulumi-lang-dotnet="`Gateway`" pulumi-lang-go="`gateway`" pulumi-lang-python="`gateway`" pulumi-lang-yaml="`gateway`" pulumi-lang-java="`gateway`" pulumi-lang-hcl="`gateway`">`gateway`</span>, and must be a different gateway that is already connected in the cluster. Mutually exclusive with <span pulumi-lang-nodejs="`reviewerGatewayPoolId`" pulumi-lang-dotnet="`ReviewerGatewayPoolId`" pulumi-lang-go="`reviewerGatewayPoolId`" pulumi-lang-python="`reviewer_gateway_pool_id`" pulumi-lang-yaml="`reviewerGatewayPoolId`" pulumi-lang-java="`reviewerGatewayPoolId`" pulumi-lang-hcl="`reviewer_gateway_pool_id`">`reviewerGatewayPoolId`</span>.
+     */
+    reviewerGatewayId?: string;
+    /**
+     * The gateway pool to route TokenReview traffic through. Mutually exclusive with <span pulumi-lang-nodejs="`reviewerGatewayId`" pulumi-lang-dotnet="`ReviewerGatewayId`" pulumi-lang-go="`reviewerGatewayId`" pulumi-lang-python="`reviewer_gateway_id`" pulumi-lang-yaml="`reviewerGatewayId`" pulumi-lang-java="`reviewerGatewayId`" pulumi-lang-hcl="`reviewer_gateway_id`">`reviewerGatewayId`</span>, and rejected when <span pulumi-lang-nodejs="`tokenReviewMode`" pulumi-lang-dotnet="`TokenReviewMode`" pulumi-lang-go="`tokenReviewMode`" pulumi-lang-python="`token_review_mode`" pulumi-lang-yaml="`tokenReviewMode`" pulumi-lang-java="`tokenReviewMode`" pulumi-lang-hcl="`token_review_mode`">`tokenReviewMode`</span> is <span pulumi-lang-nodejs="`gateway`" pulumi-lang-dotnet="`Gateway`" pulumi-lang-go="`gateway`" pulumi-lang-python="`gateway`" pulumi-lang-yaml="`gateway`" pulumi-lang-java="`gateway`" pulumi-lang-hcl="`gateway`">`gateway`</span>.
+     */
+    reviewerGatewayPoolId?: string;
+    /**
+     * Who performs the TokenReview. <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`" pulumi-lang-hcl="`api`">`api`</span> means Infisical does, calling <span pulumi-lang-nodejs="`kubernetesHost`" pulumi-lang-dotnet="`KubernetesHost`" pulumi-lang-go="`kubernetesHost`" pulumi-lang-python="`kubernetes_host`" pulumi-lang-yaml="`kubernetesHost`" pulumi-lang-java="`kubernetesHost`" pulumi-lang-hcl="`kubernetes_host`">`kubernetesHost`</span> directly. <span pulumi-lang-nodejs="`gateway`" pulumi-lang-dotnet="`Gateway`" pulumi-lang-go="`gateway`" pulumi-lang-python="`gateway`" pulumi-lang-yaml="`gateway`" pulumi-lang-java="`gateway`" pulumi-lang-hcl="`gateway`">`gateway`</span> means another already-connected gateway does it with its own in-cluster service account, which needs no host or reviewer token. Defaults to <span pulumi-lang-nodejs="`api`" pulumi-lang-dotnet="`Api`" pulumi-lang-go="`api`" pulumi-lang-python="`api`" pulumi-lang-yaml="`api`" pulumi-lang-java="`api`" pulumi-lang-hcl="`api`">`api`</span>.
+     */
+    tokenReviewMode: string;
+    /**
+     * A long-lived service account token with the system:auth-delegator ClusterRole, used to submit TokenReview requests. Write-only: Infisical never returns it, so Terraform cannot detect a change made outside this configuration, and an imported gateway leaves it empty.
+     */
+    tokenReviewerJwt?: string;
+    /**
+     * Whether to verify the Kubernetes API server's TLS certificate. Defaults to true.
+     */
+    verifyTlsCertificate: boolean;
+}
+
+export interface GatewayTokenAuth {
 }
 
 export interface GetGroupsGroup {

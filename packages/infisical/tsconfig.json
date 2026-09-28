@@ -71,6 +71,8 @@
         "dynamicSecretMongoDb.ts",
         "dynamicSecretSqlDatabase.ts",
         "externalKmsAws.ts",
+        "gateway.ts",
+        "gatewayEnrollmentToken.ts",
         "getGateway.ts",
         "getGroups.ts",
         "getIdentity.ts",

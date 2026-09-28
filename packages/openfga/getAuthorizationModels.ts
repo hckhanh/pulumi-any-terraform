@@ -25,10 +25,6 @@ export interface GetAuthorizationModelsArgs {
  */
 export interface GetAuthorizationModelsResult {
     readonly authorizationModels: outputs.GetAuthorizationModelsAuthorizationModel[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly storeId: string;
 }
 export function getAuthorizationModelsOutput(args: GetAuthorizationModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthorizationModelsResult> {

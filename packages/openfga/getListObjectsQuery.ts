@@ -39,10 +39,6 @@ export interface GetListObjectsQueryResult {
     readonly authorizationModelId?: string;
     readonly contextJson?: string;
     readonly contextualTuples?: outputs.GetListObjectsQueryContextualTuple[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly relation: string;
     readonly results: string[];
     readonly storeId: string;
@@ -66,9 +62,9 @@ export function getListObjectsQueryOutput(args: GetListObjectsQueryOutputArgs, o
  * A collection of arguments for invoking getListObjectsQuery.
  */
 export interface GetListObjectsQueryOutputArgs {
-    authorizationModelId?: pulumi.Input<string>;
-    contextJson?: pulumi.Input<string>;
-    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetListObjectsQueryContextualTupleArgs>[]>;
+    authorizationModelId?: pulumi.Input<string | undefined>;
+    contextJson?: pulumi.Input<string | undefined>;
+    contextualTuples?: pulumi.Input<pulumi.Input<inputs.GetListObjectsQueryContextualTupleArgs>[] | undefined>;
     relation: pulumi.Input<string>;
     storeId: pulumi.Input<string>;
     type: pulumi.Input<string>;

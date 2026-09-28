@@ -31,10 +31,6 @@ export interface GetRelationshipTupleArgs {
  */
 export interface GetRelationshipTupleResult {
     readonly condition: outputs.GetRelationshipTupleCondition;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly object: string;
     readonly relation: string;
     readonly storeId: string;

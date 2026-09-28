@@ -98,7 +98,7 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.1.1",
+		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "openfga",
 		packageVersion: "0.5.1",

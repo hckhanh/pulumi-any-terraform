@@ -32,10 +32,6 @@ export interface GetAuthorizationModelDocumentArgs {
  */
 export interface GetAuthorizationModelDocumentResult {
     readonly dsl?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly json?: string;
     readonly modFilePath?: string;
     readonly model?: outputs.GetAuthorizationModelDocumentModel;
@@ -56,8 +52,8 @@ export function getAuthorizationModelDocumentOutput(args?: GetAuthorizationModel
  * A collection of arguments for invoking getAuthorizationModelDocument.
  */
 export interface GetAuthorizationModelDocumentOutputArgs {
-    dsl?: pulumi.Input<string>;
-    json?: pulumi.Input<string>;
-    modFilePath?: pulumi.Input<string>;
-    model?: pulumi.Input<inputs.GetAuthorizationModelDocumentModelArgs>;
+    dsl?: pulumi.Input<string | undefined>;
+    json?: pulumi.Input<string | undefined>;
+    modFilePath?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<inputs.GetAuthorizationModelDocumentModelArgs | undefined>;
 }
