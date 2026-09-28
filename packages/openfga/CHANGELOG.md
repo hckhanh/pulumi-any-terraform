@@ -1,5 +1,13 @@
 # pulumi-openfga
 
+## 0.5.4
+
+### Patch Changes
+
+Drop the unused async-mutex dependency. OpenFGA registers the provider through Pulumi's registerPackage, which already serializes that registration.
+
+Update the Pulumi Terraform bridge from 1.1.1 to 1.4.0.
+
 ## 0.5.3
 
 ### Patch Changes
