@@ -10,10 +10,12 @@ if [ -n "${CHANGESETS_OUTPUT:-}" ]; then
   : > "$CHANGESETS_OUTPUT"
 fi
 
-# Safe Chain's shim is first on PATH and resolves to the runner image's npm 10.
-# npm 10 publishes a trusted-publisher token with no Sigstore bundle. The Node
-# toolchain binary is not shimmed; the workflow upgrades that one to npm 12.
-node_bindir="$(dirname "$(command -v node)")"
+# Safe Chain's npm shim is first on PATH and resolves to the runner image's
+# npm 10, which publishes a trusted-publisher token with no Sigstore bundle.
+# pnpm's node shim also has no npm beside it. Follow process.execPath to the
+# real toolchain binary; the workflow upgrades that npm to 12.
+node_exec="$(node -p 'process.execPath')"
+node_bindir="$(dirname "$node_exec")"
 npm_bin="${node_bindir}/npm"
 if [[ ! -x "$npm_bin" ]]; then
   echo "node toolchain npm is missing at ${npm_bin}"

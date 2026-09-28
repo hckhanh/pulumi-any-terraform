@@ -43,7 +43,8 @@ jobs:
         uses: ./.github/actions/setup-safe-chain
       - name: Update npm
         run: |
-          node_bindir="$(dirname "$(command -v node)")"
+          node_exec="$(node -p 'process.execPath')"
+          node_bindir="$(dirname "$node_exec")"
           "${node_bindir}/npm" install --ignore-scripts -g npm@12.0.2
           "${node_bindir}/npm" --version
       - name: Publish to npm
