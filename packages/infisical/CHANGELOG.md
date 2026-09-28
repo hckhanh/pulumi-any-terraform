@@ -1,3 +1,13 @@
+## 0.20.4
+
+### Patch Changes
+
+Drop the unused async-mutex dependency. OpenFGA registers the provider through Pulumi's registerPackage, which already serializes that registration.
+
+Update pulumi-infisical from 0.19.32 to 0.19.36
+
+**Full Changelog**: https://github.com/Infisical/terraform-provider-infisical/compare/v0.19.32...v0.19.36
+
 ## 0.20.3
 
 ### Patch Changes

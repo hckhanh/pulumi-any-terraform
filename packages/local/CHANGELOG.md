@@ -1,5 +1,11 @@
 # pulumi-local
 
+## 2.9.3
+
+### Patch Changes
+
+Drop the unused async-mutex dependency. OpenFGA registers the provider through Pulumi's registerPackage, which already serializes that registration.
+
 ## 2.9.2
 
 ### Patch Changes

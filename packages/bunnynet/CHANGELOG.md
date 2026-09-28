@@ -1,3 +1,15 @@
+## 0.16.0
+
+### Minor Changes
+
+Update pulumi-bunnynet from 0.18.2 to 0.19.1
+
+**Full Changelog**: https://github.com/BunnyWay/terraform-provider-bunnynet/compare/v0.18.2...v0.19.1
+
+### Patch Changes
+
+Drop the unused async-mutex dependency. OpenFGA registers the provider through Pulumi's registerPackage, which already serializes that registration.
+
 ## 0.15.2
 
 ### Patch Changes
