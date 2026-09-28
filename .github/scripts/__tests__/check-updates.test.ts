@@ -578,7 +578,11 @@ describe('updatePackage', () => {
   })
 
   function mockSpawnSyncWithSDK(
-    opts: { matchingName?: string; pulumiProperty?: any } = {},
+    opts: {
+      matchingName?: string
+      pulumiProperty?: any
+      dependencies?: Record<string, string> | null
+    } = {},
   ) {
     const { matchingName = 'testprovider', pulumiProperty = null } = opts
 
@@ -603,12 +607,15 @@ describe('updatePackage', () => {
           fs.writeFileSync(path.join(pkgDir, 'README.md'), '# Generated')
           fs.writeFileSync(path.join(pkgDir, '.gitignore'), 'node_modules')
 
-          const pkgJson = {
+          const pkgJson: Record<string, unknown> = {
             name: `@pulumi/${matchingName}`,
             pulumi: pulumiProperty || {
               name: matchingName,
               version: '2.0.0',
             },
+          }
+          if (opts.dependencies) {
+            pkgJson.dependencies = opts.dependencies
           }
           fs.writeFileSync(
             path.join(pkgDir, 'package.json'),
@@ -675,6 +682,54 @@ describe('updatePackage', () => {
     )
     assert.equal(updatedPkg.name, 'pulumi-testprovider')
     assert.equal(updatedPkg.pulumi.version, '2.0.0')
+  })
+
+  it('replaces dependencies with the generated package.json', () => {
+    const pkgJsonPath = path.join(packagePath, 'package.json')
+    const current = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    current.dependencies = { 'async-mutex': '0.5.0' }
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(current))
+
+    mockSpawnSyncWithSDK({ dependencies: { 'schema-utils': '1.2.3' } })
+
+    updatePackage(
+      packagePath,
+      {
+        url: 'registry.opentofu.org/ns/testprovider',
+        version: '1.0.0',
+      },
+      '2.0.0',
+      'ns',
+      'testprovider',
+    )
+
+    const updatedPkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    assert.deepEqual(updatedPkg.dependencies, { 'schema-utils': '1.2.3' })
+  })
+
+  it('removes dependencies the generator no longer emits', () => {
+    const pkgJsonPath = path.join(packagePath, 'package.json')
+    const current = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    current.dependencies = { 'async-mutex': '0.5.0' }
+    current.description = 'kept'
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(current))
+
+    mockSpawnSyncWithSDK()
+
+    updatePackage(
+      packagePath,
+      {
+        url: 'registry.opentofu.org/ns/testprovider',
+        version: '1.0.0',
+      },
+      '2.0.0',
+      'ns',
+      'testprovider',
+    )
+
+    const updatedPkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    assert.equal(updatedPkg.dependencies, undefined)
+    assert.equal(updatedPkg.description, 'kept')
   })
 
   it('throws when pulumi init fails', () => {
@@ -1053,6 +1108,57 @@ describe('main', () => {
       }),
     )
     await expectNoUpdates()
+  })
+
+  it('regenerates when the Terraform provider is current but the bridge is newer', async () => {
+    createPackage('bridged', { version: '1.0.0' })
+    const pkgJsonPath = path.join(
+      tempBase,
+      'packages',
+      'bridged',
+      'package.json',
+    )
+    const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    pkgJson.pulumi.version = '1.1.1'
+    pkgJson.dependencies = { 'async-mutex': '0.5.0' }
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(pkgJson))
+
+    mockFetch(async (url: string) => {
+      const href = String(url)
+      if (href.includes('registry.terraform.io')) {
+        return {
+          ok: true,
+          json: async () => ({
+            source: 'https://github.com/ns/terraform-provider-bridged',
+          }),
+        }
+      }
+      if (href.includes('pulumi/pulumi-terraform-provider')) {
+        return {
+          ok: true,
+          json: async () => ({ tag_name: 'v1.4.0', body: 'bridge' }),
+        }
+      }
+      return {
+        ok: true,
+        json: async () => ({ tag_name: 'v1.0.0', body: null }),
+      }
+    })
+    mockPublish('pulumi-bridged', { name: 'bridged', version: '1.4.0' })
+    captureOutput()
+    await main()
+
+    const changesetDir = path.join(tempBase, '.changeset')
+    const changesetFiles = fs
+      .readdirSync(changesetDir)
+      .filter((file) => file.endsWith('.md') && file.includes('bridged'))
+    assert.equal(changesetFiles.length, 1)
+    const content = fs.readFileSync(
+      path.join(changesetDir, changesetFiles[0]),
+      'utf8',
+    )
+    assert.ok(content.includes("'pulumi-bridged': patch"))
+    assert.ok(content.includes('from 1.1.1 to 1.4.0'))
   })
 
   it('skips when version is already up to date', async () => {
