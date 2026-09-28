@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# changesets/action reads this NDJSON file after the script exits and creates
+# GitHub releases and git tags from each {"type":"git-tag"} event. The file
+# has to exist even when every package is already on npm, or the action warns
+# and skips releases.
+if [ -n "${CHANGESETS_OUTPUT:-}" ]; then
+  mkdir -p "$(dirname "$CHANGESETS_OUTPUT")"
+  : > "$CHANGESETS_OUTPUT"
+fi
+
 echo "building packages"
 pnpm exec nx run-many -t build
 
@@ -59,6 +68,27 @@ exchange_token() {
   ' "$package_name"
 }
 
+# Tag format matches @changesets/cli for a pnpm workspace: <name>@<version>.
+record_published_package() {
+  local package_name="$1"
+  local version="$2"
+  if [ -z "${CHANGESETS_OUTPUT:-}" ]; then
+    return 0
+  fi
+  node --input-type=module -e '
+    import { appendFileSync } from "node:fs"
+    const [packageName, version, outputPath] = process.argv.slice(1)
+    appendFileSync(
+      outputPath,
+      JSON.stringify({
+        type: "git-tag",
+        tag: `${packageName}@${version}`,
+        packageName,
+      }) + "\n",
+    )
+  ' "$package_name" "$version" "$CHANGESETS_OUTPUT"
+}
+
 for dir in packages/*; do
   name="$(node -p "require('./${dir}/package.json').name")"
   version="$(node -p "require('./${dir}/package.json').version")"
@@ -74,4 +104,5 @@ for dir in packages/*; do
     cd "$dir"
     npm publish --ignore-scripts --access public --"//registry.npmjs.org/:_authToken=${token}"
   )
+  record_published_package "$name" "$version"
 done
