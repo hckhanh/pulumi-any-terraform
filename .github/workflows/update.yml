@@ -43,13 +43,13 @@ jobs:
           node .github/scripts/check-updates.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Fix
-        run: |
-          pnpm nx run-many -t fix
-          git add .
       - name: Update lockfile
         run: |
           pnpm install --no-frozen-lockfile --ignore-scripts
+          git add .
+      - name: Fix
+        run: |
+          pnpm nx run-many -t fix
           git add .
       - name: Commit and push changes to main
         if: steps.check.outputs.has_updates == 'true'

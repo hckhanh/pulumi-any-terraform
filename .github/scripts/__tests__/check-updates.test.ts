@@ -707,6 +707,37 @@ describe('updatePackage', () => {
     assert.deepEqual(updatedPkg.dependencies, { 'schema-utils': '1.2.3' })
   })
 
+  it('keeps pinned toolchain packages out of generated dependency ranges', () => {
+    const pkgJsonPath = path.join(packagePath, 'package.json')
+    const current = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    current.devDependencies = { '@pulumi/pulumi': '3.264.0' }
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(current))
+
+    mockSpawnSyncWithSDK({
+      dependencies: {
+        '@pulumi/pulumi': '^3.238.0',
+        '@types/node': '^20',
+        typescript: '^4.7.0',
+        'schema-utils': '1.2.3',
+      },
+    })
+
+    updatePackage(
+      packagePath,
+      {
+        url: 'registry.opentofu.org/ns/testprovider',
+        version: '1.0.0',
+      },
+      '2.0.0',
+      'ns',
+      'testprovider',
+    )
+
+    const updatedPkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))
+    assert.deepEqual(updatedPkg.dependencies, { 'schema-utils': '1.2.3' })
+    assert.equal(updatedPkg.devDependencies['@pulumi/pulumi'], '3.264.0')
+  })
+
   it('removes dependencies the generator no longer emits', () => {
     const pkgJsonPath = path.join(packagePath, 'package.json')
     const current = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'))

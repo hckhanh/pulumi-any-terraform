@@ -420,12 +420,21 @@ function updatePackage(
       }
 
       const generatedDependencies = generatedPackageJson.dependencies
-      if (
-        generatedDependencies &&
-        typeof generatedDependencies === 'object' &&
-        Object.keys(generatedDependencies).length > 0
-      ) {
-        packageJson.dependencies = generatedDependencies
+      const pinnedDependencies = new Set([
+        ...Object.keys(packageJson.devDependencies ?? {}),
+        ...Object.keys(packageJson.peerDependencies ?? {}),
+      ])
+      const runtimeDependencies = Object.fromEntries(
+        Object.entries(generatedDependencies ?? {}).filter(
+          ([name]) =>
+            !pinnedDependencies.has(name) &&
+            name !== '@pulumi/pulumi' &&
+            name !== 'typescript' &&
+            !name.startsWith('@types/'),
+        ),
+      )
+      if (Object.keys(runtimeDependencies).length > 0) {
+        packageJson.dependencies = runtimeDependencies
       } else {
         delete packageJson.dependencies
       }
