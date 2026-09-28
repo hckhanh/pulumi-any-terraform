@@ -53,10 +53,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/better-uptime:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -69,10 +65,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/buildkite:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -85,10 +77,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/bunnynet:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -101,10 +89,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/infisical:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -117,10 +101,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/local:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -133,10 +113,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/logtail:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -149,10 +125,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/namecheap:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -165,10 +137,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/openfga:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -181,10 +149,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/portainer:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -197,10 +161,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/posthog:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -213,10 +173,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/teamcity:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -229,10 +185,6 @@ importers:
         version: '@typescript/typescript6@6.0.2'
 
   packages/time:
-    dependencies:
-      async-mutex:
-        specifier: 0.5.0
-        version: 0.5.0
     devDependencies:
       '@pulumi/pulumi':
         specifier: 3.264.0
@@ -1880,9 +1832,6 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-
-  async-mutex@0.5.0:
-    resolution: {integrity: sha512-1A94B18jkJ3DYq284ohPxoXbfTA5HsQ7/Mf4DEhcyLx3Bz27Rh59iScbB6EPiP+B+joue6YCxcMXSbFC1tZKwA==}
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -4876,10 +4825,6 @@ snapshots:
       color-convert: 2.0.1
 
   argparse@2.0.1: {}
-
-  async-mutex@0.5.0:
-    dependencies:
-      tslib: 2.8.1
 
   asynckit@0.4.0: {}
 

@@ -108,18 +108,26 @@ async function normalizeChangelog(content: string): Promise<string> {
   return normalized.trim()
 }
 
-function determineBumpType(oldVersion: string, newVersion: string): BumpType {
-  const parseVersion = (v: string) => {
-    const parts = v.replace(/^v/, '').split('.').map(Number)
-    return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 }
-  }
+function parseVersion(version: string) {
+  const parts = version.replace(/^v/, '').split('.').map(Number)
+  return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 }
+}
 
+function determineBumpType(oldVersion: string, newVersion: string): BumpType {
   const oldV = parseVersion(oldVersion)
   const newV = parseVersion(newVersion)
 
   if (newV.major > oldV.major) return 'major'
   if (newV.minor > oldV.minor) return 'minor'
   return 'patch'
+}
+
+function isNewerVersion(current: string, latest: string): boolean {
+  const currentV = parseVersion(current)
+  const latestV = parseVersion(latest)
+  if (latestV.major !== currentV.major) return latestV.major > currentV.major
+  if (latestV.minor !== currentV.minor) return latestV.minor > currentV.minor
+  return latestV.patch > currentV.patch
 }
 
 async function getGitHubRepoFromRegistry(
@@ -352,12 +360,24 @@ function updatePackage(
 
       if (generatedPackageJson.pulumi) {
         packageJson.pulumi = generatedPackageJson.pulumi
-        fs.writeFileSync(
-          packageJsonPath,
-          JSON.stringify(packageJson, null, 2) + '\n',
-        )
-        console.log(`  Updated pulumi property in package.json`)
       }
+
+      const generatedDependencies = generatedPackageJson.dependencies
+      if (
+        generatedDependencies &&
+        typeof generatedDependencies === 'object' &&
+        Object.keys(generatedDependencies).length > 0
+      ) {
+        packageJson.dependencies = generatedDependencies
+      } else {
+        delete packageJson.dependencies
+      }
+
+      fs.writeFileSync(
+        packageJsonPath,
+        JSON.stringify(packageJson, null, 2) + '\n',
+      )
+      console.log(`  Updated pulumi metadata and dependencies in package.json`)
     }
 
     console.log(`Updated ${packageJson.name} to version ${newVersion}`)
@@ -376,6 +396,19 @@ async function main(): Promise<void> {
 
   const updates: UpdateInfo[] = []
   let updateSummary = ''
+  let latestBridge: string | null | undefined
+
+  const latestBridgeVersion = async (): Promise<string | null> => {
+    if (latestBridge === undefined) {
+      latestBridge =
+        (
+          await getLatestGitHubRelease(
+            'https://github.com/pulumi/pulumi-terraform-provider',
+          )
+        )?.version ?? null
+    }
+    return latestBridge
+  }
 
   for (const pkg of packages) {
     const packagePath = path.join(packagesDir, pkg)
@@ -451,29 +484,66 @@ async function main(): Promise<void> {
 
     console.log(`  Latest version: ${latestVersion}`)
 
-    if (latestVersion === currentProvider.version) {
+    const currentBridge =
+      typeof packageJson.pulumi?.version === 'string'
+        ? packageJson.pulumi.version
+        : null
+    const availableBridge = await latestBridgeVersion()
+    const bridgeChanged =
+      currentBridge !== null &&
+      availableBridge !== null &&
+      isNewerVersion(currentBridge, availableBridge)
+    const providerChanged = latestVersion !== currentProvider.version
+
+    if (!providerChanged && !bridgeChanged) {
       console.log(`  Already up to date`)
       continue
     }
 
-    updatePackage(packagePath, currentProvider, latestVersion, namespace, name)
+    if (bridgeChanged) {
+      console.log(
+        `  Pulumi Terraform bridge: ${currentBridge} → ${availableBridge}`,
+      )
+    }
 
-    const bumpType = determineBumpType(currentProvider.version, latestVersion)
+    const generateVersion = providerChanged
+      ? latestVersion
+      : currentProvider.version
+    updatePackage(
+      packagePath,
+      currentProvider,
+      generateVersion,
+      namespace,
+      name,
+    )
+
+    const bridgeNote = bridgeChanged
+      ? `Update the Pulumi Terraform bridge from ${currentBridge} to ${availableBridge}.`
+      : null
+    const changesetChangelog = providerChanged
+      ? [changelog, bridgeNote].filter(Boolean).join('\n\n')
+      : bridgeNote
+
+    const bumpType = providerChanged
+      ? determineBumpType(currentProvider.version, latestVersion)
+      : 'patch'
 
     updates.push({
       name: packageJson.name,
       projectName: pkg,
       oldVersion: currentProvider.version,
-      newVersion: latestVersion,
+      newVersion: generateVersion,
       bumpType,
-      changelog,
+      changelog: changesetChangelog,
       namespace,
       providerName: name,
       githubRepoUrl,
       newTagName,
     })
 
-    updateSummary += `- **${packageJson.name}**: ${currentProvider.version} → ${latestVersion}\n`
+    updateSummary += providerChanged
+      ? `- **${packageJson.name}**: ${currentProvider.version} → ${latestVersion}\n`
+      : `- **${packageJson.name}**: Terraform bridge ${currentBridge} → ${availableBridge}\n`
   }
 
   if (updates.length > 0) {
