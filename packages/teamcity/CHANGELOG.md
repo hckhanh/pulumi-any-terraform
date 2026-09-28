@@ -1,3 +1,9 @@
+## 0.2.6
+
+### Patch Changes
+
+Restore the npm provenance attestation. The previous release authenticated with GitHub Actions OIDC and shipped without the Sigstore statement, so installers that reject a trust downgrade refuse it.
+
 ## 0.2.5
 
 ### Patch Changes
