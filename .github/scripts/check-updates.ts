@@ -19,6 +19,39 @@ interface ReleaseInfo {
 
 type BumpType = 'major' | 'minor' | 'patch'
 
+function commandOutput(result: {
+  stdout?: Buffer | string | null
+  stderr?: Buffer | string | null
+}): string {
+  const stdout = result.stdout?.toString() ?? ''
+  const stderr = result.stderr?.toString() ?? ''
+  return `${stderr}\n${stdout}`
+}
+
+function isUnresolvedVersion(result: {
+  stdout?: Buffer | string | null
+  stderr?: Buffer | string | null
+}): boolean {
+  return /Could not resolve a version/.test(commandOutput(result))
+}
+
+function registryFallbackUrl(url: string): string | null {
+  if (url.includes('registry.opentofu.org')) {
+    return url.replace('registry.opentofu.org', 'registry.terraform.io')
+  }
+  if (url.includes('registry.terraform.io')) {
+    return url.replace('registry.terraform.io', 'registry.opentofu.org')
+  }
+  return null
+}
+
+class UnresolvedProviderVersionError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'UnresolvedProviderVersionError'
+  }
+}
+
 function spawnCommand(
   command: string,
   args: string[],
@@ -273,24 +306,48 @@ function updatePackage(
       )
     }
 
-    console.log(
-      `  Running: pulumi package add terraform-provider ${namespace}/${providerName} ${newVersion}`,
-    )
-    const addResult = spawnCommand(
-      'pulumi',
-      ['package', 'add', 'terraform-provider', currentProvider.url, newVersion],
-      {
-        cwd: tempDir,
-        stdio: 'pipe',
-        env: {
-          ...process.env,
-          PULUMI_CONFIG_PASSPHRASE: 'temp-passphrase-for-update',
-        },
+    const pulumiEnv = {
+      cwd: tempDir,
+      stdio: 'pipe' as const,
+      env: {
+        ...process.env,
+        PULUMI_CONFIG_PASSPHRASE: 'temp-passphrase-for-update',
       },
-    )
+    }
+    const providerUrls = [currentProvider.url]
+    const fallbackUrl = registryFallbackUrl(currentProvider.url)
+    if (fallbackUrl) {
+      providerUrls.push(fallbackUrl)
+    }
 
-    if (addResult.status !== 0) {
-      throw new Error(`Failed to add provider: ${addResult.stderr?.toString()}`)
+    let addResult: ReturnType<typeof spawnCommand> | null = null
+    for (const [index, providerUrl] of providerUrls.entries()) {
+      console.log(
+        `  Running: pulumi package add terraform-provider ${providerUrl} ${newVersion}`,
+      )
+      addResult = spawnCommand(
+        'pulumi',
+        ['package', 'add', 'terraform-provider', providerUrl, newVersion],
+        pulumiEnv,
+      )
+      if (addResult.status === 0) {
+        break
+      }
+      const nextUrl = providerUrls[index + 1]
+      if (!nextUrl || !isUnresolvedVersion(addResult)) {
+        break
+      }
+      console.log(`  ${newVersion} is not on ${providerUrl}, trying ${nextUrl}`)
+    }
+
+    if (!addResult || addResult.status !== 0) {
+      const detail = addResult ? commandOutput(addResult) : 'no result'
+      if (addResult && isUnresolvedVersion(addResult)) {
+        throw new UnresolvedProviderVersionError(
+          `${namespace}/${providerName}@${newVersion} is not published to ${providerUrls.join(' or ')}`,
+        )
+      }
+      throw new Error(`Failed to add provider: ${detail}`)
     }
 
     const sdksDir = path.join(tempDir, 'sdks')
@@ -509,13 +566,21 @@ async function main(): Promise<void> {
     const generateVersion = providerChanged
       ? latestVersion
       : currentProvider.version
-    updatePackage(
-      packagePath,
-      currentProvider,
-      generateVersion,
-      namespace,
-      name,
-    )
+    try {
+      updatePackage(
+        packagePath,
+        currentProvider,
+        generateVersion,
+        namespace,
+        name,
+      )
+    } catch (error) {
+      if (error instanceof UnresolvedProviderVersionError) {
+        console.log(`  Skipping ${pkg}: ${error.message}`)
+        continue
+      }
+      throw error
+    }
 
     const bridgeNote = bridgeChanged
       ? `Update the Pulumi Terraform bridge from ${currentBridge} to ${availableBridge}.`

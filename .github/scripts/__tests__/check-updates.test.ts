@@ -770,6 +770,58 @@ describe('updatePackage', () => {
     )
   })
 
+  it('retries on the Terraform registry when OpenTofu does not have the version', () => {
+    const urls: string[] = []
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[], options: any) => {
+        const invoked = commandFrom(cmd, args)
+        if (invoked.command === 'pulumi' && invoked.args[0] === 'new') {
+          return { status: 0 }
+        }
+        if (invoked.command === 'pulumi' && invoked.args[0] === 'package') {
+          const providerUrl = invoked.args[3]
+          urls.push(providerUrl)
+          if (providerUrl.includes('registry.opentofu.org')) {
+            return {
+              status: 1,
+              stderr: Buffer.from(
+                'Could not resolve a version from registry.opentofu.org/ns/testprovider: [{2.0.0 OpEqual}]',
+              ),
+            }
+          }
+          const pkgDir = path.join(options.cwd, 'sdks', 'nodejs')
+          fs.mkdirSync(pkgDir, { recursive: true })
+          fs.writeFileSync(path.join(pkgDir, 'index.ts'), '// generated')
+          fs.writeFileSync(
+            path.join(pkgDir, 'package.json'),
+            JSON.stringify({
+              name: 'pulumi-testprovider',
+              pulumi: { name: 'testprovider', version: '2.0.0' },
+            }),
+          )
+          return { status: 0 }
+        }
+        return { status: 0 }
+      }),
+    )
+
+    updatePackage(
+      packagePath,
+      {
+        url: 'registry.opentofu.org/ns/testprovider',
+        version: '1.0.0',
+      },
+      '2.0.0',
+      'ns',
+      'testprovider',
+    )
+
+    assert.deepEqual(urls, [
+      'registry.opentofu.org/ns/testprovider',
+      'registry.terraform.io/ns/testprovider',
+    ])
+  })
+
   it('throws when SDKs directory is missing', () => {
     setSpawnSync(mock.fn(() => ({ status: 0 })))
 
@@ -1159,6 +1211,47 @@ describe('main', () => {
     )
     assert.ok(content.includes("'pulumi-bridged': patch"))
     assert.ok(content.includes('from 1.1.1 to 1.4.0'))
+  })
+
+  it('skips a provider release that neither registry has published', async () => {
+    createPackage('unpublished', { version: '1.0.0' })
+    mockFetch(async (url: string) => {
+      const href = String(url)
+      if (href.includes('registry.terraform.io')) {
+        return {
+          ok: true,
+          json: async () => ({
+            source: 'https://github.com/ns/terraform-provider-unpublished',
+          }),
+        }
+      }
+      if (href.includes('pulumi/pulumi-terraform-provider')) {
+        return {
+          ok: true,
+          json: async () => ({ tag_name: 'v1.4.0', body: null }),
+        }
+      }
+      return {
+        ok: true,
+        json: async () => ({ tag_name: 'v9.9.9', body: 'not on a registry' }),
+      }
+    })
+    setSpawnSync(
+      mock.fn((cmd: string, args: string[]) => {
+        const invoked = commandFrom(cmd, args)
+        if (invoked.command === 'pulumi' && invoked.args[0] === 'package') {
+          return {
+            status: 1,
+            stderr: Buffer.from(
+              'Could not resolve a version from registry.opentofu.org/ns/unpublished: [{9.9.9 OpEqual}]',
+            ),
+          }
+        }
+        return { status: 0 }
+      }),
+    )
+
+    await expectNoUpdates()
   })
 
   it('skips when version is already up to date', async () => {
