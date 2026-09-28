@@ -12,13 +12,11 @@ fi
 
 # Safe Chain's npm shim is first on PATH and resolves to the runner image's
 # npm 10, which publishes a trusted-publisher token with no Sigstore bundle.
-# pnpm's node shim also has no npm beside it. Follow process.execPath to the
-# real toolchain binary; the workflow upgrades that npm to 12.
-node_exec="$(node -p 'process.execPath')"
-node_bindir="$(dirname "$node_exec")"
-npm_bin="${node_bindir}/npm"
-if [[ ! -x "$npm_bin" ]]; then
-  echo "node toolchain npm is missing at ${npm_bin}"
+# pnpm's Node runtime has no npm binary beside it. The workflow installs
+# npm 12 into its own prefix and points NPM_BIN at that executable.
+npm_bin="${NPM_BIN:-}"
+if [[ -z "$npm_bin" || ! -x "$npm_bin" ]]; then
+  echo "NPM_BIN must be the npm 12 executable installed by the publish workflow"
   exit 1
 fi
 
