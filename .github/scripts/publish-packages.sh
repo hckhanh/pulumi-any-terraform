@@ -10,6 +10,16 @@ if [ -n "${CHANGESETS_OUTPUT:-}" ]; then
   : > "$CHANGESETS_OUTPUT"
 fi
 
+# Safe Chain's shim is first on PATH and resolves to the runner image's npm 10.
+# npm 10 publishes a trusted-publisher token with no Sigstore bundle. The Node
+# toolchain binary is not shimmed; the workflow upgrades that one to npm 12.
+node_bindir="$(dirname "$(command -v node)")"
+npm_bin="${node_bindir}/npm"
+if [[ ! -x "$npm_bin" ]]; then
+  echo "node toolchain npm is missing at ${npm_bin}"
+  exit 1
+fi
+
 echo "building packages"
 pnpm exec nx run-many -t build
 
@@ -17,7 +27,12 @@ echo "publishing packages"
 # A stored NPM_TOKEN skips GitHub OIDC. This repository's token is rejected.
 unset NPM_TOKEN NODE_AUTH_TOKEN
 
-echo "npm $(npm --version)"
+echo "npm $("$npm_bin" --version) (${npm_bin})"
+npm_major="$("$npm_bin" --version | cut -d. -f1)"
+if [ "$npm_major" -lt 11 ]; then
+  echo "npm ${npm_major} cannot attach a provenance attestation from GitHub Actions"
+  exit 1
+fi
 if [ -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] || [ -z "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
   echo "github oidc credentials are missing"
   exit 1
@@ -26,7 +41,8 @@ echo "github oidc credentials are present"
 
 # Exchange the GitHub OIDC token for a short-lived npm token. npm's own
 # exchange fails quietly and then reports ENEEDAUTH, so do it here and
-# print only the registry's error text.
+# print only the registry's error text. The registry token does not sign
+# provenance; --provenance does that with the Actions OIDC token.
 exchange_token() {
   local package_name="$1"
   node --input-type=module -e '
@@ -92,7 +108,7 @@ record_published_package() {
 for dir in packages/*; do
   name="$(node -p "require('./${dir}/package.json').name")"
   version="$(node -p "require('./${dir}/package.json').version")"
-  published="$(npm view "${name}@${version}" version 2>/dev/null || true)"
+  published="$("$npm_bin" view "${name}@${version}" version 2>/dev/null || true)"
   if [ "$published" = "$version" ]; then
     echo "skip ${name}@${version}"
     continue
@@ -100,9 +116,24 @@ for dir in packages/*; do
   echo "publish ${name}@${version}"
   token="$(exchange_token "$name")"
   echo "::add-mask::${token}"
+  log="$(mktemp)"
+  set +e
   (
     cd "$dir"
-    npm publish --ignore-scripts --access public --"//registry.npmjs.org/:_authToken=${token}"
-  )
+    "$npm_bin" publish --ignore-scripts --access public --provenance --"//registry.npmjs.org/:_authToken=${token}"
+  ) >"$log" 2>&1
+  status=$?
+  set -e
+  cat "$log"
+  if [ "$status" -ne 0 ]; then
+    rm -f "$log"
+    exit "$status"
+  fi
+  if ! grep -Eq "Signed provenance statement|Provenance transparency log|Provenance statement published" "$log"; then
+    rm -f "$log"
+    echo "npm published ${name}@${version} without a provenance statement"
+    exit 1
+  fi
+  rm -f "$log"
   record_published_package "$name" "$version"
 done
