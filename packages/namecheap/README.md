@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Namecheap resources, dynamically bridged from the [Terraform Namecheap Provider](https://github.com/namecheap/terraform-provider-namecheap).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/namecheap](https://docs.khanh.id/pulumi-any-terraform/providers/namecheap)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Namecheap domain records and DNS configuration using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Namecheap provider, giving you access to all its functionality within the Pulumi ecosystem.

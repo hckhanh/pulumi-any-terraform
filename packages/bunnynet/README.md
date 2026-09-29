@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Bunny.net CDN and edge computing resources, dynamically bridged from the [Terraform Bunnynet Provider](https://github.com/bunnyway/terraform-provider-bunnynet).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/bunnynet](https://docs.khanh.id/pulumi-any-terraform/providers/bunnynet)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Bunny.net CDN, storage, DNS, compute containers, and video streaming resources using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Bunnynet provider, giving you access to all its functionality within the Pulumi ecosystem.

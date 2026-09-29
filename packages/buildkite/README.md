@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Buildkite CI/CD pipelines, agents, clusters, and team resources, dynamically bridged from the [Terraform Buildkite Provider](https://github.com/buildkite/terraform-provider-buildkite).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/buildkite](https://docs.khanh.id/pulumi-any-terraform/providers/buildkite)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Buildkite CI/CD infrastructure using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Buildkite provider, giving you access to all its functionality within the Pulumi ecosystem.

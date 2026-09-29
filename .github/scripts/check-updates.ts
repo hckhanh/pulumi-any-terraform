@@ -394,6 +394,7 @@ function updatePackage(
       const srcPath = path.join(sdkDir, entry.name)
       const destPath = path.join(packagePath, entry.name)
 
+      // README.md is hand-written. It keeps the docs.khanh.id link, so the generated stub is not copied.
       if (
         entry.name === 'README.md' ||
         entry.name === 'package.json' ||

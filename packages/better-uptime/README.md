@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Better Uptime monitoring, alerting, and incident management resources, dynamically bridged from the [Terraform Better Uptime Provider](https://github.com/betterstackhq/terraform-provider-better-uptime).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/better-uptime](https://docs.khanh.id/pulumi-any-terraform/providers/better-uptime)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Better Uptime monitoring infrastructure using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Better Uptime provider, giving you access to all its functionality within the Pulumi ecosystem.

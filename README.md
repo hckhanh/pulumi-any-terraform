@@ -82,14 +82,20 @@ pulumi up       # Deploy infrastructure
 
 ## 📚 Documentation
 
-Comprehensive documentation is available covering:
+**[https://docs.khanh.id/pulumi-any-terraform](https://docs.khanh.id/pulumi-any-terraform)**
 
-- **[Getting Started](https://docs.khanh.id/pulumi-any-terraform/getting-started)** - Installation, configuration, and first steps
-- **[Architecture](https://docs.khanh.id/pulumi-any-terraform/architecture)** - How the bridge works internally
-- **[Provider Guides](https://docs.khanh.id/pulumi-any-terraform)** - Detailed guides for each provider
-- **[Contributing](https://docs.khanh.id/pulumi-any-terraform/contributing)** - How to contribute new providers
-- **[Troubleshooting](https://docs.khanh.id/pulumi-any-terraform/troubleshooting)** - Common issues and solutions
-- **[FAQ](https://docs.khanh.id/pulumi-any-terraform/faq)** - Frequently asked questions
+- **[Better Uptime](https://docs.khanh.id/pulumi-any-terraform/providers/better-uptime)**
+- **[Buildkite](https://docs.khanh.id/pulumi-any-terraform/providers/buildkite)**
+- **[Bunny](https://docs.khanh.id/pulumi-any-terraform/providers/bunnynet)**
+- **[Infisical](https://docs.khanh.id/pulumi-any-terraform/providers/infisical)**
+- **[Logtail](https://docs.khanh.id/pulumi-any-terraform/providers/logtail)**
+- **[Namecheap](https://docs.khanh.id/pulumi-any-terraform/providers/namecheap)**
+- **[OpenFGA](https://docs.khanh.id/pulumi-any-terraform/providers/openfga)**
+- **[Portainer](https://docs.khanh.id/pulumi-any-terraform/providers/portainer)**
+- **[PostHog](https://docs.khanh.id/pulumi-any-terraform/providers/posthog)**
+- **[TeamCity](https://docs.khanh.id/pulumi-any-terraform/providers/teamcity)**
+- **[Local](https://docs.khanh.id/pulumi-any-terraform/providers/local)**
+- **[Time](https://docs.khanh.id/pulumi-any-terraform/providers/time)**
 
 ## 🏗️ Architecture
 
@@ -160,7 +166,7 @@ pnpm nx run root:oxfmt:write
 4. Write comprehensive documentation
 5. Submit pull request
 
-See the [Contributing Guide](https://docs.khanh.id/pulumi-any-terraform/contributing) for detailed instructions.
+See the [documentation](https://docs.khanh.id/pulumi-any-terraform) for each provider.
 
 ### Project Structure
 
@@ -204,7 +210,7 @@ We welcome contributions! Here's how you can help:
 4. **Test** thoroughly
 5. **Submit** a pull request
 
-Please read our [Contributing Guide](https://docs.khanh.id/pulumi-any-terraform/contributing) for details on:
+Provider reference is in the [documentation](https://docs.khanh.id/pulumi-any-terraform). The pull request should cover:
 
 - Code standards
 - Development workflow
@@ -221,7 +227,7 @@ Common issues and solutions:
 - **Authentication errors**: Check credentials and environment variables
 - **Build failures**: Clear Nx cache with `pnpm nx reset`
 
-See our [Troubleshooting Guide](https://docs.khanh.id/pulumi-any-terraform/troubleshooting) for more help.
+See the [documentation](https://docs.khanh.id/pulumi-any-terraform) for provider configuration.
 
 ## 🔗 External Connections
 
