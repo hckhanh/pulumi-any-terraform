@@ -1,7 +1,7 @@
 {
   "name": "pulumi-portainer",
   "description": "A Pulumi provider for managing Portainer container management platform resources, dynamically bridged from the Terraform Portainer provider with support for environments, stacks, users, teams, registries, and container orchestration.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://docs.khanh.id/pulumi-any-terraform/providers/portainer",
   "repository": {
     "type": "git",

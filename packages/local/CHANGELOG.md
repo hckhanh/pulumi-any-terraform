@@ -1,5 +1,11 @@
 # pulumi-local
 
+## 2.9.5
+
+### Patch Changes
+
+Link each provider's documentation from its readme.
+
 ## 2.9.4
 
 ### Patch Changes
