@@ -1,3 +1,9 @@
+## 0.22.4
+
+### Patch Changes
+
+Link each provider's documentation from its readme.
+
 ## 0.22.3
 
 ### Patch Changes

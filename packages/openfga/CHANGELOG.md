@@ -1,5 +1,11 @@
 # pulumi-openfga
 
+## 0.5.6
+
+### Patch Changes
+
+Link each provider's documentation from its readme.
+
 ## 0.5.5
 
 ### Patch Changes
