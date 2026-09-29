@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Portainer container management platform resources, dynamically bridged from the [Terraform Portainer Provider](https://github.com/portainer/terraform-provider-portainer).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/portainer](https://docs.khanh.id/pulumi-any-terraform/providers/portainer)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Portainer container management platform using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Portainer provider, giving you access to all its functionality within the Pulumi ecosystem.

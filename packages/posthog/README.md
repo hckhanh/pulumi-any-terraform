@@ -2,6 +2,8 @@
 
 A Pulumi provider for managing PostHog analytics, product insights, and feature flag resources, dynamically bridged from the [Terraform PostHog Provider](https://github.com/PostHog/terraform-provider-posthog).
 
+**Documentation:** [https://docs.khanh.id/pulumi-any-terraform/providers/posthog](https://docs.khanh.id/pulumi-any-terraform/providers/posthog)
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your PostHog product analytics and feature flag infrastructure using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform PostHog provider, giving you access to all its functionality within the Pulumi ecosystem.
@@ -274,6 +276,8 @@ pulumi config set posthog:host "https://posthog.yourcompany.com"
 ```
 
 ## Documentation
+
+- [Provider reference](https://docs.khanh.id/pulumi-any-terraform/providers/posthog)
 
 For detailed documentation on all available resources and their properties, visit:
 

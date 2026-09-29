@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing [OpenFGA](https://openfga.dev) — a fine-grained, relationship-based authorization system inspired by [Google Zanzibar](https://research.google/pubs/pub48190/) — dynamically bridged from the [Terraform OpenFGA Provider](https://github.com/openfga/terraform-provider-openfga).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/openfga](https://docs.khanh.id/pulumi-any-terraform/providers/openfga)**
+
 ## Introduction
 
 This package provides a Pulumi provider that lets you manage OpenFGA stores, authorization models, and relationship tuples using TypeScript, JavaScript, Python, Go, or .NET. The provider is automatically generated from the upstream Terraform provider, giving you the full surface area of OpenFGA Terraform resources within the Pulumi ecosystem.

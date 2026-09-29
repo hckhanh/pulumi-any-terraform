@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing TeamCity CI/CD platform, dynamically bridged from the [Terraform TeamCity Provider](https://github.com/jetbrains/terraform-provider-teamcity).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/teamcity](https://docs.khanh.id/pulumi-any-terraform/providers/teamcity)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your TeamCity CI/CD platform using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform TeamCity provider, giving you access to all its functionality within the Pulumi ecosystem.

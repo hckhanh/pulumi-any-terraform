@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing time-based resources and operations, dynamically bridged from the [Terraform Time Provider](https://github.com/hashicorp/terraform-provider-time).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/time](https://docs.khanh.id/pulumi-any-terraform/providers/time)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage time-based resources and operations using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Time provider, giving you access to all its functionality within the Pulumi ecosystem.

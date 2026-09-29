@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Infisical secrets management platform, dynamically bridged from the [Terraform Infisical Provider](https://github.com/infisical/terraform-provider-infisical).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/infisical](https://docs.khanh.id/pulumi-any-terraform/providers/infisical)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Infisical secrets management platform using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Infisical provider, giving you access to all its functionality within the Pulumi ecosystem.

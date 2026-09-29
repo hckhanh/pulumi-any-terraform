@@ -2,6 +2,8 @@
 
 A Pulumi provider for managing local files, directories, and sensitive files, dynamically bridged from the [Terraform Local Provider](https://github.com/hashicorp/terraform-provider-local).
 
+**Documentation:** [https://docs.khanh.id/pulumi-any-terraform/providers/local](https://docs.khanh.id/pulumi-any-terraform/providers/local)
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage local filesystem resources using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Local provider, giving you access to all its functionality within the Pulumi ecosystem.
@@ -164,6 +166,8 @@ const gitCommit = local.getCommand({
 ```
 
 ## Documentation
+
+- [Provider reference](https://docs.khanh.id/pulumi-any-terraform/providers/local)
 
 For detailed documentation on all available resources and their properties, visit:
 

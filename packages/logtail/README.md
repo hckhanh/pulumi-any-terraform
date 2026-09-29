@@ -2,6 +2,10 @@
 
 A Pulumi provider for managing Logtail log management and analytics resources, dynamically bridged from the [Terraform Logtail Provider](https://github.com/betterstackhq/terraform-provider-logtail).
 
+## Documentation
+
+**[https://docs.khanh.id/pulumi-any-terraform/providers/logtail](https://docs.khanh.id/pulumi-any-terraform/providers/logtail)**
+
 ## Introduction
 
 This package provides a Pulumi provider that enables you to manage your Logtail logging infrastructure using TypeScript, JavaScript, Python, Go, or C#. The provider is automatically generated from the Terraform Logtail provider, giving you access to all its functionality within the Pulumi ecosystem.
