@@ -23,11 +23,11 @@ export function getRegistryConnection(args: GetRegistryConnectionArgs, opts?: pu
 export interface GetRegistryConnectionArgs {
     failOnError?: boolean;
     id?: string;
-    password?: string;
+    password: string;
     tls?: boolean;
     type: number;
     url: string;
-    username?: string;
+    username: string;
 }
 
 /**
@@ -37,12 +37,12 @@ export interface GetRegistryConnectionResult {
     readonly failOnError?: boolean;
     readonly id: string;
     readonly message: string;
-    readonly password?: string;
+    readonly password: string;
     readonly success: boolean;
     readonly tls?: boolean;
     readonly type: number;
     readonly url: string;
-    readonly username?: string;
+    readonly username: string;
 }
 export function getRegistryConnectionOutput(args: GetRegistryConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,9 +63,9 @@ export function getRegistryConnectionOutput(args: GetRegistryConnectionOutputArg
 export interface GetRegistryConnectionOutputArgs {
     failOnError?: pulumi.Input<boolean | undefined>;
     id?: pulumi.Input<string | undefined>;
-    password?: pulumi.Input<string | undefined>;
+    password: pulumi.Input<string>;
     tls?: pulumi.Input<boolean | undefined>;
     type: pulumi.Input<number>;
     url: pulumi.Input<string>;
-    username?: pulumi.Input<string | undefined>;
+    username: pulumi.Input<string>;
 }

@@ -44,6 +44,10 @@ export class StackDeleteByName extends pulumi.CustomResource {
      * Name of the Kubernetes stack to remove. Every stack with this name in the target environment is removed.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Kubernetes namespace the stack was deployed into. Portainer requires it, even though its API specification does not list it.
+     */
+    declare public readonly namespace: pulumi.Output<string>;
     declare public readonly stackDeleteByNameId: pulumi.Output<string>;
 
     /**
@@ -62,15 +66,20 @@ export class StackDeleteByName extends pulumi.CustomResource {
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["external"] = state?.external;
             resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
             resourceInputs["stackDeleteByNameId"] = state?.stackDeleteByNameId;
         } else {
             const args = argsOrState as StackDeleteByNameArgs | undefined;
             if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
+            if (args?.namespace === undefined && !opts.urn) {
+                throw new Error("Missing required property 'namespace'");
+            }
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["external"] = args?.external;
             resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
             resourceInputs["stackDeleteByNameId"] = args?.stackDeleteByNameId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -94,6 +103,10 @@ export interface StackDeleteByNameState {
      * Name of the Kubernetes stack to remove. Every stack with this name in the target environment is removed.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace the stack was deployed into. Portainer requires it, even though its API specification does not list it.
+     */
+    namespace?: pulumi.Input<string | undefined>;
     stackDeleteByNameId?: pulumi.Input<string | undefined>;
 }
 
@@ -113,5 +126,9 @@ export interface StackDeleteByNameArgs {
      * Name of the Kubernetes stack to remove. Every stack with this name in the target environment is removed.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes namespace the stack was deployed into. Portainer requires it, even though its API specification does not list it.
+     */
+    namespace: pulumi.Input<string>;
     stackDeleteByNameId?: pulumi.Input<string | undefined>;
 }

@@ -143,6 +143,11 @@ export type Survey = import("./survey").Survey;
 export const Survey: typeof import("./survey").Survey = null as any;
 utilities.lazyLoad(exports, ["Survey"], () => require("./survey"));
 
+export { WarehouseTableArgs, WarehouseTableState } from "./warehouseTable";
+export type WarehouseTable = import("./warehouseTable").WarehouseTable;
+export const WarehouseTable: typeof import("./warehouseTable").WarehouseTable = null as any;
+utilities.lazyLoad(exports, ["WarehouseTable"], () => require("./warehouseTable"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -205,6 +210,8 @@ const _module = {
                 return new Subscription(name, <any>undefined, { urn })
             case "posthog:index/survey:Survey":
                 return new Survey(name, <any>undefined, { urn })
+            case "posthog:index/warehouseTable:WarehouseTable":
+                return new WarehouseTable(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -234,6 +241,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/role", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/roleMembership", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/subscription", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/survey", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/warehouseTable", _module)
 pulumi.runtime.registerResourcePackage("posthog", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

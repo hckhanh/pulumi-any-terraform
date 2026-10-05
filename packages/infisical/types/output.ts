@@ -1345,6 +1345,10 @@ export interface GetGroupsGroup {
      * The role ID of the group in the organization
      */
     roleId: string;
+    /**
+     * The slug of the group
+     */
+    slug: string;
 }
 
 export interface GetIdentityDetailsOrganization {

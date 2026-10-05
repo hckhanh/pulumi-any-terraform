@@ -43,7 +43,7 @@ export class SecretApprovalPolicy extends pulumi.CustomResource {
      */
     declare public readonly approvers: pulumi.Output<outputs.SecretApprovalPolicyApprover[]>;
     /**
-     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     * Whether machine identities can bypass the approval policy. If omitted when the policy is created, it defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>. Removing this attribute later does not reset it: for example, if it is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> and you then delete it from your configuration, the policy keeps <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. To disable it, set it to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> explicitly.
      */
     declare public readonly bypassApprovalsForMachineIdentities: pulumi.Output<boolean>;
     /**
@@ -147,7 +147,7 @@ export interface SecretApprovalPolicyState {
      */
     approvers?: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[] | undefined>;
     /**
-     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     * Whether machine identities can bypass the approval policy. If omitted when the policy is created, it defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>. Removing this attribute later does not reset it: for example, if it is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> and you then delete it from your configuration, the policy keeps <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. To disable it, set it to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> explicitly.
      */
     bypassApprovalsForMachineIdentities?: pulumi.Input<boolean | undefined>;
     /**
@@ -197,7 +197,7 @@ export interface SecretApprovalPolicyArgs {
      */
     approvers: pulumi.Input<pulumi.Input<inputs.SecretApprovalPolicyApprover>[]>;
     /**
-     * Whether machine identities can bypass the policy. If not set, the Infisical default is used on creation and the current value is left unchanged on update
+     * Whether machine identities can bypass the approval policy. If omitted when the policy is created, it defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>. Removing this attribute later does not reset it: for example, if it is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> and you then delete it from your configuration, the policy keeps <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. To disable it, set it to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> explicitly.
      */
     bypassApprovalsForMachineIdentities?: pulumi.Input<boolean | undefined>;
     /**
