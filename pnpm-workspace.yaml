@@ -12,8 +12,6 @@ minimumReleaseAge: 2880
 minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
   - tmp@0.2.7
-  - form-data@4.0.6
-  - brace-expansion@5.0.9
 overrides:
   # Pin postcss below 8.5.10; GHSA-qx2v-qp2m-jg93
   brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
