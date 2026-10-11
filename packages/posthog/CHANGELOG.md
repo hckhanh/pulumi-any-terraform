@@ -1,5 +1,17 @@
 # pulumi-posthog
 
+## 1.0.15
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@e93cde8: feat(warehouse_table): add posthog_warehouse_table resource (PostHog/terraform-provider-posthog#168) (@andyzzhao)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@fccabe8: chore(deps): bump the github-actions group with 2 updates (PostHog/terraform-provider-posthog#165) (@dependabot[bot])
+
 ## 1.0.14
 
 ### Patch Changes
