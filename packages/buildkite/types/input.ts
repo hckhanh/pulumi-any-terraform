@@ -209,6 +209,10 @@ export interface PipelineProviderSettings {
      */
     buildPullRequestReviewSubmitted?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to create a build when a pull request is added to a stack. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
+     */
+    buildPullRequestStacks?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to create builds for commits that are part of a pull request.
      */
     buildPullRequests?: pulumi.Input<boolean | undefined>;
@@ -245,6 +249,10 @@ export interface PipelineProviderSettings {
      */
     filterEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether jobs can request GitHub access tokens bounded by workflow permissions. GitHub only; the organization feature must also be enabled.
+     */
+    githubWorkflowAccessTokensEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether to prevent caching pull requests with the source branch matching the default branch.
      */
     ignoreDefaultBranchPullRequests?: pulumi.Input<boolean | undefined>;
@@ -260,6 +268,10 @@ export interface PipelineProviderSettings {
      * Prefix branch names for third-party fork builds to ensure they don't trigger branch conditions. For example, the main branch from some-user will become some-user:main.
      */
     prefixPullRequestForkBranchNames?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether custom commit statuses posted via `notify:` are prevented from using a `context:` starting with `buildkite/`. Only enforced while the matching organization setting is enabled.
+     */
+    preventCustomStatusesFromUsingBuildkitePrefix?: pulumi.Input<boolean | undefined>;
     /**
      * The status to use for blocked builds. Pending can be used with [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) to prevent merging pull requests with blocked builds.
      */
@@ -292,6 +304,10 @@ export interface PipelineProviderSettings {
      * Whether to create a separate status for pull request builds, allowing you to require a passing pull request build in your [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) in GitHub.
      */
     separatePullRequestStatuses?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to skip creating builds for a pull request once it is closed or merged, for example for late label changes from bots.
+     */
+    skipBuildsForClosedPullRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to skip creating a new build if an existing build for the commit and branch already exists. This option is only valid if the pipeline uses a GitHub repository.
      */

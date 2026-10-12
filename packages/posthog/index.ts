@@ -35,6 +35,11 @@ export type DashboardLayout = import("./dashboardLayout").DashboardLayout;
 export const DashboardLayout: typeof import("./dashboardLayout").DashboardLayout = null as any;
 utilities.lazyLoad(exports, ["DashboardLayout"], () => require("./dashboardLayout"));
 
+export { EarlyAccessFeatureArgs, EarlyAccessFeatureState } from "./earlyAccessFeature";
+export type EarlyAccessFeature = import("./earlyAccessFeature").EarlyAccessFeature;
+export const EarlyAccessFeature: typeof import("./earlyAccessFeature").EarlyAccessFeature = null as any;
+utilities.lazyLoad(exports, ["EarlyAccessFeature"], () => require("./earlyAccessFeature"));
+
 export { ExperimentArgs, ExperimentState } from "./experiment";
 export type Experiment = import("./experiment").Experiment;
 export const Experiment: typeof import("./experiment").Experiment = null as any;
@@ -174,6 +179,8 @@ const _module = {
                 return new Dashboard(name, <any>undefined, { urn })
             case "posthog:index/dashboardLayout:DashboardLayout":
                 return new DashboardLayout(name, <any>undefined, { urn })
+            case "posthog:index/earlyAccessFeature:EarlyAccessFeature":
+                return new EarlyAccessFeature(name, <any>undefined, { urn })
             case "posthog:index/experiment:Experiment":
                 return new Experiment(name, <any>undefined, { urn })
             case "posthog:index/externalDataSource:ExternalDataSource":
@@ -223,6 +230,7 @@ pulumi.runtime.registerResourceModule("posthog", "index/alert", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/cohort", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/dashboardLayout", _module)
+pulumi.runtime.registerResourceModule("posthog", "index/earlyAccessFeature", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/experiment", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/externalDataSource", _module)
 pulumi.runtime.registerResourceModule("posthog", "index/featureFlag", _module)

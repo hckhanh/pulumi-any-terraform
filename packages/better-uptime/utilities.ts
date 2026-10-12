@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "better-uptime",
-		packageVersion: "0.22.2",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIyLjIifX0=",
+		packageVersion: "0.22.4",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2JldHRlcnN0YWNraHEvYmV0dGVyLXVwdGltZSIsInZlcnNpb24iOiIwLjIyLjQifX0=",
 	});
 }

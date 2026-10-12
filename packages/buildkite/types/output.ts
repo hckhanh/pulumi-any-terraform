@@ -87,6 +87,10 @@ export interface GetClusterNetworkRangesRange {
 
 export interface GetClustersCluster {
     /**
+     * The UUID of the OpenTelemetry tracing notification service agents in the cluster export traces to. Null when none is selected, when the organization does not have agent tracing enabled, or when the API token cannot manage the cluster.
+     */
+    agentTracingServiceUuid: string;
+    /**
      * The color for the cluster.
      */
     color: string;
@@ -181,6 +185,45 @@ export interface GetOrganizationMembersMember {
     name: string;
     /**
      * The UUID of the organization member.
+     */
+    uuid: string;
+}
+
+export interface GetPipelinesPipeline {
+    /**
+     * Whether the pipeline is archived.
+     */
+    archived: boolean;
+    /**
+     * The GraphQL ID of the cluster the pipeline belongs to.
+     */
+    clusterId: string;
+    /**
+     * The default branch of the pipeline.
+     */
+    defaultBranch: string;
+    /**
+     * The description of the pipeline.
+     */
+    description: string;
+    /**
+     * The GraphQL ID of the pipeline.
+     */
+    id: string;
+    /**
+     * The name of the pipeline.
+     */
+    name: string;
+    /**
+     * The repository URL of the pipeline.
+     */
+    repository: string;
+    /**
+     * The slug of the pipeline.
+     */
+    slug: string;
+    /**
+     * The UUID of the pipeline.
      */
     uuid: string;
 }
@@ -471,6 +514,10 @@ export interface PipelineProviderSettings {
      */
     buildPullRequestReviewSubmitted: boolean;
     /**
+     * Whether to create a build when a pull request is added to a stack. Requires <span pulumi-lang-nodejs="`buildPullRequests`" pulumi-lang-dotnet="`BuildPullRequests`" pulumi-lang-go="`buildPullRequests`" pulumi-lang-python="`build_pull_requests`" pulumi-lang-yaml="`buildPullRequests`" pulumi-lang-java="`buildPullRequests`" pulumi-lang-hcl="`build_pull_requests`">`buildPullRequests`</span> to be enabled.
+     */
+    buildPullRequestStacks: boolean;
+    /**
      * Whether to create builds for commits that are part of a pull request.
      */
     buildPullRequests: boolean;
@@ -507,6 +554,10 @@ export interface PipelineProviderSettings {
      */
     filterEnabled: boolean;
     /**
+     * Whether jobs can request GitHub access tokens bounded by workflow permissions. GitHub only; the organization feature must also be enabled.
+     */
+    githubWorkflowAccessTokensEnabled: boolean;
+    /**
      * Whether to prevent caching pull requests with the source branch matching the default branch.
      */
     ignoreDefaultBranchPullRequests: boolean;
@@ -522,6 +573,10 @@ export interface PipelineProviderSettings {
      * Prefix branch names for third-party fork builds to ensure they don't trigger branch conditions. For example, the main branch from some-user will become some-user:main.
      */
     prefixPullRequestForkBranchNames: boolean;
+    /**
+     * Whether custom commit statuses posted via `notify:` are prevented from using a `context:` starting with `buildkite/`. Only enforced while the matching organization setting is enabled.
+     */
+    preventCustomStatusesFromUsingBuildkitePrefix: boolean;
     /**
      * The status to use for blocked builds. Pending can be used with [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) to prevent merging pull requests with blocked builds.
      */
@@ -554,6 +609,10 @@ export interface PipelineProviderSettings {
      * Whether to create a separate status for pull request builds, allowing you to require a passing pull request build in your [required status checks](https://help.github.com/en/articles/enabling-required-status-checks) in GitHub.
      */
     separatePullRequestStatuses: boolean;
+    /**
+     * Whether to skip creating builds for a pull request once it is closed or merged, for example for late label changes from bots.
+     */
+    skipBuildsForClosedPullRequests: boolean;
     /**
      * Whether to skip creating a new build if an existing build for the commit and branch already exists. This option is only valid if the pipeline uses a GitHub repository.
      */

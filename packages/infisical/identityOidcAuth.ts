@@ -59,7 +59,7 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
      */
     declare public readonly boundClaims: pulumi.Output<{[key: string]: string}>;
     /**
-     * The unique identifier of the identity provider issuing the OIDC tokens.
+     * The unique identifier of the identity provider issuing the OIDC tokens. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
     declare public readonly boundIssuer: pulumi.Output<string>;
     /**
@@ -79,9 +79,13 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
      */
     declare public readonly oidcCaCertificate: pulumi.Output<string>;
     /**
-     * The URL used to retrieve the OpenID Connect configuration from the identity provider.
+     * The URL used to retrieve the OpenID Connect configuration from the identity provider. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
     declare public readonly oidcDiscoveryUrl: pulumi.Output<string>;
+    /**
+     * The ID of an <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> to take the identity provider settings from. When set, <span pulumi-lang-nodejs="`oidcDiscoveryUrl`" pulumi-lang-dotnet="`OidcDiscoveryUrl`" pulumi-lang-go="`oidcDiscoveryUrl`" pulumi-lang-python="`oidc_discovery_url`" pulumi-lang-yaml="`oidcDiscoveryUrl`" pulumi-lang-java="`oidcDiscoveryUrl`" pulumi-lang-hcl="`oidc_discovery_url`">`oidcDiscoveryUrl`</span>, <span pulumi-lang-nodejs="`boundIssuer`" pulumi-lang-dotnet="`BoundIssuer`" pulumi-lang-go="`boundIssuer`" pulumi-lang-python="`bound_issuer`" pulumi-lang-yaml="`boundIssuer`" pulumi-lang-java="`boundIssuer`" pulumi-lang-hcl="`bound_issuer`">`boundIssuer`</span>, <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> come from the template and must not be set here, later edits to the template propagate to this identity, and <span pulumi-lang-nodejs="`boundSubject`" pulumi-lang-dotnet="`BoundSubject`" pulumi-lang-go="`boundSubject`" pulumi-lang-python="`bound_subject`" pulumi-lang-yaml="`boundSubject`" pulumi-lang-java="`boundSubject`" pulumi-lang-hcl="`bound_subject`">`boundSubject`</span> or <span pulumi-lang-nodejs="`boundClaims`" pulumi-lang-dotnet="`BoundClaims`" pulumi-lang-go="`boundClaims`" pulumi-lang-python="`bound_claims`" pulumi-lang-yaml="`boundClaims`" pulumi-lang-java="`boundClaims`" pulumi-lang-hcl="`bound_claims`">`boundClaims`</span> must restrict which workloads can authenticate. Removing it unlinks the template and applies the settings in this configuration instead: <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> are cleared when the configuration leaves them out, and the plan shows it. To unlink and keep the template's settings, set them here to the template's values (for example from the <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> data source); an unlink that changes nothing else then only needs the `unlink-templates` permission on auth templates, or `edit-auth` on the identity.
+     */
+    declare public readonly templateId: pulumi.Output<string | undefined>;
 
     /**
      * Create a IdentityOidcAuth resource with the given unique name, arguments, and options.
@@ -108,16 +112,11 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
             resourceInputs["identityId"] = state?.identityId;
             resourceInputs["oidcCaCertificate"] = state?.oidcCaCertificate;
             resourceInputs["oidcDiscoveryUrl"] = state?.oidcDiscoveryUrl;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as IdentityOidcAuthArgs | undefined;
-            if (args?.boundIssuer === undefined && !opts.urn) {
-                throw new Error("Missing required property 'boundIssuer'");
-            }
             if (args?.identityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identityId'");
-            }
-            if (args?.oidcDiscoveryUrl === undefined && !opts.urn) {
-                throw new Error("Missing required property 'oidcDiscoveryUrl'");
             }
             resourceInputs["accessTokenMaxTtl"] = args?.accessTokenMaxTtl;
             resourceInputs["accessTokenNumUsesLimit"] = args?.accessTokenNumUsesLimit;
@@ -131,6 +130,7 @@ export class IdentityOidcAuth extends pulumi.CustomResource {
             resourceInputs["identityId"] = args?.identityId;
             resourceInputs["oidcCaCertificate"] = args?.oidcCaCertificate;
             resourceInputs["oidcDiscoveryUrl"] = args?.oidcDiscoveryUrl;
+            resourceInputs["templateId"] = args?.templateId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityOidcAuth.__pulumiType, name, resourceInputs, opts, false /*dependency*/, utilities.getPackage());
@@ -166,7 +166,7 @@ export interface IdentityOidcAuthState {
      */
     boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The unique identifier of the identity provider issuing the OIDC tokens.
+     * The unique identifier of the identity provider issuing the OIDC tokens. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
     boundIssuer?: pulumi.Input<string | undefined>;
     /**
@@ -186,9 +186,13 @@ export interface IdentityOidcAuthState {
      */
     oidcCaCertificate?: pulumi.Input<string | undefined>;
     /**
-     * The URL used to retrieve the OpenID Connect configuration from the identity provider.
+     * The URL used to retrieve the OpenID Connect configuration from the identity provider. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
     oidcDiscoveryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of an <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> to take the identity provider settings from. When set, <span pulumi-lang-nodejs="`oidcDiscoveryUrl`" pulumi-lang-dotnet="`OidcDiscoveryUrl`" pulumi-lang-go="`oidcDiscoveryUrl`" pulumi-lang-python="`oidc_discovery_url`" pulumi-lang-yaml="`oidcDiscoveryUrl`" pulumi-lang-java="`oidcDiscoveryUrl`" pulumi-lang-hcl="`oidc_discovery_url`">`oidcDiscoveryUrl`</span>, <span pulumi-lang-nodejs="`boundIssuer`" pulumi-lang-dotnet="`BoundIssuer`" pulumi-lang-go="`boundIssuer`" pulumi-lang-python="`bound_issuer`" pulumi-lang-yaml="`boundIssuer`" pulumi-lang-java="`boundIssuer`" pulumi-lang-hcl="`bound_issuer`">`boundIssuer`</span>, <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> come from the template and must not be set here, later edits to the template propagate to this identity, and <span pulumi-lang-nodejs="`boundSubject`" pulumi-lang-dotnet="`BoundSubject`" pulumi-lang-go="`boundSubject`" pulumi-lang-python="`bound_subject`" pulumi-lang-yaml="`boundSubject`" pulumi-lang-java="`boundSubject`" pulumi-lang-hcl="`bound_subject`">`boundSubject`</span> or <span pulumi-lang-nodejs="`boundClaims`" pulumi-lang-dotnet="`BoundClaims`" pulumi-lang-go="`boundClaims`" pulumi-lang-python="`bound_claims`" pulumi-lang-yaml="`boundClaims`" pulumi-lang-java="`boundClaims`" pulumi-lang-hcl="`bound_claims`">`boundClaims`</span> must restrict which workloads can authenticate. Removing it unlinks the template and applies the settings in this configuration instead: <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> are cleared when the configuration leaves them out, and the plan shows it. To unlink and keep the template's settings, set them here to the template's values (for example from the <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> data source); an unlink that changes nothing else then only needs the `unlink-templates` permission on auth templates, or `edit-auth` on the identity.
+     */
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,9 +224,9 @@ export interface IdentityOidcAuthArgs {
      */
     boundClaims?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The unique identifier of the identity provider issuing the OIDC tokens.
+     * The unique identifier of the identity provider issuing the OIDC tokens. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
-    boundIssuer: pulumi.Input<string>;
+    boundIssuer?: pulumi.Input<string | undefined>;
     /**
      * The expected principal that is the subject of the JWT.
      */
@@ -240,7 +244,11 @@ export interface IdentityOidcAuthArgs {
      */
     oidcCaCertificate?: pulumi.Input<string | undefined>;
     /**
-     * The URL used to retrieve the OpenID Connect configuration from the identity provider.
+     * The URL used to retrieve the OpenID Connect configuration from the identity provider. Required unless <span pulumi-lang-nodejs="`templateId`" pulumi-lang-dotnet="`TemplateId`" pulumi-lang-go="`templateId`" pulumi-lang-python="`template_id`" pulumi-lang-yaml="`templateId`" pulumi-lang-java="`templateId`" pulumi-lang-hcl="`template_id`">`templateId`</span> is set.
      */
-    oidcDiscoveryUrl: pulumi.Input<string>;
+    oidcDiscoveryUrl?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of an <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> to take the identity provider settings from. When set, <span pulumi-lang-nodejs="`oidcDiscoveryUrl`" pulumi-lang-dotnet="`OidcDiscoveryUrl`" pulumi-lang-go="`oidcDiscoveryUrl`" pulumi-lang-python="`oidc_discovery_url`" pulumi-lang-yaml="`oidcDiscoveryUrl`" pulumi-lang-java="`oidcDiscoveryUrl`" pulumi-lang-hcl="`oidc_discovery_url`">`oidcDiscoveryUrl`</span>, <span pulumi-lang-nodejs="`boundIssuer`" pulumi-lang-dotnet="`BoundIssuer`" pulumi-lang-go="`boundIssuer`" pulumi-lang-python="`bound_issuer`" pulumi-lang-yaml="`boundIssuer`" pulumi-lang-java="`boundIssuer`" pulumi-lang-hcl="`bound_issuer`">`boundIssuer`</span>, <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> come from the template and must not be set here, later edits to the template propagate to this identity, and <span pulumi-lang-nodejs="`boundSubject`" pulumi-lang-dotnet="`BoundSubject`" pulumi-lang-go="`boundSubject`" pulumi-lang-python="`bound_subject`" pulumi-lang-yaml="`boundSubject`" pulumi-lang-java="`boundSubject`" pulumi-lang-hcl="`bound_subject`">`boundSubject`</span> or <span pulumi-lang-nodejs="`boundClaims`" pulumi-lang-dotnet="`BoundClaims`" pulumi-lang-go="`boundClaims`" pulumi-lang-python="`bound_claims`" pulumi-lang-yaml="`boundClaims`" pulumi-lang-java="`boundClaims`" pulumi-lang-hcl="`bound_claims`">`boundClaims`</span> must restrict which workloads can authenticate. Removing it unlinks the template and applies the settings in this configuration instead: <span pulumi-lang-nodejs="`boundAudiences`" pulumi-lang-dotnet="`BoundAudiences`" pulumi-lang-go="`boundAudiences`" pulumi-lang-python="`bound_audiences`" pulumi-lang-yaml="`boundAudiences`" pulumi-lang-java="`boundAudiences`" pulumi-lang-hcl="`bound_audiences`">`boundAudiences`</span> and <span pulumi-lang-nodejs="`oidcCaCertificate`" pulumi-lang-dotnet="`OidcCaCertificate`" pulumi-lang-go="`oidcCaCertificate`" pulumi-lang-python="`oidc_ca_certificate`" pulumi-lang-yaml="`oidcCaCertificate`" pulumi-lang-java="`oidcCaCertificate`" pulumi-lang-hcl="`oidc_ca_certificate`">`oidcCaCertificate`</span> are cleared when the configuration leaves them out, and the plan shows it. To unlink and keep the template's settings, set them here to the template's values (for example from the <span pulumi-lang-nodejs="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-dotnet="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-go="`IdentityOidcAuthTemplate`" pulumi-lang-python="`IdentityOidcAuthTemplate`" pulumi-lang-yaml="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-java="`infisical.IdentityOidcAuthTemplate`" pulumi-lang-hcl="`infisical_identity_oidc_auth_template`">`infisical.IdentityOidcAuthTemplate`</span> data source); an unlink that changes nothing else then only needs the `unlink-templates` permission on auth templates, or `edit-auth` on the identity.
+     */
+    templateId?: pulumi.Input<string | undefined>;
 }

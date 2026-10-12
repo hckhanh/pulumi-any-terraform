@@ -1351,6 +1351,52 @@ export interface GetGroupsGroup {
     slug: string;
 }
 
+export interface GetIdentitiesListFilter {
+    /**
+     * Only return identities with exactly these names. If the list is empty, no identities are returned. If not set, identities are not filtered by name.
+     */
+    identityNames?: string[];
+}
+
+export interface GetIdentitiesListIdentity {
+    /**
+     * The authentication methods configured on the identity
+     */
+    authModes: string[];
+    /**
+     * The ID of the custom role assigned to the identity. Null if the identity has a predefined role.
+     */
+    customRoleId: string;
+    /**
+     * Whether the identity has delete protection enabled
+     */
+    hasDeleteProtection: boolean;
+    /**
+     * The ID of the identity
+     */
+    id: string;
+    /**
+     * The name of the identity
+     */
+    name: string;
+    /**
+     * The ID of the organization the identity belongs to
+     */
+    orgId: string;
+    /**
+     * The ID of the project that owns the identity. Null for organization identities.
+     */
+    projectId: string;
+    /**
+     * The role assigned to the identity in its scope. For custom roles, this is the role slug. If the identity has more than one role, this is the first role.
+     */
+    role: string;
+    /**
+     * The scope that owns the identity. Either <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`" pulumi-lang-hcl="`organization`">`organization`</span> or <span pulumi-lang-nodejs="`project`" pulumi-lang-dotnet="`Project`" pulumi-lang-go="`project`" pulumi-lang-python="`project`" pulumi-lang-yaml="`project`" pulumi-lang-java="`project`" pulumi-lang-hcl="`project`">`project`</span>.
+     */
+    scope: string;
+}
+
 export interface GetIdentityDetailsOrganization {
     /**
      * The ID of the organization
@@ -1466,6 +1512,72 @@ export interface GetProjectUserUser {
     lastName: string;
 }
 
+export interface GetProjectUsersListMember {
+    /**
+     * The email address of the user.
+     */
+    email: string;
+    /**
+     * The first name of the user.
+     */
+    firstName: string;
+    /**
+     * The last name of the user.
+     */
+    lastName: string;
+    /**
+     * The membership UUID.
+     */
+    membershipId: string;
+    /**
+     * The roles assigned to the project user.
+     */
+    roles: outputs.GetProjectUsersListMemberRole[];
+    /**
+     * The user's Infisical UUID.
+     */
+    userId: string;
+    /**
+     * The username of the user (by default the email address).
+     */
+    username: string;
+}
+
+export interface GetProjectUsersListMemberRole {
+    /**
+     * The ID of the custom role, if applicable.
+     */
+    customRoleId: string;
+    /**
+     * The ID of the project user role.
+     */
+    id: string;
+    /**
+     * Flag to indicate whether the assigned role is temporary.
+     */
+    isTemporary: boolean;
+    /**
+     * The slug of the role.
+     */
+    roleSlug: string;
+    /**
+     * ISO time at which temporary access ends. Null for permanent roles.
+     */
+    temporaryAccessEndTime: string;
+    /**
+     * ISO time at which temporary access begins. Null for permanent roles.
+     */
+    temporaryAccessStartTime: string;
+    /**
+     * Type of temporary access given. Null for permanent roles.
+     */
+    temporaryMode: string;
+    /**
+     * TTL for the temporary access. Null for permanent roles.
+     */
+    temporaryRange: string;
+}
+
 export interface GetProjectsEnvironments {
     /**
      * The ID of the environment
@@ -1565,6 +1677,164 @@ export interface GetSecretMetadataTag {
     id?: string;
     name?: string;
     slug?: string;
+}
+
+export interface GetSecretValidationRulesRule {
+    /**
+     * The constraints the rule enforces. Only the attributes that apply to the rule's type are set; the rest are null.
+     */
+    constraints: outputs.GetSecretValidationRulesRuleConstraints;
+    /**
+     * When the rule was created.
+     */
+    createdAt: string;
+    /**
+     * The description of the secret validation rule.
+     */
+    description: string;
+    /**
+     * The environment the rule is scoped to. Null when the rule is enforced in every environment of the project.
+     */
+    environment: outputs.GetSecretValidationRulesRuleEnvironment;
+    /**
+     * The ID of the secret validation rule.
+     */
+    id: string;
+    /**
+     * Whether the rule is enforced.
+     */
+    isActive: boolean;
+    /**
+     * The name of the secret validation rule.
+     */
+    name: string;
+    /**
+     * The ID of the project the rule belongs to.
+     */
+    projectId: string;
+    /**
+     * The secret path the rule is scoped to.
+     */
+    secretPath: string;
+    /**
+     * The type of the rule: static-secrets, dynamic-secrets or secret-rotations.
+     */
+    type: string;
+    /**
+     * When the rule was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetSecretValidationRulesRuleConstraints {
+    /**
+     * Constraints enforced on the secret key. Set only on static-secrets rules.
+     */
+    keyConstraints: outputs.GetSecretValidationRulesRuleConstraintsKeyConstraints;
+    /**
+     * Constraints the generated password must satisfy. Set only on dynamic-secrets and secret-rotations rules.
+     */
+    passwordConstraints: outputs.GetSecretValidationRulesRuleConstraintsPasswordConstraints;
+    /**
+     * The providers the rule applies to. Set only on dynamic-secrets and secret-rotations rules.
+     */
+    providers: string[];
+    /**
+     * Constraints enforced on the secret value. Set only on static-secrets rules.
+     */
+    valueConstraints: outputs.GetSecretValidationRulesRuleConstraintsValueConstraints;
+}
+
+export interface GetSecretValidationRulesRuleConstraintsKeyConstraints {
+    /**
+     * The maximum number of characters the secret key may contain.
+     */
+    maxLength: number;
+    /**
+     * The minimum number of characters the secret key must contain.
+     */
+    minLength: number;
+    /**
+     * A regular expression the secret key must match.
+     */
+    regexPattern: string;
+    /**
+     * A string the secret key must start with.
+     */
+    requiredPrefix: string;
+    /**
+     * A string the secret key must end with.
+     */
+    requiredSuffix: string;
+}
+
+export interface GetSecretValidationRulesRuleConstraintsPasswordConstraints {
+    /**
+     * The maximum number of characters the generated password may contain.
+     */
+    maxLength: number;
+    /**
+     * The minimum number of characters the generated password must contain.
+     */
+    minLength: number;
+    /**
+     * A regular expression the generated password must match.
+     */
+    regexPattern: string;
+    /**
+     * A string the generated password must start with.
+     */
+    requiredPrefix: string;
+    /**
+     * A string the generated password must end with.
+     */
+    requiredSuffix: string;
+}
+
+export interface GetSecretValidationRulesRuleConstraintsValueConstraints {
+    /**
+     * The maximum number of characters the secret value may contain.
+     */
+    maxLength: number;
+    /**
+     * The minimum number of characters the secret value must contain.
+     */
+    minLength: number;
+    /**
+     * A regular expression the secret value must match.
+     */
+    regexPattern: string;
+    /**
+     * A string the secret value must start with.
+     */
+    requiredPrefix: string;
+    /**
+     * A string the secret value must end with.
+     */
+    requiredSuffix: string;
+    /**
+     * How many of the secret's own previous versions the new value must differ from. Null when the rule allows a value that repeats a previous version.
+     */
+    uniqueAcrossLastVersions: number;
+    /**
+     * Whether the rule rejects a value that another secret in the rule's scope already holds. Null when the rule allows a value another secret already holds.
+     */
+    uniqueWithinScope: boolean;
+}
+
+export interface GetSecretValidationRulesRuleEnvironment {
+    /**
+     * The ID of the environment.
+     */
+    id: string;
+    /**
+     * The name of the environment.
+     */
+    name: string;
+    /**
+     * The slug of the environment.
+     */
+    slug: string;
 }
 
 export interface GetSecretsSecrets {
@@ -1835,7 +2105,7 @@ export interface ProjectRolePermission {
      */
     conditions?: outputs.ProjectRolePermissionConditions;
     /**
-     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
+     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,secret-validation-rules,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
      */
     subject: string;
 }
@@ -2981,6 +3251,158 @@ export interface SecretSyncSupabaseSyncOptions {
      * The format to use for structuring secret keys in the Supabase destination.
      */
     keySchema?: string;
+}
+
+export interface SecretValidationRuleDynamicSecretsConstraints {
+    /**
+     * Constraints the generated password must satisfy. These replace any password requirements configured on the resource itself.
+     */
+    passwordConstraints: outputs.SecretValidationRuleDynamicSecretsConstraintsPasswordConstraints;
+    /**
+     * The dynamic secret providers this rule applies to. Supported: sql-database, milvus.
+     */
+    providers: string[];
+}
+
+export interface SecretValidationRuleDynamicSecretsConstraintsPasswordConstraints {
+    /**
+     * The maximum number of characters the generated password may contain.
+     */
+    maxLength?: number;
+    /**
+     * The minimum number of characters the generated password must contain.
+     */
+    minLength?: number;
+    /**
+     * A regular expression the generated password must match. Setting this makes Infisical build the password from the pattern and ignore the length constraints on the same rule.
+     */
+    regexPattern?: string;
+    /**
+     * A string the generated password must start with.
+     */
+    requiredPrefix?: string;
+    /**
+     * A string the generated password must end with.
+     */
+    requiredSuffix?: string;
+}
+
+export interface SecretValidationRuleSecretRotationsConstraints {
+    /**
+     * Constraints the generated password must satisfy. These replace any password requirements configured on the resource itself.
+     */
+    passwordConstraints: outputs.SecretValidationRuleSecretRotationsConstraintsPasswordConstraints;
+    /**
+     * The secret rotation providers this rule applies to. Supported: postgres-credentials, mysql-credentials, mssql-credentials, oracledb-credentials, unix-linux-local-account, ldap-password.
+     */
+    providers: string[];
+}
+
+export interface SecretValidationRuleSecretRotationsConstraintsPasswordConstraints {
+    /**
+     * The maximum number of characters the generated password may contain.
+     */
+    maxLength?: number;
+    /**
+     * The minimum number of characters the generated password must contain.
+     */
+    minLength?: number;
+    /**
+     * A regular expression the generated password must match. Setting this makes Infisical build the password from the pattern and ignore the length constraints on the same rule.
+     */
+    regexPattern?: string;
+    /**
+     * A string the generated password must start with.
+     */
+    requiredPrefix?: string;
+    /**
+     * A string the generated password must end with.
+     */
+    requiredSuffix?: string;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraints {
+    /**
+     * Constraints enforced on the secret key when a secret is created or renamed. Omit to leave keys unconstrained.
+     */
+    keyConstraints?: outputs.SecretValidationRuleStaticSecretsConstraintsKeyConstraints;
+    /**
+     * Constraints enforced on the secret value when a secret is created or updated. Omit to leave values unconstrained.
+     */
+    valueConstraints?: outputs.SecretValidationRuleStaticSecretsConstraintsValueConstraints;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraintsKeyConstraints {
+    /**
+     * The maximum number of characters the secret key may contain.
+     */
+    maxLength?: number;
+    /**
+     * The minimum number of characters the secret key must contain.
+     */
+    minLength?: number;
+    /**
+     * A regular expression the secret key must match.
+     */
+    regexPattern?: string;
+    /**
+     * A string the secret key must start with.
+     */
+    requiredPrefix?: string;
+    /**
+     * A string the secret key must end with.
+     */
+    requiredSuffix?: string;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraintsValueConstraints {
+    /**
+     * The maximum number of characters the secret value may contain.
+     */
+    maxLength?: number;
+    /**
+     * The minimum number of characters the secret value must contain.
+     */
+    minLength?: number;
+    /**
+     * A regular expression the secret value must match.
+     */
+    regexPattern?: string;
+    /**
+     * A string the secret value must start with.
+     */
+    requiredPrefix?: string;
+    /**
+     * A string the secret value must end with.
+     */
+    requiredSuffix?: string;
+    /**
+     * How many of the secret's own previous versions the new value must differ from. Between 1 and 25. Omit to allow a value that repeats a previous version.
+     */
+    uniqueAcrossLastVersions?: number;
+    /**
+     * Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> to reject a value that another secret in the rule's scope already holds. Requires blind indexing on the project. Omit to allow a value another secret already holds.
+     */
+    uniqueWithinScope?: boolean;
+}
+
+export interface SubOrganizationGroupRole {
+    /**
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true,<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
+     */
+    isTemporary: boolean;
+    /**
+     * The slug of the organization role, e.g. <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`" pulumi-lang-hcl="`admin`">`admin`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>, `no-access`, or the slug of a custom role of the sub-organization.
+     */
+    roleSlug: string;
+    /**
+     * ISO time for which temporary access should begin. This is in the format YYYY-MM-DDTHH:MM:SSZ e.g. 2024-09-19T12:43:13Z
+     */
+    temporaryAccessStartTime?: string;
+    /**
+     * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
+     */
+    temporaryRange?: string;
 }
 
 export namespace config {

@@ -39,9 +39,13 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly calculationInterval: pulumi.Output<string>;
     /**
-     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked.
+     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked. Trends alerts only.
      */
     declare public readonly checkOngoingInterval: pulumi.Output<boolean>;
+    /**
+     * Name of the result column to evaluate. When unset, the single numeric column is used, and PostHog errors if the result has more than one. SQL alerts only.
+     */
+    declare public readonly column: pulumi.Output<string | undefined>;
     /**
      * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
@@ -51,9 +55,17 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
+     * How to read the rows a SQL (HogQL) insight returns: <span pulumi-lang-nodejs="`lastRow`" pulumi-lang-dotnet="`LastRow`" pulumi-lang-go="`lastRow`" pulumi-lang-python="`last_row`" pulumi-lang-yaml="`lastRow`" pulumi-lang-java="`lastRow`" pulumi-lang-hcl="`last_row`">`lastRow`</span> when the query is ordered oldest to newest, <span pulumi-lang-nodejs="`firstRow`" pulumi-lang-dotnet="`FirstRow`" pulumi-lang-go="`firstRow`" pulumi-lang-python="`first_row`" pulumi-lang-yaml="`firstRow`" pulumi-lang-java="`firstRow`" pulumi-lang-hcl="`first_row`">`firstRow`</span> when it is ordered newest to oldest, or <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> to fire if any row breaches. Setting this makes the alert a SQL alert; leave it unset and set <span pulumi-lang-nodejs="`seriesIndex`" pulumi-lang-dotnet="`SeriesIndex`" pulumi-lang-go="`seriesIndex`" pulumi-lang-python="`series_index`" pulumi-lang-yaml="`seriesIndex`" pulumi-lang-java="`seriesIndex`" pulumi-lang-hcl="`series_index`">`seriesIndex`</span> for a Trends alert. <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> only works with <span pulumi-lang-nodejs="`conditionType " pulumi-lang-dotnet="`ConditionType " pulumi-lang-go="`conditionType " pulumi-lang-python="`condition_type " pulumi-lang-yaml="`conditionType " pulumi-lang-java="`conditionType " pulumi-lang-hcl="`condition_type ">`conditionType </span>= <span pulumi-lang-nodejs=""absoluteValue"" pulumi-lang-dotnet=""AbsoluteValue"" pulumi-lang-go=""absoluteValue"" pulumi-lang-python=""absolute_value"" pulumi-lang-yaml=""absoluteValue"" pulumi-lang-java=""absoluteValue"" pulumi-lang-hcl=""absolute_value"">"absoluteValue"</span>`.
+     */
+    declare public readonly evaluation: pulumi.Output<string | undefined>;
+    /**
      * ID of the insight this alert monitors.
      */
     declare public readonly insight: pulumi.Output<number>;
+    /**
+     * Column whose value names the evaluated row in the notification. When unset, the first non-evaluated column is used. SQL alerts only.
+     */
+    declare public readonly labelColumn: pulumi.Output<string | undefined>;
     /**
      * Name of the alert.
      */
@@ -67,9 +79,9 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly scheduleRestriction: pulumi.Output<outputs.AlertScheduleRestriction | undefined>;
     /**
-     * Index of the trend series to monitor (0-based). Used for trends alerts.
+     * Index of the trend series to monitor (0-based). Required for alerts on a Trends insight, and mutually exclusive with <span pulumi-lang-nodejs="`evaluation`" pulumi-lang-dotnet="`Evaluation`" pulumi-lang-go="`evaluation`" pulumi-lang-python="`evaluation`" pulumi-lang-yaml="`evaluation`" pulumi-lang-java="`evaluation`" pulumi-lang-hcl="`evaluation`">`evaluation`</span>.
      */
-    declare public readonly seriesIndex: pulumi.Output<number>;
+    declare public readonly seriesIndex: pulumi.Output<number | undefined>;
     /**
      * Whether to skip checking the alert on weekends.
      */
@@ -106,9 +118,12 @@ export class Alert extends pulumi.CustomResource {
             const state = argsOrState as AlertState | undefined;
             resourceInputs["calculationInterval"] = state?.calculationInterval;
             resourceInputs["checkOngoingInterval"] = state?.checkOngoingInterval;
+            resourceInputs["column"] = state?.column;
             resourceInputs["conditionType"] = state?.conditionType;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["evaluation"] = state?.evaluation;
             resourceInputs["insight"] = state?.insight;
+            resourceInputs["labelColumn"] = state?.labelColumn;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["scheduleRestriction"] = state?.scheduleRestriction;
@@ -126,9 +141,6 @@ export class Alert extends pulumi.CustomResource {
             if (args?.insight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'insight'");
             }
-            if (args?.seriesIndex === undefined && !opts.urn) {
-                throw new Error("Missing required property 'seriesIndex'");
-            }
             if (args?.subscribedUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscribedUsers'");
             }
@@ -137,9 +149,12 @@ export class Alert extends pulumi.CustomResource {
             }
             resourceInputs["calculationInterval"] = args?.calculationInterval;
             resourceInputs["checkOngoingInterval"] = args?.checkOngoingInterval;
+            resourceInputs["column"] = args?.column;
             resourceInputs["conditionType"] = args?.conditionType;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["evaluation"] = args?.evaluation;
             resourceInputs["insight"] = args?.insight;
+            resourceInputs["labelColumn"] = args?.labelColumn;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["scheduleRestriction"] = args?.scheduleRestriction;
@@ -164,9 +179,13 @@ export interface AlertState {
      */
     calculationInterval?: pulumi.Input<string | undefined>;
     /**
-     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked.
+     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked. Trends alerts only.
      */
     checkOngoingInterval?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the result column to evaluate. When unset, the single numeric column is used, and PostHog errors if the result has more than one. SQL alerts only.
+     */
+    column?: pulumi.Input<string | undefined>;
     /**
      * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
@@ -176,9 +195,17 @@ export interface AlertState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
+     * How to read the rows a SQL (HogQL) insight returns: <span pulumi-lang-nodejs="`lastRow`" pulumi-lang-dotnet="`LastRow`" pulumi-lang-go="`lastRow`" pulumi-lang-python="`last_row`" pulumi-lang-yaml="`lastRow`" pulumi-lang-java="`lastRow`" pulumi-lang-hcl="`last_row`">`lastRow`</span> when the query is ordered oldest to newest, <span pulumi-lang-nodejs="`firstRow`" pulumi-lang-dotnet="`FirstRow`" pulumi-lang-go="`firstRow`" pulumi-lang-python="`first_row`" pulumi-lang-yaml="`firstRow`" pulumi-lang-java="`firstRow`" pulumi-lang-hcl="`first_row`">`firstRow`</span> when it is ordered newest to oldest, or <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> to fire if any row breaches. Setting this makes the alert a SQL alert; leave it unset and set <span pulumi-lang-nodejs="`seriesIndex`" pulumi-lang-dotnet="`SeriesIndex`" pulumi-lang-go="`seriesIndex`" pulumi-lang-python="`series_index`" pulumi-lang-yaml="`seriesIndex`" pulumi-lang-java="`seriesIndex`" pulumi-lang-hcl="`series_index`">`seriesIndex`</span> for a Trends alert. <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> only works with <span pulumi-lang-nodejs="`conditionType " pulumi-lang-dotnet="`ConditionType " pulumi-lang-go="`conditionType " pulumi-lang-python="`condition_type " pulumi-lang-yaml="`conditionType " pulumi-lang-java="`conditionType " pulumi-lang-hcl="`condition_type ">`conditionType </span>= <span pulumi-lang-nodejs=""absoluteValue"" pulumi-lang-dotnet=""AbsoluteValue"" pulumi-lang-go=""absoluteValue"" pulumi-lang-python=""absolute_value"" pulumi-lang-yaml=""absoluteValue"" pulumi-lang-java=""absoluteValue"" pulumi-lang-hcl=""absolute_value"">"absoluteValue"</span>`.
+     */
+    evaluation?: pulumi.Input<string | undefined>;
+    /**
      * ID of the insight this alert monitors.
      */
     insight?: pulumi.Input<number | undefined>;
+    /**
+     * Column whose value names the evaluated row in the notification. When unset, the first non-evaluated column is used. SQL alerts only.
+     */
+    labelColumn?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
@@ -192,7 +219,7 @@ export interface AlertState {
      */
     scheduleRestriction?: pulumi.Input<inputs.AlertScheduleRestriction | undefined>;
     /**
-     * Index of the trend series to monitor (0-based). Used for trends alerts.
+     * Index of the trend series to monitor (0-based). Required for alerts on a Trends insight, and mutually exclusive with <span pulumi-lang-nodejs="`evaluation`" pulumi-lang-dotnet="`Evaluation`" pulumi-lang-go="`evaluation`" pulumi-lang-python="`evaluation`" pulumi-lang-yaml="`evaluation`" pulumi-lang-java="`evaluation`" pulumi-lang-hcl="`evaluation`">`evaluation`</span>.
      */
     seriesIndex?: pulumi.Input<number | undefined>;
     /**
@@ -226,9 +253,13 @@ export interface AlertArgs {
      */
     calculationInterval?: pulumi.Input<string | undefined>;
     /**
-     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked.
+     * Whether to check the ongoing (incomplete) interval. When false, only completed intervals are checked. Trends alerts only.
      */
     checkOngoingInterval?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the result column to evaluate. When unset, the single numeric column is used, and PostHog errors if the result has more than one. SQL alerts only.
+     */
+    column?: pulumi.Input<string | undefined>;
     /**
      * Condition type: <span pulumi-lang-nodejs="`absoluteValue`" pulumi-lang-dotnet="`AbsoluteValue`" pulumi-lang-go="`absoluteValue`" pulumi-lang-python="`absolute_value`" pulumi-lang-yaml="`absoluteValue`" pulumi-lang-java="`absoluteValue`" pulumi-lang-hcl="`absolute_value`">`absoluteValue`</span>, <span pulumi-lang-nodejs="`relativeIncrease`" pulumi-lang-dotnet="`RelativeIncrease`" pulumi-lang-go="`relativeIncrease`" pulumi-lang-python="`relative_increase`" pulumi-lang-yaml="`relativeIncrease`" pulumi-lang-java="`relativeIncrease`" pulumi-lang-hcl="`relative_increase`">`relativeIncrease`</span>, or <span pulumi-lang-nodejs="`relativeDecrease`" pulumi-lang-dotnet="`RelativeDecrease`" pulumi-lang-go="`relativeDecrease`" pulumi-lang-python="`relative_decrease`" pulumi-lang-yaml="`relativeDecrease`" pulumi-lang-java="`relativeDecrease`" pulumi-lang-hcl="`relative_decrease`">`relativeDecrease`</span>.
      */
@@ -238,9 +269,17 @@ export interface AlertArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
+     * How to read the rows a SQL (HogQL) insight returns: <span pulumi-lang-nodejs="`lastRow`" pulumi-lang-dotnet="`LastRow`" pulumi-lang-go="`lastRow`" pulumi-lang-python="`last_row`" pulumi-lang-yaml="`lastRow`" pulumi-lang-java="`lastRow`" pulumi-lang-hcl="`last_row`">`lastRow`</span> when the query is ordered oldest to newest, <span pulumi-lang-nodejs="`firstRow`" pulumi-lang-dotnet="`FirstRow`" pulumi-lang-go="`firstRow`" pulumi-lang-python="`first_row`" pulumi-lang-yaml="`firstRow`" pulumi-lang-java="`firstRow`" pulumi-lang-hcl="`first_row`">`firstRow`</span> when it is ordered newest to oldest, or <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> to fire if any row breaches. Setting this makes the alert a SQL alert; leave it unset and set <span pulumi-lang-nodejs="`seriesIndex`" pulumi-lang-dotnet="`SeriesIndex`" pulumi-lang-go="`seriesIndex`" pulumi-lang-python="`series_index`" pulumi-lang-yaml="`seriesIndex`" pulumi-lang-java="`seriesIndex`" pulumi-lang-hcl="`series_index`">`seriesIndex`</span> for a Trends alert. <span pulumi-lang-nodejs="`anyRow`" pulumi-lang-dotnet="`AnyRow`" pulumi-lang-go="`anyRow`" pulumi-lang-python="`any_row`" pulumi-lang-yaml="`anyRow`" pulumi-lang-java="`anyRow`" pulumi-lang-hcl="`any_row`">`anyRow`</span> only works with <span pulumi-lang-nodejs="`conditionType " pulumi-lang-dotnet="`ConditionType " pulumi-lang-go="`conditionType " pulumi-lang-python="`condition_type " pulumi-lang-yaml="`conditionType " pulumi-lang-java="`conditionType " pulumi-lang-hcl="`condition_type ">`conditionType </span>= <span pulumi-lang-nodejs=""absoluteValue"" pulumi-lang-dotnet=""AbsoluteValue"" pulumi-lang-go=""absoluteValue"" pulumi-lang-python=""absolute_value"" pulumi-lang-yaml=""absoluteValue"" pulumi-lang-java=""absoluteValue"" pulumi-lang-hcl=""absolute_value"">"absoluteValue"</span>`.
+     */
+    evaluation?: pulumi.Input<string | undefined>;
+    /**
      * ID of the insight this alert monitors.
      */
     insight: pulumi.Input<number>;
+    /**
+     * Column whose value names the evaluated row in the notification. When unset, the first non-evaluated column is used. SQL alerts only.
+     */
+    labelColumn?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
@@ -254,9 +293,9 @@ export interface AlertArgs {
      */
     scheduleRestriction?: pulumi.Input<inputs.AlertScheduleRestriction | undefined>;
     /**
-     * Index of the trend series to monitor (0-based). Used for trends alerts.
+     * Index of the trend series to monitor (0-based). Required for alerts on a Trends insight, and mutually exclusive with <span pulumi-lang-nodejs="`evaluation`" pulumi-lang-dotnet="`Evaluation`" pulumi-lang-go="`evaluation`" pulumi-lang-python="`evaluation`" pulumi-lang-yaml="`evaluation`" pulumi-lang-java="`evaluation`" pulumi-lang-hcl="`evaluation`">`evaluation`</span>.
      */
-    seriesIndex: pulumi.Input<number>;
+    seriesIndex?: pulumi.Input<number | undefined>;
     /**
      * Whether to skip checking the alert on weekends.
      */

@@ -24,6 +24,7 @@ export interface GetClusterArgs {
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
+    readonly agentTracingServiceUuid: string;
     readonly color: string;
     readonly description: string;
     readonly emoji: string;

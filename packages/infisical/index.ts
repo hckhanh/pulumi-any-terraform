@@ -275,6 +275,11 @@ export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
+export { GetIdentitiesListArgs, GetIdentitiesListResult, GetIdentitiesListOutputArgs } from "./getIdentitiesList";
+export const getIdentitiesList: typeof import("./getIdentitiesList").getIdentitiesList = null as any;
+export const getIdentitiesListOutput: typeof import("./getIdentitiesList").getIdentitiesListOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentitiesList","getIdentitiesListOutput"], () => require("./getIdentitiesList"));
+
 export { GetIdentityArgs, GetIdentityResult, GetIdentityOutputArgs } from "./getIdentity";
 export const getIdentity: typeof import("./getIdentity").getIdentity = null as any;
 export const getIdentityOutput: typeof import("./getIdentity").getIdentityOutput = null as any;
@@ -284,6 +289,16 @@ export { GetIdentityDetailsResult } from "./getIdentityDetails";
 export const getIdentityDetails: typeof import("./getIdentityDetails").getIdentityDetails = null as any;
 export const getIdentityDetailsOutput: typeof import("./getIdentityDetails").getIdentityDetailsOutput = null as any;
 utilities.lazyLoad(exports, ["getIdentityDetails","getIdentityDetailsOutput"], () => require("./getIdentityDetails"));
+
+export { GetIdentityKubernetesAuthTemplateArgs, GetIdentityKubernetesAuthTemplateResult, GetIdentityKubernetesAuthTemplateOutputArgs } from "./getIdentityKubernetesAuthTemplate";
+export const getIdentityKubernetesAuthTemplate: typeof import("./getIdentityKubernetesAuthTemplate").getIdentityKubernetesAuthTemplate = null as any;
+export const getIdentityKubernetesAuthTemplateOutput: typeof import("./getIdentityKubernetesAuthTemplate").getIdentityKubernetesAuthTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityKubernetesAuthTemplate","getIdentityKubernetesAuthTemplateOutput"], () => require("./getIdentityKubernetesAuthTemplate"));
+
+export { GetIdentityOidcAuthTemplateArgs, GetIdentityOidcAuthTemplateResult, GetIdentityOidcAuthTemplateOutputArgs } from "./getIdentityOidcAuthTemplate";
+export const getIdentityOidcAuthTemplate: typeof import("./getIdentityOidcAuthTemplate").getIdentityOidcAuthTemplate = null as any;
+export const getIdentityOidcAuthTemplateOutput: typeof import("./getIdentityOidcAuthTemplate").getIdentityOidcAuthTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityOidcAuthTemplate","getIdentityOidcAuthTemplateOutput"], () => require("./getIdentityOidcAuthTemplate"));
 
 export { GetKmsKeyPublicKeyArgs, GetKmsKeyPublicKeyResult, GetKmsKeyPublicKeyOutputArgs } from "./getKmsKeyPublicKey";
 export const getKmsKeyPublicKey: typeof import("./getKmsKeyPublicKey").getKmsKeyPublicKey = null as any;
@@ -315,6 +330,11 @@ export const getProjectUser: typeof import("./getProjectUser").getProjectUser = 
 export const getProjectUserOutput: typeof import("./getProjectUser").getProjectUserOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectUser","getProjectUserOutput"], () => require("./getProjectUser"));
 
+export { GetProjectUsersListArgs, GetProjectUsersListResult, GetProjectUsersListOutputArgs } from "./getProjectUsersList";
+export const getProjectUsersList: typeof import("./getProjectUsersList").getProjectUsersList = null as any;
+export const getProjectUsersListOutput: typeof import("./getProjectUsersList").getProjectUsersListOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectUsersList","getProjectUsersListOutput"], () => require("./getProjectUsersList"));
+
 export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
 export const getProjects: typeof import("./getProjects").getProjects = null as any;
 export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
@@ -339,6 +359,11 @@ export { GetSecretTagArgs, GetSecretTagResult, GetSecretTagOutputArgs } from "./
 export const getSecretTag: typeof import("./getSecretTag").getSecretTag = null as any;
 export const getSecretTagOutput: typeof import("./getSecretTag").getSecretTagOutput = null as any;
 utilities.lazyLoad(exports, ["getSecretTag","getSecretTagOutput"], () => require("./getSecretTag"));
+
+export { GetSecretValidationRulesArgs, GetSecretValidationRulesResult, GetSecretValidationRulesOutputArgs } from "./getSecretValidationRules";
+export const getSecretValidationRules: typeof import("./getSecretValidationRules").getSecretValidationRules = null as any;
+export const getSecretValidationRulesOutput: typeof import("./getSecretValidationRules").getSecretValidationRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretValidationRules","getSecretValidationRulesOutput"], () => require("./getSecretValidationRules"));
 
 export { GetSecretsArgs, GetSecretsResult, GetSecretsOutputArgs } from "./getSecrets";
 export const getSecrets: typeof import("./getSecrets").getSecrets = null as any;
@@ -385,10 +410,20 @@ export type IdentityKubernetesAuth = import("./identityKubernetesAuth").Identity
 export const IdentityKubernetesAuth: typeof import("./identityKubernetesAuth").IdentityKubernetesAuth = null as any;
 utilities.lazyLoad(exports, ["IdentityKubernetesAuth"], () => require("./identityKubernetesAuth"));
 
+export { IdentityKubernetesAuthTemplateArgs, IdentityKubernetesAuthTemplateState } from "./identityKubernetesAuthTemplate";
+export type IdentityKubernetesAuthTemplate = import("./identityKubernetesAuthTemplate").IdentityKubernetesAuthTemplate;
+export const IdentityKubernetesAuthTemplate: typeof import("./identityKubernetesAuthTemplate").IdentityKubernetesAuthTemplate = null as any;
+utilities.lazyLoad(exports, ["IdentityKubernetesAuthTemplate"], () => require("./identityKubernetesAuthTemplate"));
+
 export { IdentityOidcAuthArgs, IdentityOidcAuthState } from "./identityOidcAuth";
 export type IdentityOidcAuth = import("./identityOidcAuth").IdentityOidcAuth;
 export const IdentityOidcAuth: typeof import("./identityOidcAuth").IdentityOidcAuth = null as any;
 utilities.lazyLoad(exports, ["IdentityOidcAuth"], () => require("./identityOidcAuth"));
+
+export { IdentityOidcAuthTemplateArgs, IdentityOidcAuthTemplateState } from "./identityOidcAuthTemplate";
+export type IdentityOidcAuthTemplate = import("./identityOidcAuthTemplate").IdentityOidcAuthTemplate;
+export const IdentityOidcAuthTemplate: typeof import("./identityOidcAuthTemplate").IdentityOidcAuthTemplate = null as any;
+utilities.lazyLoad(exports, ["IdentityOidcAuthTemplate"], () => require("./identityOidcAuthTemplate"));
 
 export { IdentityTlsCertAuthArgs, IdentityTlsCertAuthState } from "./identityTlsCertAuth";
 export type IdentityTlsCertAuth = import("./identityTlsCertAuth").IdentityTlsCertAuth;
@@ -653,10 +688,30 @@ export type SecretTag = import("./secretTag").SecretTag;
 export const SecretTag: typeof import("./secretTag").SecretTag = null as any;
 utilities.lazyLoad(exports, ["SecretTag"], () => require("./secretTag"));
 
+export { SecretValidationRuleDynamicSecretsArgs, SecretValidationRuleDynamicSecretsState } from "./secretValidationRuleDynamicSecrets";
+export type SecretValidationRuleDynamicSecrets = import("./secretValidationRuleDynamicSecrets").SecretValidationRuleDynamicSecrets;
+export const SecretValidationRuleDynamicSecrets: typeof import("./secretValidationRuleDynamicSecrets").SecretValidationRuleDynamicSecrets = null as any;
+utilities.lazyLoad(exports, ["SecretValidationRuleDynamicSecrets"], () => require("./secretValidationRuleDynamicSecrets"));
+
+export { SecretValidationRuleSecretRotationsArgs, SecretValidationRuleSecretRotationsState } from "./secretValidationRuleSecretRotations";
+export type SecretValidationRuleSecretRotations = import("./secretValidationRuleSecretRotations").SecretValidationRuleSecretRotations;
+export const SecretValidationRuleSecretRotations: typeof import("./secretValidationRuleSecretRotations").SecretValidationRuleSecretRotations = null as any;
+utilities.lazyLoad(exports, ["SecretValidationRuleSecretRotations"], () => require("./secretValidationRuleSecretRotations"));
+
+export { SecretValidationRuleStaticSecretsArgs, SecretValidationRuleStaticSecretsState } from "./secretValidationRuleStaticSecrets";
+export type SecretValidationRuleStaticSecrets = import("./secretValidationRuleStaticSecrets").SecretValidationRuleStaticSecrets;
+export const SecretValidationRuleStaticSecrets: typeof import("./secretValidationRuleStaticSecrets").SecretValidationRuleStaticSecrets = null as any;
+utilities.lazyLoad(exports, ["SecretValidationRuleStaticSecrets"], () => require("./secretValidationRuleStaticSecrets"));
+
 export { SubOrganizationArgs, SubOrganizationState } from "./subOrganization";
 export type SubOrganization = import("./subOrganization").SubOrganization;
 export const SubOrganization: typeof import("./subOrganization").SubOrganization = null as any;
 utilities.lazyLoad(exports, ["SubOrganization"], () => require("./subOrganization"));
+
+export { SubOrganizationGroupArgs, SubOrganizationGroupState } from "./subOrganizationGroup";
+export type SubOrganizationGroup = import("./subOrganizationGroup").SubOrganizationGroup;
+export const SubOrganizationGroup: typeof import("./subOrganizationGroup").SubOrganizationGroup = null as any;
+utilities.lazyLoad(exports, ["SubOrganizationGroup"], () => require("./subOrganizationGroup"));
 
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
@@ -797,8 +852,12 @@ const _module = {
                 return new IdentityJwtAuth(name, <any>undefined, { urn })
             case "infisical:index/identityKubernetesAuth:IdentityKubernetesAuth":
                 return new IdentityKubernetesAuth(name, <any>undefined, { urn })
+            case "infisical:index/identityKubernetesAuthTemplate:IdentityKubernetesAuthTemplate":
+                return new IdentityKubernetesAuthTemplate(name, <any>undefined, { urn })
             case "infisical:index/identityOidcAuth:IdentityOidcAuth":
                 return new IdentityOidcAuth(name, <any>undefined, { urn })
+            case "infisical:index/identityOidcAuthTemplate:IdentityOidcAuthTemplate":
+                return new IdentityOidcAuthTemplate(name, <any>undefined, { urn })
             case "infisical:index/identityTlsCertAuth:IdentityTlsCertAuth":
                 return new IdentityTlsCertAuth(name, <any>undefined, { urn })
             case "infisical:index/identityTokenAuth:IdentityTokenAuth":
@@ -903,8 +962,16 @@ const _module = {
                 return new SecretSyncSupabase(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
                 return new SecretTag(name, <any>undefined, { urn })
+            case "infisical:index/secretValidationRuleDynamicSecrets:SecretValidationRuleDynamicSecrets":
+                return new SecretValidationRuleDynamicSecrets(name, <any>undefined, { urn })
+            case "infisical:index/secretValidationRuleSecretRotations:SecretValidationRuleSecretRotations":
+                return new SecretValidationRuleSecretRotations(name, <any>undefined, { urn })
+            case "infisical:index/secretValidationRuleStaticSecrets:SecretValidationRuleStaticSecrets":
+                return new SecretValidationRuleStaticSecrets(name, <any>undefined, { urn })
             case "infisical:index/subOrganization:SubOrganization":
                 return new SubOrganization(name, <any>undefined, { urn })
+            case "infisical:index/subOrganizationGroup:SubOrganizationGroup":
+                return new SubOrganizationGroup(name, <any>undefined, { urn })
             case "infisical:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -972,7 +1039,9 @@ pulumi.runtime.registerResourceModule("infisical", "index/identityAzureAuth", _m
 pulumi.runtime.registerResourceModule("infisical", "index/identityGcpAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityJwtAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityKubernetesAuth", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/identityKubernetesAuthTemplate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityOidcAuth", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/identityOidcAuthTemplate", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTlsCertAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuth", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/identityTokenAuthToken", _module)
@@ -1025,7 +1094,11 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGitlab", _mo
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretValidationRuleDynamicSecrets", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretValidationRuleSecretRotations", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretValidationRuleStaticSecrets", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/subOrganization", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/subOrganizationGroup", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("infisical", {
     version: utilities.getVersion(),

@@ -39,6 +39,10 @@ export class OutgoingWebhook extends pulumi.CustomResource {
      */
     declare public readonly customWebhookTemplateAttributes: pulumi.Output<outputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
     /**
+     * Which metadata API's value representation the `$METADATA` variables of the custom template render in. Available values: <span pulumi-lang-nodejs="`v2`" pulumi-lang-dotnet="`V2`" pulumi-lang-go="`v2`" pulumi-lang-python="`v2`" pulumi-lang-yaml="`v2`" pulumi-lang-java="`v2`" pulumi-lang-hcl="`v2`">`v2`</span> (legacy: plain text values only, the last value of a key), <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span> (every value, typed like the metadata API). New webhooks start on <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span>. Only meaningful when <span pulumi-lang-nodejs="`triggerType`" pulumi-lang-dotnet="`TriggerType`" pulumi-lang-go="`triggerType`" pulumi-lang-python="`trigger_type`" pulumi-lang-yaml="`triggerType`" pulumi-lang-java="`triggerType`" pulumi-lang-hcl="`trigger_type`">`triggerType`</span> is <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> or <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
+     */
+    declare public readonly metadataApiVersion: pulumi.Output<string>;
+    /**
      * The name of the outgoing webhook.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -93,6 +97,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OutgoingWebhookState | undefined;
             resourceInputs["customWebhookTemplateAttributes"] = state?.customWebhookTemplateAttributes;
+            resourceInputs["metadataApiVersion"] = state?.metadataApiVersion;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyAlongsidePrimaryResponder"] = state?.notifyAlongsidePrimaryResponder;
             resourceInputs["onIncidentAcknowledged"] = state?.onIncidentAcknowledged;
@@ -112,6 +117,7 @@ export class OutgoingWebhook extends pulumi.CustomResource {
                 throw new Error("Missing required property 'url'");
             }
             resourceInputs["customWebhookTemplateAttributes"] = args?.customWebhookTemplateAttributes;
+            resourceInputs["metadataApiVersion"] = args?.metadataApiVersion;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyAlongsidePrimaryResponder"] = args?.notifyAlongsidePrimaryResponder;
             resourceInputs["onIncidentAcknowledged"] = args?.onIncidentAcknowledged;
@@ -136,6 +142,10 @@ export interface OutgoingWebhookState {
      * Custom webhook template configuration.
      */
     customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
+    /**
+     * Which metadata API's value representation the `$METADATA` variables of the custom template render in. Available values: <span pulumi-lang-nodejs="`v2`" pulumi-lang-dotnet="`V2`" pulumi-lang-go="`v2`" pulumi-lang-python="`v2`" pulumi-lang-yaml="`v2`" pulumi-lang-java="`v2`" pulumi-lang-hcl="`v2`">`v2`</span> (legacy: plain text values only, the last value of a key), <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span> (every value, typed like the metadata API). New webhooks start on <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span>. Only meaningful when <span pulumi-lang-nodejs="`triggerType`" pulumi-lang-dotnet="`TriggerType`" pulumi-lang-go="`triggerType`" pulumi-lang-python="`trigger_type`" pulumi-lang-yaml="`triggerType`" pulumi-lang-java="`triggerType`" pulumi-lang-hcl="`trigger_type`">`triggerType`</span> is <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> or <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
+     */
+    metadataApiVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the outgoing webhook.
      */
@@ -186,6 +196,10 @@ export interface OutgoingWebhookArgs {
      * Custom webhook template configuration.
      */
     customWebhookTemplateAttributes?: pulumi.Input<inputs.OutgoingWebhookCustomWebhookTemplateAttributes | undefined>;
+    /**
+     * Which metadata API's value representation the `$METADATA` variables of the custom template render in. Available values: <span pulumi-lang-nodejs="`v2`" pulumi-lang-dotnet="`V2`" pulumi-lang-go="`v2`" pulumi-lang-python="`v2`" pulumi-lang-yaml="`v2`" pulumi-lang-java="`v2`" pulumi-lang-hcl="`v2`">`v2`</span> (legacy: plain text values only, the last value of a key), <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span> (every value, typed like the metadata API). New webhooks start on <span pulumi-lang-nodejs="`v3`" pulumi-lang-dotnet="`V3`" pulumi-lang-go="`v3`" pulumi-lang-python="`v3`" pulumi-lang-yaml="`v3`" pulumi-lang-java="`v3`" pulumi-lang-hcl="`v3`">`v3`</span>. Only meaningful when <span pulumi-lang-nodejs="`triggerType`" pulumi-lang-dotnet="`TriggerType`" pulumi-lang-go="`triggerType`" pulumi-lang-python="`trigger_type`" pulumi-lang-yaml="`triggerType`" pulumi-lang-java="`triggerType`" pulumi-lang-hcl="`trigger_type`">`triggerType`</span> is <span pulumi-lang-nodejs="`incidentChange`" pulumi-lang-dotnet="`IncidentChange`" pulumi-lang-go="`incidentChange`" pulumi-lang-python="`incident_change`" pulumi-lang-yaml="`incidentChange`" pulumi-lang-java="`incidentChange`" pulumi-lang-hcl="`incident_change`">`incidentChange`</span> or <span pulumi-lang-nodejs="`monitorChange`" pulumi-lang-dotnet="`MonitorChange`" pulumi-lang-go="`monitorChange`" pulumi-lang-python="`monitor_change`" pulumi-lang-yaml="`monitorChange`" pulumi-lang-java="`monitorChange`" pulumi-lang-hcl="`monitor_change`">`monitorChange`</span>.
+     */
+    metadataApiVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the outgoing webhook.
      */

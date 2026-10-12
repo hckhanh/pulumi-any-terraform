@@ -1324,6 +1324,20 @@ export interface GatewayKubernetesAuth {
 export interface GatewayTokenAuth {
 }
 
+export interface GetIdentitiesListFilter {
+    /**
+     * Only return identities with exactly these names. If the list is empty, no identities are returned. If not set, identities are not filtered by name.
+     */
+    identityNames?: string[];
+}
+
+export interface GetIdentitiesListFilterArgs {
+    /**
+     * Only return identities with exactly these names. If the list is empty, no identities are returned. If not set, identities are not filtered by name.
+     */
+    identityNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface IdentityAwsAuthAccessTokenTrustedIp {
     ipAddress?: pulumi.Input<string | undefined>;
 }
@@ -1577,7 +1591,7 @@ export interface ProjectRolePermission {
      */
     conditions?: pulumi.Input<inputs.ProjectRolePermissionConditions | undefined>;
     /**
-     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
+     * Describe what action an entity can take. Enum: role,member,groups,settings,integrations,webhooks,service-tokens,environments,tags,audit-logs,ip-allowlist,workspace,secrets,secret-rollback,secret-approval,secret-rotation,secret-validation-rules,identity,certificate-authorities,certificates,certificate-policies,kms,pki-alerts,pki-collections
      */
     subject: pulumi.Input<string>;
 }
@@ -2794,6 +2808,158 @@ export interface SecretSyncSupabaseSyncOptions {
      * The format to use for structuring secret keys in the Supabase destination.
      */
     keySchema?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretValidationRuleDynamicSecretsConstraints {
+    /**
+     * Constraints the generated password must satisfy. These replace any password requirements configured on the resource itself.
+     */
+    passwordConstraints: pulumi.Input<inputs.SecretValidationRuleDynamicSecretsConstraintsPasswordConstraints>;
+    /**
+     * The dynamic secret providers this rule applies to. Supported: sql-database, milvus.
+     */
+    providers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SecretValidationRuleDynamicSecretsConstraintsPasswordConstraints {
+    /**
+     * The maximum number of characters the generated password may contain.
+     */
+    maxLength?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum number of characters the generated password must contain.
+     */
+    minLength?: pulumi.Input<number | undefined>;
+    /**
+     * A regular expression the generated password must match. Setting this makes Infisical build the password from the pattern and ignore the length constraints on the same rule.
+     */
+    regexPattern?: pulumi.Input<string | undefined>;
+    /**
+     * A string the generated password must start with.
+     */
+    requiredPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * A string the generated password must end with.
+     */
+    requiredSuffix?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretValidationRuleSecretRotationsConstraints {
+    /**
+     * Constraints the generated password must satisfy. These replace any password requirements configured on the resource itself.
+     */
+    passwordConstraints: pulumi.Input<inputs.SecretValidationRuleSecretRotationsConstraintsPasswordConstraints>;
+    /**
+     * The secret rotation providers this rule applies to. Supported: postgres-credentials, mysql-credentials, mssql-credentials, oracledb-credentials, unix-linux-local-account, ldap-password.
+     */
+    providers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SecretValidationRuleSecretRotationsConstraintsPasswordConstraints {
+    /**
+     * The maximum number of characters the generated password may contain.
+     */
+    maxLength?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum number of characters the generated password must contain.
+     */
+    minLength?: pulumi.Input<number | undefined>;
+    /**
+     * A regular expression the generated password must match. Setting this makes Infisical build the password from the pattern and ignore the length constraints on the same rule.
+     */
+    regexPattern?: pulumi.Input<string | undefined>;
+    /**
+     * A string the generated password must start with.
+     */
+    requiredPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * A string the generated password must end with.
+     */
+    requiredSuffix?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraints {
+    /**
+     * Constraints enforced on the secret key when a secret is created or renamed. Omit to leave keys unconstrained.
+     */
+    keyConstraints?: pulumi.Input<inputs.SecretValidationRuleStaticSecretsConstraintsKeyConstraints | undefined>;
+    /**
+     * Constraints enforced on the secret value when a secret is created or updated. Omit to leave values unconstrained.
+     */
+    valueConstraints?: pulumi.Input<inputs.SecretValidationRuleStaticSecretsConstraintsValueConstraints | undefined>;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraintsKeyConstraints {
+    /**
+     * The maximum number of characters the secret key may contain.
+     */
+    maxLength?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum number of characters the secret key must contain.
+     */
+    minLength?: pulumi.Input<number | undefined>;
+    /**
+     * A regular expression the secret key must match.
+     */
+    regexPattern?: pulumi.Input<string | undefined>;
+    /**
+     * A string the secret key must start with.
+     */
+    requiredPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * A string the secret key must end with.
+     */
+    requiredSuffix?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretValidationRuleStaticSecretsConstraintsValueConstraints {
+    /**
+     * The maximum number of characters the secret value may contain.
+     */
+    maxLength?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum number of characters the secret value must contain.
+     */
+    minLength?: pulumi.Input<number | undefined>;
+    /**
+     * A regular expression the secret value must match.
+     */
+    regexPattern?: pulumi.Input<string | undefined>;
+    /**
+     * A string the secret value must start with.
+     */
+    requiredPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * A string the secret value must end with.
+     */
+    requiredSuffix?: pulumi.Input<string | undefined>;
+    /**
+     * How many of the secret's own previous versions the new value must differ from. Between 1 and 25. Omit to allow a value that repeats a previous version.
+     */
+    uniqueAcrossLastVersions?: pulumi.Input<number | undefined>;
+    /**
+     * Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> to reject a value that another secret in the rule's scope already holds. Requires blind indexing on the project. Omit to allow a value another secret already holds.
+     */
+    uniqueWithinScope?: pulumi.Input<boolean | undefined>;
+}
+
+export interface SubOrganizationGroupRole {
+    /**
+     * Flag to indicate the assigned role is temporary or not. When<span pulumi-lang-nodejs=" isTemporary " pulumi-lang-dotnet=" IsTemporary " pulumi-lang-go=" isTemporary " pulumi-lang-python=" is_temporary " pulumi-lang-yaml=" isTemporary " pulumi-lang-java=" isTemporary " pulumi-lang-hcl=" is_temporary "> isTemporary </span>is true,<span pulumi-lang-nodejs=" temporaryAccessStartTime " pulumi-lang-dotnet=" TemporaryAccessStartTime " pulumi-lang-go=" temporaryAccessStartTime " pulumi-lang-python=" temporary_access_start_time " pulumi-lang-yaml=" temporaryAccessStartTime " pulumi-lang-java=" temporaryAccessStartTime " pulumi-lang-hcl=" temporary_access_start_time "> temporaryAccessStartTime </span>is required.
+     */
+    isTemporary?: pulumi.Input<boolean | undefined>;
+    /**
+     * The slug of the organization role, e.g. <span pulumi-lang-nodejs="`admin`" pulumi-lang-dotnet="`Admin`" pulumi-lang-go="`admin`" pulumi-lang-python="`admin`" pulumi-lang-yaml="`admin`" pulumi-lang-java="`admin`" pulumi-lang-hcl="`admin`">`admin`</span>, <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`" pulumi-lang-hcl="`member`">`member`</span>, `no-access`, or the slug of a custom role of the sub-organization.
+     */
+    roleSlug: pulumi.Input<string>;
+    /**
+     * ISO time for which temporary access should begin. This is in the format YYYY-MM-DDTHH:MM:SSZ e.g. 2024-09-19T12:43:13Z
+     */
+    temporaryAccessStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * TTL for the temporary time. Eg: 1m, 1h, 1d. Default: 1h
+     */
+    temporaryRange?: pulumi.Input<string | undefined>;
 }
 export namespace config {
 }

@@ -6,10 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getOrganizationMembers(opts?: pulumi.InvokeOptions): Promise<GetOrganizationMembersResult> {
+export function getOrganizationMembers(args?: GetOrganizationMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationMembersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("buildkite:index/getOrganizationMembers:getOrganizationMembers", {
+        "role": args.role,
+        "team": args.team,
     }, opts, utilities.getPackage());
+}
+
+/**
+ * A collection of arguments for invoking getOrganizationMembers.
+ */
+export interface GetOrganizationMembersArgs {
+    role?: string;
+    team?: string;
 }
 
 /**
@@ -17,9 +28,22 @@ export function getOrganizationMembers(opts?: pulumi.InvokeOptions): Promise<Get
  */
 export interface GetOrganizationMembersResult {
     readonly members: outputs.GetOrganizationMembersMember[];
+    readonly role?: string;
+    readonly team?: string;
 }
-export function getOrganizationMembersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationMembersResult> {
+export function getOrganizationMembersOutput(args?: GetOrganizationMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationMembersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("buildkite:index/getOrganizationMembers:getOrganizationMembers", {
+        "role": args.role,
+        "team": args.team,
     }, opts, utilities.getPackage());
+}
+
+/**
+ * A collection of arguments for invoking getOrganizationMembers.
+ */
+export interface GetOrganizationMembersOutputArgs {
+    role?: pulumi.Input<string | undefined>;
+    team?: pulumi.Input<string | undefined>;
 }

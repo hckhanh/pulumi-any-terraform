@@ -33,6 +33,24 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * The UUID of the OpenTelemetry tracing notification service that agents in this Cluster export traces
+     * to, such as `buildkite_notification_service.otel.id`. The service must be enabled, cover all
+     * pipelines, and have no branch filter, and the organization must have agent tracing enabled.
+     * Set this to `""` to clear the selection.
+     * Setting, changing, or clearing the selection only affects agents that register afterwards: running
+     * agents keep their current exporter configuration and keep tracing until they are restarted or
+     * re-registered.
+     * Leaving this unset adopts the Cluster's current selection, and **removing it from configuration does
+     * not clear the selection: agents keep exporting traces** until it is set to `""` or cleared in
+     * the Buildkite UI or API.
+     * If the selected service is later deleted, disabled, or given a branch filter, the Cluster still reports
+     * its UUID and plans stay clean, but agents that register afterwards silently stop receiving tracing
+     * configuration.
+     * The API reports no selection unless agent tracing is enabled for the organization and the API token can
+     * manage the Cluster.
+     */
+    declare public readonly agentTracingServiceUuid: pulumi.Output<string>;
+    /**
      * A color representation of the Cluster. Accepts hex codes, eg #BADA55.
      */
     declare public readonly color: pulumi.Output<string | undefined>;
@@ -68,6 +86,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["agentTracingServiceUuid"] = state?.agentTracingServiceUuid;
             resourceInputs["color"] = state?.color;
             resourceInputs["description"] = state?.description;
             resourceInputs["emoji"] = state?.emoji;
@@ -75,6 +94,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
+            resourceInputs["agentTracingServiceUuid"] = args?.agentTracingServiceUuid;
             resourceInputs["color"] = args?.color;
             resourceInputs["description"] = args?.description;
             resourceInputs["emoji"] = args?.emoji;
@@ -90,6 +110,24 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * The UUID of the OpenTelemetry tracing notification service that agents in this Cluster export traces
+     * to, such as `buildkite_notification_service.otel.id`. The service must be enabled, cover all
+     * pipelines, and have no branch filter, and the organization must have agent tracing enabled.
+     * Set this to `""` to clear the selection.
+     * Setting, changing, or clearing the selection only affects agents that register afterwards: running
+     * agents keep their current exporter configuration and keep tracing until they are restarted or
+     * re-registered.
+     * Leaving this unset adopts the Cluster's current selection, and **removing it from configuration does
+     * not clear the selection: agents keep exporting traces** until it is set to `""` or cleared in
+     * the Buildkite UI or API.
+     * If the selected service is later deleted, disabled, or given a branch filter, the Cluster still reports
+     * its UUID and plans stay clean, but agents that register afterwards silently stop receiving tracing
+     * configuration.
+     * The API reports no selection unless agent tracing is enabled for the organization and the API token can
+     * manage the Cluster.
+     */
+    agentTracingServiceUuid?: pulumi.Input<string | undefined>;
     /**
      * A color representation of the Cluster. Accepts hex codes, eg #BADA55.
      */
@@ -118,6 +156,24 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * The UUID of the OpenTelemetry tracing notification service that agents in this Cluster export traces
+     * to, such as `buildkite_notification_service.otel.id`. The service must be enabled, cover all
+     * pipelines, and have no branch filter, and the organization must have agent tracing enabled.
+     * Set this to `""` to clear the selection.
+     * Setting, changing, or clearing the selection only affects agents that register afterwards: running
+     * agents keep their current exporter configuration and keep tracing until they are restarted or
+     * re-registered.
+     * Leaving this unset adopts the Cluster's current selection, and **removing it from configuration does
+     * not clear the selection: agents keep exporting traces** until it is set to `""` or cleared in
+     * the Buildkite UI or API.
+     * If the selected service is later deleted, disabled, or given a branch filter, the Cluster still reports
+     * its UUID and plans stay clean, but agents that register afterwards silently stop receiving tracing
+     * configuration.
+     * The API reports no selection unless agent tracing is enabled for the organization and the API token can
+     * manage the Cluster.
+     */
+    agentTracingServiceUuid?: pulumi.Input<string | undefined>;
     /**
      * A color representation of the Cluster. Accepts hex codes, eg #BADA55.
      */

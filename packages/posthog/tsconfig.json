@@ -27,6 +27,7 @@
         "config/vars.ts",
         "dashboard.ts",
         "dashboardLayout.ts",
+        "earlyAccessFeature.ts",
         "experiment.ts",
         "externalDataSource.ts",
         "featureFlag.ts",

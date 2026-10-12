@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.4.0",
 		baseProviderDownloadUrl: "",
 		packageName: "buildkite",
-		packageVersion: "1.39.2",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS4zOS4yIn19",
+		packageVersion: "1.42.0",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1aWxka2l0ZS9idWlsZGtpdGUiLCJ2ZXJzaW9uIjoiMS40Mi4wIn19",
 	});
 }
