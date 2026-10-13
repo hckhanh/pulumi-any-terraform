@@ -2,6 +2,11 @@ name: Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      native_pnpm_test:
+        description: Publish one pulumi-time prerelease to test native pnpm OIDC
+        type: boolean
+        default: false
   push:
     branches:
       - 'main'
@@ -22,7 +27,7 @@ jobs:
   npm-packages:
     name: NPM Packages
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ !inputs.native_pnpm_test && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
     permissions:
       id-token: write
       contents: write
@@ -36,7 +41,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
-          version: 12.10.1
+          version: 12.11.2
           runtime: node@24.21.0
           cache: true
       - name: Setup Aikido Safe Chain
@@ -56,3 +61,27 @@ jobs:
           publish-script: bash .github/scripts/publish-packages.sh
         env:
           SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0
+
+  native-pnpm-test:
+    name: Native pnpm OIDC test
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.native_pnpm_test }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup pnpm
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+        with:
+          version: 12.11.2
+          runtime: node@24.21.0
+          cache: true
+      - name: Setup Aikido Safe Chain
+        uses: ./.github/actions/setup-safe-chain
+      - name: Publish and verify a native pnpm prerelease
+        run: bash .github/scripts/test-pnpm-publish.sh
