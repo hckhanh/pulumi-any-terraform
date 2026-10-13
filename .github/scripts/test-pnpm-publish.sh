@@ -23,16 +23,27 @@ import { readFileSync, writeFileSync } from 'node:fs'
 const path = 'packages/time/package.json'
 const manifest = JSON.parse(readFileSync(path, 'utf8'))
 if (manifest.name !== 'pulumi-time') throw new Error('Unexpected test package')
-manifest.version += `-pnpm.${process.env.PNPM_TEST_VERSION}.${process.env.GITHUB_RUN_ID}.${process.env.GITHUB_RUN_ATTEMPT}`
+const prefix = `${manifest.version}-pnpm.${process.env.PNPM_TEST_VERSION}.`
+const existingVersion = process.env.PNPM_TEST_VERIFY_VERSION
+if (existingVersion) {
+  if (!existingVersion.startsWith(prefix) || !/^\d+\.\d+$/.test(existingVersion.slice(prefix.length))) {
+    throw new Error('Expected a test prerelease for this package and pnpm version')
+  }
+  manifest.version = existingVersion
+} else {
+  manifest.version = `${prefix}${process.env.GITHUB_RUN_ID}.${process.env.GITHUB_RUN_ATTEMPT}`
+}
 writeFileSync(path, JSON.stringify(manifest, null, 2) + '\n')
 console.log(`Testing pnpm ${process.env.PNPM_TEST_VERSION} with ${manifest.name}@${manifest.version}`)
 NODE
 
-(
-  cd packages/time
-  node scripts/postinstall.js
-  pnpm publish --access public --tag pnpm-oidc-test --provenance --no-git-checks --ignore-scripts
-)
+if [ -z "${PNPM_TEST_VERIFY_VERSION:-}" ]; then
+  (
+    cd packages/time
+    node scripts/postinstall.js
+    pnpm publish --access public --tag pnpm-oidc-test --provenance --no-git-checks --ignore-scripts
+  )
+fi
 
 # Verify registry evidence, not just the publisher's exit status. npm metadata
 # may take a short time to become visible after a successful publish.
@@ -58,7 +69,7 @@ const response = await fetch(`https://registry.npmjs.org/${name}/latest`, { head
 if (!response.ok) throw new Error(`Latest-tag verification returned ${response.status}`)
 const latest = (await response.json()).version
 if (latest !== process.env.PNPM_TEST_LATEST) throw new Error(`The latest tag changed from ${process.env.PNPM_TEST_LATEST} to ${latest}`)
-const summary = `Published ${name}@${version} with pnpm ${process.env.PNPM_TEST_VERSION}. GitHub OIDC identity and provenance verified; latest remains ${latest}.\n`
+const summary = `Verified ${name}@${version} from the pnpm ${process.env.PNPM_TEST_VERSION} publishing test. GitHub OIDC identity and provenance are present; latest remains ${latest}.\n`
 console.log(summary)
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary)
 NODE

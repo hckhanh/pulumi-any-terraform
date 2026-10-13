@@ -7,6 +7,10 @@ on:
         description: Publish one pulumi-time prerelease to test native pnpm OIDC
         type: boolean
         default: false
+      verify_version:
+        description: Verify an existing pnpm test prerelease without publishing another
+        type: string
+        default: ''
   push:
     branches:
       - 'main'
@@ -85,3 +89,5 @@ jobs:
         uses: ./.github/actions/setup-safe-chain
       - name: Publish and verify a native pnpm prerelease
         run: bash .github/scripts/test-pnpm-publish.sh
+        env:
+          PNPM_TEST_VERIFY_VERSION: ${{ inputs.verify_version }}
