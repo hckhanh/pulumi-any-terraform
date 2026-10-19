@@ -62,6 +62,10 @@ export interface CollectorConfiguration {
 
 export interface CollectorConfigurationComponents {
     /**
+     * Inject the Java agent into JVMs for HTTPS visibility in eBPF traces. Requires eBPF tracing and collector v1.1.46+ on every host. Defaults to false.
+     */
+    ebpfJavaAgent?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable eBPF-based metrics collection.
      */
     ebpfMetrics?: pulumi.Input<boolean | undefined>;
@@ -111,6 +115,10 @@ export interface CollectorConfigurationComponents {
      * Enable the Elasticsearch metrics exporter. Defaults to true.
      */
     metricsElasticsearch?: pulumi.Input<boolean | undefined>;
+    /**
+     * Collect CPU, memory, disk, filesystem and network metrics of the host with node_exporter, independently of <span pulumi-lang-nodejs="`ebpfMetrics`" pulumi-lang-dotnet="`EbpfMetrics`" pulumi-lang-go="`ebpfMetrics`" pulumi-lang-python="`ebpf_metrics`" pulumi-lang-yaml="`ebpfMetrics`" pulumi-lang-java="`ebpfMetrics`" pulumi-lang-hcl="`ebpf_metrics`">`ebpfMetrics`</span>. The API turns it on when omitted, but a <span pulumi-lang-nodejs="`components`" pulumi-lang-dotnet="`Components`" pulumi-lang-go="`components`" pulumi-lang-python="`components`" pulumi-lang-yaml="`components`" pulumi-lang-java="`components`" pulumi-lang-hcl="`components`">`components`</span> block that omits it on create turns it off, so set it explicitly.
+     */
+    metricsHostOs?: pulumi.Input<boolean | undefined>;
     /**
      * Enable the MySQL metrics exporter. Defaults to true.
      */

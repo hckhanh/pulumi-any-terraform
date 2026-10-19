@@ -6,14 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AuthSettingsModules {
+    /**
+     * Allows basic HTTP authentication using other modules
+     */
     basicHttp?: pulumi.Input<inputs.AuthSettingsModulesBasicHttp | undefined>;
+    /**
+     * Authentication with TeamCity-specific credentials
+     */
     builtIn?: pulumi.Input<inputs.AuthSettingsModulesBuiltIn | undefined>;
+    /**
+     * Authentication using a GitHub.com account
+     */
     github?: pulumi.Input<inputs.AuthSettingsModulesGithub | undefined>;
+    /**
+     * Authentication using a GitHub App connection
+     */
     githubApp?: pulumi.Input<inputs.AuthSettingsModulesGithubApp | undefined>;
+    /**
+     * Authentication using a GitHub Enterprise account
+     */
     githubEnterprise?: pulumi.Input<inputs.AuthSettingsModulesGithubEnterprise | undefined>;
+    /**
+     * Authentication using a Google account
+     */
     google?: pulumi.Input<inputs.AuthSettingsModulesGoogle | undefined>;
+    /**
+     * Authentication using a JetBrains Space account
+     */
     jetbrainsSpace?: pulumi.Input<inputs.AuthSettingsModulesJetbrainsSpace | undefined>;
+    /**
+     * Authentication using LDAP
+     */
     ldap?: pulumi.Input<inputs.AuthSettingsModulesLdap | undefined>;
+    /**
+     * Escape hatch for auth modules with no dedicated attribute above (for example plugin-provided modules such as the SAML plugin's 'HTTP-SAML.v2'). Without an entry here, TeamCity auth modules that this provider does not model are silently removed on every apply, because the whole module list is replaced on update. 'name' must be the raw TeamCity auth-module name (as seen in Administration > Authentication Modules / auth-config.xml), not a display name.
+     */
+    others?: pulumi.Input<pulumi.Input<inputs.AuthSettingsModulesOther>[] | undefined>;
+    /**
+     * Token-Based Authentication
+     */
     token: pulumi.Input<inputs.AuthSettingsModulesToken>;
 }
 
@@ -21,38 +52,91 @@ export interface AuthSettingsModulesBasicHttp {
 }
 
 export interface AuthSettingsModulesBuiltIn {
+    /**
+     * Allow users to change their passwords on the profile page
+     */
     changePasswords: pulumi.Input<boolean>;
+    /**
+     * Allow user registration from the login page
+     */
     registration: pulumi.Input<boolean>;
+    /**
+     * Allow users to reset forgotten passwords on the login page
+     */
     resetPasswords?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AuthSettingsModulesGithub {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: pulumi.Input<string>;
 }
 
 export interface AuthSettingsModulesGithubApp {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: pulumi.Input<string>;
 }
 
 export interface AuthSettingsModulesGithubEnterprise {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: pulumi.Input<string>;
 }
 
 export interface AuthSettingsModulesGoogle {
+    /**
+     * Allow users from all domains to log in, including *gmail.com*
+     */
     allDomains: pulumi.Input<boolean>;
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
+    /**
+     * Restrict authentication to users from the specified Google domains, comma-separated
+     */
     domains?: pulumi.Input<string | undefined>;
 }
 
 export interface AuthSettingsModulesJetbrainsSpace {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
 }
 
 export interface AuthSettingsModulesLdap {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: pulumi.Input<boolean>;
+}
+
+export interface AuthSettingsModulesOther {
+    /**
+     * Raw TeamCity auth-module name, e.g. 'HTTP-SAML.v2'. Must not collide with a module already covered by a dedicated attribute (token, built_in, basic_http, google, github_app, github, github_enterprise, ldap, jetbrains_space).
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Module-specific properties as returned/accepted by the TeamCity REST API for this module.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface AuthSettingsModulesToken {

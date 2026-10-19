@@ -81,6 +81,7 @@ export interface GetPullzoneResult {
     readonly optimizerDynamicImageApi: boolean;
     readonly optimizerEnabled: boolean;
     readonly optimizerHtmlPrerender: boolean;
+    readonly optimizerHtmlToMarkdown: boolean;
     readonly optimizerMinifyCss: boolean;
     readonly optimizerMinifyJs: boolean;
     readonly optimizerSmartimage: boolean;

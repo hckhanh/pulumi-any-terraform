@@ -231,6 +231,10 @@ export class Pullzone extends pulumi.CustomResource {
      */
     declare public readonly optimizerHtmlPrerender: pulumi.Output<boolean>;
     /**
+     * Indicates whether HTML to Markdown should be enabled.
+     */
+    declare public readonly optimizerHtmlToMarkdown: pulumi.Output<boolean>;
+    /**
      * Indicates whether the CSS minification should be enabled.
      */
     declare public readonly optimizerMinifyCss: pulumi.Output<boolean>;
@@ -464,6 +468,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["optimizerDynamicImageApi"] = state?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = state?.optimizerEnabled;
             resourceInputs["optimizerHtmlPrerender"] = state?.optimizerHtmlPrerender;
+            resourceInputs["optimizerHtmlToMarkdown"] = state?.optimizerHtmlToMarkdown;
             resourceInputs["optimizerMinifyCss"] = state?.optimizerMinifyCss;
             resourceInputs["optimizerMinifyJs"] = state?.optimizerMinifyJs;
             resourceInputs["optimizerSmartimage"] = state?.optimizerSmartimage;
@@ -559,6 +564,7 @@ export class Pullzone extends pulumi.CustomResource {
             resourceInputs["optimizerDynamicImageApi"] = args?.optimizerDynamicImageApi;
             resourceInputs["optimizerEnabled"] = args?.optimizerEnabled;
             resourceInputs["optimizerHtmlPrerender"] = args?.optimizerHtmlPrerender;
+            resourceInputs["optimizerHtmlToMarkdown"] = args?.optimizerHtmlToMarkdown;
             resourceInputs["optimizerMinifyCss"] = args?.optimizerMinifyCss;
             resourceInputs["optimizerMinifyJs"] = args?.optimizerMinifyJs;
             resourceInputs["optimizerSmartimage"] = args?.optimizerSmartimage;
@@ -813,6 +819,10 @@ export interface PullzoneState {
      * Indicates whether HTML Prerender should be enabled.
      */
     optimizerHtmlPrerender?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether HTML to Markdown should be enabled.
+     */
+    optimizerHtmlToMarkdown?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the CSS minification should be enabled.
      */
@@ -1182,6 +1192,10 @@ export interface PullzoneArgs {
      * Indicates whether HTML Prerender should be enabled.
      */
     optimizerHtmlPrerender?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether HTML to Markdown should be enabled.
+     */
+    optimizerHtmlToMarkdown?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the CSS minification should be enabled.
      */

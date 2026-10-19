@@ -386,6 +386,17 @@ export interface AppConnectionLdapCredentials {
     url: string;
 }
 
+export interface AppConnectionLitellmCredentials {
+    /**
+     * The LiteLLM API key used to authenticate with the LiteLLM instance. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/litellm
+     */
+    apiKey: string;
+    /**
+     * The base URL of your LiteLLM instance (e.g. https://litellm.example.com). For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/litellm
+     */
+    instanceUrl: string;
+}
+
 export interface AppConnectionMssqlCredentials {
     /**
      * The name of the database to connect to.
@@ -531,6 +542,21 @@ export interface AppConnectionRenderCredentials {
      * The API key to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/render
      */
     apiKey: string;
+}
+
+export interface AppConnectionSpaceliftCredentials {
+    /**
+     * The API Key ID used to authenticate with Spacelift.
+     */
+    apiKeyId: string;
+    /**
+     * The API Key Secret used to authenticate with Spacelift.
+     */
+    apiKeySecret: string;
+    /**
+     * The Spacelift API URL to connect with (e.g., 'https://mycorp.app.spacelift.io').
+     */
+    apiUrl: string;
 }
 
 export interface AppConnectionSupabaseCredentials {
@@ -2566,6 +2592,50 @@ export interface SecretRotationLdapPasswordTemporaryParameters {
     password?: string;
 }
 
+export interface SecretRotationLitellmApiKeyParameters {
+    /**
+     * A JSON-encoded object of additional LiteLLM /key/generate options (e.g. max_budget, tpm_limit, metadata). Use jsonencode() to build it. Reserved fields (key_alias, auto_rotate, rotation_interval, duration, send_invite_email, key_type, user_id, team_id, models) and permission fields (allowed_routes, permission, object_permission) cannot be set here.
+     */
+    additionalOptions?: string;
+    /**
+     * The list of model names the generated key is allowed to access. An empty or omitted list allows all models.
+     */
+    models?: string[];
+    /**
+     * The name for the generated LiteLLM API key. Infisical appends a timestamp to keep each rotated key unique and record its creation time.
+     */
+    name: string;
+    /**
+     * The ID of the LiteLLM team to associate the generated key with.
+     */
+    teamId?: string;
+    /**
+     * The ID of the LiteLLM user to associate the generated key with.
+     */
+    userId?: string;
+}
+
+export interface SecretRotationLitellmApiKeyRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours: number;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes: number;
+}
+
+export interface SecretRotationLitellmApiKeySecretsMapping {
+    /**
+     * The name of the secret that the rotated LiteLLM API key will be mapped to.
+     */
+    apiKey: string;
+}
+
+export interface SecretRotationLitellmApiKeyTemporaryParameters {
+}
+
 export interface SecretRotationMssqlCredentialsParameters {
     /**
      * The username of the first login to rotate passwords for. This user must already exists in your database.
@@ -3225,6 +3295,48 @@ export interface SecretSyncRenderSyncOptions {
      * The format to use for structuring secret keys in the Render destination.
      */
     keySchema?: string;
+}
+
+export interface SecretSyncSpaceliftDestinationConfig {
+    /**
+     * The type of config element to create in Spacelift. Supported options: environment-variable, file-mount
+     */
+    configType: string;
+    /**
+     * The ID of the Spacelift context to sync secrets to.
+     */
+    contextId: string;
+    /**
+     * The name of the Spacelift context to sync secrets to.
+     */
+    contextName: string;
+    /**
+     * The format for file mount config elements. Supported options: dot-env (default), secret-per-file
+     */
+    fileMountFormat?: string;
+    /**
+     * The file path for the mounted file relative to /mnt/workspace/. Required when<span pulumi-lang-nodejs=" configType " pulumi-lang-dotnet=" ConfigType " pulumi-lang-go=" configType " pulumi-lang-python=" config_type " pulumi-lang-yaml=" configType " pulumi-lang-java=" configType " pulumi-lang-hcl=" config_type "> configType </span>is 'file-mount' and<span pulumi-lang-nodejs=" fileMountFormat " pulumi-lang-dotnet=" FileMountFormat " pulumi-lang-go=" fileMountFormat " pulumi-lang-python=" file_mount_format " pulumi-lang-yaml=" fileMountFormat " pulumi-lang-java=" fileMountFormat " pulumi-lang-hcl=" file_mount_format "> fileMountFormat </span>is not 'secret-per-file'. When<span pulumi-lang-nodejs=" fileMountFormat " pulumi-lang-dotnet=" FileMountFormat " pulumi-lang-go=" fileMountFormat " pulumi-lang-python=" file_mount_format " pulumi-lang-yaml=" fileMountFormat " pulumi-lang-java=" fileMountFormat " pulumi-lang-hcl=" file_mount_format "> fileMountFormat </span>is 'secret-per-file', this is the directory path.
+     */
+    mountPath?: string;
+}
+
+export interface SecretSyncSpaceliftSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Spacelift. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion: boolean;
+    /**
+     * Whether to sync secrets from folders beneath the source path as well.
+     */
+    includeAllSubFolders: boolean;
+    /**
+     * The format to use for structuring secret keys in the Spacelift destination.
+     */
+    keySchema?: string;
+    /**
+     * Whether secrets should be marked as secret in Spacelift. Secret values are only available to Runs and Tasks and are not accessible in the web GUI or through the API.
+     */
+    writeOnly: boolean;
 }
 
 export interface SecretSyncSupabaseDestinationConfig {

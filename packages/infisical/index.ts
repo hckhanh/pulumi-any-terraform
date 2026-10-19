@@ -105,6 +105,11 @@ export type AppConnectionLdap = import("./appConnectionLdap").AppConnectionLdap;
 export const AppConnectionLdap: typeof import("./appConnectionLdap").AppConnectionLdap = null as any;
 utilities.lazyLoad(exports, ["AppConnectionLdap"], () => require("./appConnectionLdap"));
 
+export { AppConnectionLitellmArgs, AppConnectionLitellmState } from "./appConnectionLitellm";
+export type AppConnectionLitellm = import("./appConnectionLitellm").AppConnectionLitellm;
+export const AppConnectionLitellm: typeof import("./appConnectionLitellm").AppConnectionLitellm = null as any;
+utilities.lazyLoad(exports, ["AppConnectionLitellm"], () => require("./appConnectionLitellm"));
+
 export { AppConnectionMssqlArgs, AppConnectionMssqlState } from "./appConnectionMssql";
 export type AppConnectionMssql = import("./appConnectionMssql").AppConnectionMssql;
 export const AppConnectionMssql: typeof import("./appConnectionMssql").AppConnectionMssql = null as any;
@@ -129,6 +134,11 @@ export { AppConnectionRenderArgs, AppConnectionRenderState } from "./appConnecti
 export type AppConnectionRender = import("./appConnectionRender").AppConnectionRender;
 export const AppConnectionRender: typeof import("./appConnectionRender").AppConnectionRender = null as any;
 utilities.lazyLoad(exports, ["AppConnectionRender"], () => require("./appConnectionRender"));
+
+export { AppConnectionSpaceliftArgs, AppConnectionSpaceliftState } from "./appConnectionSpacelift";
+export type AppConnectionSpacelift = import("./appConnectionSpacelift").AppConnectionSpacelift;
+export const AppConnectionSpacelift: typeof import("./appConnectionSpacelift").AppConnectionSpacelift = null as any;
+utilities.lazyLoad(exports, ["AppConnectionSpacelift"], () => require("./appConnectionSpacelift"));
 
 export { AppConnectionSupabaseArgs, AppConnectionSupabaseState } from "./appConnectionSupabase";
 export type AppConnectionSupabase = import("./appConnectionSupabase").AppConnectionSupabase;
@@ -578,6 +588,11 @@ export type SecretRotationLdapPassword = import("./secretRotationLdapPassword").
 export const SecretRotationLdapPassword: typeof import("./secretRotationLdapPassword").SecretRotationLdapPassword = null as any;
 utilities.lazyLoad(exports, ["SecretRotationLdapPassword"], () => require("./secretRotationLdapPassword"));
 
+export { SecretRotationLitellmApiKeyArgs, SecretRotationLitellmApiKeyState } from "./secretRotationLitellmApiKey";
+export type SecretRotationLitellmApiKey = import("./secretRotationLitellmApiKey").SecretRotationLitellmApiKey;
+export const SecretRotationLitellmApiKey: typeof import("./secretRotationLitellmApiKey").SecretRotationLitellmApiKey = null as any;
+utilities.lazyLoad(exports, ["SecretRotationLitellmApiKey"], () => require("./secretRotationLitellmApiKey"));
+
 export { SecretRotationMssqlCredentialsArgs, SecretRotationMssqlCredentialsState } from "./secretRotationMssqlCredentials";
 export type SecretRotationMssqlCredentials = import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials;
 export const SecretRotationMssqlCredentials: typeof import("./secretRotationMssqlCredentials").SecretRotationMssqlCredentials = null as any;
@@ -678,6 +693,11 @@ export type SecretSyncRender = import("./secretSyncRender").SecretSyncRender;
 export const SecretSyncRender: typeof import("./secretSyncRender").SecretSyncRender = null as any;
 utilities.lazyLoad(exports, ["SecretSyncRender"], () => require("./secretSyncRender"));
 
+export { SecretSyncSpaceliftArgs, SecretSyncSpaceliftState } from "./secretSyncSpacelift";
+export type SecretSyncSpacelift = import("./secretSyncSpacelift").SecretSyncSpacelift;
+export const SecretSyncSpacelift: typeof import("./secretSyncSpacelift").SecretSyncSpacelift = null as any;
+utilities.lazyLoad(exports, ["SecretSyncSpacelift"], () => require("./secretSyncSpacelift"));
+
 export { SecretSyncSupabaseArgs, SecretSyncSupabaseState } from "./secretSyncSupabase";
 export type SecretSyncSupabase = import("./secretSyncSupabase").SecretSyncSupabase;
 export const SecretSyncSupabase: typeof import("./secretSyncSupabase").SecretSyncSupabase = null as any;
@@ -772,6 +792,8 @@ const _module = {
                 return new AppConnectionHashicorpVault(name, <any>undefined, { urn })
             case "infisical:index/appConnectionLdap:AppConnectionLdap":
                 return new AppConnectionLdap(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionLitellm:AppConnectionLitellm":
+                return new AppConnectionLitellm(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMssql:AppConnectionMssql":
                 return new AppConnectionMssql(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMysql:AppConnectionMysql":
@@ -782,6 +804,8 @@ const _module = {
                 return new AppConnectionPostgres(name, <any>undefined, { urn })
             case "infisical:index/appConnectionRender:AppConnectionRender":
                 return new AppConnectionRender(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionSpacelift:AppConnectionSpacelift":
+                return new AppConnectionSpacelift(name, <any>undefined, { urn })
             case "infisical:index/appConnectionSupabase:AppConnectionSupabase":
                 return new AppConnectionSupabase(name, <any>undefined, { urn })
             case "infisical:index/certManagerApplication:CertManagerApplication":
@@ -918,6 +942,8 @@ const _module = {
                 return new SecretRotationDatadogApiKey(name, <any>undefined, { urn })
             case "infisical:index/secretRotationLdapPassword:SecretRotationLdapPassword":
                 return new SecretRotationLdapPassword(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationLitellmApiKey:SecretRotationLitellmApiKey":
+                return new SecretRotationLitellmApiKey(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMssqlCredentials:SecretRotationMssqlCredentials":
                 return new SecretRotationMssqlCredentials(name, <any>undefined, { urn })
             case "infisical:index/secretRotationMysqlCredentials:SecretRotationMysqlCredentials":
@@ -958,6 +984,8 @@ const _module = {
                 return new SecretSyncGitlab(name, <any>undefined, { urn })
             case "infisical:index/secretSyncRender:SecretSyncRender":
                 return new SecretSyncRender(name, <any>undefined, { urn })
+            case "infisical:index/secretSyncSpacelift:SecretSyncSpacelift":
+                return new SecretSyncSpacelift(name, <any>undefined, { urn })
             case "infisical:index/secretSyncSupabase:SecretSyncSupabase":
                 return new SecretSyncSupabase(name, <any>undefined, { urn })
             case "infisical:index/secretTag:SecretTag":
@@ -999,11 +1027,13 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", 
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGitlab", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionHashicorpVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLdap", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLitellm", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSpacelift", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplication", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationGroup", _module)
@@ -1072,6 +1102,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUs
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationDatadogApiKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLdapPassword", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLitellmApiKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMysqlCredentials", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationOracledbCredentials", _module)
@@ -1092,6 +1123,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGcpSecretMan
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGithub", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncGitlab", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncRender", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSpacelift", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretSyncSupabase", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretTag", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretValidationRuleDynamicSecrets", _module)

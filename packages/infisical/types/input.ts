@@ -386,6 +386,17 @@ export interface AppConnectionLdapCredentials {
     url: pulumi.Input<string>;
 }
 
+export interface AppConnectionLitellmCredentials {
+    /**
+     * The LiteLLM API key used to authenticate with the LiteLLM instance. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/litellm
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * The base URL of your LiteLLM instance (e.g. https://litellm.example.com). For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/litellm
+     */
+    instanceUrl: pulumi.Input<string>;
+}
+
 export interface AppConnectionMssqlCredentials {
     /**
      * The name of the database to connect to.
@@ -531,6 +542,21 @@ export interface AppConnectionRenderCredentials {
      * The API key to use for authentication. For more details, refer to the documentation here infisical.com/docs/integrations/app-connections/render
      */
     apiKey: pulumi.Input<string>;
+}
+
+export interface AppConnectionSpaceliftCredentials {
+    /**
+     * The API Key ID used to authenticate with Spacelift.
+     */
+    apiKeyId: pulumi.Input<string>;
+    /**
+     * The API Key Secret used to authenticate with Spacelift.
+     */
+    apiKeySecret: pulumi.Input<string>;
+    /**
+     * The Spacelift API URL to connect with (e.g., 'https://mycorp.app.spacelift.io').
+     */
+    apiUrl: pulumi.Input<string>;
 }
 
 export interface AppConnectionSupabaseCredentials {
@@ -2123,6 +2149,50 @@ export interface SecretRotationLdapPasswordTemporaryParameters {
     password?: pulumi.Input<string | undefined>;
 }
 
+export interface SecretRotationLitellmApiKeyParameters {
+    /**
+     * A JSON-encoded object of additional LiteLLM /key/generate options (e.g. max_budget, tpm_limit, metadata). Use jsonencode() to build it. Reserved fields (key_alias, auto_rotate, rotation_interval, duration, send_invite_email, key_type, user_id, team_id, models) and permission fields (allowed_routes, permission, object_permission) cannot be set here.
+     */
+    additionalOptions?: pulumi.Input<string | undefined>;
+    /**
+     * The list of model names the generated key is allowed to access. An empty or omitted list allows all models.
+     */
+    models?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The name for the generated LiteLLM API key. Infisical appends a timestamp to keep each rotated key unique and record its creation time.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The ID of the LiteLLM team to associate the generated key with.
+     */
+    teamId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the LiteLLM user to associate the generated key with.
+     */
+    userId?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretRotationLitellmApiKeyRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours?: pulumi.Input<number | undefined>;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes?: pulumi.Input<number | undefined>;
+}
+
+export interface SecretRotationLitellmApiKeySecretsMapping {
+    /**
+     * The name of the secret that the rotated LiteLLM API key will be mapped to.
+     */
+    apiKey: pulumi.Input<string>;
+}
+
+export interface SecretRotationLitellmApiKeyTemporaryParameters {
+}
+
 export interface SecretRotationMssqlCredentialsParameters {
     /**
      * The username of the first login to rotate passwords for. This user must already exists in your database.
@@ -2782,6 +2852,48 @@ export interface SecretSyncRenderSyncOptions {
      * The format to use for structuring secret keys in the Render destination.
      */
     keySchema?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretSyncSpaceliftDestinationConfig {
+    /**
+     * The type of config element to create in Spacelift. Supported options: environment-variable, file-mount
+     */
+    configType: pulumi.Input<string>;
+    /**
+     * The ID of the Spacelift context to sync secrets to.
+     */
+    contextId: pulumi.Input<string>;
+    /**
+     * The name of the Spacelift context to sync secrets to.
+     */
+    contextName: pulumi.Input<string>;
+    /**
+     * The format for file mount config elements. Supported options: dot-env (default), secret-per-file
+     */
+    fileMountFormat?: pulumi.Input<string | undefined>;
+    /**
+     * The file path for the mounted file relative to /mnt/workspace/. Required when<span pulumi-lang-nodejs=" configType " pulumi-lang-dotnet=" ConfigType " pulumi-lang-go=" configType " pulumi-lang-python=" config_type " pulumi-lang-yaml=" configType " pulumi-lang-java=" configType " pulumi-lang-hcl=" config_type "> configType </span>is 'file-mount' and<span pulumi-lang-nodejs=" fileMountFormat " pulumi-lang-dotnet=" FileMountFormat " pulumi-lang-go=" fileMountFormat " pulumi-lang-python=" file_mount_format " pulumi-lang-yaml=" fileMountFormat " pulumi-lang-java=" fileMountFormat " pulumi-lang-hcl=" file_mount_format "> fileMountFormat </span>is not 'secret-per-file'. When<span pulumi-lang-nodejs=" fileMountFormat " pulumi-lang-dotnet=" FileMountFormat " pulumi-lang-go=" fileMountFormat " pulumi-lang-python=" file_mount_format " pulumi-lang-yaml=" fileMountFormat " pulumi-lang-java=" fileMountFormat " pulumi-lang-hcl=" file_mount_format "> fileMountFormat </span>is 'secret-per-file', this is the directory path.
+     */
+    mountPath?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretSyncSpaceliftSyncOptions {
+    /**
+     * When set to true, Infisical will not remove secrets from Spacelift. Enable this option if you intend to manage some secrets manually outside of Infisical.
+     */
+    disableSecretDeletion?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to sync secrets from folders beneath the source path as well.
+     */
+    includeAllSubFolders?: pulumi.Input<boolean | undefined>;
+    /**
+     * The format to use for structuring secret keys in the Spacelift destination.
+     */
+    keySchema?: pulumi.Input<string | undefined>;
+    /**
+     * Whether secrets should be marked as secret in Spacelift. Secret values are only available to Runs and Tasks and are not accessible in the web GUI or through the API.
+     */
+    writeOnly?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SecretSyncSupabaseDestinationConfig {

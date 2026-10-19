@@ -6,14 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AuthSettingsModules {
+    /**
+     * Allows basic HTTP authentication using other modules
+     */
     basicHttp?: outputs.AuthSettingsModulesBasicHttp;
+    /**
+     * Authentication with TeamCity-specific credentials
+     */
     builtIn?: outputs.AuthSettingsModulesBuiltIn;
+    /**
+     * Authentication using a GitHub.com account
+     */
     github?: outputs.AuthSettingsModulesGithub;
+    /**
+     * Authentication using a GitHub App connection
+     */
     githubApp?: outputs.AuthSettingsModulesGithubApp;
+    /**
+     * Authentication using a GitHub Enterprise account
+     */
     githubEnterprise?: outputs.AuthSettingsModulesGithubEnterprise;
+    /**
+     * Authentication using a Google account
+     */
     google?: outputs.AuthSettingsModulesGoogle;
+    /**
+     * Authentication using a JetBrains Space account
+     */
     jetbrainsSpace?: outputs.AuthSettingsModulesJetbrainsSpace;
+    /**
+     * Authentication using LDAP
+     */
     ldap?: outputs.AuthSettingsModulesLdap;
+    /**
+     * Escape hatch for auth modules with no dedicated attribute above (for example plugin-provided modules such as the SAML plugin's 'HTTP-SAML.v2'). Without an entry here, TeamCity auth modules that this provider does not model are silently removed on every apply, because the whole module list is replaced on update. 'name' must be the raw TeamCity auth-module name (as seen in Administration > Authentication Modules / auth-config.xml), not a display name.
+     */
+    others?: outputs.AuthSettingsModulesOther[];
+    /**
+     * Token-Based Authentication
+     */
     token: outputs.AuthSettingsModulesToken;
 }
 
@@ -21,38 +52,91 @@ export interface AuthSettingsModulesBasicHttp {
 }
 
 export interface AuthSettingsModulesBuiltIn {
+    /**
+     * Allow users to change their passwords on the profile page
+     */
     changePasswords: boolean;
+    /**
+     * Allow user registration from the login page
+     */
     registration: boolean;
+    /**
+     * Allow users to reset forgotten passwords on the login page
+     */
     resetPasswords?: boolean;
 }
 
 export interface AuthSettingsModulesGithub {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: string;
 }
 
 export interface AuthSettingsModulesGithubApp {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: string;
 }
 
 export interface AuthSettingsModulesGithubEnterprise {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
+    /**
+     * Restrict authentication to users from the specified GitHub organizations, comma-separated
+     */
     organizations: string;
 }
 
 export interface AuthSettingsModulesGoogle {
+    /**
+     * Allow users from all domains to log in, including *gmail.com*
+     */
     allDomains: boolean;
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
+    /**
+     * Restrict authentication to users from the specified Google domains, comma-separated
+     */
     domains?: string;
 }
 
 export interface AuthSettingsModulesJetbrainsSpace {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
 }
 
 export interface AuthSettingsModulesLdap {
+    /**
+     * Allow creating new users on the first login
+     */
     createNewUsers: boolean;
+}
+
+export interface AuthSettingsModulesOther {
+    /**
+     * Raw TeamCity auth-module name, e.g. 'HTTP-SAML.v2'. Must not collide with a module already covered by a dedicated attribute (token, built_in, basic_http, google, github_app, github, github_enterprise, ldap, jetbrains_space).
+     */
+    name: string;
+    /**
+     * Module-specific properties as returned/accepted by the TeamCity REST API for this module.
+     */
+    properties: {[key: string]: string};
 }
 
 export interface AuthSettingsModulesToken {
