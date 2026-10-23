@@ -8,6 +8,16 @@ allowBuilds:
   nx: true
   protobufjs: true
   sharp: true
+trustPolicyExcludePrune: true
+lockfile:
+  includeResolutionSettings: true
+auditConfig:
+  # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
+  # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled
+  # (analytics: false), so this path is never exercised.
+  ignoreGhsas:
+    # @opentelemetry/core: W3C trace-context DoS.
+    - GHSA-8988-4f7v-96qf
 minimumReleaseAge: 2880
 minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
@@ -22,11 +32,3 @@ overrides:
   shell-quote@>=1.8.4 <1.11.0: ^1.11.0
   smol-toml@<=1.7.0: ^1.7.1
   undici@>=7.0.0 <7.29.1: ^7.29.1
-trustPolicyExcludePrune: true
-auditConfig:
-  # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
-  # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled
-  # (analytics: false), so this path is never exercised.
-  ignoreGhsas:
-    # @opentelemetry/core: W3C trace-context DoS.
-    - GHSA-8988-4f7v-96qf

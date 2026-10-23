@@ -1,8 +1,12 @@
 lockfileVersion: '9.0'
 
 settings:
+  autoDedupe: true
   autoInstallPeers: true
+  dedupeInjectedDeps: true
+  dedupePeerDependents: true
   excludeLinksFromLockfile: false
+  linkWorkspacePackages: false
 
 overrides:
   brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
