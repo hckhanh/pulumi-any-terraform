@@ -18,8 +18,8 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.268.0",
-    "@types/node": "24.19.1",
+    "@pulumi/pulumi": "3.270.0",
+    "@types/node": "24.19.2",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
@@ -51,7 +51,7 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "parameterization": {
       "name": "portainer",
       "version": "2.0.1",

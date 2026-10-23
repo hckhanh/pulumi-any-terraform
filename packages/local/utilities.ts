@@ -98,7 +98,7 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.4.0",
+		baseProviderVersion: "1.5.0",
 		baseProviderDownloadUrl: "",
 		packageName: "local",
 		packageVersion: "2.9.1",

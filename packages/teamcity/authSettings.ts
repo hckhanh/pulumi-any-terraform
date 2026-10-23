@@ -34,12 +34,30 @@ export class AuthSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthSettings.__pulumiType;
     }
 
+    /**
+     * Allow login as guest user
+     */
     declare public readonly allowGuest: pulumi.Output<boolean>;
+    /**
+     * Collapse username/password form
+     */
     declare public readonly collapseLoginForm: pulumi.Output<boolean>;
+    /**
+     * Enable email verification
+     */
     declare public readonly emailVerification: pulumi.Output<boolean>;
+    /**
+     * Guest user username
+     */
     declare public readonly guestUsername: pulumi.Output<string>;
     declare public readonly modules: pulumi.Output<outputs.AuthSettingsModules>;
+    /**
+     * Enable per-project permissions
+     */
     declare public readonly perProjectPermissions: pulumi.Output<boolean>;
+    /**
+     * Welcome text on the login page
+     */
     declare public readonly welcomeText: pulumi.Output<string>;
 
     /**
@@ -102,12 +120,30 @@ export class AuthSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthSettings resources.
  */
 export interface AuthSettingsState {
+    /**
+     * Allow login as guest user
+     */
     allowGuest?: pulumi.Input<boolean | undefined>;
+    /**
+     * Collapse username/password form
+     */
     collapseLoginForm?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable email verification
+     */
     emailVerification?: pulumi.Input<boolean | undefined>;
+    /**
+     * Guest user username
+     */
     guestUsername?: pulumi.Input<string | undefined>;
     modules?: pulumi.Input<inputs.AuthSettingsModules | undefined>;
+    /**
+     * Enable per-project permissions
+     */
     perProjectPermissions?: pulumi.Input<boolean | undefined>;
+    /**
+     * Welcome text on the login page
+     */
     welcomeText?: pulumi.Input<string | undefined>;
 }
 
@@ -115,11 +151,29 @@ export interface AuthSettingsState {
  * The set of arguments for constructing a AuthSettings resource.
  */
 export interface AuthSettingsArgs {
+    /**
+     * Allow login as guest user
+     */
     allowGuest: pulumi.Input<boolean>;
+    /**
+     * Collapse username/password form
+     */
     collapseLoginForm: pulumi.Input<boolean>;
+    /**
+     * Enable email verification
+     */
     emailVerification: pulumi.Input<boolean>;
+    /**
+     * Guest user username
+     */
     guestUsername: pulumi.Input<string>;
     modules: pulumi.Input<inputs.AuthSettingsModules>;
+    /**
+     * Enable per-project permissions
+     */
     perProjectPermissions: pulumi.Input<boolean>;
+    /**
+     * Welcome text on the login page
+     */
     welcomeText: pulumi.Input<string>;
 }

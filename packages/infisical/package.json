@@ -18,8 +18,8 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.268.0",
-    "@types/node": "24.19.1",
+    "@pulumi/pulumi": "3.270.0",
+    "@types/node": "24.19.2",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
@@ -52,11 +52,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "parameterization": {
       "name": "infisical",
-      "version": "0.20.3",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC4zIn19"
+      "version": "0.20.5",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC41In19"
     }
   }
 }

@@ -98,10 +98,10 @@ export async function callAsync<T>(
 export async function getPackage(): Promise<string | undefined> {
 	return runtime.registerPackage({
 		baseProviderName: "terraform-provider",
-		baseProviderVersion: "1.4.0",
+		baseProviderVersion: "1.5.0",
 		baseProviderDownloadUrl: "",
 		packageName: "bunnynet",
-		packageVersion: "0.19.1",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuMTkuMSJ9fQ==",
+		packageVersion: "0.19.2",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2J1bm55d2F5L2J1bm55bmV0IiwidmVyc2lvbiI6IjAuMTkuMiJ9fQ==",
 	});
 }
