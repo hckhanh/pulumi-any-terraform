@@ -42,8 +42,6 @@ jobs:
           version: 12.15.0
           runtime: node@24.22.1
           cache: true
-      - name: Setup Aikido Safe Chain
-        uses: ./.github/actions/setup-safe-chain
       - name: Set SHAs
         uses: nrwl/nx-set-shas@e602fada7ad5987b0f7b1905e7a99ea1c661514c # v5.1.0
       - name: Check

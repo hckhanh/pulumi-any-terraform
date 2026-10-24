@@ -41,19 +41,6 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Track Aikido Safe Chain installer version and SHA-256 together",
-      "managerFilePatterns": [
-        "/^\\.github/actions/setup-safe-chain/action\\.ya?ml$/"
-      ],
-      "matchStrings": [
-        "SAFE_CHAIN_RELEASE: (?<currentValue>\\S+)\\n\\s+SAFE_CHAIN_SHA256: (?<currentDigest>[a-f0-9]{64})"
-      ],
-      "datasourceTemplate": "github-release-attachments",
-      "depNameTemplate": "AikidoSec/safe-chain",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
       "description": "Track pinned npm CLI version in workflow run blocks",
       "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
       "matchStrings": ["run: npm install -g npm@(?<currentValue>\\S+)"],

@@ -10,10 +10,8 @@ if [ -n "${CHANGESETS_OUTPUT:-}" ]; then
   : > "$CHANGESETS_OUTPUT"
 fi
 
-# Safe Chain's npm shim is first on PATH and resolves to the runner image's
-# npm 10, which publishes a trusted-publisher token with no Sigstore bundle.
-# pnpm's Node runtime has no npm binary beside it. The workflow installs
-# npm 12 into ${RUNNER_TEMP}/npm-cli and this script calls that executable.
+# The workflow installs npm 12 into ${RUNNER_TEMP}/npm-cli for trusted
+# publishing with provenance. Call that pinned executable directly.
 npm_bin="${RUNNER_TEMP:-}/npm-cli/bin/npm"
 if [[ ! -x "$npm_bin" ]]; then
   echo "npm 12 is missing at ${npm_bin}"

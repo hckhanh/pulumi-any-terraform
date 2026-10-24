@@ -35,8 +35,6 @@ Hand-written code lives only in:
 │   ├── oxfmt.ts               # Matches **/project.json -- adds `oxfmt:check`/`oxfmt:write`
 │   └── utils/plugin.ts        # Abstract Plugin base class for all of the above
 ├── .github/
-│   ├── actions/
-│   │   └── setup-safe-chain/       # Shared Aikido Safe Chain installer (checksummed)
 │   ├── scripts/
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
 │   │   └── __tests__/              # node:test suite for check-updates.ts
@@ -169,7 +167,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 - `package.json` field order is also enforced by Syncpack (`sortFirst`, `sortAz`).
 - pnpm `overrides` in `pnpm-workspace.yaml` apply security patches to transitive deps.
 - `allowBuilds` whitelists which packages may run install scripts: `@swc/core`, `esbuild`, `nx`, `protobufjs`, `sharp`.
-- `minimumReleaseAge: 2880` (48h) matches Aikido Safe Chain's default window -- new releases must be 48h old before pnpm will install them.
+- `minimumReleaseAge: 2880` (48h) requires new releases to be 48h old before pnpm will install them, except for version-specific entries in `minimumReleaseAgeExclude`.
 - Renovate manages dependency-update PRs (config in `renovate.json`); the `autofix.ci` workflow skips renovate-authored commits.
 
 ### Commits
@@ -195,7 +193,6 @@ Workflow conventions:
 - Top-level `permissions: contents: read`; jobs escalate as needed.
 - Node, pnpm, the store cache, and `pnpm install` come from SHA-pinned `pnpm/setup` (v11+; not `pnpm/action-setup`). Renovate regex managers track `version` / `runtime: node@` and group those bumps with `mise.toml`.
 - `jdx/mise-action` is only used where extra CLIs are needed (`test.yml` installs `actionlint` and `zizmor` via `install_args` + `MISE_ENABLE_TOOLS`). Do not install the full `mise.toml` toolset in CI.
-- **Aikido Safe Chain** is installed after `pnpm/setup` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`) so later `pnpm` commands use the wrapped binary. Renovate updates `SAFE_CHAIN_RELEASE` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. Do not set `SAFE_CHAIN_VERSION` (the installer treats that env var as deprecated).
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops.
 

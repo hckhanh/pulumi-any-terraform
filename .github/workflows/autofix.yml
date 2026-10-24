@@ -32,8 +32,6 @@ jobs:
           version: 12.15.0
           runtime: node@24.22.1
           cache: true
-      - name: Setup Aikido Safe Chain
-        uses: ./.github/actions/setup-safe-chain
       - name: Fix dependencies audit
         run: |
           pnpm audit --fix override
