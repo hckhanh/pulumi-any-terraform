@@ -8,18 +8,9 @@ allowBuilds:
   nx: true
   protobufjs: true
   sharp: true
-minimumReleaseAge: 2880
-minimumReleaseAgeExcludePrune: true
-minimumReleaseAgeExclude:
-  - tmp@0.2.7
-overrides:
-  # Pin postcss below 8.5.10; GHSA-qx2v-qp2m-jg93
-  brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
-  next@>=16.0.0 <16.3.3: ^16.3.3
-  postcss@<8.5.10: '8.5.31'
-  sharp@<0.35.0: ^0.35.0
-  smol-toml@<=1.7.0: ^1.7.1
 trustPolicyExcludePrune: true
+lockfile:
+  includeResolutionSettings: true
 auditConfig:
   # This moderate advisory is intentionally ignored: `pnpm audit --fix` would force
   # @opentelemetry/core 2.x into a 1.30.x OTel stack. nx telemetry is disabled
@@ -27,3 +18,17 @@ auditConfig:
   ignoreGhsas:
     # @opentelemetry/core: W3C trace-context DoS.
     - GHSA-8988-4f7v-96qf
+minimumReleaseAge: 2880
+minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - tmp@0.2.7
+overrides:
+  # Pin postcss below 8.5.10; GHSA-qx2v-qp2m-jg93
+  brace-expansion@>=4.0.0 <5.0.9: ^5.0.9
+  http-cache-semantics@<=4.2.0: ^4.3.0
+  next@>=16.0.0 <16.3.3: ^16.3.3
+  postcss@<8.5.10: '8.5.31'
+  sharp@<0.35.0: ^0.35.0
+  shell-quote@>=1.8.4 <1.11.0: ^1.11.0
+  smol-toml@<=1.7.0: ^1.7.1
+  undici@>=7.0.0 <7.29.1: ^7.29.1
