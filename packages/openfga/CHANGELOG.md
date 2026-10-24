@@ -1,5 +1,11 @@
 # pulumi-openfga
 
+## 0.5.7
+
+### Patch Changes
+
+Update the Pulumi Terraform bridge from 1.4.0 to 1.5.0.
+
 ## 0.5.6
 
 ### Patch Changes

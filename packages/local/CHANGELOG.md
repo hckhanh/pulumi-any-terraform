@@ -1,5 +1,11 @@
 # pulumi-local
 
+## 2.9.6
+
+### Patch Changes
+
+Update the Pulumi Terraform bridge from 1.4.0 to 1.5.0.
+
 ## 2.9.5
 
 ### Patch Changes

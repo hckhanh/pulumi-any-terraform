@@ -1,3 +1,9 @@
+## 3.2.0
+
+### Minor Changes
+
+Update the Pulumi Terraform bridge from 1.4.0 to 1.5.0.
+
 ## 3.1.4
 
 ### Patch Changes
