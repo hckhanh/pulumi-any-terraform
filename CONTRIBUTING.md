@@ -120,8 +120,7 @@ Scripts in `.github/scripts/` and `packages/*/scripts/`:
 
 ### Supply chain security
 
-- **Aikido Safe Chain** is installed in all CI workflows via `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified before run)
-- **pnpm `minimumReleaseAge`** is set to 2880 minutes (48 hours), matching the Aikido Safe Chain default
+- **pnpm `minimumReleaseAge`** is set to 2880 minutes (48 hours), with version-specific exceptions in `pnpm-workspace.yaml`
 - **Renovate** is configured with `security:minimumReleaseAgeNpm` preset
 - `pnpm-workspace.yaml` `allowBuilds` explicitly lists packages permitted to run install scripts
 
@@ -183,7 +182,7 @@ pnpm nx run-many -t fix       # Auto-fix all fixable issues
 - All actions are **pinned by SHA** (not tags)
 - Top-level `permissions: contents: read` with job-level escalation
 - pnpm store and Nx cache are cached between runs
-- Aikido Safe Chain is installed before `pnpm install`
+- Node, pnpm, and dependency installation come from SHA-pinned `pnpm/setup`
 
 ## 11. Adding a New Provider
 

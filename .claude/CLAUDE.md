@@ -38,8 +38,6 @@ Hand-written code lives only in:
 │   ├── scripts/
 │   │   ├── check-updates.ts        # Weekly upstream Terraform provider sync
 │   │   └── __tests__/              # node:test suite for check-updates.ts
-│   ├── actions/
-│   │   └── setup-safe-chain/       # Shared Aikido Safe Chain installer (checksummed)
 │   └── workflows/             # test.yml, autofix.yml, publish.yml, update.yml
 ├── .changeset/                # Changesets state, config.json, and custom changelog.js
 ├── .claude/                   # CLAUDE.md (this file) + bundled skills
@@ -179,7 +177,7 @@ When adding a new plugin: extend `Plugin`, set the glob via `super(...)`, implem
 - `package.json` field order is also enforced by Syncpack (`sortFirst`, `sortAz`).
 - pnpm `overrides` in `pnpm-workspace.yaml` apply security patches to transitive deps.
 - `allowBuilds` whitelists which packages may run install scripts: `@swc/core`, `esbuild`, `nx`, `protobufjs`, `sharp`.
-- `minimumReleaseAge: 2880` (48h) matches Aikido Safe Chain's default window -- new releases must be 48h old before pnpm will install them.
+- `minimumReleaseAge: 2880` (48h) requires new releases to be 48h old before pnpm will install them, except for version-specific entries in `minimumReleaseAgeExclude`.
 - Renovate manages dependency-update PRs (config in `renovate.json`); the `autofix.ci` workflow skips renovate-authored commits.
 
 ### Commits
@@ -206,7 +204,6 @@ Workflow conventions:
 - Node, pnpm, the store cache, and `pnpm install` come from SHA-pinned `pnpm/setup` (v11+; not `pnpm/action-setup`). Renovate regex managers track `version` / `runtime: node@` and group those bumps with `mise.toml`.
 - `jdx/mise-action` is only used where extra CLIs are needed (`test.yml` installs `actionlint` and `zizmor` via `install_args` + `MISE_ENABLE_TOOLS`). Do not install the full `mise.toml` toolset in CI.
 - The `pnpm` store is cached by `pnpm/setup` (`cache: true`); `.nx/cache` is intentionally **not** cached across runners (the Nx 22 database cache is machine-bound and errors on foreign artifacts).
-- **Aikido Safe Chain** is installed after `pnpm/setup` in every workflow via the local composite action `.github/actions/setup-safe-chain` (version-pinned installer, SHA-256 verified — never `curl | sh`) so later `pnpm` commands use the wrapped binary. Renovate updates `SAFE_CHAIN_RELEASE` and `SAFE_CHAIN_SHA256` together via the `github-release-attachments` datasource. Do not set `SAFE_CHAIN_VERSION` (the installer treats that env var as deprecated). `publish.yml` sets `SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS: 0` so freshly bumped workspace packages aren't rejected by the 48h minimum-age check.
 - `publish.yml` uses `changesets/action@v2`, which pushes release commits and tags via the GitHub API by default so they are signed by GitHub.
 - `NX_DAEMON: 'false'` is set globally in CI.
 - `test.yml` and `autofix.yml` both skip when the head commit is `chore(release)` to avoid loops; `autofix.yml` also skips Renovate-authored commits and its own `[autofix.ci]` commits.

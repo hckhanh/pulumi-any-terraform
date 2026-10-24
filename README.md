@@ -198,7 +198,7 @@ Automated workflows handle:
 - **Auto-fixing**: Oxfmt and Biome fixes
 - **Dependency Updates**: Automated PRs for updates
 - **Publishing**: Automatic releases to NPM
-- **Security**: Aikido Safe Chain and vulnerability scanning
+- **Security**: Dependency vulnerability auditing and package release-age checks
 
 ## 🤝 Contributing
 
@@ -238,7 +238,6 @@ This project integrates with:
 - **[Pulumi Service](https://www.pulumi.com/)** - State management (optional)
 - **[GitHub Actions](https://github.com/features/actions)** - CI/CD automation
 - **[Nx Cloud](https://nx.app/)** - Distributed caching
-- **[Aikido Safe Chain](https://www.aikido.dev/)** - Dependency security
 - **[Autofix.ci](https://autofix.ci/)** - Automated code fixes
 
 ## 📊 Project Stats
