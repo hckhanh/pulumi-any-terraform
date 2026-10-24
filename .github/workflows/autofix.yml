@@ -18,6 +18,15 @@ jobs:
     name: Fix
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'renovate[bot]' && github.actor != 'autofix-ci[bot]' && ! contains(github.event.head_commit.author.name , 'renovate[bot]') && ! contains(github.event.head_commit.message , 'chore(release)') && ! contains(github.event.head_commit.message , '[autofix.ci]') }}
+    env:
+      # Safe Chain matches names only; pnpm still enforces the version-specific
+      # minimumReleaseAgeExclude entries for these Nx packages.
+      SAFE_CHAIN_MINIMUM_PACKAGE_AGE_EXCLUSIONS: >-
+        nx,@nx/devkit,@nx/js,@nx/workspace,
+        @nx/nx-darwin-arm64,@nx/nx-darwin-x64,@nx/nx-freebsd-x64,
+        @nx/nx-linux-arm-gnueabihf,@nx/nx-linux-arm64-gnu,@nx/nx-linux-arm64-musl,
+        @nx/nx-linux-x64-gnu,@nx/nx-linux-x64-musl,
+        @nx/nx-win32-arm64-msvc,@nx/nx-win32-x64-msvc
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
