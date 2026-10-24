@@ -1,5 +1,28 @@
 # pulumi-posthog
 
+## 1.0.15
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@e93cde8: feat(warehouse_table): add posthog_warehouse_table resource (PostHog/terraform-provider-posthog#168) (@andyzzhao)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@fccabe8: chore(deps): bump the github-actions group with 2 updates (PostHog/terraform-provider-posthog#165) (@dependabot[bot])
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@2551103: fix(feature_flag): reject removed usage dashboard opt-in (PostHog/terraform-provider-posthog#175) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@ed6690e: Restore security workflow and update vulnerable Go dependencies (PostHog/terraform-provider-posthog#176) (@vdekrijger)
+- Bump the provider to Go v1.27.1 (PostHog/terraform-provider-posthog#177) (@vdekrijger)
+
+Update the Pulumi Terraform bridge from 1.4.0 to 1.5.0.
+
 ## 1.0.14
 
 ### Patch Changes

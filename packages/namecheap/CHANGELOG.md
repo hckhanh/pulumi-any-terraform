@@ -1,3 +1,22 @@
+## 2.4.7
+
+### Patch Changes
+
+#### [2.9.4](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.9.3...v2.9.4) (2026-10-02)
+
+#### Bug Fixes
+
+- **deps:** bump github.com/namecheap/go-namecheap-sdk/v2 from 2.10.3 to 2.10.4 ([namecheap/terraform-provider-namecheap#351](https://github.com/namecheap/terraform-provider-namecheap/issues/351)) ([0546224](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@0546224))
+- reuse the getList response when reading custom nameservers ([namecheap/terraform-provider-namecheap#357](https://github.com/namecheap/terraform-provider-namecheap/issues/357)) ([35df7bb](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@35df7bb))
+
+#### [2.9.5](https://github.com/namecheap/terraform-provider-namecheap/compare/v2.9.4...v2.9.5) (2026-10-12)
+
+#### Bug Fixes
+
+- **deps:** bump Go toolchain to 1.26.9 and golang.org/x/net to v0.60.0 ([namecheap/terraform-provider-namecheap#363](https://github.com/namecheap/terraform-provider-namecheap/issues/363)) ([83990e6](https://github.com/namecheap/terraform-provider-namecheap/commit/namecheap/terraform-provider-namecheap@83990e6))
+
+Update the Pulumi Terraform bridge from 1.4.0 to 1.5.0.
+
 ## 2.4.6
 
 ### Patch Changes
