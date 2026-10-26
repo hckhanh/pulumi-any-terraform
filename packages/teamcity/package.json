@@ -53,8 +53,8 @@
     "version": "1.5.0",
     "parameterization": {
       "name": "teamcity",
-      "version": "0.0.97",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTcifX0="
+      "version": "0.0.98",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2pldGJyYWlucy90ZWFtY2l0eSIsInZlcnNpb24iOiIwLjAuOTgifX0="
     }
   }
 }

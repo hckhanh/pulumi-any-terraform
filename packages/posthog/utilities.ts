@@ -101,7 +101,7 @@ export async function getPackage(): Promise<string | undefined> {
 		baseProviderVersion: "1.5.0",
 		baseProviderDownloadUrl: "",
 		packageName: "posthog",
-		packageVersion: "1.0.24",
-		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMjQifX0=",
+		packageVersion: "1.0.26",
+		base64Parameter: "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkudGVycmFmb3JtLmlvL3Bvc3Rob2cvcG9zdGhvZyIsInZlcnNpb24iOiIxLjAuMjYifX0=",
 	});
 }

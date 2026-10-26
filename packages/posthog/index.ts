@@ -55,6 +55,11 @@ export type FeatureFlag = import("./featureFlag").FeatureFlag;
 export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
 utilities.lazyLoad(exports, ["FeatureFlag"], () => require("./featureFlag"));
 
+export { GetFeatureFlagsArgs, GetFeatureFlagsResult, GetFeatureFlagsOutputArgs } from "./getFeatureFlags";
+export const getFeatureFlags: typeof import("./getFeatureFlags").getFeatureFlags = null as any;
+export const getFeatureFlagsOutput: typeof import("./getFeatureFlags").getFeatureFlagsOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureFlags","getFeatureFlagsOutput"], () => require("./getFeatureFlags"));
+
 export { GetInsightArgs, GetInsightResult, GetInsightOutputArgs } from "./getInsight";
 export const getInsight: typeof import("./getInsight").getInsight = null as any;
 export const getInsightOutput: typeof import("./getInsight").getInsightOutput = null as any;

@@ -75,11 +75,11 @@ export interface AlertChannelsEmail {
 
 export interface AlertChannelsEmailRecipient {
     /**
-     * The ID of the recipient user or group. The principal must belong to the scope the alert is created in.
+     * The ID of the recipient user or group, which must belong to the scope the alert is created in. For an email recipient this is the email address, which must be on one of your organization's verified email domains.
      */
     id: pulumi.Input<string>;
     /**
-     * The type of the recipient. Options: user, group.
+     * The type of the recipient. Options: user, group, email. The email type is only for cert-manager, cert-manager.application, cert-manager.signer alerts.
      */
     type: pulumi.Input<string>;
 }
@@ -107,6 +107,33 @@ export interface AlertChannelsWebhook {
      * The HTTPS URL the CloudEvents payload is sent to.
      */
     url: pulumi.Input<string>;
+}
+
+export interface AlertCondition {
+    /**
+     * How many days before expiry the alert fires. Required for these events, and not used by the others: identity.authentication.expiry, cert-manager.application.certificate.expiry, cert-manager.certificate.expiry, cert-manager.signer.certificate.expiry. Must be at least 1, and at most 90 for identity.authentication; 365 for cert-manager, cert-manager.application, cert-manager.signer.
+     */
+    alertBeforeDays?: pulumi.Input<number | undefined>;
+    /**
+     * Only certificates in these Certificate Manager applications. Only for these events: cert-manager.certificate.expiry, cert-manager.certificate.issuance, cert-manager.certificate.renewal, cert-manager.certificate.revocation. Leave it out to cover all of them. At most 100.
+     */
+    applicationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When true, sends a reminder every day until expiry. Defaults to false. Only for the events that take alert_before_days.
+     */
+    dailyReminder?: pulumi.Input<boolean | undefined>;
+    /**
+     * Only certificates issued from these certificate profiles. Only for these events: cert-manager.certificate.expiry, cert-manager.certificate.issuance, cert-manager.certificate.renewal, cert-manager.certificate.revocation. Leave it out to cover all of them. At most 100.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Only certificates of these code signing signers, by ID. To get a signer's ID, open it under Code Signing > Signers in Certificate Manager and select Options > Copy Signer ID. Only for these events: cert-manager.signer.certificate.expiry. Leave it out to cover all of them. At most 100.
+     */
+    signerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Only certificates with these sources. Options: issued, discovered, imported. Leave it out to cover every source. Only for these events: cert-manager.certificate.expiry, cert-manager.certificate.issuance, cert-manager.certificate.renewal, cert-manager.certificate.revocation.
+     */
+    sources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AlertExpiry {
@@ -229,6 +256,29 @@ export interface AppConnectionBitbucketCredentials {
     email: pulumi.Input<string>;
 }
 
+export interface AppConnectionChefCredentials {
+    /**
+     * The secret used to encrypt data bag items. Set it when certificate syncs should write encrypted data bag items.
+     */
+    dataBagSecret?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Chef organization to connect to.
+     */
+    orgName: pulumi.Input<string>;
+    /**
+     * The PEM-encoded private key of the Chef user.
+     */
+    privateKey: pulumi.Input<string>;
+    /**
+     * The URL of the Chef Server to connect to, e.g. `https://chef.example.com`, defaulting to the hosted Chef API when omitted.
+     */
+    serverUrl?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Chef user to authenticate as.
+     */
+    userName: pulumi.Input<string>;
+}
+
 export interface AppConnectionCircleciCredentials {
     /**
      * The CircleCI API token for authentication.
@@ -290,6 +340,33 @@ export interface AppConnectionDigicertCredentials {
      * The DigiCert CertCentral region your account belongs to. Possible values are: us, eu
      */
     region: pulumi.Input<string>;
+}
+
+export interface AppConnectionF5BigIpCredentials {
+    /**
+     * The hostname or IP address of the F5 BIG-IP management interface, without scheme, port or path.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The password to authenticate to F5 BIG-IP with.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port of the F5 BIG-IP management interface.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify the F5 BIG-IP TLS certificate.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to reject untrusted TLS certificates presented by F5 BIG-IP.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+    /**
+     * The username to authenticate to F5 BIG-IP with.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface AppConnectionFlyioCredentials {
@@ -357,6 +434,33 @@ export interface AppConnectionHashicorpVaultCredentials {
      * The AppRole secret ID. Required for the `app-role` method.
      */
     secretId?: pulumi.Input<string | undefined>;
+}
+
+export interface AppConnectionKempLoadmasterCredentials {
+    /**
+     * The hostname or IP address of the Kemp LoadMaster management interface, without scheme or path.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The password to authenticate to Kemp LoadMaster with.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port of the Kemp LoadMaster management interface.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify the Kemp LoadMaster TLS certificate.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to reject untrusted TLS certificates presented by Kemp LoadMaster.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+    /**
+     * The username to authenticate to Kemp LoadMaster with.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface AppConnectionLdapCredentials {
@@ -467,6 +571,64 @@ export interface AppConnectionMysqlCredentials {
     username: pulumi.Input<string>;
 }
 
+export interface AppConnectionNetscalerCredentials {
+    /**
+     * The hostname or IP address of the NetScaler management interface, without scheme or path.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The password to authenticate to NetScaler with.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port of the NetScaler management interface.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify the NetScaler TLS certificate.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to reject untrusted TLS certificates presented by NetScaler.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+    /**
+     * The username to authenticate to NetScaler with.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface AppConnectionNutanixPrismCentralCredentials {
+    /**
+     * The 32-character lowercase hexadecimal Nutanix Prism Central API key, required for the `api-key` method.
+     */
+    apiKey?: pulumi.Input<string | undefined>;
+    /**
+     * The hostname or IP address of Nutanix Prism Central, without scheme, port or path.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The password to authenticate to Nutanix Prism Central with, required for the `basic-auth` method.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * The port of Nutanix Prism Central.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify the Nutanix Prism Central TLS certificate.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to reject untrusted TLS certificates presented by Nutanix Prism Central.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+    /**
+     * The username to authenticate to Nutanix Prism Central with, required for the `basic-auth` method.
+     */
+    username?: pulumi.Input<string | undefined>;
+}
+
 export interface AppConnectionOracledbCredentials {
     /**
      * The name of the database to connect to.
@@ -559,6 +721,33 @@ export interface AppConnectionSpaceliftCredentials {
     apiUrl: pulumi.Input<string>;
 }
 
+export interface AppConnectionSshCredentials {
+    /**
+     * The hostname or IP address of the SSH server.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The passphrase protecting the SSH private key, used only by the `ssh-key` method.
+     */
+    passphrase?: pulumi.Input<string | undefined>;
+    /**
+     * The password to authenticate to the SSH server with, required for the <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`" pulumi-lang-hcl="`password`">`password`</span> method.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * The port of the SSH server.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded SSH private key to authenticate with, required for the `ssh-key` method.
+     */
+    privateKey?: pulumi.Input<string | undefined>;
+    /**
+     * The username to authenticate to the SSH server with.
+     */
+    username: pulumi.Input<string>;
+}
+
 export interface AppConnectionSupabaseCredentials {
     /**
      * The Supabase access key for authentication.
@@ -568,6 +757,67 @@ export interface AppConnectionSupabaseCredentials {
      * The Supabase instance URL (e.g., https://your-domain.com).
      */
     instanceUrl?: pulumi.Input<string | undefined>;
+}
+
+export interface AppConnectionWinrmCredentials {
+    /**
+     * The DNS name (FQDN) or IP address of the Windows host.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The password of the Windows account.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The WinRM port, usually 5985 for HTTP and 5986 for HTTPS.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify a self-signed WinRM HTTPS listener.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether or not to connect over HTTPS instead of HTTP with NTLM message encryption.
+     */
+    sslEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether or not to reject untrusted TLS certificates presented by the WinRM HTTPS listener.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Windows account to authenticate as, in the form `DOMAIN\user` or `user@domain`.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface CertManagerApplicationApprovalPolicyStep {
+    /**
+     * The users and groups that can approve at this step.
+     */
+    approvers: pulumi.Input<pulumi.Input<inputs.CertManagerApplicationApprovalPolicyStepApprover>[]>;
+    /**
+     * An optional name for the step.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the step's approvers are notified when a request reaches it. Defaults to true.
+     */
+    notifyApprovers?: pulumi.Input<boolean | undefined>;
+    /**
+     * How many of the step's approvers must approve before the request moves on. Must be between 1 and 100.
+     */
+    requiredApprovals: pulumi.Input<number>;
+}
+
+export interface CertManagerApplicationApprovalPolicyStepApprover {
+    /**
+     * The ID of the approving user or group.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The type of the approver. Options: user, group.
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface CertManagerApplicationProfileAcmeConfig {
@@ -841,6 +1091,32 @@ export interface CertManagerExternalCaDigicertVerifiedContact {
     telephone: pulumi.Input<string>;
 }
 
+export interface CertificateSyncAwsCertificateManagerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncAwsCertificateManagerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncAwsCertificateManagerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
 export interface CertificateSyncAwsCertificateManagerDestinationConfig {
     /**
      * The AWS region to sync certificates to (e.g. us-east-1).
@@ -850,11 +1126,11 @@ export interface CertificateSyncAwsCertificateManagerDestinationConfig {
 
 export interface CertificateSyncAwsCertificateManagerSyncOptions {
     /**
-     * Whether Infisical should remove certificates from AWS Certificate Manager when they are no longer managed in Infisical.
+     * Whether Infisical should remove certificates from AWS Certificate Manager when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place.
      */
     canRemoveCertificates?: pulumi.Input<boolean | undefined>;
     /**
-     * The naming scheme for synced certificates. Must include the {{certificateId}} or {{shortCertificateId}} placeholder. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     * The naming scheme for synced certificates. Must include the {{certificateId}} placeholder; {{shortCertificateId}} is not supported for this destination. Names may contain letters, digits, spaces, hyphens and underscores (1-256 characters). Other placeholders: {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
      */
     certificateNameSchema: pulumi.Input<string>;
     /**
@@ -865,6 +1141,846 @@ export interface CertificateSyncAwsCertificateManagerSyncOptions {
      * Whether to preserve the AWS Certificate Manager ARN when a certificate is renewed, reimporting into the existing certificate instead of creating a new one.
      */
     preserveArn?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncAwsElasticLoadBalancerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncAwsElasticLoadBalancerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncAwsElasticLoadBalancerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncAwsElasticLoadBalancerDestinationConfig {
+    /**
+     * The AWS region of the load balancer (e.g. us-east-1).
+     */
+    awsRegion: pulumi.Input<string>;
+    /**
+     * The HTTPS or TLS listeners on the load balancer to attach synced certificates to. At least one listener is required.
+     */
+    listeners: pulumi.Input<pulumi.Input<inputs.CertificateSyncAwsElasticLoadBalancerDestinationConfigListener>[]>;
+    /**
+     * The ARN of the load balancer to sync certificates to.
+     */
+    loadBalancerArn: pulumi.Input<string>;
+}
+
+export interface CertificateSyncAwsElasticLoadBalancerDestinationConfigListener {
+    /**
+     * The ARN of the listener.
+     */
+    listenerArn: pulumi.Input<string>;
+    /**
+     * The port the listener serves on (e.g. 443).
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The protocol of the listener (e.g. HTTPS or TLS).
+     */
+    protocol: pulumi.Input<string>;
+}
+
+export interface CertificateSyncAwsElasticLoadBalancerSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from the load balancer when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to false.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for certificates imported into ACM for the listeners. When set, it must include the {{certificateId}} placeholder; {{shortCertificateId}} is not supported for this destination. Names may contain letters, digits, spaces, hyphens and underscores (1-256 characters). When unset, the sync holds only one certificate.
+     */
+    certificateNameSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to false.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to preserve the certificate ARN when a certificate is renewed, reimporting into the existing certificate instead of creating a new one. Defaults to true.
+     */
+    preserveArn?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncAwsSecretsManagerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncAwsSecretsManagerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncAwsSecretsManagerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncAwsSecretsManagerDestinationConfig {
+    /**
+     * The AWS region to sync certificates to (e.g. us-east-1).
+     */
+    awsRegion: pulumi.Input<string>;
+    /**
+     * The ID or ARN of the KMS key used to encrypt the secrets. Leave unset to use the AWS managed key.
+     */
+    kmsKeyId?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncAwsSecretsManagerSyncOptions {
+    /**
+     * Whether Infisical should remove secrets from AWS Secrets Manager when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to true.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced secrets. Must include the {{certificateId}} or {{shortCertificateId}} placeholder, and compiled names may contain only alphanumeric characters, underscores and hyphens (1-512 characters). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * The JSON field names used for each part of the certificate inside the secret.
+     */
+    fieldMappings?: pulumi.Input<inputs.CertificateSyncAwsSecretsManagerSyncOptionsFieldMappings | undefined>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to false.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to update the existing secret when a certificate is renewed instead of creating a new one. Defaults to true.
+     */
+    preserveSecretOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncAwsSecretsManagerSyncOptionsFieldMappings {
+    /**
+     * The field name for the CA certificate. Defaults to ca_certificate.
+     */
+    caCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * The field name for the certificate. Defaults to certificate.
+     */
+    certificate?: pulumi.Input<string | undefined>;
+    /**
+     * The field name for the certificate chain. Defaults to certificate_chain.
+     */
+    certificateChain?: pulumi.Input<string | undefined>;
+    /**
+     * The field name for the private key. Defaults to private_key.
+     */
+    privateKey?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncAzureKeyVaultCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncAzureKeyVaultCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncAzureKeyVaultCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncAzureKeyVaultDestinationConfig {
+    /**
+     * The URL of the Azure Key Vault to sync certificates to (e.g. https://<vault-name>.vault.azure.net).
+     */
+    vaultBaseUrl: pulumi.Input<string>;
+}
+
+export interface CertificateSyncAzureKeyVaultSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from Azure Key Vault when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to true.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certificates. Must include the {{certificateId}} or {{shortCertificateId}} placeholder, and compiled names may contain only alphanumeric characters and hyphens (1-127 characters). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether a renewed certificate is added as a new version of the existing Azure Key Vault certificate instead of a new certificate. Defaults to true.
+     */
+    enableVersioning?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to false.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncChefCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncChefCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncChefCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncChefDestinationConfig {
+    /**
+     * The name of the Chef data bag to sync certificates to. May only contain alphanumeric characters, underscores, and hyphens.
+     */
+    dataBagName: pulumi.Input<string>;
+}
+
+export interface CertificateSyncChefSyncOptions {
+    /**
+     * Whether Infisical should remove data bag items from Chef when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for the synced data bag items. Must include the {{certificateId}} or {{shortCertificateId}} placeholder and compile to 1-255 alphanumeric characters, underscores, or hyphens. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * The data bag item field names that hold each part of the certificate. Defaults to <span pulumi-lang-nodejs="`certificate`" pulumi-lang-dotnet="`Certificate`" pulumi-lang-go="`certificate`" pulumi-lang-python="`certificate`" pulumi-lang-yaml="`certificate`" pulumi-lang-java="`certificate`" pulumi-lang-hcl="`certificate`">`certificate`</span>, <span pulumi-lang-nodejs="`privateKey`" pulumi-lang-dotnet="`PrivateKey`" pulumi-lang-go="`privateKey`" pulumi-lang-python="`private_key`" pulumi-lang-yaml="`privateKey`" pulumi-lang-java="`privateKey`" pulumi-lang-hcl="`private_key`">`privateKey`</span>, <span pulumi-lang-nodejs="`certificateChain`" pulumi-lang-dotnet="`CertificateChain`" pulumi-lang-go="`certificateChain`" pulumi-lang-python="`certificate_chain`" pulumi-lang-yaml="`certificateChain`" pulumi-lang-java="`certificateChain`" pulumi-lang-hcl="`certificate_chain`">`certificateChain`</span>, and <span pulumi-lang-nodejs="`caCertificate`" pulumi-lang-dotnet="`CaCertificate`" pulumi-lang-go="`caCertificate`" pulumi-lang-python="`ca_certificate`" pulumi-lang-yaml="`caCertificate`" pulumi-lang-java="`caCertificate`" pulumi-lang-hcl="`ca_certificate`">`caCertificate`</span>.
+     */
+    fieldMappings?: pulumi.Input<inputs.CertificateSyncChefSyncOptionsFieldMappings | undefined>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether a renewed certificate overwrites its existing data bag item instead of creating a new one. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    preserveItemOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncChefSyncOptionsFieldMappings {
+    /**
+     * The field name that holds the CA certificate. Defaults to <span pulumi-lang-nodejs="`caCertificate`" pulumi-lang-dotnet="`CaCertificate`" pulumi-lang-go="`caCertificate`" pulumi-lang-python="`ca_certificate`" pulumi-lang-yaml="`caCertificate`" pulumi-lang-java="`caCertificate`" pulumi-lang-hcl="`ca_certificate`">`caCertificate`</span>.
+     */
+    caCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * The field name that holds the certificate. Defaults to <span pulumi-lang-nodejs="`certificate`" pulumi-lang-dotnet="`Certificate`" pulumi-lang-go="`certificate`" pulumi-lang-python="`certificate`" pulumi-lang-yaml="`certificate`" pulumi-lang-java="`certificate`" pulumi-lang-hcl="`certificate`">`certificate`</span>.
+     */
+    certificate?: pulumi.Input<string | undefined>;
+    /**
+     * The field name that holds the certificate chain. Defaults to <span pulumi-lang-nodejs="`certificateChain`" pulumi-lang-dotnet="`CertificateChain`" pulumi-lang-go="`certificateChain`" pulumi-lang-python="`certificate_chain`" pulumi-lang-yaml="`certificateChain`" pulumi-lang-java="`certificateChain`" pulumi-lang-hcl="`certificate_chain`">`certificateChain`</span>.
+     */
+    certificateChain?: pulumi.Input<string | undefined>;
+    /**
+     * The field name that holds the private key. Defaults to <span pulumi-lang-nodejs="`privateKey`" pulumi-lang-dotnet="`PrivateKey`" pulumi-lang-go="`privateKey`" pulumi-lang-python="`private_key`" pulumi-lang-yaml="`privateKey`" pulumi-lang-java="`privateKey`" pulumi-lang-hcl="`private_key`">`privateKey`</span>.
+     */
+    privateKey?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncCloudflareCustomCertificateCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncCloudflareCustomCertificateCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncCloudflareCustomCertificateCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncCloudflareCustomCertificateDestinationConfig {
+    /**
+     * The ID of the Cloudflare zone to upload custom SSL certificates to.
+     */
+    zoneId: pulumi.Input<string>;
+}
+
+export interface CertificateSyncCloudflareCustomCertificateSyncOptions {
+    /**
+     * Whether Infisical should remove custom certificates from Cloudflare when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to true.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certificates. Must include the {{certificateId}} or {{shortCertificateId}} placeholder, and compiled names may contain only alphanumeric characters, hyphens and underscores (1-255 characters). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+}
+
+export interface CertificateSyncF5BigIpCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncF5BigIpCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncF5BigIpCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncF5BigIpDestinationConfig {
+    /**
+     * Whether to create the SSL profile when it does not exist. Only applies when <span pulumi-lang-nodejs="`profileType`" pulumi-lang-dotnet="`ProfileType`" pulumi-lang-go="`profileType`" pulumi-lang-python="`profile_type`" pulumi-lang-yaml="`profileType`" pulumi-lang-java="`profileType`" pulumi-lang-hcl="`profile_type`">`profileType`</span> is `client-ssl` or `server-ssl`. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    createProfileIfMissing?: pulumi.Input<boolean | undefined>;
+    /**
+     * The parent profile a newly created SSL profile inherits from. Only allowed when <span pulumi-lang-nodejs="`createProfileIfMissing`" pulumi-lang-dotnet="`CreateProfileIfMissing`" pulumi-lang-go="`createProfileIfMissing`" pulumi-lang-python="`create_profile_if_missing`" pulumi-lang-yaml="`createProfileIfMissing`" pulumi-lang-java="`createProfileIfMissing`" pulumi-lang-hcl="`create_profile_if_missing`">`createProfileIfMissing`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    parentProfile?: pulumi.Input<string | undefined>;
+    /**
+     * The F5 BIG-IP partition to sync certificates to. Defaults to the `Common` partition when unset.
+     */
+    partition?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the SSL profile to bind synced certificates to. Required when <span pulumi-lang-nodejs="`profileType`" pulumi-lang-dotnet="`ProfileType`" pulumi-lang-go="`profileType`" pulumi-lang-python="`profile_type`" pulumi-lang-yaml="`profileType`" pulumi-lang-java="`profileType`" pulumi-lang-hcl="`profile_type`">`profileType`</span> is `client-ssl` or `server-ssl`, and not allowed otherwise.
+     */
+    profileName?: pulumi.Input<string | undefined>;
+    /**
+     * The type of SSL profile to bind synced certificates to. Supported values: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, `client-ssl`, `server-ssl`. Leave unset or set to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span> to sync certificates without binding them to a profile.
+     */
+    profileType?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncF5BigIpSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from F5 BIG-IP when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certificates, which must compile to 1-255 alphanumeric characters, hyphens, underscores, or periods. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}. A schema with no placeholder can be linked to only one certificate.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether a renewed certificate replaces its existing F5 BIG-IP certificate instead of creating a new one. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    preserveItemOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncGcpCertificateManagerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncGcpCertificateManagerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncGcpCertificateManagerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncGcpCertificateManagerDestinationConfig {
+    /**
+     * Adds the synced certificates to an entry in an existing certificate map. Requires the global location and the default scope.
+     */
+    certificateMapBinding?: pulumi.Input<inputs.CertificateSyncGcpCertificateManagerDestinationConfigCertificateMapBinding | undefined>;
+    /**
+     * The ID of the GCP project to sync certificates to.
+     */
+    gcpProjectId: pulumi.Input<string>;
+    /**
+     * The Certificate Manager location to create certificates in, either global or a region ID such as us-central1.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * The scope of the synced certificates: default, edge-cache, all-regions or client-auth. Defaults to default.
+     */
+    scope?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncGcpCertificateManagerDestinationConfigCertificateMapBinding {
+    /**
+     * The name of the certificate map to add the certificates to.
+     */
+    certificateMap: pulumi.Input<string>;
+    /**
+     * The hostname of the certificate map entry, such as www.example.com or *.example.com. Leave unset to use the primary entry.
+     */
+    hostname?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncGcpCertificateManagerSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from GCP Certificate Manager when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to true.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certificates. Must start with a lowercase letter and include the {{certificateId}} or {{shortCertificateId}} placeholder, and compiled names may contain only lowercase letters, digits and hyphens (1-63 characters). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to false.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Labels to set on the synced GCP certificates, up to 62. The keys managed-by and infisical-certificate-id are reserved.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether to update the existing GCP certificate when a certificate is renewed instead of creating a new one. Defaults to true.
+     */
+    preserveItemOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncKempLoadmasterCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncKempLoadmasterCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncKempLoadmasterCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncKempLoadmasterDestinationConfig {
+    /**
+     * The numeric index of the Virtual Service to bind synced certificates to, as shown on the LoadMaster. Leave unset to sync certificates without binding them to a Virtual Service.
+     */
+    virtualServiceId?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncKempLoadmasterSyncOptions {
+    /**
+     * The naming scheme for synced CA certificates, which must compile to 1-251 alphanumeric characters, hyphens, underscores, or periods. Available placeholders: {{fingerprint}} (recommended so each CA gets a unique name) and {{commonName}}. Defaults to `Infisical-ca-{{fingerprint}}`.
+     */
+    caCertificateNameSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Infisical should remove certificates from Kemp LoadMaster when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certificates. Must include the {{certificateId}} or {{shortCertificateId}} placeholder and compile to 1-251 alphanumeric characters, hyphens, underscores, or periods. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether a renewed certificate replaces its existing Kemp LoadMaster certificate instead of creating a new one. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    preserveItemOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncLinuxServerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncLinuxServerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncLinuxServerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncLinuxServerDestinationConfig {
+    /**
+     * The absolute directory on the server to write certificate files to (e.g. /etc/ssl/infisical).
+     */
+    destinationPath: pulumi.Input<string>;
+    /**
+     * The hostname or IP address of the server to sync to. Required with an LDAP connection and not allowed with any other connection type.
+     */
+    host?: pulumi.Input<string | undefined>;
+    /**
+     * The SSH port to reach the server on. Only valid with an LDAP connection.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The trusted SSH host keys of the server, as produced by `ssh-keyscan <host>`. The sync refuses to connect when the server presents a different key, and at least one RSA or ECDSA key must be included. Only valid with an LDAP connection.
+     */
+    sshHostKeys?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncLinuxServerSyncOptions {
+    /**
+     * Whether Infisical should delete certificate files from the server when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The file base name for synced certificates. It must resolve to a single file name of 1-200 characters using only letters, digits, dots (.), dashes (-), and underscores (_). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}. A schema with no placeholder can be linked to only one certificate.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to write the leaf certificate followed by the chain into a single PEM file instead of a separate chain file. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    combineCertificateChain?: pulumi.Input<boolean | undefined>;
+    /**
+     * The file format to deliver certificates in. Supported values: <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>, <span pulumi-lang-nodejs="`pkcs12`" pulumi-lang-dotnet="`Pkcs12`" pulumi-lang-go="`pkcs12`" pulumi-lang-python="`pkcs12`" pulumi-lang-yaml="`pkcs12`" pulumi-lang-java="`pkcs12`" pulumi-lang-hcl="`pkcs12`">`pkcs12`</span>, <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>. Defaults to <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>.
+     */
+    exportFormat?: pulumi.Input<string | undefined>;
+    /**
+     * The octal file mode applied to delivered certificate files (e.g. 0644).
+     */
+    fileMode?: pulumi.Input<string | undefined>;
+    /**
+     * The Linux group that should own the delivered files.
+     */
+    group?: pulumi.Input<string | undefined>;
+    /**
+     * A command run on the server to check the health of the delivered certificates. Requires a gateway on the connection. Available variables: `{{certificateFiles}}`, `{{certificateDirectory}}`, `{{certificatePath}}`, `{{commonName}}`, `{{exportPassword}}`. Using `{{certificatePath}}` or `{{commonName}}` limits the sync to one certificate.
+     */
+    healthCheckCommand?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to deliver the certificate's private key alongside the certificate. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    includePrivateKey?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to include the root CA certificate in the delivered certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to also deliver a `<name>.truststore.jks` file holding the chain and root CA as trusted certificates. Only valid when <span pulumi-lang-nodejs="`exportFormat`" pulumi-lang-dotnet="`ExportFormat`" pulumi-lang-go="`exportFormat`" pulumi-lang-python="`export_format`" pulumi-lang-yaml="`exportFormat`" pulumi-lang-java="`exportFormat`" pulumi-lang-hcl="`export_format`">`exportFormat`</span> is <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>.
+     */
+    includeTruststore?: pulumi.Input<boolean | undefined>;
+    /**
+     * The alias of the private key entry in a PKCS#12 or JKS keystore, using only letters, digits, dots (.), dashes (-), and underscores (_). Only valid when <span pulumi-lang-nodejs="`exportFormat`" pulumi-lang-dotnet="`ExportFormat`" pulumi-lang-go="`exportFormat`" pulumi-lang-python="`export_format`" pulumi-lang-yaml="`exportFormat`" pulumi-lang-java="`exportFormat`" pulumi-lang-hcl="`export_format`">`exportFormat`</span> is <span pulumi-lang-nodejs="`pkcs12`" pulumi-lang-dotnet="`Pkcs12`" pulumi-lang-go="`pkcs12`" pulumi-lang-python="`pkcs12`" pulumi-lang-yaml="`pkcs12`" pulumi-lang-java="`pkcs12`" pulumi-lang-hcl="`pkcs12`">`pkcs12`</span> or <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>, and defaults to the certificate's file base name.
+     */
+    keystoreAlias?: pulumi.Input<string | undefined>;
+    /**
+     * The Linux user that should own the delivered files.
+     */
+    owner?: pulumi.Input<string | undefined>;
+    /**
+     * The file extension of PEM certificate and chain files. Supported values: <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>, <span pulumi-lang-nodejs="`crt`" pulumi-lang-dotnet="`Crt`" pulumi-lang-go="`crt`" pulumi-lang-python="`crt`" pulumi-lang-yaml="`crt`" pulumi-lang-java="`crt`" pulumi-lang-hcl="`crt`">`crt`</span>. Defaults to <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>.
+     */
+    pemCertificateExtension?: pulumi.Input<string | undefined>;
+    /**
+     * A command run on the server after certificates are delivered, for example to reload a service. Requires a gateway on the connection. Available variables: `{{certificateFiles}}`, `{{certificateDirectory}}`, `{{certificatePath}}`, `{{commonName}}`, `{{exportPassword}}`. Using `{{certificatePath}}` or `{{commonName}}` limits the sync to one certificate.
+     */
+    postSyncCommand?: pulumi.Input<string | undefined>;
+    /**
+     * The octal file mode applied to delivered private key files (e.g. 0600).
+     */
+    privateKeyFileMode?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncNetscalerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncNetscalerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncNetscalerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncNetscalerDestinationConfig {
+    /**
+     * The name of the NetScaler SSL vServer to bind synced certificates to. Leave unset to sync certificates without binding them to a vServer.
+     */
+    vserverName?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncNetscalerSyncOptions {
+    /**
+     * Whether Infisical should remove certificates from NetScaler when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The naming scheme for synced certkeys, which must compile to 1-63 alphanumeric characters, hyphens, underscores, or periods. Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}. A schema with no placeholder can be linked to only one certificate.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to include the root CA certificate in the synced certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether a renewed certificate replaces its existing NetScaler certkey instead of creating a new one. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    preserveItemOnRenewal?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncNutanixPrismCentralCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncNutanixPrismCentralCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncNutanixPrismCentralCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncNutanixPrismCentralDestinationConfig {
+    /**
+     * The ID of the Nutanix cluster to install the certificate on.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The name of the Nutanix cluster to install the certificate on.
+     */
+    clusterName: pulumi.Input<string>;
+}
+
+export interface CertificateSyncWindowsServerCertificateFilters {
+    /**
+     * The certificate orders to sync, from the <span pulumi-lang-nodejs="`orderId`" pulumi-lang-dotnet="`OrderId`" pulumi-lang-go="`orderId`" pulumi-lang-python="`order_id`" pulumi-lang-yaml="`orderId`" pulumi-lang-java="`orderId`" pulumi-lang-hcl="`order_id`">`orderId`</span> attribute of <span pulumi-lang-nodejs="`infisical.CertManagerCertificate`" pulumi-lang-dotnet="`infisical.CertManagerCertificate`" pulumi-lang-go="`CertManagerCertificate`" pulumi-lang-python="`CertManagerCertificate`" pulumi-lang-yaml="`infisical.CertManagerCertificate`" pulumi-lang-java="`infisical.CertManagerCertificate`" pulumi-lang-hcl="`infisical_cert_manager_certificate`">`infisical.CertManagerCertificate`</span>. A certificate and all of its renewals share one order, so the sync keeps holding the newest certificate of each order.
+     */
+    certificateOrderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sync certificates carrying every one of these metadata pairs.
+     */
+    metadatas?: pulumi.Input<pulumi.Input<inputs.CertificateSyncWindowsServerCertificateFiltersMetadata>[] | undefined>;
+    /**
+     * Sync certificates issued from any one of these certificate profiles.
+     */
+    profileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CertificateSyncWindowsServerCertificateFiltersMetadata {
+    /**
+     * The metadata key the certificate must carry.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value the key must have. Leave unset to match any value.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncWindowsServerDestinationConfig {
+    /**
+     * The absolute local drive directory on the server to write certificate files to (e.g. C:\certs), where UNC paths are not supported.
+     */
+    destinationPath: pulumi.Input<string>;
+    /**
+     * The hostname or IP address of the server to sync to. Required with an LDAP connection and not allowed with any other connection type. The LDAP connection must have a gateway.
+     */
+    host?: pulumi.Input<string | undefined>;
+    /**
+     * The WinRM port to reach the server on. Only valid with an LDAP connection.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The PEM-encoded CA certificate used to verify a self-signed WinRM HTTPS listener. Only valid with an LDAP connection.
+     */
+    sslCertificate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to reach the server over HTTPS WinRM instead of HTTP with NTLM message encryption. Only valid with an LDAP connection.
+     */
+    sslEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to verify the server's WinRM certificate when using HTTPS. Only valid with an LDAP connection.
+     */
+    sslRejectUnauthorized?: pulumi.Input<boolean | undefined>;
+}
+
+export interface CertificateSyncWindowsServerSyncOptions {
+    /**
+     * Whether Infisical should delete certificate files from the server when their certificates leave this sync, for example when <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span> stops matching them. Destroying the sync leaves them in place. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    canRemoveCertificates?: pulumi.Input<boolean | undefined>;
+    /**
+     * The file base name for synced certificates. It must resolve to a single file name of 1-200 characters using only letters, digits, dots (.), dashes (-), and underscores (_). Available placeholders: {{certificateId}}, {{shortCertificateId}}, {{profileId}}, {{applicationId}}, {{applicationName}}, {{commonName}}. A schema with no placeholder can be linked to only one certificate.
+     */
+    certificateNameSchema: pulumi.Input<string>;
+    /**
+     * Whether to write the leaf certificate followed by the chain into a single PEM file instead of a separate chain file. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    combineCertificateChain?: pulumi.Input<boolean | undefined>;
+    /**
+     * The file format to deliver certificates in. Supported values: <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>, <span pulumi-lang-nodejs="`pkcs12`" pulumi-lang-dotnet="`Pkcs12`" pulumi-lang-go="`pkcs12`" pulumi-lang-python="`pkcs12`" pulumi-lang-yaml="`pkcs12`" pulumi-lang-java="`pkcs12`" pulumi-lang-hcl="`pkcs12`">`pkcs12`</span>, <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>. Defaults to <span pulumi-lang-nodejs="`pkcs12`" pulumi-lang-dotnet="`Pkcs12`" pulumi-lang-go="`pkcs12`" pulumi-lang-python="`pkcs12`" pulumi-lang-yaml="`pkcs12`" pulumi-lang-java="`pkcs12`" pulumi-lang-hcl="`pkcs12`">`pkcs12`</span>.
+     */
+    exportFormat?: pulumi.Input<string | undefined>;
+    /**
+     * Access rules granted on the delivered files to Windows users or groups, up to 20.
+     */
+    fileAccessRules?: pulumi.Input<pulumi.Input<inputs.CertificateSyncWindowsServerSyncOptionsFileAccessRule>[] | undefined>;
+    /**
+     * A command run on the server to check the health of the delivered certificates. Requires a gateway on the connection. Available variables: `{{certificateFiles}}`, `{{certificateDirectory}}`, `{{certificatePath}}`, `{{commonName}}`, `{{exportPassword}}`. Using `{{certificatePath}}` or `{{commonName}}` limits the sync to one certificate.
+     */
+    healthCheckCommand?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to deliver the certificate's private key alongside the certificate. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>.
+     */
+    includePrivateKey?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to include the root CA certificate in the delivered certificate chain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>.
+     */
+    includeRootCa?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to also deliver a `<name>.truststore.jks` file holding the chain and root CA as trusted certificates. Only valid when <span pulumi-lang-nodejs="`exportFormat`" pulumi-lang-dotnet="`ExportFormat`" pulumi-lang-go="`exportFormat`" pulumi-lang-python="`export_format`" pulumi-lang-yaml="`exportFormat`" pulumi-lang-java="`exportFormat`" pulumi-lang-hcl="`export_format`">`exportFormat`</span> is <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>.
+     */
+    includeTruststore?: pulumi.Input<boolean | undefined>;
+    /**
+     * The alias of the private key entry in a PKCS#12 or JKS keystore, using only letters, digits, dots (.), dashes (-), and underscores (_). Only valid when <span pulumi-lang-nodejs="`exportFormat`" pulumi-lang-dotnet="`ExportFormat`" pulumi-lang-go="`exportFormat`" pulumi-lang-python="`export_format`" pulumi-lang-yaml="`exportFormat`" pulumi-lang-java="`exportFormat`" pulumi-lang-hcl="`export_format`">`exportFormat`</span> is <span pulumi-lang-nodejs="`pkcs12`" pulumi-lang-dotnet="`Pkcs12`" pulumi-lang-go="`pkcs12`" pulumi-lang-python="`pkcs12`" pulumi-lang-yaml="`pkcs12`" pulumi-lang-java="`pkcs12`" pulumi-lang-hcl="`pkcs12`">`pkcs12`</span> or <span pulumi-lang-nodejs="`jks`" pulumi-lang-dotnet="`Jks`" pulumi-lang-go="`jks`" pulumi-lang-python="`jks`" pulumi-lang-yaml="`jks`" pulumi-lang-java="`jks`" pulumi-lang-hcl="`jks`">`jks`</span>, and defaults to the certificate's file base name.
+     */
+    keystoreAlias?: pulumi.Input<string | undefined>;
+    /**
+     * The file extension of PEM certificate and chain files. Supported values: <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>, <span pulumi-lang-nodejs="`crt`" pulumi-lang-dotnet="`Crt`" pulumi-lang-go="`crt`" pulumi-lang-python="`crt`" pulumi-lang-yaml="`crt`" pulumi-lang-java="`crt`" pulumi-lang-hcl="`crt`">`crt`</span>. Defaults to <span pulumi-lang-nodejs="`pem`" pulumi-lang-dotnet="`Pem`" pulumi-lang-go="`pem`" pulumi-lang-python="`pem`" pulumi-lang-yaml="`pem`" pulumi-lang-java="`pem`" pulumi-lang-hcl="`pem`">`pem`</span>.
+     */
+    pemCertificateExtension?: pulumi.Input<string | undefined>;
+    /**
+     * A command run on the server after certificates are delivered, for example to reload a service. Requires a gateway on the connection. Available variables: `{{certificateFiles}}`, `{{certificateDirectory}}`, `{{certificatePath}}`, `{{commonName}}`, `{{exportPassword}}`. Using `{{certificatePath}}` or `{{commonName}}` limits the sync to one certificate.
+     */
+    postSyncCommand?: pulumi.Input<string | undefined>;
+}
+
+export interface CertificateSyncWindowsServerSyncOptionsFileAccessRule {
+    /**
+     * The access level to grant. Supported values: <span pulumi-lang-nodejs="`read`" pulumi-lang-dotnet="`Read`" pulumi-lang-go="`read`" pulumi-lang-python="`read`" pulumi-lang-yaml="`read`" pulumi-lang-java="`read`" pulumi-lang-hcl="`read`">`read`</span>, <span pulumi-lang-nodejs="`modify`" pulumi-lang-dotnet="`Modify`" pulumi-lang-go="`modify`" pulumi-lang-python="`modify`" pulumi-lang-yaml="`modify`" pulumi-lang-java="`modify`" pulumi-lang-hcl="`modify`">`modify`</span>, `full-control`.
+     */
+    access: pulumi.Input<string>;
+    /**
+     * The Windows user or group to grant access to (e.g. DOMAIN\svc-account or BUILTIN\Administrators).
+     */
+    identity: pulumi.Input<string>;
 }
 
 export interface DynamicSecretAwsIamConfiguration {

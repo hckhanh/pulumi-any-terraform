@@ -42,6 +42,7 @@ export interface GetExplorationAlertResult {
     readonly explorationId: string;
     readonly id: string;
     readonly incidentCause: string;
+    readonly incidentName: string;
     readonly incidentPerSeries: boolean;
     readonly metadata: {[key: string]: string};
     readonly name: string;

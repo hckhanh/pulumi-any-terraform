@@ -370,5 +370,141 @@ export interface ProviderTimeouts {
      */
     update?: pulumi.Input<string | undefined>;
 }
+
+export interface TestSuiteWorkflowAlarmAction {
+    /**
+     * Slack channel.
+     */
+    channel?: pulumi.Input<string | undefined>;
+    /**
+     * Linear issue description Liquid template.
+     */
+    descriptionTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Webhook HTTP(S) URL, at most 2048 characters.
+     */
+    endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Normalized label name for label actions. Missing labels are created by the API.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * Team UUID from Linear, accessible to the organization's integration.
+     */
+    linearTeamId?: pulumi.Input<string | undefined>;
+    /**
+     * Slack Liquid message template, maximum 1000 characters.
+     */
+    messageTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Slack notification service UUID from the notification services API (<span pulumi-lang-nodejs="`readNotificationServices`" pulumi-lang-dotnet="`ReadNotificationServices`" pulumi-lang-go="`readNotificationServices`" pulumi-lang-python="`read_notification_services`" pulumi-lang-yaml="`readNotificationServices`" pulumi-lang-java="`readNotificationServices`" pulumi-lang-hcl="`read_notification_services`">`readNotificationServices`</span> scope), not a native Slack ID.
+     */
+    slackWorkspaceId?: pulumi.Input<string | undefined>;
+    /**
+     * Test state for <span pulumi-lang-nodejs="`changeState`" pulumi-lang-dotnet="`ChangeState`" pulumi-lang-go="`changeState`" pulumi-lang-python="`change_state`" pulumi-lang-yaml="`changeState`" pulumi-lang-java="`changeState`" pulumi-lang-hcl="`change_state`">`changeState`</span>. Requires state management on the suite.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Linear issue title Liquid template.
+     */
+    titleTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * One of <span pulumi-lang-nodejs="`addLabel`" pulumi-lang-dotnet="`AddLabel`" pulumi-lang-go="`addLabel`" pulumi-lang-python="`add_label`" pulumi-lang-yaml="`addLabel`" pulumi-lang-java="`addLabel`" pulumi-lang-hcl="`add_label`">`addLabel`</span>, <span pulumi-lang-nodejs="`removeLabel`" pulumi-lang-dotnet="`RemoveLabel`" pulumi-lang-go="`removeLabel`" pulumi-lang-python="`remove_label`" pulumi-lang-yaml="`removeLabel`" pulumi-lang-java="`removeLabel`" pulumi-lang-hcl="`remove_label`">`removeLabel`</span>, <span pulumi-lang-nodejs="`changeState`" pulumi-lang-dotnet="`ChangeState`" pulumi-lang-go="`changeState`" pulumi-lang-python="`change_state`" pulumi-lang-yaml="`changeState`" pulumi-lang-java="`changeState`" pulumi-lang-hcl="`change_state`">`changeState`</span>, <span pulumi-lang-nodejs="`sendWebhookNotification`" pulumi-lang-dotnet="`SendWebhookNotification`" pulumi-lang-go="`sendWebhookNotification`" pulumi-lang-python="`send_webhook_notification`" pulumi-lang-yaml="`sendWebhookNotification`" pulumi-lang-java="`sendWebhookNotification`" pulumi-lang-hcl="`send_webhook_notification`">`sendWebhookNotification`</span>, <span pulumi-lang-nodejs="`sendSlackNotification`" pulumi-lang-dotnet="`SendSlackNotification`" pulumi-lang-go="`sendSlackNotification`" pulumi-lang-python="`send_slack_notification`" pulumi-lang-yaml="`sendSlackNotification`" pulumi-lang-java="`sendSlackNotification`" pulumi-lang-hcl="`send_slack_notification`">`sendSlackNotification`</span>, or <span pulumi-lang-nodejs="`createLinearIssue`" pulumi-lang-dotnet="`CreateLinearIssue`" pulumi-lang-go="`createLinearIssue`" pulumi-lang-python="`create_linear_issue`" pulumi-lang-yaml="`createLinearIssue`" pulumi-lang-java="`createLinearIssue`" pulumi-lang-hcl="`create_linear_issue`">`createLinearIssue`</span>.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface TestSuiteWorkflowFilter {
+    /**
+     * Tag key: at most 64 bytes, starting with a letter.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of <span pulumi-lang-nodejs="`is`" pulumi-lang-dotnet="`Is`" pulumi-lang-go="`is`" pulumi-lang-python="`is`" pulumi-lang-yaml="`is`" pulumi-lang-java="`is`" pulumi-lang-hcl="`is`">`is`</span>, <span pulumi-lang-nodejs="`isNot`" pulumi-lang-dotnet="`IsNot`" pulumi-lang-go="`isNot`" pulumi-lang-python="`is_not`" pulumi-lang-yaml="`isNot`" pulumi-lang-java="`isNot`" pulumi-lang-hcl="`is_not`">`isNot`</span>, or <span pulumi-lang-nodejs="`startsWith`" pulumi-lang-dotnet="`StartsWith`" pulumi-lang-go="`startsWith`" pulumi-lang-python="`starts_with`" pulumi-lang-yaml="`startsWith`" pulumi-lang-java="`startsWith`" pulumi-lang-hcl="`starts_with`">`startsWith`</span>.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * Nonempty tag value, at most 128 bytes, with no surrounding whitespace.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface TestSuiteWorkflowMonitor {
+    /**
+     * Duration aggregation. Only <span pulumi-lang-nodejs="`p50`" pulumi-lang-dotnet="`P50`" pulumi-lang-go="`p50`" pulumi-lang-python="`p50`" pulumi-lang-yaml="`p50`" pulumi-lang-java="`p50`" pulumi-lang-hcl="`p50`">`p50`</span> is supported.
+     */
+    aggregation?: pulumi.Input<string | undefined>;
+    /**
+     * Score alarm threshold, from 0 to 1. Minimum 0.025 for probabilistic flakiness. Transition-count scores allow at most three decimal places.
+     */
+    alarmThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Duration alarm threshold in integer milliseconds, from 0 to 3600000.
+     */
+    alarmThresholdMs?: pulumi.Input<number | undefined>;
+    /**
+     * Duration evaluation window, from 1 to 100.
+     */
+    evaluationWindow?: pulumi.Input<number | undefined>;
+    /**
+     * Score recovery threshold, from 0 to 1. Transition-count scores allow at most three decimal places.
+     */
+    recoverThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * Duration recovery threshold in integer milliseconds, from 0 to 3600000.
+     */
+    recoverThresholdMs?: pulumi.Input<number | undefined>;
+    /**
+     * One of <span pulumi-lang-nodejs="`transitionCount`" pulumi-lang-dotnet="`TransitionCount`" pulumi-lang-go="`transitionCount`" pulumi-lang-python="`transition_count`" pulumi-lang-yaml="`transitionCount`" pulumi-lang-java="`transitionCount`" pulumi-lang-hcl="`transition_count`">`transitionCount`</span>, <span pulumi-lang-nodejs="`probabilisticFlakiness`" pulumi-lang-dotnet="`ProbabilisticFlakiness`" pulumi-lang-go="`probabilisticFlakiness`" pulumi-lang-python="`probabilistic_flakiness`" pulumi-lang-yaml="`probabilisticFlakiness`" pulumi-lang-java="`probabilisticFlakiness`" pulumi-lang-hcl="`probabilistic_flakiness`">`probabilisticFlakiness`</span>, <span pulumi-lang-nodejs="`durationThreshold`" pulumi-lang-dotnet="`DurationThreshold`" pulumi-lang-go="`durationThreshold`" pulumi-lang-python="`duration_threshold`" pulumi-lang-yaml="`durationThreshold`" pulumi-lang-java="`durationThreshold`" pulumi-lang-hcl="`duration_threshold`">`durationThreshold`</span>, <span pulumi-lang-nodejs="`passedOnRetry`" pulumi-lang-dotnet="`PassedOnRetry`" pulumi-lang-go="`passedOnRetry`" pulumi-lang-python="`passed_on_retry`" pulumi-lang-yaml="`passedOnRetry`" pulumi-lang-java="`passedOnRetry`" pulumi-lang-hcl="`passed_on_retry`">`passedOnRetry`</span>, or <span pulumi-lang-nodejs="`newTest`" pulumi-lang-dotnet="`NewTest`" pulumi-lang-go="`newTest`" pulumi-lang-python="`new_test`" pulumi-lang-yaml="`newTest`" pulumi-lang-java="`newTest`" pulumi-lang-hcl="`new_test`">`newTest`</span>. Changing the type replaces the workflow. <span pulumi-lang-nodejs="`newTest`" pulumi-lang-dotnet="`NewTest`" pulumi-lang-go="`newTest`" pulumi-lang-python="`new_test`" pulumi-lang-yaml="`newTest`" pulumi-lang-java="`newTest`" pulumi-lang-hcl="`new_test`">`newTest`</span> requires an existing run and cannot have recovery actions.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Transition-count window size, from 2 to 1000.
+     */
+    windowSize?: pulumi.Input<number | undefined>;
+}
+
+export interface TestSuiteWorkflowRecoverAction {
+    /**
+     * Slack channel.
+     */
+    channel?: pulumi.Input<string | undefined>;
+    /**
+     * Linear issue description Liquid template.
+     */
+    descriptionTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Webhook HTTP(S) URL, at most 2048 characters.
+     */
+    endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Normalized label name for label actions. Missing labels are created by the API.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * Team UUID from Linear, accessible to the organization's integration.
+     */
+    linearTeamId?: pulumi.Input<string | undefined>;
+    /**
+     * Slack Liquid message template, maximum 1000 characters.
+     */
+    messageTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Slack notification service UUID from the notification services API (<span pulumi-lang-nodejs="`readNotificationServices`" pulumi-lang-dotnet="`ReadNotificationServices`" pulumi-lang-go="`readNotificationServices`" pulumi-lang-python="`read_notification_services`" pulumi-lang-yaml="`readNotificationServices`" pulumi-lang-java="`readNotificationServices`" pulumi-lang-hcl="`read_notification_services`">`readNotificationServices`</span> scope), not a native Slack ID.
+     */
+    slackWorkspaceId?: pulumi.Input<string | undefined>;
+    /**
+     * Test state for <span pulumi-lang-nodejs="`changeState`" pulumi-lang-dotnet="`ChangeState`" pulumi-lang-go="`changeState`" pulumi-lang-python="`change_state`" pulumi-lang-yaml="`changeState`" pulumi-lang-java="`changeState`" pulumi-lang-hcl="`change_state`">`changeState`</span>. Requires state management on the suite.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Linear issue title Liquid template.
+     */
+    titleTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * One of <span pulumi-lang-nodejs="`addLabel`" pulumi-lang-dotnet="`AddLabel`" pulumi-lang-go="`addLabel`" pulumi-lang-python="`add_label`" pulumi-lang-yaml="`addLabel`" pulumi-lang-java="`addLabel`" pulumi-lang-hcl="`add_label`">`addLabel`</span>, <span pulumi-lang-nodejs="`removeLabel`" pulumi-lang-dotnet="`RemoveLabel`" pulumi-lang-go="`removeLabel`" pulumi-lang-python="`remove_label`" pulumi-lang-yaml="`removeLabel`" pulumi-lang-java="`removeLabel`" pulumi-lang-hcl="`remove_label`">`removeLabel`</span>, <span pulumi-lang-nodejs="`changeState`" pulumi-lang-dotnet="`ChangeState`" pulumi-lang-go="`changeState`" pulumi-lang-python="`change_state`" pulumi-lang-yaml="`changeState`" pulumi-lang-java="`changeState`" pulumi-lang-hcl="`change_state`">`changeState`</span>, <span pulumi-lang-nodejs="`sendWebhookNotification`" pulumi-lang-dotnet="`SendWebhookNotification`" pulumi-lang-go="`sendWebhookNotification`" pulumi-lang-python="`send_webhook_notification`" pulumi-lang-yaml="`sendWebhookNotification`" pulumi-lang-java="`sendWebhookNotification`" pulumi-lang-hcl="`send_webhook_notification`">`sendWebhookNotification`</span>, <span pulumi-lang-nodejs="`sendSlackNotification`" pulumi-lang-dotnet="`SendSlackNotification`" pulumi-lang-go="`sendSlackNotification`" pulumi-lang-python="`send_slack_notification`" pulumi-lang-yaml="`sendSlackNotification`" pulumi-lang-java="`sendSlackNotification`" pulumi-lang-hcl="`send_slack_notification`">`sendSlackNotification`</span>, or <span pulumi-lang-nodejs="`createLinearIssue`" pulumi-lang-dotnet="`CreateLinearIssue`" pulumi-lang-go="`createLinearIssue`" pulumi-lang-python="`create_linear_issue`" pulumi-lang-yaml="`createLinearIssue`" pulumi-lang-java="`createLinearIssue`" pulumi-lang-hcl="`create_linear_issue`">`createLinearIssue`</span>.
+     */
+    type: pulumi.Input<string>;
+}
 export namespace config {
 }

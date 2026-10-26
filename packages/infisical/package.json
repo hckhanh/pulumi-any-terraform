@@ -55,8 +55,8 @@
     "version": "1.5.0",
     "parameterization": {
       "name": "infisical",
-      "version": "0.20.5",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC41In19"
+      "version": "0.20.7",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC43In19"
     }
   }
 }

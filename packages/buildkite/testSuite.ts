@@ -53,6 +53,10 @@ export class TestSuite extends pulumi.CustomResource {
      */
     declare public readonly emoji: pulumi.Output<string | undefined>;
     /**
+     * Whether to create the default flaky-detection workflow and <span pulumi-lang-nodejs="`flaky`" pulumi-lang-dotnet="`Flaky`" pulumi-lang-go="`flaky`" pulumi-lang-python="`flaky`" pulumi-lang-yaml="`flaky`" pulumi-lang-java="`flaky`" pulumi-lang-hcl="`flaky`">`flaky`</span> label when the suite is created. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. Only takes effect at creation; changing it later does not add or remove workflows on an existing suite.
+     */
+    declare public readonly flakyDetection: pulumi.Output<boolean>;
+    /**
      * The name to give the test suite.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class TestSuite extends pulumi.CustomResource {
             resourceInputs["color"] = state?.color;
             resourceInputs["defaultBranch"] = state?.defaultBranch;
             resourceInputs["emoji"] = state?.emoji;
+            resourceInputs["flakyDetection"] = state?.flakyDetection;
             resourceInputs["name"] = state?.name;
             resourceInputs["oidcPolicy"] = state?.oidcPolicy;
             resourceInputs["slug"] = state?.slug;
@@ -108,6 +113,7 @@ export class TestSuite extends pulumi.CustomResource {
             resourceInputs["color"] = args?.color;
             resourceInputs["defaultBranch"] = args?.defaultBranch;
             resourceInputs["emoji"] = args?.emoji;
+            resourceInputs["flakyDetection"] = args?.flakyDetection;
             resourceInputs["name"] = args?.name;
             resourceInputs["oidcPolicy"] = args?.oidcPolicy;
             resourceInputs["teamOwnerId"] = args?.teamOwnerId;
@@ -146,6 +152,10 @@ export interface TestSuiteState {
      * The emoji associated with this test suite, eg :buildkite:
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to create the default flaky-detection workflow and <span pulumi-lang-nodejs="`flaky`" pulumi-lang-dotnet="`Flaky`" pulumi-lang-go="`flaky`" pulumi-lang-python="`flaky`" pulumi-lang-yaml="`flaky`" pulumi-lang-java="`flaky`" pulumi-lang-hcl="`flaky`">`flaky`</span> label when the suite is created. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. Only takes effect at creation; changing it later does not add or remove workflows on an existing suite.
+     */
+    flakyDetection?: pulumi.Input<boolean | undefined>;
     /**
      * The name to give the test suite.
      */
@@ -188,6 +198,10 @@ export interface TestSuiteArgs {
      * The emoji associated with this test suite, eg :buildkite:
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to create the default flaky-detection workflow and <span pulumi-lang-nodejs="`flaky`" pulumi-lang-dotnet="`Flaky`" pulumi-lang-go="`flaky`" pulumi-lang-python="`flaky`" pulumi-lang-yaml="`flaky`" pulumi-lang-java="`flaky`" pulumi-lang-hcl="`flaky`">`flaky`</span> label when the suite is created. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span>. Only takes effect at creation; changing it later does not add or remove workflows on an existing suite.
+     */
+    flakyDetection?: pulumi.Input<boolean | undefined>;
     /**
      * The name to give the test suite.
      */

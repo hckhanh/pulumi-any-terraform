@@ -80,6 +80,29 @@ export interface ExperimentStatusStopped {
     shipVariant?: string;
 }
 
+export interface GetFeatureFlagsFlag {
+    /**
+     * Whether the flag is enabled.
+     */
+    active: boolean;
+    /**
+     * Whether the flag is archived.
+     */
+    archived: boolean;
+    /**
+     * Numeric ID of the flag. Use `<project_id>/<id>` as the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`" pulumi-lang-hcl="`id`">`id`</span> in an `import {}` block.
+     */
+    id: number;
+    /**
+     * Flag key.
+     */
+    key: string;
+    /**
+     * Flag name (its description in the PostHog UI).
+     */
+    name: string;
+}
+
 export interface LogsAlertBlockedWindow {
     /**
      * End time as `HH:MM` (24-hour, project timezone). Exclusive.

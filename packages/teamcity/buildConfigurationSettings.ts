@@ -36,6 +36,9 @@ export class BuildConfigurationSettings extends pulumi.CustomResource {
      * Rules for artifacts produced by the build.
      */
     declare public readonly artifactRules: pulumi.Output<string>;
+    /**
+     * The ID of the build configuration.
+     */
     declare public readonly buildConfigurationId: pulumi.Output<string>;
     /**
      * The next build number to be used.
@@ -86,6 +89,9 @@ export interface BuildConfigurationSettingsState {
      * Rules for artifacts produced by the build.
      */
     artifactRules?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the build configuration.
+     */
     buildConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The next build number to be used.
@@ -105,6 +111,9 @@ export interface BuildConfigurationSettingsArgs {
      * Rules for artifacts produced by the build.
      */
     artifactRules?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the build configuration.
+     */
     buildConfigurationId: pulumi.Input<string>;
     /**
      * The next build number to be used.

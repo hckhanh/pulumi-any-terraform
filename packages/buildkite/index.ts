@@ -228,6 +228,11 @@ export type TestSuiteTeam = import("./testSuiteTeam").TestSuiteTeam;
 export const TestSuiteTeam: typeof import("./testSuiteTeam").TestSuiteTeam = null as any;
 utilities.lazyLoad(exports, ["TestSuiteTeam"], () => require("./testSuiteTeam"));
 
+export { TestSuiteWorkflowArgs, TestSuiteWorkflowState } from "./testSuiteWorkflow";
+export type TestSuiteWorkflow = import("./testSuiteWorkflow").TestSuiteWorkflow;
+export const TestSuiteWorkflow: typeof import("./testSuiteWorkflow").TestSuiteWorkflow = null as any;
+utilities.lazyLoad(exports, ["TestSuiteWorkflow"], () => require("./testSuiteWorkflow"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -294,6 +299,8 @@ const _module = {
                 return new TestSuite(name, <any>undefined, { urn })
             case "buildkite:index/testSuiteTeam:TestSuiteTeam":
                 return new TestSuiteTeam(name, <any>undefined, { urn })
+            case "buildkite:index/testSuiteWorkflow:TestSuiteWorkflow":
+                return new TestSuiteWorkflow(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -325,6 +332,7 @@ pulumi.runtime.registerResourceModule("buildkite", "index/teamMember", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/teamRegistry", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/testSuite", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/testSuiteTeam", _module)
+pulumi.runtime.registerResourceModule("buildkite", "index/testSuiteWorkflow", _module)
 pulumi.runtime.registerResourcePackage("buildkite", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

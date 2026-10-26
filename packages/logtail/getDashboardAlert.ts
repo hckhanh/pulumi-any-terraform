@@ -45,6 +45,7 @@ export interface GetDashboardAlertResult {
     readonly escalationTargets: outputs.GetDashboardAlertEscalationTarget[];
     readonly id: string;
     readonly incidentCause: string;
+    readonly incidentName: string;
     readonly incidentPerSeries: boolean;
     readonly metadata: {[key: string]: string};
     readonly name: string;

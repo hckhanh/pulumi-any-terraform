@@ -31,6 +31,7 @@
         "experiment.ts",
         "externalDataSource.ts",
         "featureFlag.ts",
+        "getFeatureFlags.ts",
         "getInsight.ts",
         "getRole.ts",
         "getUser.ts",

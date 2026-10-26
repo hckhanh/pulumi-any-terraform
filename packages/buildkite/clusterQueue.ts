@@ -63,6 +63,10 @@ export class ClusterQueue extends pulumi.CustomResource {
      */
     declare public readonly retryAgentAffinity: pulumi.Output<string>;
     /**
+     * Whether jobs on this self-hosted queue check out GitHub repositories with a short-lived, Buildkite-issued GitHub App token, as hosted queues do, instead of a long-lived credential on the agent. Only applies to self-hosted queues, so it cannot be set alongside <span pulumi-lang-nodejs="`hostedAgents`" pulumi-lang-dotnet="`HostedAgents`" pulumi-lang-go="`hostedAgents`" pulumi-lang-python="`hosted_agents`" pulumi-lang-yaml="`hostedAgents`" pulumi-lang-java="`hostedAgents`" pulumi-lang-hcl="`hosted_agents`">`hostedAgents`</span>. When omitted, the queue's current setting is left unchanged.
+     */
+    declare public readonly useGithubAppToken: pulumi.Output<boolean>;
+    /**
      * The UUID of the cluster queue.
      */
     declare public /*out*/ readonly uuid: pulumi.Output<string>;
@@ -87,6 +91,7 @@ export class ClusterQueue extends pulumi.CustomResource {
             resourceInputs["hostedAgents"] = state?.hostedAgents;
             resourceInputs["key"] = state?.key;
             resourceInputs["retryAgentAffinity"] = state?.retryAgentAffinity;
+            resourceInputs["useGithubAppToken"] = state?.useGithubAppToken;
             resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as ClusterQueueArgs | undefined;
@@ -102,6 +107,7 @@ export class ClusterQueue extends pulumi.CustomResource {
             resourceInputs["hostedAgents"] = args?.hostedAgents;
             resourceInputs["key"] = args?.key;
             resourceInputs["retryAgentAffinity"] = args?.retryAgentAffinity;
+            resourceInputs["useGithubAppToken"] = args?.useGithubAppToken;
             resourceInputs["clusterUuid"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -143,6 +149,10 @@ export interface ClusterQueueState {
      */
     retryAgentAffinity?: pulumi.Input<string | undefined>;
     /**
+     * Whether jobs on this self-hosted queue check out GitHub repositories with a short-lived, Buildkite-issued GitHub App token, as hosted queues do, instead of a long-lived credential on the agent. Only applies to self-hosted queues, so it cannot be set alongside <span pulumi-lang-nodejs="`hostedAgents`" pulumi-lang-dotnet="`HostedAgents`" pulumi-lang-go="`hostedAgents`" pulumi-lang-python="`hosted_agents`" pulumi-lang-yaml="`hostedAgents`" pulumi-lang-java="`hostedAgents`" pulumi-lang-hcl="`hosted_agents`">`hostedAgents`</span>. When omitted, the queue's current setting is left unchanged.
+     */
+    useGithubAppToken?: pulumi.Input<boolean | undefined>;
+    /**
      * The UUID of the cluster queue.
      */
     uuid?: pulumi.Input<string | undefined>;
@@ -176,4 +186,8 @@ export interface ClusterQueueArgs {
      * Specifies which agent should be preferred when a job is retried. Valid values are `prefer-warmest` (prefer agents that have recently finished jobs) and `prefer-different` (prefer a different agent if available). Defaults to `prefer-warmest`.
      */
     retryAgentAffinity?: pulumi.Input<string | undefined>;
+    /**
+     * Whether jobs on this self-hosted queue check out GitHub repositories with a short-lived, Buildkite-issued GitHub App token, as hosted queues do, instead of a long-lived credential on the agent. Only applies to self-hosted queues, so it cannot be set alongside <span pulumi-lang-nodejs="`hostedAgents`" pulumi-lang-dotnet="`HostedAgents`" pulumi-lang-go="`hostedAgents`" pulumi-lang-python="`hosted_agents`" pulumi-lang-yaml="`hostedAgents`" pulumi-lang-java="`hostedAgents`" pulumi-lang-hcl="`hosted_agents`">`hostedAgents`</span>. When omitted, the queue's current setting is left unchanged.
+     */
+    useGithubAppToken?: pulumi.Input<boolean | undefined>;
 }

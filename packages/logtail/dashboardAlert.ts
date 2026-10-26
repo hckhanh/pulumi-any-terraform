@@ -99,6 +99,10 @@ export class DashboardAlert extends pulumi.CustomResource {
      */
     declare public readonly incidentCause: pulumi.Output<string>;
     /**
+     * Incident name template (supports {{variable}} interpolation). Defaults to the dashboard or exploration name followed by the alert name.
+     */
+    declare public readonly incidentName: pulumi.Output<string>;
+    /**
      * Create separate incidents per series.
      */
     declare public readonly incidentPerSeries: pulumi.Output<boolean>;
@@ -208,6 +212,7 @@ export class DashboardAlert extends pulumi.CustomResource {
             resourceInputs["email"] = state?.email;
             resourceInputs["escalationTarget"] = state?.escalationTarget;
             resourceInputs["incidentCause"] = state?.incidentCause;
+            resourceInputs["incidentName"] = state?.incidentName;
             resourceInputs["incidentPerSeries"] = state?.incidentPerSeries;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
@@ -254,6 +259,7 @@ export class DashboardAlert extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["escalationTarget"] = args?.escalationTarget;
             resourceInputs["incidentCause"] = args?.incidentCause;
+            resourceInputs["incidentName"] = args?.incidentName;
             resourceInputs["incidentPerSeries"] = args?.incidentPerSeries;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
@@ -349,6 +355,10 @@ export interface DashboardAlertState {
      * Incident description template (supports {{variable}} interpolation).
      */
     incidentCause?: pulumi.Input<string | undefined>;
+    /**
+     * Incident name template (supports {{variable}} interpolation). Defaults to the dashboard or exploration name followed by the alert name.
+     */
+    incidentName?: pulumi.Input<string | undefined>;
     /**
      * Create separate incidents per series.
      */
@@ -495,6 +505,10 @@ export interface DashboardAlertArgs {
      * Incident description template (supports {{variable}} interpolation).
      */
     incidentCause?: pulumi.Input<string | undefined>;
+    /**
+     * Incident name template (supports {{variable}} interpolation). Defaults to the dashboard or exploration name followed by the alert name.
+     */
+    incidentName?: pulumi.Input<string | undefined>;
     /**
      * Create separate incidents per series.
      */

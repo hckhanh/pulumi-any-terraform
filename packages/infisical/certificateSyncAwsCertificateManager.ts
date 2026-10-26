@@ -43,6 +43,10 @@ export class CertificateSyncAwsCertificateManager extends pulumi.CustomResource 
      */
     declare public readonly autoSyncEnabled: pulumi.Output<boolean>;
     /**
+     * Which of the application's certificates this sync holds. A certificate must match every field that is set: setting both <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span> and <span pulumi-lang-nodejs="`profileIds`" pulumi-lang-dotnet="`ProfileIds`" pulumi-lang-go="`profileIds`" pulumi-lang-python="`profile_ids`" pulumi-lang-yaml="`profileIds`" pulumi-lang-java="`profileIds`" pulumi-lang-hcl="`profile_ids`">`profileIds`</span> selects only the certificates in both. Leave the block out to manage the certificates outside Terraform, for example in the Infisical UI. An empty block, or an empty <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span>, makes the sync hold no certificates.
+     */
+    declare public readonly certificateFilters: pulumi.Output<outputs.CertificateSyncAwsCertificateManagerCertificateFilters | undefined>;
+    /**
      * The ID of the aws Connection to use for syncing.
      */
     declare public readonly connectionId: pulumi.Output<string>;
@@ -78,6 +82,7 @@ export class CertificateSyncAwsCertificateManager extends pulumi.CustomResource 
             const state = argsOrState as CertificateSyncAwsCertificateManagerState | undefined;
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["autoSyncEnabled"] = state?.autoSyncEnabled;
+            resourceInputs["certificateFilters"] = state?.certificateFilters;
             resourceInputs["connectionId"] = state?.connectionId;
             resourceInputs["description"] = state?.description;
             resourceInputs["destinationConfig"] = state?.destinationConfig;
@@ -99,6 +104,7 @@ export class CertificateSyncAwsCertificateManager extends pulumi.CustomResource 
             }
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["autoSyncEnabled"] = args?.autoSyncEnabled;
+            resourceInputs["certificateFilters"] = args?.certificateFilters;
             resourceInputs["connectionId"] = args?.connectionId;
             resourceInputs["description"] = args?.description;
             resourceInputs["destinationConfig"] = args?.destinationConfig;
@@ -122,6 +128,10 @@ export interface CertificateSyncAwsCertificateManagerState {
      * Whether certificates should be automatically synced to the destination when they are added or renewed.
      */
     autoSyncEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Which of the application's certificates this sync holds. A certificate must match every field that is set: setting both <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span> and <span pulumi-lang-nodejs="`profileIds`" pulumi-lang-dotnet="`ProfileIds`" pulumi-lang-go="`profileIds`" pulumi-lang-python="`profile_ids`" pulumi-lang-yaml="`profileIds`" pulumi-lang-java="`profileIds`" pulumi-lang-hcl="`profile_ids`">`profileIds`</span> selects only the certificates in both. Leave the block out to manage the certificates outside Terraform, for example in the Infisical UI. An empty block, or an empty <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span>, makes the sync hold no certificates.
+     */
+    certificateFilters?: pulumi.Input<inputs.CertificateSyncAwsCertificateManagerCertificateFilters | undefined>;
     /**
      * The ID of the aws Connection to use for syncing.
      */
@@ -156,6 +166,10 @@ export interface CertificateSyncAwsCertificateManagerArgs {
      * Whether certificates should be automatically synced to the destination when they are added or renewed.
      */
     autoSyncEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Which of the application's certificates this sync holds. A certificate must match every field that is set: setting both <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span> and <span pulumi-lang-nodejs="`profileIds`" pulumi-lang-dotnet="`ProfileIds`" pulumi-lang-go="`profileIds`" pulumi-lang-python="`profile_ids`" pulumi-lang-yaml="`profileIds`" pulumi-lang-java="`profileIds`" pulumi-lang-hcl="`profile_ids`">`profileIds`</span> selects only the certificates in both. Leave the block out to manage the certificates outside Terraform, for example in the Infisical UI. An empty block, or an empty <span pulumi-lang-nodejs="`certificateOrderIds`" pulumi-lang-dotnet="`CertificateOrderIds`" pulumi-lang-go="`certificateOrderIds`" pulumi-lang-python="`certificate_order_ids`" pulumi-lang-yaml="`certificateOrderIds`" pulumi-lang-java="`certificateOrderIds`" pulumi-lang-hcl="`certificate_order_ids`">`certificateOrderIds`</span>, makes the sync hold no certificates.
+     */
+    certificateFilters?: pulumi.Input<inputs.CertificateSyncAwsCertificateManagerCertificateFilters | undefined>;
     /**
      * The ID of the aws Connection to use for syncing.
      */

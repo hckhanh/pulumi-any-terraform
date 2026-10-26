@@ -33,7 +33,7 @@ export class CertificateSyncCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the certificate to associate with the certificate sync.
+     * The ID of the certificate to associate with the certificate sync. Changing it to a renewal of the same certificate updates in place; any other change replaces the association.
      */
     declare public readonly certificateId: pulumi.Output<string>;
     /**
@@ -77,7 +77,7 @@ export class CertificateSyncCertificate extends pulumi.CustomResource {
  */
 export interface CertificateSyncCertificateState {
     /**
-     * The ID of the certificate to associate with the certificate sync.
+     * The ID of the certificate to associate with the certificate sync. Changing it to a renewal of the same certificate updates in place; any other change replaces the association.
      */
     certificateId?: pulumi.Input<string | undefined>;
     /**
@@ -91,7 +91,7 @@ export interface CertificateSyncCertificateState {
  */
 export interface CertificateSyncCertificateArgs {
     /**
-     * The ID of the certificate to associate with the certificate sync.
+     * The ID of the certificate to associate with the certificate sync. Changing it to a renewal of the same certificate updates in place; any other change replaces the association.
      */
     certificateId: pulumi.Input<string>;
     /**

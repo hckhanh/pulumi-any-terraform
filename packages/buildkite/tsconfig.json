@@ -67,6 +67,7 @@
         "teamRegistry.ts",
         "testSuite.ts",
         "testSuiteTeam.ts",
+        "testSuiteWorkflow.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",

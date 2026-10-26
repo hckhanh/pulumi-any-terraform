@@ -93,6 +93,10 @@ export class CertManagerCertificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly notBefore: pulumi.Output<string>;
     /**
+     * The ID of the certificate order. A certificate and all of its renewals share one order, so use it to select this certificate in a certificate sync's <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span>.
+     */
+    declare public /*out*/ readonly orderId: pulumi.Output<string>;
+    /**
      * The organization (O) for the certificate
      */
     declare public readonly organization: pulumi.Output<string>;
@@ -161,6 +165,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
             resourceInputs["locality"] = state?.locality;
             resourceInputs["notAfter"] = state?.notAfter;
             resourceInputs["notBefore"] = state?.notBefore;
+            resourceInputs["orderId"] = state?.orderId;
             resourceInputs["organization"] = state?.organization;
             resourceInputs["ou"] = state?.ou;
             resourceInputs["privateKey"] = state?.privateKey;
@@ -201,6 +206,7 @@ export class CertManagerCertificate extends pulumi.CustomResource {
             resourceInputs["certificateRequestId"] = undefined /*out*/;
             resourceInputs["notAfter"] = undefined /*out*/;
             resourceInputs["notBefore"] = undefined /*out*/;
+            resourceInputs["orderId"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
             resourceInputs["serialNumber"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -276,6 +282,10 @@ export interface CertManagerCertificateState {
      * The not-before date of the certificate (RFC3339 format)
      */
     notBefore?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the certificate order. A certificate and all of its renewals share one order, so use it to select this certificate in a certificate sync's <span pulumi-lang-nodejs="`certificateFilters`" pulumi-lang-dotnet="`CertificateFilters`" pulumi-lang-go="`certificateFilters`" pulumi-lang-python="`certificate_filters`" pulumi-lang-yaml="`certificateFilters`" pulumi-lang-java="`certificateFilters`" pulumi-lang-hcl="`certificate_filters`">`certificateFilters`</span>.
+     */
+    orderId?: pulumi.Input<string | undefined>;
     /**
      * The organization (O) for the certificate
      */

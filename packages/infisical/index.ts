@@ -50,6 +50,11 @@ export type AppConnectionBitbucket = import("./appConnectionBitbucket").AppConne
 export const AppConnectionBitbucket: typeof import("./appConnectionBitbucket").AppConnectionBitbucket = null as any;
 utilities.lazyLoad(exports, ["AppConnectionBitbucket"], () => require("./appConnectionBitbucket"));
 
+export { AppConnectionChefArgs, AppConnectionChefState } from "./appConnectionChef";
+export type AppConnectionChef = import("./appConnectionChef").AppConnectionChef;
+export const AppConnectionChef: typeof import("./appConnectionChef").AppConnectionChef = null as any;
+utilities.lazyLoad(exports, ["AppConnectionChef"], () => require("./appConnectionChef"));
+
 export { AppConnectionCircleciArgs, AppConnectionCircleciState } from "./appConnectionCircleci";
 export type AppConnectionCircleci = import("./appConnectionCircleci").AppConnectionCircleci;
 export const AppConnectionCircleci: typeof import("./appConnectionCircleci").AppConnectionCircleci = null as any;
@@ -74,6 +79,11 @@ export { AppConnectionDigicertArgs, AppConnectionDigicertState } from "./appConn
 export type AppConnectionDigicert = import("./appConnectionDigicert").AppConnectionDigicert;
 export const AppConnectionDigicert: typeof import("./appConnectionDigicert").AppConnectionDigicert = null as any;
 utilities.lazyLoad(exports, ["AppConnectionDigicert"], () => require("./appConnectionDigicert"));
+
+export { AppConnectionF5BigIpArgs, AppConnectionF5BigIpState } from "./appConnectionF5BigIp";
+export type AppConnectionF5BigIp = import("./appConnectionF5BigIp").AppConnectionF5BigIp;
+export const AppConnectionF5BigIp: typeof import("./appConnectionF5BigIp").AppConnectionF5BigIp = null as any;
+utilities.lazyLoad(exports, ["AppConnectionF5BigIp"], () => require("./appConnectionF5BigIp"));
 
 export { AppConnectionFlyioArgs, AppConnectionFlyioState } from "./appConnectionFlyio";
 export type AppConnectionFlyio = import("./appConnectionFlyio").AppConnectionFlyio;
@@ -100,6 +110,11 @@ export type AppConnectionHashicorpVault = import("./appConnectionHashicorpVault"
 export const AppConnectionHashicorpVault: typeof import("./appConnectionHashicorpVault").AppConnectionHashicorpVault = null as any;
 utilities.lazyLoad(exports, ["AppConnectionHashicorpVault"], () => require("./appConnectionHashicorpVault"));
 
+export { AppConnectionKempLoadmasterArgs, AppConnectionKempLoadmasterState } from "./appConnectionKempLoadmaster";
+export type AppConnectionKempLoadmaster = import("./appConnectionKempLoadmaster").AppConnectionKempLoadmaster;
+export const AppConnectionKempLoadmaster: typeof import("./appConnectionKempLoadmaster").AppConnectionKempLoadmaster = null as any;
+utilities.lazyLoad(exports, ["AppConnectionKempLoadmaster"], () => require("./appConnectionKempLoadmaster"));
+
 export { AppConnectionLdapArgs, AppConnectionLdapState } from "./appConnectionLdap";
 export type AppConnectionLdap = import("./appConnectionLdap").AppConnectionLdap;
 export const AppConnectionLdap: typeof import("./appConnectionLdap").AppConnectionLdap = null as any;
@@ -119,6 +134,16 @@ export { AppConnectionMysqlArgs, AppConnectionMysqlState } from "./appConnection
 export type AppConnectionMysql = import("./appConnectionMysql").AppConnectionMysql;
 export const AppConnectionMysql: typeof import("./appConnectionMysql").AppConnectionMysql = null as any;
 utilities.lazyLoad(exports, ["AppConnectionMysql"], () => require("./appConnectionMysql"));
+
+export { AppConnectionNetscalerArgs, AppConnectionNetscalerState } from "./appConnectionNetscaler";
+export type AppConnectionNetscaler = import("./appConnectionNetscaler").AppConnectionNetscaler;
+export const AppConnectionNetscaler: typeof import("./appConnectionNetscaler").AppConnectionNetscaler = null as any;
+utilities.lazyLoad(exports, ["AppConnectionNetscaler"], () => require("./appConnectionNetscaler"));
+
+export { AppConnectionNutanixPrismCentralArgs, AppConnectionNutanixPrismCentralState } from "./appConnectionNutanixPrismCentral";
+export type AppConnectionNutanixPrismCentral = import("./appConnectionNutanixPrismCentral").AppConnectionNutanixPrismCentral;
+export const AppConnectionNutanixPrismCentral: typeof import("./appConnectionNutanixPrismCentral").AppConnectionNutanixPrismCentral = null as any;
+utilities.lazyLoad(exports, ["AppConnectionNutanixPrismCentral"], () => require("./appConnectionNutanixPrismCentral"));
 
 export { AppConnectionOracledbArgs, AppConnectionOracledbState } from "./appConnectionOracledb";
 export type AppConnectionOracledb = import("./appConnectionOracledb").AppConnectionOracledb;
@@ -140,15 +165,30 @@ export type AppConnectionSpacelift = import("./appConnectionSpacelift").AppConne
 export const AppConnectionSpacelift: typeof import("./appConnectionSpacelift").AppConnectionSpacelift = null as any;
 utilities.lazyLoad(exports, ["AppConnectionSpacelift"], () => require("./appConnectionSpacelift"));
 
+export { AppConnectionSshArgs, AppConnectionSshState } from "./appConnectionSsh";
+export type AppConnectionSsh = import("./appConnectionSsh").AppConnectionSsh;
+export const AppConnectionSsh: typeof import("./appConnectionSsh").AppConnectionSsh = null as any;
+utilities.lazyLoad(exports, ["AppConnectionSsh"], () => require("./appConnectionSsh"));
+
 export { AppConnectionSupabaseArgs, AppConnectionSupabaseState } from "./appConnectionSupabase";
 export type AppConnectionSupabase = import("./appConnectionSupabase").AppConnectionSupabase;
 export const AppConnectionSupabase: typeof import("./appConnectionSupabase").AppConnectionSupabase = null as any;
 utilities.lazyLoad(exports, ["AppConnectionSupabase"], () => require("./appConnectionSupabase"));
 
+export { AppConnectionWinrmArgs, AppConnectionWinrmState } from "./appConnectionWinrm";
+export type AppConnectionWinrm = import("./appConnectionWinrm").AppConnectionWinrm;
+export const AppConnectionWinrm: typeof import("./appConnectionWinrm").AppConnectionWinrm = null as any;
+utilities.lazyLoad(exports, ["AppConnectionWinrm"], () => require("./appConnectionWinrm"));
+
 export { CertManagerApplicationArgs, CertManagerApplicationState } from "./certManagerApplication";
 export type CertManagerApplication = import("./certManagerApplication").CertManagerApplication;
 export const CertManagerApplication: typeof import("./certManagerApplication").CertManagerApplication = null as any;
 utilities.lazyLoad(exports, ["CertManagerApplication"], () => require("./certManagerApplication"));
+
+export { CertManagerApplicationApprovalPolicyArgs, CertManagerApplicationApprovalPolicyState } from "./certManagerApplicationApprovalPolicy";
+export type CertManagerApplicationApprovalPolicy = import("./certManagerApplicationApprovalPolicy").CertManagerApplicationApprovalPolicy;
+export const CertManagerApplicationApprovalPolicy: typeof import("./certManagerApplicationApprovalPolicy").CertManagerApplicationApprovalPolicy = null as any;
+utilities.lazyLoad(exports, ["CertManagerApplicationApprovalPolicy"], () => require("./certManagerApplicationApprovalPolicy"));
 
 export { CertManagerApplicationGroupArgs, CertManagerApplicationGroupState } from "./certManagerApplicationGroup";
 export type CertManagerApplicationGroup = import("./certManagerApplicationGroup").CertManagerApplicationGroup;
@@ -230,10 +270,70 @@ export type CertificateSyncAwsCertificateManager = import("./certificateSyncAwsC
 export const CertificateSyncAwsCertificateManager: typeof import("./certificateSyncAwsCertificateManager").CertificateSyncAwsCertificateManager = null as any;
 utilities.lazyLoad(exports, ["CertificateSyncAwsCertificateManager"], () => require("./certificateSyncAwsCertificateManager"));
 
+export { CertificateSyncAwsElasticLoadBalancerArgs, CertificateSyncAwsElasticLoadBalancerState } from "./certificateSyncAwsElasticLoadBalancer";
+export type CertificateSyncAwsElasticLoadBalancer = import("./certificateSyncAwsElasticLoadBalancer").CertificateSyncAwsElasticLoadBalancer;
+export const CertificateSyncAwsElasticLoadBalancer: typeof import("./certificateSyncAwsElasticLoadBalancer").CertificateSyncAwsElasticLoadBalancer = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncAwsElasticLoadBalancer"], () => require("./certificateSyncAwsElasticLoadBalancer"));
+
+export { CertificateSyncAwsSecretsManagerArgs, CertificateSyncAwsSecretsManagerState } from "./certificateSyncAwsSecretsManager";
+export type CertificateSyncAwsSecretsManager = import("./certificateSyncAwsSecretsManager").CertificateSyncAwsSecretsManager;
+export const CertificateSyncAwsSecretsManager: typeof import("./certificateSyncAwsSecretsManager").CertificateSyncAwsSecretsManager = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncAwsSecretsManager"], () => require("./certificateSyncAwsSecretsManager"));
+
+export { CertificateSyncAzureKeyVaultArgs, CertificateSyncAzureKeyVaultState } from "./certificateSyncAzureKeyVault";
+export type CertificateSyncAzureKeyVault = import("./certificateSyncAzureKeyVault").CertificateSyncAzureKeyVault;
+export const CertificateSyncAzureKeyVault: typeof import("./certificateSyncAzureKeyVault").CertificateSyncAzureKeyVault = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncAzureKeyVault"], () => require("./certificateSyncAzureKeyVault"));
+
 export { CertificateSyncCertificateArgs, CertificateSyncCertificateState } from "./certificateSyncCertificate";
 export type CertificateSyncCertificate = import("./certificateSyncCertificate").CertificateSyncCertificate;
 export const CertificateSyncCertificate: typeof import("./certificateSyncCertificate").CertificateSyncCertificate = null as any;
 utilities.lazyLoad(exports, ["CertificateSyncCertificate"], () => require("./certificateSyncCertificate"));
+
+export { CertificateSyncChefArgs, CertificateSyncChefState } from "./certificateSyncChef";
+export type CertificateSyncChef = import("./certificateSyncChef").CertificateSyncChef;
+export const CertificateSyncChef: typeof import("./certificateSyncChef").CertificateSyncChef = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncChef"], () => require("./certificateSyncChef"));
+
+export { CertificateSyncCloudflareCustomCertificateArgs, CertificateSyncCloudflareCustomCertificateState } from "./certificateSyncCloudflareCustomCertificate";
+export type CertificateSyncCloudflareCustomCertificate = import("./certificateSyncCloudflareCustomCertificate").CertificateSyncCloudflareCustomCertificate;
+export const CertificateSyncCloudflareCustomCertificate: typeof import("./certificateSyncCloudflareCustomCertificate").CertificateSyncCloudflareCustomCertificate = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncCloudflareCustomCertificate"], () => require("./certificateSyncCloudflareCustomCertificate"));
+
+export { CertificateSyncF5BigIpArgs, CertificateSyncF5BigIpState } from "./certificateSyncF5BigIp";
+export type CertificateSyncF5BigIp = import("./certificateSyncF5BigIp").CertificateSyncF5BigIp;
+export const CertificateSyncF5BigIp: typeof import("./certificateSyncF5BigIp").CertificateSyncF5BigIp = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncF5BigIp"], () => require("./certificateSyncF5BigIp"));
+
+export { CertificateSyncGcpCertificateManagerArgs, CertificateSyncGcpCertificateManagerState } from "./certificateSyncGcpCertificateManager";
+export type CertificateSyncGcpCertificateManager = import("./certificateSyncGcpCertificateManager").CertificateSyncGcpCertificateManager;
+export const CertificateSyncGcpCertificateManager: typeof import("./certificateSyncGcpCertificateManager").CertificateSyncGcpCertificateManager = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncGcpCertificateManager"], () => require("./certificateSyncGcpCertificateManager"));
+
+export { CertificateSyncKempLoadmasterArgs, CertificateSyncKempLoadmasterState } from "./certificateSyncKempLoadmaster";
+export type CertificateSyncKempLoadmaster = import("./certificateSyncKempLoadmaster").CertificateSyncKempLoadmaster;
+export const CertificateSyncKempLoadmaster: typeof import("./certificateSyncKempLoadmaster").CertificateSyncKempLoadmaster = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncKempLoadmaster"], () => require("./certificateSyncKempLoadmaster"));
+
+export { CertificateSyncLinuxServerArgs, CertificateSyncLinuxServerState } from "./certificateSyncLinuxServer";
+export type CertificateSyncLinuxServer = import("./certificateSyncLinuxServer").CertificateSyncLinuxServer;
+export const CertificateSyncLinuxServer: typeof import("./certificateSyncLinuxServer").CertificateSyncLinuxServer = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncLinuxServer"], () => require("./certificateSyncLinuxServer"));
+
+export { CertificateSyncNetscalerArgs, CertificateSyncNetscalerState } from "./certificateSyncNetscaler";
+export type CertificateSyncNetscaler = import("./certificateSyncNetscaler").CertificateSyncNetscaler;
+export const CertificateSyncNetscaler: typeof import("./certificateSyncNetscaler").CertificateSyncNetscaler = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncNetscaler"], () => require("./certificateSyncNetscaler"));
+
+export { CertificateSyncNutanixPrismCentralArgs, CertificateSyncNutanixPrismCentralState } from "./certificateSyncNutanixPrismCentral";
+export type CertificateSyncNutanixPrismCentral = import("./certificateSyncNutanixPrismCentral").CertificateSyncNutanixPrismCentral;
+export const CertificateSyncNutanixPrismCentral: typeof import("./certificateSyncNutanixPrismCentral").CertificateSyncNutanixPrismCentral = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncNutanixPrismCentral"], () => require("./certificateSyncNutanixPrismCentral"));
+
+export { CertificateSyncWindowsServerArgs, CertificateSyncWindowsServerState } from "./certificateSyncWindowsServer";
+export type CertificateSyncWindowsServer = import("./certificateSyncWindowsServer").CertificateSyncWindowsServer;
+export const CertificateSyncWindowsServer: typeof import("./certificateSyncWindowsServer").CertificateSyncWindowsServer = null as any;
+utilities.lazyLoad(exports, ["CertificateSyncWindowsServer"], () => require("./certificateSyncWindowsServer"));
 
 export { DynamicSecretAwsIamArgs, DynamicSecretAwsIamState } from "./dynamicSecretAwsIam";
 export type DynamicSecretAwsIam = import("./dynamicSecretAwsIam").DynamicSecretAwsIam;
@@ -770,6 +870,8 @@ const _module = {
                 return new AppConnectionAzureKeyVault(name, <any>undefined, { urn })
             case "infisical:index/appConnectionBitbucket:AppConnectionBitbucket":
                 return new AppConnectionBitbucket(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionChef:AppConnectionChef":
+                return new AppConnectionChef(name, <any>undefined, { urn })
             case "infisical:index/appConnectionCircleci:AppConnectionCircleci":
                 return new AppConnectionCircleci(name, <any>undefined, { urn })
             case "infisical:index/appConnectionCloudflare:AppConnectionCloudflare":
@@ -780,6 +882,8 @@ const _module = {
                 return new AppConnectionDatadog(name, <any>undefined, { urn })
             case "infisical:index/appConnectionDigicert:AppConnectionDigicert":
                 return new AppConnectionDigicert(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionF5BigIp:AppConnectionF5BigIp":
+                return new AppConnectionF5BigIp(name, <any>undefined, { urn })
             case "infisical:index/appConnectionFlyio:AppConnectionFlyio":
                 return new AppConnectionFlyio(name, <any>undefined, { urn })
             case "infisical:index/appConnectionGcp:AppConnectionGcp":
@@ -790,6 +894,8 @@ const _module = {
                 return new AppConnectionGitlab(name, <any>undefined, { urn })
             case "infisical:index/appConnectionHashicorpVault:AppConnectionHashicorpVault":
                 return new AppConnectionHashicorpVault(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionKempLoadmaster:AppConnectionKempLoadmaster":
+                return new AppConnectionKempLoadmaster(name, <any>undefined, { urn })
             case "infisical:index/appConnectionLdap:AppConnectionLdap":
                 return new AppConnectionLdap(name, <any>undefined, { urn })
             case "infisical:index/appConnectionLitellm:AppConnectionLitellm":
@@ -798,6 +904,10 @@ const _module = {
                 return new AppConnectionMssql(name, <any>undefined, { urn })
             case "infisical:index/appConnectionMysql:AppConnectionMysql":
                 return new AppConnectionMysql(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionNetscaler:AppConnectionNetscaler":
+                return new AppConnectionNetscaler(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionNutanixPrismCentral:AppConnectionNutanixPrismCentral":
+                return new AppConnectionNutanixPrismCentral(name, <any>undefined, { urn })
             case "infisical:index/appConnectionOracledb:AppConnectionOracledb":
                 return new AppConnectionOracledb(name, <any>undefined, { urn })
             case "infisical:index/appConnectionPostgres:AppConnectionPostgres":
@@ -806,10 +916,16 @@ const _module = {
                 return new AppConnectionRender(name, <any>undefined, { urn })
             case "infisical:index/appConnectionSpacelift:AppConnectionSpacelift":
                 return new AppConnectionSpacelift(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionSsh:AppConnectionSsh":
+                return new AppConnectionSsh(name, <any>undefined, { urn })
             case "infisical:index/appConnectionSupabase:AppConnectionSupabase":
                 return new AppConnectionSupabase(name, <any>undefined, { urn })
+            case "infisical:index/appConnectionWinrm:AppConnectionWinrm":
+                return new AppConnectionWinrm(name, <any>undefined, { urn })
             case "infisical:index/certManagerApplication:CertManagerApplication":
                 return new CertManagerApplication(name, <any>undefined, { urn })
+            case "infisical:index/certManagerApplicationApprovalPolicy:CertManagerApplicationApprovalPolicy":
+                return new CertManagerApplicationApprovalPolicy(name, <any>undefined, { urn })
             case "infisical:index/certManagerApplicationGroup:CertManagerApplicationGroup":
                 return new CertManagerApplicationGroup(name, <any>undefined, { urn })
             case "infisical:index/certManagerApplicationIdentity:CertManagerApplicationIdentity":
@@ -842,8 +958,32 @@ const _module = {
                 return new CertManagerUser(name, <any>undefined, { urn })
             case "infisical:index/certificateSyncAwsCertificateManager:CertificateSyncAwsCertificateManager":
                 return new CertificateSyncAwsCertificateManager(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncAwsElasticLoadBalancer:CertificateSyncAwsElasticLoadBalancer":
+                return new CertificateSyncAwsElasticLoadBalancer(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncAwsSecretsManager:CertificateSyncAwsSecretsManager":
+                return new CertificateSyncAwsSecretsManager(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncAzureKeyVault:CertificateSyncAzureKeyVault":
+                return new CertificateSyncAzureKeyVault(name, <any>undefined, { urn })
             case "infisical:index/certificateSyncCertificate:CertificateSyncCertificate":
                 return new CertificateSyncCertificate(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncChef:CertificateSyncChef":
+                return new CertificateSyncChef(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncCloudflareCustomCertificate:CertificateSyncCloudflareCustomCertificate":
+                return new CertificateSyncCloudflareCustomCertificate(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncF5BigIp:CertificateSyncF5BigIp":
+                return new CertificateSyncF5BigIp(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncGcpCertificateManager:CertificateSyncGcpCertificateManager":
+                return new CertificateSyncGcpCertificateManager(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncKempLoadmaster:CertificateSyncKempLoadmaster":
+                return new CertificateSyncKempLoadmaster(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncLinuxServer:CertificateSyncLinuxServer":
+                return new CertificateSyncLinuxServer(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncNetscaler:CertificateSyncNetscaler":
+                return new CertificateSyncNetscaler(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncNutanixPrismCentral:CertificateSyncNutanixPrismCentral":
+                return new CertificateSyncNutanixPrismCentral(name, <any>undefined, { urn })
+            case "infisical:index/certificateSyncWindowsServer:CertificateSyncWindowsServer":
+                return new CertificateSyncWindowsServer(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretAwsIam:DynamicSecretAwsIam":
                 return new DynamicSecretAwsIam(name, <any>undefined, { urn })
             case "infisical:index/dynamicSecretKubernetes:DynamicSecretKubernetes":
@@ -1016,26 +1156,34 @@ pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureClie
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureDevops", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionAzureKeyVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionBitbucket", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionChef", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCircleci", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionCloudflare", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatabricks", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDatadog", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionDigicert", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionF5BigIp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionFlyio", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGcp", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGithub", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionGitlab", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionHashicorpVault", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionKempLoadmaster", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLdap", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionLitellm", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMssql", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionMysql", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionNetscaler", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionNutanixPrismCentral", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionOracledb", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionPostgres", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionRender", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSpacelift", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSsh", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/appConnectionSupabase", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/appConnectionWinrm", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplication", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationApprovalPolicy", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationGroup", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationIdentity", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerApplicationProfile", _module)
@@ -1052,7 +1200,19 @@ pulumi.runtime.registerResourceModule("infisical", "index/certManagerIdentity", 
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerInternalCa", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certManagerUser", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncAwsCertificateManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncAwsElasticLoadBalancer", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncAwsSecretsManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncAzureKeyVault", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncCertificate", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncChef", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncCloudflareCustomCertificate", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncF5BigIp", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncGcpCertificateManager", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncKempLoadmaster", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncLinuxServer", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncNetscaler", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncNutanixPrismCentral", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/certificateSyncWindowsServer", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretAwsIam", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretKubernetes", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/dynamicSecretMongoAtlas", _module)

@@ -39,6 +39,10 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly channels: pulumi.Output<{[key: string]: outputs.AlertChannels}>;
     /**
+     * The settings of the event the alert fires on. Which ones apply depends on event_type, and events without settings take no condition.
+     */
+    declare public readonly condition: pulumi.Output<outputs.AlertCondition | undefined>;
+    /**
      * An optional description of the alert.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -47,7 +51,13 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * Fires before the watched resource expires. Only for alerts on these resource types: identity.authentication.
+     * The event the alert fires on, written in full, such as `cert-manager.application.certificate.expiry`, or without the<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>prefix, such as `certificate.expiry`. See Event types for every event and the condition it takes. Changing the event creates a new alert.
+     */
+    declare public readonly eventType: pulumi.Output<string | undefined>;
+    /**
+     * Fires before the watched resource expires. Only for identity.authentication alerts. Deprecated: use<span pulumi-lang-nodejs=" eventType " pulumi-lang-dotnet=" EventType " pulumi-lang-go=" eventType " pulumi-lang-python=" event_type " pulumi-lang-yaml=" eventType " pulumi-lang-java=" eventType " pulumi-lang-hcl=" event_type "> eventType </span>and condition instead.
+     *
+     * @deprecated Deprecated
      */
     declare public readonly expiry: pulumi.Output<outputs.AlertExpiry | undefined>;
     /**
@@ -59,15 +69,15 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
-     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones.
+     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones. Not used by these resource types, so leave it out: cert-manager, cert-manager.application, cert-manager.signer.
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
-     * The ID of the resource to watch. For the identity.authentication resource type this is a machine identity's ID.
+     * The ID of the resource to watch, of the kind<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>names. Required, except for resource types that watch a whole scope, where it must be omitted: cert-manager, cert-manager.signer.
      */
-    declare public readonly resourceId: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string | undefined>;
     /**
-     * The type of the resource to watch. Options: identity.authentication.
+     * The type of the resource to watch. Options: cert-manager, cert-manager.application, cert-manager.signer, identity.authentication.
      */
     declare public readonly resourceType: pulumi.Output<string>;
 
@@ -85,8 +95,10 @@ export class Alert extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AlertState | undefined;
             resourceInputs["channels"] = state?.channels;
+            resourceInputs["condition"] = state?.condition;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["eventType"] = state?.eventType;
             resourceInputs["expiry"] = state?.expiry;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -98,15 +110,14 @@ export class Alert extends pulumi.CustomResource {
             if (args?.channels === undefined && !opts.urn) {
                 throw new Error("Missing required property 'channels'");
             }
-            if (args?.resourceId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceId'");
-            }
             if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
             resourceInputs["channels"] = args?.channels;
+            resourceInputs["condition"] = args?.condition;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["eventType"] = args?.eventType;
             resourceInputs["expiry"] = args?.expiry;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -128,6 +139,10 @@ export interface AlertState {
      */
     channels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlertChannels>} | undefined>;
     /**
+     * The settings of the event the alert fires on. Which ones apply depends on event_type, and events without settings take no condition.
+     */
+    condition?: pulumi.Input<inputs.AlertCondition | undefined>;
+    /**
      * An optional description of the alert.
      */
     description?: pulumi.Input<string | undefined>;
@@ -136,7 +151,13 @@ export interface AlertState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Fires before the watched resource expires. Only for alerts on these resource types: identity.authentication.
+     * The event the alert fires on, written in full, such as `cert-manager.application.certificate.expiry`, or without the<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>prefix, such as `certificate.expiry`. See Event types for every event and the condition it takes. Changing the event creates a new alert.
+     */
+    eventType?: pulumi.Input<string | undefined>;
+    /**
+     * Fires before the watched resource expires. Only for identity.authentication alerts. Deprecated: use<span pulumi-lang-nodejs=" eventType " pulumi-lang-dotnet=" EventType " pulumi-lang-go=" eventType " pulumi-lang-python=" event_type " pulumi-lang-yaml=" eventType " pulumi-lang-java=" eventType " pulumi-lang-hcl=" event_type "> eventType </span>and condition instead.
+     *
+     * @deprecated Deprecated
      */
     expiry?: pulumi.Input<inputs.AlertExpiry | undefined>;
     /**
@@ -148,15 +169,15 @@ export interface AlertState {
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones.
+     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones. Not used by these resource types, so leave it out: cert-manager, cert-manager.application, cert-manager.signer.
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource to watch. For the identity.authentication resource type this is a machine identity's ID.
+     * The ID of the resource to watch, of the kind<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>names. Required, except for resource types that watch a whole scope, where it must be omitted: cert-manager, cert-manager.signer.
      */
     resourceId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the resource to watch. Options: identity.authentication.
+     * The type of the resource to watch. Options: cert-manager, cert-manager.application, cert-manager.signer, identity.authentication.
      */
     resourceType?: pulumi.Input<string | undefined>;
 }
@@ -170,6 +191,10 @@ export interface AlertArgs {
      */
     channels: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlertChannels>}>;
     /**
+     * The settings of the event the alert fires on. Which ones apply depends on event_type, and events without settings take no condition.
+     */
+    condition?: pulumi.Input<inputs.AlertCondition | undefined>;
+    /**
      * An optional description of the alert.
      */
     description?: pulumi.Input<string | undefined>;
@@ -178,7 +203,13 @@ export interface AlertArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Fires before the watched resource expires. Only for alerts on these resource types: identity.authentication.
+     * The event the alert fires on, written in full, such as `cert-manager.application.certificate.expiry`, or without the<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>prefix, such as `certificate.expiry`. See Event types for every event and the condition it takes. Changing the event creates a new alert.
+     */
+    eventType?: pulumi.Input<string | undefined>;
+    /**
+     * Fires before the watched resource expires. Only for identity.authentication alerts. Deprecated: use<span pulumi-lang-nodejs=" eventType " pulumi-lang-dotnet=" EventType " pulumi-lang-go=" eventType " pulumi-lang-python=" event_type " pulumi-lang-yaml=" eventType " pulumi-lang-java=" eventType " pulumi-lang-hcl=" event_type "> eventType </span>and condition instead.
+     *
+     * @deprecated Deprecated
      */
     expiry?: pulumi.Input<inputs.AlertExpiry | undefined>;
     /**
@@ -186,15 +217,15 @@ export interface AlertArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones.
+     * The ID of the project the resource belongs to. Required for project level resources, and must be omitted for organization level ones. Not used by these resource types, so leave it out: cert-manager, cert-manager.application, cert-manager.signer.
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource to watch. For the identity.authentication resource type this is a machine identity's ID.
+     * The ID of the resource to watch, of the kind<span pulumi-lang-nodejs=" resourceType " pulumi-lang-dotnet=" ResourceType " pulumi-lang-go=" resourceType " pulumi-lang-python=" resource_type " pulumi-lang-yaml=" resourceType " pulumi-lang-java=" resourceType " pulumi-lang-hcl=" resource_type "> resourceType </span>names. Required, except for resource types that watch a whole scope, where it must be omitted: cert-manager, cert-manager.signer.
      */
-    resourceId: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the resource to watch. Options: identity.authentication.
+     * The type of the resource to watch. Options: cert-manager, cert-manager.application, cert-manager.signer, identity.authentication.
      */
     resourceType: pulumi.Input<string>;
 }
