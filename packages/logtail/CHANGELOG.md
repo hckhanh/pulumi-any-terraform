@@ -1,3 +1,11 @@
+## 3.3.0
+
+### Minor Changes
+
+Update pulumi-logtail from 11.3.0 to 11.4.0
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v11.3.0...v11.4.0
+
 ## 3.2.0
 
 ### Minor Changes
