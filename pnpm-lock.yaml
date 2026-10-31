@@ -63,8 +63,8 @@ importers:
   packages/better-uptime:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -75,8 +75,8 @@ importers:
   packages/buildkite:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -87,8 +87,8 @@ importers:
   packages/bunnynet:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -99,8 +99,8 @@ importers:
   packages/infisical:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -111,8 +111,8 @@ importers:
   packages/local:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -123,8 +123,8 @@ importers:
   packages/logtail:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -135,8 +135,8 @@ importers:
   packages/namecheap:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -147,8 +147,8 @@ importers:
   packages/openfga:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -159,8 +159,8 @@ importers:
   packages/portainer:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -171,8 +171,8 @@ importers:
   packages/posthog:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -183,8 +183,8 @@ importers:
   packages/teamcity:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -195,8 +195,8 @@ importers:
   packages/time:
     devDependencies:
       '@pulumi/pulumi':
-        specifier: 3.272.0
-        version: 3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
+        specifier: 3.273.0
+        version: 3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -1508,8 +1508,8 @@ packages:
   '@protobufjs/utf8@1.1.2':
     resolution: {integrity: sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==}
 
-  '@pulumi/pulumi@3.272.0':
-    resolution: {integrity: sha512-DepbT+tA3HnNo5+OtEMEevK1pC45PD/71sQh3tlWYFtW4tjuZijAQprvgCYcQUKNwRP3/Y3z83Kbvxn7y9HR2w==}
+  '@pulumi/pulumi@3.273.0':
+    resolution: {integrity: sha512-Yh2k0Kry4u5LM730KUO5HZFnqHdlW9ypoQ8zgO0Tqam1G6urFXjIUTUaLxvWrdsm6gKCoyVS6CPdeOGcV+Msvg==}
     engines: {node: '>=22'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -4419,7 +4419,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@pulumi/pulumi@3.272.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)':
+  '@pulumi/pulumi@3.273.0(@typescript/typescript6@6.0.2)(supports-color@7.2.0)':
     dependencies:
       '@grpc/grpc-js': 1.14.6
       '@logdna/tail-file': 2.2.0
