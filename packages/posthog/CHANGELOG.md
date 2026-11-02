@@ -1,5 +1,32 @@
 # pulumi-posthog
 
+## 1.0.16
+
+### Patch Changes
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@120ac53: feat(feature_flag): add posthog_feature_flags data source (PostHog/terraform-provider-posthog#183) (@vdekrijger)
+- PostHog/terraform-provider-posthog@6b76b37: fix(feature_flag): ignore cohort deletion markers in filters (@haacked)
+
+#### Bug Fixes
+
+- PostHog/terraform-provider-posthog@55dc593: fix(http): wait out PostHog's Retry-After on rate-limited requests (PostHog/terraform-provider-posthog#182) (@vdekrijger)
+- PostHog/terraform-provider-posthog@19bff8d: fix(project_settings): preserve omitted settings in saved plans (PostHog/terraform-provider-posthog#181) (@rodboev)
+
+#### New Features
+
+- PostHog/terraform-provider-posthog@cab82a3: feat(feature_flag): expand settings and fix name handling (PostHog/terraform-provider-posthog#187) (@vdekrijger)
+- PostHog/terraform-provider-posthog@c77d9b2: fix(feature_flag): keep adopted flags' tags when the config leaves them out (PostHog/terraform-provider-posthog#190) (@vdekrijger)
+- PostHog/terraform-provider-posthog@8a543fc: fix(feature_flag): keep release conditions when filters are not configured (PostHog/terraform-provider-posthog#186) (@vdekrijger)
+
+#### Other Changes
+
+- PostHog/terraform-provider-posthog@24519bc: chore(deps): bump the github-actions group with 2 updates (PostHog/terraform-provider-posthog#188) (@dependabot[bot])
+- PostHog/terraform-provider-posthog@9cde5b1: refactor(core): add IsKnown helper for null/unknown checks (PostHog/terraform-provider-posthog#189) (@vdekrijger)
+
+Update the Pulumi Terraform bridge from 1.5.0 to 1.5.1.
+
 ## 1.0.15
 
 ### Patch Changes
