@@ -423,9 +423,18 @@ export interface NotificationServiceWebhook {
      */
     tokenMode: string;
     /**
-     * The URL that receives webhook deliveries. Required when creating a webhook service.
+     * The URL that receives webhook deliveries. Stored in Terraform state; use <span pulumi-lang-nodejs="`urlWo`" pulumi-lang-dotnet="`UrlWo`" pulumi-lang-go="`urlWo`" pulumi-lang-python="`url_wo`" pulumi-lang-yaml="`urlWo`" pulumi-lang-java="`urlWo`" pulumi-lang-hcl="`url_wo`">`urlWo`</span> for URLs containing credentials. Set either <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span> or <span pulumi-lang-nodejs="`urlWo`" pulumi-lang-dotnet="`UrlWo`" pulumi-lang-go="`urlWo`" pulumi-lang-python="`url_wo`" pulumi-lang-yaml="`urlWo`" pulumi-lang-java="`urlWo`" pulumi-lang-hcl="`url_wo`">`urlWo`</span> when creating a webhook service.
      */
     url?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The webhook destination URL, without storing it in Terraform plans or state. Requires Terraform 1.11.1 or later and <span pulumi-lang-nodejs="`urlWoVersion`" pulumi-lang-dotnet="`UrlWoVersion`" pulumi-lang-go="`urlWoVersion`" pulumi-lang-python="`url_wo_version`" pulumi-lang-yaml="`urlWoVersion`" pulumi-lang-java="`urlWoVersion`" pulumi-lang-hcl="`url_wo_version`">`urlWoVersion`</span>. Conflicts with <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`" pulumi-lang-hcl="`url`">`url`</span>. Sent on creation and when <span pulumi-lang-nodejs="`urlWoVersion`" pulumi-lang-dotnet="`UrlWoVersion`" pulumi-lang-go="`urlWoVersion`" pulumi-lang-python="`url_wo_version`" pulumi-lang-yaml="`urlWoVersion`" pulumi-lang-java="`urlWoVersion`" pulumi-lang-hcl="`url_wo_version`">`urlWoVersion`</span> changes; changes made outside Terraform cannot be detected.
+     */
+    urlWo?: string;
+    /**
+     * A positive version number for <span pulumi-lang-nodejs="`urlWo`" pulumi-lang-dotnet="`UrlWo`" pulumi-lang-go="`urlWo`" pulumi-lang-python="`url_wo`" pulumi-lang-yaml="`urlWo`" pulumi-lang-java="`urlWo`" pulumi-lang-hcl="`url_wo`">`urlWo`</span>. Set it initially and increment it whenever the URL changes. This number is stored in state; the URL is not. Requires <span pulumi-lang-nodejs="`urlWo`" pulumi-lang-dotnet="`UrlWo`" pulumi-lang-go="`urlWo`" pulumi-lang-python="`url_wo`" pulumi-lang-yaml="`urlWo`" pulumi-lang-java="`urlWo`" pulumi-lang-hcl="`url_wo`">`urlWo`</span>.
+     */
+    urlWoVersion?: number;
     /**
      * The webhook payload version. New services must use the API's latest version, and existing services can only be upgraded to it, never downgraded.
      */
@@ -640,6 +649,40 @@ export interface PipelineProviderSettings {
      * Whether to use step keys as commit status names for per-step commit statuses. Requires <span pulumi-lang-nodejs="`publishCommitStatus`" pulumi-lang-dotnet="`PublishCommitStatus`" pulumi-lang-go="`publishCommitStatus`" pulumi-lang-python="`publish_commit_status`" pulumi-lang-yaml="`publishCommitStatus`" pulumi-lang-java="`publishCommitStatus`" pulumi-lang-hcl="`publish_commit_status`">`publishCommitStatus`</span> and <span pulumi-lang-nodejs="`publishCommitStatusPerStep`" pulumi-lang-dotnet="`PublishCommitStatusPerStep`" pulumi-lang-go="`publishCommitStatusPerStep`" pulumi-lang-python="`publish_commit_status_per_step`" pulumi-lang-yaml="`publishCommitStatusPerStep`" pulumi-lang-java="`publishCommitStatusPerStep`" pulumi-lang-hcl="`publish_commit_status_per_step`">`publishCommitStatusPerStep`</span> to also be enabled. Defaults to false.
      */
     useStepKeyAsCommitStatus: boolean;
+}
+
+export interface PipelineWebhookTriggerBuild {
+    /**
+     * Branch to build. Must not be empty; omit to use the pipeline default.
+     */
+    branch?: string;
+    /**
+     * Commit to build, such as HEAD. Must not be empty; omit to use the default.
+     */
+    commit?: string;
+    /**
+     * Build environment variables. Values are stored in state and are not returned by the API, so external value changes cannot be detected. Removing this map clears previously managed variables.
+     */
+    environment?: {[key: string]: string};
+    /**
+     * Build message.
+     */
+    message?: string;
+}
+
+export interface PipelineWebhookTriggerEffectiveBuild {
+    /**
+     * Effective branch.
+     */
+    branch: string;
+    /**
+     * Effective commit.
+     */
+    commit: string;
+    /**
+     * Effective build message.
+     */
+    message: string;
 }
 
 export interface PortalCreatedBy {

@@ -102,17 +102,17 @@ export interface CollectorConfigurationComponents {
      */
     metricsApache: boolean;
     /**
-     * Run the cluster agent for database metrics. Takes precedence over <span pulumi-lang-nodejs="`metricsDatabases`" pulumi-lang-dotnet="`MetricsDatabases`" pulumi-lang-go="`metricsDatabases`" pulumi-lang-python="`metrics_databases`" pulumi-lang-yaml="`metricsDatabases`" pulumi-lang-java="`metricsDatabases`" pulumi-lang-hcl="`metrics_databases`">`metricsDatabases`</span> when both are set.
+     * Collect Kubernetes cluster metrics. Takes precedence over <span pulumi-lang-nodejs="`metricsDatabases`" pulumi-lang-dotnet="`MetricsDatabases`" pulumi-lang-go="`metricsDatabases`" pulumi-lang-python="`metrics_databases`" pulumi-lang-yaml="`metricsDatabases`" pulumi-lang-java="`metricsDatabases`" pulumi-lang-hcl="`metrics_databases`">`metricsDatabases`</span> when both are set.
      */
     metricsCluster: boolean;
     /**
-     * Run the cluster agent for database metrics.
+     * Former name of <span pulumi-lang-nodejs="`metricsCluster`" pulumi-lang-dotnet="`MetricsCluster`" pulumi-lang-go="`metricsCluster`" pulumi-lang-python="`metrics_cluster`" pulumi-lang-yaml="`metricsCluster`" pulumi-lang-java="`metricsCluster`" pulumi-lang-hcl="`metrics_cluster`">`metricsCluster`</span>. Set without <span pulumi-lang-nodejs="`metricsCluster`" pulumi-lang-dotnet="`MetricsCluster`" pulumi-lang-go="`metricsCluster`" pulumi-lang-python="`metrics_cluster`" pulumi-lang-yaml="`metricsCluster`" pulumi-lang-java="`metricsCluster`" pulumi-lang-hcl="`metrics_cluster`">`metricsCluster`</span>, it also sets whichever of <span pulumi-lang-nodejs="`metricsPostgres`" pulumi-lang-dotnet="`MetricsPostgres`" pulumi-lang-go="`metricsPostgres`" pulumi-lang-python="`metrics_postgres`" pulumi-lang-yaml="`metricsPostgres`" pulumi-lang-java="`metricsPostgres`" pulumi-lang-hcl="`metrics_postgres`">`metricsPostgres`</span>, <span pulumi-lang-nodejs="`metricsMysql`" pulumi-lang-dotnet="`MetricsMysql`" pulumi-lang-go="`metricsMysql`" pulumi-lang-python="`metrics_mysql`" pulumi-lang-yaml="`metricsMysql`" pulumi-lang-java="`metricsMysql`" pulumi-lang-hcl="`metrics_mysql`">`metricsMysql`</span>, <span pulumi-lang-nodejs="`metricsElasticsearch`" pulumi-lang-dotnet="`MetricsElasticsearch`" pulumi-lang-go="`metricsElasticsearch`" pulumi-lang-python="`metrics_elasticsearch`" pulumi-lang-yaml="`metricsElasticsearch`" pulumi-lang-java="`metricsElasticsearch`" pulumi-lang-hcl="`metrics_elasticsearch`">`metricsElasticsearch`</span> and <span pulumi-lang-nodejs="`metricsPgbouncer`" pulumi-lang-dotnet="`MetricsPgbouncer`" pulumi-lang-go="`metricsPgbouncer`" pulumi-lang-python="`metrics_pgbouncer`" pulumi-lang-yaml="`metricsPgbouncer`" pulumi-lang-java="`metricsPgbouncer`" pulumi-lang-hcl="`metrics_pgbouncer`">`metricsPgbouncer`</span> you leave out.
      *
      * @deprecated Deprecated
      */
     metricsDatabases: boolean;
     /**
-     * Enable the Elasticsearch metrics exporter. Defaults to true.
+     * Enable the Elasticsearch metrics exporter. Defaults to true on create; left out on update, it keeps its current value.
      */
     metricsElasticsearch: boolean;
     /**
@@ -120,7 +120,7 @@ export interface CollectorConfigurationComponents {
      */
     metricsHostOs: boolean;
     /**
-     * Enable the MySQL metrics exporter. Defaults to true.
+     * Enable the MySQL metrics exporter. Defaults to true on create; left out on update, it keeps its current value.
      */
     metricsMysql: boolean;
     /**
@@ -128,11 +128,11 @@ export interface CollectorConfigurationComponents {
      */
     metricsNginx: boolean;
     /**
-     * Enable the PgBouncer metrics exporter. Defaults to true.
+     * Enable the PgBouncer metrics exporter. Defaults to true on create; left out on update, it keeps its current value.
      */
     metricsPgbouncer: boolean;
     /**
-     * Enable the PostgreSQL metrics exporter. Defaults to true.
+     * Enable the PostgreSQL metrics exporter. Defaults to true on create; left out on update, it keeps its current value.
      */
     metricsPostgres: boolean;
     /**

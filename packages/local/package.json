@@ -47,7 +47,7 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "parameterization": {
       "name": "local",
       "version": "2.9.1",

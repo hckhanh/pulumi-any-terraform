@@ -37,6 +37,14 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly active: pulumi.Output<boolean>;
     /**
+     * Whether the flag is archived and hidden from the default flag list. Archived flags must have `active = false`. Unarchiving does not enable the flag. When omitted, updates preserve the remote setting.
+     */
+    declare public readonly archived: pulumi.Output<boolean>;
+    /**
+     * Identifier used to assign rollout buckets and variants: <span pulumi-lang-nodejs="`distinctId`" pulumi-lang-dotnet="`DistinctId`" pulumi-lang-go="`distinctId`" pulumi-lang-python="`distinct_id`" pulumi-lang-yaml="`distinctId`" pulumi-lang-java="`distinctId`" pulumi-lang-hcl="`distinct_id`">`distinctId`</span> (the API default) or <span pulumi-lang-nodejs="`deviceId`" pulumi-lang-dotnet="`DeviceId`" pulumi-lang-go="`deviceId`" pulumi-lang-python="`device_id`" pulumi-lang-yaml="`deviceId`" pulumi-lang-java="`deviceId`" pulumi-lang-hcl="`device_id`">`deviceId`</span>. Device bucketing cannot be combined with <span pulumi-lang-nodejs="`ensureExperienceContinuity " pulumi-lang-dotnet="`EnsureExperienceContinuity " pulumi-lang-go="`ensureExperienceContinuity " pulumi-lang-python="`ensure_experience_continuity " pulumi-lang-yaml="`ensureExperienceContinuity " pulumi-lang-java="`ensureExperienceContinuity " pulumi-lang-hcl="`ensure_experience_continuity ">`ensureExperienceContinuity </span>= true`. When omitted, updates preserve the remote setting.
+     */
+    declare public readonly bucketingIdentifier: pulumi.Output<string>;
+    /**
      * Deprecated create-time option. PostHog no longer creates a saved usage dashboard when a flag is created, so <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> is rejected for new flags instead of silently doing nothing. Omit this attribute for new configurations. Existing flags with this setting remain readable, and usage charts are available on the flag's Usage tab.
      *
      * @deprecated Deprecated
@@ -51,6 +59,14 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly ensureExperienceContinuity: pulumi.Output<boolean>;
     /**
+     * Contexts in which the flag evaluates, such as <span pulumi-lang-nodejs="`web`" pulumi-lang-dotnet="`Web`" pulumi-lang-go="`web`" pulumi-lang-python="`web`" pulumi-lang-yaml="`web`" pulumi-lang-java="`web`" pulumi-lang-hcl="`web`">`web`</span> or <span pulumi-lang-nodejs="`checkout`" pulumi-lang-dotnet="`Checkout`" pulumi-lang-go="`checkout`" pulumi-lang-python="`checkout`" pulumi-lang-yaml="`checkout`" pulumi-lang-java="`checkout`" pulumi-lang-hcl="`checkout`">`checkout`</span>. Use lowercase names without surrounding whitespace (up to 50 names, each 1–255 characters). Matching contexts must also be configured in the SDK. Omit to preserve existing contexts, or set `[]` to clear them where project policy permits. PostHog applies contexts only when evaluation contexts are enabled for your organization; otherwise the apply fails with an error that says so.
+     */
+    declare public readonly evaluationContexts: pulumi.Output<string[]>;
+    /**
+     * Where the flag is evaluated: <span pulumi-lang-nodejs="`server`" pulumi-lang-dotnet="`Server`" pulumi-lang-go="`server`" pulumi-lang-python="`server`" pulumi-lang-yaml="`server`" pulumi-lang-java="`server`" pulumi-lang-hcl="`server`">`server`</span>, <span pulumi-lang-nodejs="`client`" pulumi-lang-dotnet="`Client`" pulumi-lang-go="`client`" pulumi-lang-python="`client`" pulumi-lang-yaml="`client`" pulumi-lang-java="`client`" pulumi-lang-hcl="`client`">`client`</span>, or <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. PostHog defaults new flags to <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. When omitted, the existing runtime is preserved, including on import; updates leave it unknown until the API response so a saved plan cannot overwrite a newer remote value. This controls remote evaluation; it does not restrict server-side local evaluation.
+     */
+    declare public readonly evaluationRuntime: pulumi.Output<string>;
+    /**
      * Feature Flag ID
      */
     declare public /*out*/ readonly featureFlagId: pulumi.Output<number>;
@@ -63,11 +79,15 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly ignoreFilterFields: pulumi.Output<string[] | undefined>;
     /**
+     * Whether the flag delivers remote configuration. Payloads are configured through `filters.payloads`. On creation, PostHog defaults missing or zero rollout percentages to 100; when supplying filters, provide explicit nonzero group rollout percentages. A top-level <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span> must match the first group when both are configured. When omitted, updates preserve the remote setting.
+     */
+    declare public readonly isRemoteConfiguration: pulumi.Output<boolean>;
+    /**
      * Feature flag key (unique identifier)
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags. Empty strings are preserved. PostHog trims surrounding whitespace; Terraform retains the configured spelling when only that whitespace differs.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -75,13 +95,13 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * Rollout percentage (0-100)
+     * Rollout percentage (0-100) of the flag's first release condition (`filters.groups[0]`). Without <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, changing it changes only that condition's rollout and keeps the flag's other conditions, targeting, variants and payloads, so a flag created in the PostHog UI and imported keeps its targeting. With <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, leave it out or set it to the first condition's <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span>.
      */
     declare public readonly rolloutPercentage: pulumi.Output<number>;
     /**
-     * Set of tags for the feature flag
+     * Set of tags for the feature flag. When omitted, the flag keeps the tags it has in PostHog; set `[]` to remove them.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
 
     /**
      * Create a FeatureFlag resource with the given unique name, arguments, and options.
@@ -97,12 +117,17 @@ export class FeatureFlag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["active"] = state?.active;
+            resourceInputs["archived"] = state?.archived;
+            resourceInputs["bucketingIdentifier"] = state?.bucketingIdentifier;
             resourceInputs["createUsageDashboard"] = state?.createUsageDashboard;
             resourceInputs["deleted"] = state?.deleted;
             resourceInputs["ensureExperienceContinuity"] = state?.ensureExperienceContinuity;
+            resourceInputs["evaluationContexts"] = state?.evaluationContexts;
+            resourceInputs["evaluationRuntime"] = state?.evaluationRuntime;
             resourceInputs["featureFlagId"] = state?.featureFlagId;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["ignoreFilterFields"] = state?.ignoreFilterFields;
+            resourceInputs["isRemoteConfiguration"] = state?.isRemoteConfiguration;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -114,11 +139,16 @@ export class FeatureFlag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'key'");
             }
             resourceInputs["active"] = args?.active;
+            resourceInputs["archived"] = args?.archived;
+            resourceInputs["bucketingIdentifier"] = args?.bucketingIdentifier;
             resourceInputs["createUsageDashboard"] = args?.createUsageDashboard;
             resourceInputs["deleted"] = args?.deleted;
             resourceInputs["ensureExperienceContinuity"] = args?.ensureExperienceContinuity;
+            resourceInputs["evaluationContexts"] = args?.evaluationContexts;
+            resourceInputs["evaluationRuntime"] = args?.evaluationRuntime;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["ignoreFilterFields"] = args?.ignoreFilterFields;
+            resourceInputs["isRemoteConfiguration"] = args?.isRemoteConfiguration;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -140,6 +170,14 @@ export interface FeatureFlagState {
      */
     active?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether the flag is archived and hidden from the default flag list. Archived flags must have `active = false`. Unarchiving does not enable the flag. When omitted, updates preserve the remote setting.
+     */
+    archived?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier used to assign rollout buckets and variants: <span pulumi-lang-nodejs="`distinctId`" pulumi-lang-dotnet="`DistinctId`" pulumi-lang-go="`distinctId`" pulumi-lang-python="`distinct_id`" pulumi-lang-yaml="`distinctId`" pulumi-lang-java="`distinctId`" pulumi-lang-hcl="`distinct_id`">`distinctId`</span> (the API default) or <span pulumi-lang-nodejs="`deviceId`" pulumi-lang-dotnet="`DeviceId`" pulumi-lang-go="`deviceId`" pulumi-lang-python="`device_id`" pulumi-lang-yaml="`deviceId`" pulumi-lang-java="`deviceId`" pulumi-lang-hcl="`device_id`">`deviceId`</span>. Device bucketing cannot be combined with <span pulumi-lang-nodejs="`ensureExperienceContinuity " pulumi-lang-dotnet="`EnsureExperienceContinuity " pulumi-lang-go="`ensureExperienceContinuity " pulumi-lang-python="`ensure_experience_continuity " pulumi-lang-yaml="`ensureExperienceContinuity " pulumi-lang-java="`ensureExperienceContinuity " pulumi-lang-hcl="`ensure_experience_continuity ">`ensureExperienceContinuity </span>= true`. When omitted, updates preserve the remote setting.
+     */
+    bucketingIdentifier?: pulumi.Input<string | undefined>;
+    /**
      * Deprecated create-time option. PostHog no longer creates a saved usage dashboard when a flag is created, so <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> is rejected for new flags instead of silently doing nothing. Omit this attribute for new configurations. Existing flags with this setting remain readable, and usage charts are available on the flag's Usage tab.
      *
      * @deprecated Deprecated
@@ -153,6 +191,14 @@ export interface FeatureFlagState {
      * Whether to persist the flag across authentication steps (PostHog's UI labels this as 'Persist flag across authentication steps'). Flags with experience continuity enabled cannot be evaluated by server-side local evaluation; set this to false for flags that must be evaluated locally.
      */
     ensureExperienceContinuity?: pulumi.Input<boolean | undefined>;
+    /**
+     * Contexts in which the flag evaluates, such as <span pulumi-lang-nodejs="`web`" pulumi-lang-dotnet="`Web`" pulumi-lang-go="`web`" pulumi-lang-python="`web`" pulumi-lang-yaml="`web`" pulumi-lang-java="`web`" pulumi-lang-hcl="`web`">`web`</span> or <span pulumi-lang-nodejs="`checkout`" pulumi-lang-dotnet="`Checkout`" pulumi-lang-go="`checkout`" pulumi-lang-python="`checkout`" pulumi-lang-yaml="`checkout`" pulumi-lang-java="`checkout`" pulumi-lang-hcl="`checkout`">`checkout`</span>. Use lowercase names without surrounding whitespace (up to 50 names, each 1–255 characters). Matching contexts must also be configured in the SDK. Omit to preserve existing contexts, or set `[]` to clear them where project policy permits. PostHog applies contexts only when evaluation contexts are enabled for your organization; otherwise the apply fails with an error that says so.
+     */
+    evaluationContexts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Where the flag is evaluated: <span pulumi-lang-nodejs="`server`" pulumi-lang-dotnet="`Server`" pulumi-lang-go="`server`" pulumi-lang-python="`server`" pulumi-lang-yaml="`server`" pulumi-lang-java="`server`" pulumi-lang-hcl="`server`">`server`</span>, <span pulumi-lang-nodejs="`client`" pulumi-lang-dotnet="`Client`" pulumi-lang-go="`client`" pulumi-lang-python="`client`" pulumi-lang-yaml="`client`" pulumi-lang-java="`client`" pulumi-lang-hcl="`client`">`client`</span>, or <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. PostHog defaults new flags to <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. When omitted, the existing runtime is preserved, including on import; updates leave it unknown until the API response so a saved plan cannot overwrite a newer remote value. This controls remote evaluation; it does not restrict server-side local evaluation.
+     */
+    evaluationRuntime?: pulumi.Input<string | undefined>;
     /**
      * Feature Flag ID
      */
@@ -166,11 +212,15 @@ export interface FeatureFlagState {
      */
     ignoreFilterFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Whether the flag delivers remote configuration. Payloads are configured through `filters.payloads`. On creation, PostHog defaults missing or zero rollout percentages to 100; when supplying filters, provide explicit nonzero group rollout percentages. A top-level <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span> must match the first group when both are configured. When omitted, updates preserve the remote setting.
+     */
+    isRemoteConfiguration?: pulumi.Input<boolean | undefined>;
+    /**
      * Feature flag key (unique identifier)
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags. Empty strings are preserved. PostHog trims surrounding whitespace; Terraform retains the configured spelling when only that whitespace differs.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -178,11 +228,11 @@ export interface FeatureFlagState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Rollout percentage (0-100)
+     * Rollout percentage (0-100) of the flag's first release condition (`filters.groups[0]`). Without <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, changing it changes only that condition's rollout and keeps the flag's other conditions, targeting, variants and payloads, so a flag created in the PostHog UI and imported keeps its targeting. With <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, leave it out or set it to the first condition's <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span>.
      */
     rolloutPercentage?: pulumi.Input<number | undefined>;
     /**
-     * Set of tags for the feature flag
+     * Set of tags for the feature flag. When omitted, the flag keeps the tags it has in PostHog; set `[]` to remove them.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -195,6 +245,14 @@ export interface FeatureFlagArgs {
      * Whether the feature flag is active
      */
     active?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the flag is archived and hidden from the default flag list. Archived flags must have `active = false`. Unarchiving does not enable the flag. When omitted, updates preserve the remote setting.
+     */
+    archived?: pulumi.Input<boolean | undefined>;
+    /**
+     * Identifier used to assign rollout buckets and variants: <span pulumi-lang-nodejs="`distinctId`" pulumi-lang-dotnet="`DistinctId`" pulumi-lang-go="`distinctId`" pulumi-lang-python="`distinct_id`" pulumi-lang-yaml="`distinctId`" pulumi-lang-java="`distinctId`" pulumi-lang-hcl="`distinct_id`">`distinctId`</span> (the API default) or <span pulumi-lang-nodejs="`deviceId`" pulumi-lang-dotnet="`DeviceId`" pulumi-lang-go="`deviceId`" pulumi-lang-python="`device_id`" pulumi-lang-yaml="`deviceId`" pulumi-lang-java="`deviceId`" pulumi-lang-hcl="`device_id`">`deviceId`</span>. Device bucketing cannot be combined with <span pulumi-lang-nodejs="`ensureExperienceContinuity " pulumi-lang-dotnet="`EnsureExperienceContinuity " pulumi-lang-go="`ensureExperienceContinuity " pulumi-lang-python="`ensure_experience_continuity " pulumi-lang-yaml="`ensureExperienceContinuity " pulumi-lang-java="`ensureExperienceContinuity " pulumi-lang-hcl="`ensure_experience_continuity ">`ensureExperienceContinuity </span>= true`. When omitted, updates preserve the remote setting.
+     */
+    bucketingIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Deprecated create-time option. PostHog no longer creates a saved usage dashboard when a flag is created, so <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`" pulumi-lang-hcl="`true`">`true`</span> is rejected for new flags instead of silently doing nothing. Omit this attribute for new configurations. Existing flags with this setting remain readable, and usage charts are available on the flag's Usage tab.
      *
@@ -210,6 +268,14 @@ export interface FeatureFlagArgs {
      */
     ensureExperienceContinuity?: pulumi.Input<boolean | undefined>;
     /**
+     * Contexts in which the flag evaluates, such as <span pulumi-lang-nodejs="`web`" pulumi-lang-dotnet="`Web`" pulumi-lang-go="`web`" pulumi-lang-python="`web`" pulumi-lang-yaml="`web`" pulumi-lang-java="`web`" pulumi-lang-hcl="`web`">`web`</span> or <span pulumi-lang-nodejs="`checkout`" pulumi-lang-dotnet="`Checkout`" pulumi-lang-go="`checkout`" pulumi-lang-python="`checkout`" pulumi-lang-yaml="`checkout`" pulumi-lang-java="`checkout`" pulumi-lang-hcl="`checkout`">`checkout`</span>. Use lowercase names without surrounding whitespace (up to 50 names, each 1–255 characters). Matching contexts must also be configured in the SDK. Omit to preserve existing contexts, or set `[]` to clear them where project policy permits. PostHog applies contexts only when evaluation contexts are enabled for your organization; otherwise the apply fails with an error that says so.
+     */
+    evaluationContexts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Where the flag is evaluated: <span pulumi-lang-nodejs="`server`" pulumi-lang-dotnet="`Server`" pulumi-lang-go="`server`" pulumi-lang-python="`server`" pulumi-lang-yaml="`server`" pulumi-lang-java="`server`" pulumi-lang-hcl="`server`">`server`</span>, <span pulumi-lang-nodejs="`client`" pulumi-lang-dotnet="`Client`" pulumi-lang-go="`client`" pulumi-lang-python="`client`" pulumi-lang-yaml="`client`" pulumi-lang-java="`client`" pulumi-lang-hcl="`client`">`client`</span>, or <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. PostHog defaults new flags to <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`" pulumi-lang-hcl="`all`">`all`</span>. When omitted, the existing runtime is preserved, including on import; updates leave it unknown until the API response so a saved plan cannot overwrite a newer remote value. This controls remote evaluation; it does not restrict server-side local evaluation.
+     */
+    evaluationRuntime?: pulumi.Input<string | undefined>;
+    /**
      * Feature flag filters as JSON. Compared semantically, so key ordering and whitespace differences from the PostHog API do not produce a diff. Fields present in the API response but absent from this config are kept in state so remote changes surface as drift — except the top-level keys listed in <span pulumi-lang-nodejs="`ignoreFilterFields`" pulumi-lang-dotnet="`IgnoreFilterFields`" pulumi-lang-go="`ignoreFilterFields`" pulumi-lang-python="`ignore_filter_fields`" pulumi-lang-yaml="`ignoreFilterFields`" pulumi-lang-java="`ignoreFilterFields`" pulumi-lang-hcl="`ignore_filter_fields`">`ignoreFilterFields`</span> and an undeclared <span pulumi-lang-nodejs="`featureEnrollment`" pulumi-lang-dotnet="`FeatureEnrollment`" pulumi-lang-go="`featureEnrollment`" pulumi-lang-python="`feature_enrollment`" pulumi-lang-yaml="`featureEnrollment`" pulumi-lang-java="`featureEnrollment`" pulumi-lang-hcl="`feature_enrollment`">`featureEnrollment`</span> marker owned by Early Access Features.
      */
     filters?: pulumi.Input<string | undefined>;
@@ -218,11 +284,15 @@ export interface FeatureFlagArgs {
      */
     ignoreFilterFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Whether the flag delivers remote configuration. Payloads are configured through `filters.payloads`. On creation, PostHog defaults missing or zero rollout percentages to 100; when supplying filters, provide explicit nonzero group rollout percentages. A top-level <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span> must match the first group when both are configured. When omitted, updates preserve the remote setting.
+     */
+    isRemoteConfiguration?: pulumi.Input<boolean | undefined>;
+    /**
      * Feature flag key (unique identifier)
      */
     key: pulumi.Input<string>;
     /**
-     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags.
+     * Feature flag name/description (PostHog's UI labels this as 'Description'). The API does not expose a separate dedicated description field for feature flags. Empty strings are preserved. PostHog trims surrounding whitespace; Terraform retains the configured spelling when only that whitespace differs.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -230,11 +300,11 @@ export interface FeatureFlagArgs {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Rollout percentage (0-100)
+     * Rollout percentage (0-100) of the flag's first release condition (`filters.groups[0]`). Without <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, changing it changes only that condition's rollout and keeps the flag's other conditions, targeting, variants and payloads, so a flag created in the PostHog UI and imported keeps its targeting. With <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`" pulumi-lang-hcl="`filters`">`filters`</span>, leave it out or set it to the first condition's <span pulumi-lang-nodejs="`rolloutPercentage`" pulumi-lang-dotnet="`RolloutPercentage`" pulumi-lang-go="`rolloutPercentage`" pulumi-lang-python="`rollout_percentage`" pulumi-lang-yaml="`rolloutPercentage`" pulumi-lang-java="`rolloutPercentage`" pulumi-lang-hcl="`rollout_percentage`">`rolloutPercentage`</span>.
      */
     rolloutPercentage?: pulumi.Input<number | undefined>;
     /**
-     * Set of tags for the feature flag
+     * Set of tags for the feature flag. When omitted, the flag keeps the tags it has in PostHog; set `[]` to remove them.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

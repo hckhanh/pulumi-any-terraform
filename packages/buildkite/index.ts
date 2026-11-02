@@ -190,6 +190,11 @@ export type PipelineWebhook = import("./pipelineWebhook").PipelineWebhook;
 export const PipelineWebhook: typeof import("./pipelineWebhook").PipelineWebhook = null as any;
 utilities.lazyLoad(exports, ["PipelineWebhook"], () => require("./pipelineWebhook"));
 
+export { PipelineWebhookTriggerArgs, PipelineWebhookTriggerState } from "./pipelineWebhookTrigger";
+export type PipelineWebhookTrigger = import("./pipelineWebhookTrigger").PipelineWebhookTrigger;
+export const PipelineWebhookTrigger: typeof import("./pipelineWebhookTrigger").PipelineWebhookTrigger = null as any;
+utilities.lazyLoad(exports, ["PipelineWebhookTrigger"], () => require("./pipelineWebhookTrigger"));
+
 export { PortalArgs, PortalState } from "./portal";
 export type Portal = import("./portal").Portal;
 export const Portal: typeof import("./portal").Portal = null as any;
@@ -285,6 +290,8 @@ const _module = {
                 return new PipelineTemplate(name, <any>undefined, { urn })
             case "buildkite:index/pipelineWebhook:PipelineWebhook":
                 return new PipelineWebhook(name, <any>undefined, { urn })
+            case "buildkite:index/pipelineWebhookTrigger:PipelineWebhookTrigger":
+                return new PipelineWebhookTrigger(name, <any>undefined, { urn })
             case "buildkite:index/portal:Portal":
                 return new Portal(name, <any>undefined, { urn })
             case "buildkite:index/registry:Registry":
@@ -325,6 +332,7 @@ pulumi.runtime.registerResourceModule("buildkite", "index/pipelineSchedule", _mo
 pulumi.runtime.registerResourceModule("buildkite", "index/pipelineTeam", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/pipelineTemplate", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/pipelineWebhook", _module)
+pulumi.runtime.registerResourceModule("buildkite", "index/pipelineWebhookTrigger", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/portal", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/registry", _module)
 pulumi.runtime.registerResourceModule("buildkite", "index/team", _module)

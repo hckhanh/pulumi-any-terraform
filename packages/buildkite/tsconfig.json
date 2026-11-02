@@ -59,6 +59,7 @@
         "pipelineTeam.ts",
         "pipelineTemplate.ts",
         "pipelineWebhook.ts",
+        "pipelineWebhookTrigger.ts",
         "portal.ts",
         "provider.ts",
         "registry.ts",

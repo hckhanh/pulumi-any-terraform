@@ -33,6 +33,10 @@ export class TestSuite extends pulumi.CustomResource {
     }
 
     /**
+     * Allowed quarantine states: <span pulumi-lang-nodejs="`muted`" pulumi-lang-dotnet="`Muted`" pulumi-lang-go="`muted`" pulumi-lang-python="`muted`" pulumi-lang-yaml="`muted`" pulumi-lang-java="`muted`" pulumi-lang-hcl="`muted`">`muted`</span> and/or <span pulumi-lang-nodejs="`skipped`" pulumi-lang-dotnet="`Skipped`" pulumi-lang-go="`skipped`" pulumi-lang-python="`skipped`" pulumi-lang-yaml="`skipped`" pulumi-lang-java="`skipped`" pulumi-lang-hcl="`skipped`">`skipped`</span>. The <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`" pulumi-lang-hcl="`enabled`">`enabled`</span> state is always available and must not be included. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to an empty set on creation. An explicit empty set allows only enabled tests. A state cannot be removed while tests use it or it is the automatic-quarantine default.
+     */
+    declare public readonly allowedTestStates: pulumi.Output<string[]>;
+    /**
      * The API token to use to send test run data to the API.
      */
     declare public /*out*/ readonly apiToken: pulumi.Output<string>;
@@ -73,6 +77,10 @@ export class TestSuite extends pulumi.CustomResource {
      */
     declare public readonly teamOwnerId: pulumi.Output<string>;
     /**
+     * Whether test state management is enabled. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> on creation. Disabling permanently resets all muted and skipped tests to enabled. Re-enabling does not restore their previous states.
+     */
+    declare public readonly testStateManagement: pulumi.Output<boolean>;
+    /**
      * The UUID of the test suite.
      */
     declare public /*out*/ readonly uuid: pulumi.Output<string>;
@@ -90,6 +98,7 @@ export class TestSuite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TestSuiteState | undefined;
+            resourceInputs["allowedTestStates"] = state?.allowedTestStates;
             resourceInputs["apiToken"] = state?.apiToken;
             resourceInputs["applicationName"] = state?.applicationName;
             resourceInputs["color"] = state?.color;
@@ -100,6 +109,7 @@ export class TestSuite extends pulumi.CustomResource {
             resourceInputs["oidcPolicy"] = state?.oidcPolicy;
             resourceInputs["slug"] = state?.slug;
             resourceInputs["teamOwnerId"] = state?.teamOwnerId;
+            resourceInputs["testStateManagement"] = state?.testStateManagement;
             resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as TestSuiteArgs | undefined;
@@ -109,6 +119,7 @@ export class TestSuite extends pulumi.CustomResource {
             if (args?.teamOwnerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamOwnerId'");
             }
+            resourceInputs["allowedTestStates"] = args?.allowedTestStates;
             resourceInputs["applicationName"] = args?.applicationName;
             resourceInputs["color"] = args?.color;
             resourceInputs["defaultBranch"] = args?.defaultBranch;
@@ -117,6 +128,7 @@ export class TestSuite extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["oidcPolicy"] = args?.oidcPolicy;
             resourceInputs["teamOwnerId"] = args?.teamOwnerId;
+            resourceInputs["testStateManagement"] = args?.testStateManagement;
             resourceInputs["apiToken"] = undefined /*out*/;
             resourceInputs["slug"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
@@ -132,6 +144,10 @@ export class TestSuite extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TestSuite resources.
  */
 export interface TestSuiteState {
+    /**
+     * Allowed quarantine states: <span pulumi-lang-nodejs="`muted`" pulumi-lang-dotnet="`Muted`" pulumi-lang-go="`muted`" pulumi-lang-python="`muted`" pulumi-lang-yaml="`muted`" pulumi-lang-java="`muted`" pulumi-lang-hcl="`muted`">`muted`</span> and/or <span pulumi-lang-nodejs="`skipped`" pulumi-lang-dotnet="`Skipped`" pulumi-lang-go="`skipped`" pulumi-lang-python="`skipped`" pulumi-lang-yaml="`skipped`" pulumi-lang-java="`skipped`" pulumi-lang-hcl="`skipped`">`skipped`</span>. The <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`" pulumi-lang-hcl="`enabled`">`enabled`</span> state is always available and must not be included. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to an empty set on creation. An explicit empty set allows only enabled tests. A state cannot be removed while tests use it or it is the automatic-quarantine default.
+     */
+    allowedTestStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The API token to use to send test run data to the API.
      */
@@ -173,6 +189,10 @@ export interface TestSuiteState {
      */
     teamOwnerId?: pulumi.Input<string | undefined>;
     /**
+     * Whether test state management is enabled. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> on creation. Disabling permanently resets all muted and skipped tests to enabled. Re-enabling does not restore their previous states.
+     */
+    testStateManagement?: pulumi.Input<boolean | undefined>;
+    /**
      * The UUID of the test suite.
      */
     uuid?: pulumi.Input<string | undefined>;
@@ -182,6 +202,10 @@ export interface TestSuiteState {
  * The set of arguments for constructing a TestSuite resource.
  */
 export interface TestSuiteArgs {
+    /**
+     * Allowed quarantine states: <span pulumi-lang-nodejs="`muted`" pulumi-lang-dotnet="`Muted`" pulumi-lang-go="`muted`" pulumi-lang-python="`muted`" pulumi-lang-yaml="`muted`" pulumi-lang-java="`muted`" pulumi-lang-hcl="`muted`">`muted`</span> and/or <span pulumi-lang-nodejs="`skipped`" pulumi-lang-dotnet="`Skipped`" pulumi-lang-go="`skipped`" pulumi-lang-python="`skipped`" pulumi-lang-yaml="`skipped`" pulumi-lang-java="`skipped`" pulumi-lang-hcl="`skipped`">`skipped`</span>. The <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`" pulumi-lang-hcl="`enabled`">`enabled`</span> state is always available and must not be included. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to an empty set on creation. An explicit empty set allows only enabled tests. A state cannot be removed while tests use it or it is the automatic-quarantine default.
+     */
+    allowedTestStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the application this test suite is for. If omitted, the value is left unmanaged by Terraform; set it to an empty string to clear it.
      */
@@ -214,4 +238,8 @@ export interface TestSuiteArgs {
      * The GraphQL ID of the team to mark as the owner/admin of the test suite.
      */
     teamOwnerId: pulumi.Input<string>;
+    /**
+     * Whether test state management is enabled. Requires a plan that includes test state management. If omitted, the setting is left unmanaged; the API defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> on creation. Disabling permanently resets all muted and skipped tests to enabled. Re-enabling does not restore their previous states.
+     */
+    testStateManagement?: pulumi.Input<boolean | undefined>;
 }

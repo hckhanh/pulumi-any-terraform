@@ -683,6 +683,11 @@ export type SecretRotationDatadogApiKey = import("./secretRotationDatadogApiKey"
 export const SecretRotationDatadogApiKey: typeof import("./secretRotationDatadogApiKey").SecretRotationDatadogApiKey = null as any;
 utilities.lazyLoad(exports, ["SecretRotationDatadogApiKey"], () => require("./secretRotationDatadogApiKey"));
 
+export { SecretRotationGcpServiceAccountKeyArgs, SecretRotationGcpServiceAccountKeyState } from "./secretRotationGcpServiceAccountKey";
+export type SecretRotationGcpServiceAccountKey = import("./secretRotationGcpServiceAccountKey").SecretRotationGcpServiceAccountKey;
+export const SecretRotationGcpServiceAccountKey: typeof import("./secretRotationGcpServiceAccountKey").SecretRotationGcpServiceAccountKey = null as any;
+utilities.lazyLoad(exports, ["SecretRotationGcpServiceAccountKey"], () => require("./secretRotationGcpServiceAccountKey"));
+
 export { SecretRotationLdapPasswordArgs, SecretRotationLdapPasswordState } from "./secretRotationLdapPassword";
 export type SecretRotationLdapPassword = import("./secretRotationLdapPassword").SecretRotationLdapPassword;
 export const SecretRotationLdapPassword: typeof import("./secretRotationLdapPassword").SecretRotationLdapPassword = null as any;
@@ -1080,6 +1085,8 @@ const _module = {
                 return new SecretRotationAzureClientSecret(name, <any>undefined, { urn })
             case "infisical:index/secretRotationDatadogApiKey:SecretRotationDatadogApiKey":
                 return new SecretRotationDatadogApiKey(name, <any>undefined, { urn })
+            case "infisical:index/secretRotationGcpServiceAccountKey:SecretRotationGcpServiceAccountKey":
+                return new SecretRotationGcpServiceAccountKey(name, <any>undefined, { urn })
             case "infisical:index/secretRotationLdapPassword:SecretRotationLdapPassword":
                 return new SecretRotationLdapPassword(name, <any>undefined, { urn })
             case "infisical:index/secretRotationLitellmApiKey:SecretRotationLitellmApiKey":
@@ -1261,6 +1268,7 @@ pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAuth0Cli
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAwsIamUserSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationAzureClientSecret", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationDatadogApiKey", _module)
+pulumi.runtime.registerResourceModule("infisical", "index/secretRotationGcpServiceAccountKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLdapPassword", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationLitellmApiKey", _module)
 pulumi.runtime.registerResourceModule("infisical", "index/secretRotationMssqlCredentials", _module)

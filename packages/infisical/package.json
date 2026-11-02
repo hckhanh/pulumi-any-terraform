@@ -52,11 +52,11 @@
   "pulumi": {
     "resource": true,
     "name": "terraform-provider",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "parameterization": {
       "name": "infisical",
-      "version": "0.20.7",
-      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC43In19"
+      "version": "0.20.8",
+      "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2luZmlzaWNhbC9pbmZpc2ljYWwiLCJ2ZXJzaW9uIjoiMC4yMC44In19"
     }
   }
 }

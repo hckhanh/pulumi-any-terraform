@@ -3187,6 +3187,34 @@ export interface SecretRotationDatadogApiKeySecretsMapping {
 export interface SecretRotationDatadogApiKeyTemporaryParameters {
 }
 
+export interface SecretRotationGcpServiceAccountKeyParameters {
+    /**
+     * The email of the GCP service account whose keys will be rotated, e.g. my-app@my-project.iam.gserviceaccount.com. The connection's service account needs the Service Account Key Admin role (roles/iam.serviceAccountKeyAdmin) on it.
+     */
+    serviceAccountEmail: pulumi.Input<string>;
+}
+
+export interface SecretRotationGcpServiceAccountKeyRotateAtUtc {
+    /**
+     * The hour at which the rotation should occur (UTC).
+     */
+    hours?: pulumi.Input<number | undefined>;
+    /**
+     * The minute at which the rotation should occur (UTC).
+     */
+    minutes?: pulumi.Input<number | undefined>;
+}
+
+export interface SecretRotationGcpServiceAccountKeySecretsMapping {
+    /**
+     * The name of the secret that the rotated service account key (the JSON key file) will be mapped to.
+     */
+    serviceAccountKey: pulumi.Input<string>;
+}
+
+export interface SecretRotationGcpServiceAccountKeyTemporaryParameters {
+}
+
 export interface SecretRotationLdapPasswordParameters {
     /**
      * The Distinguished Name (DN) of the LDAP entry to rotate the password for.

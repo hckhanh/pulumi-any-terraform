@@ -65,6 +65,32 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly emoji: pulumi.Output<string | undefined>;
     /**
+     * Whether hosted agents in this Cluster cache container images between jobs. This only applies to a
+     * Cluster with at least one hosted queue: a new Cluster has it disabled, so it can only be set to false
+     * when the Cluster is created, and the API refuses to change it until the Cluster has a hosted queue,
+     * so enable it in a later apply. Buildkite enables it when the Cluster's first hosted queue is
+     * created, so a configured false plans one more update after that queue is added. Leaving this unset
+     * adopts the Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    declare public readonly hostedContainerCacheEnabled: pulumi.Output<boolean>;
+    /**
+     * Whether hosted agents in this Cluster keep a git mirror of the repositories they check out, to
+     * speed up checkouts. This only applies to a Cluster with at least one hosted queue: a new Cluster has
+     * it disabled, so it can only be set to false when the Cluster is created, and the API refuses to
+     * change it until the Cluster has a hosted queue, so enable it in a later apply. Changing it is synced
+     * to the hosted agents platform, and the change fails if that sync does. Leaving this unset adopts the
+     * Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    declare public readonly hostedGitMirrorEnabled: pulumi.Output<boolean>;
+    /**
      * The name of the Cluster. Can only contain numbers and letters, no spaces or special characters.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -90,6 +116,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["color"] = state?.color;
             resourceInputs["description"] = state?.description;
             resourceInputs["emoji"] = state?.emoji;
+            resourceInputs["hostedContainerCacheEnabled"] = state?.hostedContainerCacheEnabled;
+            resourceInputs["hostedGitMirrorEnabled"] = state?.hostedGitMirrorEnabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["uuid"] = state?.uuid;
         } else {
@@ -98,6 +126,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["color"] = args?.color;
             resourceInputs["description"] = args?.description;
             resourceInputs["emoji"] = args?.emoji;
+            resourceInputs["hostedContainerCacheEnabled"] = args?.hostedContainerCacheEnabled;
+            resourceInputs["hostedGitMirrorEnabled"] = args?.hostedGitMirrorEnabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -142,6 +172,32 @@ export interface ClusterState {
      * emoji itself, such as 🚀.
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether hosted agents in this Cluster cache container images between jobs. This only applies to a
+     * Cluster with at least one hosted queue: a new Cluster has it disabled, so it can only be set to false
+     * when the Cluster is created, and the API refuses to change it until the Cluster has a hosted queue,
+     * so enable it in a later apply. Buildkite enables it when the Cluster's first hosted queue is
+     * created, so a configured false plans one more update after that queue is added. Leaving this unset
+     * adopts the Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    hostedContainerCacheEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether hosted agents in this Cluster keep a git mirror of the repositories they check out, to
+     * speed up checkouts. This only applies to a Cluster with at least one hosted queue: a new Cluster has
+     * it disabled, so it can only be set to false when the Cluster is created, and the API refuses to
+     * change it until the Cluster has a hosted queue, so enable it in a later apply. Changing it is synced
+     * to the hosted agents platform, and the change fails if that sync does. Leaving this unset adopts the
+     * Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    hostedGitMirrorEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Cluster. Can only contain numbers and letters, no spaces or special characters.
      */
@@ -188,6 +244,32 @@ export interface ClusterArgs {
      * emoji itself, such as 🚀.
      */
     emoji?: pulumi.Input<string | undefined>;
+    /**
+     * Whether hosted agents in this Cluster cache container images between jobs. This only applies to a
+     * Cluster with at least one hosted queue: a new Cluster has it disabled, so it can only be set to false
+     * when the Cluster is created, and the API refuses to change it until the Cluster has a hosted queue,
+     * so enable it in a later apply. Buildkite enables it when the Cluster's first hosted queue is
+     * created, so a configured false plans one more update after that queue is added. Leaving this unset
+     * adopts the Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    hostedContainerCacheEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether hosted agents in this Cluster keep a git mirror of the repositories they check out, to
+     * speed up checkouts. This only applies to a Cluster with at least one hosted queue: a new Cluster has
+     * it disabled, so it can only be set to false when the Cluster is created, and the API refuses to
+     * change it until the Cluster has a hosted queue, so enable it in a later apply. Changing it is synced
+     * to the hosted agents platform, and the change fails if that sync does. Leaving this unset adopts the
+     * Cluster's current setting.
+     * Reading and changing it is done through the REST API, so the API token needs the <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span>
+     * and <span pulumi-lang-nodejs="`writeClusters`" pulumi-lang-dotnet="`WriteClusters`" pulumi-lang-go="`writeClusters`" pulumi-lang-python="`write_clusters`" pulumi-lang-yaml="`writeClusters`" pulumi-lang-java="`writeClusters`" pulumi-lang-hcl="`write_clusters`">`writeClusters`</span> scopes and permission to manage the Cluster. Without <span pulumi-lang-nodejs="`readClusters`" pulumi-lang-dotnet="`ReadClusters`" pulumi-lang-go="`readClusters`" pulumi-lang-python="`read_clusters`" pulumi-lang-yaml="`readClusters`" pulumi-lang-java="`readClusters`" pulumi-lang-hcl="`read_clusters`">`readClusters`</span> or permission to
+     * manage the Cluster, the last known value is kept, and a change made outside Terraform is not detected. The
+     * same happens, with a warning, when a read fails for another reason, such as the REST API rate limit.
+     */
+    hostedGitMirrorEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Cluster. Can only contain numbers and letters, no spaces or special characters.
      */

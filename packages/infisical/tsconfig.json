@@ -158,6 +158,7 @@
         "secretRotationAwsIamUserSecret.ts",
         "secretRotationAzureClientSecret.ts",
         "secretRotationDatadogApiKey.ts",
+        "secretRotationGcpServiceAccountKey.ts",
         "secretRotationLdapPassword.ts",
         "secretRotationLitellmApiKey.ts",
         "secretRotationMssqlCredentials.ts",
