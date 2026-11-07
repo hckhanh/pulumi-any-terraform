@@ -1,5 +1,55 @@
 # pulumi-buildkite
 
+## 1.38.0
+
+### Minor Changes
+
+#### Added
+
+- feat(test suite): Allow opting out of default flaky detection by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1307
+- feat(cluster queue): support GitHub App tokens for code access by @CerealBoy in https://github.com/buildkite/terraform-provider-buildkite/pull/1303
+- feat(test_suite_workflow): Add create, read, and delete support by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1306
+- feat(test suite workflow): add import support by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1308
+- feat(test suite workflow): add in-place updates by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1309
+
+#### Fixed
+
+- fix: build with patched Go for eMudhra CA compromise by @petetomasik in https://github.com/buildkite/terraform-provider-buildkite/pull/1312
+
+#### Internal
+
+- docs(test_suite): use test_suite_id in data source example by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1302
+- Release v1.43.0 by @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1311
+
+#### Dependencies
+
+- chore(deps): update buildkite by @renovate[bot] in https://github.com/buildkite/terraform-provider-buildkite/pull/1294
+- chore(deps): update goreleaser/goreleaser docker tag to v2.18.3 by @renovate[bot] in https://github.com/buildkite/terraform-provider-buildkite/pull/1299
+
+**Full Changelog**: https://github.com/buildkite/terraform-provider-buildkite/compare/v1.42.1...v1.43.0
+
+#### Added
+
+- Add `test_state_management` and `allowed_test_states` to `buildkite_test_suite`. Disabling state management permanently resets muted/skipped tests to enabled. By @meghan-kradolfer in https://github.com/buildkite/terraform-provider-buildkite/pull/1322
+- Add `buildkite_pipeline_webhook_trigger` for incoming pipeline webhooks (public preview). By @mtibben in https://github.com/buildkite/terraform-provider-buildkite/pull/1314
+
+#### Fixed
+
+- Add write-only webhook notification URLs to keep credentials out of plans and state. Requires Terraform 1.11.1+. By @mtibben in https://github.com/buildkite/terraform-provider-buildkite/pull/1313
+
+#### Dependencies
+
+- Update Go dependencies by @renovate[bot] in https://github.com/buildkite/terraform-provider-buildkite/pull/1319
+- Update Buildkite plugins and the acceptance-test provider version by @renovate[bot] in https://github.com/buildkite/terraform-provider-buildkite/pull/1318
+
+#### New Contributors
+
+- @mtibben made their first contribution in https://github.com/buildkite/terraform-provider-buildkite/pull/1313
+
+**Full Changelog**: https://github.com/buildkite/terraform-provider-buildkite/compare/v1.44.0...v1.45.0
+
+Update the Pulumi Terraform bridge from 1.5.0 to 1.5.1.
+
 ## 1.37.0
 
 ### Minor Changes
