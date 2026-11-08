@@ -21,7 +21,7 @@
     "@types/node": "26.6.6",
     "@typescript/native": "npm:typescript@7.0.2",
     "nx": "24.0.4",
-    "oxfmt": "0.76.0",
+    "oxfmt": "0.77.0",
     "syncpack": "15.3.3",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
