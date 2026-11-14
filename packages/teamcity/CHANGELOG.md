@@ -1,3 +1,13 @@
+## 0.2.9
+
+### Patch Changes
+
+Update pulumi-teamcity from 0.0.97 to 0.0.98
+
+**Full Changelog**: https://github.com/JetBrains/terraform-provider-teamcity/compare/v0.0.97...v0.0.98
+
+Update the Pulumi Terraform bridge from 1.5.0 to 1.5.1.
+
 ## 0.2.8
 
 ### Patch Changes

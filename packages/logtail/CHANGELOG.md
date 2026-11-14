@@ -1,3 +1,19 @@
+## 3.3.0
+
+### Minor Changes
+
+Update pulumi-logtail from 11.3.0 to 11.4.0
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v11.3.0...v11.4.0
+
+### Patch Changes
+
+- Stop multi_select_with_sql variables from changing on every plan by @PetrHeinz in https://github.com/BetterStackHQ/terraform-provider-logtail/pull/152
+
+**Full Changelog**: https://github.com/BetterStackHQ/terraform-provider-logtail/compare/v11.4.1...v11.4.2
+
+Update the Pulumi Terraform bridge from 1.5.0 to 1.5.1.
+
 ## 3.2.0
 
 ### Minor Changes
