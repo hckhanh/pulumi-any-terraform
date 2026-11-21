@@ -45,7 +45,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1 # v3.2.0
         with:
-          version: 12.20.0
+          version: 12.21.0
           runtime: node@24.22.3
           cache: true
       - name: Update npm
@@ -78,7 +78,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1 # v3.2.0
         with:
-          version: 12.20.0
+          version: 12.21.0
           runtime: node@24.22.3
           cache: true
       - name: Publish and verify a native pnpm prerelease
