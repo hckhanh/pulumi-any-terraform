@@ -13,14 +13,14 @@
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
-    "@nx/devkit": "24.0.6",
-    "@nx/js": "24.0.6",
+    "@nx/devkit": "24.0.7",
+    "@nx/js": "24.0.7",
     "@swc-node/register": "1.12.1",
     "@swc/core": "1.16.22",
     "@swc/helpers": "0.5.24",
     "@types/node": "26.6.6",
     "@typescript/native": "npm:typescript@7.0.2",
-    "nx": "24.0.6",
+    "nx": "24.0.7",
     "oxfmt": "0.80.0",
     "syncpack": "15.3.4",
     "typescript": "npm:@typescript/typescript6@6.0.2"
